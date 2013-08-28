@@ -116,6 +116,7 @@ public class PatternImage {
 
 				// added fixpart2 from David's LensMaker0402_2013
 				phase += fixpart2 * y1 ;
+                                //phase += (fixpart2 * y1)/2/Math.PI ;
 
 				iArray[0] = phase2gray(phase);
 				raster.setPixel(j, i, iArray);

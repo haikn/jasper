@@ -43,6 +43,29 @@ public class EduUIMainView extends javax.swing.JFrame {
         jPanelMirror2 = new Mirror();
         jPanelMirror3 = new Mirror();
         jPanelMirror4 = new Mirror();
+        // Aber
+        jPanelAber1 = new Mirror();
+        // Mach
+        jPanelMach1 = new Mach();
+        // Michelson
+        jPanelMich1 = new Michelson();
+        jPanelMich2 = new Michelson();
+        jPanelMich3 = new Michelson();
+        jPanelMich4 = new Michelson();
+        // Diffraction
+        jPanelDiffraction1 = new Diffraction();
+        // Spectrometer
+        jPanelSpectrometer1 = new Spectrometer();
+        // Signal Processing
+        jPanelSignal1 = new Signal();
+        // Phase
+        jPanelPhase1 = new Phase();
+        // Talbot
+        jPanelTalbot1 = new Talbot();
+        // Wavefront
+        jPanelWavefront1 = new Wavefront();
+        // Wavelength
+        jPanelWavelength1 = new Wavelength();
         jPanelMisc = new MiscOptics(); // new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaLog = new javax.swing.JTextArea();
@@ -84,6 +107,29 @@ public class EduUIMainView extends javax.swing.JFrame {
         panelist.add((OpticsPane)jPanelMirror2);
         panelist.add((OpticsPane)jPanelMirror3);
         panelist.add((OpticsPane)jPanelMirror4);
+        // Aber
+        panelist.add((OpticsPane)jPanelAber1);
+        // Mach
+        panelist.add((OpticsPane)jPanelMach1);
+        // Michelson
+        panelist.add((OpticsPane)jPanelMich1);
+        panelist.add((OpticsPane)jPanelMich2);
+        panelist.add((OpticsPane)jPanelMich3);
+        panelist.add((OpticsPane)jPanelMich4);
+        // Diffraction
+        panelist.add((OpticsPane)jPanelDiffraction1);
+        // Spectrometer
+        panelist.add((OpticsPane)jPanelSpectrometer1);
+        // Signal Processing
+        panelist.add((OpticsPane)jPanelSignal1);
+        // Phase
+        panelist.add((OpticsPane)jPanelPhase1);
+        // Tabot
+        panelist.add((OpticsPane)jPanelTalbot1);
+        // Wavefront
+        panelist.add((OpticsPane)jPanelWavefront1);
+        //Wavelength
+        panelist.add((OpticsPane)jPanelWavelength1);
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -316,7 +362,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleAber);
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Misc", jPanelMisc);        
+        jTabbedPaneOptics.addTab("Misc", jPanelAber1);   
+         
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemAberrationActionPerformed
 
@@ -324,7 +371,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleMich);        
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Lens", jPanelLens2);        
+        jTabbedPaneOptics.addTab("Lens", jPanelMich1);        
         jTabbedPaneOptics.addTab("Cylindrical lens", jPanelCylindrical1);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         setTabPanelEnable(jTabbedPaneOptics, true);
@@ -334,6 +381,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleMach);
         
         jTabbedPaneOptics.removeAll();
+        jTabbedPaneOptics.addTab("Misc", jPanelMach1);
+        
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemMachZenderActionPerformed
 
@@ -341,7 +390,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleDiff);
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Misc", jPanelMisc);        
+        jTabbedPaneOptics.addTab("Misc", jPanelDiffraction1);        
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemDiffractionActionPerformed
 
@@ -349,8 +398,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleSpec);
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Lens", jPanelLens3);        
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror2);
+        jTabbedPaneOptics.addTab("Lens", jPanelSpectrometer1);        
+        //jTabbedPaneOptics.addTab("Mirror", jPanelMirror2);
         setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemSpectrometerActionPerformed
 
@@ -358,7 +407,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleSign);
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Misc", jPanelMisc);        
+        jTabbedPaneOptics.addTab("Misc", jPanelSignal1);        
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemSignalProcessingActionPerformed
 
@@ -366,7 +415,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitlePhas);
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Misc", jPanelMisc);        
+        jTabbedPaneOptics.addTab("Misc", jPanelPhase1);        
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemPhaseShiftingActionPerformed
 
@@ -374,7 +423,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleTalb);       
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Misc", jPanelMisc);        
+        jTabbedPaneOptics.addTab("Misc", jPanelTalbot1);        
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemTalbotImagesActionPerformed
 
@@ -382,7 +431,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleFron);               
 
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Lens", jPanelLens4);        
+        jTabbedPaneOptics.addTab("Lens", jPanelWavefront1);        
         jTabbedPaneOptics.addTab("Cylindrical lens", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror3);
         setTabPanelEnable(jTabbedPaneOptics, true);
@@ -392,7 +441,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleLeng);       
 
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror4);
+        jTabbedPaneOptics.addTab("Mirror", jPanelWavelength1);
         setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemWavelengthActionPerformed
 
@@ -548,6 +597,19 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelMirror2;
     private javax.swing.JPanel jPanelMirror3;
     private javax.swing.JPanel jPanelMirror4;
+    private javax.swing.JPanel jPanelAber1;
+    private javax.swing.JPanel jPanelMach1;
+    private javax.swing.JPanel jPanelMich1;
+    private javax.swing.JPanel jPanelMich2;
+    private javax.swing.JPanel jPanelMich3;
+    private javax.swing.JPanel jPanelMich4;
+    private javax.swing.JPanel jPanelDiffraction1;
+    private javax.swing.JPanel jPanelSpectrometer1;
+    private javax.swing.JPanel jPanelSignal1;
+    private javax.swing.JPanel jPanelPhase1;
+    private javax.swing.JPanel jPanelTalbot1;
+    private javax.swing.JPanel jPanelWavefront1;
+    private javax.swing.JPanel jPanelWavelength1;
     private javax.swing.JPanel jPanelMisc;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
