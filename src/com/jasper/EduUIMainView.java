@@ -307,6 +307,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleMicr);
         
         jTabbedPaneOptics.removeAll();
+        // sonnv added on 2013/08/28
+        jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemMicroscopeActionPerformed
 
