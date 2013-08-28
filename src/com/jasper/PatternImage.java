@@ -111,6 +111,8 @@ public class PatternImage {
 				y1 = y2;
 				y2 = Math.pow(y2, 2.0);
 				phase = fixpart * (x2 + y2);
+//                                phase=exp(i*pi/wavelength/focallength*(x.^2+y.^2));
+//                                hologram=((angle(phase)+pi)/2/pi);
 
 				// added fixpart2 from David's LensMaker0402_2013
 				phase += fixpart2 * y1 ;
@@ -120,6 +122,39 @@ public class PatternImage {
 			}
 		}
 	}
+        
+//        public void paintLens() {
+//		WritableRaster raster = canvas.getRaster();
+//
+//		int[] iArray = new int[1];
+//		double x2, y2, phase;
+//		double y1;
+//
+//		double fixpart = Math.PI / lambda / focal;
+//
+//		// 2*pi/la*0.1*x*psize
+//		double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
+//
+//		// calculate phase of each pixel;
+//		for (int i = 0; i < height; i++) {
+//			x2 = (double) (i - height/2 + 1) * pxsize;
+//			x2 -= xoff;
+//			x2 = Math.pow(x2, 2.0);
+//			for (int j = 0; j < width; j++) {
+//				y2 = (double) (j - width/2 + 1) * pxsize;
+//				y2 -= yoff;
+//				y1 = y2;
+//				y2 = Math.pow(y2, 2.0);
+//				phase = fixpart * (x2 + y2);
+//
+//				// added fixpart2 from David's LensMaker0402_2013
+//				phase += fixpart2 * y1 ;
+//
+//				iArray[0] = phase2gray(phase);
+//				raster.setPixel(j, i, iArray);
+//			}
+//		}
+//	}
 
 	public void paintCylindircal() {
 		WritableRaster raster = canvas.getRaster();
