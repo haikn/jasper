@@ -1,3 +1,14 @@
+/*
+ * @(#)PatternImage.java
+ *
+ * Copyright (c) 2013 NOMOVOK, Inc.
+ * An Unpublished Work.  All Rights Reserved.
+ *
+ * NOMOVOK PROPRIETARY:  The information contained in or disclosed by this
+ * document is considered proprietary by NOMOVOK, Inc.  This document and/or the
+ * information contained therein shall not be duplicated nor disclosed in whole
+ * or in part without the specific written permission of NOMOVOK, Inc.
+ */
 package com.jasper;
 
 import java.awt.Rectangle;
@@ -7,6 +18,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * This PatternImage include the algorithms of application
+ *
+ * @version 1.0 28 Aug 2013
+ *
+ * @author Albert Nguyen
+ *
+ */
 public class PatternImage {
 	private double lambda;
 	private double xoff;
@@ -87,14 +106,13 @@ public class PatternImage {
 		int gray = Math.min((int) Math.round(phase * scale), scale-1);
 		return gray2phase[gray];
 	}
-
+        
+        // Telephoto Lens algorithms
 	public void paintLens() {
 		WritableRaster raster = canvas.getRaster();
-
 		int[] iArray = new int[1];
 		double x2, y2, phase;
 		double y1;
-
 		double fixpart = Math.PI / lambda / focal;
 
 		// 2*pi/la*0.1*x*psize
@@ -124,39 +142,40 @@ public class PatternImage {
 		}
 	}
         
-//        public void paintLens() {
-//		WritableRaster raster = canvas.getRaster();
-//
-//		int[] iArray = new int[1];
-//		double x2, y2, phase;
-//		double y1;
-//
-//		double fixpart = Math.PI / lambda / focal;
-//
-//		// 2*pi/la*0.1*x*psize
-//		double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
-//
-//		// calculate phase of each pixel;
-//		for (int i = 0; i < height; i++) {
-//			x2 = (double) (i - height/2 + 1) * pxsize;
-//			x2 -= xoff;
-//			x2 = Math.pow(x2, 2.0);
-//			for (int j = 0; j < width; j++) {
-//				y2 = (double) (j - width/2 + 1) * pxsize;
-//				y2 -= yoff;
-//				y1 = y2;
-//				y2 = Math.pow(y2, 2.0);
-//				phase = fixpart * (x2 + y2);
-//
-//				// added fixpart2 from David's LensMaker0402_2013
-//				phase += fixpart2 * y1 ;
-//
-//				iArray[0] = phase2gray(phase);
-//				raster.setPixel(j, i, iArray);
-//			}
-//		}
-//	}
+        // Microscope algorithms
+        public void paintMicroscope() {
+		WritableRaster raster = canvas.getRaster();
 
+		int[] iArray = new int[1];
+		double x2, y2, phase;
+		double y1;
+
+		double fixpart = Math.PI / lambda / focal;
+
+		// 2*pi/la*0.1*x*psize
+		double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
+
+		// calculate phase of each pixel;
+		for (int i = 0; i < height; i++) {
+			x2 = (double) (i - height/2 + 1) * pxsize;
+			x2 -= xoff;
+			x2 = Math.pow(x2, 2.0);
+			for (int j = 0; j < width; j++) {
+				y2 = (double) (j - width/2 + 1) * pxsize;
+				y2 -= yoff;
+				y1 = y2;
+				y2 = Math.pow(y2, 2.0);
+				phase = (fixpart * (x2 + y2));
+                                
+				phase += ((fixpart2 * y1)/200/Math.PI);
+
+				iArray[0] = phase2gray(phase);
+				raster.setPixel(j, i, iArray);
+			}
+		}
+	}
+        
+        // Cylindircal algorithms
 	public void paintCylindircal() {
 		WritableRaster raster = canvas.getRaster();
 
@@ -190,7 +209,8 @@ public class PatternImage {
 			}
 		}
 	}
-
+        
+        // Mirror algorithms
 	public void paintMirror() {
 		WritableRaster raster = canvas.getRaster();
 
@@ -272,41 +292,38 @@ public class PatternImage {
 		int newTable[] = new int[gray2phase.length];
 		for (int i=0; i<gray2phase.length; i++) 
 			newTable[i]=gray2phase[i];
-
 		try {
-			br = new BufferedReader(new FileReader(filename));
-			String strLine;
-			while ((strLine = br.readLine()) != null) {
-				if (strLine.length() != 0 && strLine.charAt(0) != '#') {
-					String[] tokens = strLine.trim().split("[\t ]+");
-					for (String token: tokens) {
-						String lrhs[]= token.split("=");
-						if (lrhs.length != 2)
-							throw new IOException();
-						int lhs[] = parseElement(lrhs[0]);
-						int rhs[] = parseElement(lrhs[1]);
-						if (lhs.length != rhs.length)
-							throw new IOException();
-						for (int i=0; i < lhs.length; i++)
-							newTable[lhs[i]]=rhs[i];
-					}
-				}
-			}
-
-			// update with the new table values
-			for (int i=0; i<gray2phase.length; i++) 
-				gray2phase[i] = newTable[i];
-			retValue = true;
+                    br = new BufferedReader(new FileReader(filename));
+                    String strLine;
+                    while ((strLine = br.readLine()) != null) {
+                            if (strLine.length() != 0 && strLine.charAt(0) != '#') {
+                                    String[] tokens = strLine.trim().split("[\t ]+");
+                                    for (String token: tokens) {
+                                            String lrhs[]= token.split("=");
+                                            if (lrhs.length != 2)
+                                                    throw new IOException();
+                                            int lhs[] = parseElement(lrhs[0]);
+                                            int rhs[] = parseElement(lrhs[1]);
+                                            if (lhs.length != rhs.length)
+                                                    throw new IOException();
+                                            for (int i=0; i < lhs.length; i++)
+                                                    newTable[lhs[i]]=rhs[i];
+                                    }
+                                }
+                    }
+                    // update with the new table values
+                    for (int i=0; i<gray2phase.length; i++) 
+                            gray2phase[i] = newTable[i];
+                    retValue = true;
 		} catch (Exception e) {
 			// System.out.println("parse or IO error");
 		} finally {
-			try {
-				if (br != null)
-					br.close();
-			} catch (IOException e) {
-			}
+                    try {
+                        if (br != null)
+                        br.close();
+                    } catch (IOException e) {
+                    }
 		}
-		
 		return retValue;
 	}
 

@@ -39,6 +39,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jPanelLens4 = new Lens ();
         jPanelCylindrical1 = new CylincalLens();
         jPanelCylindrical2 = new CylincalLens();
+        jPanelMicroscope1 = new Microscope();
         jPanelMirror1 = new Mirror();
         jPanelMirror2 = new Mirror();
         jPanelMirror3 = new Mirror();
@@ -103,6 +104,9 @@ public class EduUIMainView extends javax.swing.JFrame {
         panelist.add((OpticsPane)jPanelLens4);
         panelist.add((OpticsPane)jPanelCylindrical1);
         panelist.add((OpticsPane)jPanelCylindrical2);
+        // Microscope
+        panelist.add((OpticsPane)jPanelMicroscope1);
+        
         panelist.add((OpticsPane)jPanelMirror1);
         panelist.add((OpticsPane)jPanelMirror2);
         panelist.add((OpticsPane)jPanelMirror3);
@@ -354,7 +358,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         jTabbedPaneOptics.removeAll();
         // sonnv added on 2013/08/28
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
+        jTabbedPaneOptics.addTab("Lens", jPanelMicroscope1);
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemMicroscopeActionPerformed
 
@@ -594,6 +598,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLens3;
     private javax.swing.JPanel jPanelLens4;
     private javax.swing.JPanel jPanelMirror1;
+    private javax.swing.JPanel jPanelMicroscope1;
     private javax.swing.JPanel jPanelMirror2;
     private javax.swing.JPanel jPanelMirror3;
     private javax.swing.JPanel jPanelMirror4;

@@ -1,3 +1,14 @@
+/*
+ * @(#)EduPatternJPanel.java
+ *
+ * Copyright (c) 2013 NOMOVOK, Inc.
+ * An Unpublished Work.  All Rights Reserved.
+ *
+ * NOMOVOK PROPRIETARY:  The information contained in or disclosed by this
+ * document is considered proprietary by NOMOVOK, Inc.  This document and/or the
+ * information contained therein shall not be duplicated nor disclosed in whole
+ * or in part without the specific written permission of NOMOVOK, Inc.
+ */
 package com.jasper;
 
 import java.awt.Color;
@@ -10,11 +21,15 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
+/**
+ * This EduPatternJPanel include the panel information of application
+ *
+ * @version 1.0 28 Aug 2013
+ *
+ * @author Albert Nguyen
+ *
+ */
 public class EduPatternJPanel extends JPanel {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public PatternImage pimage;
