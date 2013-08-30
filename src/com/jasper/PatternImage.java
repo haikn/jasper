@@ -326,5 +326,35 @@ public class PatternImage {
 		}
 		return retValue;
 	}
+        
+        public void paintMichelson() {
+		WritableRaster raster = canvas.getRaster();
+                //System out to make sure the code run thru this function
+                System.out.println("Enter the Michelson");
+		int[] iArray = new int[1];
+		double phase, x, y;
 
+		double phy = Math.toRadians(mirrorPhy);
+		double theta = Math.toRadians(mirrorTheta);
+		
+
+		double xcomp = Math.sin(phy) * Math.cos(theta);
+		double ycomp = Math.sin(phy) * Math.sin(theta);
+
+		//double fixpart = 2.0 * Math.PI / lambda;
+                double fixpart = 5.0 * Math.PI / lambda;
+
+		for (int i = 0; i < height; i++) {
+			x = (double) (i - height/2 + 1) * pxsize;
+			x = xcomp * x;
+			for (int j = 0; j < width; j++) {
+				y = (double) (j - width/2 + 1) * pxsize;
+				y = ycomp * y;
+				phase = fixpart * (x + y);
+				
+				iArray[0] = phase2gray(phase);
+				raster.setPixel(j, i, iArray);
+			}
+		}            
+        }
 }
