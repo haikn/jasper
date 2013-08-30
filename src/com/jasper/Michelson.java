@@ -136,7 +136,8 @@ public class Michelson extends OpticsPane {
     	if (parseArguments()){
 			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
 			image.updateMirrorParameter(phy, theta);
-			image.paintMirror();
+                        image.paintMichelson();
+			//image.paintMirror();
 			EduPatternTest.updateMirrorPattern(image, genLog());
 			imageGenerated = true;
     	}
