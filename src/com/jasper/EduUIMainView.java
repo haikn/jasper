@@ -1,5 +1,8 @@
 package com.jasper;
 
+import com.patterns.Jdoubleslit;
+import com.patterns.Jsignalprocessing;
+import com.patterns.Jsingleslit;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -304,7 +307,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemSingleSlit.setText("Signle Slit");
         jMenuItemSingleSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jMenuItemAboutActionPerformed(evt);
+                new Jsingleslit().setVisible(true);
             }
         });
         jMenuDraw.add(jMenuItemSingleSlit);
@@ -312,7 +315,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemDoubleSlit.setText("Double Slit");
         jMenuItemDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jMenuItemAboutActionPerformed(evt);
+                new Jdoubleslit().setVisible(true);
             }
         });
         jMenuDraw.add(jMenuItemDoubleSlit);
@@ -320,7 +323,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemDrawSignalProcessing.setText("Signal Processing");
         jMenuItemDrawSignalProcessing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jMenuItemAboutActionPerformed(evt);
+                new Jsignalprocessing().setVisible(true);
             }
         });
         jMenuDraw.add(jMenuItemDrawSignalProcessing);
