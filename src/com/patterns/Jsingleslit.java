@@ -29,6 +29,7 @@ public class Jsingleslit extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Single Slit");
 
         jButton1.setText("jButton1");
 
