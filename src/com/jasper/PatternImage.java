@@ -128,12 +128,15 @@ public class PatternImage {
 				y2 -= yoff;
 				y1 = y2;
 				y2 = Math.pow(y2, 2.0);
-				phase = fixpart * (x2 + y2);
+                                //phase = fixpart * (x2 + y2);
+				phase = fixpart * (22*x2 + 10*y2) ;
 //                                phase=exp(i*pi/wavelength/focallength*(x.^2+y.^2));
 //                                hologram=((angle(phase)+pi)/2/pi);
 
-				// added fixpart2 from David's LensMaker0402_2013
-				phase += fixpart2 * y1 ;
+                                //wave=exp(j*pi/wl*(xt.^2+yt.^2));
+				// added fixpart2 from David's LensMaekr0402_2013
+				//phase += fixpart2 * y1 ;
+                                phase += (fixpart2 * y1);
                                 //phase += (fixpart2 * y1)/2/Math.PI ;
 
 				iArray[0] = phase2gray(phase);
@@ -167,7 +170,7 @@ public class PatternImage {
 				y2 = Math.pow(y2, 2.0);
 				phase = (fixpart * (x2 + y2));
                                 
-				phase += ((fixpart2 * y1)/200/Math.PI);
+				//phase += ((fixpart2 * y1)/200/Math.PI);
 
 				iArray[0] = phase2gray(phase);
 				raster.setPixel(j, i, iArray);
