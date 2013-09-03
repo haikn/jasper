@@ -91,6 +91,10 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuMisc = new javax.swing.JMenu();
         jMenuItemWavelength = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
+        jMenuDraw = new javax.swing.JMenu();
+        jMenuItemSingleSlit = new javax.swing.JMenuItem();
+        jMenuItemDoubleSlit = new javax.swing.JMenuItem();
+        jMenuItemDrawSignalProcessing = new javax.swing.JMenuItem();
         jMenuItemAbout = new javax.swing.JMenuItem();
         
         // menu item for load phase to grayscale table
@@ -293,6 +297,37 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuOptical.add(jMenuMisc);
 
         jMenuBarMain.add(jMenuOptical);
+        
+         // Draw
+        jMenuDraw.setText("Draw Image");
+
+        jMenuItemSingleSlit.setText("Signle Slit");
+        jMenuItemSingleSlit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //jMenuItemAboutActionPerformed(evt);
+            }
+        });
+        jMenuDraw.add(jMenuItemSingleSlit);
+        
+        jMenuItemDoubleSlit.setText("Double Slit");
+        jMenuItemDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //jMenuItemAboutActionPerformed(evt);
+            }
+        });
+        jMenuDraw.add(jMenuItemDoubleSlit);
+        
+        jMenuItemDrawSignalProcessing.setText("Signal Processing");
+        jMenuItemDrawSignalProcessing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //jMenuItemAboutActionPerformed(evt);
+            }
+        });
+        jMenuDraw.add(jMenuItemDrawSignalProcessing);
+
+        jMenuBarMain.add(jMenuDraw);
+        
+        // END Draw image
 
         jMenuHelp.setText("Help");
 
@@ -305,6 +340,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuHelp.add(jMenuItemAbout);
 
         jMenuBarMain.add(jMenuHelp);
+        
+       
 
         setJMenuBar(jMenuBarMain);
 
@@ -572,8 +609,12 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenu jMenuFourier;
     private javax.swing.JMenu jMenuGeometric;
+    private javax.swing.JMenu jMenuDraw;
     private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuItemAberration;
+    private javax.swing.JMenuItem jMenuItemSingleSlit;
+    private javax.swing.JMenuItem jMenuItemDoubleSlit;
+    private javax.swing.JMenuItem jMenuItemDrawSignalProcessing;
     private javax.swing.JMenuItem jMenuItemAbout;
     private javax.swing.JMenuItem jMenuItemDiffraction;
     private javax.swing.JMenuItem jMenuItemExit;
