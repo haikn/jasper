@@ -32,7 +32,7 @@
                   </Group>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="169" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -180,6 +180,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtWidth">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="512"/>
+          </Properties>
           <BindingProperties>
             <BindingProperty name="text" source="jSliderWidth" sourcePath="${value}" target="txtWidth" targetPath="text" updateStrategy="0" immediately="false">
               <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
@@ -190,6 +193,10 @@
           </Events>
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderWidth">
+          <Properties>
+            <Property name="maximum" type="int" value="512"/>
+            <Property name="value" type="int" value="512"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtRotation">
           <BindingProperties>
@@ -243,6 +250,10 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderHeight">
+          <Properties>
+            <Property name="maximum" type="int" value="182"/>
+            <Property name="value" type="int" value="40"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtHeight">
           <BindingProperties>

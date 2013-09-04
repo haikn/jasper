@@ -71,6 +71,8 @@ public class Jsingleslit extends javax.swing.JFrame {
             }
         });
 
+        txtWidth.setText("512");
+
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderWidth, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtWidth, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -79,6 +81,9 @@ public class Jsingleslit extends javax.swing.JFrame {
                 txtWidthActionPerformed(evt);
             }
         });
+
+        jSliderWidth.setMaximum(512);
+        jSliderWidth.setValue(512);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderRotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtRotation, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -105,6 +110,9 @@ public class Jsingleslit extends javax.swing.JFrame {
         });
 
         jLabel5.setText("Width");
+
+        jSliderHeight.setMaximum(182);
+        jSliderHeight.setValue(40);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderHeight, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtHeight, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -220,7 +228,7 @@ public class Jsingleslit extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 169, Short.MAX_VALUE))
+                .addGap(0, 61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,21 +256,7 @@ public class Jsingleslit extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int lineWidth;
-        int lineRotation;
-        int lineGray;
-        lineWidth = Integer.parseInt(this.txtWidth.getText());
-        lineRotation = Integer.parseInt(this.txtRotation.getText());
-        lineGray = Integer.parseInt(this.txtGray.getText());
-        Graphics2D g = (Graphics2D) canvas1.getGraphics();
-        g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-        //Draw line with parameters set
-        g.setColor(new Color(lineGray, lineGray, lineGray));
-        Rectangle rect2 = new Rectangle(5, 5, 200, lineWidth);
-        g.translate(rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2));
-        g.rotate(Math.toRadians(lineRotation));
-        g.draw(rect2);
-        g.fill(rect2);
+        canvas();
     }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
@@ -303,6 +297,26 @@ public class Jsingleslit extends javax.swing.JFrame {
                 new Jsingleslit().setVisible(true);
             }
         });
+    }
+
+    private void canvas() {
+        int lineWidth = canvas1.getWidth();
+        int lineHeight = 40;
+        int lineRotation;
+        int lineGray;
+        lineWidth = Integer.parseInt(this.txtWidth.getText());
+        lineHeight = Integer.parseInt(this.txtHeight.getText());
+        lineRotation = Integer.parseInt(this.txtRotation.getText());
+        lineGray = Integer.parseInt(this.txtGray.getText());
+        Graphics2D g = (Graphics2D) canvas1.getGraphics();
+        g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+        //Draw line with parameters set
+        g.setColor(new Color(lineGray, lineGray, lineGray));
+        Rectangle rect2 = new Rectangle(((canvas1.getWidth() / 2) - (lineWidth / 2)), (canvas1.getHeight() / 2) - (lineHeight / 2), lineWidth, lineHeight);
+        //g.translate(rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2));
+        g.rotate(Math.toRadians(lineRotation));
+        g.draw(rect2);
+        g.fill(rect2);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
