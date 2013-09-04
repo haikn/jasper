@@ -128,8 +128,8 @@ public class PatternImage {
 				y2 -= yoff;
 				y1 = y2;
 				y2 = Math.pow(y2, 2.0);
-                                //phase = fixpart * (x2 + y2);
-				phase = fixpart * (22*x2 + 10*y2) ;
+                                phase = fixpart * (x2 + y2);
+				//phase = fixpart * (22*x2 + 10*y2) ;
 //                                phase=exp(i*pi/wavelength/focallength*(x.^2+y.^2));
 //                                hologram=((angle(phase)+pi)/2/pi);
 
