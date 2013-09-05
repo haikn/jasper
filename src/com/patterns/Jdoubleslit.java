@@ -316,12 +316,12 @@ public class Jdoubleslit extends javax.swing.JFrame {
         g.setColor(new Color(lineGray, lineGray, lineGray));
         Rectangle rect2 = new Rectangle(x, y - lineHeight, lineWidth, lineHeight);
         // g.translate(rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2));
-        g.rotate(Math.toRadians(lineRotation));
+        g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
         g.draw(rect2);
         g.fill(rect2);
         g.setColor(new Color(lineGray, lineGray, lineGray));
         Rectangle rect3 = new Rectangle(x, (y + lineHeight), lineWidth, lineHeight);
-        g.rotate(Math.toRadians(lineRotation));
+        g.rotate(Math.toRadians(lineRotation), rect3.x + rect3.width / 2, rect3.y + rect3.height / 2);
         g.draw(rect3);
         g.fill(rect3);
     }

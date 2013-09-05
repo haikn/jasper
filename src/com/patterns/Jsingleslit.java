@@ -317,8 +317,9 @@ public class Jsingleslit extends javax.swing.JFrame {
         int x = ((canvas1.getWidth() / 2) - (lineWidth / 2));
         int y = (linePostion) - (lineHeight / 2);
         Rectangle rect2 = new Rectangle(x, y, lineWidth, lineHeight);
-        //g.translate(rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2));
-        g.rotate(Math.toRadians(lineRotation));
+        //g.translate(rect2.x + (rect2.width / 2), rect2.y + eWidth(rect2.height / 2));
+
+        g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
         g.draw(rect2);
         g.fill(rect2);
     }
