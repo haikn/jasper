@@ -304,6 +304,7 @@ public class Jdoubleslit extends javax.swing.JFrame {
         linePostion = Integer.parseInt(this.txtPostion.getText());
         lineGray = Integer.parseInt(this.txtGray.getText());
         Graphics2D g = (Graphics2D) canvas1.getGraphics();
+        Graphics2D g1 = (Graphics2D) canvas1.getGraphics();
         g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
         int x = ((canvas1.getWidth() / 2) - (lineWidth / 2));
         int y = linePostion - (lineHeight / 2);
@@ -313,11 +314,11 @@ public class Jdoubleslit extends javax.swing.JFrame {
         g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
         g.draw(rect2);
         g.fill(rect2);
-        g.setColor(new Color(lineGray, lineGray, lineGray));
+        g1.setColor(new Color(lineGray, lineGray, lineGray));
         Rectangle rect3 = new Rectangle(x, (y + lineHeight), lineWidth, lineHeight);
-        g.rotate(Math.toRadians(lineRotation), rect3.x + rect3.width / 2, rect3.y + rect3.height / 2);
-        g.draw(rect3);
-        g.fill(rect3);
+        g1.rotate(Math.toRadians(lineRotation), rect3.x + rect3.width / 2, rect3.y + rect3.height / 2);
+        g1.draw(rect3);
+        g1.fill(rect3);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
