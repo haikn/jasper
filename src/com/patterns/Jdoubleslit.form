@@ -240,7 +240,7 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderRotation">
           <Properties>
-            <Property name="maximum" type="int" value="180"/>
+            <Property name="maximum" type="int" value="318"/>
             <Property name="value" type="int" value="0"/>
           </Properties>
         </Component>
@@ -253,7 +253,8 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderPosition">
           <Properties>
-            <Property name="value" type="int" value="0"/>
+            <Property name="maximum" type="int" value="318"/>
+            <Property name="value" type="int" value="159"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGray">
@@ -266,7 +267,7 @@
         <Component class="javax.swing.JSlider" name="jSliderGray">
           <Properties>
             <Property name="maximum" type="int" value="255"/>
-            <Property name="value" type="int" value="0"/>
+            <Property name="value" type="int" value="255"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">

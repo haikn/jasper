@@ -108,19 +108,20 @@ public class Jdoubleslit extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderRotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtRotation, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jSliderRotation.setMaximum(180);
+        jSliderRotation.setMaximum(318);
         jSliderRotation.setValue(0);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPosition, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPostion, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jSliderPosition.setValue(0);
+        jSliderPosition.setMaximum(318);
+        jSliderPosition.setValue(159);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderGray, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtGray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         jSliderGray.setMaximum(255);
-        jSliderGray.setValue(0);
+        jSliderGray.setValue(255);
 
         jButton1.setText("ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -302,14 +303,16 @@ public class Jdoubleslit extends javax.swing.JFrame {
         int lineHeight;// = 80;
         int lineRotation;
         int lineGray;
+        int linePostion = canvas1.getHeight() / 2;
         lineWidth = Integer.parseInt(this.txtWidth.getText());
         lineHeight = Integer.parseInt(this.txtHeight.getText());
         lineRotation = Integer.parseInt(this.txtRotation.getText());
+        linePostion = Integer.parseInt(this.txtPostion.getText());
         lineGray = Integer.parseInt(this.txtGray.getText());
         Graphics2D g = (Graphics2D) canvas1.getGraphics();
         g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
         int x = ((canvas1.getWidth() / 2) - (lineWidth / 2));
-        int y = (canvas1.getHeight() / 2) - (lineHeight / 2);
+        int y = linePostion - (lineHeight / 2);
         g.setColor(new Color(lineGray, lineGray, lineGray));
         Rectangle rect2 = new Rectangle(x, y - lineHeight, lineWidth, lineHeight);
         // g.translate(rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2));
