@@ -7,6 +7,7 @@ package com.patterns;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Rectangle;
 
 /**
@@ -309,27 +310,17 @@ public class Jdoubleslit extends javax.swing.JFrame {
         g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
         int x = ((canvas1.getWidth() / 2) - (lineWidth / 2));
         int y = (canvas1.getHeight() / 2) - (lineHeight / 2);
-        //Draw line with parameters set
-        // g.setColor(Color.red);
-        //        Rectangle rect2 = new Rectangle(0,canvas1.getHeight()/2-20,canvas1.getWidth(),40);
-        //Rectangle rect = new Rectangle(0, 0, canvas1.getWidth(), 40);
-        // Rectangle rect1 = new Rectangle(((canvas1.getWidth() / 2) - (lineWidth / 2)), (canvas1.getHeight() / 2) - (lineHeight / 2), lineWidth, lineHeight);
-        // g.rotate(Math.toRadians(lineRotation));
-        // g.draw(rect1);
-        //g.fill(rect1);
-        g.setColor(Color.black);
-        Rectangle rect2 = new Rectangle(x, y, lineWidth, lineHeight);
+        g.setColor(new Color(lineGray, lineGray, lineGray));
+        Rectangle rect2 = new Rectangle(x, y - lineHeight, lineWidth, lineHeight);
         // g.translate(rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2));
         g.rotate(Math.toRadians(lineRotation));
         g.draw(rect2);
         g.fill(rect2);
-
-        g.setColor(Color.black);
-        Rectangle rect3 = new Rectangle(x, (y + 100), lineWidth, lineHeight);
+        g.setColor(new Color(lineGray, lineGray, lineGray));
+        Rectangle rect3 = new Rectangle(x, (y + lineHeight), lineWidth, lineHeight);
         g.rotate(Math.toRadians(lineRotation));
         g.draw(rect3);
         g.fill(rect3);
-
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
