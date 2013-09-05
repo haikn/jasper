@@ -309,36 +309,44 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         lineRotation = Integer.parseInt(this.txtRotation.getText());
         linePostion = Integer.parseInt(this.txtPostion.getText());
         lineGray = Integer.parseInt(this.txtGray.getText());
+//        Graphics2D g = (Graphics2D) canvas1.getGraphics();
+//        g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+//        int x = ((canvas1.getWidth() / 2) - (lineWidth / 2));
+//        int y = linePostion - (lineHeight / 2);
+//        g.setColor(new Color(lineGray, lineGray, lineGray));
+//        Rectangle rect2 = new Rectangle(x, y - lineHeight, lineWidth, lineHeight);
+//        g.rotate(Math.toRadians(lineRotation));
+//        g.draw(rect2);
+//        g.fill(rect2);
+//        g.setColor(new Color(lineGray, lineGray, lineGray));
+//        Rectangle rect3 = new Rectangle(x, (y + lineHeight), lineWidth, lineHeight);
+//        g.rotate(Math.toRadians(lineRotation));
+//        g.draw(rect3);
+//        g.fill(rect3);
         Graphics2D g = (Graphics2D) canvas1.getGraphics();
         g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-        int x = ((canvas1.getWidth() / 2) - (lineWidth / 2));
-        int y = linePostion - (lineHeight / 2);
-        g.setColor(new Color(lineGray, lineGray, lineGray));
-        Rectangle rect2 = new Rectangle(x, y - lineHeight, lineWidth, lineHeight);
-        g.rotate(Math.toRadians(lineRotation));
-        g.draw(rect2);
-        g.fill(rect2);
-        g.setColor(new Color(lineGray, lineGray, lineGray));
-        Rectangle rect3 = new Rectangle(x, (y + lineHeight), lineWidth, lineHeight);
-        g.rotate(Math.toRadians(lineRotation));
-        g.draw(rect3);
-        g.fill(rect3);
-
-//        int bx = ((canvas1.getWidth() / 2) - (lineWidth / 2));
-//        int by = linePostion - (lineHeight / 2);
-//        Rectangle brect = null;
-//        for (int i = 0; i < 5; i++) {
-//            g.setColor(new Color(lineGray, lineGray, lineGray));
-//            brect = new Rectangle(x, y - lineHeight, lineWidth, lineHeight);
-//            g.rotate(Math.toRadians(lineRotation));
-//            g.draw(brect);
-//            g.fill(brect);
-//
-//        }
-
-
-
-
+        int chieuRongHinhChunhat = canvas1.getWidth() / 11;
+        g.setColor(Color.white);
+        Rectangle rect2 = null;
+        int bien = 0;
+        for (int i = 0; i < 5; i++) {
+            g.setColor(new Color(lineGray, lineGray, lineGray));
+            rect2 = new Rectangle(chieuRongHinhChunhat + bien * 2, 0, chieuRongHinhChunhat, canvas1.getHeight());
+            g.rotate(Math.toRadians(lineRotation));
+            g.draw(rect2);
+            g.fill(rect2);
+            bien = bien + chieuRongHinhChunhat;
+        }
+        int chieuCaoHinhchuNhat = canvas1.getHeight() / 5;
+        bien = 0;
+        for (int i = 0; i < 2; i++) {
+            g.setColor(new Color(lineGray, lineGray, lineGray));
+            rect2 = new Rectangle(0, chieuCaoHinhchuNhat + bien * 2, canvas1.getWidth(), chieuCaoHinhchuNhat);
+            g.rotate(Math.toRadians(lineRotation));
+            g.draw(rect2);
+            g.fill(rect2);
+            bien = bien + chieuCaoHinhchuNhat;
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
