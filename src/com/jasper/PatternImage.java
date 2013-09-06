@@ -104,6 +104,7 @@ public class PatternImage {
 		phase = phase / 2.0d / Math.PI;
 		phase -= Math.floor(phase);
 		int gray = Math.min((int) Math.round(phase * scale), scale-1);
+                //Math.getExponent(gray);
 		return gray2phase[gray];
 	}
         
@@ -116,18 +117,24 @@ public class PatternImage {
 		double fixpart = Math.PI / lambda / focal;
 
 		// 2*pi/la*0.1*x*psize
-		double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
+		//double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
 
 		// calculate phase of each pixel;
 		for (int i = 0; i < height; i++) {
 			x2 = (double) (i - height/2 + 1) * pxsize;
 			x2 -= xoff;
 			x2 = Math.pow(x2, 2.0);
+                        // Albert 2013/09/05
+                        Math.getExponent(x2);
+                        // 2*pi/la*0.1*x*psize
+                        double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1; 
 			for (int j = 0; j < width; j++) {
 				y2 = (double) (j - width/2 + 1) * pxsize;
 				y2 -= yoff;
 				y1 = y2;
 				y2 = Math.pow(y2, 2.0);
+                                // Albert 2013/09/05
+                                Math.getExponent(y2);
                                 phase = fixpart * (x2 + y2);
 				//phase = fixpart * (22*x2 + 10*y2) ;
 //                                phase=exp(i*pi/wavelength/focallength*(x.^2+y.^2));
@@ -136,8 +143,9 @@ public class PatternImage {
                                 //wave=exp(j*pi/wl*(xt.^2+yt.^2));
 				// added fixpart2 from David's LensMaekr0402_2013
 				//phase += fixpart2 * y1 ;
-                                phase += (fixpart2 * y1);
-                                //phase += (fixpart2 * y1)/2/Math.PI ;
+                                //phase = (fixpart * (x2 + y2) + (fixpart2 * y1));
+                                //phase += phase/2;
+                                phase += fixpart2 * y1 ;
 
 				iArray[0] = phase2gray(phase);
 				raster.setPixel(j, i, iArray);
@@ -156,13 +164,15 @@ public class PatternImage {
 		double fixpart = Math.PI / lambda / focal;
 
 		// 2*pi/la*0.1*x*psize
-		double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
+		//double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
 
 		// calculate phase of each pixel;
 		for (int i = 0; i < height; i++) {
 			x2 = (double) (i - height/2 + 1) * pxsize;
 			x2 -= xoff;
 			x2 = Math.pow(x2, 2.0);
+                        // 2*pi/la*0.1*x*psize
+                        double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1; 
 			for (int j = 0; j < width; j++) {
 				y2 = (double) (j - width/2 + 1) * pxsize;
 				y2 -= yoff;
@@ -171,6 +181,7 @@ public class PatternImage {
 				phase = (fixpart * (x2 + y2));
                                 
 				//phase += ((fixpart2 * y1)/200/Math.PI);
+                                phase += fixpart2 * y1;
 
 				iArray[0] = phase2gray(phase);
 				raster.setPixel(j, i, iArray);

@@ -53,7 +53,7 @@ public class Lens extends OpticsPane {
 
         labelFocal.setText("Focal length");
 
-        textFocal.setText("50.0");
+        textFocal.setText("0.0522");
         textFocal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFocalActionPerformed(evt);
@@ -62,7 +62,7 @@ public class Lens extends OpticsPane {
 
         labelXpos.setText("X Position");
 
-        textXpos.setText("3.0");
+        textXpos.setText("0.0");
         textXpos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textXposActionPerformed(evt);
@@ -71,7 +71,7 @@ public class Lens extends OpticsPane {
 
         labelYpos.setText("Y Position");
 
-        textYpos.setText("3.0");
+        textYpos.setText("0.0");
         textYpos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textYposActionPerformed(evt);
@@ -134,7 +134,7 @@ public class Lens extends OpticsPane {
     }// </editor-fold>//GEN-END:initComponents
 
     // Optical arguments, which will be parsed before reassigning the values
-    private double xoff=5.0, yoff=5.0, focal=522.0;
+    private double xoff=0.0, yoff=0.0, focal=0.0522;
     private boolean parseArguments() {
     	boolean ret = false;
     	try {
@@ -206,9 +206,9 @@ public class Lens extends OpticsPane {
     // paint boot screen, lens only
     void bootScreen() {
     	PatternImage image = ((EduPatternJPanel)panelPattern).pimage;
-    	double xoff = 5.0;
-    	double yoff = 5.0;
-    	double focal = 522.0;
+    	double xoff = 0.0;
+    	double yoff = 0.0;
+    	double focal = 0.0522;
     	image.updateLensParameter(xoff, yoff, focal);
     	image.paintLens();    	
     }
