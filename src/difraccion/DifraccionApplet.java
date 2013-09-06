@@ -36,7 +36,9 @@ import javax.swing.SwingUtilities;
 /*      */ 
 /*      */ public class DifraccionApplet extends Applet
 /*      */ {
-/*   25 */   String[][] acerca_etiqueta = { { "Acerca de", "En quant a", "About" }, { "Aceptar", "Acceptar", "OK" }, { "Javaoptics: Applet de Difracción de Fresnel y Fraunhofer v2.0a \n Grup d'Innovació Docent en Òptica Física i Fotònica \n Universitat de Barcelona, 2003 \n La utilización de este programa está bajo una licencia de Creative Commons \n Ver condiciones en http://creativecommons.org/license/by-nc-sa/2.0/ \n \n Curso de Óptica en Java DOI: 10.1344/401.000000050 \n Applet de Difracción de Fresnel y Fraunhofer DOI: 10.1344/203.000000094", "Javaoptics: Applet de Difracció de Fresnel i Fraunhofer v2.0a \n Grup d'Innovació Docent en Òptica Física i Fotònica \n Universitat de Barcelona, 2003 \n La utilització d'aquest programa està sota una llicència de Creative Commons \n Veure condicions a http://www.publicacions.ub.es/doi/licencia/resum-deriv.htm \n \n Curs d'Òptica en Java DOI: 10.1344/401.000000050 \n Applet de Difracció de Fresnel i Fraunhofer DOI: 10.1344/203.000000094", "Javaoptics: Fresnel and Fraunhofer Diffraction Applet v2.0a \n Grup d'Innovació Docent en Òptica Física i Fotònica \n Universitat de Barcelona, 2003 \n The use of this program is under a Creative Commons license \n See conditions in http://creativecommons.org/license/by-nc-sa/2.0/ \n \n Java Optics Course DOI: 10.1344/401.000000050 \n Fresnel and Fraunhofer Diffraction applet DOI: 10.1344/203.000000094" } };
+/*   25 */   String[][] acerca_etiqueta = { { "Acerca de", "En quant a", "About" }, { "Aceptar", "Acceptar", "OK" },
+            { "JDC Education Kit for Optical Experiments", "JDC Education Kit for Optical Experiments", "JDC Education Kit for Optical Experiments" }
+                };
 /*      */ 
 /*   31 */   String[][] fraun_etiqueta = { { "Parámetros del sistema:", "Paràmetres del sistema", "System parameters" }, { "Longitud de onda:", "Longitud d'ona:", "Wavelength:" }, { "Distancia focal:", "Distància focal:", "Focal distance:" }, { "Objeto:", "Objecte:", "Object:" }, { "Rectángulo", "Rectangle", "Rectangle" }, { "Círculo", "Cercle", "Circle" }, { "Rendija", "Escletxa", "Slit" }, { "Lado x:", "Costat x:", "X side:" }, { "Lado y:", "Costat y:", "Y side:" }, { "N objetos:", "N objectes:", "N objects:" }, { "Período objetos:", "Període objectes:", "Objects period:" }, { "Tamaño imagen objeto:", "Mida imatge objecte:", "Object image size:" }, { "Umbral:", "Llindar:", "Threshold:" }, { "Mostrar:", "Mostrar:", "Show:" }, { "Imagen", "Imatge", "Image" }, { "Perfil fila central", "Perfil fila central", "Central row profile" }, { "Amplitud", "Amplitud", "Amplitude" }, { "Intensidad", "Intensitat", "Intensity" }, { "Log Intensidad", "Log Intensitat", "Log Intensity" }, { "Tamaño imagen difracción:", "Mida imatge difracció:", "Diffraction image size:" }, { "Distancia 1º mínimo difracción:", "Distància 1º mínim difracció:", "Distance 1st diffraction min:" }, { "Distancia entre máximos:", "Distància entre màxims:", "Distance between maximums:" }, { "Distancia entre mínimos:", "Distància entre mínims:", "Distance between minimums:" }, { "Diámetro:", "Diàmetre", "Diameter:" }, { "Dist. 1º min difracción en x: ", "Dist. 1º min difracció en x: ", "Dist. 1st diffraction min in x: " }, { ", en y: ", ", en y: ", ", in y: " }, { "Radio de Airy: ", "Radi d'Airy: ", "Airy's radius: " }, { "Distancia entre máximos: ", "Distància entre màxims: ", "Distance between maximums: " }, { "Distancia entre mínimos: ", "Distància entre mínims: ", "Distance between minimums: " } };
 /*      */ 
@@ -274,9 +276,9 @@ import javax.swing.SwingUtilities;
 /*      */   {
 /*      */     try
 /*      */     {
-/*  321 */       String st_icon = "jocon.jpg";
+/*  321 */       String st_icon = "jdclogo_48x48.png";
 /*  322 */       URL url_icon = getClass().getResource(st_icon);
-/*  323 */       icon_joc = new ImageIcon(url_icon, "Difracción");
+/*  323 */       icon_joc = new ImageIcon(url_icon, "Difraccion");
 /*      */     } catch (Exception eicon) {
 /*  325 */       System.out.println("No carga icono");
 /*      */     }
@@ -936,7 +938,7 @@ import javax.swing.SwingUtilities;
 /* 1035 */     applet.isStandalone = true;
 /*      */ 
 /* 1037 */     Frame frame = new Frame();
-/* 1038 */     frame.setTitle("Applet Difracción");
+/* 1038 */     frame.setTitle("Difraccion");
 /* 1039 */     frame.setResizable(false);
                
 /* 1040 */     frame.add(applet, "Center");
@@ -966,9 +968,9 @@ import javax.swing.SwingUtilities;
 /* 1063 */     Object[] options = { this.acerca_etiqueta[1][lang] };
 /* 1064 */     ImageIcon icon_joc = null;
 /*      */     try {
-/* 1066 */       String st_icon = "jocon.jpg";
+/* 1066 */       String st_icon = "jdclogo_48x48.png";
 /* 1067 */       URL url_icon = getClass().getResource(st_icon);
-/* 1068 */       icon_joc = new ImageIcon(url_icon, "Difracción");
+/* 1068 */       icon_joc = new ImageIcon(url_icon, "Difraccion");
 /*      */     } catch (Exception eicon) {
 /* 1070 */       System.out.println("No carga icono");
 /*      */     }
