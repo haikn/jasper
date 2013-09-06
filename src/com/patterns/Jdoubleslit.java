@@ -135,6 +135,19 @@ public class Jdoubleslit extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderHeight, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtHeight, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+        txtHeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHeightActionPerformed(evt);
+            }
+        });
+        txtHeight.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtHeightInputMethodTextChanged(evt);
+            }
+        });
+
         jLabel6.setText("Height");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -256,6 +269,14 @@ public class Jdoubleslit extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHeightActionPerformed
+
+    private void txtHeightInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtHeightInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHeightInputMethodTextChanged
+
     /**
      * @param args the command line arguments
      */
@@ -299,7 +320,8 @@ public class Jdoubleslit extends javax.swing.JFrame {
         int lineGray;
         int linePostion = canvas1.getHeight() / 2;
         lineWidth = Integer.parseInt(this.txtWidth.getText());
-        lineHeight = Integer.parseInt(this.txtHeight.getText());
+        //lineHeight = Integer.parseInt(this.txtHeight.getText());
+        lineHeight = this.jSliderHeight.getValue();
         lineRotation = Integer.parseInt(this.txtRotation.getText());
         linePostion = Integer.parseInt(this.txtPostion.getText());
         lineGray = Integer.parseInt(this.txtGray.getText());
