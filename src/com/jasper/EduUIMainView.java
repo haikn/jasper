@@ -1,8 +1,12 @@
 package com.jasper;
 
+import com.jasper.michelson.Graf_Michelson;
+import com.jasper.michelson.Img_Michelson;
+import com.jasper.michelson.Interferometros;
 import com.patterns.Jdoubleslit;
 import com.patterns.Jsignalprocessing;
 import com.patterns.Jsingleslit;
+import difraccion.DifraccionApplet;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -96,6 +100,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuHelp = new javax.swing.JMenu();
         jMenuDraw = new javax.swing.JMenu();
         jMenuItemSingleSlit = new javax.swing.JMenuItem();
+        jMenuItemDifractionSlit = new javax.swing.JMenuItem();
         jMenuItemDoubleSlit = new javax.swing.JMenuItem();
         jMenuItemDrawSignalProcessing = new javax.swing.JMenuItem();
         jMenuItemAbout = new javax.swing.JMenuItem();
@@ -220,7 +225,10 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemMichelson.setText(labTitleMich);
         jMenuItemMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemMichelsonActionPerformed(evt);
+                //jMenuItemMichelsonActionPerformed(evt);
+                String [] args = new String[1];
+                args[0] = "EN";
+                new Interferometros().main(args);
             }
         });
         jMenuWave.add(jMenuItemMichelson);
@@ -303,6 +311,16 @@ public class EduUIMainView extends javax.swing.JFrame {
         
          // Draw
         jMenuDraw.setText("Draw Image");
+        
+        jMenuItemDifractionSlit.setText("Difraction");
+        jMenuItemDifractionSlit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 String [] args = new String[1];
+                args[0] = "EN";
+                new DifraccionApplet().main(args);
+            }
+        });
+        jMenuDraw.add(jMenuItemDifractionSlit);
 
         jMenuItemSingleSlit.setText("Signle Slit");
         jMenuItemSingleSlit.addActionListener(new java.awt.event.ActionListener() {
@@ -616,6 +634,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuItemAberration;
     private javax.swing.JMenuItem jMenuItemSingleSlit;
+    private javax.swing.JMenuItem jMenuItemDifractionSlit;
     private javax.swing.JMenuItem jMenuItemDoubleSlit;
     private javax.swing.JMenuItem jMenuItemDrawSignalProcessing;
     private javax.swing.JMenuItem jMenuItemAbout;
