@@ -222,6 +222,9 @@
             <Property name="maximum" type="int" value="639"/>
             <Property name="value" type="int" value="639"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderWidthStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtRotation">
           <BindingProperties>
@@ -235,6 +238,9 @@
             <Property name="maximum" type="int" value="318"/>
             <Property name="value" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderRotationStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPostion">
           <BindingProperties>
@@ -248,6 +254,9 @@
             <Property name="maximum" type="int" value="318"/>
             <Property name="value" type="int" value="159"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderPositionStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGray">
           <BindingProperties>
@@ -261,6 +270,9 @@
             <Property name="maximum" type="int" value="255"/>
             <Property name="value" type="int" value="255"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderGrayStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
@@ -280,6 +292,9 @@
             <Property name="maximum" type="int" value="318"/>
             <Property name="value" type="int" value="40"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderHeightStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtHeight">
           <BindingProperties>

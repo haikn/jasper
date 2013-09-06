@@ -101,24 +101,44 @@ public class Jdoubleslit extends javax.swing.JFrame {
 
         jSliderWidth.setMaximum(639);
         jSliderWidth.setValue(639);
+        jSliderWidth.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderWidthStateChanged(evt);
+            }
+        });
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderRotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtRotation, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         jSliderRotation.setMaximum(318);
         jSliderRotation.setValue(0);
+        jSliderRotation.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderRotationStateChanged(evt);
+            }
+        });
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPosition, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPostion, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         jSliderPosition.setMaximum(318);
         jSliderPosition.setValue(159);
+        jSliderPosition.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderPositionStateChanged(evt);
+            }
+        });
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderGray, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtGray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         jSliderGray.setMaximum(255);
         jSliderGray.setValue(255);
+        jSliderGray.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderGrayStateChanged(evt);
+            }
+        });
 
         jButton1.setText("ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +151,11 @@ public class Jdoubleslit extends javax.swing.JFrame {
 
         jSliderHeight.setMaximum(318);
         jSliderHeight.setValue(40);
+        jSliderHeight.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderHeightStateChanged(evt);
+            }
+        });
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderHeight, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtHeight, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -276,6 +301,31 @@ public class Jdoubleslit extends javax.swing.JFrame {
     private void txtHeightInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtHeightInputMethodTextChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHeightInputMethodTextChanged
+
+    private void jSliderWidthStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderWidthStateChanged
+        // TODO add your handling code here:
+        canvas();
+    }//GEN-LAST:event_jSliderWidthStateChanged
+
+    private void jSliderHeightStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderHeightStateChanged
+        // TODO add your handling code here:
+        canvas();
+    }//GEN-LAST:event_jSliderHeightStateChanged
+
+    private void jSliderRotationStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderRotationStateChanged
+        // TODO add your handling code here:
+        canvas();
+    }//GEN-LAST:event_jSliderRotationStateChanged
+
+    private void jSliderPositionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderPositionStateChanged
+        // TODO add your handling code here:
+        canvas();
+    }//GEN-LAST:event_jSliderPositionStateChanged
+
+    private void jSliderGrayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderGrayStateChanged
+        // TODO add your handling code here:
+        canvas();
+    }//GEN-LAST:event_jSliderGrayStateChanged
 
     /**
      * @param args the command line arguments
