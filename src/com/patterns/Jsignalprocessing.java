@@ -54,7 +54,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         txtHeight = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txxWidthY = new javax.swing.JTextField();
+        txtWidthY = new javax.swing.JTextField();
         jSliderWidthY = new javax.swing.JSlider();
         jLabel7 = new javax.swing.JLabel();
         txtHeightY = new javax.swing.JTextField();
@@ -170,13 +170,29 @@ public class Jsignalprocessing extends javax.swing.JFrame {
 
         jLabel2.setText("Width_Y");
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderWidthY, org.jdesktop.beansbinding.ELProperty.create("${value}"), txxWidthY, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderWidthY, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtWidthY, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
+
+        jSliderWidthY.setMaximum(639);
+        jSliderWidthY.setValue(60);
+        jSliderWidthY.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderWidthYStateChanged(evt);
+            }
+        });
 
         jLabel7.setText("Height_Y");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderHeightY, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtHeightY, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
+
+        jSliderHeightY.setMaximum(318);
+        jSliderHeightY.setValue(318);
+        jSliderHeightY.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderHeightYStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -192,7 +208,9 @@ public class Jsignalprocessing extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHeight, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(txtHeightY))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSliderHeightY, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
@@ -212,7 +230,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 120, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtRotation, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,7 +242,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtWidth, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                            .addComponent(txxWidthY))
+                            .addComponent(txtWidthY))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSliderWidth, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
@@ -233,9 +251,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHeightY, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(271, 271, 271))
+                .addGap(312, 312, 312))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +272,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel2)
-                                .addComponent(txxWidthY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtWidthY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSliderWidthY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel7)
@@ -355,6 +371,16 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         canvas();
     }//GEN-LAST:event_jSliderGrayStateChanged
 
+    private void jSliderWidthYStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderWidthYStateChanged
+        // TODO add your handling code here:
+        canvas();
+    }//GEN-LAST:event_jSliderWidthYStateChanged
+
+    private void jSliderHeightYStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderHeightYStateChanged
+        // TODO add your handling code here:
+        canvas();
+    }//GEN-LAST:event_jSliderHeightYStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -401,8 +427,8 @@ public class Jsignalprocessing extends javax.swing.JFrame {
 //        int linePostion = canvas1.getHeight() / 2;
         int lineWidthX = Integer.parseInt(this.txtWidth.getText());
         int lineHeightX = Integer.parseInt(this.txtHeight.getText());
-        int lineWidthY = Integer.parseInt(this.txtWidth.getText());
-        int lineHeightY = Integer.parseInt(this.txtHeight.getText());
+        int lineWidthY = Integer.parseInt(this.txtWidthY.getText());
+        int lineHeightY = Integer.parseInt(this.txtHeightY.getText());
         int lineRotation = Integer.parseInt(this.txtRotation.getText());
         int linePostion = Integer.parseInt(this.txtPostion.getText());
         int lineGray = Integer.parseInt(this.txtGray.getText());
@@ -411,13 +437,13 @@ public class Jsignalprocessing extends javax.swing.JFrame {
 
         Rectangle rect2 = null;
         int bien = 0;
-        int xW = ((canvas1.getWidth() / 2) - (lineWidthX / 2));
-        int yW = linePostion - (lineHeightX / 2);
+        int xW = ((canvas1.getWidth() / 2) - (lineWidthY / 2));
+        int yW = linePostion - (lineHeightY / 2);
         for (int i = 0; i < 5; i++) {
             g = (Graphics2D) canvas1.getGraphics();
             int chieuRongHinhChunhat = canvas1.getWidth() / 11;
             g.setColor(new Color(lineGray, lineGray, lineGray));
-            rect2 = new Rectangle(chieuRongHinhChunhat + bien * 2, 0, chieuRongHinhChunhat, canvas1.getHeight());
+            rect2 = new Rectangle(chieuRongHinhChunhat + bien * 2, 0, lineWidthY, lineHeightY);
             g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.draw(rect2);
             g.fill(rect2);
@@ -464,7 +490,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
     private javax.swing.JTextField txtPostion;
     private javax.swing.JTextField txtRotation;
     private javax.swing.JTextField txtWidth;
-    private javax.swing.JTextField txxWidthY;
+    private javax.swing.JTextField txtWidthY;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
