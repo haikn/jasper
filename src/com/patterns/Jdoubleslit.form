@@ -235,7 +235,7 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderRotation">
           <Properties>
-            <Property name="maximum" type="int" value="318"/>
+            <Property name="maximum" type="int" value="180"/>
             <Property name="value" type="int" value="0"/>
           </Properties>
           <Events>
@@ -290,7 +290,8 @@
         <Component class="javax.swing.JSlider" name="jSliderHeight">
           <Properties>
             <Property name="maximum" type="int" value="318"/>
-            <Property name="value" type="int" value="40"/>
+            <Property name="snapToTicks" type="boolean" value="true"/>
+            <Property name="value" type="int" value="60"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderHeightStateChanged"/>

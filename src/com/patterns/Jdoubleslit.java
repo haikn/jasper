@@ -110,7 +110,7 @@ public class Jdoubleslit extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderRotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtRotation, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jSliderRotation.setMaximum(318);
+        jSliderRotation.setMaximum(180);
         jSliderRotation.setValue(0);
         jSliderRotation.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -150,7 +150,8 @@ public class Jdoubleslit extends javax.swing.JFrame {
         jLabel5.setText("Width");
 
         jSliderHeight.setMaximum(318);
-        jSliderHeight.setValue(40);
+        jSliderHeight.setSnapToTicks(true);
+        jSliderHeight.setValue(60);
         jSliderHeight.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderHeightStateChanged(evt);
