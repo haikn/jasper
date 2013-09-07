@@ -44,8 +44,8 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         jSliderWidth = new javax.swing.JSlider();
         txtRotation = new javax.swing.JTextField();
         jSliderRotation = new javax.swing.JSlider();
-        txtPostion = new javax.swing.JTextField();
-        jSliderPosition = new javax.swing.JSlider();
+        txtPostionX = new javax.swing.JTextField();
+        jSliderPositionX = new javax.swing.JSlider();
         txtGray = new javax.swing.JTextField();
         jSliderGray = new javax.swing.JSlider();
         jButton1 = new javax.swing.JButton();
@@ -59,6 +59,9 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtHeightY = new javax.swing.JTextField();
         jSliderHeightY = new javax.swing.JSlider();
+        jSliderPositionY = new javax.swing.JSlider();
+        txtPostionY = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Double Slit");
@@ -72,20 +75,20 @@ public class Jsignalprocessing extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Rotation of the slit");
 
-        jLabel3.setText("Slit’s position");
+        jLabel3.setText("Position_X");
 
         jLabel4.setText("Gray Level of the blue region and white slit");
 
@@ -105,8 +108,8 @@ public class Jsignalprocessing extends javax.swing.JFrame {
             }
         });
 
-        jSliderWidth.setMaximum(639);
-        jSliderWidth.setValue(639);
+        jSliderWidth.setMaximum(640);
+        jSliderWidth.setValue(640);
         jSliderWidth.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderWidthStateChanged(evt);
@@ -124,14 +127,14 @@ public class Jsignalprocessing extends javax.swing.JFrame {
             }
         });
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPosition, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPostion, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPositionX, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPostionX, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jSliderPosition.setMaximum(318);
-        jSliderPosition.setValue(159);
-        jSliderPosition.addChangeListener(new javax.swing.event.ChangeListener() {
+        jSliderPositionX.setMaximum(320);
+        jSliderPositionX.setValue(160);
+        jSliderPositionX.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSliderPositionStateChanged(evt);
+                jSliderPositionXStateChanged(evt);
             }
         });
 
@@ -155,7 +158,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
 
         jLabel5.setText("Width_X");
 
-        jSliderHeight.setMaximum(318);
+        jSliderHeight.setMaximum(320);
         jSliderHeight.setValue(60);
         jSliderHeight.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -173,7 +176,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderWidthY, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtWidthY, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jSliderWidthY.setMaximum(639);
+        jSliderWidthY.setMaximum(640);
         jSliderWidthY.setValue(60);
         jSliderWidthY.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -186,13 +189,26 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderHeightY, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtHeightY, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jSliderHeightY.setMaximum(318);
-        jSliderHeightY.setValue(318);
+        jSliderHeightY.setMaximum(320);
+        jSliderHeightY.setValue(320);
         jSliderHeightY.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderHeightYStateChanged(evt);
             }
         });
+
+        jSliderPositionY.setMaximum(640);
+        jSliderPositionY.setValue(320);
+        jSliderPositionY.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderPositionYStateChanged(evt);
+            }
+        });
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPositionY, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPostionY, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel8.setText("Position_Y");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -216,29 +232,13 @@ public class Jsignalprocessing extends javax.swing.JFrame {
                             .addComponent(jSliderHeightY, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                             .addComponent(jSliderHeight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jSliderRotation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSliderGray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSliderPosition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSliderGray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtGray, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 120, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRotation, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPostion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
+                        .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtWidth, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
@@ -248,10 +248,36 @@ public class Jsignalprocessing extends javax.swing.JFrame {
                             .addComponent(jSliderWidth, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                             .addComponent(jSliderWidthY, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(302, 302, 302))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPostionX, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSliderPositionX, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPostionY, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jSliderPositionY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))))
-                .addGap(312, 312, 312))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(txtGray, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtRotation, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(306, 306, 306))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addGap(302, 302, 302))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,10 +315,16 @@ public class Jsignalprocessing extends javax.swing.JFrame {
                     .addComponent(jSliderRotation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSliderPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSliderPositionX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtPostion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)))
+                        .addComponent(txtPostionX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jSliderPositionY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPostionY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8)))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -322,7 +354,7 @@ public class Jsignalprocessing extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -361,10 +393,10 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         canvas();
     }//GEN-LAST:event_jSliderRotationStateChanged
 
-    private void jSliderPositionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderPositionStateChanged
+    private void jSliderPositionXStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderPositionXStateChanged
         // TODO add your handling code here
         canvas();
-    }//GEN-LAST:event_jSliderPositionStateChanged
+    }//GEN-LAST:event_jSliderPositionXStateChanged
 
     private void jSliderGrayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderGrayStateChanged
         // TODO add your handling code here:
@@ -380,6 +412,11 @@ public class Jsignalprocessing extends javax.swing.JFrame {
         // TODO add your handling code here:
         canvas();
     }//GEN-LAST:event_jSliderHeightYStateChanged
+
+    private void jSliderPositionYStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderPositionYStateChanged
+        // TODO add your handling code here:
+        canvas();
+    }//GEN-LAST:event_jSliderPositionYStateChanged
 
     /**
      * @param args the command line arguments
@@ -418,47 +455,55 @@ public class Jsignalprocessing extends javax.swing.JFrame {
     }
 
     private void canvas() {
-//        int lineWidthX = canvas1.getWidth();
-//        int lineHeightX = 80;
-//        int lineWidthY = canvas1.getWidth();
-//        int lineHeightY = 80;
-//        int lineRotation;
-//        int lineGray;
-//        int linePostion = canvas1.getHeight() / 2;
         int lineWidthX = Integer.parseInt(this.txtWidth.getText());
         int lineHeightX = Integer.parseInt(this.txtHeight.getText());
         int lineWidthY = Integer.parseInt(this.txtWidthY.getText());
         int lineHeightY = Integer.parseInt(this.txtHeightY.getText());
         int lineRotation = Integer.parseInt(this.txtRotation.getText());
-        int linePostion = Integer.parseInt(this.txtPostion.getText());
+        int linePostionX = Integer.parseInt(this.txtPostionX.getText());
+        int linePostionY = Integer.parseInt(this.txtPostionY.getText());
         int lineGray = Integer.parseInt(this.txtGray.getText());
         Graphics2D g = (Graphics2D) canvas1.getGraphics();
         g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-
-        Rectangle rect2 = null;
-        int bien = 0;
-        int xW = ((canvas1.getWidth() / 2) - (lineWidthY / 2));
-        int yW = linePostion - (lineHeightY / 2);
-        for (int i = 0; i < 5; i++) {
+        int NumCol = 5;
+        int NumRow = 2;
+        int[] ColX;
+        int[] RowY;
+        ColX = new int[NumCol];
+        int DelX = canvas1.getWidth() / NumCol;
+        for (int i = 0; i < ColX.length; i++) {
+            if (linePostionY > 320) {
+                ColX[i] = (linePostionY - canvas1.getWidth() / 2) + (DelX / 2 + DelX * i);
+            } else if (linePostionY < 320) {
+                ColX[i] = (linePostionY - canvas1.getWidth() / 2) + (DelX / 2 + DelX * i);
+            } else {
+                ColX[i] = (DelX / 2 + DelX * i);
+            }
+        }
+        RowY = new int[NumRow];
+        int DelY = canvas1.getHeight() / NumRow;
+        for (int i = 0; i < RowY.length; i++) {
+            if (linePostionX > 160) {
+                RowY[i] = (linePostionX - canvas1.getHeight() / 2) + DelY / 2 + DelY * i;
+            } else if (linePostionX < 160) {
+                RowY[i] = (linePostionX - canvas1.getHeight() / 2) + DelY / 2 + DelY * i;
+            } else {
+                RowY[i] = DelY / 2 + DelY * i;
+            }
+        }
+        Rectangle rect2;
+        for (int i = 0; i < NumCol; i++) {
             g = (Graphics2D) canvas1.getGraphics();
-            int chieuRongHinhChunhat = canvas1.getWidth() / 11;
             g.setColor(new Color(lineGray, lineGray, lineGray));
-            rect2 = new Rectangle(chieuRongHinhChunhat + bien * 2, 0, lineWidthY, lineHeightY);
+            rect2 = new Rectangle(ColX[i] - lineWidthY / 2, (canvas1.getHeight() - lineHeightY) / 2, lineWidthY, lineHeightY);
             g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.draw(rect2);
             g.fill(rect2);
-            bien = bien + chieuRongHinhChunhat;
         }
-        int xH = ((canvas1.getWidth() / 2) - (lineWidthX / 2));
-        int yH = linePostion - (lineHeightX / 2);
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < NumRow; i++) {
             g = (Graphics2D) canvas1.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
-            if (i == 0) {
-                rect2 = new Rectangle(xH, yH + lineHeightX, lineWidthX, lineHeightX);
-            } else {
-                rect2 = new Rectangle(xH, yH - lineHeightX, lineWidthX, lineHeightX);
-            }
+            rect2 = new Rectangle((canvas1.getWidth() - lineWidthX) / 2, RowY[i] - lineHeightX / 2, lineWidthX, lineHeightX);
             g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.draw(rect2);
             g.fill(rect2);
@@ -475,19 +520,22 @@ public class Jsignalprocessing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSlider jSliderGray;
     private javax.swing.JSlider jSliderHeight;
     private javax.swing.JSlider jSliderHeightY;
-    private javax.swing.JSlider jSliderPosition;
+    private javax.swing.JSlider jSliderPositionX;
+    private javax.swing.JSlider jSliderPositionY;
     private javax.swing.JSlider jSliderRotation;
     private javax.swing.JSlider jSliderWidth;
     private javax.swing.JSlider jSliderWidthY;
     private javax.swing.JTextField txtGray;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtHeightY;
-    private javax.swing.JTextField txtPostion;
+    private javax.swing.JTextField txtPostionX;
+    private javax.swing.JTextField txtPostionY;
     private javax.swing.JTextField txtRotation;
     private javax.swing.JTextField txtWidth;
     private javax.swing.JTextField txtWidthY;

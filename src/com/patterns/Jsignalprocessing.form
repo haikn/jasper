@@ -40,7 +40,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -54,8 +54,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="canvas1" min="-2" pref="639" max="-2" attributes="0"/>
-                  <EmptySpace pref="151" max="32767" attributes="0"/>
+                  <Component id="canvas1" min="-2" pref="640" max="-2" attributes="0"/>
+                  <EmptySpace pref="150" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -63,8 +63,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="canvas1" min="-2" pref="318" max="-2" attributes="0"/>
-                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                  <Component id="canvas1" min="-2" pref="320" max="-2" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -108,36 +108,14 @@
                       </Group>
                       <Component id="jSliderRotation" max="32767" attributes="0"/>
                       <Component id="jSliderGray" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jSliderPosition" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="txtGray" min="-2" pref="33" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" pref="175" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtRotation" min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="txtPostion" min="-2" pref="33" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtWidth" pref="33" max="32767" attributes="0"/>
@@ -149,13 +127,44 @@
                               <Component id="jSliderWidthY" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="302" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel3" min="-2" pref="63" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtPostionX" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jSliderPositionX" min="-2" pref="142" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="jLabel8" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtPostionY" min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jSliderPositionY" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="txtGray" min="-2" pref="33" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel1" min="-2" pref="175" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txtRotation" min="-2" pref="33" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="306" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="302" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="312" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -206,10 +215,19 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSliderPosition" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSliderPositionX" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="txtPostion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPostionX" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Component id="jSliderPositionY" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtPostionY" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -240,7 +258,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Slit&#x2019;s position"/>
+            <Property name="text" type="java.lang.String" value="Position_X"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -268,8 +286,8 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderWidth">
           <Properties>
-            <Property name="maximum" type="int" value="639"/>
-            <Property name="value" type="int" value="639"/>
+            <Property name="maximum" type="int" value="640"/>
+            <Property name="value" type="int" value="640"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderWidthStateChanged"/>
@@ -291,20 +309,20 @@
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderRotationStateChanged"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPostion">
+        <Component class="javax.swing.JTextField" name="txtPostionX">
           <BindingProperties>
-            <BindingProperty name="text" source="jSliderPosition" sourcePath="${value}" target="txtPostion" targetPath="text" updateStrategy="0" immediately="false">
+            <BindingProperty name="text" source="jSliderPositionX" sourcePath="${value}" target="txtPostionX" targetPath="text" updateStrategy="0" immediately="false">
               <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
             </BindingProperty>
           </BindingProperties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSliderPosition">
+        <Component class="javax.swing.JSlider" name="jSliderPositionX">
           <Properties>
-            <Property name="maximum" type="int" value="318"/>
-            <Property name="value" type="int" value="159"/>
+            <Property name="maximum" type="int" value="320"/>
+            <Property name="value" type="int" value="160"/>
           </Properties>
           <Events>
-            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderPositionStateChanged"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderPositionXStateChanged"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGray">
@@ -338,7 +356,7 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderHeight">
           <Properties>
-            <Property name="maximum" type="int" value="318"/>
+            <Property name="maximum" type="int" value="320"/>
             <Property name="value" type="int" value="60"/>
           </Properties>
           <Events>
@@ -371,7 +389,7 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderWidthY">
           <Properties>
-            <Property name="maximum" type="int" value="639"/>
+            <Property name="maximum" type="int" value="640"/>
             <Property name="value" type="int" value="60"/>
           </Properties>
           <Events>
@@ -392,12 +410,33 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderHeightY">
           <Properties>
-            <Property name="maximum" type="int" value="318"/>
-            <Property name="value" type="int" value="318"/>
+            <Property name="maximum" type="int" value="320"/>
+            <Property name="value" type="int" value="320"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderHeightYStateChanged"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JSlider" name="jSliderPositionY">
+          <Properties>
+            <Property name="maximum" type="int" value="640"/>
+            <Property name="value" type="int" value="320"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderPositionYStateChanged"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPostionY">
+          <BindingProperties>
+            <BindingProperty name="text" source="jSliderPositionY" sourcePath="${value}" target="txtPostionY" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Position_Y"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
