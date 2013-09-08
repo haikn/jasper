@@ -66,14 +66,14 @@ public class Jdoubleslit extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -99,8 +99,8 @@ public class Jdoubleslit extends javax.swing.JFrame {
             }
         });
 
-        jSliderWidth.setMaximum(639);
-        jSliderWidth.setValue(639);
+        jSliderWidth.setMaximum(640);
+        jSliderWidth.setValue(640);
         jSliderWidth.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderWidthStateChanged(evt);
@@ -121,8 +121,8 @@ public class Jdoubleslit extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPosition, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPostion, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jSliderPosition.setMaximum(318);
-        jSliderPosition.setValue(159);
+        jSliderPosition.setMaximum(320);
+        jSliderPosition.setValue(160);
         jSliderPosition.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderPositionStateChanged(evt);
@@ -149,7 +149,7 @@ public class Jdoubleslit extends javax.swing.JFrame {
 
         jLabel5.setText("Width");
 
-        jSliderHeight.setMaximum(318);
+        jSliderHeight.setMaximum(320);
         jSliderHeight.setSnapToTicks(true);
         jSliderHeight.setValue(60);
         jSliderHeight.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -365,33 +365,35 @@ public class Jdoubleslit extends javax.swing.JFrame {
     }
 
     private void canvas() {
-        int lineWidth;// = canvas1.getWidth();
-        int lineHeight;// = 80;
-        int lineRotation;
-        int lineGray;
-        int linePostion = canvas1.getHeight() / 2;
-        lineWidth = Integer.parseInt(this.txtWidth.getText());
-        //lineHeight = Integer.parseInt(this.txtHeight.getText());
-        lineHeight = this.jSliderHeight.getValue();
-        lineRotation = Integer.parseInt(this.txtRotation.getText());
-        linePostion = Integer.parseInt(this.txtPostion.getText());
-        lineGray = Integer.parseInt(this.txtGray.getText());
+        int lineWidth = Integer.parseInt(this.txtWidth.getText());
+        int lineHeight = Integer.parseInt(this.txtHeight.getText());
+        int lineRotation = Integer.parseInt(this.txtRotation.getText());
+        int linePostion = Integer.parseInt(this.txtPostion.getText());
+        int lineGray = Integer.parseInt(this.txtGray.getText());
         Graphics2D g = (Graphics2D) canvas1.getGraphics();
-        Graphics2D g1 = (Graphics2D) canvas1.getGraphics();
         g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-        int x = ((canvas1.getWidth() / 2) - (lineWidth / 2));
-        int y = linePostion - (lineHeight / 2);
-        g.setColor(new Color(lineGray, lineGray, lineGray));
-        Rectangle rect2 = new Rectangle(x, y - lineHeight, lineWidth, lineHeight);
-        // g.translate(rect2.x + (rect2.width / 2), rect2.y + (rect2.height / 2));
-        g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
-        g.draw(rect2);
-        g.fill(rect2);
-        g1.setColor(new Color(lineGray, lineGray, lineGray));
-        Rectangle rect3 = new Rectangle(x, (y + lineHeight), lineWidth, lineHeight);
-        g1.rotate(Math.toRadians(lineRotation), rect3.x + rect3.width / 2, rect3.y + rect3.height / 2);
-        g1.draw(rect3);
-        g1.fill(rect3);
+        int NumRow = 2;
+        int[] RowY;
+        RowY = new int[NumRow];
+        int DelY = canvas1.getHeight() / NumRow;
+        for (int i = 0; i < RowY.length; i++) {
+            if (linePostion > 160) {
+                RowY[i] = (linePostion - canvas1.getHeight() / 2) + DelY / 2 + DelY * i;
+            } else if (linePostion < 160) {
+                RowY[i] = (linePostion - canvas1.getHeight() / 2) + DelY / 2 + DelY * i;
+            } else {
+                RowY[i] = DelY / 2 + DelY * i;
+            }
+        }
+        Rectangle rect2;
+        for (int i = 0; i < NumRow; i++) {
+            g = (Graphics2D) canvas1.getGraphics();
+            g.setColor(new Color(lineGray, lineGray, lineGray));
+            rect2 = new Rectangle((canvas1.getWidth() - lineWidth) / 2, RowY[i] - lineHeight / 2, lineWidth, lineHeight);
+            g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            g.draw(rect2);
+            g.fill(rect2);
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;

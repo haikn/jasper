@@ -54,7 +54,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="canvas1" min="-2" pref="639" max="-2" attributes="0"/>
+                  <Component id="canvas1" min="-2" pref="640" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -63,7 +63,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="canvas1" min="-2" pref="318" max="-2" attributes="0"/>
+                  <Component id="canvas1" min="-2" pref="320" max="-2" attributes="0"/>
                   <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -219,8 +219,8 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderWidth">
           <Properties>
-            <Property name="maximum" type="int" value="639"/>
-            <Property name="value" type="int" value="639"/>
+            <Property name="maximum" type="int" value="640"/>
+            <Property name="value" type="int" value="640"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderWidthStateChanged"/>
@@ -251,8 +251,8 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderPosition">
           <Properties>
-            <Property name="maximum" type="int" value="318"/>
-            <Property name="value" type="int" value="159"/>
+            <Property name="maximum" type="int" value="320"/>
+            <Property name="value" type="int" value="160"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderPositionStateChanged"/>
@@ -289,7 +289,7 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderHeight">
           <Properties>
-            <Property name="maximum" type="int" value="318"/>
+            <Property name="maximum" type="int" value="320"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
             <Property name="value" type="int" value="60"/>
           </Properties>
