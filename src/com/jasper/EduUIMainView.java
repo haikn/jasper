@@ -312,15 +312,15 @@ public class EduUIMainView extends javax.swing.JFrame {
          // Draw
         jMenuDraw.setText("Draw Image");
         
-        jMenuItemDifractionSlit.setText("Difraction");
-        jMenuItemDifractionSlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 String [] args = new String[1];
-                args[0] = "EN";
-                new DifraccionApplet().main(args);
-            }
-        });
-        jMenuDraw.add(jMenuItemDifractionSlit);
+//        jMenuItemDifractionSlit.setText("Difraction");
+//        jMenuItemDifractionSlit.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                 String [] args = new String[1];
+//                args[0] = "EN";
+//                new DifraccionApplet().main(args);
+//            }
+//        });
+//        jMenuDraw.add(jMenuItemDifractionSlit);
 
         jMenuItemSingleSlit.setText("Signle Slit");
         jMenuItemSingleSlit.addActionListener(new java.awt.event.ActionListener() {
