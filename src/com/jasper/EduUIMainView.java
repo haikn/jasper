@@ -171,13 +171,13 @@ public class EduUIMainView extends javax.swing.JFrame {
 
         jMenuFile.setText("File");
         // menu item for loading file of phase to gray scale table 
-        jMenuItemLoadP2GTable.setText("Load map table");
-        jMenuItemLoadP2GTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemLoadP2GActionPerformed(evt);
-            }
-        });
-        jMenuFile.add(jMenuItemLoadP2GTable);
+//        jMenuItemLoadP2GTable.setText("Load map table");
+//        jMenuItemLoadP2GTable.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jMenuItemLoadP2GActionPerformed(evt);
+//            }
+//        });
+//        jMenuFile.add(jMenuItemLoadP2GTable);
 
 
         jMenuItemExit.setText("Exit");
