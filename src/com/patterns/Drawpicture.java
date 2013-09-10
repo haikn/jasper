@@ -76,8 +76,6 @@ public class Drawpicture extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        canvas1.setBackground(new java.awt.Color(51, 51, 255));
-
         jSliderZoom.setMaximum(200);
         jSliderZoom.setValue(100);
         jSliderZoom.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -200,20 +198,26 @@ public class Drawpicture extends javax.swing.JFrame {
         canvas(buffImages);
     }//GEN-LAST:event_jSliderZoomStateChanged
     private void canvas(BufferedImage buff) {
-        double scale = jSliderZoom.getValue() / 100.0D;
-        int lineGray = jSliderGay.getValue();
-        if (lineGray > 0) {
-            buff = new BufferedImage(buff.getWidth(), buff.getHeight(), lineGray);
+        double scale = 1.0;
+        if (jSliderZoom.getValue() != 100) {
+            scale = jSliderZoom.getValue() / 100.0D;
         }
+        int lineGray = jSliderGay.getValue();
+
         Graphics2D g2 = (Graphics2D) canvas1.getGraphics();
         g2.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
                 RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        if (lineGray > 0) {
+            buff = new BufferedImage(buff.getWidth(), buff.getHeight(), lineGray);
+        }
+        double canvasX = canvas1.getWidth() / 2;
+        double canvasY = canvas1.getHeight() / 2;
         int imageWidth = buff.getWidth();
         int imageHeight = buff.getHeight();
         double x = (scale * imageWidth) / 2;
         double y = (scale * imageHeight) / 2;
-        AffineTransform at = AffineTransform.getTranslateInstance(canvas1.getWidth() / 2 - x, canvas1.getHeight() / 2 - y);
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
         at.scale(scale, scale);
         g2.drawRenderedImage(buff, at);
         //g2.drawImage(buff, canvas1.getWidth() / 2 - (x / 2), canvas1.getHeight() / 2 - (y / 2), x, y, Color.BLUE, this);
