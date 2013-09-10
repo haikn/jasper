@@ -171,13 +171,13 @@ public class EduUIMainView extends javax.swing.JFrame {
 
         jMenuFile.setText("File");
         // menu item for loading file of phase to gray scale table 
-        jMenuItemLoadP2GTable.setText("Load map table");
-        jMenuItemLoadP2GTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemLoadP2GActionPerformed(evt);
-            }
-        });
-        jMenuFile.add(jMenuItemLoadP2GTable);
+//        jMenuItemLoadP2GTable.setText("Load map table");
+//        jMenuItemLoadP2GTable.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jMenuItemLoadP2GActionPerformed(evt);
+//            }
+//        });
+//        jMenuFile.add(jMenuItemLoadP2GTable);
 
 
         jMenuItemExit.setText("Exit");
@@ -312,15 +312,15 @@ public class EduUIMainView extends javax.swing.JFrame {
          // Draw
         jMenuDraw.setText("Draw Image");
         
-        jMenuItemDifractionSlit.setText("Difraction");
-        jMenuItemDifractionSlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 String [] args = new String[1];
-                args[0] = "EN";
-                new DifraccionApplet().main(args);
-            }
-        });
-        jMenuDraw.add(jMenuItemDifractionSlit);
+//        jMenuItemDifractionSlit.setText("Difraction");
+//        jMenuItemDifractionSlit.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                 String [] args = new String[1];
+//                args[0] = "EN";
+//                new DifraccionApplet().main(args);
+//            }
+//        });
+//        jMenuDraw.add(jMenuItemDifractionSlit);
 
         jMenuItemSingleSlit.setText("Signle Slit");
         jMenuItemSingleSlit.addActionListener(new java.awt.event.ActionListener() {
