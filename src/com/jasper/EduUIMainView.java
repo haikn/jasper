@@ -3,6 +3,7 @@ package com.jasper;
 import com.jasper.michelson.Graf_Michelson;
 import com.jasper.michelson.Img_Michelson;
 import com.jasper.michelson.Interferometros;
+import com.patterns.Drawpicture;
 import com.patterns.Jdoubleslit;
 import com.patterns.Jsignalprocessing;
 import com.patterns.Jsingleslit;
@@ -103,6 +104,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemDifractionSlit = new javax.swing.JMenuItem();
         jMenuItemDoubleSlit = new javax.swing.JMenuItem();
         jMenuItemDrawSignalProcessing = new javax.swing.JMenuItem();
+        jMenuItemDrawPhaseRetarder = new javax.swing.JMenuItem();
         jMenuItemAbout = new javax.swing.JMenuItem();
         
         // menu item for load phase to grayscale table
@@ -345,6 +347,14 @@ public class EduUIMainView extends javax.swing.JFrame {
             }
         });
         jMenuDraw.add(jMenuItemDrawSignalProcessing);
+        
+        jMenuItemDrawPhaseRetarder.setText("Phase Retarder");
+        jMenuItemDrawPhaseRetarder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                new Drawpicture().setVisible(true);
+            }
+        });
+        jMenuDraw.add(jMenuItemDrawPhaseRetarder);
 
         jMenuBarMain.add(jMenuDraw);
         
@@ -637,6 +647,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemDifractionSlit;
     private javax.swing.JMenuItem jMenuItemDoubleSlit;
     private javax.swing.JMenuItem jMenuItemDrawSignalProcessing;
+    private javax.swing.JMenuItem jMenuItemDrawPhaseRetarder;
     private javax.swing.JMenuItem jMenuItemAbout;
     private javax.swing.JMenuItem jMenuItemDiffraction;
     private javax.swing.JMenuItem jMenuItemExit;
