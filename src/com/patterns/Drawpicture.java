@@ -74,7 +74,7 @@ public class Drawpicture extends javax.swing.JFrame {
 
         jMenu2.setText("jMenu2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jSliderZoom.setMaximum(200);
         jSliderZoom.setValue(100);
@@ -89,6 +89,11 @@ public class Drawpicture extends javax.swing.JFrame {
         jButton1.setText("Full");
 
         jButton2.setText("Exit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jSliderGay.setMaximum(13);
         jSliderGay.setValue(0);
@@ -197,6 +202,11 @@ public class Drawpicture extends javax.swing.JFrame {
         // TODO add your handling code here:
         canvas(buffImages);
     }//GEN-LAST:event_jSliderZoomStateChanged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
     private void canvas(BufferedImage buff) {
         double scale = 1.0;
         if (jSliderZoom.getValue() != 100) {
