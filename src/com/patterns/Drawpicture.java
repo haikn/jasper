@@ -155,7 +155,7 @@ public class Drawpicture extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private static BufferedImage buffImages;
+    private static BufferedImage buffImages = null;
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -182,12 +182,16 @@ public class Drawpicture extends javax.swing.JFrame {
         System.out.println(lineGray);
         Graphics2D g = (Graphics2D) canvas1.getGraphics();
         g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-        if (lineGray > 0) {
-            buff = new BufferedImage(buff.getWidth(), buff.getHeight(), lineGray);
+        if (buff != null) {
+            if (lineGray > 0) {
+                buff = new BufferedImage(buff.getWidth(), buff.getHeight(), lineGray);
+            }
+        } else {
+            buff = new BufferedImage(canvas1.getWidth(), canvas1.getHeight(), lineGray);
         }
         int imgX = buff.getWidth();
         int imgY = buff.getHeight();
-        g.drawImage(buff, canvas1.getWidth() / 2 - imgX / 2, canvas1.getHeight() / 2 - imgY / 2, imgY, imgY, Color.RED, this);
+        g.drawImage(buff, canvas1.getWidth() / 2 - imgX / 2, canvas1.getHeight() / 2 - imgY / 2, imgY, imgY, Color.BLUE, this);
         //g.drawImage(buff, canvas1.getWidth() / 2 - imgX / 2, canvas1.getHeight() / 2 - imgY / 2, imgX, imgY, this);
     }
 
