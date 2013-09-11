@@ -53,7 +53,7 @@ public class Jsingleslit extends javax.swing.JFrame {
         txtHeight = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        canvas1 = new java.awt.Canvas();
+        canvas = new java.awt.Canvas();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -258,7 +258,7 @@ public class Jsingleslit extends javax.swing.JFrame {
                 .addComponent(jButton3))
                 .addContainerGap(22, Short.MAX_VALUE)));
 
-        canvas1.setBackground(new java.awt.Color(0, 51, 204));
+        canvas.setBackground(new java.awt.Color(0, 51, 204));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -268,7 +268,7 @@ public class Jsingleslit extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 25, Short.MAX_VALUE))
                 .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -277,7 +277,7 @@ public class Jsingleslit extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap()));
@@ -290,7 +290,7 @@ public class Jsingleslit extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        //  WritableRaster raster = canvas1.getRaster();;
+        //  WritableRaster raster = canvas.getRaster();;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jSliderHeightStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderHeightStateChanged
@@ -380,33 +380,33 @@ public class Jsingleslit extends javax.swing.JFrame {
         int linePostion = Integer.parseInt(this.txtPostion.getText());
         int lineGray = Integer.parseInt(this.txtGray.getText());
 
-        Graphics2D g = (Graphics2D) canvas1.getGraphics();
-        g.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+        Graphics2D g = (Graphics2D) canvas.getGraphics();
+        g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         int NumRow = 1;
         int[] RowY;
         RowY = new int[NumRow];
-        int DelY = canvas1.getHeight() / NumRow;
+        int DelY = canvas.getHeight() / NumRow;
         for (int i = 0; i < RowY.length; i++) {
             if (linePostion > 160) {
-                RowY[i] = (linePostion - canvas1.getHeight() / 2) + DelY / 2 + DelY * i;
+                RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
             } else if (linePostion < 160) {
-                RowY[i] = (linePostion - canvas1.getHeight() / 2) + DelY / 2 + DelY * i;
+                RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
             } else {
                 RowY[i] = DelY / 2 + DelY * i;
             }
         }
         Rectangle rect2;
         for (int i = 0; i < NumRow; i++) {
-            g = (Graphics2D) canvas1.getGraphics();
+            g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
-            rect2 = new Rectangle((canvas1.getWidth() - lineWidth) / 2, RowY[i] - lineHeight / 2, lineWidth, lineHeight);
+            rect2 = new Rectangle((canvas.getWidth() - lineWidth) / 2, RowY[i] - lineHeight / 2, lineWidth, lineHeight);
             g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.draw(rect2);
             g.fill(rect2);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Canvas canvas1;
+    private java.awt.Canvas canvas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
