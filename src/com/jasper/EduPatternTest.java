@@ -90,7 +90,9 @@ public class EduPatternTest {
 		patternFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		patternFrame.setSize(bounds.width, bounds.height);
 		patternFrame.setLocation(bounds.x, bounds.y);
-		patternFrame.setUndecorated(true);
+		// full screen
+                patternFrame.setUndecorated(true);
+                // not run first
 		patternFrame.setVisible(false);
 	}
 
