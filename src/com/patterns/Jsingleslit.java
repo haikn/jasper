@@ -4,21 +4,9 @@
  */
 package com.patterns;
 
-import com.jasper.EduPatternJPanel;
-import com.jasper.EduUIMainView;
-import com.jasper.PatternImage;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.awt.image.WritableRaster;
-import javax.swing.JFrame;
 
 /**
  *
@@ -405,8 +393,6 @@ public class Jsingleslit extends javax.swing.JFrame {
     }
 
     private void canvas() {
-
-        this.getContentPane().add(this);
         int lineWidth = Integer.parseInt(this.txtWidth.getText());
         int lineHeight = Integer.parseInt(this.txtHeight.getText());
         int lineRotation = Integer.parseInt(this.txtRotation.getText());
