@@ -4,7 +4,11 @@
  */
 package com.patterns;
 
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -222,7 +226,6 @@ public class Drawpicture extends javax.swing.JFrame {
             scale = jSliderZoom.getValue() / 100.0D;
         }
         int lineGray = jSliderGay.getValue();
-
         Graphics2D g2 = (Graphics2D) canvas1.getGraphics();
         g2.clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
