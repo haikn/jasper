@@ -25,7 +25,7 @@ import sun.swing.DefaultLayoutStyle;
  * @author Jeff Lee
  */
 public class Singleslit extends OpticsPane {
-    
+
     EduPatternJPanel panelPatternSet = new EduPatternJPanel();
     public BufferedImage canvas = new BufferedImage(500, 600, 12);
     PatternImage image1 = new PatternImage();
@@ -36,12 +36,12 @@ public class Singleslit extends OpticsPane {
      */
     public Singleslit() {
         initComponents();
-        image1 = ((EduPatternJPanel)panelPattern).pimage; 
-        
+        image1 = ((EduPatternJPanel) panelPattern).pimage;
+
         //image1.setBackground(Color.red);
         //((EduPatternJPanel)panelPattern).setBackground(Color.red); 
-         System.out.println("(EduPatternJPanel)panelPattern).getBackground(): " + ((EduPatternJPanel)panelPattern).getBackground());
-        
+        System.out.println("(EduPatternJPanel)panelPattern).getBackground(): " + ((EduPatternJPanel) panelPattern).getBackground());
+
         //System.out.println("image.getBounds().width: " + image.getBounds().width);
     }
 
@@ -62,8 +62,8 @@ public class Singleslit extends OpticsPane {
         labelYpos = new javax.swing.JLabel();
         textYpos = new javax.swing.JTextField();
         buttonGenerate = new javax.swing.JButton();
-        
-        
+
+
         // pattern
 //        Canvas ca = new Canvas();
 //        javax.swing.GroupLayout panelPatternLayout = new javax.swing.GroupLayout(panelPattern);
@@ -77,10 +77,10 @@ public class Singleslit extends OpticsPane {
 //            panelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 //            .addGap(0, 270, Short.MAX_VALUE)
 //        );
-        
+
         panelPattern.setBackground(Color.red);
-        
-        
+
+
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         LayoutCanvas = new javax.swing.JLayeredPane();
@@ -101,13 +101,13 @@ public class Singleslit extends OpticsPane {
         SliderGray = new javax.swing.JSlider();
         ok = new javax.swing.JButton();
 
-         
+
         setPreferredSize(new java.awt.Dimension(900, 300));
 
         LayoutCanvas.setBackground(new java.awt.Color(0, 0, 204));
 
         jLabel1.setText("Width");
-
+        txtWidth.setPreferredSize(new java.awt.Dimension(40, 20));
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, SliderWidth, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtWidth, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -118,10 +118,10 @@ public class Singleslit extends OpticsPane {
                 sliderGenerateActionPerformed(evt);
             }
         });
-        
+
 
         jLabel2.setText("Height");
-
+        txtHeight.setPreferredSize(new java.awt.Dimension(40, 20));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, SliderHeight, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtHeight, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -134,7 +134,7 @@ public class Singleslit extends OpticsPane {
         });
 
         jLabel3.setText("Rotation");
-
+        txtRoration.setPreferredSize(new java.awt.Dimension(40, 20));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, SliderRoration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtRoration, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -147,12 +147,12 @@ public class Singleslit extends OpticsPane {
         });
 
         jLabel4.setText("Position");
-
+        txtPos.setPreferredSize(new java.awt.Dimension(40, 20));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, SliderPosition, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPos, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         SliderPosition.setMaximum(image1.getBounds().height);
-        SliderPosition.setValue((image1.getBounds().height/2));
+        SliderPosition.setValue((image1.getBounds().height / 2));
         SliderPosition.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformed(evt);
@@ -160,7 +160,7 @@ public class Singleslit extends OpticsPane {
         });
 
         jLabel5.setText("Gray level");
-
+        txtGray.setPreferredSize(new java.awt.Dimension(40, 20));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, SliderGray, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtGray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -182,159 +182,155 @@ public class Singleslit extends OpticsPane {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(txtWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(SliderWidth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtGray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(SliderGray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(txtPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(SliderPosition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtRoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(SliderRoration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addContainerGap())
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(SliderHeight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(231, 231, 231))))
-        );
+                .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addComponent(txtWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SliderWidth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtGray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SliderGray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel4)
+                .addGap(22, 22, 22)
+                .addComponent(txtPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SliderPosition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel3)
+                .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(txtRoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SliderRoration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SliderHeight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(231, 231, 231)))));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(txtWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(SliderWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SliderHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel3)
-                                .addComponent(txtRoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(SliderRoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4)
-                                .addComponent(txtPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(SliderPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(txtGray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SliderGray, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(ok)))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+                .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel1)
+                .addComponent(txtWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(SliderWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(SliderHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel2)
+                .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel3)
+                .addComponent(txtRoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(SliderRoration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel4)
+                .addComponent(txtPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(SliderPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel5)
+                .addComponent(txtGray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SliderGray, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(ok)))
+                .addContainerGap(22, Short.MAX_VALUE)));
         panelPatternSet = (EduPatternJPanel) panelPattern;
 
         bindingGroup.bind();
-        
 
-       // pack();
+
+        // pack();
         ///setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
     // Optical arguments, which will be parsed before reassigning the values
-    private double width=Double.valueOf(image1.getBounds().width), height=100, rotation=0, position= Double.valueOf(image1.getBounds().height)/2, grayLevel=255;
-    
+    private double width = Double.valueOf(image1.getBounds().width), height = 100, rotation = 0, position = Double.valueOf(image1.getBounds().height) / 2, grayLevel = 255;
+
     private boolean parseArguments() {
-    	boolean ret = false;
-    	try {
+        boolean ret = false;
+        try {
             //System.out.print("width:------- " + canvas.getWidth());
 //	    	double xoff = Double.valueOf(textXpos.getText());
 //	    	double yoff = Double.valueOf(textYpos.getText());
 //	    	double focal = Double.valueOf(textFocal.getText());
-                double width = Double.valueOf(SliderWidth.getValue());
-	    	double height = Double.valueOf(SliderHeight.getValue());
-	    	double position = Double.valueOf(SliderPosition.getValue());
-                double rotation = Double.valueOf(SliderRoration.getValue());
-	    	double grayLevel = Double.valueOf(SliderGray.getValue());
-                
-	    	ret = true;	    	
-	    	this.width=width;
-	    	this.height=height;
-	    	this.position=position;
-                this.rotation=rotation;
-	    	this.grayLevel=grayLevel;
-    	}
-    	catch (Exception e) {
-    		JOptionPane.showMessageDialog(null, warnings);
-    		SliderWidth.setValue((int) (width));
-                SliderHeight.setValue((int) (height));
-                SliderPosition.setValue((int) (position));
-                SliderRoration.setValue((int) (rotation));
-    		SliderGray.setValue((int) (grayLevel));
-    	}
-    	return ret;
+            double width = Double.valueOf(SliderWidth.getValue());
+            double height = Double.valueOf(SliderHeight.getValue());
+            double position = Double.valueOf(SliderPosition.getValue());
+            double rotation = Double.valueOf(SliderRoration.getValue());
+            double grayLevel = Double.valueOf(SliderGray.getValue());
+
+            ret = true;
+            this.width = width;
+            this.height = height;
+            this.position = position;
+            this.rotation = rotation;
+            this.grayLevel = grayLevel;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, warnings);
+            SliderWidth.setValue((int) (width));
+            SliderHeight.setValue((int) (height));
+            SliderPosition.setValue((int) (position));
+            SliderRoration.setValue((int) (rotation));
+            SliderGray.setValue((int) (grayLevel));
+        }
+        return ret;
     }
-    
+
     private String genLog() {
-		return String.format(logmessage, Double.toString(width), Double.toString(height), Double.toString(position), Double.toString(rotation), Double.toString(grayLevel));
+        return String.format(logmessage, Double.toString(width), Double.toString(height), Double.toString(position), Double.toString(rotation), Double.toString(grayLevel));
     }
-    
+
     private void sliderGenerateActionPerformed(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
-		if (parseArguments()) {
-			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-			image.updateLensParameterDrawSingle(width, height, position, rotation, grayLevel);
-			image.singleslit();
-			EduPatternTest.updateLensPatternPattern(image, genLog());
-			imageGenerated = true;
-		}
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameterDrawSingle(width, height, position, rotation, grayLevel);
+            image.singleslit();
+            EduPatternTest.updateLensPatternPattern(image, genLog());
+            imageGenerated = true;
+        }
     }//GEN-LAST:event_sliderGenerateActionPerformed
 
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
-		if (parseArguments()) {
-			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-			image.updateLensParameterDrawSingle(width, height, position, rotation, grayLevel);
-			image.singleslit();
-			EduPatternTest.updateLensPattern(image, genLog());
-			imageGenerated = true;
-		}
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameterDrawSingle(width, height, position, rotation, grayLevel);
+            image.singleslit();
+            EduPatternTest.updateLensPattern(image, genLog());
+            imageGenerated = true;
+        }
     }//GEN-LAST:event_buttonGenerateActionPerformed
 
     private void textFocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFocalActionPerformed
@@ -348,7 +344,6 @@ public class Singleslit extends OpticsPane {
     private void textXposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textXposActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textXposActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonGenerate;
     private javax.swing.JLabel labelFocal;
@@ -358,9 +353,7 @@ public class Singleslit extends OpticsPane {
     private javax.swing.JTextField textFocal;
     private javax.swing.JTextField textXpos;
     private javax.swing.JTextField textYpos;
-    
     private javax.swing.JTextField txtWidth;
-    
     private javax.swing.JLayeredPane LayoutCanvas;
     private javax.swing.JSlider SliderGray;
     private javax.swing.JSlider SliderHeight;
@@ -383,33 +376,32 @@ public class Singleslit extends OpticsPane {
     // End of variables declaration//GEN-END:variables
 
     @Override
-	void updatePatternScreen() {
-		PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-		if (!imageGenerated) {
-			image.updateLensParameterDrawSingle(width, height, position, rotation, grayLevel);
-			image.singleslit();
-			imageGenerated = true;
-		}
-		EduPatternTest.updatePatternScreen(image, genLog());
-	}
-    
+    void updatePatternScreen() {
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        if (!imageGenerated) {
+            image.updateLensParameterDrawSingle(width, height, position, rotation, grayLevel);
+            image.singleslit();
+            imageGenerated = true;
+        }
+        EduPatternTest.updatePatternScreen(image, genLog());
+    }
+
     // paint boot screen, lens only
     void bootScreen() {
-    	PatternImage image = ((EduPatternJPanel)panelPattern).pimage;
-    	double xoff = 0.0;
-    	double yoff = 0.0;
-    	double focal = 0.0;
-    	image.updateLensParameter(xoff, yoff, focal);
-    	image.singleslit();    	
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        double xoff = 0.0;
+        double yoff = 0.0;
+        double focal = 0.0;
+        image.updateLensParameter(xoff, yoff, focal);
+        image.singleslit();
     }
 
     void updateRegenerate() {
-    	PatternImage image = ((EduPatternJPanel)panelPattern).pimage;
-		if (imageGenerated) {
-	    	image.updateLensParameterDrawSingle(width, height, position, rotation, grayLevel);
-	    	image.singleslit();
-		}
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        if (imageGenerated) {
+            image.updateLensParameterDrawSingle(width, height, position, rotation, grayLevel);
+            image.singleslit();
+        }
     }
-
-    static String logmessage="Single Slit width=%s height=%s positiont=%s rotationt=%s grayLevelt=%s ";
+    static String logmessage = "Single Slit width=%s height=%s positiont=%s rotationt=%s grayLevelt=%s ";
 }
