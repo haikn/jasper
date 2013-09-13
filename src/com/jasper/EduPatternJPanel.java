@@ -33,6 +33,7 @@ public class EduPatternJPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public PatternImage pimage;
+        public PatternImage pimage1;
 	private boolean isScreen = false;
 //	Font font = new Font("Arial", Font.PLAIN, 15);
 	Font font = new Font("Courier New", Font.PLAIN, 12);
@@ -48,7 +49,7 @@ public class EduPatternJPanel extends JPanel {
 	}
 
 	public void setImage(PatternImage pimage) {
-		this.pimage = pimage;		
+		this.pimage = pimage;	
 	}
 
 	public void paint(Graphics g) {
@@ -64,7 +65,7 @@ public class EduPatternJPanel extends JPanel {
 			String title = "JDC EDUKIT "+PatternImage.width+"x"+bounds.height+" ("+EduPatternTest.lambdaStr+"nm)"+": "+pimage.title;
 			g2.setFont(font);
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-			g2.setColor(Color.red);
+			g2.setColor(Color.yellow);
 			// calculate the bounding box the title string
 			FontMetrics metrics = g.getFontMetrics(font);
 			int hgt = metrics.getHeight();

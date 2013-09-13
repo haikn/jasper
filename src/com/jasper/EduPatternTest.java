@@ -1,5 +1,7 @@
 package com.jasper;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -79,12 +81,15 @@ public class EduPatternTest {
 
 		pimage = new PatternImage(bounds.width, bounds.height);
 		pimage.init(lambda);
-		pimage.paintLens();
+		pimage.singleslit();
+                
 
 		// for debugging purpose, show wavelength
 		// System.out.println("wavelength = " + pimage.getLambda());
 
 		patternPanel = new EduPatternJPanel(pimage);
+                patternPanel.setBackground(Color.red);
+                patternPanel.setForeground(Color.red);
 		patternFrame.getContentPane().add(patternPanel);
 
 		patternFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,6 +99,7 @@ public class EduPatternTest {
                 patternFrame.setUndecorated(true);
                 // not run first
 		patternFrame.setVisible(false);
+                patternFrame.setBackground(Color.red);
 	}
 
 	public static void disablePatternFrame() {
@@ -117,6 +123,15 @@ public class EduPatternTest {
 		patternPanel.revalidate();
 		patternFrame.repaint();
 		patternFrame.setVisible(true);
+		controlFrame.repaint();
+	}
+        
+        public static void updateLensPatternPattern(PatternImage pimage, String log) {
+		controlFrame.logString(log);
+		patternPanel.setImage(pimage);
+		patternPanel.revalidate();
+		patternFrame.repaint();
+		//patternFrame.setVisible(true);
 		controlFrame.repaint();
 	}
 
@@ -153,7 +168,10 @@ public class EduPatternTest {
 	public static void initControlFrame() {
 		controlFrame = new EduUIMainView();
 		controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		controlFrame.setLocation(500, 0);
+		controlFrame.setLocation(300, 0);
+                //controlFrame.setBounds(0,0,1300,760);
+                controlFrame.setPreferredSize(new Dimension(1068, 550));
+
 		controlFrame.pack();
 		controlFrame.setVisible(true);
 		controlFrame.setResizable(false);

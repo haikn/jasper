@@ -11,6 +11,10 @@
  */
 package com.jasper;
 
+import java.awt.AlphaComposite;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
@@ -35,6 +39,13 @@ public class PatternImage {
 	private double focal;
 	private double mirrorTheta;
 	private double mirrorPhy;
+        // Draw
+        private double widthDraw;
+	private double heightDraw;
+	private double postion;
+	private double rotation;
+	private double grayLevel;
+        
 	public BufferedImage canvas;
 
 	public static int width;
@@ -49,10 +60,29 @@ public class PatternImage {
 		height = h;
 		canvas = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
 		title = "";
+                
+                //Graphics2D g2 = canvas.createGraphics();
+                //g2.setBackground(Color.RED);
+                //g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.0f));
+	}
+        
+        public PatternImage(int w, int h, int a) {
+		width = w;
+		height = h;
+		canvas = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		title = "";
+                
+                Graphics2D g2 = canvas.createGraphics();
+                g2.setBackground(Color.RED);
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.0f));
 	}
 
 	public PatternImage() {
 		canvas = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
+                //Graphics2D g2 = canvas.createGraphics();
+                //g2.setBackground(Color.RED);
+                //g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.0f));
+
 	}
 
 	public void init(double lambda) {
@@ -79,6 +109,15 @@ public class PatternImage {
 		this.yoff = yoff;
 		this.focal = focal;
 		title = "lens "+xoff+" "+yoff+" "+focal;
+	}
+        
+        void updateLensParameterDrawSingle(double width, double height, double postion, double rotation, double grayLevel) {
+		this.widthDraw = width;
+		this.heightDraw = height;
+		this.postion = postion;
+                this.rotation = rotation;
+                this.grayLevel = grayLevel;
+		title = "Draw Single Slit "+widthDraw+" "+heightDraw+" "+this.postion + " " + this.rotation + " " + this.grayLevel;
 	}
 
 	void updateCyllindricalParameter(double xoff, double angle, double focal) {
@@ -430,5 +469,43 @@ public class PatternImage {
 				raster.setPixel(j, i, iArray);
 			}
 		}            
+        }
+        
+        public void singleslit(){
+            int lineWidth = (int)widthDraw;
+            int lineHeight = (int)heightDraw;
+            int lineRotation = (int)rotation;
+            int linePostion = (int)postion;
+            int lineGray = (int)grayLevel;
+            //canvas.setRGB(10, 10, 10);
+            //canvas.s
+            Color color = new Color(1);
+
+            Graphics2D g = (Graphics2D) canvas.getGraphics();
+            //g.setBackground(Color.RED);
+            //g.setBackground(new Color(1,6,3,3));
+            g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+            int NumRow = 1;
+            int[] RowY;
+            RowY = new int[NumRow];
+            int DelY = canvas.getHeight() / NumRow;
+            for (int i = 0; i < RowY.length; i++) {
+                if (linePostion > 160) {
+                    RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
+                } else if (linePostion < 160) {
+                    RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
+                } else {
+                    RowY[i] = DelY / 2 + DelY * i;
+                }
+            }
+            Rectangle rect2;
+            for (int i = 0; i < NumRow; i++) {
+                g = (Graphics2D) canvas.getGraphics();
+                g.setColor(new Color(lineGray, lineGray, lineGray));
+                rect2 = new Rectangle((canvas.getWidth() - lineWidth) / 2, RowY[i] - lineHeight / 2, lineWidth, lineHeight);
+                g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+                g.draw(rect2);
+                g.fill(rect2);
+            }
         }
 }

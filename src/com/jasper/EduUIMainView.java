@@ -75,6 +75,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jPanelWavefront1 = new Wavefront();
         // Wavelength
         jPanelWavelength1 = new Wavelength();
+        jPanelTest = new com.jasper.Singleslit();
         jPanelMisc = new MiscOptics(); // new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaLog = new javax.swing.JTextArea();
@@ -105,6 +106,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemDoubleSlit = new javax.swing.JMenuItem();
         jMenuItemDrawSignalProcessing = new javax.swing.JMenuItem();
         jMenuItemDrawPhaseRetarder = new javax.swing.JMenuItem();
+        jMenuItemTest = new javax.swing.JMenuItem();
         jMenuItemAbout = new javax.swing.JMenuItem();
         
         // menu item for load phase to grayscale table
@@ -148,6 +150,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         panelist.add((OpticsPane)jPanelWavefront1);
         //Wavelength
         panelist.add((OpticsPane)jPanelWavelength1);
+        
+        panelist.add((OpticsPane)jPanelTest);
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -327,7 +331,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemSingleSlit.setText("Signle Slit");
         jMenuItemSingleSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new Jsingleslit().setVisible(true);
+                jMenuItemTestActionPerformed(evt);
             }
         });
         jMenuDraw.add(jMenuItemSingleSlit);
@@ -355,6 +359,14 @@ public class EduUIMainView extends javax.swing.JFrame {
             }
         });
         jMenuDraw.add(jMenuItemDrawPhaseRetarder);
+        
+//        jMenuItemTest.setText("Test 123");
+//        jMenuItemTest.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jMenuItemTestActionPerformed(evt);
+//            }
+//        });
+//        jMenuDraw.add(jMenuItemTest);
 
         jMenuBarMain.add(jMenuDraw);
         
@@ -516,6 +528,14 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Mirror", jPanelWavelength1);
         setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemWavelengthActionPerformed
+    
+    private void jMenuItemTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTestActionPerformed
+        changeLabTitle("Test Singelit");
+        
+        jTabbedPaneOptics.removeAll();
+        jTabbedPaneOptics.addTab("Test", jPanelTest);        
+        setTabPanelEnable(jTabbedPaneOptics, true);        
+    }//GEN-LAST:event_jMenuItemTestActionPerformed
 
     private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
     	AboutView about = new AboutView(null);
@@ -662,6 +682,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemTelephoto;
     private javax.swing.JMenuItem jMenuItemWavefront;
     private javax.swing.JMenuItem jMenuItemWavelength;
+    private javax.swing.JMenuItem jMenuItemTest;
     private javax.swing.JMenu jMenuMisc;
     private javax.swing.JMenu jMenuOptical;
     private javax.swing.JMenu jMenuWave;
@@ -690,6 +711,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelWavefront1;
     private javax.swing.JPanel jPanelWavelength1;
     private javax.swing.JPanel jPanelMisc;
+    private javax.swing.JPanel jPanelTest;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
     private javax.swing.JTextArea jTextAreaLog;
