@@ -8,6 +8,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -97,6 +98,13 @@ public class EduPatternTest {
 		patternFrame.setLocation(bounds.x, bounds.y);
 		// full screen
                 patternFrame.setUndecorated(true);
+                patternFrame.addMouseListener(new ClickListener() {
+                    public void doubleClick(MouseEvent e) {
+                        patternFrame.dispose();
+                        // log
+                        //System.out.println("double");
+                    }
+                });
                 // not run first
 		patternFrame.setVisible(false);
                 patternFrame.setBackground(Color.red);
@@ -108,6 +116,28 @@ public class EduPatternTest {
 
 	public static void disposePatternFrame() {
 		patternFrame.dispose();
+	}
+        
+        public void mouseClicked(MouseEvent e) 
+      {
+	if (e.getClickCount() == 2) 
+	{
+	    patternFrame.dispose();
+	    //label.setText("Double clicked on Item at index: " + index);
+	} 
+      }
+        
+        public void mousePressed(MouseEvent e) 
+	{
+	    if(e.getButton() == MouseEvent.BUTTON1)
+	    {
+	      //label.setText("Detected Mouse Left Click!");
+	    }	    
+	    else if(e.getButton() == MouseEvent.BUTTON3)
+	    {
+	      //label.setText("Detected Mouse Right Click!");
+                patternFrame.dispose();
+	    }
 	}
 
     public static void updateRegenerate() {
