@@ -188,7 +188,7 @@ public class EduPatternTest {
 		patternPanel.setImage(pimage);
 		patternPanel.revalidate();
 		patternFrame.repaint();
-		patternFrame.setVisible(true);
+		patternFrame.setVisible(false);
 		controlFrame.repaint();
 	}
 
