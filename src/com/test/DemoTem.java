@@ -27,20 +27,131 @@ public class DemoTem extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        layOutSingle = new javax.swing.JLayeredPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        selectGaneral1 = new javax.swing.JComboBox();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jSlider2 = new javax.swing.JSlider();
+        layOutDefault1 = new javax.swing.JLayeredPane();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jSlider3 = new javax.swing.JSlider();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jSlider4 = new javax.swing.JSlider();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        layOutDouble = new javax.swing.JLayeredPane();
+        layOutSignalProcessing = new javax.swing.JLayeredPane();
+        layOutPhase = new javax.swing.JLayeredPane();
         layOutGaneral = new javax.swing.JLayeredPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         selectGaneral = new javax.swing.JComboBox();
         layOutDefault = new javax.swing.JLayeredPane();
-        layOutSingle = new javax.swing.JLayeredPane();
-        layOutDouble = new javax.swing.JLayeredPane();
-        layOutSignalProcessing = new javax.swing.JLayeredPane();
-        layOutPhase = new javax.swing.JLayeredPane();
+        jSlider1 = new javax.swing.JSlider();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         b_generate = new javax.swing.JButton();
         b_len = new javax.swing.JButton();
         b_display = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jTabbedPane6 = new javax.swing.JTabbedPane();
+        jTabbedPane7 = new javax.swing.JTabbedPane();
+        jTabbedPane8 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel3.setText("Select  Experiment");
+
+        selectGaneral1.setEditable(true);
+        selectGaneral1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Defaul", "Item 2", "Item 3", "Item 4" }));
+        selectGaneral1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectGaneral1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(selectGaneral1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(713, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(selectGaneral1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBounds(0, 0, 1150, 70);
+        layOutSingle.add(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTextField2.setText("522");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jTextField2.setBounds(710, 80, 50, 30);
+        layOutSingle.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel4.setText("Focal length");
+        jLabel4.setBounds(630, 80, 70, 30);
+        layOutSingle.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jSlider2.setBounds(770, 80, 380, 30);
+        layOutSingle.add(jSlider2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layOutDefault1.setBounds(0, 70, 620, 340);
+        layOutSingle.add(layOutDefault1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel5.setText("X Position");
+        jLabel5.setBounds(630, 130, 70, 30);
+        layOutSingle.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTextField3.setText("0");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jTextField3.setBounds(710, 130, 50, 30);
+        layOutSingle.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jSlider3.setBounds(770, 130, 380, 30);
+        layOutSingle.add(jSlider3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel6.setText("Y Postion");
+        jLabel6.setBounds(630, 180, 70, 30);
+        layOutSingle.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTextField4.setText("0");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.setBounds(710, 180, 50, 30);
+        layOutSingle.add(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jSlider4.setBounds(770, 180, 380, 30);
+        layOutSingle.add(jSlider4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jTabbedPane5.setBounds(620, 240, 100, 100);
+        layOutSingle.add(jTabbedPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTabbedPane1.addTab("General", layOutSingle);
+        jTabbedPane1.addTab("Single slit   ", layOutDouble);
+        jTabbedPane1.addTab("Double slit", layOutSignalProcessing);
+        jTabbedPane1.addTab("Signal processing", layOutPhase);
 
         jLabel1.setText("Select  Experiment");
 
@@ -61,7 +172,7 @@ public class DemoTem extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectGaneral, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap(613, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,19 +181,30 @@ public class DemoTem extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(selectGaneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jPanel2.setBounds(0, -10, 770, 80);
+        jPanel2.setBounds(0, 0, 1050, 70);
         layOutGaneral.add(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        layOutDefault.setBounds(0, 71, 560, 190);
+        layOutDefault.setBounds(0, 70, 550, 340);
         layOutGaneral.add(layOutDefault, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jSlider1.setBounds(740, 80, 310, 30);
+        layOutGaneral.add(jSlider1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jTabbedPane1.addTab("Ganeral     ", layOutGaneral);
-        jTabbedPane1.addTab("Single Slit   ", layOutSingle);
-        jTabbedPane1.addTab("Double Slit   ", layOutDouble);
-        jTabbedPane1.addTab("Signal Processing", layOutSignalProcessing);
-        jTabbedPane1.addTab("Phase retarder", layOutPhase);
+        jTextField1.setText("522");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.setBounds(680, 80, 50, 30);
+        layOutGaneral.add(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel2.setText("Focal length");
+        jLabel2.setBounds(600, 80, 70, 30);
+        layOutGaneral.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTabbedPane1.addTab("Phase retarder", layOutGaneral);
 
         b_generate.setText("Generate");
 
@@ -90,33 +212,66 @@ public class DemoTem extends javax.swing.JFrame {
 
         b_display.setText("Second Display ON");
 
+        jButton1.setText("About");
+
+        jButton2.setText("Exit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTabbedPane6.addTab("Description", jTabbedPane7);
+        jTabbedPane6.addTab("Log", jTabbedPane8);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(b_generate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(b_len)
-                .addGap(18, 18, 18)
-                .addComponent(b_display)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(b_generate)
+                        .addGap(18, 18, 18)
+                        .addComponent(b_len)
+                        .addGap(18, 18, 18)
+                        .addComponent(b_display)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 430, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 537, Short.MAX_VALUE)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 537, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(b_generate)
                     .addComponent(b_len)
-                    .addComponent(b_display))
-                .addGap(56, 56, 56))
+                    .addComponent(b_display)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 280, Short.MAX_VALUE)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 281, Short.MAX_VALUE)))
         );
 
         pack();
@@ -126,6 +281,30 @@ public class DemoTem extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Layout().setVisible(true);
     }//GEN-LAST:event_selectGaneralActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void selectGaneral1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectGaneral1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectGaneral1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,15 +344,38 @@ public class DemoTem extends javax.swing.JFrame {
     private javax.swing.JButton b_display;
     private javax.swing.JButton b_generate;
     private javax.swing.JButton b_len;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSlider2;
+    private javax.swing.JSlider jSlider3;
+    private javax.swing.JSlider jSlider4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTabbedPane jTabbedPane7;
+    private javax.swing.JTabbedPane jTabbedPane8;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JLayeredPane layOutDefault;
+    private javax.swing.JLayeredPane layOutDefault1;
     private javax.swing.JLayeredPane layOutDouble;
     private javax.swing.JLayeredPane layOutGaneral;
     private javax.swing.JLayeredPane layOutPhase;
     private javax.swing.JLayeredPane layOutSignalProcessing;
     private javax.swing.JLayeredPane layOutSingle;
     private javax.swing.JComboBox selectGaneral;
+    private javax.swing.JComboBox selectGaneral1;
     // End of variables declaration//GEN-END:variables
 }
