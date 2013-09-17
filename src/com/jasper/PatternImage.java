@@ -159,18 +159,18 @@ public class PatternImage {
 		//double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
 
 		// calculate phase of each pixel;
-		for (int i = 0; i < height-1; i++) {
+		for (int i = 0; i < height; i++) {
 			x2 = (double) (i - height/2 + 1) * pxsize;
-			x2 -= (xoff/10000);
+			x2 -= (-yoff/10000);
                         //x2 -= 0.0;
 			x2 = Math.pow(x2, 2.0);
                         // Albert 2013/09/05
                         Math.getExponent(x2);
                         // 2*pi/la*0.1*x*psize
                         double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1; 
-			for (int j = 0; j < width-1; j++) {
+			for (int j = 0; j < width; j++) {
 				y2 = (double) (j - width/2 + 1) * pxsize;
-				y2 -= (yoff/10000);
+				y2 -= (xoff/10000);
                                 //y2 -= 0.0;
 				y1 = y2;
 				y2 = Math.pow(y2, 2.0);
@@ -184,12 +184,15 @@ public class PatternImage {
 
                                 //wave=exp(j*pi/wl*(xt.^2+yt.^2));
 				// added fixpart2 from David's LensMaekr0402_2013
+                                
+                                // added fixpart2 from David's LensMaekr0916_2013
+                                // wave=exp(j*pi/wl/f*(xt.^2+yt.^2));
+                                
 //                                if(xoff > 0) {
 //                                    phase += fixpart2 * y1 / xoff ;
 //                                } else {
                                     phase += fixpart2 * x2 * y2  ;
                                 //}
-				
                                 //phase = (fixpart * (x2 + y2) + (fixpart2 * y1));
                                 //phase += phase/2;
                                 //phase += fixpart2 * y1 ;

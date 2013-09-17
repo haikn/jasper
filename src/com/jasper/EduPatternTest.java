@@ -82,7 +82,7 @@ public class EduPatternTest {
 
 		pimage = new PatternImage(bounds.width, bounds.height);
 		pimage.init(lambda);
-		pimage.singleslit();
+		//pimage.singleslit();
                 
 
 		// for debugging purpose, show wavelength
@@ -118,28 +118,6 @@ public class EduPatternTest {
 		patternFrame.dispose();
 	}
         
-        public void mouseClicked(MouseEvent e) 
-      {
-	if (e.getClickCount() == 2) 
-	{
-	    patternFrame.dispose();
-	    //label.setText("Double clicked on Item at index: " + index);
-	} 
-      }
-        
-        public void mousePressed(MouseEvent e) 
-	{
-	    if(e.getButton() == MouseEvent.BUTTON1)
-	    {
-	      //label.setText("Detected Mouse Left Click!");
-	    }	    
-	    else if(e.getButton() == MouseEvent.BUTTON3)
-	    {
-	      //label.setText("Detected Mouse Right Click!");
-                patternFrame.dispose();
-	    }
-	}
-
     public static void updateRegenerate() {
 		controlFrame.updateRegenerate();
 		patternPanel.revalidate();
