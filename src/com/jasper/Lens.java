@@ -32,13 +32,13 @@ public class Lens extends OpticsPane {
     private void initComponents() {
 
         panelPattern = new EduPatternJPanel();
-        labelFocal = new javax.swing.JLabel();
+        //labelFocal = new javax.swing.JLabel();
         textFocal = new javax.swing.JTextField();
-        labelXpos = new javax.swing.JLabel();
+        //labelXpos = new javax.swing.JLabel();
         //textXpos = new javax.swing.JTextField();
-        labelYpos = new javax.swing.JLabel();
+        //labelYpos = new javax.swing.JLabel();
         textYpos = new javax.swing.JTextField();
-        buttonGenerate = new javax.swing.JButton();
+        //buttonGenerate = new javax.swing.JButton();
 
 //        javax.swing.GroupLayout panelPatternLayout = new javax.swing.GroupLayout(panelPattern);
 //        panelPattern.setLayout(panelPatternLayout);
@@ -312,10 +312,10 @@ public class Lens extends OpticsPane {
     }//GEN-LAST:event_textXposActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonGenerate;
-    private javax.swing.JLabel labelFocal;
-    private javax.swing.JLabel labelXpos;
-    private javax.swing.JLabel labelYpos;
+//    private javax.swing.JButton buttonGenerate;
+//    private javax.swing.JLabel labelFocal;
+//    private javax.swing.JLabel labelXpos;
+//    private javax.swing.JLabel labelYpos;
     private javax.swing.JPanel panelPattern;
     //private javax.swing.JTextField textFocal;
     //private javax.swing.JTextField textYpos;

@@ -7,8 +7,12 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -89,8 +93,7 @@ public class EduPatternTest {
 		// System.out.println("wavelength = " + pimage.getLambda());
 
 		patternPanel = new EduPatternJPanel(pimage);
-                patternPanel.setBackground(Color.red);
-                patternPanel.setForeground(Color.red);
+                
 		patternFrame.getContentPane().add(patternPanel);
 
 		patternFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,6 +108,20 @@ public class EduPatternTest {
                         //System.out.println("double");
                     }
                 });
+                
+//                patternPanel.addMouseListener(new ClickListener() {
+//                   public void doubleClick(MouseEvent e) {
+//                       //patternFrame.setVisible(true);
+//                       if (patternPanel.contains(e.getPoint())) {//check if mouse is clicked within shape
+//                        System.out.println("Clicked a "+patternPanel.getClass().getName());
+//                    }
+//                       // log
+//                       //System.out.println("double");
+//                   }
+//               });
+                
+                
+                
                 // not run first
 		patternFrame.setVisible(false);
                 patternFrame.setBackground(Color.red);
@@ -176,9 +193,9 @@ public class EduPatternTest {
 	public static void initControlFrame() {
 		controlFrame = new EduUIMainView();
 		controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		controlFrame.setLocation(300, 0);
+		controlFrame.setLocation(0, 0);
                 //controlFrame.setBounds(0,0,1300,760);
-                controlFrame.setPreferredSize(new Dimension(1068, 550));
+                controlFrame.setPreferredSize(new Dimension(1268, 575));
 
 		controlFrame.pack();
 		controlFrame.setVisible(true);
@@ -242,7 +259,7 @@ public class EduPatternTest {
 
 		EduPatternTest.initPatternFrame();
 		EduPatternTest.initControlFrame();
-
+                
 		// set icon using JDC logo
 		URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
 		Toolkit kit = Toolkit.getDefaultToolkit();
