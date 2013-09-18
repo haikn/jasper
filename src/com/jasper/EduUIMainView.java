@@ -183,9 +183,12 @@ public class EduUIMainView extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextAreaLog);
         jTextAreaLog.setEditable(false);
         jComboBox1 = new javax.swing.JComboBox();
+//        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
+//            "4. Michelson Interferometer", "5. Mach-Zender Interfrometer", "6. Diffraction and Interference", "7. Spectrometer",
+//        "8. Signal Processing (4-f system)", "9. Phase Shifting Digital Holography", "10. Talbot Images", "11. Wavefront Modulation", "12. Wavelength Selective Switch" }));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
-            "4. Michelson Interferometer", "5. Mach-Zender Interfrometer", "6. Diffraction and Interference", "7. Spectrometer",
-        "8. Signal Processing (4-f system)", "9. Phase Shifting Digital Holography", "10. Talbot Images", "11. Wavefront Modulation", "12. Wavelength Selective Switch" }));
+            "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
+        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation", "11. Wavelength Selective Switch" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JComboBox comboBox = (JComboBox) evt.getSource();
@@ -285,12 +288,12 @@ public class EduUIMainView extends javax.swing.JFrame {
         });
         jMenuWave.add(jMenuItemMichelson);
 
-        jMenuItemMachZender.setText(labTitleMach);
-        jMenuItemMachZender.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemMachZenderActionPerformed(evt);
-            }
-        });
+//        jMenuItemMachZender.setText(labTitleMach);
+//        jMenuItemMachZender.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jMenuItemMachZenderActionPerformed(evt);
+//            }
+//        });
         jMenuWave.add(jMenuItemMachZender);
 
         jMenuItemDiffraction.setText(labTitleDiff);
@@ -844,18 +847,30 @@ public class EduUIMainView extends javax.swing.JFrame {
     final private String catTitleFour ="Fourier Optics";
     final private String catTitleOthe ="Others";
 
+//    final private String labTitleTele =" 1. Telephoto Lens";
+//    final private String labTitleMicr =" 2. Microscope";
+//    final private String labTitleAber =" 3. Aberration (Foucault test)";
+//    final private String labTitleMich =" 4. Michelson Interferometer";
+//    final private String labTitleMach =" 5. Mach-Zender Interfrometer";
+//    final private String labTitleDiff =" 6. Diffraction and Interference";
+//    final private String labTitleSpec =" 7. Spectrometer";
+//    final private String labTitleSign =" 8. Signal Processing (4-f system)";
+//    final private String labTitlePhas =" 9. Phase Shifting Digital Holography";
+//    final private String labTitleTalb ="10. Talbot Images";
+//    final private String labTitleFron ="11. Wavefront Modulation";
+//    final private String labTitleLeng ="12. Wavelength Selective Switch";
     final private String labTitleTele =" 1. Telephoto Lens";
     final private String labTitleMicr =" 2. Microscope";
     final private String labTitleAber =" 3. Aberration (Foucault test)";
     final private String labTitleMich =" 4. Michelson Interferometer";
     final private String labTitleMach =" 5. Mach-Zender Interfrometer";
-    final private String labTitleDiff =" 6. Diffraction and Interference";
-    final private String labTitleSpec =" 7. Spectrometer";
-    final private String labTitleSign =" 8. Signal Processing (4-f system)";
-    final private String labTitlePhas =" 9. Phase Shifting Digital Holography";
-    final private String labTitleTalb ="10. Talbot Images";
-    final private String labTitleFron ="11. Wavefront Modulation";
-    final private String labTitleLeng ="12. Wavelength Selective Switch";
+    final private String labTitleDiff =" 5. Diffraction and Interference";
+    final private String labTitleSpec =" 6. Spectrometer";
+    final private String labTitleSign =" 7. Signal Processing (4-f system)";
+    final private String labTitlePhas =" 8. Phase Shifting Digital Holography";
+    final private String labTitleTalb =" 9. Talbot Images";
+    final private String labTitleFron =" 10. Wavefront Modulation";
+    final private String labTitleLeng =" 11. Wavelength Selective Switch";
     
     final private String eduKitTitle  ="JDC Education Kit";
     
