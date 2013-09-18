@@ -14,9 +14,7 @@ import sun.swing.DefaultLayoutStyle;
  * @author T420
  */
 public class Slit extends OpticsPane {
-
     EduPatternJPanel panelPatternSet = new EduPatternJPanel();
-    public BufferedImage canvas = new BufferedImage(500, 600, 12);
     PatternImage image1 = new PatternImage();
     LayoutStyle layuotStyle = new DefaultLayoutStyle();
 

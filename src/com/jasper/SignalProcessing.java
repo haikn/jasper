@@ -308,14 +308,6 @@ public class SignalProcessing extends OpticsPane {
         return ret;
     }
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SignalProcessing().setVisible(true);
-            }
-        });
-    }
-
     private String genLog() {
         return String.format(logmessage, Double.toString(widthX), Double.toString(heightX), Double.toString(positionX), Double.toString(rotation), Double.toString(grayLevel));
     }
