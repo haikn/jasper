@@ -202,21 +202,19 @@ public class EduUIMainView extends javax.swing.JFrame {
                     jMenuItemAberrationActionPerformed(evt);
                 } else if(selected.equals("4. Michelson Interferometer")){
                     jMenuItemMichelsonActionPerformed(evt);
-                } else if(selected.equals("5. Mach-Zender Interfrometer")){
-                    jMenuItemMachZenderActionPerformed(evt);
-                } else if(selected.equals("6. Diffraction and Interference")){
+                } else if(selected.equals("5. Diffraction and Interference")){
                     jMenuItemDiffractionActionPerformed(evt);
-                } else if(selected.equals("7. Spectrometer")){
+                } else if(selected.equals("6. Spectrometer")){
                     jMenuItemSpectrometerActionPerformed(evt);
-                } else if(selected.equals("8. Signal Processing (4-f system)")){
+                } else if(selected.equals("7. Signal Processing (4-f system)")){
                     jMenuItemSignalProcessingActionPerformed(evt);
-                } else if(selected.equals("9. Phase Shifting Digital Holography")){
+                } else if(selected.equals("8. Phase Shifting Digital Holography")){
                     jMenuItemPhaseShiftingActionPerformed(evt);
-                } else if(selected.equals("10. Talbot Images")){
+                } else if(selected.equals("9. Talbot Images")){
                     jMenuItemTalbotImagesActionPerformed(evt);
-                } else if(selected.equals("11. Wavefront Modulation")){
+                } else if(selected.equals("10. Wavefront Modulation")){
                     jMenuItemWavefrontActionPerformed(evt);
-                } else if(selected.equals("12. Wavelength Selective Switch")){
+                } else if(selected.equals("11. Wavelength Selective Switch")){
                     jMenuItemWavelengthActionPerformed(evt);
                 }
             }
@@ -506,8 +504,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleMicr);
         jTabbedPaneOptics.removeAll();
         
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
-        jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
+        jTabbedPaneOptics.addTab("General", jPanelMicroscope1);
+        jTabbedPaneOptics.addTab("Calibration", jPanelLens1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
         jTabbedPaneOptics.addTab("Phase retarder", jPanelCylindrical1);
