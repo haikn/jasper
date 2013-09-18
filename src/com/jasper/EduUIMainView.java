@@ -532,7 +532,7 @@ public class EduUIMainView extends javax.swing.JFrame {
 //        jTabbedPaneOptics.addTab("Lens", jPanelMich1);        
 //        jTabbedPaneOptics.addTab("Cylindrical lens", jPanelCylindrical1);
 //        jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelMich1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
@@ -545,7 +545,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         jTabbedPaneOptics.removeAll();
         //jTabbedPaneOptics.addTab("Misc", jPanelMach1);
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelMach1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
@@ -559,7 +559,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         //jTabbedPaneOptics.removeAll();
         //jTabbedPaneOptics.addTab("Misc", jPanelDiffraction1);
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelDiffraction1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
@@ -573,7 +573,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.removeAll();
         //jTabbedPaneOptics.addTab("Lens", jPanelSpectrometer1);        
         //jTabbedPaneOptics.addTab("Mirror", jPanelMirror2);
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelSpectrometer1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
@@ -586,7 +586,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         jTabbedPaneOptics.removeAll();
         //jTabbedPaneOptics.addTab("Misc", jPanelSignal1);     
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelSignal1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
@@ -599,7 +599,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         jTabbedPaneOptics.removeAll();
         //jTabbedPaneOptics.addTab("Misc", jPanelPhase1);   
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelPhase1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
@@ -612,7 +612,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         jTabbedPaneOptics.removeAll();
         //jTabbedPaneOptics.addTab("Misc", jPanelTalbot1);   
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelTalbot1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
@@ -627,7 +627,7 @@ public class EduUIMainView extends javax.swing.JFrame {
 //        jTabbedPaneOptics.addTab("Lens", jPanelWavefront1);        
 //        jTabbedPaneOptics.addTab("Cylindrical lens", jPanelCylindrical2);
 //        jTabbedPaneOptics.addTab("Mirror", jPanelMirror3);
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelWavefront1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
@@ -640,7 +640,7 @@ public class EduUIMainView extends javax.swing.JFrame {
 
         jTabbedPaneOptics.removeAll();
         //jTabbedPaneOptics.addTab("Mirror", jPanelWavelength1);
-        jTabbedPaneOptics.addTab("General", jPanelLens1);
+        jTabbedPaneOptics.addTab("General", jPanelWavelength1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Slit", jPanelTest);
         jTabbedPaneOptics.addTab("Signal processing", jPanelMirror1);
