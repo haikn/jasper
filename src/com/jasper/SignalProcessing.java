@@ -158,6 +158,11 @@ public class SignalProcessing extends OpticsPane {
         l_rotation.setText("Rotation");
         l_gaylevel.setText("GrayLevel");
         b_ganerate.setText("Ganerate");
+        b_ganerate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformed(evt);
+            }
+        });
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
