@@ -47,7 +47,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jPanelLens2 = new Lens ();
         jPanelLens3 = new Lens ();
         jPanelLens4 = new Lens ();
-        jPanelCylindrical1 = new CylincalLens();
+        jPanelCylindrical1 = new PhaseRetarder();
         jPanelCylindrical2 = new CylincalLens();
         jPanelMicroscope1 = new Microscope();
         jPanelMirror1 = new Mirror();
