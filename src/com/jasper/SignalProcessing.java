@@ -157,7 +157,7 @@ public class SignalProcessing extends OpticsPane {
         l_position_y.setText("PositionY");
         l_rotation.setText("Rotation");
         l_gaylevel.setText("GrayLevel");
-        b_ganerate.setText("Ganerate");
+        b_ganerate.setText("Generate");
         b_ganerate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformed(evt);
@@ -276,7 +276,7 @@ public class SignalProcessing extends OpticsPane {
                 .addComponent(text_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(l_gaylevel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createSequentialGroup()
                 .addGap(3, 3, 3)
                 .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))

@@ -113,7 +113,7 @@ public class Slit extends OpticsPane {
         l_gaylevel.setText("GrayLevel ");
         l_width.setText("Width");
         l_height.setText("Height");
-        b_ganerate.setText("Ganerate");
+        b_ganerate.setText("Generate");
         b_ganerate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformed(evt);
@@ -226,7 +226,7 @@ public class Slit extends OpticsPane {
                 .addComponent(text_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(83, Short.MAX_VALUE)));
         panelPatternSet = (EduPatternJPanel) panelPattern;
