@@ -12,15 +12,21 @@
 package com.jasper;
 
 import java.awt.AlphaComposite;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * This PatternImage include the algorithms of application
@@ -49,6 +55,8 @@ public class PatternImage {
     private double d_postionY;
     private double d_rotation;
     private double d_grayLevel;
+    private double d_zoom;
+    //end
     public BufferedImage canvas;
     public static int width;
     public static int height;
@@ -131,6 +139,12 @@ public class PatternImage {
         this.d_rotation = rotation;
         this.d_grayLevel = grayLevel;
         title = "Draw Signal Processing " + d_widthX + " " + d_widthY + " " + this.d_heightX + " " + this.d_heightY + " " + this.d_postionX + " " + this.d_postionY + " " + this.d_rotation + " " + this.d_grayLevel;
+    }
+
+    void updatePhaseRetarderParameter(double zoom, double grayLevel) {
+        this.d_zoom = zoom;
+        this.d_grayLevel = grayLevel;
+        title = "PhaseRetarder " + zoom + " " + grayLevel;
     }
 
     void updateCyllindricalParameter(double xoff, double angle, double focal) {
@@ -558,6 +572,39 @@ public class PatternImage {
             g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.draw(rect2);
             g.fill(rect2);
+        }
+    }
+
+    public void phaseRetarder(BufferedImage buffImg) {
+        if (buffImg != null) {
+//            try {
+//                File file = new File("resources/jdclogo_150x155.png");
+//                System.out.println(">>>>>>>>>>>>>>>>Path : " + file.getAbsolutePath());
+//                buffImg = ImageIO.read(new File(file.getAbsolutePath()));
+//                System.out.println("buff : "+buffImg.getWidth());
+//            } catch (IOException ex) {
+//                Logger.getLogger(PatternImage.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+
+            double scale = 1.0;
+            scale = d_zoom / 100.0D;
+//        ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
+//        ColorConvertOp op = new ColorConvertOp(cs, null);
+//        BufferedImage gayBuff = op.filter(buffImg, null);
+
+            Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+            g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                    RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+            double canvasX = canvas.getWidth() / 2;
+            double canvasY = canvas.getHeight() / 2;
+            int imageWidth = buffImg.getWidth();
+            int imageHeight = buffImg.getHeight();
+            double x = (scale * imageWidth) / 2;
+            double y = (scale * imageHeight) / 2;
+            AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+            at.scale(scale, scale);
+            g2.drawRenderedImage(buffImg, at);
         }
     }
 }
