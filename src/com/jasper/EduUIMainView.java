@@ -586,7 +586,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDiffractionActionPerformed
         changeLabTitle(labTitleDiff);
         
-        //jTabbedPaneOptics.removeAll();
+        jTabbedPaneOptics.removeAll();
         //jTabbedPaneOptics.addTab("Misc", jPanelDiffraction1);
         jTabbedPaneOptics.addTab("General", jPanelDiffraction1);
         jTabbedPaneOptics.addTab("Calibration", jPanelMicroscope1);
