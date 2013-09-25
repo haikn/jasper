@@ -99,6 +99,9 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         // add optics panes to panelist
         panelist = new ArrayList <OpticsPane>();
+        //Todo
+       
+        
         panelist.add((OpticsPane)jPanelLens1);
         panelist.add((OpticsPane)jPanelLens2);
         panelist.add((OpticsPane)jPanelLens3);
@@ -197,11 +200,12 @@ public class EduUIMainView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jPanelCalibration = new javax.swing.JPanel();
-        jPanelSlit = new javax.swing.JPanel();
+        jPanelSlit = new Slit();
         jPanelSignalProcessing = new javax.swing.JPanel();
         jLayeredPane5 = new javax.swing.JLayeredPane();
         jPanelPhaseRetarder = new javax.swing.JPanel();
         jLayeredPane6 = new javax.swing.JLayeredPane();
+        panelist.add((OpticsPane)jPanelSlit);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Select  Experiment");
@@ -292,22 +296,23 @@ public class EduUIMainView extends javax.swing.JFrame {
         // END Calibration
         
         // BEGIN Slit
-        javax.swing.GroupLayout jPanelSlitLayout = new javax.swing.GroupLayout(jPanelSlit);
-        jPanelSlit.setLayout(jPanelSlitLayout);
-        jPanelSlitLayout.setHorizontalGroup(
-            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSlitLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(458, Short.MAX_VALUE))
-        );
-        jPanelSlitLayout.setVerticalGroup(
-            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSlitLayout.createSequentialGroup()
-                .addGap(0, 73, Short.MAX_VALUE)
-                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+//        javax.swing.GroupLayout jPanelSlitLayout = new javax.swing.GroupLayout(jPanelSlit);
+//        jPanelSlit.setLayout(jPanelSlitLayout);
+//        jPanelSlitLayout.setHorizontalGroup(
+//            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(jPanelSlitLayout.createSequentialGroup()
+//                .addContainerGap()
+//                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addContainerGap(458, Short.MAX_VALUE))
+//        );
+//        jPanelSlitLayout.setVerticalGroup(
+//            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSlitLayout.createSequentialGroup()
+//                .addGap(0, 73, Short.MAX_VALUE)
+//                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+//        );
         tabbedGaneral.addTab("Slit   ", jPanelSlit);
+       
         // END Slit
 
         // BEGIN Signal Processing
