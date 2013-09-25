@@ -1,8 +1,5 @@
 package com.jasper;
 
-import java.awt.Component;
-import java.awt.Graphics;
-
 import javax.swing.JOptionPane;
 
 /*
@@ -11,7 +8,7 @@ import javax.swing.JOptionPane;
  */
 /**
  *
- * @author Jeff Lee
+ * @author Albert
  */
 public class Mirror extends OpticsPane {
 
@@ -32,43 +29,50 @@ public class Mirror extends OpticsPane {
     private void initComponents() {
 
         panelPattern = new EduPatternJPanel();
-        labelPi = new javax.swing.JLabel();
-        textPi = new javax.swing.JTextField();
-        labelTheta = new javax.swing.JLabel();
-        textTheta = new javax.swing.JTextField();
-        buttonGenerate = new javax.swing.JButton();
+        textYpos = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout panelPatternLayout = new javax.swing.GroupLayout(panelPattern);
-        panelPattern.setLayout(panelPatternLayout);
-        panelPatternLayout.setHorizontalGroup(
-            panelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
-        );
-        panelPatternLayout.setVerticalGroup(
-            panelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
-        );
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        labelPi.setText("Phy");
+        sliderFocal = new javax.swing.JSlider();
+        jLabel2 = new javax.swing.JLabel();
+        textXpos = new javax.swing.JTextField();
+        sliderXpos = new javax.swing.JSlider();
+        jLabel3 = new javax.swing.JLabel();
+        textYpos = new javax.swing.JTextField();
+        sliderYPos = new javax.swing.JSlider();
+        ok = new javax.swing.JButton();
 
-        textPi.setText("0.0");
-        textPi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textPiActionPerformed(evt);
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderFocal, org.jdesktop.beansbinding.ELProperty.create("${value}"), org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel2.setText("Phy");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderXpos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textXpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+        
+        sliderXpos.setMaximum(100);
+        sliderXpos.setValue(1);
+        sliderXpos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformed(evt);
             }
         });
 
-        labelTheta.setText("Theta");
+        jLabel3.setText("Theta");
 
-        textTheta.setText("0.0");
-        textTheta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textThetaActionPerformed(evt);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderYPos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textYpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        sliderYPos.setMaximum(100);
+        sliderYPos.setValue(0);
+        sliderYPos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformed(evt);
             }
         });
 
-        buttonGenerate.setText("Generate");
-        buttonGenerate.addActionListener(new java.awt.event.ActionListener() {
+        ok.setText("Generate");
+        ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformed(evt);
             }
@@ -79,111 +83,142 @@ public class Mirror extends OpticsPane {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(6, 6)
-                        .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(21, 21, 21)
+                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelPi, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelTheta))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textPi, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textTheta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(buttonGenerate))))
-                .addContainerGap(6, 6))
+                            .addComponent(textYpos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textXpos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(sliderXpos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                            .addComponent(sliderYPos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(6, 6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPi, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textPi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelTheta)
-                            .addComponent(textTheta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonGenerate))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sliderXpos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(textXpos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sliderYPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(textYpos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     // Optical arguments, which will be parsed before reassigning the values
-    private double phy=0.0, theta=0.0;
+    private double phy=1.0, theta=0.0;
     private boolean parseArguments() {
     	boolean ret = false;
     	try {
-        	double phy = Double.valueOf(textPi.getText());
-        	double theta = Double.valueOf(textTheta.getText());	    	
+                double phy = Double.valueOf(textXpos.getText());
+        	double theta = Double.valueOf(textYpos.getText());	    	
 	    	ret = true;	    	
 	    	this.phy=phy;
 	    	this.theta=theta;
     	}
     	catch (Exception e) {
-    		JOptionPane.showMessageDialog(null, warnings);
-    		textPi.setText(String.valueOf(this.phy));
-    		textTheta.setText(String.valueOf(this.theta));
+                JOptionPane.showMessageDialog(null, warnings);
+    		textXpos.setText(String.valueOf(this.phy));
+    		textYpos.setText(String.valueOf(this.theta));
     	}
     	return ret;
     }
     
     private String genLog() {
-		return String.format(logmessage, Double.toString(phy), Double.toString(theta));    	
+		return String.format(logmessage, Double.toString(phy), Double.toString(theta));
     }
-    
+
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
-    	if (parseArguments()){
+		if (parseArguments()) {
 			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
 			image.updateMirrorParameter(phy, theta);
 			image.paintMirror();
-			EduPatternTest.updateMirrorPattern(image, genLog());
+			EduPatternTest.updateLensPattern(image, genLog());
 			imageGenerated = true;
-    	}
+		}
     }//GEN-LAST:event_buttonGenerateActionPerformed
+    
+    private void sliderGenerateActionPerformed(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
+		if (parseArguments()) {
+			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
+			image.updateMirrorParameter(phy, theta);
+			image.paintMirror();
+			EduPatternTest.updateLensPatternPattern(image, genLog());
+			imageGenerated = true;
+		}
+    }//GEN-LAST:event_sliderGenerateActionPerformed
 
-    private void textPiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textXposActionPerformed
+    private void textFocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFocalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFocalActionPerformed
+
+    private void textYposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textYposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textYposActionPerformed
+
+    private void textXposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textXposActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textXposActionPerformed
 
-    private void textThetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textRotationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textRotationActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonGenerate;
-    private javax.swing.JLabel labelPi;
-    private javax.swing.JLabel labelTheta;
     private javax.swing.JPanel panelPattern;
-    private javax.swing.JTextField textPi;
-    private javax.swing.JTextField textTheta;
+    
+    private javax.swing.JSlider sliderXpos;
+    private javax.swing.JSlider sliderYPos;
+    private javax.swing.JSlider sliderFocal;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton ok;
+    private javax.swing.JTextField textXpos;
+    private javax.swing.JTextField textYpos;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
     @Override
-	void updatePatternScreen() {
-    	PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-		if (!imageGenerated) {
-	    	image.updateMirrorParameter(phy, theta);
-	    	image.paintMirror();
-	    	imageGenerated = true;
-		}
-    	EduPatternTest.updatePatternScreen(image, genLog());		
-	}
-
+    void updatePatternScreen() {
+        PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
+        if (!imageGenerated) {
+                image.updateMirrorParameter(phy, theta);
+                image.paintMirror();
+                imageGenerated = true;
+        }
+        EduPatternTest.updatePatternScreen(image, genLog());
+    }
+    
     void updateRegenerate() {
-    	PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-		if (imageGenerated) {
-	    	image.updateMirrorParameter(phy, theta);
-	    	image.paintMirror();
-		}
+    	PatternImage image = ((EduPatternJPanel)panelPattern).pimage;
+        if (imageGenerated) {
+            image.updateMirrorParameter(phy, theta);
+            image.paintMirror();
+        }
     }
 
-    static String logmessage="pattern mirror phy=%s theta=%s";
+    static String logmessage="pattern Mirror phy=%s theta=%s";
 }

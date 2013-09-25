@@ -195,7 +195,7 @@ public class EduPatternTest {
 		controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		controlFrame.setLocation(0, 0);
                 //controlFrame.setBounds(0,0,1300,760);
-                controlFrame.setPreferredSize(new Dimension(1268, 620));
+                controlFrame.setPreferredSize(new Dimension(1268, 696));
 
 		controlFrame.pack();
 		controlFrame.setVisible(true);

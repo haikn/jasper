@@ -1,8 +1,5 @@
 package com.jasper;
 
-import java.awt.Component;
-import java.awt.Graphics;
-
 import javax.swing.JOptionPane;
 
 /*
