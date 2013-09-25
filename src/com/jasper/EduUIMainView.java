@@ -201,9 +201,9 @@ public class EduUIMainView extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jPanelCalibration = new javax.swing.JPanel();
         jPanelSlit = new Slit();
-        jPanelSignalProcessing = new javax.swing.JPanel();
+        jPanelSignalProcessing = new SignalProcessing();
         jLayeredPane5 = new javax.swing.JLayeredPane();
-        jPanelPhaseRetarder = new javax.swing.JPanel();
+        jPanelPhaseRetarder = new PhaseRetarder();
         jLayeredPane6 = new javax.swing.JLayeredPane();
         panelist.add((OpticsPane)jPanelSlit);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -316,40 +316,10 @@ public class EduUIMainView extends javax.swing.JFrame {
         // END Slit
 
         // BEGIN Signal Processing
-        javax.swing.GroupLayout jPanelSignalProcessingLayout = new javax.swing.GroupLayout(jPanelSignalProcessing);
-        jPanelSignalProcessing.setLayout(jPanelSignalProcessingLayout);
-        jPanelSignalProcessingLayout.setHorizontalGroup(
-            jPanelSignalProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSignalProcessingLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLayeredPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(458, Short.MAX_VALUE))
-        );
-        jPanelSignalProcessingLayout.setVerticalGroup(
-            jPanelSignalProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSignalProcessingLayout.createSequentialGroup()
-                .addGap(0, 73, Short.MAX_VALUE)
-                .addComponent(jLayeredPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
         tabbedGaneral.addTab("Signal Processing", jPanelSignalProcessing);
         // END Signal Processing
 
         // BEGIN Phase retarder
-        javax.swing.GroupLayout jPanelPhaseRetarderLayout = new javax.swing.GroupLayout(jPanelPhaseRetarder);
-        jPanelPhaseRetarder.setLayout(jPanelPhaseRetarderLayout);
-        jPanelPhaseRetarderLayout.setHorizontalGroup(
-            jPanelPhaseRetarderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPhaseRetarderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(458, Short.MAX_VALUE))
-        );
-        jPanelPhaseRetarderLayout.setVerticalGroup(
-            jPanelPhaseRetarderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPhaseRetarderLayout.createSequentialGroup()
-                .addGap(0, 73, Short.MAX_VALUE)
-                .addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
         tabbedGaneral.addTab("Phase retarder", jPanelPhaseRetarder);
         // END Phase retarder
 
