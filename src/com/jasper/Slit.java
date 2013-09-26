@@ -4,7 +4,6 @@
  */
 package com.jasper;
 
-import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle;
 import sun.swing.DefaultLayoutStyle;
@@ -14,6 +13,7 @@ import sun.swing.DefaultLayoutStyle;
  * @author T420
  */
 public class Slit extends OpticsPane {
+
     EduPatternJPanel panelPatternSet = new EduPatternJPanel();
     PatternImage image1 = new PatternImage();
     LayoutStyle layuotStyle = new DefaultLayoutStyle();
@@ -36,24 +36,27 @@ public class Slit extends OpticsPane {
     private void initComponents() {
         panelPattern = new EduPatternJPanel();
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
-        // layOutCanvas = new javax.swing.JLayeredPane();
-        combobox = new javax.swing.JComboBox();
-        b_ganerate = new javax.swing.JButton();
+
         text_single_rotation = new javax.swing.JTextField();
-        text_single_height = new javax.swing.JTextField();
         s_single_gray = new javax.swing.JSlider();
-        text_single_gray = new javax.swing.JTextField();
         s_single_position = new javax.swing.JSlider();
         text_single_position = new javax.swing.JTextField();
         l_position = new javax.swing.JLabel();
         l_rotation = new javax.swing.JLabel();
-        text_single_width = new javax.swing.JTextField();
         l_gaylevel = new javax.swing.JLabel();
-        l_width = new javax.swing.JLabel();
-        l_height = new javax.swing.JLabel();
-        s_single_height = new javax.swing.JSlider();
         s_single_rotation = new javax.swing.JSlider();
+        b_ganerate = new javax.swing.JButton();
+        l_width = new javax.swing.JLabel();
+        text_single_width = new javax.swing.JTextField();
         s_single_width = new javax.swing.JSlider();
+        l_height = new javax.swing.JLabel();
+        text_single_height = new javax.swing.JTextField();
+        s_single_height = new javax.swing.JSlider();
+        text_single_gray = new javax.swing.JTextField();
+        combobox = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        text_spacing = new javax.swing.JTextField();
+        s_spacing = new javax.swing.JSlider();
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_rotation, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_single_rotation.setMaximum(180);
@@ -119,6 +122,7 @@ public class Slit extends OpticsPane {
                 buttonGenerateActionPerformed(evt);
             }
         });
+        combobox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Single Slit", "Double Slit", " "}));
         combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Object selected = combobox.getSelectedItem();
@@ -131,15 +135,27 @@ public class Slit extends OpticsPane {
                     //updatePatternScreen();
                 }
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel);
+                image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel, spacing);
                 image.slit(slit);
                 EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
             }
         });
-        combobox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Single Slit", "Double Slit"}));
+
+        jLabel1.setText("Spacing");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_spacing.setMaximum(image1.getBounds().height);
+        s_spacing.setValue(400);
+        s_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformed(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -148,54 +164,70 @@ public class Slit extends OpticsPane {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
+                .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(l_position, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(l_gaylevel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(l_position)
-                .addGap(35, 35, 35))
+                .addComponent(l_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
                 .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(l_rotation)
-                .addComponent(l_height))
+                .addComponent(l_height, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(l_width, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(l_gaylevel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(l_width))
-                .addGap(10, 10, 10)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(text_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(s_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
                 .addComponent(text_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createSequentialGroup()
                 .addComponent(text_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(s_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(s_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addComponent(text_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(s_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(s_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addComponent(text_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(s_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(s_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createSequentialGroup()
                 .addComponent(text_single_width, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(s_single_width, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)));
+                .addComponent(s_single_width, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18))
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)))));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
                 .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(s_single_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -219,20 +251,25 @@ public class Slit extends OpticsPane {
                 .addComponent(l_position)
                 .addComponent(text_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(s_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(l_gaylevel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(text_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE)));
-        panelPatternSet = (EduPatternJPanel) panelPattern;
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel1)
+                .addComponent(text_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(s_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(95, Short.MAX_VALUE)));
         bindingGroup.bind();
     }// </editor-fold>         
-    private double width = Double.valueOf(image1.getBounds().width), height = 100, rotation = 0, position = Double.valueOf(image1.getBounds().height) / 2, grayLevel = 255;
+    private double width = Double.valueOf(image1.getBounds().width), height = 100, rotation = 0, position = Double.valueOf(image1.getBounds().height) / 2, grayLevel = 255, spacing = 400;
 
     private boolean parseArguments() {
         boolean ret = false;
@@ -242,6 +279,7 @@ public class Slit extends OpticsPane {
             double position = Double.valueOf(s_single_position.getValue());
             double rotation = Double.valueOf(s_single_rotation.getValue());
             double grayLevel = Double.valueOf(s_single_gray.getValue());
+            double spacing = Double.valueOf(s_spacing.getValue());
 
             ret = true;
             this.width = width;
@@ -249,6 +287,7 @@ public class Slit extends OpticsPane {
             this.position = position;
             this.rotation = rotation;
             this.grayLevel = grayLevel;
+            this.spacing = spacing;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, warnings);
             s_single_width.setValue((int) (width));
@@ -267,7 +306,7 @@ public class Slit extends OpticsPane {
     private void sliderGenerateActionPerformed(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel);
+            image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel, spacing);
             image.slit(slit);
             EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -277,7 +316,7 @@ public class Slit extends OpticsPane {
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel);
+            image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel, spacing);
             image.slit(slit);
             EduPatternTest.updateLensPattern(image, genLog());
             imageGenerated = true;
@@ -291,17 +330,20 @@ public class Slit extends OpticsPane {
     private javax.swing.JLabel l_position;
     private javax.swing.JLabel l_rotation;
     private javax.swing.JLabel l_width;
-    // private javax.swing.JLayeredPane layOutCanvas;
+    private javax.swing.JLabel jLabel1;
+    // private javax.swing.JLayeredPane panelPattern;
     private javax.swing.JSlider s_single_gray;
     private javax.swing.JSlider s_single_height;
     private javax.swing.JSlider s_single_position;
     private javax.swing.JSlider s_single_rotation;
     private javax.swing.JSlider s_single_width;
+    private javax.swing.JSlider s_spacing;
     private javax.swing.JTextField text_single_gray;
     private javax.swing.JTextField text_single_height;
     private javax.swing.JTextField text_single_position;
     private javax.swing.JTextField text_single_rotation;
     private javax.swing.JTextField text_single_width;
+    private javax.swing.JTextField text_spacing;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     private javax.swing.JPanel panelPattern;
     private int slit = 1;
@@ -311,7 +353,7 @@ public class Slit extends OpticsPane {
     void updatePatternScreen() {
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
         if (!imageGenerated) {
-            image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel);
+            image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel, spacing);
             image.slit(slit);
             imageGenerated = true;
         }
@@ -321,14 +363,14 @@ public class Slit extends OpticsPane {
     // paint boot screen, lens only
     void bootScreen() {
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel);
+        image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel, spacing);
         image.slit(slit);
     }
 
     void updateRegenerate() {
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
         if (imageGenerated) {
-            image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel);
+            image.updateLensParameterDrawSlit(slit, width, height, position, rotation, grayLevel, spacing);
             image.slit(slit);
         }
     }
