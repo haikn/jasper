@@ -51,6 +51,7 @@ public class PatternImage {
     private double d_rotation;
     private double d_grayLevel;
     private double d_zoom;
+    private double d_spacing;
     //end
     public BufferedImage canvas;
     public static int width;
@@ -115,12 +116,13 @@ public class PatternImage {
         title = "lens " + xoff + " " + yoff + " " + focal;
     }
 
-    void updateLensParameterDrawSlit(int slit, double width, double height, double postion, double rotation, double grayLevel) {
+    void updateLensParameterDrawSlit(int slit, double width, double height, double postion, double rotation, double grayLevel, double spacing) {
         this.d_widthX = width;
         this.d_heightX = height;
         this.d_postionX = postion;
         this.d_rotation = rotation;
         this.d_grayLevel = grayLevel;
+        this.d_spacing = spacing;
         title = (slit < 2 ? "Draw Single Slit " : "Draw Double Slit ") + d_widthX + " " + d_heightX + " " + this.d_postionX + " " + this.d_rotation + " " + this.d_grayLevel;
     }
 
@@ -355,7 +357,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -372,7 +374,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     // Diffraction algorithms
     public void paintDiffraction() {
         WritableRaster raster = canvas.getRaster();
@@ -403,7 +405,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -420,7 +422,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     // Phase algorithms
     public void paintPhase() {
         WritableRaster raster = canvas.getRaster();
@@ -451,7 +453,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -468,7 +470,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     // Signal algorithms
     public void paintSignal() {
         WritableRaster raster = canvas.getRaster();
@@ -499,7 +501,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -516,7 +518,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     // Spectrometer algorithms
     public void paintSpectrometer() {
         WritableRaster raster = canvas.getRaster();
@@ -547,7 +549,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -564,7 +566,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     // Talbot algorithms
     public void paintTalbot() {
         WritableRaster raster = canvas.getRaster();
@@ -595,7 +597,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -612,7 +614,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     // Wavefront algorithms
     public void paintWavefront() {
         WritableRaster raster = canvas.getRaster();
@@ -643,7 +645,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -660,7 +662,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     // Wavelength algorithms
     public void paintWavelength() {
         WritableRaster raster = canvas.getRaster();
@@ -691,7 +693,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -739,7 +741,7 @@ public class PatternImage {
 //
 //        % wavefront and its phase
 //        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-        
+
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;
@@ -756,7 +758,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     private static int[] parseElement(String s) throws IOException {
         int[] ret = new int[gray2phase.length];
         int idx = 0;
@@ -882,22 +884,41 @@ public class PatternImage {
         if (slit == 0) {
             slit = 1;
         }
+
         int lineWidth = (int) d_widthX;
         int lineHeight = (int) d_heightX;
         int lineRotation = (int) d_rotation;
         int linePostion = (int) d_postionX;
         int lineGray = (int) d_grayLevel;
+        int spac = (int) d_spacing;
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         int NumRow = slit;
         int[] RowY;
         RowY = new int[NumRow];
         int DelY = canvas.getHeight() / NumRow;
-        for (int i = 0; i < RowY.length; i++) {
-            if (linePostion > 0) {
+
+        if (slit == 1) {
+            for (int i = 0; i < RowY.length; i++) {
+                // if (linePostion == 384) {
                 RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
-            } else {
-                RowY[i] = DelY / 2 + DelY * i;
+//                } else {
+//                    RowY[i] = DelY / 2 + DelY * i;
+//                }
+            }
+        } else {
+
+            for (int i = 0; i < RowY.length; i++) {
+
+//                if (linePostion != 384) {
+//                    System.out.println(">>>>>>>>>>>>>>>vaoooooooooo");
+//                    RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
+//                } else {
+                if (i == 0) {
+                    RowY[i] = (linePostion - canvas.getHeight() / 2) + ((DelY) - spac / 2);
+                } else {
+                    RowY[i] = (linePostion - canvas.getHeight() / 2) + ((DelY) + spac / 2);
+                }
             }
         }
         Rectangle rect2;
