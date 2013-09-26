@@ -20,13 +20,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 /**
  * This PatternImage include the algorithms of application
@@ -339,6 +334,11 @@ public class PatternImage {
 
         double phy = Math.toRadians(mirrorPhy);
         double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
 
 // following statement is for debugging
 //		pi = Math.toRadians(3.0);
@@ -347,10 +347,15 @@ public class PatternImage {
         double ycomp = Math.sin(phy) * Math.sin(theta);
 
         double fixpart = 2.0 * Math.PI / lambda;
-
-// following statement is for debugging
-//		System.out.println("paintMirror");
-
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xcomp * x;

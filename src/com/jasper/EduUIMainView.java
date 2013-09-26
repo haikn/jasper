@@ -1,28 +1,16 @@
 package com.jasper;
 
-import com.jasper.michelson.Graf_Michelson;
-import com.jasper.michelson.Img_Michelson;
-import com.jasper.michelson.Interferometros;
-import com.patterns.Drawpicture;
-import com.patterns.Jdoubleslit;
-import com.patterns.Jsignalprocessing;
-import com.patterns.Jsingleslit;
-import difraccion.DifraccionApplet;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JDesktopPane;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -356,11 +344,9 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle("");
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics.addTab("Lens", jPanelExperimentDefault);
-        jTabbedPaneOptics.addTab("Calibration", null);
-        jTabbedPaneOptics.addTab("Slit", null);
-        jTabbedPaneOptics.addTab("Signal processing", null);
-        jTabbedPaneOptics.addTab("Phase retarder", null);
+        jTabbedPaneOptics.addTab("Lens", null);
+        jTabbedPaneOptics.addTab("Cylindrical", null);
+        jTabbedPaneOptics.addTab("Mirror", null);
         jTabbedPaneOptics.addTab("Description", null);
         setTabPanelEnable(jTabbedPaneOptics, false);
         
