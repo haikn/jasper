@@ -47,7 +47,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jPanelMirror3 = new Mirror();
         jPanelMirror4 = new Mirror();
         // Aber
-        jPanelAber1 = new Mirror();
+        jPanelAber1 = new Aber();
         // Mach
         jPanelMach1 = new Mach();
         // Michelson
@@ -139,6 +139,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelExperimentDefault);
         jTabbedPaneOptics.addTab("Cylindrical", null);
         jTabbedPaneOptics.addTab("Mirror", null);
+        jTabbedPaneOptics.addTab("Description", null);
 //        jTabbedPaneOptics.addTab("Signal processing", null);
         
         // END paint boot screen, a lens pattern
@@ -379,6 +380,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleAber);
         
         jTabbedPaneOptics.removeAll();
+        jTabbedPaneOptics.addTab("Lens", jPanelAber1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         jTabbedPaneOptics.addTab("Description", jPanelDescriptionAberration);
@@ -403,7 +405,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelDiffraction1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
-
+        jTabbedPaneOptics.addTab("Description", null);
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemDiffractionActionPerformed
 
@@ -414,6 +416,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelSpectrometer1);        
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
+        jTabbedPaneOptics.addTab("Description", null);
         setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemSpectrometerActionPerformed
 
@@ -424,7 +427,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelSignal1);        
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
-        
+        jTabbedPaneOptics.addTab("Description", null);
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemSignalProcessingActionPerformed
 
@@ -435,6 +438,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelPhase1);        
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
+        jTabbedPaneOptics.addTab("Description", null);
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemPhaseShiftingActionPerformed
 
@@ -445,7 +449,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelTalbot1);        
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
-        
+        jTabbedPaneOptics.addTab("Description", null);
         setTabPanelEnable(jTabbedPaneOptics, true);        
     }//GEN-LAST:event_jMenuItemTalbotImagesActionPerformed
 
@@ -456,7 +460,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelWavefront1);        
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
-
+        jTabbedPaneOptics.addTab("Description", null);
         setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemWavefrontActionPerformed
 
@@ -467,7 +471,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelWavelength1);        
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
-        
+        jTabbedPaneOptics.addTab("Description", null);
         setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemWavelengthActionPerformed
 

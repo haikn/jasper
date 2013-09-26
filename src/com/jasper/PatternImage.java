@@ -372,7 +372,391 @@ public class PatternImage {
             }
         }
     }
+    
+    // Diffraction algorithms
+    public void paintDiffraction() {
+        WritableRaster raster = canvas.getRaster();
 
+        int[] iArray = new int[1];
+        double phase, x, y;
+
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
+
+// following statement is for debugging
+//		pi = Math.toRadians(3.0);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+// following statement is for debugging
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
+    // Phase algorithms
+    public void paintPhase() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double phase, x, y;
+
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
+
+// following statement is for debugging
+//		pi = Math.toRadians(3.0);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+// following statement is for debugging
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
+    // Signal algorithms
+    public void paintSignal() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double phase, x, y;
+
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
+
+// following statement is for debugging
+//		pi = Math.toRadians(3.0);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+// following statement is for debugging
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
+    // Spectrometer algorithms
+    public void paintSpectrometer() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double phase, x, y;
+
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
+
+// following statement is for debugging
+//		pi = Math.toRadians(3.0);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+// following statement is for debugging
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
+    // Talbot algorithms
+    public void paintTalbot() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double phase, x, y;
+
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
+
+// following statement is for debugging
+//		pi = Math.toRadians(3.0);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+// following statement is for debugging
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
+    // Wavefront algorithms
+    public void paintWavefront() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double phase, x, y;
+
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
+
+// following statement is for debugging
+//		pi = Math.toRadians(3.0);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+// following statement is for debugging
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
+    // Wavelength algorithms
+    public void paintWavelength() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double phase, x, y;
+
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
+
+// following statement is for debugging
+//		pi = Math.toRadians(3.0);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+// following statement is for debugging
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+
+    // Aber algorithms
+    public void paintAber() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double phase, x, y;
+
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
+//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
+//        double phy = Math.PI/300;
+//        double theta = Math.PI/10;
+        double focal = Math.toRadians(mirrorPhy);
+
+// following statement is for debugging
+//		pi = Math.toRadians(3.0);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=x*cos(theta)+y*sin(theta);
+//
+//        yt=-x*sin(theta)+y*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
+        
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+// following statement is for debugging
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
     private static int[] parseElement(String s) throws IOException {
         int[] ret = new int[gray2phase.length];
         int idx = 0;
