@@ -255,35 +255,38 @@ public class CylincalLens extends OpticsPane {
     }// </editor-fold>//GEN-END:initComponents
 
     // Optical arguments, which will be parsed before reassigning the values
-    private double xoff=0.0, yoff=0.0, focal=1;
+    private double xoff=0.0, angle=0.0, focal=1;
     private boolean parseArguments() {
     	boolean ret = false;
     	try {
+                // double xoff = Double.valueOf(textXpos.getText());
+	    	//double angle = Double.valueOf(textRotation.getText());
+	    	//double foca
 	    	double xoff = Double.valueOf(textXpos.getText());
-	    	double yoff = Double.valueOf(textYpos.getText());
+	    	double angle = Double.valueOf(textYpos.getText());
 	    	double focal = Double.valueOf(sliderFocal.getValue());
 	    	ret = true;	    	
 	    	this.xoff=xoff;
-	    	this.yoff=yoff;
+	    	this.angle=angle;
 	    	this.focal=focal;
     	}
     	catch (Exception e) {
     		JOptionPane.showMessageDialog(null, warnings);
-                textXpos.setText(String.valueOf(this.yoff));
-    		textYpos.setText(String.valueOf(this.yoff));
+                textXpos.setText(String.valueOf(this.xoff));
+    		textYpos.setText(String.valueOf(this.angle));
     		textFocal.setText(String.valueOf(this.focal));
     	}
     	return ret;
     }
     
     private String genLog() {
-		return String.format(logmessage, Double.toString(xoff), Double.toString(yoff), Double.toString(focal));
+		return String.format(logmessage, Double.toString(xoff), Double.toString(angle), Double.toString(focal));
     }
 
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
 		if (parseArguments()) {
 			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-			image.updateCyllindricalParameter(xoff, yoff, focal);
+			image.updateCyllindricalParameter(xoff, angle, focal);
 			image.paintCylindircal();
 			EduPatternTest.updateLensPattern(image, genLog());
 			imageGenerated = true;
@@ -293,7 +296,7 @@ public class CylincalLens extends OpticsPane {
     private void sliderGenerateActionPerformed(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
 		if (parseArguments()) {
 			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-			image.updateCyllindricalParameter(xoff, yoff, focal);
+			image.updateCyllindricalParameter(xoff, angle, focal);
 			image.paintCylindircal();
 			EduPatternTest.updateLensPatternPattern(image, genLog());
 			imageGenerated = true;
@@ -338,7 +341,7 @@ public class CylincalLens extends OpticsPane {
 	void updatePatternScreen() {
 		PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
 		if (!imageGenerated) {
-			image.updateCyllindricalParameter(xoff, yoff, focal);
+			image.updateCyllindricalParameter(xoff, angle, focal);
 			image.paintCylindircal();
 			imageGenerated = true;
 		}
@@ -348,10 +351,10 @@ public class CylincalLens extends OpticsPane {
     void updateRegenerate() {
     	PatternImage image = ((EduPatternJPanel)panelPattern).pimage;
 		if (imageGenerated) {
-	    	image.updateCyllindricalParameter(xoff, yoff, focal);
+	    	image.updateCyllindricalParameter(xoff, angle, focal);
 	    	image.paintCylindircal();
 		}
     }
 
-    static String logmessage="pattern Cyllindrical xoff=%s yoff=%s focal=%s";
+    static String logmessage="pattern Cyllindrical xoff=%s angle=%s focal=%s";
 }
