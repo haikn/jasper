@@ -111,7 +111,7 @@ public class Slit extends OpticsPane {
         });
         bindingGroup.addBinding(binding);
 
-        l_position.setText("Postions");
+        l_position.setText("Positions");
         l_rotation.setText("Rotation");
         l_gaylevel.setText("GrayLevel ");
         l_width.setText("Width");

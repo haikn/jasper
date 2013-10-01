@@ -153,8 +153,8 @@ public class SignalProcessing extends OpticsPane {
         l_width_y.setText("Width Y");
         l_height_y.setText("Height Y");
         l_height_x.setText("Height X");
-        l_position_x.setText("PostionsX");
-        l_position_y.setText("PostionsY");
+        l_position_x.setText("Position X");
+        l_position_y.setText("Position Y");
         l_rotation.setText("Rotation");
         l_gaylevel.setText("GrayLevel");
         b_ganerate.setText("Generate");
