@@ -144,7 +144,6 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.addTab("Lens", jPanelExperimentDefault);
         jTabbedPaneOptics.addTab("Cylindrical", null);
         jTabbedPaneOptics.addTab("Mirror", null);
-        jTabbedPaneOptics.addTab("Description", null);
 //        jTabbedPaneOptics.addTab("Signal processing", null);
         
         // END paint boot screen, a lens pattern
