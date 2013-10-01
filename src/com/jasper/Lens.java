@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
  */
 /**
  *
- * @author Jeff Lee
+ * @author sonnv09
  */
 public class Lens extends OpticsPane {
 
@@ -29,106 +29,8 @@ public class Lens extends OpticsPane {
     private void initComponents() {
 
         panelPattern = new EduPatternJPanel();
-        //labelFocal = new javax.swing.JLabel();
         textFocal = new javax.swing.JTextField();
-        //labelXpos = new javax.swing.JLabel();
-        //textXpos = new javax.swing.JTextField();
-        //labelYpos = new javax.swing.JLabel();
         textYpos = new javax.swing.JTextField();
-        //buttonGenerate = new javax.swing.JButton();
-
-//        javax.swing.GroupLayout panelPatternLayout = new javax.swing.GroupLayout(panelPattern);
-//        panelPattern.setLayout(panelPatternLayout);
-//        panelPatternLayout.setHorizontalGroup(
-//            panelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 480, Short.MAX_VALUE)
-//        );
-//        panelPatternLayout.setVerticalGroup(
-//            panelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 270, Short.MAX_VALUE)
-//        );
-
-//        labelFocal.setText("Focal length");
-//
-//        textFocal.setText("0.0522");
-//        textFocal.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                textFocalActionPerformed(evt);
-//            }
-//        });
-//
-//        labelXpos.setText("X Position");
-//
-//        textXpos.setText("0.0");
-//        textXpos.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                textXposActionPerformed(evt);
-//            }
-//        });
-//
-//        labelYpos.setText("Y Position");
-//
-//        textYpos.setText("0.0");
-//        textYpos.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                textYposActionPerformed(evt);
-//            }
-//        });
-//
-//        buttonGenerate.setText("Generate");
-//        buttonGenerate.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                buttonGenerateActionPerformed(evt);
-//            }
-//        });
-
-//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-//        this.setLayout(layout);
-//        layout.setHorizontalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(layout.createSequentialGroup()
-//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                    .addGroup(layout.createSequentialGroup()
-//                        .addContainerGap(6, 6)
-//                        .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-//                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                            .addGroup(layout.createSequentialGroup()
-//                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                                    .addComponent(labelFocal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                    .addComponent(labelXpos)
-//                                    .addComponent(labelYpos))
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-//                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                                    .addComponent(textYpos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                    .addComponent(textXpos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                    .addComponent(textFocal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                            .addComponent(buttonGenerate))))
-//                .addContainerGap(6, 6))
-//        );
-//        layout.setVerticalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(layout.createSequentialGroup()
-//                .addContainerGap(6, 6)
-//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                    .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addGroup(layout.createSequentialGroup()
-//                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                            .addComponent(labelFocal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                            .addComponent(textFocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                            .addComponent(labelXpos)
-//                            .addComponent(textXpos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                            .addComponent(labelYpos)
-//                            .addComponent(textYpos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                        .addComponent(buttonGenerate))))
-//        );
-        
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel1 = new javax.swing.JLabel();
@@ -141,6 +43,8 @@ public class Lens extends OpticsPane {
         textYpos = new javax.swing.JTextField();
         sliderYPos = new javax.swing.JSlider();
         ok = new javax.swing.JButton();
+        btnLensON = new javax.swing.JButton();
+        btnSecond = new javax.swing.JButton();
 
         jLabel1.setText("Focal length");
 
@@ -198,6 +102,20 @@ public class Lens extends OpticsPane {
                 buttonGenerateActionPerformed(evt);
             }
         });
+        
+        btnLensON.setText("1:1 lens ON");
+        btnLensON.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //buttonGenerateActionPerformed(evt);
+            }
+        });
+        
+        btnSecond.setText("Second display ON");
+        btnSecond.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -214,8 +132,12 @@ public class Lens extends OpticsPane {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnLensON, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +176,12 @@ public class Lens extends OpticsPane {
                                 .addComponent(jLabel3)
                                 .addComponent(textYpos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnLensON, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        )
+                ))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -335,6 +262,8 @@ public class Lens extends OpticsPane {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton ok;
+    private javax.swing.JButton btnLensON;
+    private javax.swing.JButton btnSecond;
     private javax.swing.JTextField textXpos;
     private javax.swing.JTextField textYpos;
     private javax.swing.JTextField textFocal;
