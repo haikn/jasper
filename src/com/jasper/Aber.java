@@ -50,7 +50,8 @@ public class Aber extends OpticsPane {
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderFocal, org.jdesktop.beansbinding.ELProperty.create("${value}"), textFocal, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        sliderFocal.setMaximum(10);
+        sliderFocal.setMaximum(100);
+        sliderFocal.setMinimum(-100);
         sliderFocal.setValue(1);
         sliderFocal.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
