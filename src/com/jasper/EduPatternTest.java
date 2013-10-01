@@ -199,7 +199,7 @@ public class EduPatternTest {
 
 		controlFrame.pack();
 		controlFrame.setVisible(true);
-		controlFrame.setResizable(false);
+		controlFrame.setResizable(true);
 
 		// following line is for debugging. it's very useful when using with one
 		// display only
