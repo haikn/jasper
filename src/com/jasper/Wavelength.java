@@ -50,7 +50,8 @@ public class Wavelength extends OpticsPane {
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderFocal, org.jdesktop.beansbinding.ELProperty.create("${value}"), textFocal, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        sliderFocal.setMaximum(10);
+        sliderFocal.setMaximum(100);
+        sliderFocal.setMinimum(-100);
         sliderFocal.setValue(1);
         sliderFocal.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -58,12 +59,13 @@ public class Wavelength extends OpticsPane {
             }
         });
 
-        jLabel2.setText("X Postion");
+        jLabel2.setText("X Position");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderXpos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textXpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         
         sliderXpos.setMaximum(100);
+        sliderXpos.setMinimum(-100);
         sliderXpos.setValue(0);
         sliderXpos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -71,12 +73,13 @@ public class Wavelength extends OpticsPane {
             }
         });
 
-        jLabel3.setText("Y Postion");
+        jLabel3.setText("Y Position");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderYPos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textYpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         sliderYPos.setMaximum(100);
+        sliderYPos.setMinimum(-100);
         sliderYPos.setValue(0);
         sliderYPos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {

@@ -121,5 +121,5 @@ public class AboutView extends JDialog {
 	private JLabel labelJDC;
 	private JLabel labelJDCIcon;
 	
-	private String versionStr = "v1.000";
+	private String versionStr = "v2.000";
 }

@@ -294,8 +294,20 @@ public class PatternImage {
 
     // Cylindircal algorithms
     public void paintCylindircal() {
+//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+//
+//        xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
+//        yt=-(x-x0)*sin(theta)+(y-y0)*cos(theta);
+//
+//        % wavefront and its phase
+//        wave=exp(1i*pi/wl*xt.^2);
+//        phase=angle(wave)+pi;
+//
+//        % Hologram
+//        hologram=phase/pi/2;
+//        imshow(hologram)
         WritableRaster raster = canvas.getRaster();
-
+        // wave=exp(1i*pi/wl*xt.^2);
         int[] iArray = new int[1];
         double x1, y1, x2, phase;
 
@@ -305,9 +317,6 @@ public class PatternImage {
         double costheta = Math.cos(Math.toRadians(angle));
         double sintheta = Math.sin(Math.toRadians(angle));
 
-// following statement is for debugging
-//		System.out.println("paintCylindircal");
-
         for (int i = 0; i < height; i++) {
             x1 = (double) (i - height / 2 + 1) * pxsize;
             x1 -= xoff;
@@ -316,10 +325,6 @@ public class PatternImage {
                 x2 = x1 * costheta - y1 * sintheta;
                 x2 = Math.pow(x2, 2.0);
                 phase = fixpart * x2 + fixpart2 * y1;
-
-// following two statements are for debugging
-//				phase = fixpart2 * y1;
-//				System.out.println("i="+i+" j="+j+" phase="+phase);
 
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
@@ -333,30 +338,16 @@ public class PatternImage {
 
         int[] iArray = new int[1];
         double phase, x, y;
-
-        double phy = Math.toRadians(mirrorPhy);
-        double theta = Math.toRadians(mirrorTheta);
-//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
-//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
-//        double phy = Math.PI/300;
-//        double theta = Math.PI/10;
+        double pi = Math.toRadians(mirrorPhy);
+        double th = Math.toRadians(mirrorTheta);
+        double phy = pi/10;
+        double theta = th/10;
         double focal = Math.toRadians(mirrorPhy);
-
-// following statement is for debugging
-//		pi = Math.toRadians(3.0);
 
         double xcomp = Math.sin(phy) * Math.cos(theta);
         double ycomp = Math.sin(phy) * Math.sin(theta);
 
         double fixpart = 2.0 * Math.PI / lambda;
-//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-//
-//        xt=x*cos(theta)+y*sin(theta);
-//
-//        yt=-x*sin(theta)+y*cos(theta);
-//
-//        % wavefront and its phase
-//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
 
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
@@ -365,9 +356,6 @@ public class PatternImage {
                 y = (double) (j - width / 2 + 1) * pxsize;
                 y = ycomp * y;
                 phase = fixpart * (x + y);
-
-// following statement is for debugging
-//				System.out.println("i="+i+" j="+j+" phase="+phase);
 
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
