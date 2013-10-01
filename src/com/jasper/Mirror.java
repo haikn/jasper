@@ -51,6 +51,7 @@ public class Mirror extends OpticsPane {
         bindingGroup.addBinding(binding);
         
         sliderXpos.setMaximum(1000);
+        sliderXpos.setMinimum(-1000);
         sliderXpos.setValue(522);
         sliderXpos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -64,6 +65,7 @@ public class Mirror extends OpticsPane {
         bindingGroup.addBinding(binding);
 
         sliderYPos.setMaximum(1000);
+        sliderYPos.setMinimum(-1000);
         sliderYPos.setValue(522);
         sliderYPos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -133,7 +135,7 @@ public class Mirror extends OpticsPane {
     }// </editor-fold>//GEN-END:initComponents
 
     // Optical arguments, which will be parsed before reassigning the values
-    private double phy=522.0, theta=522.0;
+    private double phy=52.0, theta=52.0;
     private boolean parseArguments() {
     	boolean ret = false;
     	try {
