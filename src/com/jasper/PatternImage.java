@@ -338,10 +338,12 @@ public class PatternImage {
 
         int[] iArray = new int[1];
         double phase, x, y;
-        double pi = Math.toRadians(mirrorPhy);
-        double th = Math.toRadians(mirrorTheta);
-        double phy = pi/10;
-        double theta = th/10;
+        double phy = Math.toRadians(mirrorPhy);
+        double theta = Math.toRadians(mirrorTheta);
+//        double pi = Math.toRadians(mirrorPhy);
+//        double th = Math.toRadians(mirrorTheta);
+//        double phy = pi/10.0D;
+//        double theta = th/10.0D;
         double focal = Math.toRadians(mirrorPhy);
 
         double xcomp = Math.sin(phy) * Math.cos(theta);

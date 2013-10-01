@@ -149,6 +149,8 @@ public class Lens extends OpticsPane {
 
         sliderFocal.setMaximum(100000);
         sliderFocal.setMinimum(-1000);
+        //sliderFocal.setMinorTickSpacing(2000);
+        //sliderFocal.setPaintTicks(true);
         sliderFocal.setValue(522);
         sliderFocal.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -161,8 +163,11 @@ public class Lens extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderXpos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textXpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         
+        textXpos.setText("" + sliderXpos.getValue() / 1000.0D);
         sliderXpos.setMaximum(100);
         sliderXpos.setMinimum(-100);
+        //sliderXpos.setMinorTickSpacing(10);
+        //sliderXpos.setPaintTicks(true);
         sliderXpos.setValue(0);
         sliderXpos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -175,15 +180,18 @@ public class Lens extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderYPos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textYpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+        
         sliderYPos.setMaximum(100);
         sliderYPos.setMinimum(-100);
+        //sliderYPos.setMinorTickSpacing(10);
+        //sliderYPos.setPaintTicks(true);
         sliderYPos.setValue(0);
         sliderYPos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformed(evt);
             }
         });
-
+        //textYpos.setText("0" + sliderYPos.getValue() / 100.0D);
         ok.setText("Generate");
         ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

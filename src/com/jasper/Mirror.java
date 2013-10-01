@@ -50,8 +50,9 @@ public class Mirror extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderXpos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textXpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         
-        sliderXpos.setMaximum(1000);
-        sliderXpos.setMinimum(-1000);
+        //textXpos.setText("" + sliderXpos.getValue() / 100.0D);
+        sliderXpos.setMaximum(10000);
+        sliderXpos.setMinimum(-10000);
         sliderXpos.setValue(522);
         sliderXpos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -64,8 +65,8 @@ public class Mirror extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderYPos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textYpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        sliderYPos.setMaximum(1000);
-        sliderYPos.setMinimum(-1000);
+        sliderYPos.setMaximum(10000);
+        sliderYPos.setMinimum(-10000);
         sliderYPos.setValue(522);
         sliderYPos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -135,7 +136,7 @@ public class Mirror extends OpticsPane {
     }// </editor-fold>//GEN-END:initComponents
 
     // Optical arguments, which will be parsed before reassigning the values
-    private double phy=52.0, theta=52.0;
+    private double phy=522.0D, theta=522.0D;
     private boolean parseArguments() {
     	boolean ret = false;
     	try {
