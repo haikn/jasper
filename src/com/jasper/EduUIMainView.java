@@ -407,8 +407,9 @@ public class EduUIMainView extends javax.swing.JFrame {
             .addGroup(panelGeneralLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addContainerGap()
-                .addComponent(jTabbedPaneOptics)
-                .addGap(6, 6, 6))
+                .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                //.addGap(6, 6, 6)
+                )
         );
 
         
@@ -422,7 +423,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         );
         panelCalebrationLayout.setVerticalGroup(
             panelCalebrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
+            .addGap(0, 255, Short.MAX_VALUE)
         );
 
         tabbedControl.addTab("Calibration", panelCalebration);
@@ -466,7 +467,7 @@ public class EduUIMainView extends javax.swing.JFrame {
 
         tabbedControl.addTab("Phase Retarder", jPanelPhaseRetarder);
 
-        tabbedControl.setBounds(10, 0, 670, 300);
+        tabbedControl.setBounds(10, 0, 670, 353);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutPattern.add(jPanelLens1);
 //        layoutDescription.add(tabbedDesLog);
@@ -484,8 +485,8 @@ public class EduUIMainView extends javax.swing.JFrame {
                     .addComponent(tabbedDesLog , javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
-                    .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE))
+                    .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
         layout.setVerticalGroup(
@@ -493,12 +494,12 @@ public class EduUIMainView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPaneOptics2, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                    .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
+                    .addComponent(jTabbedPaneOptics2, javax.swing.GroupLayout.DEFAULT_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                    .addComponent(tabbedDiagram))
+                    .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
 

@@ -182,7 +182,7 @@ public class Lens extends OpticsPane {
                                 .addComponent(btnSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         )
                 ))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(0, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
