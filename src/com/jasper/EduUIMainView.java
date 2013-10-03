@@ -451,7 +451,7 @@ public class EduUIMainView extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
-        tabbedControl.addTab("Signal Processing", panelSignal);
+        tabbedControl.addTab("Signal Processing", jPanelSignalProcessing);
 
         javax.swing.GroupLayout panelPhaseLayout = new javax.swing.GroupLayout(panelPhase);
         panelPhase.setLayout(panelPhaseLayout);
@@ -464,7 +464,7 @@ public class EduUIMainView extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
-        tabbedControl.addTab("Phase Retarder", panelPhase);
+        tabbedControl.addTab("Phase Retarder", jPanelPhaseRetarder);
 
         tabbedControl.setBounds(10, 0, 670, 300);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -485,7 +485,7 @@ public class EduUIMainView extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
-                    .addComponent(layoutControl))
+                    .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE))
                 .addGap(5, 5, 5))
         );
         layout.setVerticalGroup(
@@ -494,7 +494,7 @@ public class EduUIMainView extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTabbedPaneOptics2, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                    .addComponent(layoutControl))
+                    .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
