@@ -16,12 +16,12 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 
-public class EduUIMainView extends javax.swing.JFrame {
+public class EduUIMainView20131003 extends javax.swing.JFrame {
 
     /**
      * Creates new form EduUIMainView
      */
-    public EduUIMainView() {
+    public EduUIMainView20131003() {
         initComponents();
     }
 
@@ -303,22 +303,22 @@ public class EduUIMainView extends javax.swing.JFrame {
 //        tabbedGaneral.addTab("Calibration   ", jPanelCalibration);
 //        // END Calibration
 //        
-//        // BEGIN Slit
-////        javax.swing.GroupLayout jPanelSlitLayout = new javax.swing.GroupLayout(jPanelSlit);
-////        jPanelSlit.setLayout(jPanelSlitLayout);
-////        jPanelSlitLayout.setHorizontalGroup(
-////            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////            .addGroup(jPanelSlitLayout.createSequentialGroup()
-////                .addContainerGap()
-////                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                .addContainerGap(458, Short.MAX_VALUE))
-////        );
-////        jPanelSlitLayout.setVerticalGroup(
-////            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSlitLayout.createSequentialGroup()
-////                .addGap(0, 73, Short.MAX_VALUE)
-////                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-////        );
+        // BEGIN Slit
+//        javax.swing.GroupLayout jPanelSlitLayout = new javax.swing.GroupLayout(jPanelSlit);
+//        jPanelSlit.setLayout(jPanelSlitLayout);
+//        jPanelSlitLayout.setHorizontalGroup(
+//            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(jPanelSlitLayout.createSequentialGroup()
+//                .addContainerGap()
+//                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addContainerGap(458, Short.MAX_VALUE))
+//        );
+//        jPanelSlitLayout.setVerticalGroup(
+//            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSlitLayout.createSequentialGroup()
+//                .addGap(0, 73, Short.MAX_VALUE)
+//                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+//        );
 //        tabbedGaneral.addTab("Slit   ", jPanelSlit);
 //       
 //        // END Slit
@@ -438,7 +438,7 @@ public class EduUIMainView extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
-        tabbedControl.addTab("  Slit  ", panelSlit);
+        tabbedControl.addTab("  Slit  ", jPanelSlit);
 
         javax.swing.GroupLayout panelSignalLayout = new javax.swing.GroupLayout(panelSignal);
         panelSignal.setLayout(panelSignalLayout);
@@ -468,7 +468,7 @@ public class EduUIMainView extends javax.swing.JFrame {
 
         tabbedControl.setBounds(10, 0, 670, 300);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        layoutPattern.add(jPanelLens1);
+        //layoutPattern.add(jPanelLens1);
 //        layoutDescription.add(tabbedDesLog);
 //        layoutDiagram.add(tabbedDiagram);
         
@@ -548,13 +548,12 @@ public class EduUIMainView extends javax.swing.JFrame {
         tabbedDesLog.removeAll();
         
         jTabbedPaneOptics.addTab("Lens", jPanelLens1);
-        jTabbedPaneOptics2.addTab("Pattern", jPanelLens2);
+        jTabbedPaneOptics2.add("Pattern", jPanelLens2);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", jPanelDescriptionLens);
         tabbedDesLog.addTab("Log", jScrollPane2);
         setTabPanelEnable(jTabbedPaneOptics, true);
-        setTabPanelEnable(jTabbedPaneOptics2, true);
         
     }//GEN-LAST:event_jMenuItemTelephotoActionPerformed
 
@@ -744,10 +743,10 @@ public class EduUIMainView extends javax.swing.JFrame {
             }
     	}
     }
-//    public PatternImage pimage = new PatternImage(); 
-//    public void setImage(PatternImage pimage) {
-//		this.pimage = pimage;	
-//    }
+    public PatternImage pimage = new PatternImage(); 
+    public void setImage(PatternImage pimage) {
+		this.pimage = pimage;	
+    }
     
     public void updatePattern(PatternImage pimage1) {
         //System.out.println("msg: " + pimage1.getLambda());
@@ -827,20 +826,20 @@ public class EduUIMainView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EduUIMainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EduUIMainView20131003.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EduUIMainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EduUIMainView20131003.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EduUIMainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EduUIMainView20131003.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EduUIMainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EduUIMainView20131003.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EduUIMainView().setVisible(true);
+                new EduUIMainView20131003().setVisible(true);
             }
         });
     }
@@ -917,6 +916,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JPanel panelSlit;
     private javax.swing.JTabbedPane tabbedControl;
     private javax.swing.JPanel panelPattern;
+    
     // End of variables declaration   
    
     final private String labTitleTele =" 1. Telephoto Lens";

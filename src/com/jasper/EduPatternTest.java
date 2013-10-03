@@ -63,6 +63,7 @@ public class EduPatternTest {
 	static EduPatternJPanel patternPanel;
 	static JFrame patternFrame;
 	static EduUIMainView controlFrame;
+        static LensPattern lensPattern;
 
 	// use 2nd display
 	static boolean use2ndDisplay = true;
@@ -124,7 +125,7 @@ public class EduPatternTest {
                 
                 // not run first
 		patternFrame.setVisible(false);
-                patternFrame.setBackground(Color.red);
+                patternFrame.setForeground(Color.red);
 	}
 
 	public static void disablePatternFrame() {
@@ -139,7 +140,8 @@ public class EduPatternTest {
 		controlFrame.updateRegenerate();
 		patternPanel.revalidate();
 		patternFrame.repaint();
-		controlFrame.repaint();    	
+		controlFrame.repaint();
+                lensPattern.repaint();
     }
 
 	public static void updateLensPattern(PatternImage pimage, String log) {
@@ -149,15 +151,20 @@ public class EduPatternTest {
 		patternFrame.repaint();
 		patternFrame.setVisible(true);
 		controlFrame.repaint();
+                lensPattern.repaint();
 	}
         
         public static void updateLensPatternPattern(PatternImage pimage, String log) {
 		controlFrame.logString(log);
+                controlFrame.updatePattern(pimage);
+                //controlFrame.setImage(pimage);
 		patternPanel.setImage(pimage);
 		patternPanel.revalidate();
 		patternFrame.repaint();
 		//patternFrame.setVisible(true);
 		controlFrame.repaint();
+                //lensPattern.revalidate();
+                //lensPattern.repaint();
 	}
 
 	public static void updateCylindricalPattern(PatternImage pimage, String log) {
@@ -191,15 +198,17 @@ public class EduPatternTest {
 	static int logging = 0;
 
 	public static void initControlFrame() {
+                lensPattern = new LensPattern();
 		controlFrame = new EduUIMainView();
 		controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		controlFrame.setLocation(0, 0);
                 //controlFrame.setBounds(0,0,1300,760);
-                controlFrame.setPreferredSize(new Dimension(1286, 700));
+                controlFrame.setPreferredSize(new Dimension(1286, 710));
 
 		controlFrame.pack();
 		controlFrame.setVisible(true);
 		controlFrame.setResizable(true);
+                lensPattern.setVisible(true);
 
 		// following line is for debugging. it's very useful when using with one
 		// display only

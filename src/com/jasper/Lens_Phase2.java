@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author sonnv09
  */
-public class Lens extends OpticsPane {
+public class Lens_Phase2 extends OpticsPane {
 
     /**
      * Creates new form CylincalLens
      */
-    public Lens() {
+    public Lens_Phase2() {
         initComponents();
     }
 
@@ -113,7 +113,7 @@ public class Lens extends OpticsPane {
         btnSecond.setText("Second display ON");
         btnSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformed(evt);
+                buttonGenerateActionPerformed(evt);
             }
         });
 
@@ -123,8 +123,8 @@ public class Lens extends OpticsPane {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                //.addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
-                //.addGap(10, 10, 10)
+                .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -156,7 +156,7 @@ public class Lens extends OpticsPane {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    //.addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -216,30 +216,13 @@ public class Lens extends OpticsPane {
 
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
 		if (parseArguments()) {
-			//PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-			//image.updateLensParameter(xoff, yoff, focal);
-			//image.paintLens();
-			//EduPatternTest.updateLensPattern(image, genLog());
-                        //EduPatternTest.updateLensPatternPattern(image, genLog());
-                        LensPattern le = new LensPattern();
-                        
-                        le.buttonGenerateActionUpdatePerformed(xoff, yoff, focal);
-                        //le.buttonGenerateActionPerformed(evt);
-                        le.setVisible(true);
-			//imageGenerated = true;
-		}
-    }//GEN-LAST:event_buttonGenerateActionPerformed
-    
-    private void buttonSecondGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
-		if (parseArguments()) {
 			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
 			image.updateLensParameter(xoff, yoff, focal);
 			image.paintLens();
 			EduPatternTest.updateLensPattern(image, genLog());
-                        EduPatternTest.updateLensPatternPattern(image, genLog());
 			imageGenerated = true;
 		}
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformed
+    }//GEN-LAST:event_buttonGenerateActionPerformed
     
     private void sliderGenerateActionPerformed(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
 		if (parseArguments()) {

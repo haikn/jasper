@@ -16,12 +16,12 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 
-public class EduUIMainView extends javax.swing.JFrame {
+public class EduUIMainView_Phase2 extends javax.swing.JFrame {
 
     /**
      * Creates new form EduUIMainView
      */
-    public EduUIMainView() {
+    public EduUIMainView_Phase2() {
         initComponents();
     }
 
@@ -35,15 +35,13 @@ public class EduUIMainView extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPaneOptics = new javax.swing.JTabbedPane();
-        jTabbedPaneOptics2 = new javax.swing.JTabbedPane();
         tabbedGaneral = new javax.swing.JTabbedPane();
         jPanelGeneral = new javax.swing.JPanel();
         tabbedDesLog = new javax.swing.JTabbedPane();
-        tabbedDiagram = new javax.swing.JTabbedPane();
         tabbedDes = new javax.swing.JTabbedPane();
         tabbedLog = new javax.swing.JTabbedPane();
         jPanelLens1 = new Lens ();
-        jPanelLens2 = new LensPattern ();
+        jPanelLens2 = new Lens ();
         jPanelLens3 = new Lens ();
         jPanelLens4 = new Lens ();
         jPanelPhaseRetarder = new PhaseRetarder();
@@ -138,7 +136,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         panelist.add((OpticsPane)jPanelDescriptionLens);
         panelist.add((OpticsPane)jPanelCalibration);
-        panelPattern = new EduPatternJPanel();
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         // BEGIN paint boot screen, a lens pattern
@@ -167,8 +165,6 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", null);
-        
-        tabbedDiagram.addTab("Diagram", null);
         
         jLabel1 = new javax.swing.JLabel("Select experiment:");
         jLabel1.setForeground (Color.red);
@@ -251,256 +247,98 @@ public class EduUIMainView extends javax.swing.JFrame {
                 }
             }
         });
-//        
-//        // BEGIN General
-//        javax.swing.GroupLayout layoutJPanel2 = new javax.swing.GroupLayout(jPanelGeneral);
-//        jPanelGeneral.setLayout(layoutJPanel2);
-//        layoutJPanel2.setHorizontalGroup(
-//            layoutJPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(20, 20, 20)
-//            .addGroup(layoutJPanel2.createSequentialGroup()
-//                .addGap(10, 368, 368)
-//                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addContainerGap(307, Short.MAX_VALUE))    
-//                .addGap(120, 120, 120)
-//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutJPanel2.createSequentialGroup()
-//                .addContainerGap()
-//                .addGroup(layoutJPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                    .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    //.addComponent(tabbedDiagram, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addComponent(jTabbedPaneOptics))
-//                .addContainerGap())
-//        );
-//        layoutJPanel2.setVerticalGroup(
-//            layoutJPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//             .addGroup(layoutJPanel2.createSequentialGroup()
-//                .addGap(18, 18, 18)
-//                .addGroup(layoutJPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addComponent(jLabel1))
-//                .addContainerGap(412, Short.MAX_VALUE))   
-//                
-//            .addGroup(layoutJPanel2.createSequentialGroup()
-//                .addGap(65, 65, 65)
-//                .addContainerGap()
-//                .addComponent(jTabbedPaneOptics)
-//                .addGap(6, 6, 6)
-//                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                //.addComponent(tabbedDiagram, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(6, 6, 6))
-//        );
-//
-//        tabbedGaneral.addTab("General     ", jPanelGeneral);
-//        // END General
-//
-//        // BEGIN Calibration
-//        javax.swing.GroupLayout jPanelCalibrationLayout = new javax.swing.GroupLayout(jPanelCalibration);
-//        jPanelCalibration.setLayout(jPanelCalibrationLayout);
-//        
-//
-//        tabbedGaneral.addTab("Calibration   ", jPanelCalibration);
-//        // END Calibration
-//        
-//        // BEGIN Slit
-////        javax.swing.GroupLayout jPanelSlitLayout = new javax.swing.GroupLayout(jPanelSlit);
-////        jPanelSlit.setLayout(jPanelSlitLayout);
-////        jPanelSlitLayout.setHorizontalGroup(
-////            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////            .addGroup(jPanelSlitLayout.createSequentialGroup()
-////                .addContainerGap()
-////                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                .addContainerGap(458, Short.MAX_VALUE))
-////        );
-////        jPanelSlitLayout.setVerticalGroup(
-////            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSlitLayout.createSequentialGroup()
-////                .addGap(0, 73, Short.MAX_VALUE)
-////                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-////        );
-//        tabbedGaneral.addTab("Slit   ", jPanelSlit);
-//       
-//        // END Slit
-//
-//        // BEGIN Signal Processing
-//        tabbedGaneral.addTab("Signal Processing", jPanelSignalProcessing);
-//        // END Signal Processing
-//
-//        // BEGIN Phase retarder
-//        tabbedGaneral.addTab("Phase retarder", jPanelPhaseRetarder);
-//        // END Phase retarder
-//
-//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-//        getContentPane().setLayout(layout);
-//        layout.setHorizontalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addComponent(tabbedGaneral)
-//        );
-//        layout.setVerticalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(layout.createSequentialGroup()
-//                .addComponent(tabbedGaneral, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addContainerGap(44, Short.MAX_VALUE))
-//        );
-//
-//        bindingGroup.bind();
         
-        layoutPattern = new javax.swing.JLayeredPane();
-        layoutDescription = new javax.swing.JLayeredPane();
-        layoutControl = new javax.swing.JLayeredPane();
-        tabbedControl = new javax.swing.JTabbedPane();
-        panelGeneral = new javax.swing.JPanel();
-        panelCalebration = new javax.swing.JPanel();
-        panelSlit = new javax.swing.JPanel();
-        panelSignal = new javax.swing.JPanel();
-        panelPhase = new javax.swing.JPanel();
-        layoutDiagram = new javax.swing.JLayeredPane();
-
-//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-//        setPreferredSize(new java.awt.Dimension(1286, 700));
-
-        layoutPattern.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        layoutDescription.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        layoutControl.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        layoutDiagram.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        
-        layoutDescription.add(tabbedDesLog);
-        layoutDiagram.add(tabbedDiagram);
-        
-        javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
-        panelGeneral.setLayout(panelGeneralLayout);
-//        panelGeneralLayout.setHorizontalGroup(
-//            panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 665, Short.MAX_VALUE)
-//        );
-//        panelGeneralLayout.setVerticalGroup(
-//            panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 272, Short.MAX_VALUE)
-//        );
-        
-        panelGeneralLayout.setHorizontalGroup(
-            panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        // BEGIN General
+        javax.swing.GroupLayout layoutJPanel2 = new javax.swing.GroupLayout(jPanelGeneral);
+        jPanelGeneral.setLayout(layoutJPanel2);
+        layoutJPanel2.setHorizontalGroup(
+            layoutJPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(20, 20, 20)
-            .addGroup(panelGeneralLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+            .addGroup(layoutJPanel2.createSequentialGroup()
+                .addGap(10, 368, 368)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(307, Short.MAX_VALUE))    
                 .addGap(120, 120, 120)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGeneralLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutJPanel2.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layoutJPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tabbedDesLog)
+                    .addComponent(jTabbedPaneOptics))
                 .addContainerGap())
         );
-        panelGeneralLayout.setVerticalGroup(
-            panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGroup(panelGeneralLayout.createSequentialGroup()
+        layoutJPanel2.setVerticalGroup(
+            layoutJPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+             .addGroup(layoutJPanel2.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layoutJPanel2.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addContainerGap(412, Short.MAX_VALUE))   
                 
-            .addGroup(panelGeneralLayout.createSequentialGroup()
+            .addGroup(layoutJPanel2.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addContainerGap()
                 .addComponent(jTabbedPaneOptics)
+                .addGap(6, 6, 6)
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6))
         );
 
+        tabbedGaneral.addTab("General     ", jPanelGeneral);
+        // END General
+
+        // BEGIN Calibration
+        javax.swing.GroupLayout jPanelCalibrationLayout = new javax.swing.GroupLayout(jPanelCalibration);
+        jPanelCalibration.setLayout(jPanelCalibrationLayout);
         
-        tabbedControl.addTab("General", panelGeneral);
 
-        javax.swing.GroupLayout panelCalebrationLayout = new javax.swing.GroupLayout(panelCalebration);
-        panelCalebration.setLayout(panelCalebrationLayout);
-        panelCalebrationLayout.setHorizontalGroup(
-            panelCalebrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
-        panelCalebrationLayout.setVerticalGroup(
-            panelCalebrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
-
-        tabbedControl.addTab("Calibration", panelCalebration);
-
-        javax.swing.GroupLayout panelSlitLayout = new javax.swing.GroupLayout(panelSlit);
-        panelSlit.setLayout(panelSlitLayout);
-        panelSlitLayout.setHorizontalGroup(
-            panelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
-        panelSlitLayout.setVerticalGroup(
-            panelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
-
-        tabbedControl.addTab("  Slit  ", panelSlit);
-
-        javax.swing.GroupLayout panelSignalLayout = new javax.swing.GroupLayout(panelSignal);
-        panelSignal.setLayout(panelSignalLayout);
-        panelSignalLayout.setHorizontalGroup(
-            panelSignalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
-        panelSignalLayout.setVerticalGroup(
-            panelSignalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
-
-        tabbedControl.addTab("Signal Processing", panelSignal);
-
-        javax.swing.GroupLayout panelPhaseLayout = new javax.swing.GroupLayout(panelPhase);
-        panelPhase.setLayout(panelPhaseLayout);
-        panelPhaseLayout.setHorizontalGroup(
-            panelPhaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
-        panelPhaseLayout.setVerticalGroup(
-            panelPhaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
-
-        tabbedControl.addTab("Phase Retarder", panelPhase);
-
-        tabbedControl.setBounds(10, 0, 670, 300);
-        layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        layoutPattern.add(jPanelLens1);
-//        layoutDescription.add(tabbedDesLog);
-//        layoutDiagram.add(tabbedDiagram);
+        tabbedGaneral.addTab("Calibration   ", jPanelCalibration);
+        // END Calibration
         
+        // BEGIN Slit
+//        javax.swing.GroupLayout jPanelSlitLayout = new javax.swing.GroupLayout(jPanelSlit);
+//        jPanelSlit.setLayout(jPanelSlitLayout);
+//        jPanelSlitLayout.setHorizontalGroup(
+//            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(jPanelSlitLayout.createSequentialGroup()
+//                .addContainerGap()
+//                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addContainerGap(458, Short.MAX_VALUE))
+//        );
+//        jPanelSlitLayout.setVerticalGroup(
+//            jPanelSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSlitLayout.createSequentialGroup()
+//                .addGap(0, 73, Short.MAX_VALUE)
+//                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+//        );
+        tabbedGaneral.addTab("Slit   ", jPanelSlit);
+       
+        // END Slit
+
+        // BEGIN Signal Processing
+        tabbedGaneral.addTab("Signal Processing", jPanelSignalProcessing);
+        // END Signal Processing
+
+        // BEGIN Phase retarder
+        tabbedGaneral.addTab("Phase retarder", jPanelPhaseRetarder);
+        // END Phase retarder
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPaneOptics2, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
-                    .addComponent(tabbedDesLog , javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
-                    .addComponent(layoutControl))
-                .addGap(5, 5, 5))
+            .addComponent(tabbedGaneral)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPaneOptics2, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                    .addComponent(layoutControl))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                    .addComponent(tabbedDiagram))
-                .addGap(5, 5, 5))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tabbedGaneral, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
 
         pack();
 
@@ -508,15 +346,6 @@ public class EduUIMainView extends javax.swing.JFrame {
             public void stateChanged(ChangeEvent e) {
 //                System.out.println("stateChanged " + jTabbedPaneOptics.getSelectedComponent());
                 OpticsPane comp = (OpticsPane)(jTabbedPaneOptics.getSelectedComponent());
-                if (comp != null) 
-                	comp.updatePatternScreen();
-            }
-        });
-        
-        jTabbedPaneOptics2.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-//                System.out.println("stateChanged " + jTabbedPaneOptics.getSelectedComponent());
-                OpticsPane comp = (OpticsPane)(jTabbedPaneOptics2.getSelectedComponent());
                 if (comp != null) 
                 	comp.updatePatternScreen();
             }
@@ -544,24 +373,20 @@ public class EduUIMainView extends javax.swing.JFrame {
         changeLabTitle(labTitleTele);
         
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics2.removeAll();
         tabbedDesLog.removeAll();
         
         jTabbedPaneOptics.addTab("Lens", jPanelLens1);
-        jTabbedPaneOptics2.addTab("Pattern", jPanelLens2);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", jPanelDescriptionLens);
         tabbedDesLog.addTab("Log", jScrollPane2);
         setTabPanelEnable(jTabbedPaneOptics, true);
-        setTabPanelEnable(jTabbedPaneOptics2, true);
         
     }//GEN-LAST:event_jMenuItemTelephotoActionPerformed
 
     public void jMenuItemMicroscopeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMicroscopeActionPerformed
         changeLabTitle(labTitleMicr);
         jTabbedPaneOptics.removeAll();
-        jTabbedPaneOptics2.removeAll();
         tabbedDesLog.removeAll();
         
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope1);
@@ -736,42 +561,14 @@ public class EduUIMainView extends javax.swing.JFrame {
 
     	// start logging if user chose to
     	if (EduPatternTest.logging ==1) {
-            try {
-                    BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
-                    jTextAreaLog.write(logFileOut);
-                    logFileOut.flush();
-            } catch (Exception e) {
-            }
+			try {
+				BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
+	    		jTextAreaLog.write(logFileOut);
+	    		logFileOut.flush();
+			} catch (Exception e) {
+			}
     	}
-    }
-//    public PatternImage pimage = new PatternImage(); 
-//    public void setImage(PatternImage pimage) {
-//		this.pimage = pimage;	
-//    }
-    
-    public void updatePattern(PatternImage pimage1) {
-        //System.out.println("msg: " + pimage1.getLambda());
-        //pimage1.paintLens();
-        
-        
-        //PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-//        //image.updateLensParameter(xoff, yoff, focal);
-//        image.paintLens();
-        //EduPatternTest.updateLensPatternPattern(pimage1, "");
-        //imageGenerated = true;
-//    	jTextAreaLog.append(msg + System.getProperty("line.separator"));
-//    	jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
-//
-//    	// start logging if user chose to
-//    	if (EduPatternTest.logging ==1) {
-//            try {
-//                    BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
-//                    jTextAreaLog.write(logFileOut);
-//                    logFileOut.flush();
-//            } catch (Exception e) {
-//            }
-//    	}
-    }
+   	}
     
     private void setTabPanelEnable(Container c, boolean enabled) {
         for (Component component : c.getComponents())
@@ -827,20 +624,20 @@ public class EduUIMainView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EduUIMainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EduUIMainView_Phase2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EduUIMainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EduUIMainView_Phase2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EduUIMainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EduUIMainView_Phase2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EduUIMainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EduUIMainView_Phase2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EduUIMainView().setVisible(true);
+                new EduUIMainView_Phase2().setVisible(true);
             }
         });
     }
@@ -878,7 +675,6 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JPanel panelSignalProcessing;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
-    private javax.swing.JTabbedPane jTabbedPaneOptics2;
     private javax.swing.JTextArea jTextAreaLog;
     private javax.swing.JPanel jPanelDescriptionLens;
     private javax.swing.JPanel jPanelDescriptionMicroscope;
@@ -899,25 +695,10 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabbedDes;
     private javax.swing.JTabbedPane tabbedLog;
     private javax.swing.JTabbedPane tabbedDesLog;
-    private javax.swing.JTabbedPane tabbedDiagram;
     private javax.swing.JPanel jPanelSignalProcessing;
     private javax.swing.JTabbedPane tabbedGaneral;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
-    
-    // Variables declaration - do not modify                     
-    private javax.swing.JLayeredPane layoutControl;
-    private javax.swing.JLayeredPane layoutDescription;
-    private javax.swing.JLayeredPane layoutDiagram;
-    private javax.swing.JLayeredPane layoutPattern;
-    private javax.swing.JPanel panelCalebration;
-    private javax.swing.JPanel panelGeneral;
-    private javax.swing.JPanel panelPhase;
-    private javax.swing.JPanel panelSignal;
-    private javax.swing.JPanel panelSlit;
-    private javax.swing.JTabbedPane tabbedControl;
-    private javax.swing.JPanel panelPattern;
-    // End of variables declaration   
    
     final private String labTitleTele =" 1. Telephoto Lens";
     final private String labTitleMicr =" 2. Microscope";
