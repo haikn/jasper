@@ -438,7 +438,7 @@ public class EduUIMainView extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
-        tabbedControl.addTab("  Slit  ", panelSlit);
+        tabbedControl.addTab("  Slit  ", jPanelSlit);
 
         javax.swing.GroupLayout panelSignalLayout = new javax.swing.GroupLayout(panelSignal);
         panelSignal.setLayout(panelSignalLayout);
