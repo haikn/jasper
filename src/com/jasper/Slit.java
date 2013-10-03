@@ -143,7 +143,6 @@ public class Slit extends OpticsPane {
                 imageGenerated = true;
             }
         });
-
         jLabel1.setText("Spacing");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_spacing.setMaximum(image1.getBounds().height);
