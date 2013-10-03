@@ -891,7 +891,7 @@ public class PatternImage {
         if (slit == 1) {
             for (int i = 0; i < RowY.length; i++) {
                 // if (linePostion == 384) {
-                RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
+                RowY[i] = ((linePostion + canvas.getHeight() / 2) - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
 //                } else {
 //                    RowY[i] = DelY / 2 + DelY * i;
 //                }
@@ -903,11 +903,11 @@ public class PatternImage {
 //                if (linePostion != 384) {
 //                    System.out.println(">>>>>>>>>>>>>>>vaoooooooooo");
 //                    RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
-//                } else {
+//                / else {
                 if (i == 0) {
-                    RowY[i] = (linePostion - canvas.getHeight() / 2) + ((DelY) - spac / 2);
+                    RowY[i] = ((linePostion + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) - spac / 2);
                 } else {
-                    RowY[i] = (linePostion - canvas.getHeight() / 2) + ((DelY) + spac / 2);
+                    RowY[i] = ((linePostion + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) + spac / 2);
                 }
             }
         }
@@ -916,7 +916,8 @@ public class PatternImage {
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
             rect2 = new Rectangle((canvas.getWidth() - lineWidth) / 2, RowY[i] - lineHeight / 2, lineWidth, lineHeight);
-            g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            // Xoay quanh tam cua hinh chu nhat g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
             g.draw(rect2);
             g.fill(rect2);
         }
@@ -942,7 +943,7 @@ public class PatternImage {
         int DelX = canvas.getWidth() / NumCol;
         for (int i = 0; i < ColX.length; i++) {
             //if (linePostionY > 0) {
-            ColX[i] = (linePostionY - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
+            ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
 //            } else {
 //                ColX[i] = (DelX / 2 + DelX * i);
 //            }
@@ -951,7 +952,7 @@ public class PatternImage {
         int DelY = canvas.getHeight() / NumRow;
         for (int i = 0; i < RowY.length; i++) {
             // if (linePostionX > 0) {
-            RowY[i] = (linePostionX - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
+            RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
 //            } else {
 //                RowY[i] = DelY / 2 + DelY * i;
 //            }
@@ -961,7 +962,8 @@ public class PatternImage {
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
             rect2 = new Rectangle(ColX[i] - lineWidthY / 2, (canvas.getHeight() - lineHeightY) / 2, lineWidthY, lineHeightY);
-            g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            // g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
             g.draw(rect2);
             g.fill(rect2);
         }
@@ -969,7 +971,8 @@ public class PatternImage {
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
             rect2 = new Rectangle((canvas.getWidth() - lineWidthX) / 2, RowY[i] - lineHeightX / 2, lineWidthX, lineHeightX);
-            g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            //g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
             g.draw(rect2);
             g.fill(rect2);
         }
@@ -987,7 +990,7 @@ public class PatternImage {
 //            }
 
             double scale = 1.0;
-            scale = d_zoom / 100.0D;
+            scale = d_zoom / 10.0D;
 //        ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
 //        ColorConvertOp op = new ColorConvertOp(cs, null);
 //        BufferedImage gayBuff = op.filter(buffImg, null);

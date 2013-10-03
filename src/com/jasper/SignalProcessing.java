@@ -69,6 +69,7 @@ public class SignalProcessing extends OpticsPane {
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_rotation, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_single_rotation.setMaximum(180);
+        s_single_rotation.setMinimum(-180);
         s_single_rotation.setValue(0);
         s_single_rotation.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -120,8 +121,9 @@ public class SignalProcessing extends OpticsPane {
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_position_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_position_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_single_position_x.setMaximum(image1.getBounds().height);
-        s_single_position_x.setValue((image1.getBounds().height / 2));
+        s_single_position_x.setMaximum(image1.getBounds().height / 2);
+        s_single_position_x.setMinimum(-(image1.getBounds().height / 2));
+        s_single_position_x.setValue(0);
         s_single_position_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformed(evt);
@@ -130,8 +132,9 @@ public class SignalProcessing extends OpticsPane {
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_position_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_position_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_single_position_y.setMaximum(image1.getBounds().width);
-        s_single_position_y.setValue((image1.getBounds().width / 2));
+        s_single_position_y.setMaximum(image1.getBounds().width / 2);
+        s_single_position_y.setMinimum(-(image1.getBounds().width / 2));
+        s_single_position_y.setValue(0);
         s_single_position_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformed(evt);
@@ -284,7 +287,7 @@ public class SignalProcessing extends OpticsPane {
         panelPatternSet = (EduPatternJPanel) panelPattern;
         bindingGroup.bind();
     }// </editor-fold>         
-    private double widthX = Double.valueOf(image1.getBounds().width), widthY = 100, heightX = 100, heightY = Double.valueOf(image1.getBounds().height), rotation = 0, positionX = Double.valueOf(image1.getBounds().height) / 2, positionY = Double.valueOf(image1.getBounds().width) / 2, grayLevel = 255;
+    private double widthX = Double.valueOf(image1.getBounds().width), widthY = 100, heightX = 100, heightY = Double.valueOf(image1.getBounds().height), rotation = 0, positionX = 0, positionY = 0, grayLevel = 255;
 
     private boolean parseArguments() {
         boolean ret = false;

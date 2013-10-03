@@ -4,10 +4,16 @@
  */
 package com.jasper;
 
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.Format;
+import java.util.Hashtable;
 import javax.imageio.ImageIO;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,16 +47,25 @@ public class PhaseRetarder extends OpticsPane {
 
         openFile = new javax.swing.JFileChooser();
         s_zoom = new javax.swing.JSlider();
-        l_zoom = new javax.swing.JLabel();
+        // l_zoom = new javax.swing.JLabel();
         layOutCanvas = new javax.swing.JLayeredPane();
         b_ganerate = new javax.swing.JButton();
         b_openFile = new javax.swing.JButton();
-        text_zoom = new javax.swing.JTextField();
-
-        s_zoom.setMaximum(200);
-        s_zoom.setValue(100);
-
-        l_zoom.setText("Zoom ");
+        //   text_zoom = new javax.swing.JTextField();
+        Format f = new DecimalFormat("0.0");
+        Hashtable<Integer, JComponent> labels = new Hashtable<Integer, JComponent>();
+        for (int i = 0; i <= 20; i++) {
+            JLabel label = new JLabel(f.format(i * 0.1));
+            label.setFont(label.getFont().deriveFont(Font.PLAIN));
+            labels.put(i, label);
+        }
+        s_zoom.setLabelTable(labels);
+        s_zoom.setMajorTickSpacing(1);
+        s_zoom.setMaximum(20);
+        s_zoom.setValue(10);
+        s_zoom.setPaintLabels(true);
+        s_zoom.setPaintTicks(true);
+        // l_zoom.setText("Zoom ");
 
         b_ganerate.setText("Generate");
         b_ganerate.addActionListener(new java.awt.event.ActionListener() {
@@ -65,13 +80,13 @@ public class PhaseRetarder extends OpticsPane {
                 b_openFileActionPerformed(evt);
             }
         });
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_zoom, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_zoom, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        // org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_zoom, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_zoom, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_zoom.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformed(evt);
             }
         });
-        bindingGroup.addBinding(binding);
+        // bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         setLayout(layout);
@@ -86,11 +101,11 @@ public class PhaseRetarder extends OpticsPane {
                 .addGroup(layout.createSequentialGroup()
                 .addComponent(b_openFile)
                 .addGap(18, 18, 18)
-                .addComponent(l_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(text_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                //.addComponent(l_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                //.addGap(18, 18, 18)
+                //.addComponent(text_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(s_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(s_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 51, Short.MAX_VALUE)));
         layout.setVerticalGroup(
@@ -102,9 +117,9 @@ public class PhaseRetarder extends OpticsPane {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(b_openFile)
-                .addComponent(l_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(text_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(b_openFile))
+                //.addComponent(l_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                //.addComponent(text_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(s_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(b_ganerate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,11 +193,11 @@ public class PhaseRetarder extends OpticsPane {
     // Variables declaration - do not modify                     
     private javax.swing.JButton b_ganerate;
     private javax.swing.JButton b_openFile;
-    private javax.swing.JLabel l_zoom;
+    // private javax.swing.JLabel l_zoom;
     private javax.swing.JLayeredPane layOutCanvas;
     private javax.swing.JFileChooser openFile;
     private javax.swing.JSlider s_zoom;
-    private javax.swing.JTextField text_zoom;
+    // private javax.swing.JTextField text_zoom;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     private javax.swing.JPanel panelPattern;
     // End of variables declaration     
