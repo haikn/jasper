@@ -1,6 +1,8 @@
 package com.jasper;
 
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /*
  * To change this template, choose Tools | Templates
@@ -10,12 +12,13 @@ import javax.swing.JOptionPane;
  *
  * @author sonnv09
  */
-public class LensPattern extends OpticsPane {
+public class LensPattern extends Lens {
 
     /**
      * Creates new form CylincalLens
      */
     public LensPattern() {
+        super();
         initComponents();
     }
 
@@ -28,7 +31,7 @@ public class LensPattern extends OpticsPane {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPattern = new EduPatternJPanel();
+        //panelPattern = new EduPatternJPanel();
         textFocal = new javax.swing.JTextField();
         textYpos = new javax.swing.JTextField();
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
@@ -83,7 +86,7 @@ public class LensPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderYPos, org.jdesktop.beansbinding.ELProperty.create("${value}"), textYpos, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        System.out.println("super.panelPattern: " + super.panelPattern);
         
         sliderYPos.setMaximum(100);
         sliderYPos.setMinimum(-100);
@@ -140,6 +143,7 @@ public class LensPattern extends OpticsPane {
                     )
                 .addContainerGap(22, Short.MAX_VALUE))
         );
+        
 
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,6 +169,8 @@ public class LensPattern extends OpticsPane {
     	}
     	return ret;
     }
+    
+    
     
     public String genLog() {
 		return String.format(logmessage, Double.toString(xoff), Double.toString(yoff), Double.toString(focal));
@@ -228,7 +234,7 @@ public class LensPattern extends OpticsPane {
 //    private javax.swing.JLabel labelFocal;
 //    private javax.swing.JLabel labelXpos;
 //    private javax.swing.JLabel labelYpos;
-    private javax.swing.JPanel panelPattern;
+    //private javax.swing.JPanel panelPattern;
     //private javax.swing.JTextField textFocal;
     //private javax.swing.JTextField textYpos;
     
@@ -289,7 +295,7 @@ public class LensPattern extends OpticsPane {
     static String logmessage="pattern lens xoff=%s yoff=%s focal=%s";
 
     @Override
-    void updatePatternScreen() {
+   public void updatePatternScreen() {
         PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
 		//if (!imageGenerated) {
 			image.updateLensParameter(xoff, yoff, focal);

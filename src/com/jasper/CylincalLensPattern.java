@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  *
  * @author Albert Lee
  */
-public class CylincalLens extends OpticsPane {
+public class CylincalLensPattern extends OpticsPane {
 
     /**
      * Creates new form CylincalLens
      */
-    public CylincalLens() {
+    public CylincalLensPattern() {
         initComponents();
     }
 

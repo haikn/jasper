@@ -164,7 +164,7 @@ public class EduPatternTest {
 		//patternFrame.setVisible(true);
 		controlFrame.repaint();
                 //lensPattern.revalidate();
-                //lensPattern.repaint();
+                lensPattern.repaint();
 	}
 
 	public static void updateCylindricalPattern(PatternImage pimage, String log) {

@@ -44,11 +44,13 @@ public class EduUIMainView extends javax.swing.JFrame {
         tabbedLog = new javax.swing.JTabbedPane();
         jPanelLens1 = new Lens ();
         jPanelLens2 = new LensPattern ();
-        jPanelLens3 = new Lens ();
-        jPanelLens4 = new Lens ();
+        LensPattern lp = new LensPattern();
+//        jPanelLens3 = new Lens ();
+//        jPanelLens4 = new Lens ();
         jPanelPhaseRetarder = new PhaseRetarder();
         jPanelCylindrical2 = new CylincalLens();
         jPanelMicroscope1 = new Microscope();
+        jPanelMicroscope2 = new MicroscopePattern();
         jPanelMirror1 = new Mirror();
         jPanelMirror2 = new Mirror();
         jPanelMirror3 = new Mirror();
@@ -105,6 +107,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         panelist.add((OpticsPane)jPanelCylindrical2);
         // Microscope
         panelist.add((OpticsPane)jPanelMicroscope1);
+        panelist.add((OpticsPane)jPanelMicroscope2);
         
         panelist.add((OpticsPane)jPanelMirror1);
         panelist.add((OpticsPane)jPanelMirror2);
@@ -516,13 +519,24 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         jTabbedPaneOptics2.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-//                System.out.println("stateChanged " + jTabbedPaneOptics.getSelectedComponent());
+                System.out.println("stateChanged " + jTabbedPaneOptics2.getSelectedComponent());
                 OpticsPane comp = (OpticsPane)(jTabbedPaneOptics2.getSelectedComponent());
-                if (comp != null) 
+                if (comp != null) {
                 	comp.updatePatternScreen();
+                }
             }
         });
-
+        
+        jTabbedPaneOptics2.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                System.out.println("stateChanged " + jTabbedPaneOptics2.getSelectedComponent());
+                OpticsPane comp = (OpticsPane)(jTabbedPaneOptics2.getSelectedComponent());
+                if (comp != null) {
+                	comp.updatePatternScreen();
+                }
+            }
+        });
+        
         setTitle(eduKitTitle);
         
     }// </editor-fold>//GEN-END:initComponents
@@ -565,6 +579,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics2.removeAll();
         tabbedDesLog.removeAll();
         
+        jTabbedPaneOptics2.addTab("Pattern", jPanelMicroscope2);
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
@@ -578,7 +593,9 @@ public class EduUIMainView extends javax.swing.JFrame {
         
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics2.removeAll();
         
+        jTabbedPaneOptics2.addTab("Pattern", jPanelLens2);
         jTabbedPaneOptics.addTab("Lens", jPanelAber1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
@@ -754,24 +771,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         //System.out.println("msg: " + pimage1.getLambda());
         //pimage1.paintLens();
         
-        
-        //PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-//        //image.updateLensParameter(xoff, yoff, focal);
-//        image.paintLens();
-        //EduPatternTest.updateLensPatternPattern(pimage1, "");
-        //imageGenerated = true;
-//    	jTextAreaLog.append(msg + System.getProperty("line.separator"));
-//    	jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
-//
-//    	// start logging if user chose to
-//    	if (EduPatternTest.logging ==1) {
-//            try {
-//                    BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
-//                    jTextAreaLog.write(logFileOut);
-//                    logFileOut.flush();
-//            } catch (Exception e) {
-//            }
-//    	}
+       
+
     }
     
     private void setTabPanelEnable(Container c, boolean enabled) {
@@ -859,6 +860,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLens4;
     private javax.swing.JPanel jPanelMirror1;
     private javax.swing.JPanel jPanelMicroscope1;
+    private javax.swing.JPanel jPanelMicroscope2;
     private javax.swing.JPanel jPanelMirror2;
     private javax.swing.JPanel jPanelMirror3;
     private javax.swing.JPanel jPanelMirror4;

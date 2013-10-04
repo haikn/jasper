@@ -10,6 +10,10 @@ import javax.swing.JOptionPane;
  *
  * @author sonnv09
  */
+
+class LensTest extends Lens{
+        
+        }
 public class Lens extends OpticsPane {
 
     /**
@@ -109,7 +113,7 @@ public class Lens extends OpticsPane {
                 //buttonGenerateActionPerformed(evt);
             }
         });
-        
+        System.out.println("panelPattern: " + panelPattern);
         btnSecond.setText("Second display ON");
         btnSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +127,7 @@ public class Lens extends OpticsPane {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                //.addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 //.addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -156,7 +160,7 @@ public class Lens extends OpticsPane {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    //.addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelPattern, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -216,18 +220,31 @@ public class Lens extends OpticsPane {
 
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
 		if (parseArguments()) {
-			//PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
-			//image.updateLensParameter(xoff, yoff, focal);
-			//image.paintLens();
-			//EduPatternTest.updateLensPattern(image, genLog());
-                        //EduPatternTest.updateLensPatternPattern(image, genLog());
+//			//PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
+//			//image.updateLensParameter(xoff, yoff, focal);
+//			//image.paintLens();
+//			//EduPatternTest.updateLensPattern(image, genLog());
+//                        //EduPatternTest.updateLensPatternPattern(image, genLog());
                         LensPattern le = new LensPattern();
-                        
+                       
                         le.buttonGenerateActionUpdatePerformed(xoff, yoff, focal);
                         //le.buttonGenerateActionPerformed(evt);
                         le.setVisible(true);
-			//imageGenerated = true;
+//			//imageGenerated = true;
+//                    PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
+//			image.updateLensParameter(xoff, yoff, focal);
+//			image.paintLens();
+//			EduPatternTest.updateLensPatternPattern(image, genLog());
+//			imageGenerated = true;
 		}
+//        if (parseArguments()) {
+//			PatternImage image = ((EduPatternJPanel)panelPattern).pimage; 
+//			image.updateLensParameter(xoff, yoff, focal);
+//			image.paintLens();
+//			EduPatternTest.updateLensPatternPattern(image, genLog());
+//			imageGenerated = true;
+//		}
+        
     }//GEN-LAST:event_buttonGenerateActionPerformed
     
     private void buttonSecondGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
@@ -268,14 +285,14 @@ public class Lens extends OpticsPane {
 //    private javax.swing.JLabel labelFocal;
 //    private javax.swing.JLabel labelXpos;
 //    private javax.swing.JLabel labelYpos;
-    private javax.swing.JPanel panelPattern;
+    public javax.swing.JPanel panelPattern;
     //private javax.swing.JTextField textFocal;
     //private javax.swing.JTextField textYpos;
     
     private javax.swing.JSlider sliderXpos;
     private javax.swing.JSlider sliderYPos;
     private javax.swing.JSlider sliderFocal;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton ok;

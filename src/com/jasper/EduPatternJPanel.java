@@ -38,8 +38,10 @@ public class EduPatternJPanel extends JPanel {
 //	Font font = new Font("Arial", Font.PLAIN, 15);
 	Font font = new Font("Courier New", Font.PLAIN, 12);
 	public EduPatternJPanel () {
-		pimage = new PatternImage();
+                pimage = new PatternImage();
 		pimage.init(EduPatternTest.lambda);
+		pimage1 = new PatternImage();
+		pimage1.init(EduPatternTest.lambda);
 		isScreen = false;
 	}
 
