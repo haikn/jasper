@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JFileChooser" name="fileChome">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -729,7 +733,24 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLayeredPane6" min="-2" pref="596" max="-2" attributes="0"/>
-                      <EmptySpace pref="463" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="s_zoom_signal" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="openFile" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="buttonGanerateSignal" min="-2" pref="88" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="buttonLenSignal" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="buttonDisplaySignal" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="81" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -737,7 +758,20 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="73" max="32767" attributes="0"/>
-                      <Component id="jLayeredPane6" min="-2" pref="345" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="openFile" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="s_zoom_signal" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="buttonGanerateSignal" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="buttonLenSignal" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="buttonDisplaySignal" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLayeredPane6" min="-2" pref="345" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -747,6 +781,28 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
             </Container>
+            <Component class="javax.swing.JButton" name="openFile">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Open file"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSlider" name="s_zoom_signal">
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonGanerateSignal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ganerate"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonLenSignal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="1 : 1 Len ON"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonDisplaySignal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Second Display ON"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

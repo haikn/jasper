@@ -27,6 +27,7 @@ public class TemplateSlit extends javax.swing.JFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        fileChome = new javax.swing.JFileChooser();
         tabbedGaneral = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
@@ -86,6 +87,11 @@ public class TemplateSlit extends javax.swing.JFrame {
         jLayeredPane5 = new javax.swing.JLayeredPane();
         jPanel5 = new javax.swing.JPanel();
         jLayeredPane6 = new javax.swing.JLayeredPane();
+        openFile = new javax.swing.JButton();
+        s_zoom_signal = new javax.swing.JSlider();
+        buttonGanerateSignal = new javax.swing.JButton();
+        buttonLenSignal = new javax.swing.JButton();
+        buttonDisplaySignal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -479,6 +485,14 @@ public class TemplateSlit extends javax.swing.JFrame {
 
         tabbedGaneral.addTab("Signal Processing", jPanel3);
 
+        openFile.setText("Open file");
+
+        buttonGanerateSignal.setText("Ganerate");
+
+        buttonLenSignal.setText("1 : 1 Len ON");
+
+        buttonDisplaySignal.setText("Second Display ON");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -486,13 +500,36 @@ public class TemplateSlit extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(s_zoom_signal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(openFile, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(buttonGanerateSignal, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonLenSignal)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonDisplaySignal)))
+                        .addGap(0, 81, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(0, 73, Short.MAX_VALUE)
-                .addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(openFile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(s_zoom_signal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonGanerateSignal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonLenSignal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonDisplaySignal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         tabbedGaneral.addTab("Phase retarder", jPanel5);
@@ -570,10 +607,14 @@ public class TemplateSlit extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonDisplaySignal;
+    private javax.swing.JButton buttonGanerateSignal;
     private javax.swing.JButton buttonGennerateSlit;
+    private javax.swing.JButton buttonLenSignal;
     private javax.swing.JButton buttonSecondDisplaySlit;
     private javax.swing.JButton buttong11LensOnSlit;
     private javax.swing.JComboBox comboBoxSlit;
+    private javax.swing.JFileChooser fileChome;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -600,6 +641,7 @@ public class TemplateSlit extends javax.swing.JFrame {
     private javax.swing.JLabel lblPosSlit;
     private javax.swing.JLabel lblRotationSlit;
     private javax.swing.JLabel lblWidthSlit;
+    private javax.swing.JButton openFile;
     private javax.swing.JSlider s_double_gray;
     private javax.swing.JSlider s_double_height;
     private javax.swing.JSlider s_double_position;
@@ -614,6 +656,7 @@ public class TemplateSlit extends javax.swing.JFrame {
     private javax.swing.JSlider s_single_rotation;
     private javax.swing.JSlider s_single_spacing;
     private javax.swing.JSlider s_single_width;
+    private javax.swing.JSlider s_zoom_signal;
     private javax.swing.JTabbedPane tabbedGaneral;
     private javax.swing.JTextField text_double_gray;
     private javax.swing.JTextField text_double_height;
