@@ -61,7 +61,9 @@ public class EduPatternTest {
 
 	static PatternImage pimage;
 	static EduPatternJPanel patternPanel;
+        static EduPatternJPanel patternPanel2;
 	static JFrame patternFrame;
+        static JFrame patternFrame2;
 	static EduUIMainView controlFrame;
         static LensPattern lensPattern;
 
@@ -73,6 +75,8 @@ public class EduPatternTest {
 	
 	public static void initPatternFrame() {
 		patternFrame = new JFrame();
+                patternFrame2 = new JFrame();
+                //patternFrame2.s
 
 		Rectangle bounds;
 		// create pattern image buffer
@@ -94,12 +98,19 @@ public class EduPatternTest {
 		// System.out.println("wavelength = " + pimage.getLambda());
 
 		patternPanel = new EduPatternJPanel(pimage);
+                patternPanel2 = new EduPatternJPanel(pimage);
                 
 		patternFrame.getContentPane().add(patternPanel);
+                patternFrame2.getContentPane().add(patternPanel2);
 
 		patternFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		patternFrame.setSize(bounds.width, bounds.height);
 		patternFrame.setLocation(bounds.x, bounds.y);
+                
+                patternFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		patternFrame2.setSize(bounds.width, bounds.height);
+		patternFrame2.setLocation(bounds.x, bounds.y);
+                patternFrame2.setUndecorated(true);
 		// full screen
                 patternFrame.setUndecorated(true);
                 patternFrame.addMouseListener(new ClickListener() {
@@ -125,21 +136,27 @@ public class EduPatternTest {
                 
                 // not run first
 		patternFrame.setVisible(false);
+                patternFrame2.setVisible(false);
                 patternFrame.setForeground(Color.red);
 	}
 
 	public static void disablePatternFrame() {
 		patternFrame.setVisible(false);
+                patternFrame2.setVisible(false);
 	}
 
 	public static void disposePatternFrame() {
 		patternFrame.dispose();
+                patternFrame2.dispose();
 	}
         
     public static void updateRegenerate() {
 		controlFrame.updateRegenerate();
 		patternPanel.revalidate();
 		patternFrame.repaint();
+                
+                patternPanel2.revalidate();
+                patternFrame2.repaint();
 		controlFrame.repaint();
                 lensPattern.repaint();
     }
@@ -148,8 +165,15 @@ public class EduPatternTest {
 		controlFrame.logString(log);
 		patternPanel.setImage(pimage);
 		patternPanel.revalidate();
+                
+                patternPanel2.setImage(pimage);
+		patternPanel2.revalidate();
+                
 		patternFrame.repaint();
 		patternFrame.setVisible(true);
+                
+               // patternFrame2.repaint();
+		//patternFrame2.setVisible(true);
 		controlFrame.repaint();
                 lensPattern.repaint();
 	}
@@ -160,7 +184,12 @@ public class EduPatternTest {
                 //controlFrame.setImage(pimage);
 		patternPanel.setImage(pimage);
 		patternPanel.revalidate();
+                
+                patternPanel2.setImage(pimage);
+		patternPanel2.revalidate();
+                
 		patternFrame.repaint();
+                patternFrame2.repaint();
 		//patternFrame.setVisible(true);
 		controlFrame.repaint();
                 //lensPattern.revalidate();
@@ -219,6 +248,9 @@ public class EduPatternTest {
 		Rectangle bounds = patternFrame.getBounds();
 		controlFrame.logString("Panel width=" + bounds.width + ", height="
 				+ bounds.height);
+                Rectangle bounds2 = patternFrame2.getBounds();
+		controlFrame.logString("Panel width=" + bounds2.width + ", height="
+				+ bounds2.height);
 
 		// log wavelength
 		controlFrame.logString("Wavelength=" + pimage.getLambda());
@@ -275,5 +307,6 @@ public class EduPatternTest {
 		Image img = kit.createImage(url);
 		controlFrame.setIconImage(img);
 		patternFrame.setIconImage(img);
+                patternFrame2.setIconImage(img);
 	}
 }
