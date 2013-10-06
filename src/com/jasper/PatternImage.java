@@ -57,17 +57,14 @@ public class PatternImage {
     public static int width;
     public static int height;
     public static int gray2phase[];
-    
     // Cyllin
     private double xoffCyllin;
     private double yoffCyllin;
     private double focalCyllin;
-    
     // Microscope
     private double xoffMicroscope;
     private double yoffMicroscope;
     private double focalMicroscope;
-    
     // title string
     public String title;
 
@@ -126,14 +123,13 @@ public class PatternImage {
         this.focal = focal;
         title = "lens " + xoff + " " + yoff + " " + focal;
     }
-    
+
 //    void updateLensParameterCyllin(double xoff, double yoff, double focal) {
 //        this.xoffCyllin = xoff;
 //        this.yoffCyllin = yoff;
 //        this.focalCyllin = focal;
 //        title = "Cyllin " + xoff + " " + yoff + " " + focal;
 //    }
-
     public void updateLensParameterDrawSlit(int slit, double width, double height, double postion, double rotation, double grayLevel, double spacing) {
         this.d_widthX = width;
         this.d_heightX = height;
@@ -166,13 +162,13 @@ public class PatternImage {
 //        this.xoff = xoff;
 //        this.angle = angle;
 //        this.focal = focal;
-        
+
         this.xoffCyllin = xoff;
         this.yoffCyllin = angle;
         this.focalCyllin = focal;
         title = "cylindrical " + xoff + " " + angle + " " + focal;
     }
-    
+
     void updateMicoscopeParameter(double xoff, double yoff, double focal) {
         this.xoffMicroscope = xoff;
         this.yoffMicroscope = yoff;
@@ -1019,7 +1015,7 @@ public class PatternImage {
 //            }
 
             double scale = 1.0;
-            scale = d_zoom / 10.0D;
+            scale = d_zoom / 100.0D;
 //        ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
 //        ColorConvertOp op = new ColorConvertOp(cs, null);
 //        BufferedImage gayBuff = op.filter(buffImg, null);
