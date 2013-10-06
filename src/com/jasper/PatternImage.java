@@ -57,6 +57,17 @@ public class PatternImage {
     public static int width;
     public static int height;
     public static int gray2phase[];
+    
+    // Cyllin
+    private double xoffCyllin;
+    private double yoffCyllin;
+    private double focalCyllin;
+    
+    // Microscope
+    private double xoffMicroscope;
+    private double yoffMicroscope;
+    private double focalMicroscope;
+    
     // title string
     public String title;
 
@@ -115,8 +126,15 @@ public class PatternImage {
         this.focal = focal;
         title = "lens " + xoff + " " + yoff + " " + focal;
     }
+    
+//    void updateLensParameterCyllin(double xoff, double yoff, double focal) {
+//        this.xoffCyllin = xoff;
+//        this.yoffCyllin = yoff;
+//        this.focalCyllin = focal;
+//        title = "Cyllin " + xoff + " " + yoff + " " + focal;
+//    }
 
-    void updateLensParameterDrawSlit(int slit, double width, double height, double postion, double rotation, double grayLevel, double spacing) {
+    public void updateLensParameterDrawSlit(int slit, double width, double height, double postion, double rotation, double grayLevel, double spacing) {
         this.d_widthX = width;
         this.d_heightX = height;
         this.d_postionX = postion;
@@ -145,10 +163,21 @@ public class PatternImage {
     }
 
     void updateCyllindricalParameter(double xoff, double angle, double focal) {
-        this.xoff = xoff;
-        this.angle = angle;
-        this.focal = focal;
+//        this.xoff = xoff;
+//        this.angle = angle;
+//        this.focal = focal;
+        
+        this.xoffCyllin = xoff;
+        this.yoffCyllin = angle;
+        this.focalCyllin = focal;
         title = "cylindrical " + xoff + " " + angle + " " + focal;
+    }
+    
+    void updateMicoscopeParameter(double xoff, double yoff, double focal) {
+        this.xoffMicroscope = xoff;
+        this.yoffMicroscope = yoff;
+        this.focalMicroscope = focal;
+        title = "microscope " + xoff + " " + yoff + " " + focal;
     }
 
     void updateMirrorParameter(double phy, double theta) {
@@ -233,19 +262,19 @@ public class PatternImage {
         WritableRaster raster = canvas.getRaster();
         int[] iArray = new int[1];
         double x2, y2, phase;
-        double fixpart = Math.PI / lambda / (focal);
+        double fixpart = Math.PI / lambda / (focalMicroscope);
 
         // calculate phase of each pixel;
         for (int i = 0; i < height; i++) {
             x2 = (double) (i - height / 2 + 1) * pxsize;
-            x2 -= (-yoff / 1000);
+            x2 -= (-yoffMicroscope / 1000);
             x2 = Math.pow(x2, 2.0);
             Math.getExponent(x2);
             // 2*pi/la*0.1*x*psize
             double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
             for (int j = 0; j < width; j++) {
                 y2 = (double) (j - width / 2 + 1) * pxsize;
-                y2 -= (xoff / 1000);
+                y2 -= (xoffMicroscope / 1000);
                 y2 = Math.pow(y2, 2.0);
 
                 Math.getExponent(y2);
@@ -312,14 +341,14 @@ public class PatternImage {
         double x1, y1, x2, phase;
 
         double fixpart2 = 2.0 * Math.PI / lambda * Math.cos(Math.toRadians(3.0));
-        double fixpart = Math.PI / lambda / focal;
+        double fixpart = Math.PI / lambda / focalCyllin;
 
         double costheta = Math.cos(Math.toRadians(angle));
         double sintheta = Math.sin(Math.toRadians(angle));
 
         for (int i = 0; i < height; i++) {
             x1 = (double) (i - height / 2 + 1) * pxsize;
-            x1 -= xoff;
+            x1 -= xoffCyllin;
             for (int j = 0; j < width; j++) {
                 y1 = (double) (j - width / 2 + 1) * pxsize;
                 x2 = x1 * costheta - y1 * sintheta;
