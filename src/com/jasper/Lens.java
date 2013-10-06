@@ -1278,16 +1278,109 @@ public class Lens extends OpticsPane {
 
         tabbedControl.addTab("Signal Processing", panelSignal);
 
-        javax.swing.GroupLayout panelPhaseLayout = new javax.swing.GroupLayout(panelPhase);
-        panelPhase.setLayout(panelPhaseLayout);
-        panelPhaseLayout.setHorizontalGroup(
-                panelPhaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 665, Short.MAX_VALUE));
-        panelPhaseLayout.setVerticalGroup(
-                panelPhaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 272, Short.MAX_VALUE));
+        // BEGIN Phase retarder
+        s_phase_zoom = new javax.swing.JSlider();
+        buttonOpenFile = new javax.swing.JButton();
+        lblPleaseSelect = new javax.swing.JLabel();
+        lblZoom = new javax.swing.JLabel();
+        buttonSecondPhase = new javax.swing.JButton();
+        button11LensOnPhase = new javax.swing.JButton();
+        buttonGeneralPhase = new javax.swing.JButton();
+        txtZoom = new javax.swing.JTextField();
+        
+        buttonOpenFile.setText("Open file");
 
+        lblPleaseSelect.setText("Please open file");
+
+        lblZoom.setText("Zoom");
+
+        buttonSecondPhase.setText("Second display ON");
+        buttonSecondPhase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //buttonSecondPhaseActionPerformed(evt);
+            }
+        });
+
+        button11LensOnPhase.setText("1:1 leans ON");
+        button11LensOnPhase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //button11LensOnPhaseActionPerformed(evt);
+            }
+        });
+
+        buttonGeneralPhase.setText("General");
+        buttonGeneralPhase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //buttonGeneralPhaseActionPerformed(evt);
+            }
+        });
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_phase_zoom, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtZoom, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(panelPhase);
+        panelPhase.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lblZoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPleaseSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonSecondPhase)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 73, Short.MAX_VALUE)
+                //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFile)
+                    .addComponent(lblPleaseSelect))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblZoom)))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonSecondPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
         tabbedControl.addTab("Phase Retarder", panelPhase);
+        // BEGIN Phase retarder
+
 
         tabbedControl.setBounds(560, 0, 670, 305);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -1857,6 +1950,15 @@ public class Lens extends OpticsPane {
     private javax.swing.JTextField text_rotation_processing;
     private javax.swing.JTextField text_width_processing_x;
     private javax.swing.JTextField text_width_processing_y;
+    // Phase retarder
+    private javax.swing.JButton button11LensOnPhase;
+    private javax.swing.JButton buttonGeneralPhase;
+    private javax.swing.JButton buttonOpenFile;
+    private javax.swing.JButton buttonSecondPhase;
+    private javax.swing.JLabel lblPleaseSelect;
+    private javax.swing.JLabel lblZoom;
+    private javax.swing.JSlider s_phase_zoom;
+    private javax.swing.JTextField txtZoom;
 
     //End 
     @Override
