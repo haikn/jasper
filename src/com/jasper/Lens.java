@@ -1,6 +1,8 @@
 package com.jasper;
 
+import static com.jasper.EduPatternTest.patternFrame;
 import java.awt.Color;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -1409,6 +1411,11 @@ public class Lens extends OpticsPane {
 
         panelPattern.setBounds(0, 0, 549, 305);
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layoutControl.addMouseListener(new ClickListener() {
+                    public void doubleClick(MouseEvent e) {
+                        patternFrame.show();
+                    }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
