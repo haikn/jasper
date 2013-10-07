@@ -1,3 +1,12 @@
+/*
+ * @(#)EduPatternTest.java
+ *
+ * Copyright (c) 2013 JASPER DISPLAY, Inc.
+ * An Unpublished Work.  All Rights Reserved.
+ *
+ * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
+ * without permission from the copyright holder is strictly forbidden.
+ */
 package com.jasper;
 
 import java.awt.Color;
@@ -7,12 +16,8 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.Shape;
 import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -63,9 +68,7 @@ public class EduPatternTest {
 	static EduPatternJPanel patternPanel;
         static EduPatternJPanel patternPanel2;
 	static JFrame patternFrame;
-        static JFrame patternFrame2;
 	static EduUIMainView controlFrame;
-        static LensPattern lensPattern;
 
 	// use 2nd display
 	static boolean use2ndDisplay = true;
@@ -75,7 +78,6 @@ public class EduPatternTest {
 	
 	public static void initPatternFrame() {
 		patternFrame = new JFrame();
-                patternFrame2 = new JFrame();
                 //patternFrame2.s
 
 		Rectangle bounds;
@@ -98,19 +100,13 @@ public class EduPatternTest {
 		// System.out.println("wavelength = " + pimage.getLambda());
 
 		patternPanel = new EduPatternJPanel(pimage);
-                patternPanel2 = new EduPatternJPanel(pimage);
                 
 		patternFrame.getContentPane().add(patternPanel);
-                patternFrame2.getContentPane().add(patternPanel2);
 
 		patternFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		patternFrame.setSize(bounds.width, bounds.height);
 		patternFrame.setLocation(bounds.x, bounds.y);
                 
-                patternFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		patternFrame2.setSize(bounds.width, bounds.height);
-		patternFrame2.setLocation(bounds.x, bounds.y);
-                patternFrame2.setUndecorated(true);
 		// full screen
                 patternFrame.setUndecorated(true);
                 patternFrame.addMouseListener(new ClickListener() {
@@ -136,29 +132,22 @@ public class EduPatternTest {
                 
                 // not run first
 		patternFrame.setVisible(false);
-                patternFrame2.setVisible(false);
                 patternFrame.setForeground(Color.red);
 	}
 
 	public static void disablePatternFrame() {
 		patternFrame.setVisible(false);
-                patternFrame2.setVisible(false);
 	}
 
 	public static void disposePatternFrame() {
 		patternFrame.dispose();
-                patternFrame2.dispose();
 	}
         
     public static void updateRegenerate() {
 		controlFrame.updateRegenerate();
 		patternPanel.revalidate();
 		patternFrame.repaint();
-                
-                patternPanel2.revalidate();
-                patternFrame2.repaint();
 		controlFrame.repaint();
-                lensPattern.repaint();
     }
 
 	public static void updateLensPattern(PatternImage pimage, String log) {
@@ -166,16 +155,9 @@ public class EduPatternTest {
 		patternPanel.setImage(pimage);
 		patternPanel.revalidate();
                 
-                patternPanel2.setImage(pimage);
-		patternPanel2.revalidate();
-                
 		patternFrame.repaint();
 		patternFrame.setVisible(true);
-                
-               // patternFrame2.repaint();
-		//patternFrame2.setVisible(true);
 		controlFrame.repaint();
-                lensPattern.repaint();
 	}
         
         public static void updateLensPatternPattern(PatternImage pimage, String log) {
@@ -185,15 +167,9 @@ public class EduPatternTest {
 		patternPanel.setImage(pimage);
 		patternPanel.revalidate();
                 
-                patternPanel2.setImage(pimage);
-		patternPanel2.revalidate();
-                
 		patternFrame.repaint();
-                patternFrame2.repaint();
 		//patternFrame.setVisible(true);
 		controlFrame.repaint();
-                //lensPattern.revalidate();
-                lensPattern.repaint();
 	}
 
 	public static void updateCylindricalPattern(PatternImage pimage, String log) {
@@ -227,7 +203,6 @@ public class EduPatternTest {
 	static int logging = 0;
 
 	public static void initControlFrame() {
-                lensPattern = new LensPattern();
 		controlFrame = new EduUIMainView();
 		controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		controlFrame.setLocation(0, 0);
@@ -237,7 +212,6 @@ public class EduPatternTest {
 		controlFrame.pack();
 		controlFrame.setVisible(true);
 		controlFrame.setResizable(true);
-                lensPattern.setVisible(true);
 
 		// following line is for debugging. it's very useful when using with one
 		// display only
@@ -248,9 +222,6 @@ public class EduPatternTest {
 		Rectangle bounds = patternFrame.getBounds();
 		controlFrame.logString("Panel width=" + bounds.width + ", height="
 				+ bounds.height);
-                Rectangle bounds2 = patternFrame2.getBounds();
-		controlFrame.logString("Panel width=" + bounds2.width + ", height="
-				+ bounds2.height);
 
 		// log wavelength
 		controlFrame.logString("Wavelength=" + pimage.getLambda());
@@ -307,6 +278,5 @@ public class EduPatternTest {
 		Image img = kit.createImage(url);
 		controlFrame.setIconImage(img);
 		patternFrame.setIconImage(img);
-                patternFrame2.setIconImage(img);
 	}
 }

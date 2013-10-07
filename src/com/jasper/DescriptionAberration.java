@@ -1,9 +1,13 @@
+/*
+ * @(#)DescriptionAberration.java
+ *
+ * Copyright (c) 2013 JASPER DISPLAY, Inc.
+ * An Unpublished Work.  All Rights Reserved.
+ *
+ * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
+ * without permission from the copyright holder is strictly forbidden.
+ */
 package com.jasper;
-
-import java.awt.Component;
-import java.awt.Graphics;
-
-import javax.swing.JOptionPane;
 
 /*
  * To change this template, choose Tools | Templates

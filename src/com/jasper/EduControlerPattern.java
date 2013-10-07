@@ -1,5 +1,5 @@
 /*
- * @(#)Lens.java
+ * @(#)EduControlerPattern.java
  *
  * Copyright (c) 2013 JASPER DISPLAY, Inc.
  * An Unpublished Work.  All Rights Reserved.
@@ -28,14 +28,14 @@ import javax.swing.JOptionPane;
  * @author sonnv
  */
 
-public class Lens extends OpticsPane {
+public class EduControlerPattern extends OpticsPane {
 
     PatternImage image1 = new PatternImage();
 
     /**
      * Creates new form CylincalLens
      */
-    public Lens() {
+    public EduControlerPattern() {
         initComponents();
         image1 = ((EduPatternJPanel) panelPattern).pimage;
     }
@@ -501,8 +501,8 @@ public class Lens extends OpticsPane {
             }
         });
 
-        jSliderFocalCyllin.setMaximum(10000000);
-        jSliderFocalCyllin.setMinimum(-10000);
+        jSliderFocalCyllin.setMaximum(10000);
+        jSliderFocalCyllin.setMinimum(-1000);
         jSliderFocalCyllin.setValue(522);
         jSliderFocalCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -512,7 +512,7 @@ public class Lens extends OpticsPane {
 
         jSliderXPositionCyllin.setMaximum(1000);
         jSliderXPositionCyllin.setMinimum(-100);
-        jSliderXPositionCyllin.setValue(0);
+        jSliderXPositionCyllin.setValue(150);
         jSliderXPositionCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedCyllin(evt);
@@ -521,7 +521,7 @@ public class Lens extends OpticsPane {
 
         jSliderYPositionCyllin.setMaximum(1000);
         jSliderYPositionCyllin.setMinimum(-100);
-        jSliderYPositionCyllin.setValue(0);
+        jSliderYPositionCyllin.setValue(200);
         jSliderYPositionCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedCyllin(evt);
@@ -1545,7 +1545,7 @@ public class Lens extends OpticsPane {
     // Optical arguments, which will be parsed before reassigning the values
     private double xoffMicroscope = 0.0, yoffMicroscope = 0.0, focalMicroscope = 1.0;
     private double xoff = 0.0, yoff = 0.0, focal = 522;
-    private double xoffCyllin = 0.0, yoffCyllin = 0.0, focalCyllin = 522;
+    private double xoffCyllin = 150.0, yoffCyllin = 200.0, focalCyllin = 522;
     private double phy = 522, theta = 522;
     private double d_widthX = Double.valueOf(image1.getBounds().width), d_heightX = 100, d_rotation = 0, d_postionX = 0, d_grayLevel = 255, d_spacing = 400;
     //Processing
@@ -2071,5 +2071,5 @@ public class Lens extends OpticsPane {
             image.paintLens();
         }
     }
-    static String logmessage = "pattern lens xoff=%s yoff=%s focal=%s";
+    static String logmessage = "pattern: xoff=%s yoff=%s focal=%s";
 }

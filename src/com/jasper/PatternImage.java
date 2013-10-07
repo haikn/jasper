@@ -1,13 +1,11 @@
 /*
  * @(#)PatternImage.java
  *
- * Copyright (c) 2013 NOMOVOK, Inc.
+ * Copyright (c) 2013 JASPER DISPLAY, Inc.
  * An Unpublished Work.  All Rights Reserved.
  *
- * NOMOVOK PROPRIETARY:  The information contained in or disclosed by this
- * document is considered proprietary by NOMOVOK, Inc.  This document and/or the
- * information contained therein shall not be duplicated nor disclosed in whole
- * or in part without the specific written permission of NOMOVOK, Inc.
+ * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
+ * without permission from the copyright holder is strictly forbidden.
  */
 package com.jasper;
 
@@ -319,6 +317,33 @@ public class PatternImage {
 
     // Cylindircal algorithms
     public void paintCylindircal() {
+        WritableRaster raster = canvas.getRaster();
+        int[] iArray = new int[1];
+        double x2, y2, phase;
+        double fixpart = Math.PI / lambda / (focalCyllin);
+
+        // calculate phase of each pixel;
+        for (int i = 0; i < height; i++) {
+            x2 = (double) (i - height / 2 + 1) * pxsize;
+            x2 -= (-yoffCyllin / 1000);
+            x2 = Math.pow(x2, 2.0);
+            Math.getExponent(x2);
+            // 2*pi/la*0.1*x*psize
+            double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
+            for (int j = 0; j < width; j++) {
+                y2 = (double) (j - width / 2 + 1) * pxsize;
+                y2 -= (xoffCyllin / 1000);
+                y2 = Math.pow(y2, 2.0);
+
+                Math.getExponent(y2);
+                phase = fixpart * (x2 + y2);
+                phase += fixpart2 * x2 * y2;
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    public void paintCylindircal1() {
 //        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
 //
 //        xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
@@ -339,8 +364,8 @@ public class PatternImage {
         double fixpart2 = 2.0 * Math.PI / lambda * Math.cos(Math.toRadians(3.0));
         double fixpart = Math.PI / lambda / focalCyllin;
 
-        double costheta = Math.cos(Math.toRadians(angle));
-        double sintheta = Math.sin(Math.toRadians(angle));
+        double costheta = Math.cos(Math.toRadians(yoffCyllin));
+        double sintheta = Math.sin(Math.toRadians(yoffCyllin));
 
         for (int i = 0; i < height; i++) {
             x1 = (double) (i - height / 2 + 1) * pxsize;
@@ -543,10 +568,6 @@ public class PatternImage {
 
         double phy = Math.toRadians(mirrorPhy);
         double theta = Math.toRadians(mirrorTheta);
-//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
-//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
-//        double phy = Math.PI/300;
-//        double theta = Math.PI/10;
         double focal = Math.toRadians(mirrorPhy);
 
 // following statement is for debugging
@@ -556,14 +577,6 @@ public class PatternImage {
         double ycomp = Math.sin(phy) * Math.sin(theta);
 
         double fixpart = 2.0 * Math.PI / lambda;
-//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-//
-//        xt=x*cos(theta)+y*sin(theta);
-//
-//        yt=-x*sin(theta)+y*cos(theta);
-//
-//        % wavefront and its phase
-//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
 
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
@@ -572,10 +585,6 @@ public class PatternImage {
                 y = (double) (j - width / 2 + 1) * pxsize;
                 y = ycomp * y;
                 phase = fixpart * (x + y);
-
-// following statement is for debugging
-//				System.out.println("i="+i+" j="+j+" phase="+phase);
-
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
             }
