@@ -27,7 +27,6 @@ import javax.swing.JOptionPane;
  *
  * @author sonnv
  */
-
 public class EduControlerPattern extends OpticsPane {
 
     PatternImage image1 = new PatternImage();
@@ -1419,9 +1418,9 @@ public class EduControlerPattern extends OpticsPane {
         panelPattern.setBounds(0, 0, 549, 305);
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
-                    public void doubleClick(MouseEvent e) {
-                        patternFrame.show();
-                    }
+            public void doubleClick(MouseEvent e) {
+                patternFrame.show();
+            }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -1649,6 +1648,18 @@ public class EduControlerPattern extends OpticsPane {
         return String.format(logmessage, Double.toString(xoff), Double.toString(yoff), Double.toString(focal));
     }
 
+    private String genLogSlit() {
+        return String.format(logmessageSlit, Double.toString(d_widthX), Double.toString(d_heightX), Double.toString(d_rotation), Double.toString(d_postionX), Double.toString(d_grayLevel), Double.toString(d_spacing));
+    }
+
+    private String genLogProcessing() {
+        return String.format(logmessageProcessing, Double.toString(processing_widthX), Double.toString(processing_heightX), Double.toString(processing_widthY), Double.toString(processing_heightY), Double.toString(processing_rotation), Double.toString(processing_positionX), Double.toString(processing_positionY), Double.toString(processing_grayLevel));
+    }
+
+    private String genLogPhase() {
+        return String.format(logmessagePhase, Double.toString(zoom));
+    }
+
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -1786,7 +1797,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
             imageGenerated = true;
         }
 
@@ -1797,7 +1808,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
-            EduPatternTest.updateLensPattern(image, genLog());
+            EduPatternTest.updateLensPattern(image, genLogSlit());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -1808,7 +1819,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
@@ -1819,7 +1830,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalProcessing();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
             imageGenerated = true;
         }
 
@@ -1830,7 +1841,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalProcessing();
-            EduPatternTest.updateLensPattern(image, genLog());
+            EduPatternTest.updateLensPattern(image, genLogProcessing());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -1841,7 +1852,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalProcessing();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
             imageGenerated = true;
         }
     }
@@ -1853,7 +1864,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder(buffImages);
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogPhase());
             imageGenerated = true;
         }
 
@@ -1864,7 +1875,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder(buffImages);
-            EduPatternTest.updateLensPattern(image, genLog());
+            EduPatternTest.updateLensPattern(image, genLogPhase());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -1875,7 +1886,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder(buffImages);
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogPhase());
             imageGenerated = true;
         }
     }
@@ -2072,4 +2083,7 @@ public class EduControlerPattern extends OpticsPane {
         }
     }
     static String logmessage = "pattern: xoff=%s yoff=%s focal=%s";
+    static String logmessageSlit = "Slit: w=%s h=%s r=%s p=%s g=%s s=%s";
+    static String logmessageProcessing = "Signal processing: w_x=%s h_x=%s w_y=%s h_y=%s r=%s p_x=%s p_y=%s g=%s";
+    static String logmessagePhase = "Phase retarder: zoom=%s";
 }
