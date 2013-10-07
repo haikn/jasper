@@ -769,7 +769,7 @@ public class EduControlerPattern extends OpticsPane {
 
         lblRotationSlit.setText("Rotation");
 
-        lblPosSlit.setText("Position");
+        lblPosSlit.setText("Positions");
 
         lblGraySlit.setText("GrayLevel ");
 
