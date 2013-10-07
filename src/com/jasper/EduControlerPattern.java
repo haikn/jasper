@@ -11,12 +11,18 @@ package com.jasper;
 
 import static com.jasper.EduPatternTest.patternFrame;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /*
@@ -47,6 +53,7 @@ public class EduControlerPattern extends OpticsPane {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        MouseBehavior behavior = new MouseBehavior();
 
         panelPattern = new EduPatternJPanel();
         jTabbedPaneOptics = new javax.swing.JTabbedPane();
@@ -1430,13 +1437,24 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(0, 290, Short.MAX_VALUE));
 
         panelPattern.setBounds(0, 0, 549, 305);
+        //TODO
+        layoutControl.addMouseMotionListener(behavior);
+        layoutControl.addMouseListener(behavior);
+        layoutControl.addMouseWheelListener(behavior);
+        //END
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
             public void doubleClick(MouseEvent e) {
                 patternFrame.show();
             }
         });
+        // TODO
 
+        //   layoutControl.add(panelPattern);
+//        JFrame f = new JFrame();
+//        f.add(panelPattern);
+        // jTabbedPaneOptics.add(panelPattern);
+        //HET
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -2100,4 +2118,67 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageSlit = "Slit: w=%s h=%s r=%s p=%s g=%s s=%s";
     static String logmessageProcessing = "Signal processing: w_x=%s h_x=%s w_y=%s h_y=%s r=%s p_x=%s p_y=%s g=%s";
     static String logmessagePhase = "Phase retarder: zoom=%s";
+//Zoom
+    private Point startPoint = new Point(0, 0);
+    private Point rectLocale = new Point();
+    private Dimension rectSize = new Dimension();
+    private BufferedImage capture = null;
+
+    private class MouseBehavior extends MouseAdapter {
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            startPoint = e.getPoint();
+            rectLocale = new Point();
+            rectSize = new Dimension();
+            capture = null;
+            if (e.getSource() instanceof JComponent) {
+                ((JComponent) e.getSource()).repaint();
+            }
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            Point currentPoint = e.getPoint();
+            rectSize.width = Math.abs(currentPoint.x - startPoint.x);
+            rectSize.height = Math.abs(currentPoint.y - startPoint.y);
+            if (e.isShiftDown()) {
+                rectSize.width = rectSize.height = Math.min(
+                        rectSize.width, rectSize.height);
+                int dx = startPoint.x - rectSize.width;
+                int dy = startPoint.y - rectSize.height;
+                rectLocale.x = startPoint.x < currentPoint.x ? startPoint.x
+                        : Math.max(dx, dy);
+                rectLocale.y = startPoint.y < currentPoint.y ? startPoint.y
+                        : Math.min(dx, dy);
+            } else {
+                rectLocale.x = Math.min(currentPoint.x, startPoint.x);
+                rectLocale.y = Math.min(currentPoint.y, startPoint.y);
+            }
+            if (e.getSource() instanceof JComponent) {
+                ((JComponent) e.getSource()).repaint();
+            }
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            if (rectSize.width <= 0 || rectSize.height <= 0) {
+                capture = null;
+            } else {
+                capture = image1.canvas.getSubimage(Math.max(0, rectLocale.x),
+                        Math.max(0, rectLocale.y), rectSize.width, rectSize.height);
+            }
+            if (e.getSource() instanceof JComponent) {
+                ((JComponent) e.getSource()).repaint();
+            }
+        }
+
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent e) {
+            zoom = Math.min(2000, Math.max(0, zoom + e.getUnitsToScroll() * 10));
+            if (e.getSource() instanceof JComponent) {
+                ((JComponent) e.getSource()).repaint();
+            }
+        }
+    }
 }
