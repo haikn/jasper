@@ -1387,9 +1387,9 @@ public class EduControlerPattern extends OpticsPane {
 
         panelPattern.setBounds(0, 0, 549, 305);
         //TODO
-        layoutControl.addMouseMotionListener(behavior);
-        layoutControl.addMouseListener(behavior);
-        layoutControl.addMouseWheelListener(behavior);
+//        layoutControl.addMouseMotionListener(behavior);
+//        layoutControl.addMouseListener(behavior);
+//        layoutControl.addMouseWheelListener(behavior);
         //END
 
         //  BEGIN show full screen
