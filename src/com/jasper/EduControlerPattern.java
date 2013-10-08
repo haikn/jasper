@@ -797,7 +797,12 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
+        // disable when slit = 1
+        jLabelSpacingSlit.hide();
+        text_single_spacing.hide();
+        s_single_spacing.hide();
+        
         s_single_width.setMaximum(image1.getBounds().width);
         s_single_width.setValue(image1.getBounds().width);
         s_single_width.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -877,9 +882,16 @@ public class EduControlerPattern extends OpticsPane {
                 Object selected = comboBoxSlit.getSelectedItem();
                 if (selected.equals("Single Slit")) {
                     slit = 1;
+                    jLabelSpacingSlit.hide();
+                    text_single_spacing.hide();
+                    s_single_spacing.hide();
+                    
                 }
                 if (selected.equals("Double Slit")) {
                     slit = 2;
+                    jLabelSpacingSlit.show();
+                    text_single_spacing.show();
+                    s_single_spacing.show();
                 }
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
@@ -983,6 +995,30 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )));
+        
+//        javax.swing.GroupLayout panelGeneralSlitLayout = new javax.swing.GroupLayout(panelSlit);
+//        panelSlit.setLayout(panelGeneralSlitLayout);
+//        panelGeneralSlitLayout.setHorizontalGroup(
+//                panelGeneralSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addGroup(panelGeneralSlitLayout.createSequentialGroup()
+//                .addGap(24, 24, 24)
+//                .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+//                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGeneralSlitLayout.createSequentialGroup()
+//                .addContainerGap()
+//                .addComponent(jTabbedPaneOptics)));
+//        panelGeneralSlitLayout.setVerticalGroup(
+//                panelGeneralSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addGroup(panelGeneralSlitLayout.createSequentialGroup()
+//                .addContainerGap()
+//                .addGroup(panelGeneralSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                .addGap(5, 5, 5)
+//                .addComponent(jTabbedPaneOptics)
+//                .addContainerGap()));
 
         tabbedControl.addTab("  Slit  ", panelSlit);
 
