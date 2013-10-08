@@ -12,6 +12,8 @@ package com.jasper;
 import static com.jasper.EduPatternTest.patternFrame;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -36,6 +38,10 @@ import javax.swing.JOptionPane;
 public class EduControlerPattern extends OpticsPane {
 
     PatternImage image1 = new PatternImage();
+    private Point startPoint = new Point(0, 0);
+    private Point rectLocale = new Point();
+    private Dimension rectSize = new Dimension();
+    private BufferedImage capture = null;
 
     /**
      * Creates new form CylincalLens
@@ -1438,11 +1444,18 @@ public class EduControlerPattern extends OpticsPane {
 
         panelPattern.setBounds(0, 0, 549, 305);
         //TODO
+
         layoutControl.addMouseMotionListener(behavior);
+
         layoutControl.addMouseListener(behavior);
         layoutControl.addMouseWheelListener(behavior);
         //END
+
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+
+
+
         layoutControl.addMouseListener(new ClickListener() {
             public void doubleClick(MouseEvent e) {
                 patternFrame.show();
@@ -1582,6 +1595,7 @@ public class EduControlerPattern extends OpticsPane {
     //Processing
     private double processing_widthX = Double.valueOf(image1.getBounds().width), processing_widthY = 100, processing_heightX = 100, processing_heightY = Double.valueOf(image1.getBounds().height), processing_rotation = 0, processing_positionX = 0, processing_positionY = 0, processing_grayLevel = 255;
     private double zoom = 100.0, grayLevel = 255;
+    private int zoom_panal = 200;
 
     private boolean parseArguments() {
         boolean ret = false;
@@ -2108,7 +2122,9 @@ public class EduControlerPattern extends OpticsPane {
     }
 
     void updateRegenerate() {
+       
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        //image.
         if (imageGenerated) {
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
@@ -2119,10 +2135,6 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageProcessing = "Signal processing: w_x=%s h_x=%s w_y=%s h_y=%s r=%s p_x=%s p_y=%s g=%s";
     static String logmessagePhase = "Phase retarder: zoom=%s";
 //Zoom
-    private Point startPoint = new Point(0, 0);
-    private Point rectLocale = new Point();
-    private Dimension rectSize = new Dimension();
-    private BufferedImage capture = null;
 
     private class MouseBehavior extends MouseAdapter {
 
@@ -2132,9 +2144,6 @@ public class EduControlerPattern extends OpticsPane {
             rectLocale = new Point();
             rectSize = new Dimension();
             capture = null;
-            if (e.getSource() instanceof JComponent) {
-                ((JComponent) e.getSource()).repaint();
-            }
         }
 
         @Override
@@ -2155,9 +2164,6 @@ public class EduControlerPattern extends OpticsPane {
                 rectLocale.x = Math.min(currentPoint.x, startPoint.x);
                 rectLocale.y = Math.min(currentPoint.y, startPoint.y);
             }
-            if (e.getSource() instanceof JComponent) {
-                ((JComponent) e.getSource()).repaint();
-            }
         }
 
         @Override
@@ -2170,15 +2176,26 @@ public class EduControlerPattern extends OpticsPane {
             }
             if (e.getSource() instanceof JComponent) {
                 ((JComponent) e.getSource()).repaint();
+                Graphics2D g2d = ((Graphics2D) image1.canvas.getGraphics());
+                g2d.drawImage(image1.canvas, 0, 0, null);
+                if (capture != null) {
+                    int width2 = (int) (rectSize.width + rectSize.width * (zoom_panal / 500d));
+                    int height2 = (int) (rectSize.height + rectSize.height * (zoom_panal / 500d));
+                    int x2 = rectLocale.x - ((width2 - rectSize.width) / 2);
+                    int y2 = rectLocale.y - ((height2 - rectSize.height) / 2);
+                    Image scaledInstance = capture.getScaledInstance(
+                            width2, height2, Image.SCALE_AREA_AVERAGING);
+                    g2d.drawImage(scaledInstance, x2, y2, null);
+                    g2d.drawRect(x2, y2, width2, height2);
+                }else{
+                    updateRegenerate();
+                }
             }
         }
 
         @Override
         public void mouseWheelMoved(MouseWheelEvent e) {
-            zoom = Math.min(2000, Math.max(0, zoom + e.getUnitsToScroll() * 10));
-            if (e.getSource() instanceof JComponent) {
-                ((JComponent) e.getSource()).repaint();
-            }
+            zoom_panal = Math.min(2000, Math.max(0, zoom_panal + e.getUnitsToScroll() * 10));
         }
     }
 }
