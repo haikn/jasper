@@ -53,7 +53,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         tabbedLog = new javax.swing.JTabbedPane();
         jPanelLensPattern = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanelLens1 = new EduControlerPattern ();
+        jPanelLens1 = new EduControlerPattern();
 //        jPanelPhaseRetarder = new PhaseRetarder();
 //        jPanelCylindrical2 = new CylincalLens();
 //        jPanelMicroscope1 = new Microscope();
@@ -94,69 +94,71 @@ public class EduUIMainView extends javax.swing.JFrame {
         jPanelExperimentDefault = new ExperimentDefault();
         jPanelCalibration = new Calibration();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollDesc = new javax.swing.JScrollPane();
         jTextAreaLog = new javax.swing.JTextArea();
+        jTextAreaDesc = new javax.swing.JTextArea();
         jMenuBarMain = new javax.swing.JMenuBar();
         jMenuFile = new javax.swing.JMenu();
         jMenuItemExit = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
         jMenuItemAbout = new javax.swing.JMenuItem();
-        
+
         // add optics panes to panelist
-        panelist = new ArrayList <OpticsPane>();
+        panelist = new ArrayList<OpticsPane>();
         //Todo
-       
-        
-        panelist.add((OpticsPane)jPanelLens1);
-       // panelist.add((OpticsPane)jPanelLens2);
-        panelist.add((OpticsPane)jPanelLens3);
-        panelist.add((OpticsPane)jPanelLens4);
-        panelist.add((OpticsPane)jPanelPhaseRetarder);
-        panelist.add((OpticsPane)jPanelCylindrical2);
+
+
+        panelist.add((OpticsPane) jPanelLens1);
+        // panelist.add((OpticsPane)jPanelLens2);
+        panelist.add((OpticsPane) jPanelLens3);
+        panelist.add((OpticsPane) jPanelLens4);
+        panelist.add((OpticsPane) jPanelPhaseRetarder);
+        panelist.add((OpticsPane) jPanelCylindrical2);
         // Microscope
-        panelist.add((OpticsPane)jPanelMicroscope1);
-        panelist.add((OpticsPane)jPanelMicroscope2);
-        
-        panelist.add((OpticsPane)jPanelMirror1);
-        panelist.add((OpticsPane)jPanelMirror2);
-        panelist.add((OpticsPane)jPanelMirror3);
-        panelist.add((OpticsPane)jPanelMirror4);
+        panelist.add((OpticsPane) jPanelMicroscope1);
+        panelist.add((OpticsPane) jPanelMicroscope2);
+
+        panelist.add((OpticsPane) jPanelMirror1);
+        panelist.add((OpticsPane) jPanelMirror2);
+        panelist.add((OpticsPane) jPanelMirror3);
+        panelist.add((OpticsPane) jPanelMirror4);
         // Aber
-        panelist.add((OpticsPane)jPanelAber1);
+        panelist.add((OpticsPane) jPanelAber1);
         // Mach
-        panelist.add((OpticsPane)jPanelMach1);
+        panelist.add((OpticsPane) jPanelMach1);
         // Michelson
-        panelist.add((OpticsPane)jPanelMich1);
-        panelist.add((OpticsPane)jPanelMich2);
-        panelist.add((OpticsPane)jPanelMich3);
-        panelist.add((OpticsPane)jPanelMich4);
+        panelist.add((OpticsPane) jPanelMich1);
+        panelist.add((OpticsPane) jPanelMich2);
+        panelist.add((OpticsPane) jPanelMich3);
+        panelist.add((OpticsPane) jPanelMich4);
         // Diffraction
-        panelist.add((OpticsPane)jPanelDiffraction1);
+        panelist.add((OpticsPane) jPanelDiffraction1);
         // Spectrometer
-        panelist.add((OpticsPane)jPanelSpectrometer1);
+        panelist.add((OpticsPane) jPanelSpectrometer1);
         // Signal Processing
-        panelist.add((OpticsPane)jPanelSignal1);
+        panelist.add((OpticsPane) jPanelSignal1);
         // Phase
-        panelist.add((OpticsPane)jPanelPhase1);
+        panelist.add((OpticsPane) jPanelPhase1);
         // Tabot
-        panelist.add((OpticsPane)jPanelTalbot1);
+        panelist.add((OpticsPane) jPanelTalbot1);
         // Wavefront
-        panelist.add((OpticsPane)jPanelWavefront1);
+        panelist.add((OpticsPane) jPanelWavefront1);
         //Wavelength
-        panelist.add((OpticsPane)jPanelWavelength1);
-        
-        panelist.add((OpticsPane)jPanelTest);
-        
-        panelist.add((OpticsPane)jPanelDescriptionLens);
-        panelist.add((OpticsPane)jPanelCalibration);
+        panelist.add((OpticsPane) jPanelWavelength1);
+
+        panelist.add((OpticsPane) jPanelTest);
+
+        panelist.add((OpticsPane) jPanelDescriptionLens);
+        panelist.add((OpticsPane) jPanelCalibration);
         panelPattern = new EduPatternJPanel();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         // BEGIN paint boot screen, a lens pattern
-        ((ExperimentDefault)jPanelExperimentDefault).bootScreen();
+        ((ExperimentDefault) jPanelExperimentDefault).bootScreen();
 //        jTabbedPaneOptics.addTab("Lens", jPanelExperimentDefault);
 //        jTabbedPaneOptics.addTab("Cylindrical", null);
 //        jTabbedPaneOptics.addTab("Mirror", null);
-        
+
 //        jTabbedPaneOptics.addTab("                                                        "
 //                + "                                                                 "
 //                + "                                                                 "
@@ -172,32 +174,36 @@ public class EduUIMainView extends javax.swing.JFrame {
         setTabPanelEnable(jTabbedPaneOptics, true);
         //setTabPanelEnable(jTabbedPaneOptics2, true);
 //        jTabbedPaneOptics.addTab("Signal processing", null);
-        
+
         // END paint boot screen, a lens pattern
 
         // JAL, disable optics tabbed pane by default
         //setTabPanelEnable(jTabbedPaneOptics, false);
-        
+
 //        jTextAreaLog.setColumns(20);
 //        jTextAreaLog.setRows(5);
 //        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
 //        jScrollPane2.setViewportView(jTextAreaLog);
 //        jTextAreaLog.setEditable(false);
-        
+
         //jScrollPane2.setViewportView(tabbedDesLog);
-        tabbedDesLog.addTab("Description", null);
-        
+
+        jTextAreaDesc.setColumns(20);
+        jTextAreaDesc.setRows(5);
+        jTextAreaDesc.setFont(new Font("Courier New", Font.PLAIN, 12));
+        tabbedDesLog.addTab("Description", jScrollDesc);
+
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-        
+
         tabbedDiagram.addTab("Diagram", null);
-        
+
         jLabel1 = new javax.swing.JLabel("Select experiment:");
-        jLabel1.setForeground (Color.red);
-        
+        jLabel1.setForeground(Color.red);
+
         jMenuFile.setText("File");
         jMenuItemExit.setText("Exit");
         jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +215,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuFile.add(jMenuItemExit);
 
         jMenuBarMain.add(jMenuFile);
-        
+
         jMenuHelp.setText("Help");
 
         jMenuItemAbout.setText("About");
@@ -223,10 +229,10 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuBarMain.add(jMenuHelp);
 
         setJMenuBar(jMenuBarMain);
-        
+
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        
+
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -236,42 +242,42 @@ public class EduUIMainView extends javax.swing.JFrame {
         jLayeredPane5 = new javax.swing.JLayeredPane();
         jPanelPhaseRetarder = new PhaseRetarder();
         jLayeredPane6 = new javax.swing.JLayeredPane();
-        panelist.add((OpticsPane)jPanelSlit);
+        panelist.add((OpticsPane) jPanelSlit);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Select  Experiment");
-        jLabel1.setForeground (Color.red);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "      ------ Select experiment ------", "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
+        jLabel1.setForeground(Color.red);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
             "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
-        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation", "11. Wavelength Selective Switch" }));
+            "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation", "11. Wavelength Selective Switch"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JComboBox comboBox = (JComboBox) evt.getSource();
 
                 Object selected = comboBox.getSelectedItem();
-                if(selected.equals("      ------ Select experiment ------")){
+                if (selected.equals("      ------ Select experiment ------")) {
                     jMenuItemDefaultExperimentPerformed(evt);
-                } else if(selected.equals("1. Telephoto lens")){
+                } else if (selected.equals("1. Telephoto lens")) {
                     jMenuItemTelephotoActionPerformed(evt);
-                } else if(selected.equals("2. Microscope")){
+                } else if (selected.equals("2. Microscope")) {
                     jMenuItemMicroscopeActionPerformed(evt);
-                } else if(selected.equals("3. Aberration (Foucault test)")){
+                } else if (selected.equals("3. Aberration (Foucault test)")) {
                     jMenuItemAberrationActionPerformed(evt);
-                } else if(selected.equals("4. Michelson Interferometer")){
+                } else if (selected.equals("4. Michelson Interferometer")) {
                     jMenuItemMichelsonActionPerformed(evt);
-                } else if(selected.equals("5. Diffraction and Interference")){
+                } else if (selected.equals("5. Diffraction and Interference")) {
                     jMenuItemDiffractionActionPerformed(evt);
-                } else if(selected.equals("6. Spectrometer")){
+                } else if (selected.equals("6. Spectrometer")) {
                     jMenuItemSpectrometerActionPerformed(evt);
-                } else if(selected.equals("7. Signal Processing (4-f system)")){
+                } else if (selected.equals("7. Signal Processing (4-f system)")) {
                     jMenuItemSignalProcessingActionPerformed(evt);
-                } else if(selected.equals("8. Phase Shifting Digital Holography")){
+                } else if (selected.equals("8. Phase Shifting Digital Holography")) {
                     jMenuItemPhaseShiftingActionPerformed(evt);
-                } else if(selected.equals("9. Talbot Images")){
+                } else if (selected.equals("9. Talbot Images")) {
                     jMenuItemTalbotImagesActionPerformed(evt);
-                } else if(selected.equals("10. Wavefront Modulation")){
+                } else if (selected.equals("10. Wavefront Modulation")) {
                     jMenuItemWavefrontActionPerformed(evt);
-                } else if(selected.equals("11. Wavelength Selective Switch")){
+                } else if (selected.equals("11. Wavelength Selective Switch")) {
                     jMenuItemWavelengthActionPerformed(evt);
                 }
             }
@@ -289,79 +295,79 @@ public class EduUIMainView extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPaneOptics)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)))
-                .addGap(5, 5, 5))
-        );
+                .addComponent(jTabbedPaneOptics)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)))
+                .addGap(5, 5, 5)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                    .addComponent(tabbedDiagram))
-                .addGap(5, 5, 5))
-        );
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                .addComponent(tabbedDiagram))
+                .addGap(5, 5, 5)));
 
         pack();
 
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
 //                System.out.println("stateChanged " + jTabbedPaneOptics.getSelectedComponent());
-                OpticsPane comp = (OpticsPane)(jTabbedPaneOptics.getSelectedComponent());
-                if (comp != null) 
-                	comp.updatePatternScreen();
+                OpticsPane comp = (OpticsPane) (jTabbedPaneOptics.getSelectedComponent());
+                if (comp != null) {
+                    comp.updatePatternScreen();
+                }
             }
         });
-        
+
         jTabbedPaneOptics2.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 System.out.println("stateChanged " + jTabbedPaneOptics2.getSelectedComponent());
-                OpticsPane comp = (OpticsPane)(jTabbedPaneOptics2.getSelectedComponent());
+                OpticsPane comp = (OpticsPane) (jTabbedPaneOptics2.getSelectedComponent());
                 if (comp != null) {
                     String tmp = "";
                     tmp = jTextAreaLog.getText() + "";
-                    System.out.println("string tmp: "+tmp);
-                	comp.updatePatternScreen();
+                    System.out.println("string tmp: " + tmp);
+                    comp.updatePatternScreen();
                 }
             }
         });
         //jPanelLens2.addContainerListener(null);
-        
+
         setTitle(eduKitTitle);
-        
+
     }// </editor-fold>//GEN-END:initComponents
+
     public void jMenuItemDefaultExperimentPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelephotoActionPerformed
         changeLabTitle("");
-        
+
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
+
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", null);
         jTabbedPaneOptics.addTab("Mirror", null);
         tabbedDesLog.addTab("Description", null);
         tabbedDesLog.addTab("Log", null);
         setTabPanelEnable(jTabbedPaneOptics, false);
-        
+
     }
-    
+
     public void jMenuItemTelephotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelephotoActionPerformed
         changeLabTitle(labTitleTele);
-        
+
         jTabbedPaneOptics.removeAll();
         jTabbedPaneOptics2.removeAll();
         tabbedDesLog.removeAll();
-        
+
         jTabbedPaneOptics.addTab("Lens", jPanelLens1);
         jTabbedPaneOptics2.addTab("Pattern", jPanelLens2);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
@@ -370,7 +376,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         tabbedDesLog.addTab("Log", jScrollPane2);
         setTabPanelEnable(jTabbedPaneOptics, true);
         setTabPanelEnable(jTabbedPaneOptics2, true);
-        
+
     }//GEN-LAST:event_jMenuItemTelephotoActionPerformed
 
     public void jMenuItemMicroscopeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMicroscopeActionPerformed
@@ -378,39 +384,39 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTabbedPaneOptics.removeAll();
         jTabbedPaneOptics2.removeAll();
         tabbedDesLog.removeAll();
-        
+
         jTabbedPaneOptics2.addTab("Pattern", jPanelMicroscope2);
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", jPanelDescriptionMicroscope);
         tabbedDesLog.addTab("Log", jScrollPane2);
-        setTabPanelEnable(jTabbedPaneOptics, true);        
+        setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemMicroscopeActionPerformed
 
     private void jMenuItemAberrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAberrationActionPerformed
         changeLabTitle(labTitleAber);
-        
+
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
         jTabbedPaneOptics2.removeAll();
-        
+
         jTabbedPaneOptics2.addTab("Pattern", jPanelLens2);
         jTabbedPaneOptics.addTab("Lens", jPanelAber1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", jPanelDescriptionAberration);
         tabbedDesLog.addTab("Log", jScrollPane2);
-        setTabPanelEnable(jTabbedPaneOptics, true);        
+        setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemAberrationActionPerformed
 
     private void jMenuItemMichelsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMichelsonActionPerformed
-        changeLabTitle(labTitleMich);        
-        
+        changeLabTitle(labTitleMich);
+
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
-        jTabbedPaneOptics.addTab("Lens", jPanelMich1);        
+
+        jTabbedPaneOptics.addTab("Lens", jPanelMich1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", jPanelDescriptionMicheson);
@@ -420,25 +426,25 @@ public class EduUIMainView extends javax.swing.JFrame {
 
     private void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDiffractionActionPerformed
         changeLabTitle(labTitleDiff);
-        
+
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
+
         jTabbedPaneOptics.addTab("Lens", jPanelDiffraction1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", null);
         tabbedDesLog.addTab("Log", jScrollPane2);
-        setTabPanelEnable(jTabbedPaneOptics, true);        
+        setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemDiffractionActionPerformed
 
     private void jMenuItemSpectrometerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSpectrometerActionPerformed
         changeLabTitle(labTitleSpec);
-        
+
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
-        jTabbedPaneOptics.addTab("Lens", jPanelSpectrometer1);        
+
+        jTabbedPaneOptics.addTab("Lens", jPanelSpectrometer1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", null);
@@ -448,53 +454,53 @@ public class EduUIMainView extends javax.swing.JFrame {
 
     private void jMenuItemSignalProcessingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSignalProcessingActionPerformed
         changeLabTitle(labTitleSign);
-        
+
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
-        jTabbedPaneOptics.addTab("Lens", jPanelSignal1);        
+
+        jTabbedPaneOptics.addTab("Lens", jPanelSignal1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", null);
         tabbedDesLog.addTab("Log", jScrollPane2);
-        setTabPanelEnable(jTabbedPaneOptics, true);        
+        setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemSignalProcessingActionPerformed
 
     private void jMenuItemPhaseShiftingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPhaseShiftingActionPerformed
         changeLabTitle(labTitlePhas);
-        
+
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
-        jTabbedPaneOptics.addTab("Lens", jPanelPhase1);        
+
+        jTabbedPaneOptics.addTab("Lens", jPanelPhase1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", null);
         tabbedDesLog.addTab("Log", jScrollPane2);
-        setTabPanelEnable(jTabbedPaneOptics, true);        
+        setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemPhaseShiftingActionPerformed
 
     private void jMenuItemTalbotImagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTalbotImagesActionPerformed
-        changeLabTitle(labTitleTalb);       
-        
+        changeLabTitle(labTitleTalb);
+
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
-        jTabbedPaneOptics.addTab("Lens", jPanelTalbot1);        
+
+        jTabbedPaneOptics.addTab("Lens", jPanelTalbot1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", null);
         tabbedDesLog.addTab("Log", jScrollPane2);
-        setTabPanelEnable(jTabbedPaneOptics, true);        
+        setTabPanelEnable(jTabbedPaneOptics, true);
     }//GEN-LAST:event_jMenuItemTalbotImagesActionPerformed
 
     private void jMenuItemWavefrontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemWavefrontActionPerformed
-        changeLabTitle(labTitleFron);               
+        changeLabTitle(labTitleFron);
 
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
-        jTabbedPaneOptics.addTab("Lens", jPanelWavefront1);        
+
+        jTabbedPaneOptics.addTab("Lens", jPanelWavefront1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", null);
@@ -503,12 +509,12 @@ public class EduUIMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemWavefrontActionPerformed
 
     private void jMenuItemWavelengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemWavelengthActionPerformed
-        changeLabTitle(labTitleLeng);       
+        changeLabTitle(labTitleLeng);
 
         jTabbedPaneOptics.removeAll();
         tabbedDesLog.removeAll();
-        
-        jTabbedPaneOptics.addTab("Lens", jPanelWavelength1);        
+
+        jTabbedPaneOptics.addTab("Lens", jPanelWavelength1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCylindrical2);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror1);
         tabbedDesLog.addTab("Description", null);
@@ -517,97 +523,135 @@ public class EduUIMainView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemWavelengthActionPerformed
 
     private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
-    	AboutView about = new AboutView(null);
-    	about.setLocationRelativeTo(null);
-    	about.setVisible(true);
+        AboutView about = new AboutView(null);
+        about.setLocationRelativeTo(null);
+        about.setVisible(true);
     }//GEN-LAST:event_jMenuAboutActionPerformed
-    
+
     private void jMenuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExitActionPerformed
-    	EduPatternTest.disposePatternFrame();
-		dispose();
+        EduPatternTest.disposePatternFrame();
+        dispose();
     }//GEN-LAST:event_jMenuItemExitActionPerformed
-    
+
     private void jMenuItemLoadP2GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLoadP2GActionPerformed
-    	File file = browseForFile(pwd);    	
-        if(file != null) {
-        	if (PatternImage.openFile(file.getAbsolutePath())) {
-    	    	logString("load table " + file.getAbsolutePath());
-    	    	pwd = file.getAbsolutePath();        		
-    	    	// regenerate pattern, following the behavior of updateRegenerate
-    	    	EduPatternTest.updateRegenerate();
-        	}
-        	else {
-        		JOptionPane.showMessageDialog(null, mapLoadErrorMessage + file.getAbsolutePath());        		
-        	}
+        File file = browseForFile(pwd);
+        if (file != null) {
+            if (PatternImage.openFile(file.getAbsolutePath())) {
+                logString("load table " + file.getAbsolutePath());
+                pwd = file.getAbsolutePath();
+                // regenerate pattern, following the behavior of updateRegenerate
+                EduPatternTest.updateRegenerate();
+            } else {
+                JOptionPane.showMessageDialog(null, mapLoadErrorMessage + file.getAbsolutePath());
+            }
         }
     }//GEN-LAST:event_jMenuItemExitActionPerformed
-    
-    public void changeLabTitle(String msg) {
-    	logString("Optical experiment " + msg);
-        this.setTitle(eduKitTitle+" ("+msg+")");
-        EduPatternTest.disablePatternFrame();        
-    }
-    
-    public void logString(String msg) {
-    	jTextAreaLog.append(msg + System.getProperty("line.separator"));
-    	jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
 
-    	// start logging if user chose to
-    	if (EduPatternTest.logging ==1) {
+    public void changeLabTitle(String msg) {
+        logString("Optical experiment " + msg);
+        this.setTitle(eduKitTitle + " (" + msg + ")");
+        EduPatternTest.disablePatternFrame();
+    }
+    /*
+     * Log String
+     */
+
+    public void logString(String msg) {
+        jTextAreaLog.append(msg + System.getProperty("line.separator"));
+        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
+
+        // start logging if user chose to
+        if (EduPatternTest.logging == 1) {
             try {
-                    BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
-                    jTextAreaLog.write(logFileOut);
-                    logFileOut.flush();
+                BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
+                jTextAreaLog.write(logFileOut);
+                logFileOut.flush();
             } catch (Exception e) {
             }
-    	}
+        }
+    }
+    /*
+     * Desc
+     */
+
+    public void getDesc(String msg) {
+        jTextAreaLog.append(msg + System.getProperty("line.separator"));
+        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
+
+        // start logging if user chose to
+        if (EduPatternTest.logging == 1) {
+            try {
+                BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
+                jTextAreaLog.write(logFileOut);
+                logFileOut.flush();
+            } catch (Exception e) {
+            }
+        }
+    }
+    /*
+     * Diagram
+     */
+    /*
+     * Desc
+     */
+
+    public void getDiagram(String msg) {
+        jTextAreaLog.append(msg + System.getProperty("line.separator"));
+        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
+        // start logging if user chose to
+        if (EduPatternTest.logging == 1) {
+            try {
+                BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
+                jTextAreaLog.write(logFileOut);
+                logFileOut.flush();
+            } catch (Exception e) {
+            }
+        }
     }
 //    public PatternImage pimage = new PatternImage(); 
 //    public void setImage(PatternImage pimage) {
 //		this.pimage = pimage;	
 //    }
-    
+
     public void updatePattern(PatternImage pimage1) {
-       
-       
-
     }
-    
+
     private void setTabPanelEnable(Container c, boolean enabled) {
-        for (Component component : c.getComponents())
-            component.setEnabled(enabled);    	
-        c.setEnabled(enabled);    	
+        for (Component component : c.getComponents()) {
+            component.setEnabled(enabled);
+        }
+        c.setEnabled(enabled);
     }
-    
+
     public void updateRegenerate() {
-    	for(OpticsPane op : panelist) {
-    		op.updateRegenerate();
-    		op.repaint();
-    	}
+        for (OpticsPane op : panelist) {
+            op.updateRegenerate();
+            op.repaint();
+        }
     }
-
     private String pwd = System.getProperty("user.dir");
-    
+
     private File browseForFile(String current) {
-    	// file filter
-    	class TXTFilter extends FileFilter {
-    	    public boolean accept(File filename) {
-    	        return filename.isDirectory() || filename.getName().toLowerCase().endsWith(".txt");
-    	    }
+        // file filter
+        class TXTFilter extends FileFilter {
 
-    	    public String getDescription() {
-    	        return "TXT";
-    	    }
-    	}
+            public boolean accept(File filename) {
+                return filename.isDirectory() || filename.getName().toLowerCase().endsWith(".txt");
+            }
 
-		JFileChooser fileopen = new JFileChooser(new File(current));
-		fileopen.setFileFilter(new TXTFilter());
-		int ret = fileopen.showDialog(null, "Select");
-    	File file = null;
-		if(ret == 0) {
-			file = fileopen.getSelectedFile();
-		}
-		return file;
+            public String getDescription() {
+                return "TXT";
+            }
+        }
+
+        JFileChooser fileopen = new JFileChooser(new File(current));
+        fileopen.setFileFilter(new TXTFilter());
+        int ret = fileopen.showDialog(null, "Select");
+        File file = null;
+        if (ret == 0) {
+            file = fileopen.getSelectedFile();
+        }
+        return file;
     }
 
     /**
@@ -679,19 +723,19 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTest;
     private javax.swing.JPanel panelSignalProcessing;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollDesc;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
     private javax.swing.JTabbedPane jTabbedPaneOptics2;
     private javax.swing.JTextArea jTextAreaLog;
+    private javax.swing.JTextArea jTextAreaDesc;
     private javax.swing.JPanel jPanelDescriptionLens;
     private javax.swing.JPanel jPanelDescriptionMicroscope;
     private javax.swing.JPanel jPanelDescriptionAberration;
     private javax.swing.JPanel jPanelDescriptionMicheson;
     private javax.swing.JPanel jPanelExperimentDefault;
     private javax.swing.JPanel jPanelCalibration;
-    
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    
     // Variables declaration - do not modify                     
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane5;
@@ -706,7 +750,6 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabbedGaneral;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
-    
     // Variables declaration - do not modify                     
     private javax.swing.JLayeredPane layoutControl;
     private javax.swing.JLayeredPane layoutDescription;
@@ -721,23 +764,18 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JPanel panelPattern;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration   
-   
-    final private String labTitleTele =" 1. Telephoto Lens";
-    final private String labTitleMicr =" 2. Microscope";
-    final private String labTitleAber =" 3. Aberration (Foucault test)";
-    final private String labTitleMich =" 4. Michelson Interferometer";
-    final private String labTitleDiff =" 5. Diffraction and Interference";
-    final private String labTitleSpec =" 6. Spectrometer";
-    final private String labTitleSign =" 7. Signal Processing (4-f system)";
-    final private String labTitlePhas =" 8. Phase Shifting Digital Holography";
-    final private String labTitleTalb =" 9. Talbot Images";
-    final private String labTitleFron =" 10. Wavefront Modulation";
-    final private String labTitleLeng =" 11. Wavelength Selective Switch";
-    
-    final private String eduKitTitle  ="JDC Education Kit";
-    
-    private ArrayList <OpticsPane> panelist;
-    
-    static String mapLoadErrorMessage="Grayscale map table file load error: ";
-
+    final private String labTitleTele = " 1. Telephoto Lens";
+    final private String labTitleMicr = " 2. Microscope";
+    final private String labTitleAber = " 3. Aberration (Foucault test)";
+    final private String labTitleMich = " 4. Michelson Interferometer";
+    final private String labTitleDiff = " 5. Diffraction and Interference";
+    final private String labTitleSpec = " 6. Spectrometer";
+    final private String labTitleSign = " 7. Signal Processing (4-f system)";
+    final private String labTitlePhas = " 8. Phase Shifting Digital Holography";
+    final private String labTitleTalb = " 9. Talbot Images";
+    final private String labTitleFron = " 10. Wavefront Modulation";
+    final private String labTitleLeng = " 11. Wavelength Selective Switch";
+    final private String eduKitTitle = "JDC Education Kit";
+    private ArrayList<OpticsPane> panelist;
+    static String mapLoadErrorMessage = "Grayscale map table file load error: ";
 }

@@ -195,7 +195,11 @@ public class PatternImage {
         return gray2phase[gray];
     }
 
+    public void paintZoom() {
+        
+    }
     // Telephoto Lens algorithms
+
     public void paintLens() {
         WritableRaster raster = canvas.getRaster();
         int[] iArray = new int[1];
@@ -343,6 +347,7 @@ public class PatternImage {
             }
         }
     }
+
     public void paintCylindircal1() {
 //        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
 //
