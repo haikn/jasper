@@ -223,7 +223,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jButtonDisplaySecondOn.setText("Second dispaly ON");
+        jButtonDisplaySecondOn.setText("Second display ON");
         jButtonDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformed(evt);
@@ -364,7 +364,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        buttonMicroscopeDisplaySecondOn.setText("Second dispaly ON");
+        buttonMicroscopeDisplaySecondOn.setText("Second display ON");
         buttonMicroscopeDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMicroscope(evt);
@@ -506,7 +506,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        buttonCyllinDisplaySecondOn.setText("Second dispaly ON");
+        buttonCyllinDisplaySecondOn.setText("Second display ON");
         buttonCyllinDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedCyllin(evt);
@@ -627,7 +627,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        buttonMirrorDisplaySecondOn.setText("Second dispaly ON");
+        buttonMirrorDisplaySecondOn.setText("Second display ON");
         buttonMirrorDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMirror(evt);
