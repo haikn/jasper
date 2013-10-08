@@ -996,30 +996,6 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )));
         
-//        javax.swing.GroupLayout panelGeneralSlitLayout = new javax.swing.GroupLayout(panelSlit);
-//        panelSlit.setLayout(panelGeneralSlitLayout);
-//        panelGeneralSlitLayout.setHorizontalGroup(
-//                panelGeneralSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(panelGeneralSlitLayout.createSequentialGroup()
-//                .addGap(24, 24, 24)
-//                .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGeneralSlitLayout.createSequentialGroup()
-//                .addContainerGap()
-//                .addComponent(jTabbedPaneOptics)));
-//        panelGeneralSlitLayout.setVerticalGroup(
-//                panelGeneralSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(panelGeneralSlitLayout.createSequentialGroup()
-//                .addContainerGap()
-//                .addGroup(panelGeneralSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(5, 5, 5)
-//                .addComponent(jTabbedPaneOptics)
-//                .addContainerGap()));
-
         tabbedControl.addTab("  Slit  ", panelSlit);
 
 //        javax.swing.GroupLayout panelSignalLayout = new javax.swing.GroupLayout(panelSignal);
@@ -1221,11 +1197,11 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblHeightY)
                 .addGroup(jPanelProcessingLayout.createSequentialGroup()
                 .addComponent(lblHeightX)
-                .addGap(28, 28, 28)
+                .addGap(31, 31, 31)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(text_height_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(text_height_processing_x, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(s_processing_height_x, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                 .addComponent(s_processing_height_y, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -1277,6 +1253,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(text_position_processing_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblPosX)))
+                .addGap(10, 10, 10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(text_position_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
