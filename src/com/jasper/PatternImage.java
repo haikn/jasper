@@ -11,7 +11,9 @@ package com.jasper;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
@@ -63,6 +65,14 @@ public class PatternImage {
     private double xoffMicroscope;
     private double yoffMicroscope;
     private double focalMicroscope;
+    /*
+     * ZoomLayOut
+     */
+    public Point startPoint = new Point(0, 0);
+    public Point rectLocale = new Point();
+    public Dimension rectSize = new Dimension();
+    public int zoom_panal = 80;
+    public int action = 0;
     // title string
     public String title;
 
@@ -119,6 +129,14 @@ public class PatternImage {
         this.xoff = xoff;
         this.yoff = yoff;
         this.focal = focal;
+        title = "lens " + xoff + " " + yoff + " " + focal;
+    }
+
+    void updateZoomparten(Point sp, Point recL, Dimension rectSize, int action) {
+        this.startPoint = sp;
+        this.rectLocale = recL;
+        this.rectSize = rectSize;
+        this.action = action;
         title = "lens " + xoff + " " + yoff + " " + focal;
     }
 
@@ -195,8 +213,13 @@ public class PatternImage {
         return gray2phase[gray];
     }
 
-    public void paintZoom() {
-        
+    public void paintZoom(Rectangle rec) {
+
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.draw(rec);
+        g2.fill(rec);
+        // g2.D
     }
     // Telephoto Lens algorithms
 
