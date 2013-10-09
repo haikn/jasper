@@ -300,20 +300,23 @@ public class EduUIMainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(jTabbedPaneOptics)
-                .addGroup(layout.createSequentialGroup()
-                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)))
+                //.addGroup(layout.createSequentialGroup()
+                //.addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                //.addGap(11, 11, 11)
+                //.addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                //)
+                )
                 .addGap(5, 5, 5)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                .addComponent(tabbedDiagram))
+                //.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                //.addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                //.addComponent(tabbedDiagram)
+                //)
                 .addGap(5, 5, 5)));
 
         pack();
@@ -575,18 +578,14 @@ public class EduUIMainView extends javax.swing.JFrame {
      */
 
     public void getDesc(String msg) {
-        jTextAreaLog.append(msg + System.getProperty("line.separator"));
-        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
-
-        // start logging if user chose to
-        if (EduPatternTest.logging == 1) {
+        jTextAreaDesc.append(msg + System.getProperty("line.separator"));
+        jTextAreaDesc.setCaretPosition(jTextAreaLog.getText().length() - 1);
             try {
                 BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
-                jTextAreaLog.write(logFileOut);
+                jTextAreaDesc.write(logFileOut);
                 logFileOut.flush();
             } catch (Exception e) {
             }
-        }
     }
     /*
      * Diagram

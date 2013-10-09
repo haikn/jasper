@@ -12,6 +12,7 @@ package com.jasper;
 import static com.jasper.EduPatternTest.patternFrame;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
@@ -19,9 +20,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -60,6 +64,15 @@ public class EduControlerPattern extends OpticsPane {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         MouseBehavior behavior = new MouseBehavior();
+        tabbedDesLog = new javax.swing.JTabbedPane();
+        tabbedDiagram = new javax.swing.JTabbedPane();
+        jTextAreaLog = new javax.swing.JTextArea();
+        jTextAreaDesc = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        //diagramLens = new LensDiagram();
+        diagramLens = new javax.swing.JPanel();
+        diagramMicroscope = new MicroscopeDiagram();
+        lblDiagram = new javax.swing.JLabel();
 
         panelPattern = new EduPatternJPanel();
         jTabbedPaneOptics = new javax.swing.JTabbedPane();
@@ -1271,7 +1284,17 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(button11LensOnProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
+        
+         lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Microscope");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
+        
         tabbedControl.addTab("Signal Processing", panelSignal);
+        
+       
 
         // BEGIN Phase retarder
         openFile = new javax.swing.JFileChooser();
@@ -1413,20 +1436,91 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         //  END show full screen
+        
+//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this());
+//        this.setLayout(layout);
+//        layout.setHorizontalGroup(
+//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+//                .addContainerGap()
+//                .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1271, Short.MAX_VALUE)
+//                .addGap(5, 5, 5))
+//        );
+//        layout.setVerticalGroup(
+//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+//                .addGap(5, 5, 5)
+//                .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(5, 5, 5))
+//        );
 
+//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+//        this.setLayout(layout);
+//        layout.setHorizontalGroup(
+//                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+//                .addContainerGap()
+//                .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
+//                .addGap(5, 5, 5))
+//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+//                .addComponent(jTabbedPaneOptics)
+//                //.addGroup(layout.createSequentialGroup()
+//                //.addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                //.addGap(11, 11, 11)
+//                //.addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+//                //)
+//                )
+//                );
+//        layout.setVerticalGroup(
+//                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+//                .addGap(5, 5, 5)
+//                .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(5, 5, 5))
+//                //.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                //.addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+//                //.addComponent(tabbedDiagram)
+//                //)
+//                );
+        //jTextAreaDesc.setColumns(20);
+        //jTextAreaDesc.setRows(5);
+        //jTextAreaDesc.setFont(new Font("Courier New", Font.PLAIN, 12));
+        tabbedDesLog.addTab("Description", null);
+
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        //jTextAreaLog.setText("test");
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
+
+        tabbedDiagram.addTab("Diagram", null);
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )
+                )
                 .addGap(5, 5, 5)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabbedDiagram)
+                )
                 .addGap(5, 5, 5)));
 
 //        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
@@ -1445,92 +1539,170 @@ public class EduControlerPattern extends OpticsPane {
 //        changeLabTitle(labTitleTele);
 //        
         jTabbedPaneOptics.removeAll();
-//        
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
+        
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/lens.png")));
+        lblDiagram.setText(null);
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
         //setTabPanelEnable(jTabbedPaneOptics, true);
 
     }//GEN-LAST:event_jMenuItemTelephotoActionPerformed
 
     public void jMenuItemMicroscopeActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Microscope");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemAberrationActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Aberration");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemMichelsonActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Michelson");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Diffraction");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemSpectrometerActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Spectrometer");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemSignalProcessingActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of SignalProcessing");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemPhaseShiftingActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of haseShifting");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemTalbotImagesActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Talbot");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemWavefrontActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Wavefront");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
 
     public void jMenuItemWavelengthActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
+        tabbedDiagram.removeAll();
+        diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText("Diagram of Wavelength");
+        diagramLens.add(lblDiagram);
+        tabbedDiagram.addTab("Diagram", diagramLens);
     }
     // Optical arguments, which will be parsed before reassigning the values
     private double xoffMicroscope = 0.0, yoffMicroscope = 0.0, focalMicroscope = 1.0;
@@ -1633,6 +1805,21 @@ public class EduControlerPattern extends OpticsPane {
             }
         } else {
             System.out.println("File access cancelled by user.");
+        }
+    }
+    
+    public void logString(String msg) {
+        jTextAreaLog.append(msg + System.getProperty("line.separator"));
+        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
+
+        // start logging if user chose to
+        if (EduPatternTest.logging == 1) {
+            try {
+                BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
+                jTextAreaLog.write(logFileOut);
+                logFileOut.flush();
+            } catch (Exception e) {
+            }
         }
     }
 
@@ -2044,6 +2231,16 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JSlider s_phase_zoom;
     private javax.swing.JTextField txtZoom;
     private javax.swing.JFileChooser openFile;
+    
+    //
+    private javax.swing.JTabbedPane tabbedDesLog;
+    private javax.swing.JTabbedPane tabbedDiagram;
+    private javax.swing.JTextArea jTextAreaLog;
+    private javax.swing.JTextArea jTextAreaDesc;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel diagramLens;
+    private javax.swing.JPanel diagramMicroscope;
+    private javax.swing.JLabel lblDiagram;
 
     //End 
     @Override
