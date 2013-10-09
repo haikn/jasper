@@ -71,7 +71,6 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2 = new javax.swing.JScrollPane();
         //diagramLens = new LensDiagram();
         diagramLens = new javax.swing.JPanel();
-        diagramMicroscope = new MicroscopeDiagram();
         lblDiagram = new javax.swing.JLabel();
 
         panelPattern = new EduPatternJPanel();
@@ -2239,7 +2238,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextArea jTextAreaDesc;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel diagramLens;
-    private javax.swing.JPanel diagramMicroscope;
     private javax.swing.JLabel lblDiagram;
 
     //End 
