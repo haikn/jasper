@@ -73,6 +73,7 @@ public class PatternImage {
     public Dimension rectSize = new Dimension();
     public int zoom_panal = 80;
     public int action = 0;
+    
     // title string
     public String title;
 

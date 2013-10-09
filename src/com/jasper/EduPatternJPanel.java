@@ -36,7 +36,7 @@ public class EduPatternJPanel extends JPanel {
     public PatternImage pimage;
     public PatternImage pimage1;
     private boolean isScreen = false;
-//	Font font = new Font("Arial", Font.PLAIN, 15);
+    
     Font font = new Font("Courier New", Font.PLAIN, 12);
 
     public EduPatternJPanel() {
