@@ -66,8 +66,8 @@ public class EduPatternJPanel extends JPanel {
         if (pimage.action != 0) {
             capture = pimage.canvas.getSubimage(Math.max(0, pimage.rectLocale.x),
                     Math.max(0, pimage.rectLocale.y), pimage.rectSize.width, pimage.rectSize.height);
-            int width2 = (int) (pimage.rectSize.width + pimage.rectSize.width * (pimage.zoom_panal / 300D));
-            int height2 = (int) (pimage.rectSize.height + pimage.rectSize.height * (pimage.zoom_panal / 300D));
+            int width2 = (int) (pimage.rectSize.width + pimage.rectSize.width * (pimage.zoom_layout / 300D));
+            int height2 = (int) (pimage.rectSize.height + pimage.rectSize.height * (pimage.zoom_layout / 300D));
             int x2 = pimage.rectLocale.x - ((width2 - pimage.rectSize.width) / 2);
             int y2 = pimage.rectLocale.y - ((height2 - pimage.rectSize.height) / 2);
             Image scaledInstance = capture.getScaledInstance(

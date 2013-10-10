@@ -470,22 +470,6 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE)));
 
-//        javax.swing.GroupLayout jPanelLensLayout = new javax.swing.GroupLayout(jPanelLens);
-//        jPanelLens.setLayout(jPanelLensLayout);
-//        jPanelLensLayout.setHorizontalGroup(
-//            jPanelLensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(jPanelLensLayout.createSequentialGroup()
-//                .addGap(5, 5, 5)
-//                .addComponent(jPanelCyllindrical1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                .addContainerGap())
-//        );
-//        jPanelLensLayout.setVerticalGroup(
-//            jPanelLensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(jPanelLensLayout.createSequentialGroup()
-//                .addComponent(jPanelCyllindrical1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(0, 0, Short.MAX_VALUE))
-//        );
-
         jTabbedControler.addTab("Lens", jPanelMicroscope);
         // END Microscope
 
@@ -646,7 +630,6 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-
         jSliderPhyMirror.setMaximum(10000);
         jSliderPhyMirror.setMinimum(-1000);
         jSliderPhyMirror.setValue(522);
@@ -756,7 +739,6 @@ public class EduControlerPattern extends OpticsPane {
         /*
          * Slit
          */
-
         comboBoxSlit = new javax.swing.JComboBox();
         lblWidthSlit = new javax.swing.JLabel();
         lblHeightSlit = new javax.swing.JLabel();
@@ -809,14 +791,15 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-        
+
         // disable when slit = 1
         jLabelSpacingSlit.hide();
         text_single_spacing.hide();
         s_single_spacing.hide();
-        
-        s_single_width.setMaximum(image1.getBounds().width);
-        s_single_width.setValue(image1.getBounds().width);
+        // s_single_width.setMaximum(image1.getBounds().width);
+        // s_single_width.setValue(image1.getBounds().width);
+        s_single_width.setMaximum(99999);
+        s_single_width.setValue(99999);
         s_single_width.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
@@ -873,21 +856,18 @@ public class EduControlerPattern extends OpticsPane {
                 buttonGenerateActionPerformedSlit(evt);
             }
         });
-
         buttong11LensOnSlit.setText("1:1 lens ON");
         buttong11LensOnSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedSlit(evt);
             }
         });
-
         buttonSecondDisplaySlit.setText("Second display ON");
         buttonSecondDisplaySlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedSlit(evt);
             }
         });
-
         comboBoxSlit.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Single Slit", "Double Slit"}));
         comboBoxSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -897,7 +877,7 @@ public class EduControlerPattern extends OpticsPane {
                     jLabelSpacingSlit.hide();
                     text_single_spacing.hide();
                     s_single_spacing.hide();
-                    
+
                 }
                 if (selected.equals("Double Slit")) {
                     slit = 2;
@@ -912,7 +892,6 @@ public class EduControlerPattern extends OpticsPane {
                 imageGenerated = true;
             }
         });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(panelSlit);
         panelSlit.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -1007,20 +986,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )));
-        
+
         tabbedControl.addTab("  Slit  ", panelSlit);
-
-//        javax.swing.GroupLayout panelSignalLayout = new javax.swing.GroupLayout(panelSignal);
-//        panelSignal.setLayout(panelSignalLayout);
-//        panelSignalLayout.setHorizontalGroup(
-//            panelSignalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 665, Short.MAX_VALUE)
-//        );
-//        panelSignalLayout.setVerticalGroup(
-//            panelSignalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 272, Short.MAX_VALUE)
-//        );
-
         /*
          * Signal
          */
@@ -1051,9 +1018,7 @@ public class EduControlerPattern extends OpticsPane {
         lblHeightX = new javax.swing.JLabel();
         text_height_processing_x = new javax.swing.JTextField();
         s_processing_height_x = new javax.swing.JSlider();
-
-       // lblWidthY.setText("Width Y");
-
+        // lblWidthY.setText("Width Y");
         lblHeightY.setText("Width Y");
 
         lblRotationProcessing.setText("Rotation");
@@ -1073,8 +1038,8 @@ public class EduControlerPattern extends OpticsPane {
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_height_y.setMaximum(image1.getBounds().height);
-        s_processing_height_y.setValue(image1.getBounds().height);
+        s_processing_height_y.setMaximum(9999);
+        s_processing_height_y.setValue(9999);
         s_processing_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -1150,11 +1115,11 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-       // lblWidthX.setText("Width X");
+        // lblWidthX.setText("Width X");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_width_x.setMaximum(image1.getBounds().width);
-        s_processing_width_x.setValue(image1.getBounds().width);
+        s_processing_width_x.setMaximum(99999);
+        s_processing_width_x.setValue(99999);
         s_processing_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -1211,12 +1176,12 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblHeightX)
                 .addGap(31, 31, 31)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_height_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_width_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(text_height_processing_x, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(s_processing_height_x, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
-                .addComponent(s_processing_height_y, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(s_processing_width_y, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanelProcessingLayout.createSequentialGroup()
                 .addComponent(lblRotationProcessing)
                 .addGap(27, 27, 27)
@@ -1250,9 +1215,9 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(2, 2, 2)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_height_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_width_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblHeightY))
-                .addComponent(s_processing_height_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(s_processing_width_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1285,17 +1250,16 @@ public class EduControlerPattern extends OpticsPane {
 
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
-        
-         lblDiagram.setIcon(null);
+
+        lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Microscope");
         diagramLens.add(lblDiagram);
         tabbedDiagram.addTab("Diagram", diagramLens);
-        
-        tabbedControl.addTab("Signal Processing", panelSignal);
-        
-       
 
-        // BEGIN Phase retarder
+        tabbedControl.addTab("Signal Processing", panelSignal);
+        /*
+         * Phase retarder
+         */
         openFile = new javax.swing.JFileChooser();
         s_phase_zoom = new javax.swing.JSlider();
         buttonOpenFile = new javax.swing.JButton();
@@ -1305,16 +1269,18 @@ public class EduControlerPattern extends OpticsPane {
         button11LensOnPhase = new javax.swing.JButton();
         buttonGeneralPhase = new javax.swing.JButton();
         txtZoom = new javax.swing.JTextField();
+//
+//        buttonOpenFile.setText("Open file");
+//        buttonOpenFile.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                b_openFileActionPerformed(evt);
+//            }
+//        });
+        buttonOpenFile.hide();
+        //lblPleaseSelect.setText("Please open file");
 
-        buttonOpenFile.setText("Open file");
-        buttonOpenFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_openFileActionPerformed(evt);
-            }
-        });
-        lblPleaseSelect.setText("Please open file");
-
-        lblZoom.setText("Zoom");
+        //lblZoom.setText("Zoom");
+        lblZoom.setText("Gray level");
 
         buttonSecondPhase.setText("Second display ON");
         buttonSecondPhase.addActionListener(new java.awt.event.ActionListener() {
@@ -1338,8 +1304,8 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_phase_zoom, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtZoom, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_phase_zoom.setMaximum(200);
-        s_phase_zoom.setValue(100);
+        s_phase_zoom.setMaximum(255);
+        s_phase_zoom.setValue(0);
         s_phase_zoom.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedPhase(evt);
@@ -1435,7 +1401,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         //  END show full screen
-        
+
 //        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this());
 //        this.setLayout(layout);
 //        layout.setHorizontalGroup(
@@ -1494,7 +1460,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         tabbedDiagram.addTab("Diagram", null);
-        
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -1506,9 +1472,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(layout.createSequentialGroup()
                 .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
-                )
-                )
+                .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1518,8 +1482,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(tabbedDiagram)
-                )
+                .addComponent(tabbedDiagram))
                 .addGap(5, 5, 5)));
 
 //        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
@@ -1540,12 +1503,12 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
-        
+
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
-        
+
+
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/lens.png")));
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
@@ -1562,7 +1525,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Microscope");
         diagramLens.add(lblDiagram);
@@ -1577,7 +1540,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Aberration");
         diagramLens.add(lblDiagram);
@@ -1592,7 +1555,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Michelson");
         diagramLens.add(lblDiagram);
@@ -1607,7 +1570,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Diffraction");
         diagramLens.add(lblDiagram);
@@ -1622,7 +1585,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Spectrometer");
         diagramLens.add(lblDiagram);
@@ -1637,7 +1600,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of SignalProcessing");
         diagramLens.add(lblDiagram);
@@ -1652,7 +1615,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of haseShifting");
         diagramLens.add(lblDiagram);
@@ -1667,7 +1630,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Talbot");
         diagramLens.add(lblDiagram);
@@ -1682,7 +1645,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavefront");
         diagramLens.add(lblDiagram);
@@ -1697,7 +1660,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavelength");
         diagramLens.add(lblDiagram);
@@ -1796,7 +1759,7 @@ public class EduControlerPattern extends OpticsPane {
                 buffImages = ImageIO.read(new File(file.getAbsolutePath()));
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updatePhaseRetarderParameter(zoom, grayLevel);
-                image.phaseRetarder(buffImages);
+                image.phaseRetarder();
                 EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
             } catch (IOException ex) {
@@ -1806,7 +1769,7 @@ public class EduControlerPattern extends OpticsPane {
             System.out.println("File access cancelled by user.");
         }
     }
-    
+
     public void logString(String msg) {
         jTextAreaLog.append(msg + System.getProperty("line.separator"));
         jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
@@ -2041,18 +2004,17 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
-            image.phaseRetarder(buffImages);
+            image.phaseRetarder();
             EduPatternTest.updateLensPatternPattern(image, genLogPhase());
             imageGenerated = true;
         }
-
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void buttonSecondGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
-            image.phaseRetarder(buffImages);
+            image.phaseRetarder();
             EduPatternTest.updateLensPattern(image, genLogPhase());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -2063,7 +2025,7 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
-            image.phaseRetarder(buffImages);
+            image.phaseRetarder();
             EduPatternTest.updateLensPatternPattern(image, genLogPhase());
             imageGenerated = true;
         }
@@ -2165,13 +2127,14 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel jLabelSelectExperiment;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
-    // Slit
+    /*
+     *@Param Slit
+     */
     private javax.swing.JButton buttonGennerateSlit;
     private javax.swing.JButton buttonSecondDisplaySlit;
     private javax.swing.JButton buttong11LensOnSlit;
     private javax.swing.JComboBox comboBoxSlit;
     private javax.swing.JLabel jLabelSpacingSlit;
-    //  private javax.swing.JLayeredPane jLayeredPane4;
     private javax.swing.JLabel lblGraySlit;
     private javax.swing.JLabel lblHeightSlit;
     private javax.swing.JLabel lblPosSlit;
@@ -2183,7 +2146,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JSlider s_single_rotation;
     private javax.swing.JSlider s_single_spacing;
     private javax.swing.JSlider s_single_width;
-    ;
     private javax.swing.JTextField text_single_gray;
     private javax.swing.JTextField text_single_height;
     private javax.swing.JTextField text_single_position;
@@ -2191,8 +2153,9 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextField text_single_spacing;
     private javax.swing.JTextField text_single_width;
     private int slit = 1;
-    // End of variables declaration//GEN-END:variables
-    //SignalProcessing
+    /*
+     *@Param SignalProcessing 
+     */
     private javax.swing.JButton button11LensOnProcessing;
     private javax.swing.JButton buttonGennerateProcessing;
     private javax.swing.JButton buttonSecondDisplayProcessing;
@@ -2220,7 +2183,9 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextField text_rotation_processing;
     private javax.swing.JTextField text_width_processing_x;
     private javax.swing.JTextField text_width_processing_y;
-    // Phase retarder
+    /*
+     *@Param Phase retarder 
+     */
     private javax.swing.JButton button11LensOnPhase;
     private javax.swing.JButton buttonGeneralPhase;
     private javax.swing.JButton buttonOpenFile;
@@ -2230,7 +2195,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JSlider s_phase_zoom;
     private javax.swing.JTextField txtZoom;
     private javax.swing.JFileChooser openFile;
-    
     //
     private javax.swing.JTabbedPane tabbedDesLog;
     private javax.swing.JTabbedPane tabbedDiagram;

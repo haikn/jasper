@@ -27,7 +27,6 @@ import javax.swing.JOptionPane;
  *
  * @author sonnv
  */
-
 public class Lens extends OpticsPane {
 
     PatternImage image1 = new PatternImage();
@@ -1419,9 +1418,9 @@ public class Lens extends OpticsPane {
         panelPattern.setBounds(0, 0, 549, 305);
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
-                    public void doubleClick(MouseEvent e) {
-                        patternFrame.show();
-                    }
+            public void doubleClick(MouseEvent e) {
+                patternFrame.show();
+            }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -1634,7 +1633,7 @@ public class Lens extends OpticsPane {
                 buffImages = ImageIO.read(new File(file.getAbsolutePath()));
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updatePhaseRetarderParameter(zoom, grayLevel);
-                image.phaseRetarder(buffImages);
+                image.phaseRetarder();
                 EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
             } catch (IOException ex) {
@@ -1852,7 +1851,7 @@ public class Lens extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
-            image.phaseRetarder(buffImages);
+            image.phaseRetarder();
             EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -1863,7 +1862,7 @@ public class Lens extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
-            image.phaseRetarder(buffImages);
+            image.phaseRetarder();
             EduPatternTest.updateLensPattern(image, genLog());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -1874,7 +1873,7 @@ public class Lens extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
-            image.phaseRetarder(buffImages);
+            image.phaseRetarder();
             EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }

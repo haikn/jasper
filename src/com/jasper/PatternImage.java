@@ -71,9 +71,8 @@ public class PatternImage {
     public Point startPoint = new Point(0, 0);
     public Point rectLocale = new Point();
     public Dimension rectSize = new Dimension();
-    public int zoom_panal = 80;
+    public int zoom_layout = 80;
     public int action = 0;
-    
     // title string
     public String title;
 
@@ -1040,37 +1039,46 @@ public class PatternImage {
             g.fill(rect2);
         }
     }
+//public void phaseRetarder(BufferedImage buffImg) {
+//      //  if (buffImg != null) {
+////            try {
+////                File file = new File("resources/jdclogo_150x155.png");
+////                System.out.println(">>>>>>>>>>>>>>>>Path : " + file.getAbsolutePath());
+////                buffImg = ImageIO.read(new File(file.getAbsolutePath()));
+////                System.out.println("buff : "+buffImg.getWidth());
+////            } catch (IOException ex) {
+////                Logger.getLogger(PatternImage.class.getName()).log(Level.SEVERE, null, ex);
+////            }
+//
+//            double scale = 1.0;
+//            scale = d_zoom / 100.0D;
+////        ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
+////        ColorConvertOp op = new ColorConvertOp(cs, null);
+////        BufferedImage gayBuff = op.filter(buffImg, null);
+//
+//            Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+//            g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+//            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+//                    RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+//            double canvasX = canvas.getWidth() / 2;
+//            double canvasY = canvas.getHeight() / 2;
+//            int imageWidth = buffImg.getWidth();
+//            int imageHeight = buffImg.getHeight();
+//            double x = (scale * imageWidth) / 2;
+//            double y = (scale * imageHeight) / 2;
+//            AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+//            at.scale(scale, scale);
+//            g2.drawRenderedImage(buffImg, at);
+//        }
+//   // }
+//}
 
-    public void phaseRetarder(BufferedImage buffImg) {
-        if (buffImg != null) {
-//            try {
-//                File file = new File("resources/jdclogo_150x155.png");
-//                System.out.println(">>>>>>>>>>>>>>>>Path : " + file.getAbsolutePath());
-//                buffImg = ImageIO.read(new File(file.getAbsolutePath()));
-//                System.out.println("buff : "+buffImg.getWidth());
-//            } catch (IOException ex) {
-//                Logger.getLogger(PatternImage.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-
-            double scale = 1.0;
-            scale = d_zoom / 100.0D;
-//        ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
-//        ColorConvertOp op = new ColorConvertOp(cs, null);
-//        BufferedImage gayBuff = op.filter(buffImg, null);
-
-            Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-            g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                    RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-            double canvasX = canvas.getWidth() / 2;
-            double canvasY = canvas.getHeight() / 2;
-            int imageWidth = buffImg.getWidth();
-            int imageHeight = buffImg.getHeight();
-            double x = (scale * imageWidth) / 2;
-            double y = (scale * imageHeight) / 2;
-            AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-            at.scale(scale, scale);
-            g2.drawRenderedImage(buffImg, at);
-        }
+    public void phaseRetarder() {
+        Graphics2D g = (Graphics2D) canvas.getGraphics();
+        g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g.setColor(new Color((int) d_zoom, (int) d_zoom, (int) d_zoom));
+        Rectangle rect = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
+        g.draw(rect);
+        g.fill(rect);
     }
 }
