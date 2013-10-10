@@ -13,8 +13,6 @@ import static com.jasper.EduPatternTest.patternFrame;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -27,8 +25,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /*
@@ -45,7 +41,9 @@ public class EduControlerPattern extends OpticsPane {
     private Point startPoint = new Point(0, 0);
     private Point rectLocale = new Point();
     private Dimension rectSize = new Dimension();
+    private int zoom_layOut = 80;
     private BufferedImage capture = null;
+    private BufferedImage raw;
 
     /**
      * Creates new form CylincalLens
@@ -1385,14 +1383,7 @@ public class EduControlerPattern extends OpticsPane {
         jPanelPatternLayout.setVerticalGroup(
                 jPanelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 290, Short.MAX_VALUE));
-
         panelPattern.setBounds(0, 0, 549, 305);
-        //TODO
-//        layoutControl.addMouseMotionListener(behavior);
-//        layoutControl.addMouseListener(behavior);
-//        layoutControl.addMouseWheelListener(behavior);
-        //END
-
         //  BEGIN show full screen
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
@@ -1400,6 +1391,10 @@ public class EduControlerPattern extends OpticsPane {
                 patternFrame.show();
             }
         });
+        //TODO
+        layoutControl.addMouseMotionListener(behavior);
+        layoutControl.addMouseListener(behavior);
+        layoutControl.addMouseWheelListener(behavior);
         //  END show full screen
 
 //        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this());
@@ -1675,7 +1670,6 @@ public class EduControlerPattern extends OpticsPane {
     //Processing
     private double processing_widthX = Double.valueOf(image1.getBounds().width), processing_widthY = 100, processing_heightX = 100, processing_heightY = Double.valueOf(image1.getBounds().height), processing_rotation = 0, processing_positionX = 0, processing_positionY = 0, processing_grayLevel = 255;
     private double zoom = 100.0, grayLevel = 255;
-    private int zoom_panal = 200;
 
     private boolean parseArguments() {
         boolean ret = false;
@@ -1802,6 +1796,7 @@ public class EduControlerPattern extends OpticsPane {
     }
 
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
+        actionTag = "Len";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
@@ -1813,6 +1808,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonGenerateActionPerformed
 
     private void buttonSecondGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
+        actionTag = "Len";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
@@ -1824,6 +1820,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformed
 
     private void sliderGenerateActionPerformed(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
+        actionTag = "Len";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
@@ -1835,6 +1832,7 @@ public class EduControlerPattern extends OpticsPane {
 
     // Microscope
     private void buttonGenerateActionPerformedMicroscope(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMicroscope
+        actionTag = "Microscope";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
@@ -1846,6 +1844,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonGenerateActionPerformedMicroscope
 
     private void buttonSecondGenerateActionPerformedMicroscope(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMicroscope
+        actionTag = "Microscope";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
@@ -1857,6 +1856,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedMicroscope
 
     private void sliderGenerateActionPerformedMicroscope(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedMicroscope
+        actionTag = "Microscope";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
@@ -1868,6 +1868,7 @@ public class EduControlerPattern extends OpticsPane {
 
     // Cyllin
     private void buttonGenerateActionPerformedCyllin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
+        actionTag = "Cyllin";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
@@ -1879,6 +1880,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void buttonSecondGenerateActionPerformedCyllin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "Cyllin";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
@@ -1890,6 +1892,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
 
     private void sliderGenerateActionPerformedCyllin(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Cyllin";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
@@ -1901,6 +1904,7 @@ public class EduControlerPattern extends OpticsPane {
 
     // Mirror
     private void buttonGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
+        actionTag = "Mirror";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
@@ -1912,6 +1916,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void buttonSecondGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "Mirror";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
@@ -1923,6 +1928,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
 
     private void sliderGenerateActionPerformedMirror(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Mirror";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
@@ -1934,6 +1940,7 @@ public class EduControlerPattern extends OpticsPane {
 
     // Slit
     private void buttonGenerateActionPerformedSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
+        actionTag = "Slit";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
@@ -1945,6 +1952,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void buttonSecondGenerateActionPerformedSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "Slit";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
@@ -1956,6 +1964,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
 
     private void sliderGenerateActionPerformedSlit(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Slit";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
@@ -1967,6 +1976,7 @@ public class EduControlerPattern extends OpticsPane {
 //Processing
 
     private void buttonGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
+        actionTag = "Processing";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
@@ -1978,6 +1988,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void buttonSecondGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "Processing";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
@@ -1989,6 +2000,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
 
     private void sliderGenerateActionPerformedProcessing(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Processing";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
@@ -2001,6 +2013,7 @@ public class EduControlerPattern extends OpticsPane {
 //Phase
 
     private void buttonGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
+        actionTag = "Phase";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
@@ -2011,6 +2024,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void buttonSecondGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "Phase";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
@@ -2022,6 +2036,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
 
     private void sliderGenerateActionPerformedPhase(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Phase";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
@@ -2203,6 +2218,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel diagramLens;
     private javax.swing.JLabel lblDiagram;
+    private String actionTag = "Len";
 
     //End 
     @Override
@@ -2215,8 +2231,8 @@ public class EduControlerPattern extends OpticsPane {
         }
         EduPatternTest.updatePatternScreen(image, genLog());
     }
-
     // paint boot screen, lens only
+
     void bootScreen() {
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
         double xoff = 0.0;
@@ -2227,9 +2243,7 @@ public class EduControlerPattern extends OpticsPane {
     }
 
     void updateRegenerate() {
-
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        //image.
         if (imageGenerated) {
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
@@ -2239,7 +2253,9 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageSlit = "Slit: w=%s h=%s r=%s p=%s g=%s s=%s";
     static String logmessageProcessing = "Signal processing: w_x=%s h_x=%s w_y=%s h_y=%s r=%s p_x=%s p_y=%s g=%s";
     static String logmessagePhase = "Phase retarder: zoom=%s";
-//Zoom
+    /*
+     * Auto Zoom LayOut 
+     */
 
     private class MouseBehavior extends MouseAdapter {
 
@@ -2273,34 +2289,58 @@ public class EduControlerPattern extends OpticsPane {
 
         @Override
         public void mouseReleased(MouseEvent e) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            raw = image.canvas;
             if (rectSize.width <= 0 || rectSize.height <= 0) {
                 capture = null;
             } else {
-                capture = image1.canvas.getSubimage(Math.max(0, rectLocale.x),
+                capture = raw.getSubimage(Math.max(0, rectLocale.x),
                         Math.max(0, rectLocale.y), rectSize.width, rectSize.height);
             }
-            if (e.getSource() instanceof JComponent) {
-                ((JComponent) e.getSource()).repaint();
-                Graphics2D g2d = ((Graphics2D) image1.canvas.getGraphics());
-                g2d.drawImage(image1.canvas, 0, 0, null);
-                if (capture != null) {
-                    int width2 = (int) (rectSize.width + rectSize.width * (zoom_panal / 500d));
-                    int height2 = (int) (rectSize.height + rectSize.height * (zoom_panal / 500d));
-                    int x2 = rectLocale.x - ((width2 - rectSize.width) / 2);
-                    int y2 = rectLocale.y - ((height2 - rectSize.height) / 2);
-                    Image scaledInstance = capture.getScaledInstance(
-                            width2, height2, Image.SCALE_AREA_AVERAGING);
-                    g2d.drawImage(scaledInstance, x2, y2, null);
-                    g2d.drawRect(x2, y2, width2, height2);
-                } else {
-                    updateRegenerate();
-                }
+            if (capture != null) {
+                image.updateZoomparten(startPoint, rectLocale, rectSize, 1);
+            } else {
+                image.updateZoomparten(startPoint, rectLocale, rectSize, 0);
+            }
+            if (actionTag.equalsIgnoreCase("Len")) {
+                image.updateLensParameter(xoff, yoff, focal);
+                image.paintLens();
+                EduPatternTest.updateLensPatternPattern(image, genLog());
+                imageGenerated = true;
+            } else if (actionTag.equalsIgnoreCase("Microscope")) {
+                image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
+                image.paintMicroscope();
+                EduPatternTest.updateLensPatternPattern(image, genLog());
+                imageGenerated = true;
+            } else if (actionTag.equalsIgnoreCase("Cyllin")) {
+                image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
+                image.paintCylindircal();
+                EduPatternTest.updateLensPatternPattern(image, genLog());
+                imageGenerated = true;
+            } else if (actionTag.equalsIgnoreCase("Mirror")) {
+                image.updateMirrorParameter(phy, theta);
+                image.paintMirror();
+                EduPatternTest.updateLensPatternPattern(image, genLog());
+                imageGenerated = true;
+            } else if (actionTag.equalsIgnoreCase("Slit")) {
+                image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
+                image.slit(slit);
+                EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+                imageGenerated = true;
+            } else if (actionTag.equalsIgnoreCase("Processing")) {
+                image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+                image.signalProcessing();
+                EduPatternTest.updateLensPattern(image, genLogProcessing());
+            } else if (actionTag.equalsIgnoreCase("Phase")) {
+                image.updatePhaseRetarderParameter(zoom, grayLevel);
+                image.phaseRetarder();
+                EduPatternTest.updateLensPattern(image, genLogPhase());
             }
         }
 
         @Override
         public void mouseWheelMoved(MouseWheelEvent e) {
-            zoom_panal = Math.min(2000, Math.max(0, zoom_panal + e.getUnitsToScroll() * 10));
+            zoom_layOut = Math.min(2000, Math.max(0, zoom_layOut + e.getUnitsToScroll() * 10));
         }
     }
 }
