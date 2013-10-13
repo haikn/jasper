@@ -240,7 +240,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jPanelSlit = new Slit();
         jPanelSignalProcessing = new SignalProcessing();
         jLayeredPane5 = new javax.swing.JLayeredPane();
-        jPanelPhaseRetarder = new PhaseRetarder();
+        jPanelPhaseRetarder = new javax.swing.JPanel();
         jLayeredPane6 = new javax.swing.JLayeredPane();
         panelist.add((OpticsPane) jPanelSlit);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
