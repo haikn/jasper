@@ -83,7 +83,6 @@ public class EduControlerPattern extends OpticsPane {
         jLabel2 = new javax.swing.JLabel();
         textXpos = new javax.swing.JTextField();
         sliderXpos = new javax.swing.JSlider();
-        jLabel3 = new javax.swing.JLabel();
         textYpos = new javax.swing.JTextField();
         sliderYPos = new javax.swing.JSlider();
         ok = new javax.swing.JButton();
@@ -104,6 +103,7 @@ public class EduControlerPattern extends OpticsPane {
         jPanelLens = new javax.swing.JPanel();
         jPanelCyllindrical1 = new javax.swing.JPanel();
         jPanelMicroscope = new javax.swing.JPanel();
+        // Lens
         jLabel3 = new javax.swing.JLabel();
         jSliderFocalLens = new javax.swing.JSlider();
         txtFocalLens = new javax.swing.JTextField();
@@ -116,7 +116,24 @@ public class EduControlerPattern extends OpticsPane {
         jButtonLens = new javax.swing.JButton();
         jButton11LensOn = new javax.swing.JButton();
         jButtonDisplaySecondOn = new javax.swing.JButton();
+        // Lens Michelson
+        lblFocalLensMichelson = new javax.swing.JLabel();
+        jSliderFocalLensMichelson = new javax.swing.JSlider();
+        txtFocalLensMichelson = new javax.swing.JTextField();
+        lblXLensMichelson = new javax.swing.JLabel();
+        txtXPositionLensMichelson = new javax.swing.JTextField();
+        jSliderXPositionLensMichelson = new javax.swing.JSlider();
+        lblYLensMichelson = new javax.swing.JLabel();
+        txtYPositionLensMichelson = new javax.swing.JTextField();
+        jSliderYPositionLensMichelson = new javax.swing.JSlider();
+        jButtonLensMichelson = new javax.swing.JButton();
+        jButton11LensOnMichelson = new javax.swing.JButton();
+        jButtonDisplaySecondOnMichelson = new javax.swing.JButton();
+        rangeSlider = new RangeSlider();
+        // END Lens Michelson
+        
         jPanelCyllindrical = new javax.swing.JPanel();
+        jPanelLensMichelson = new javax.swing.JPanel();
         jPanelMirror = new javax.swing.JPanel();
         panelCalebration = new javax.swing.JPanel();
         panelSlit = new javax.swing.JPanel();
@@ -1594,7 +1611,135 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         //tabbedControl.addTab("Phase Retarder", panelPhase);
-        // BEGIN Phase retarder
+        // END Phase retarder
+        
+        // BEGIN Lens Michelson
+        lblFocalLensMichelson.setText("Focal length");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        lblXLensMichelson.setText("X Position");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        lblYLensMichelson.setText("Y Position");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jButtonLensMichelson.setText("General");
+        jButtonLensMichelson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformed(evt);
+            }
+        });
+
+        jButton11LensOnMichelson.setText("1:1 lens ON");
+        jButton11LensOnMichelson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformed(evt);
+            }
+        });
+
+        jButtonDisplaySecondOnMichelson.setText("Second display ON");
+        jButtonDisplaySecondOnMichelson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSecondGenerateActionPerformed(evt);
+            }
+        });
+
+        jSliderFocalLensMichelson.setMaximum(100000);
+        jSliderFocalLensMichelson.setMinimum(-1000);
+        jSliderFocalLensMichelson.setValue(522);
+        jSliderFocalLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformed(evt);
+            }
+        });
+
+        jSliderXPositionLensMichelson.setMaximum(100);
+        jSliderXPositionLensMichelson.setMinimum(-100);
+        jSliderXPositionLensMichelson.setValue(0);
+        jSliderXPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformed(evt);
+            }
+        });
+
+        jSliderYPositionLensMichelson.setMaximum(100);
+        jSliderYPositionLensMichelson.setMinimum(-100);
+        jSliderYPositionLensMichelson.setValue(0);
+        jSliderYPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformed(evt);
+            }
+        });
+        //rangeSlider.setPreferredSize(new Dimension(240, rangeSlider.getPreferredSize().height));
+        rangeSlider.setMinimum(-2000);
+        rangeSlider.setMaximum(2000);
+        rangeSlider.setValue(1000);
+        rangeSlider.setUpperValue(1500);
+
+        javax.swing.GroupLayout jPanelLensMichelsonLayout = new javax.swing.GroupLayout(jPanelLensMichelson);
+        jPanelLensMichelson.setLayout(jPanelLensMichelsonLayout);
+        jPanelLensMichelsonLayout.setHorizontalGroup(
+                jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblYLensMichelson)
+                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(lblXLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(txtYPositionLensMichelson)
+                .addComponent(txtFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(txtXPositionLensMichelson))))
+                .addGap(5, 5, 5)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(rangeSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jSliderXPositionLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSliderYPositionLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jButtonLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton11LensOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDisplaySecondOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE)));
+        jPanelLensMichelsonLayout.setVerticalGroup(
+                jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(rangeSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtFocalLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblXLensMichelson)
+                .addComponent(txtXPositionLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSliderXPositionLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblYLensMichelson)
+                .addComponent(txtYPositionLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSliderYPositionLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(jButtonDisplaySecondOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton11LensOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE)));
+        // END Michelson
 
 
         tabbedControl.setBounds(560, 0, 670, 335);
@@ -1765,7 +1910,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
 
-        jTabbedPaneOptics.addTab("Lens", null);
+        jTabbedPaneOptics.addTab("Lens", jPanelLensMichelson);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
@@ -1794,7 +1939,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
 
-        jTabbedPaneOptics.addTab("Lens", null);
+        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Spectrometer");
@@ -2319,19 +2464,43 @@ public class EduControlerPattern extends OpticsPane {
         // TODO add your handling code here:
     }//GEN-LAST:event_textXposActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-//    private javax.swing.JButton buttonGenerate;
-//    private javax.swing.JLabel labelFocal;
-//    private javax.swing.JLabel labelXpos;
-//    private javax.swing.JLabel labelYpos;
+
     public javax.swing.JPanel panelPattern;
-    //private javax.swing.JTextField textFocal;
-    //private javax.swing.JTextField textYpos;
+    // Lens
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JSlider jSliderFocalLens;
+    private javax.swing.JSlider jSliderXPositionLens;
+    private javax.swing.JSlider jSliderYPositionLens;
+    private javax.swing.JTextField txtFocalLens;
+    private javax.swing.JTextField txtXPositionLens;
+    private javax.swing.JTextField txtYPositionLens;
+    private javax.swing.JButton jButton11LensOn;
+    private javax.swing.JButton jButtonDisplaySecondOn;
+    private javax.swing.JButton jButtonLens;
+    
+    // Lens Michelson
+    private javax.swing.JLabel lblFocalLensMichelson;
+    private javax.swing.JLabel lblXLensMichelson;
+    private javax.swing.JLabel lblYLensMichelson;
+    private javax.swing.JSlider jSliderFocalLensMichelson;
+    private javax.swing.JSlider jSliderXPositionLensMichelson;
+    private javax.swing.JSlider jSliderYPositionLensMichelson;
+    private javax.swing.JTextField txtFocalLensMichelson;
+    private javax.swing.JTextField txtXPositionLensMichelson;
+    private javax.swing.JTextField txtYPositionLensMichelson;
+    private javax.swing.JButton jButton11LensOnMichelson;
+    private javax.swing.JButton jButtonDisplaySecondOnMichelson;
+    private javax.swing.JButton jButtonLensMichelson;
+    private RangeSlider rangeSlider;
+    
     public javax.swing.JSlider sliderXpos;
     private javax.swing.JSlider sliderYPos;
     private javax.swing.JSlider sliderFocal;
     public javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    
+    
     private javax.swing.JButton ok;
     private javax.swing.JButton btnLensON;
     private javax.swing.JButton btnSecond;
@@ -2375,19 +2544,16 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonMirrorLensOn;
     private javax.swing.JButton buttonMirrorDisplaySecondOn;
     private javax.swing.JButton buttonMirrorGeneral;
-    private javax.swing.JButton jButton11LensOn;
-    private javax.swing.JButton jButtonDisplaySecondOn;
-    private javax.swing.JButton jButtonLens;
+    
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel4;
+    
     private javax.swing.JPanel jPanelCyllindrical;
     private javax.swing.JPanel jPanelCyllindrical1;
     private javax.swing.JPanel jPanelMicroscope;
+    private javax.swing.JPanel jPanelLensMichelson;
     private javax.swing.JPanel jPanelLens;
     private javax.swing.JPanel jPanelMirror;
-    private javax.swing.JSlider jSliderFocalLens;
-    private javax.swing.JSlider jSliderXPositionLens;
-    private javax.swing.JSlider jSliderYPositionLens;
+    
     private javax.swing.JTabbedPane jTabbedControler;
     private javax.swing.JLayeredPane layoutControl;
     private javax.swing.JPanel panelCalebration;
@@ -2397,9 +2563,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelSlit;
     private javax.swing.JPanel panelDoubleSlit;
     private javax.swing.JTabbedPane tabbedControl;
-    private javax.swing.JTextField txtFocalLens;
-    private javax.swing.JTextField txtXPositionLens;
-    private javax.swing.JTextField txtYPositionLens;
+    
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel jLabelSelectExperiment;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
