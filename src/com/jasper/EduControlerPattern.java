@@ -1864,12 +1864,19 @@ public class EduControlerPattern extends OpticsPane {
 
     public void jMenuItemTelephotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelephotoActionPerformed
 //        changeLabTitle(labTitleTele);
-//        
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
+        
+        tabbedDesLog.addTab("Description", new DescriptionLens());
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/lens.png")));
         lblDiagram.setText(null);
@@ -1883,8 +1890,16 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
+        
+        tabbedDesLog.addTab("Description", new DescriptionMicroscope());
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Microscope");
@@ -1896,8 +1911,16 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
+        
+        tabbedDesLog.addTab("Description", new DescriptionAberration());
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Aberration");
@@ -1909,10 +1932,18 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelLensMichelson);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        tabbedDesLog.addTab("Description", new DescriptionMicheson());
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Michelson");
@@ -1924,9 +1955,17 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Single Slit", panelSlit);
         jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
+        
+        tabbedDesLog.addTab("Description", null);
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Diffraction");
@@ -1938,8 +1977,16 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        tabbedDesLog.addTab("Description", null);
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Spectrometer");
@@ -1951,8 +1998,16 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Signal processing", panelSignal);
+        
+        tabbedDesLog.addTab("Description", null);
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of SignalProcessing");
@@ -1964,8 +2019,16 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Phase retarder", panelPhase);
+        
+        tabbedDesLog.addTab("Description", null);
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of haseShifting");
@@ -1977,8 +2040,16 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
+        
+        tabbedDesLog.addTab("Description", null);
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Talbot");
@@ -1990,10 +2061,18 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        
+        tabbedDesLog.addTab("Description", null);
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavefront");
@@ -2005,8 +2084,16 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
+        tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
+        
+        tabbedDesLog.addTab("Description", null);
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavelength");
