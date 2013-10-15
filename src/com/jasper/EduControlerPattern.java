@@ -120,6 +120,7 @@ public class EduControlerPattern extends OpticsPane {
         jPanelMirror = new javax.swing.JPanel();
         panelCalebration = new javax.swing.JPanel();
         panelSlit = new javax.swing.JPanel();
+        panelDoubleSlit = new javax.swing.JPanel();
         panelSignal = new javax.swing.JPanel();
         panelPhase = new javax.swing.JPanel();
         jPanelPattern = new javax.swing.JPanel();
@@ -759,7 +760,31 @@ public class EduControlerPattern extends OpticsPane {
         buttonGennerateSlit = new javax.swing.JButton();
         buttong11LensOnSlit = new javax.swing.JButton();
         buttonSecondDisplaySlit = new javax.swing.JButton();
-
+        
+        // double slit
+        lblWidthDoubleSlit = new javax.swing.JLabel();
+        lblHeightDoubleSlit = new javax.swing.JLabel();
+        lblRotationDoubleSlit = new javax.swing.JLabel();
+        lblPosDoubleSlit = new javax.swing.JLabel();
+        lblGrayDoubleSlit = new javax.swing.JLabel();
+        text_single_widthDoubleSlit = new javax.swing.JTextField();
+        text_single_heightDoubleSlit = new javax.swing.JTextField();
+        text_single_rotationDoubleSlit = new javax.swing.JTextField();
+        text_single_positionDoubleSlit = new javax.swing.JTextField();
+        text_single_grayDoubleSlit = new javax.swing.JTextField();
+        s_single_widthDoubleSlit = new javax.swing.JSlider();
+        s_single_heightDoubleSlit = new javax.swing.JSlider();
+        s_single_rotationDoubleSlit = new javax.swing.JSlider();
+        s_single_positionDoubleSlit = new javax.swing.JSlider();
+        s_single_grayDoubleSlit = new javax.swing.JSlider();
+        jLabelSpacingDoubleSlit = new javax.swing.JLabel();
+        text_single_spacingDoubleSlit = new javax.swing.JTextField();
+        s_single_spacingDoubleSlit = new javax.swing.JSlider();
+        buttonGennerateDoubleSlit = new javax.swing.JButton();
+        buttong11LensOnDoubleSlit = new javax.swing.JButton();
+        buttonSecondDisplayDoubleSlit = new javax.swing.JButton();
+        
+        
         lblWidthSlit.setText("Width");
 
         lblHeightSlit.setText("Width");
@@ -796,8 +821,8 @@ public class EduControlerPattern extends OpticsPane {
         s_single_spacing.hide();
         // s_single_width.setMaximum(image1.getBounds().width);
         // s_single_width.setValue(image1.getBounds().width);
-        s_single_width.setMaximum(99999);
-        s_single_width.setValue(99999);
+        s_single_width.setMaximum(3866);
+        s_single_width.setValue(3866);
         s_single_width.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
@@ -935,13 +960,14 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(comboBoxSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                //.addComponent(comboBoxSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )
                 .addContainerGap(28, Short.MAX_VALUE)));
         jPanel4Layout.setVerticalGroup(
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(comboBoxSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                //.addComponent(comboBoxSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -978,14 +1004,212 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jLabelSpacingSlit)
                 .addComponent(text_single_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(s_single_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(8, 8, 8)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )));
 
-        tabbedControl.addTab("  Slit  ", panelSlit);
+        //tabbedControl.addTab("  Slit  ", panelSlit);
+        
+        lblWidthDoubleSlit.setText("Width");
+
+        lblHeightDoubleSlit.setText("Width");
+
+        lblRotationDoubleSlit.setText("Rotation");
+
+        lblPosDoubleSlit.setText("Positions");
+
+        lblGrayDoubleSlit.setText("GrayLevel ");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_widthDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_widthDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_heightDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_heightDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_rotationDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_rotationDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_positionDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_positionDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_grayDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_grayDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabelSpacingDoubleSlit.setText("Spacing");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacingDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacingDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+      
+        // s_single_width.setMaximum(image1.getBounds().width);
+        // s_single_width.setValue(image1.getBounds().width);
+        s_single_widthDoubleSlit.setMaximum(3866);
+        s_single_widthDoubleSlit.setValue(3866);
+        s_single_widthDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        s_single_heightDoubleSlit.setMaximum(image1.getBounds().height);
+        s_single_heightDoubleSlit.setValue(100);
+        s_single_heightDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        s_single_rotationDoubleSlit.setMaximum(180);
+        s_single_rotationDoubleSlit.setMinimum(-180);
+        s_single_rotationDoubleSlit.setValue(0);
+        s_single_rotationDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        s_single_positionDoubleSlit.setMaximum(image1.getBounds().height / 2);
+        s_single_positionDoubleSlit.setMinimum(-(image1.getBounds().height / 2));
+        s_single_positionDoubleSlit.setValue(0);
+        s_single_positionDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        s_single_grayDoubleSlit.setMaximum(255);
+        s_single_grayDoubleSlit.setValue(255);
+        s_single_grayDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        s_single_spacingDoubleSlit.setMaximum(image1.getBounds().height);
+        s_single_spacingDoubleSlit.setValue(400);
+        s_single_spacingDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        s_single_spacingDoubleSlit.setMaximum(image1.getBounds().height);
+        s_single_spacingDoubleSlit.setValue(400);
+        s_single_spacingDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+
+        buttonGennerateDoubleSlit.setText("Generate");
+        buttonGennerateDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        buttong11LensOnDoubleSlit.setText("1:1 lens ON");
+        buttong11LensOnDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        buttonSecondDisplayDoubleSlit.setText("Second display ON");
+        buttonSecondDisplayDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSecondGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        
+        // double slit
+        javax.swing.GroupLayout panelDoubleSlitLayout = new javax.swing.GroupLayout(panelDoubleSlit);
+        panelDoubleSlit.setLayout(panelDoubleSlitLayout);
+        panelDoubleSlitLayout.setHorizontalGroup(
+                panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGap(5, 5, 5)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addComponent(lblHeightDoubleSlit)
+                .addGap(29, 29, 29)
+                .addComponent(text_single_heightDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(s_single_heightDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addComponent(lblGrayDoubleSlit)
+                .addGap(5, 5, 5)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(text_single_grayDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                .addComponent(text_single_spacingDoubleSlit)))
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addComponent(lblRotationDoubleSlit)
+                .addGap(18, 18, 18)
+                .addComponent(text_single_rotationDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelSpacingDoubleSlit)
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addComponent(lblPosDoubleSlit)
+                .addGap(11, 11, 11)
+                .addComponent(text_single_positionDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(s_single_rotationDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                .addComponent(s_single_positionDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(s_single_grayDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(s_single_spacingDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(buttonGennerateDoubleSlit)
+                .addGap(18, 18, 18)
+                .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                )
+                .addContainerGap(28, Short.MAX_VALUE)));
+        panelDoubleSlitLayout.setVerticalGroup(
+                panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDoubleSlitLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblHeightDoubleSlit)
+                .addComponent(text_single_heightDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3))
+                .addComponent(s_single_heightDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblRotationDoubleSlit)
+                .addComponent(text_single_rotationDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(s_single_rotationDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDoubleSlitLayout.createSequentialGroup()
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblPosDoubleSlit)
+                .addComponent(text_single_positionDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(s_single_positionDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblGrayDoubleSlit)
+                .addComponent(text_single_grayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(s_single_grayDoubleSlit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabelSpacingDoubleSlit)
+                .addComponent(text_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(s_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )));
+        
         /*
          * Signal
          */
@@ -1116,8 +1340,8 @@ public class EduControlerPattern extends OpticsPane {
         // lblWidthX.setText("Width X");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_width_x.setMaximum(99999);
-        s_processing_width_x.setValue(99999);
+        s_processing_width_x.setMaximum(3866);
+        s_processing_width_x.setValue(3866);
         s_processing_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -1239,22 +1463,23 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(text_processing_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(s_processing_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabelGrayProcessing))
-                .addGap(18, 18, 18)
+                .addGap(8, 8, 8)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonGennerateProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplayProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOnProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+                .addGap(2, 2, 2)
+                ));
 
-        tabbedDiagram.removeAll();
-        diagramLens.removeAll();
+//        tabbedDiagram.removeAll();
+//        diagramLens.removeAll();
+//
+//        lblDiagram.setIcon(null);
+//        lblDiagram.setText("Diagram of Microscope");
+//        diagramLens.add(lblDiagram);
+//        tabbedDiagram.addTab("Diagram", diagramLens);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of Microscope");
-        diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
-
-        tabbedControl.addTab("Signal Processing", panelSignal);
+        //tabbedControl.addTab("Signal Processing", panelSignal);
         /*
          * Phase retarder
          */
@@ -1368,11 +1593,11 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-        tabbedControl.addTab("Phase Retarder", panelPhase);
+        //tabbedControl.addTab("Phase Retarder", panelPhase);
         // BEGIN Phase retarder
 
 
-        tabbedControl.setBounds(560, 0, 670, 305);
+        tabbedControl.setBounds(560, 0, 670, 335);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jPanelPatternLayout = new javax.swing.GroupLayout(jPanelPattern);
@@ -1383,7 +1608,7 @@ public class EduControlerPattern extends OpticsPane {
         jPanelPatternLayout.setVerticalGroup(
                 jPanelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 290, Short.MAX_VALUE));
-        panelPattern.setBounds(0, 0, 549, 305);
+        panelPattern.setBounds(0, 0, 549, 335);
         //  BEGIN show full screen
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
@@ -1473,10 +1698,10 @@ public class EduControlerPattern extends OpticsPane {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(tabbedDiagram))
                 .addGap(5, 5, 5)));
 
@@ -1500,9 +1725,6 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/lens.png")));
         lblDiagram.setText(null);
@@ -1518,8 +1740,6 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Microscope");
@@ -1533,8 +1753,6 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Aberration");
@@ -1562,9 +1780,8 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
 
-        jTabbedPaneOptics.addTab("Lens", null);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        jTabbedPaneOptics.addTab("Single Slit", panelSlit);
+        jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Diffraction");
@@ -1578,8 +1795,6 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Spectrometer");
@@ -1592,9 +1807,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
 
-        jTabbedPaneOptics.addTab("Lens", null);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        jTabbedPaneOptics.addTab("Signal processing", panelSignal);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of SignalProcessing");
@@ -1607,9 +1820,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDiagram.removeAll();
         diagramLens.removeAll();
 
-        jTabbedPaneOptics.addTab("Lens", null);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        jTabbedPaneOptics.addTab("Phase retarder", panelPhase);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of haseShifting");
@@ -1623,8 +1834,6 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Talbot");
@@ -1653,8 +1862,6 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
-        jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavelength");
@@ -1667,6 +1874,8 @@ public class EduControlerPattern extends OpticsPane {
     private double xoffCyllin = 150.0, yoffCyllin = 200.0, focalCyllin = 522;
     private double phy = 522, theta = 522;
     private double d_widthX = Double.valueOf(image1.getBounds().width), d_heightX = 100, d_rotation = 0, d_postionX = 0, d_grayLevel = 255, d_spacing = 400;
+    // double slit
+    private double d_widthX_double = Double.valueOf(image1.getBounds().width), d_heightX_double = 100, d_rotation_double = 0, d_postionX_double = 0, d_grayLevel_double = 255, d_spacing_double = 400;
     //Processing
     private double processing_widthX = Double.valueOf(image1.getBounds().width), processing_widthY = 100, processing_heightX = 100, processing_heightY = Double.valueOf(image1.getBounds().height), processing_rotation = 0, processing_positionX = 0, processing_positionY = 0, processing_grayLevel = 255;
     private double zoom = 100.0, grayLevel = 255;
@@ -1700,6 +1909,13 @@ public class EduControlerPattern extends OpticsPane {
             double rotationSlit = Double.valueOf(s_single_rotation.getValue());
             double grayLevelSlit = Double.valueOf(s_single_gray.getValue());
             double spacingSlit = Double.valueOf(s_single_spacing.getValue());
+            // double
+            double widthDoubleSlit = Double.valueOf(s_single_widthDoubleSlit.getValue());
+            double heightDoubleSlit = Double.valueOf(s_single_heightDoubleSlit.getValue());
+            double postionDoubleSlit = Double.valueOf(s_single_positionDoubleSlit.getValue());
+            double rotationDoubleSlit = Double.valueOf(s_single_rotationDoubleSlit.getValue());
+            double grayLevelDoubleSlit = Double.valueOf(s_single_grayDoubleSlit.getValue());
+            double spacingDoubleSlit = Double.valueOf(s_single_spacingDoubleSlit.getValue());
             //Processing
             processing_widthX = Double.valueOf(s_processing_width_x.getValue());
             processing_widthY = Double.valueOf(s_processing_width_y.getValue());
@@ -1730,6 +1946,13 @@ public class EduControlerPattern extends OpticsPane {
             this.d_rotation = rotationSlit;
             this.d_grayLevel = grayLevelSlit;
             this.d_spacing = spacingSlit;
+            
+            this.d_widthX_double = widthDoubleSlit;
+            this.d_heightX_double = heightDoubleSlit;
+            this.d_postionX_double = postionDoubleSlit;
+            this.d_rotation_double = rotationDoubleSlit;
+            this.d_grayLevel_double = grayLevelDoubleSlit;
+            this.d_spacing_double = spacingDoubleSlit;
 
             this.phy = phyoff;
             this.theta = thetaoff;
@@ -1973,6 +2196,43 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
+    
+    // doubel slit 
+    private void buttonGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedDoubleSlit
+        actionTag = "Double Slit";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
+            image.slit(2);
+            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            imageGenerated = true;
+        }
+
+    }//GEN-LAST:event_buttonGenerateActionPerformedDoubleSlit
+
+    private void buttonSecondGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedDoubleSlit
+        actionTag = "Double Slit";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
+            image.slit(2);
+            EduPatternTest.updateLensPattern(image, genLogSlit());
+            //EduPatternTest.updateLensPatternPattern(image, genLog());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_buttonSecondGenerateActionPerformedDoubleSlit
+
+    private void sliderGenerateActionPerformedDoubleSlit(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedDoubleSlit
+        actionTag = "Double Slit";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
+            image.slit(2);
+            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformedDoubleSlit
+    
 //Processing
 
     private void buttonGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
@@ -2135,6 +2395,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelPhase;
     private javax.swing.JPanel panelSignal;
     private javax.swing.JPanel panelSlit;
+    private javax.swing.JPanel panelDoubleSlit;
     private javax.swing.JTabbedPane tabbedControl;
     private javax.swing.JTextField txtFocalLens;
     private javax.swing.JTextField txtXPositionLens;
@@ -2168,6 +2429,29 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextField text_single_spacing;
     private javax.swing.JTextField text_single_width;
     private int slit = 1;
+    // double slit
+    private javax.swing.JButton buttonGennerateDoubleSlit;
+    private javax.swing.JButton buttonSecondDisplayDoubleSlit;
+    private javax.swing.JButton buttong11LensOnDoubleSlit;
+    private javax.swing.JLabel jLabelSpacingDoubleSlit;
+    private javax.swing.JLabel lblGrayDoubleSlit;
+    private javax.swing.JLabel lblHeightDoubleSlit;
+    private javax.swing.JLabel lblPosDoubleSlit;
+    private javax.swing.JLabel lblRotationDoubleSlit;
+    private javax.swing.JLabel lblWidthDoubleSlit;
+    private javax.swing.JSlider s_single_grayDoubleSlit;
+    private javax.swing.JSlider s_single_heightDoubleSlit;
+    private javax.swing.JSlider s_single_positionDoubleSlit;
+    private javax.swing.JSlider s_single_rotationDoubleSlit;
+    private javax.swing.JSlider s_single_spacingDoubleSlit;
+    private javax.swing.JSlider s_single_widthDoubleSlit;
+    private javax.swing.JTextField text_single_grayDoubleSlit;
+    private javax.swing.JTextField text_single_heightDoubleSlit;
+    private javax.swing.JTextField text_single_positionDoubleSlit;
+    private javax.swing.JTextField text_single_rotationDoubleSlit;
+    private javax.swing.JTextField text_single_spacingDoubleSlit;
+    private javax.swing.JTextField text_single_widthDoubleSlit;
+    
     /*
      *@Param SignalProcessing 
      */
