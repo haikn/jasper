@@ -44,6 +44,7 @@ public class EduControlerPattern extends OpticsPane {
     private int zoom_layOut = 80;
     private BufferedImage capture = null;
     private BufferedImage raw;
+    private String strLog = "";
 
     /**
      * Creates new form CylincalLens
@@ -131,7 +132,7 @@ public class EduControlerPattern extends OpticsPane {
         jButtonDisplaySecondOnMichelson = new javax.swing.JButton();
         rangeSlider = new RangeSlider();
         // END Lens Michelson
-        
+
         jPanelCyllindrical = new javax.swing.JPanel();
         jPanelLensMichelson = new javax.swing.JPanel();
         jPanelMirror = new javax.swing.JPanel();
@@ -777,7 +778,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonGennerateSlit = new javax.swing.JButton();
         buttong11LensOnSlit = new javax.swing.JButton();
         buttonSecondDisplaySlit = new javax.swing.JButton();
-        
+
         // double slit
         lblWidthDoubleSlit = new javax.swing.JLabel();
         lblHeightDoubleSlit = new javax.swing.JLabel();
@@ -800,8 +801,8 @@ public class EduControlerPattern extends OpticsPane {
         buttonGennerateDoubleSlit = new javax.swing.JButton();
         buttong11LensOnDoubleSlit = new javax.swing.JButton();
         buttonSecondDisplayDoubleSlit = new javax.swing.JButton();
-        
-        
+
+
         lblWidthSlit.setText("Width");
 
         lblHeightSlit.setText("Width");
@@ -928,7 +929,7 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
                 image.slit(slit);
-                EduPatternTest.updateLensPatternPattern(image, genLog());
+                EduPatternTest.updateLensPatternPattern(image, genLogSlit());
                 imageGenerated = true;
             }
         });
@@ -976,8 +977,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(18, 18, 18)
                 .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                //.addComponent(comboBoxSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)) //.addComponent(comboBoxSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )
                 .addContainerGap(28, Short.MAX_VALUE)));
         jPanel4Layout.setVerticalGroup(
@@ -1029,7 +1029,7 @@ public class EduControlerPattern extends OpticsPane {
                 )));
 
         //tabbedControl.addTab("  Slit  ", panelSlit);
-        
+
         lblWidthDoubleSlit.setText("Width");
 
         lblHeightDoubleSlit.setText("Width");
@@ -1060,7 +1060,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacingDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacingDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-      
+
         // s_single_width.setMaximum(image1.getBounds().width);
         // s_single_width.setValue(image1.getBounds().width);
         s_single_widthDoubleSlit.setMaximum(3866);
@@ -1133,7 +1133,7 @@ public class EduControlerPattern extends OpticsPane {
                 buttonSecondGenerateActionPerformedDoubleSlit(evt);
             }
         });
-        
+
         // double slit
         javax.swing.GroupLayout panelDoubleSlitLayout = new javax.swing.GroupLayout(panelDoubleSlit);
         panelDoubleSlit.setLayout(panelDoubleSlitLayout);
@@ -1178,8 +1178,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(18, 18, 18)
                 .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
+                .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE)));
         panelDoubleSlitLayout.setVerticalGroup(
                 panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1226,7 +1225,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )));
-        
+
         /*
          * Signal
          */
@@ -1485,8 +1484,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonGennerateProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplayProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOnProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                ));
+                .addGap(2, 2, 2)));
 
 //        tabbedDiagram.removeAll();
 //        diagramLens.removeAll();
@@ -1612,7 +1610,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         //tabbedControl.addTab("Phase Retarder", panelPhase);
         // END Phase retarder
-        
+
         // BEGIN Lens Michelson
         lblFocalLensMichelson.setText("Focal length");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -1816,11 +1814,9 @@ public class EduControlerPattern extends OpticsPane {
         //jTextAreaDesc.setRows(5);
         //jTextAreaDesc.setFont(new Font("Courier New", Font.PLAIN, 12));
         tabbedDesLog.addTab("Description", null);
-
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        //jTextAreaLog.setText("test");
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
@@ -1870,7 +1866,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
-        
+
         tabbedDesLog.addTab("Description", new DescriptionLens());
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -1893,7 +1889,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
-        
+
         tabbedDesLog.addTab("Description", new DescriptionMicroscope());
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -1914,7 +1910,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
-        
+
         tabbedDesLog.addTab("Description", new DescriptionAberration());
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -1937,7 +1933,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", jPanelLensMichelson);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         tabbedDesLog.addTab("Description", new DescriptionMicheson());
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -1959,7 +1955,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Single Slit", panelSlit);
         jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
-        
+
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -1980,7 +1976,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -2001,7 +1997,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Signal processing", panelSignal);
-        
+
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -2022,7 +2018,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Phase retarder", panelPhase);
-        
+
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -2043,7 +2039,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
-        
+
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -2066,7 +2062,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", null);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        
+
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -2087,7 +2083,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", null);
-        
+
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -2178,7 +2174,7 @@ public class EduControlerPattern extends OpticsPane {
             this.d_rotation = rotationSlit;
             this.d_grayLevel = grayLevelSlit;
             this.d_spacing = spacingSlit;
-            
+
             this.d_widthX_double = widthDoubleSlit;
             this.d_heightX_double = heightDoubleSlit;
             this.d_postionX_double = postionDoubleSlit;
@@ -2200,7 +2196,6 @@ public class EduControlerPattern extends OpticsPane {
 
     private void b_openFileActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-
         int returnVal = openFile.showOpenDialog(this);
         if (returnVal == openFile.APPROVE_OPTION) {
             File file = openFile.getSelectedFile();
@@ -2209,7 +2204,7 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updatePhaseRetarderParameter(zoom, grayLevel);
                 image.phaseRetarder();
-                EduPatternTest.updateLensPatternPattern(image, genLog());
+                EduPatternTest.updateLensPatternPattern(image, genLogPhase());
                 imageGenerated = true;
             } catch (IOException ex) {
                 System.out.println("problem accessing file" + file.getAbsolutePath());
@@ -2219,31 +2214,50 @@ public class EduControlerPattern extends OpticsPane {
         }
     }
 
-    public void logString(String msg) {
+//    public void logString(String msg) {
+//        jTextAreaLog.append(msg + System.getProperty("line.separator"));
+//        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
+//
+//        // start logging if user chose to
+//        if (EduPatternTest.logging == 1) {
+//            try {
+//                BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
+//                jTextAreaLog.write(logFileOut);
+//                logFileOut.flush();
+//            } catch (Exception e) {
+//            }
+//        }
+//    }
+    public void setLog(String msg) {
         jTextAreaLog.append(msg + System.getProperty("line.separator"));
-        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
-
-        // start logging if user chose to
-        if (EduPatternTest.logging == 1) {
-            try {
-                BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
-                jTextAreaLog.write(logFileOut);
-                logFileOut.flush();
-            } catch (Exception e) {
-            }
-        }
     }
 
-    private String genLog() {
-        return String.format(logmessage, Double.toString(xoff), Double.toString(yoff), Double.toString(focal));
+    private String genLogLen() {
+        return String.format(logmessageLen, Double.toString(xoff), Double.toString(yoff), Double.toString(focal));
+    }
+
+    private String genLogMicroscope() {
+        return String.format(logmessageMicroscope, Double.toString(focalMicroscope), Double.toString(xoffMicroscope), Double.toString(yoffMicroscope));
+    }
+
+    private String genLogCyllin() {
+        return String.format(logmessageCyllin, Double.toString(focalCyllin), Double.toString(xoffCyllin), Double.toString(yoffCyllin));
+    }
+
+    private String genLogMirror() {
+        return String.format(logmessageMirror, Double.toString(phy), Double.toString(theta));
     }
 
     private String genLogSlit() {
-        return String.format(logmessageSlit, Double.toString(d_widthX), Double.toString(d_heightX), Double.toString(d_rotation), Double.toString(d_postionX), Double.toString(d_grayLevel), Double.toString(d_spacing));
+        return String.format(logmessageSlit, Double.toString(d_heightX), Double.toString(d_rotation), Double.toString(d_postionX), Double.toString(d_grayLevel));
+    }
+
+    private String genLogDoubleSlit() {
+        return String.format(logmessageDoubleSlit, Double.toString(d_heightX_double), Double.toString(d_rotation_double), Double.toString(d_postionX_double), Double.toString(d_grayLevel_double), Double.toString(d_spacing_double));
     }
 
     private String genLogProcessing() {
-        return String.format(logmessageProcessing, Double.toString(processing_widthX), Double.toString(processing_heightX), Double.toString(processing_widthY), Double.toString(processing_heightY), Double.toString(processing_rotation), Double.toString(processing_positionX), Double.toString(processing_positionY), Double.toString(processing_grayLevel));
+        return String.format(logmessageProcessing, Double.toString(processing_heightX), Double.toString(processing_widthY), Double.toString(processing_rotation), Double.toString(processing_positionX), Double.toString(processing_positionY), Double.toString(processing_grayLevel));
     }
 
     private String genLogPhase() {
@@ -2256,7 +2270,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            setLog(genLogLen());
             imageGenerated = true;
         }
 
@@ -2268,7 +2283,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
-            EduPatternTest.updateLensPattern(image, genLog());
+            EduPatternTest.updateLensPattern(image, genLogLen());
+            setLog(genLogLen());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -2280,7 +2296,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            setLog(genLogLen());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformed
@@ -2292,7 +2309,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogMicroscope());
+            setLog(genLogMicroscope());
             imageGenerated = true;
         }
 
@@ -2304,7 +2322,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
-            EduPatternTest.updateLensPattern(image, genLog());
+            EduPatternTest.updateLensPattern(image, genLogMicroscope());
+            setLog(genLogMicroscope());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -2316,7 +2335,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogMicroscope());
+            setLog(genLogMicroscope());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedMicroscope
@@ -2328,7 +2348,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogCyllin());
+            setLog(genLogCyllin());
             imageGenerated = true;
         }
 
@@ -2340,7 +2361,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
-            EduPatternTest.updateLensPattern(image, genLog());
+            EduPatternTest.updateLensPattern(image, genLogCyllin());
+            setLog(genLogCyllin());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -2352,7 +2374,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogCyllin());
+            setLog(genLogCyllin());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
@@ -2364,7 +2387,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogMirror());
+            setLog(genLogMirror());
             imageGenerated = true;
         }
 
@@ -2376,7 +2400,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
-            EduPatternTest.updateLensPattern(image, genLog());
+            EduPatternTest.updateLensPattern(image, genLogMirror());
+            setLog(genLogMirror());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -2388,7 +2413,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
-            EduPatternTest.updateLensPatternPattern(image, genLog());
+            EduPatternTest.updateLensPatternPattern(image, genLogMirror());
+            setLog(genLogMirror());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
@@ -2401,6 +2427,7 @@ public class EduControlerPattern extends OpticsPane {
             image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
             EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            setLog(genLogSlit());
             imageGenerated = true;
         }
 
@@ -2413,6 +2440,7 @@ public class EduControlerPattern extends OpticsPane {
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
             EduPatternTest.updateLensPattern(image, genLogSlit());
+            setLog(genLogSlit());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -2425,48 +2453,51 @@ public class EduControlerPattern extends OpticsPane {
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
             EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            setLog(genLogSlit());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-    
+
     // doubel slit 
     private void buttonGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedDoubleSlit
-        actionTag = "Double Slit";
+        actionTag = "DoubleSlit";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
-            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            EduPatternTest.updateLensPatternPattern(image, genLogDoubleSlit());
+            setLog(genLogDoubleSlit());
             imageGenerated = true;
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedDoubleSlit
 
     private void buttonSecondGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedDoubleSlit
-        actionTag = "Double Slit";
+        actionTag = "DoubleSlit";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
-            EduPatternTest.updateLensPattern(image, genLogSlit());
+            EduPatternTest.updateLensPattern(image, genLogDoubleSlit());
+            setLog(genLogDoubleSlit());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedDoubleSlit
 
     private void sliderGenerateActionPerformedDoubleSlit(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedDoubleSlit
-        actionTag = "Double Slit";
+        actionTag = "DoubleSlit";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
-            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            EduPatternTest.updateLensPatternPattern(image, genLogDoubleSlit());
+            setLog(genLogDoubleSlit());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedDoubleSlit
-    
-//Processing
 
+//Processing
     private void buttonGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "Processing";
         if (parseArguments()) {
@@ -2474,6 +2505,7 @@ public class EduControlerPattern extends OpticsPane {
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalProcessing();
             EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            setLog(genLogProcessing());
             imageGenerated = true;
         }
 
@@ -2486,6 +2518,7 @@ public class EduControlerPattern extends OpticsPane {
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalProcessing();
             EduPatternTest.updateLensPattern(image, genLogProcessing());
+            setLog(genLogProcessing());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -2498,6 +2531,7 @@ public class EduControlerPattern extends OpticsPane {
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalProcessing();
             EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            setLog(genLogProcessing());
             imageGenerated = true;
         }
     }
@@ -2511,6 +2545,7 @@ public class EduControlerPattern extends OpticsPane {
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
             EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+            setLog(genLogPhase());
             imageGenerated = true;
         }
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
@@ -2522,6 +2557,7 @@ public class EduControlerPattern extends OpticsPane {
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
             EduPatternTest.updateLensPattern(image, genLogPhase());
+            setLog(genLogPhase());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
         }
@@ -2534,6 +2570,7 @@ public class EduControlerPattern extends OpticsPane {
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
             EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+            setLog(genLogPhase());
             imageGenerated = true;
         }
     }
@@ -2551,7 +2588,6 @@ public class EduControlerPattern extends OpticsPane {
         // TODO add your handling code here:
     }//GEN-LAST:event_textXposActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
     public javax.swing.JPanel panelPattern;
     // Lens
     private javax.swing.JLabel jLabel3;
@@ -2566,7 +2602,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton jButton11LensOn;
     private javax.swing.JButton jButtonDisplaySecondOn;
     private javax.swing.JButton jButtonLens;
-    
     // Lens Michelson
     private javax.swing.JLabel lblFocalLensMichelson;
     private javax.swing.JLabel lblXLensMichelson;
@@ -2581,13 +2616,10 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton jButtonDisplaySecondOnMichelson;
     private javax.swing.JButton jButtonLensMichelson;
     private RangeSlider rangeSlider;
-    
     public javax.swing.JSlider sliderXpos;
     private javax.swing.JSlider sliderYPos;
     private javax.swing.JSlider sliderFocal;
     public javax.swing.JLabel jLabel1;
-    
-    
     private javax.swing.JButton ok;
     private javax.swing.JButton btnLensON;
     private javax.swing.JButton btnSecond;
@@ -2631,16 +2663,13 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonMirrorLensOn;
     private javax.swing.JButton buttonMirrorDisplaySecondOn;
     private javax.swing.JButton buttonMirrorGeneral;
-    
     private javax.swing.JComboBox jComboBox1;
-    
     private javax.swing.JPanel jPanelCyllindrical;
     private javax.swing.JPanel jPanelCyllindrical1;
     private javax.swing.JPanel jPanelMicroscope;
     private javax.swing.JPanel jPanelLensMichelson;
     private javax.swing.JPanel jPanelLens;
     private javax.swing.JPanel jPanelMirror;
-    
     private javax.swing.JTabbedPane jTabbedControler;
     private javax.swing.JLayeredPane layoutControl;
     private javax.swing.JPanel panelCalebration;
@@ -2650,7 +2679,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelSlit;
     private javax.swing.JPanel panelDoubleSlit;
     private javax.swing.JTabbedPane tabbedControl;
-    
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel jLabelSelectExperiment;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
@@ -2702,7 +2730,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextField text_single_rotationDoubleSlit;
     private javax.swing.JTextField text_single_spacingDoubleSlit;
     private javax.swing.JTextField text_single_widthDoubleSlit;
-    
     /*
      *@Param SignalProcessing 
      */
@@ -2764,7 +2791,7 @@ public class EduControlerPattern extends OpticsPane {
             image.paintLens();
             imageGenerated = true;
         }
-        EduPatternTest.updatePatternScreen(image, genLog());
+        EduPatternTest.updatePatternScreen(image, "");
     }
     // paint boot screen, lens only
 
@@ -2784,10 +2811,14 @@ public class EduControlerPattern extends OpticsPane {
             image.paintLens();
         }
     }
-    static String logmessage = "pattern: xoff=%s yoff=%s focal=%s";
-    static String logmessageSlit = "Slit: w=%s h=%s r=%s p=%s g=%s s=%s";
-    static String logmessageProcessing = "Signal processing: w_x=%s h_x=%s w_y=%s h_y=%s r=%s p_x=%s p_y=%s g=%s";
-    static String logmessagePhase = "Phase retarder: zoom=%s";
+    static String logmessageLen = "Len : focal=%s posX=%s posY=%s";
+    static String logmessageMicroscope = "Microscope : focal=%s posX=%s posY=%s";
+    static String logmessageCyllin = "Cyllin : focal=%s posX=%s posY=%s";
+    static String logmessageMirror = "Mirror : Phy=%s Theta=%s";
+    static String logmessageSlit = "Slit: w=%s r=%s p=%s g=%s";
+    static String logmessageDoubleSlit = "Double Slit: w=%s r=%s p=%s g=%s s=%s";
+    static String logmessageProcessing = "Signal processing: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s";
+    static String logmessagePhase = "Phase retarder: gray=%s";
     /*
      * Auto Zoom LayOut 
      */
@@ -2840,27 +2871,32 @@ public class EduControlerPattern extends OpticsPane {
             if (actionTag.equalsIgnoreCase("Len")) {
                 image.updateLensParameter(xoff, yoff, focal);
                 image.paintLens();
-                EduPatternTest.updateLensPatternPattern(image, genLog());
+                EduPatternTest.updateLensPatternPattern(image, genLogLen());
                 imageGenerated = true;
             } else if (actionTag.equalsIgnoreCase("Microscope")) {
                 image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
                 image.paintMicroscope();
-                EduPatternTest.updateLensPatternPattern(image, genLog());
+                EduPatternTest.updateLensPatternPattern(image, genLogMicroscope());
                 imageGenerated = true;
             } else if (actionTag.equalsIgnoreCase("Cyllin")) {
                 image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
                 image.paintCylindircal();
-                EduPatternTest.updateLensPatternPattern(image, genLog());
+                EduPatternTest.updateLensPatternPattern(image, genLogCyllin());
                 imageGenerated = true;
             } else if (actionTag.equalsIgnoreCase("Mirror")) {
                 image.updateMirrorParameter(phy, theta);
                 image.paintMirror();
-                EduPatternTest.updateLensPatternPattern(image, genLog());
+                EduPatternTest.updateLensPatternPattern(image, genLogMirror());
                 imageGenerated = true;
             } else if (actionTag.equalsIgnoreCase("Slit")) {
                 image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
                 image.slit(slit);
                 EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+                imageGenerated = true;
+            } else if (actionTag.equalsIgnoreCase("DoubleSlit")) {
+                image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
+                image.slit(2);
+                EduPatternTest.updateLensPatternPattern(image, genLogDoubleSlit());
                 imageGenerated = true;
             } else if (actionTag.equalsIgnoreCase("Processing")) {
                 image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
