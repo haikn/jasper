@@ -18,9 +18,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -1613,7 +1611,7 @@ public class EduControlerPattern extends OpticsPane {
 
         // BEGIN Lens Michelson
         lblFocalLensMichelson.setText("Focal length");
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rangeSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         lblXLensMichelson.setText("X Position");
@@ -1628,21 +1626,21 @@ public class EduControlerPattern extends OpticsPane {
         jButtonLensMichelson.setText("General");
         jButtonLensMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformed(evt);
+                buttonGenerateActionPerformedMichelSon(evt);
             }
         });
 
         jButton11LensOnMichelson.setText("1:1 lens ON");
         jButton11LensOnMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformed(evt);
+                buttonGenerateActionPerformedMichelSon(evt);
             }
         });
 
         jButtonDisplaySecondOnMichelson.setText("Second display ON");
         jButtonDisplaySecondOnMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformed(evt);
+                buttonSecondGenerateActionPerformedMichelSon(evt);
             }
         });
 
@@ -1651,7 +1649,7 @@ public class EduControlerPattern extends OpticsPane {
         jSliderFocalLensMichelson.setValue(522);
         jSliderFocalLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformed(evt);
+                sliderGenerateActionPerformedMicroscope(evt);
             }
         });
 
@@ -1660,7 +1658,7 @@ public class EduControlerPattern extends OpticsPane {
         jSliderXPositionLensMichelson.setValue(0);
         jSliderXPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformed(evt);
+                sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
 
@@ -1669,7 +1667,7 @@ public class EduControlerPattern extends OpticsPane {
         jSliderYPositionLensMichelson.setValue(0);
         jSliderYPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformed(evt);
+                sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
         //rangeSlider.setPreferredSize(new Dimension(240, rangeSlider.getPreferredSize().height));
@@ -1677,6 +1675,11 @@ public class EduControlerPattern extends OpticsPane {
         rangeSlider.setMaximum(2000);
         rangeSlider.setValue(1000);
         rangeSlider.setUpperValue(1500);
+        rangeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedLensMichelSon(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelLensMichelsonLayout = new javax.swing.GroupLayout(jPanelLensMichelson);
         jPanelLensMichelson.setLayout(jPanelLensMichelsonLayout);
@@ -2099,6 +2102,7 @@ public class EduControlerPattern extends OpticsPane {
     // Optical arguments, which will be parsed before reassigning the values
     private double xoffMicroscope = 0.0, yoffMicroscope = 0.0, focalMicroscope = 1.0;
     private double xoff = 0.0, yoff = 0.0, focal = 522;
+    private double xoffMichelson = 0.0, yoffMichelson = 0.0, focalMichelson = 522;
     private double xoffCyllin = 150.0, yoffCyllin = 200.0, focalCyllin = 522;
     private double phy = 522, theta = 522;
     private double d_widthX = Double.valueOf(image1.getBounds().width), d_heightX = 100, d_rotation = 0, d_postionX = 0, d_grayLevel = 255, d_spacing = 400;
@@ -2119,6 +2123,10 @@ public class EduControlerPattern extends OpticsPane {
             double xoff = Double.valueOf(txtXPositionLens.getText());
             double yoff = Double.valueOf(txtYPositionLens.getText());
             double focal = Double.valueOf(txtFocalLens.getText());
+            // Michelson
+            double xoffMi = Double.valueOf(txtXPositionLensMichelson.getText());
+            double yoffMi = Double.valueOf(txtYPositionLensMichelson.getText());
+            double focalMi = Double.valueOf(txtFocalLensMichelson.getText());
             //Cyllin
             double xoffCyllin = Double.valueOf(txtXPositionCyllin.getText());
             double yoffCyllin = Double.valueOf(txtYPositionCyllin.getText());
@@ -2159,6 +2167,10 @@ public class EduControlerPattern extends OpticsPane {
             this.xoff = xoff;
             this.yoff = yoff;
             this.focal = focal;
+            
+            this.xoffMichelson = xoffMi;
+            this.yoffMichelson = yoffMi;
+            this.focalMichelson = focalMi;
 
             this.xoffMicroscope = xoffMicroscope;
             this.yoffMicroscope = yoffMicroscope;
@@ -2263,7 +2275,7 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogPhase() {
         return String.format(logmessagePhase, Double.toString(zoom));
     }
-
+    // Lens
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         actionTag = "Len";
         if (parseArguments()) {
@@ -2294,7 +2306,46 @@ public class EduControlerPattern extends OpticsPane {
         actionTag = "Len";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoff, yoff, focal);
+            image.updateLensParameter(xoffMichelson, yoffMichelson, focalMichelson);
+            image.paintLens();
+            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            setLog(genLogLen());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformed
+
+    // Lens Michelson
+    private void buttonGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
+        actionTag = "LensMichelson";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameter(xoffMichelson, yoffMichelson, focalMichelson);
+            image.paintLens();
+            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            setLog(genLogLen());
+            imageGenerated = true;
+        }
+
+    }//GEN-LAST:event_buttonGenerateActionPerformed
+
+    private void buttonSecondGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
+        actionTag = "LensMichelson";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameter(xoffMichelson, yoffMichelson, focalMichelson);
+            image.paintLens();
+            EduPatternTest.updateLensPattern(image, genLogLen());
+            setLog(genLogLen());
+            //EduPatternTest.updateLensPatternPattern(image, genLog());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_buttonSecondGenerateActionPerformed
+
+    private void sliderGenerateActionPerformedLensMichelSon(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
+        actionTag = "LensMichelson";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameter(xoffMichelson, yoffMichelson, focalMichelson);
             image.paintLens();
             EduPatternTest.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
