@@ -2315,13 +2315,14 @@ public class EduControlerPattern extends OpticsPane {
         actionTag = "Len";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoffMichelson, yoffMichelson, focalMichelson);
+            image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
             EduPatternTest.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformed
+    // END Lens
 
     // Lens Michelson
     private void buttonGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
