@@ -23,6 +23,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /*
@@ -1674,11 +1675,12 @@ public class EduControlerPattern extends OpticsPane {
         //rangeSlider.setPreferredSize(new Dimension(240, rangeSlider.getPreferredSize().height));
         rangeSlider.setMinimum(-20000);
         rangeSlider.setMaximum(20000);
-        rangeSlider.setValue(1000);
-        rangeSlider.setUpperValue(1500);
+        rangeSlider.setValue(10000);
+        rangeSlider.setUpperValue(1522);
         int tmp = Integer.valueOf(rangeSlider.getValue());
         int tmp2 = Integer.valueOf(rangeSlider.getUpperValue());
         int valueSlider = tmp2 - tmp;
+        //System.out.println("tmp2: " + tmp2 + " tmp: " + tmp + "  valueSlider: " + valueSlider);
         txtFocalLensMichelson.setText(String.valueOf(valueSlider));
         rangeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1686,6 +1688,7 @@ public class EduControlerPattern extends OpticsPane {
                 int tmp2 = Integer.valueOf(rangeSlider.getUpperValue());
                 int valueSlider = tmp2 - tmp;
                 txtFocalLensMichelson.setText(String.valueOf(valueSlider));
+                //System.out.println("tmp2: " + tmp2 + " tmp: " + tmp + "  valueSlider: " + valueSlider);
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
@@ -1878,8 +1881,8 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
-
-        tabbedDesLog.addTab("Description", new DescriptionLens());
+        
+        tabbedDesLog.addTab("Description", desTelephotoLens);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -1902,7 +1905,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
 
-        tabbedDesLog.addTab("Description", new DescriptionMicroscope());
+        tabbedDesLog.addTab("Description", desMicroscope);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -1923,7 +1926,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Lens", null);
 
-        tabbedDesLog.addTab("Description", new DescriptionAberration());
+        tabbedDesLog.addTab("Description", desAberration);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -1946,7 +1949,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
-        tabbedDesLog.addTab("Description", new DescriptionMicheson());
+        tabbedDesLog.addTab("Description", desMichelson);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -1958,7 +1961,6 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.add(lblDiagram);
         tabbedDiagram.addTab("Diagram", diagramLens);
     }
-
     public void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
@@ -1967,8 +1969,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Single Slit", panelSlit);
         jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
-
-        tabbedDesLog.addTab("Description", null);
+        tabbedDesLog.addTab("Description", desDiffaction);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -1989,7 +1990,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
-        tabbedDesLog.addTab("Description", null);
+        tabbedDesLog.addTab("Description", desSpectrometer);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -2010,7 +2011,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Signal processing", panelSignal);
 
-        tabbedDesLog.addTab("Description", null);
+        tabbedDesLog.addTab("Description", desSignalProcessing);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -2031,7 +2032,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Phase retarder", panelPhase);
 
-        tabbedDesLog.addTab("Description", null);
+        tabbedDesLog.addTab("Description", desPhaseRetarder);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -2052,7 +2053,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Lens", null);
 
-        tabbedDesLog.addTab("Description", null);
+        tabbedDesLog.addTab("Description", desTalbotImage);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -2075,7 +2076,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
 
-        tabbedDesLog.addTab("Description", null);
+        tabbedDesLog.addTab("Description", desWavefront);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -2096,7 +2097,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Lens", null);
 
-        tabbedDesLog.addTab("Description", null);
+        tabbedDesLog.addTab("Description", desWavelength);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -2256,6 +2257,10 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogLen() {
         return String.format(logmessageLen, Double.toString(xoff), Double.toString(yoff), Double.toString(focal));
     }
+    
+    private String genLogLensMichelson() {
+        return String.format(logmessageLensMichelson, Double.toString(xoffMichelson), Double.toString(yoffMichelson), Double.toString(focalMichelson));
+    }
 
     private String genLogMicroscope() {
         return String.format(logmessageMicroscope, Double.toString(focalMicroscope), Double.toString(xoffMicroscope), Double.toString(yoffMicroscope));
@@ -2325,43 +2330,42 @@ public class EduControlerPattern extends OpticsPane {
     // END Lens
 
     // Lens Michelson
-    private void buttonGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
+    private void buttonGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMichelSon
         actionTag = "LensMichelson";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoffMichelson, yoffMichelson, focalMichelson);
-            image.paintLens();
-            EduPatternTest.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
+            image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
+            image.paintLensMichelson();
+            EduPatternTest.updateLensPatternPattern(image, genLogLensMichelson());
+            setLog(genLogLensMichelson());
             imageGenerated = true;
         }
 
-    }//GEN-LAST:event_buttonGenerateActionPerformed
+    }//GEN-LAST:event_buttonGenerateActionPerformedMichelSon
 
-    private void buttonSecondGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
+    private void buttonSecondGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMichelSon
         actionTag = "LensMichelson";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoffMichelson, yoffMichelson, focalMichelson);
-            image.paintLens();
-            EduPatternTest.updateLensPattern(image, genLogLen());
-            setLog(genLogLen());
-            //EduPatternTest.updateLensPatternPattern(image, genLog());
+            image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
+            image.paintLensMichelson();
+            EduPatternTest.updateLensPattern(image, genLogLensMichelson());
+            setLog(genLogLensMichelson());
             imageGenerated = true;
         }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformed
+    }//GEN-LAST:event_buttonSecondGenerateActionPerformedMichelSon
 
-    private void sliderGenerateActionPerformedLensMichelSon(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
+    private void sliderGenerateActionPerformedLensMichelSon(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedLensMichelSon
         actionTag = "LensMichelson";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoffMichelson, yoffMichelson, focalMichelson);
-            image.paintLens();
-            EduPatternTest.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
+            image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
+            image.paintLensMichelson();
+            EduPatternTest.updateLensPatternPattern(image, genLogLensMichelson());
+            setLog(genLogLensMichelson());
             imageGenerated = true;
         }
-    }//GEN-LAST:event_sliderGenerateActionPerformed
+    }//GEN-LAST:event_sliderGenerateActionPerformedLensMichelSon
 
     // Microscope
     private void buttonGenerateActionPerformedMicroscope(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMicroscope
@@ -2842,6 +2846,30 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel diagramLens;
     private javax.swing.JLabel lblDiagram;
     private String actionTag = "Len";
+    
+    // Description
+    private javax.swing.JLabel desTelephotoLens =
+            new JLabel("<html><b>Description of Telephoto lens</b><br></html>");
+    private javax.swing.JLabel desMicroscope =
+            new JLabel("<html><b>Description of Microscope</b><br></html>");
+    private javax.swing.JLabel desAberration =
+            new JLabel("<html><b>Description of Aberration</b><br></html>");
+    private javax.swing.JLabel desMichelson =
+            new JLabel("<html><b>Description of Michelson</b><br></html>");
+    private javax.swing.JLabel desDiffaction =
+            new JLabel("<html><b>Description of Diffaction</b><br></html>");
+    private javax.swing.JLabel desSpectrometer =
+            new JLabel("<html><b>Description of Spectrometer</b><br></html>");
+    private javax.swing.JLabel desSignalProcessing =
+            new JLabel("<html><b>Description of Signal processing</b><br></html>");
+    private javax.swing.JLabel desPhaseRetarder =
+            new JLabel("<html><b>Description of Phase retarder</b><br></html>");
+    private javax.swing.JLabel desTalbotImage =
+            new JLabel("<html><b>Description of Talbot image</b><br></html>");
+    private javax.swing.JLabel desWavefront =
+            new JLabel("<html><b>Description of Wavefront</b><br></html>");
+    private javax.swing.JLabel desWavelength =
+            new JLabel("<html><b>Description of Wavelength</b><br></html>");
 
     //End 
     @Override
@@ -2873,6 +2901,7 @@ public class EduControlerPattern extends OpticsPane {
         }
     }
     static String logmessageLen = "Len : focal=%s posX=%s posY=%s";
+    static String logmessageLensMichelson = "Lens Michelson : focal=%s posX=%s posY=%s";
     static String logmessageMicroscope = "Microscope : focal=%s posX=%s posY=%s";
     static String logmessageCyllin = "Cyllin : focal=%s posX=%s posY=%s";
     static String logmessageMirror = "Mirror : Phy=%s Theta=%s";
