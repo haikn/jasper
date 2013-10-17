@@ -41,6 +41,10 @@ public class PatternImage {
     private double focal;
     private double mirrorTheta;
     private double mirrorPhy;
+    // Michelson
+    private double xoffMichelson;
+    private double yoffMichelson;
+    private double focalMichelson;
     // Draw
     private double d_widthX;
     private double d_widthY;
@@ -130,6 +134,13 @@ public class PatternImage {
         this.yoff = yoff;
         this.focal = focal;
         title = "lens " + xoff + " " + yoff + " " + focal;
+    }
+    
+    void updateLensMichelsonParameter(double xoff, double yoff, double focal) {
+        this.xoffMichelson = xoff;
+        this.yoffMichelson = yoff;
+        this.focalMichelson = focal;
+        title = "lens michelson " + xoff + " " + yoff + " " + focal;
     }
 
     void updateZoomparten(Point sp, Point recL, Dimension rectSize, int action) {
@@ -221,8 +232,8 @@ public class PatternImage {
         g2.fill(rec);
         // g2.D
     }
+    
     // Telephoto Lens algorithms
-
     public void paintLens() {
         WritableRaster raster = canvas.getRaster();
         int[] iArray = new int[1];
@@ -273,6 +284,36 @@ public class PatternImage {
                 //phase += fixpart2 * y1 ;
                 iArray[0] = phase2gray(phase);
                 //raster.setPixel(j, i, iArray);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+
+    // Michelson Lens algorithms
+    public void paintLensMichelson() {
+        WritableRaster raster = canvas.getRaster();
+        int[] iArray = new int[1];
+        double x2, y2, phase;
+        double y1;
+        double fixpart = Math.PI / lambda / (focalMichelson / 10000);
+
+        for (int i = 0; i < height; i++) {
+            x2 = (double) (i - height / 2 + 1) * pxsize;
+            x2 -= (-yoffMichelson / 100000);
+            x2 = Math.pow(x2, 2.0);
+            Math.getExponent(x2);
+            double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
+            for (int j = 0; j < width; j++) {
+                y2 = (double) (j - width / 2 + 1) * pxsize;
+                y2 -= (xoffMichelson / 100000);
+                y1 = y2;
+                y2 = Math.pow(y2, 2.0);
+
+                Math.getExponent(y2);
+                phase = fixpart * (x2 + y2);
+                phase += fixpart2 * x2 * y2;
+                
+                iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
             }
         }
