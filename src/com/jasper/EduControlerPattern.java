@@ -1611,8 +1611,8 @@ public class EduControlerPattern extends OpticsPane {
 
         // BEGIN Lens Michelson
         lblFocalLensMichelson.setText("Focal length");
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rangeSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
+        //binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rangeSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        //bindingGroup.addBinding(binding);
 
         lblXLensMichelson.setText("X Position");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -1670,13 +1670,22 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
+        
         //rangeSlider.setPreferredSize(new Dimension(240, rangeSlider.getPreferredSize().height));
         rangeSlider.setMinimum(-2000);
         rangeSlider.setMaximum(2000);
         rangeSlider.setValue(1000);
         rangeSlider.setUpperValue(1500);
+        int tmp = Integer.valueOf(rangeSlider.getValue());
+        int tmp2 = Integer.valueOf(rangeSlider.getUpperValue());
+        int valueSlider = tmp2 - tmp;
+        txtFocalLensMichelson.setText(String.valueOf(valueSlider));
         rangeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                int tmp = Integer.valueOf(rangeSlider.getValue());
+                int tmp2 = Integer.valueOf(rangeSlider.getUpperValue());
+                int valueSlider = tmp2 - tmp;
+                txtFocalLensMichelson.setText(String.valueOf(valueSlider));
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
