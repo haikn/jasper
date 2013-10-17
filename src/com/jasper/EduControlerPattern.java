@@ -1654,8 +1654,8 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderXPositionLensMichelson.setMaximum(100);
-        jSliderXPositionLensMichelson.setMinimum(-100);
+        jSliderXPositionLensMichelson.setMaximum(1000);
+        jSliderXPositionLensMichelson.setMinimum(-1000);
         jSliderXPositionLensMichelson.setValue(0);
         jSliderXPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1663,8 +1663,8 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderYPositionLensMichelson.setMaximum(100);
-        jSliderYPositionLensMichelson.setMinimum(-100);
+        jSliderYPositionLensMichelson.setMaximum(1000);
+        jSliderYPositionLensMichelson.setMinimum(-1000);
         jSliderYPositionLensMichelson.setValue(0);
         jSliderYPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
