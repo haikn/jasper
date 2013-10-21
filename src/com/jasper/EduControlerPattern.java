@@ -728,7 +728,10 @@ public class EduControlerPattern extends OpticsPane {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGeneralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPaneOptics)));
+                .addGap(5, 5, 5)
+                .addComponent(jTabbedPaneOptics)
+                .addGap(5, 5, 5)
+                ));
         panelGeneralLayout.setVerticalGroup(
                 panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelGeneralLayout.createSequentialGroup()
@@ -738,6 +741,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(jTabbedPaneOptics)
+                .addGap(5, 5, 5)
                 .addContainerGap()));
 
         tabbedControl.addTab("General", panelGeneral);
@@ -1755,7 +1759,7 @@ public class EduControlerPattern extends OpticsPane {
         // END Michelson
 
 
-        tabbedControl.setBounds(560, 0, 670, 335);
+        tabbedControl.setBounds(580, 0, 665, 335);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jPanelPatternLayout = new javax.swing.GroupLayout(jPanelPattern);
@@ -1766,7 +1770,7 @@ public class EduControlerPattern extends OpticsPane {
         jPanelPatternLayout.setVerticalGroup(
                 jPanelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 290, Short.MAX_VALUE));
-        panelPattern.setBounds(0, 0, 549, 335);
+        panelPattern.setBounds(0, 0, 568, 335);
         //  BEGIN show full screen
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
@@ -1843,10 +1847,12 @@ public class EduControlerPattern extends OpticsPane {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
                 .addGroup(layout.createSequentialGroup()
-                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)));
@@ -1857,8 +1863,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(tabbedDiagram))
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)));
 
 //        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
