@@ -59,7 +59,7 @@ public class EduControlerPattern extends OpticsPane {
     private void initComponents() {
         MouseBehavior behavior = new MouseBehavior();
         tabbedDesLog = new javax.swing.JTabbedPane();
-        tabbedDiagram = new javax.swing.JTabbedPane();
+        tabbedDiagram = new javax.swing.JPanel();
         jTextAreaLog = new javax.swing.JTextArea();
         jTextAreaDesc = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -91,6 +91,7 @@ public class EduControlerPattern extends OpticsPane {
         bindingGroup.addBinding(binding);
 
         layoutControl = new javax.swing.JLayeredPane();
+        layoutDiagram = new javax.swing.JPanel();
         tabbedControl = new javax.swing.JTabbedPane();
         panelGeneral = new javax.swing.JPanel();
         jLabelSelectExperiment = new javax.swing.JLabel();
@@ -2031,7 +2032,10 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        tabbedDiagram.addTab("Diagram", null);
+        //tabbedDiagram.addTab("Diagram", null);
+        layoutDiagram.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        tabbedDiagram.setBounds(580, 580, 665, 335);
+        layoutDiagram.add(tabbedDiagram, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -2041,12 +2045,12 @@ public class EduControlerPattern extends OpticsPane {
                 .addContainerGap()
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
+                .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(layoutDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2055,8 +2059,10 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(15, 15, 15)
                 .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                
+                .addComponent(layoutDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)));
 
 //        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
@@ -2074,7 +2080,7 @@ public class EduControlerPattern extends OpticsPane {
     public void jMenuItemTelephotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelephotoActionPerformed
 //        changeLabTitle(labTitleTele);
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2090,14 +2096,14 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/lens.png")));
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
         //setTabPanelEnable(jTabbedPaneOptics, true);
 
     }//GEN-LAST:event_jMenuItemTelephotoActionPerformed
 
     public void jMenuItemMicroscopeActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2113,12 +2119,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Microscope");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemAberrationActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2134,12 +2140,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Aberration");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemMichelsonActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2157,12 +2163,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Michelson");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2178,12 +2184,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Diffraction");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemSpectrometerActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2199,12 +2205,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Spectrometer");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemSignalProcessingActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2221,12 +2227,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of SignalProcessing");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemPhaseShiftingActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2242,12 +2248,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of haseShifting");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemTalbotImagesActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2263,12 +2269,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Talbot");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemWavefrontActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2287,12 +2293,12 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavefront");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
 
     public void jMenuItemWavelengthActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
-        tabbedDiagram.removeAll();
+        layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
@@ -2308,7 +2314,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavelength");
         diagramLens.add(lblDiagram);
-        tabbedDiagram.addTab("Diagram", diagramLens);
+        layoutDiagram.add(diagramLens);
     }
     // Optical arguments, which will be parsed before reassigning the values
     private double xoffMicroscope = 0.0, yoffMicroscope = 0.0, focalMicroscope = 1.0;
@@ -3073,6 +3079,8 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel jLabelSelectExperiment;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
+    
+    private javax.swing.JPanel layoutDiagram;
     // Spectometer
     private javax.swing.JLabel lblPhySpectometer;
     private javax.swing.JLabel lblThetaMirrorSpectometer;
@@ -3188,7 +3196,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JFileChooser openFile;
     //
     private javax.swing.JTabbedPane tabbedDesLog;
-    private javax.swing.JTabbedPane tabbedDiagram;
+    private javax.swing.JPanel tabbedDiagram;
     private javax.swing.JTextArea jTextAreaLog;
     private javax.swing.JTextArea jTextAreaDesc;
     private javax.swing.JScrollPane jScrollPane2;
