@@ -1625,7 +1625,7 @@ public class EduControlerPattern extends OpticsPane {
                 if (buffImages != null) {
                     buttonSecondGenerateActionPerformedProcessingPhoto(evt);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file !", "Failure", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -1635,7 +1635,7 @@ public class EduControlerPattern extends OpticsPane {
                 if (buffImages != null) {
                     buttonGenerateActionPerformedProcessingPhoto(evt);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please enter a file images !", "Failure", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -1645,7 +1645,7 @@ public class EduControlerPattern extends OpticsPane {
                 if (buffImages != null) {
                     buttonGenerateActionPerformedProcessingPhoto(evt);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please enter a file images !", "Failure", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
