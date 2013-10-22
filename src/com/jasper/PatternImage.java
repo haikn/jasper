@@ -69,6 +69,8 @@ public class PatternImage {
     private double xoffMicroscope;
     private double yoffMicroscope;
     private double focalMicroscope;
+    private double mirrorThetaSpectometer;
+    private double mirrorPhySpectometer;
     /*
      * ZoomLayOut
      */
@@ -212,6 +214,12 @@ public class PatternImage {
     void updateMirrorParameter(double phy, double theta) {
         this.mirrorPhy = phy;
         this.mirrorTheta = theta;
+        title = "mirror " + phy + " " + theta;
+    }
+    
+    void updateMirrorSpectometerParameter(double phy, double theta) {
+        this.mirrorPhySpectometer = phy;
+        this.mirrorThetaSpectometer = theta;
         title = "mirror " + phy + " " + theta;
     }
 
@@ -502,6 +510,34 @@ public class PatternImage {
 //        double phy = pi/10.0D;
 //        double theta = th/10.0D;
         double focal = Math.toRadians(mirrorPhy);
+
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
+
+        double fixpart = 2.0 * Math.PI / lambda;
+
+        for (int i = 0; i < height; i++) {
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
+    // Mirror Spectrometer algorithms
+    public void paintMirrorSpectrometer() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double phase, x, y;
+        double phy = Math.toRadians(mirrorPhySpectometer/100);
+        double theta = Math.toRadians(mirrorThetaSpectometer/100);
 
         double xcomp = Math.sin(phy) * Math.cos(theta);
         double ycomp = Math.sin(phy) * Math.sin(theta);

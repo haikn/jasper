@@ -26,10 +26,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author sonnv
@@ -1859,6 +1855,116 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jButtonLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE)));
         // END Michelson
+        
+        // BEGIN Spectremeter
+        jPanelMirrorSpectometer = new javax.swing.JPanel();
+        lblPhySpectometer = new javax.swing.JLabel();
+        lblThetaMirrorSpectometer = new javax.swing.JLabel();
+        jSliderPhyMirrorSpectometer = new javax.swing.JSlider();
+        jSliderThetaMirrorSpectometer = new javax.swing.JSlider();
+        txtPhyMirrorSpectometer = new javax.swing.JTextField();
+        txtThetaMirrorSpectometer = new javax.swing.JTextField();
+        buttonMirrorSpectometerLensOn = new javax.swing.JButton();
+        buttonMirrorSpectometerDisplaySecondOn = new javax.swing.JButton();
+        buttonMirrorSpectometerGeneral = new javax.swing.JButton();
+        lblPhySpectometer.setText("Phy");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPhyMirrorSpectometer, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPhyMirrorSpectometer, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        lblThetaMirrorSpectometer.setText("Theta");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderThetaMirrorSpectometer, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtThetaMirrorSpectometer, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        buttonMirrorSpectometerGeneral.setText("General");
+        buttonMirrorSpectometerGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedMirrorSpectometer(evt);
+            }
+        });
+
+        buttonMirrorSpectometerLensOn.setText("1:1 lens ON");
+        buttonMirrorSpectometerLensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedMirrorSpectometer(evt);
+            }
+        });
+
+        buttonMirrorSpectometerDisplaySecondOn.setText("Second display ON");
+        buttonMirrorSpectometerDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSecondGenerateActionPerformedMirrorSpectometer(evt);
+            }
+        });
+
+        jSliderPhyMirrorSpectometer.setMaximum(314);
+        jSliderPhyMirrorSpectometer.setMinimum(-314);
+        jSliderPhyMirrorSpectometer.setValue(314);
+        jSliderPhyMirrorSpectometer.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedMirrorSpectometer(evt);
+            }
+        });
+
+        jSliderThetaMirrorSpectometer.setMaximum(314);
+        jSliderThetaMirrorSpectometer.setMinimum(-314);
+        jSliderThetaMirrorSpectometer.setValue(314);
+        jSliderThetaMirrorSpectometer.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedMirrorSpectometer(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelMirrorSpectometerlLayout = new javax.swing.GroupLayout(jPanelMirrorSpectometer);
+        jPanelMirrorSpectometer.setLayout(jPanelMirrorSpectometerlLayout);
+        jPanelMirrorSpectometerlLayout.setHorizontalGroup(
+                jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblThetaMirrorSpectometer)
+                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
+                .addComponent(lblPhySpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(txtThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(txtPhyMirrorSpectometer))))
+                .addGap(5, 5, 5)
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jSliderPhyMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jSliderThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(buttonMirrorSpectometerGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonMirrorSpectometerLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonMirrorSpectometerDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE)));
+        jPanelMirrorSpectometerlLayout.setVerticalGroup(
+                jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblPhySpectometer)
+                .addComponent(txtPhyMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSliderPhyMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblThetaMirrorSpectometer)
+                .addComponent(txtThetaMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSliderThetaMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonMirrorSpectometerGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonMirrorSpectometerLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonMirrorSpectometerDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE)));
+        // END Spectremeter
 
 
         tabbedControl.setBounds(580, 0, 665, 335);
@@ -2097,7 +2203,7 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        jTabbedPaneOptics.addTab("Mirror", jPanelMirrorSpectometer);
 
         tabbedDesLog.addTab("Description", desSpectrometer);
         jTextAreaLog.setColumns(20);
@@ -2224,7 +2330,10 @@ public class EduControlerPattern extends OpticsPane {
     private double xoff = 0.0, yoff = 0.0, focal = 522;
     private double xoffMichelson = 0.0, yoffMichelson = 0.0, focalMichelson = 522;
     private double xoffCyllin = 150.0, yoffCyllin = 200.0, focalCyllin = 522;
+    // Mirror
     private double phy = 522, theta = 522;
+    // Spectrometer
+    private double phySpectrometer = 522, thetaSpectrometer = 522;
     private double d_widthX = Double.valueOf(image1.getBounds().width), d_heightX = 100, d_rotation = 0, d_postionX = 0, d_grayLevel = 255, d_spacing = 400;
     // double slit
     private double d_widthX_double = Double.valueOf(image1.getBounds().width), d_heightX_double = 100, d_rotation_double = 0, d_postionX_double = 0, d_grayLevel_double = 255, d_spacing_double = 400;
@@ -2272,6 +2381,10 @@ public class EduControlerPattern extends OpticsPane {
             double rotationDoubleSlit = Double.valueOf(s_single_rotationDoubleSlit.getValue());
             double grayLevelDoubleSlit = Double.valueOf(s_single_grayDoubleSlit.getValue());
             double spacingDoubleSlit = Double.valueOf(s_single_spacingDoubleSlit.getValue());
+            // Spectrometer
+            double phySpec = Double.valueOf(txtPhyMirrorSpectometer.getText());
+            double thetaSpec = Double.valueOf(txtThetaMirrorSpectometer.getText());
+            
             //Processing
             processing_widthX = Double.valueOf(s_processing_width_x.getValue());
             processing_widthY = Double.valueOf(s_processing_width_y.getValue());
@@ -2316,6 +2429,9 @@ public class EduControlerPattern extends OpticsPane {
 
             this.phy = phyoff;
             this.theta = thetaoff;
+            
+            this.thetaSpectrometer = thetaSpec;
+            this.phySpectrometer = phySpec;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, warnings);
             textXpos.setText(String.valueOf(this.yoff));
@@ -2399,8 +2515,12 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogPhase() {
         return String.format(logmessagePhase, Double.toString(zoom));
     }
+    
+    private String genLogMirrorSpectrometer() {
+        return String.format(logmessageMirrorSpectrometer, Double.toString(phySpectrometer), Double.toString(thetaSpectrometer));
+    }
+    
     // Lens
-
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         actionTag = "Len";
         if (parseArguments()) {
@@ -2792,6 +2912,44 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }
+    
+    // Mirror
+    private void buttonGenerateActionPerformedMirrorSpectometer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirrorSpectometer
+        actionTag = "MirrorSpectometer";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
+            image.paintMirrorSpectrometer();
+            EduPatternTest.updateLensPatternPattern(image, genLogMirrorSpectrometer());
+            setLog(genLogMirrorSpectrometer());
+            imageGenerated = true;
+        }
+
+    }//GEN-LAST:event_buttonGenerateActionPerformedMirrorSpectometer
+
+    private void buttonSecondGenerateActionPerformedMirrorSpectometer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMirrorSpectometer
+        actionTag = "MirrorSpectometer";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
+            image.paintMirrorSpectrometer();
+            EduPatternTest.updateLensPattern(image, genLogMirrorSpectrometer());
+            setLog(genLogMirrorSpectrometer());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_buttonSecondGenerateActionPerformedMirrorSpectometer
+
+    private void sliderGenerateActionPerformedMirrorSpectometer(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedMirrorSpectometer
+        actionTag = "MirrorSpectometer";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
+            image.paintMirrorSpectrometer();
+            EduPatternTest.updateLensPatternPattern(image, genLogMirrorSpectrometer());
+            setLog(genLogMirrorSpectrometer());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformedMirrorSpectometer
     //End
 
     private void textFocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFocalActionPerformed
@@ -2881,13 +3039,14 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonMirrorLensOn;
     private javax.swing.JButton buttonMirrorDisplaySecondOn;
     private javax.swing.JButton buttonMirrorGeneral;
+    private javax.swing.JPanel jPanelMirror;
+    // END Mirror
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JPanel jPanelCyllindrical;
     private javax.swing.JPanel jPanelCyllindrical1;
     private javax.swing.JPanel jPanelMicroscope;
     private javax.swing.JPanel jPanelLensMichelson;
     private javax.swing.JPanel jPanelLens;
-    private javax.swing.JPanel jPanelMirror;
     private javax.swing.JTabbedPane jTabbedControler;
     private javax.swing.JLayeredPane layoutControl;
     private javax.swing.JPanel panelCalebration;
@@ -2901,6 +3060,17 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel jLabelSelectExperiment;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
+     // Spectometer
+    private javax.swing.JLabel lblPhySpectometer;
+    private javax.swing.JLabel lblThetaMirrorSpectometer;
+    private javax.swing.JSlider jSliderPhyMirrorSpectometer;
+    private javax.swing.JSlider jSliderThetaMirrorSpectometer;
+    private javax.swing.JTextField txtPhyMirrorSpectometer;
+    private javax.swing.JTextField txtThetaMirrorSpectometer;
+    private javax.swing.JButton buttonMirrorSpectometerLensOn;
+    private javax.swing.JButton buttonMirrorSpectometerDisplaySecondOn;
+    private javax.swing.JButton buttonMirrorSpectometerGeneral;
+    private javax.swing.JPanel jPanelMirrorSpectometer;
     /*
      *@Param Slit
      */
@@ -3073,6 +3243,7 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageDoubleSlit = "Double Slit: w=%s r=%s p=%s g=%s s=%s";
     static String logmessageProcessing = "Signal processing: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s";
     static String logmessagePhase = "Phase retarder: gray=%s";
+    static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
     /*
      * Auto Zoom LayOut 
      */
