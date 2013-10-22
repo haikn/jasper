@@ -179,7 +179,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorDisplaySecondOn = new javax.swing.JButton();
         buttonMirrorGeneral = new javax.swing.JButton();
 
-        layoutControl.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        //layoutControl.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         tabbedControl.setAlignmentX(100);
 
