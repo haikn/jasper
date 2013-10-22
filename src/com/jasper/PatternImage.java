@@ -135,7 +135,7 @@ public class PatternImage {
         this.focal = focal;
         title = "lens " + xoff + " " + yoff + " " + focal;
     }
-    
+
     void updateLensMichelsonParameter(double xoff, double yoff, double focal) {
         this.xoffMichelson = xoff;
         this.yoffMichelson = yoff;
@@ -177,6 +177,12 @@ public class PatternImage {
         this.d_rotation = rotation;
         this.d_grayLevel = grayLevel;
         title = "Draw Signal Processing " + d_widthX + " " + d_widthY + " " + this.d_heightX + " " + this.d_heightY + " " + this.d_postionX + " " + this.d_postionY + " " + this.d_rotation + " " + this.d_grayLevel;
+    }
+
+    void updateParameterDrawSignalPhoto(double widthX, double heightX) {
+        this.d_widthX = widthX;
+        this.d_heightX = heightX;
+        title = "Signal Photo " + widthX + " " + heightX;
     }
 
     void updatePhaseRetarderParameter(double zoom, double grayLevel) {
@@ -232,7 +238,7 @@ public class PatternImage {
         g2.fill(rec);
         // g2.D
     }
-    
+
     // Telephoto Lens algorithms
     public void paintLens() {
         WritableRaster raster = canvas.getRaster();
@@ -312,7 +318,7 @@ public class PatternImage {
                 Math.getExponent(y2);
                 phase = fixpart * (x2 + y2);
                 phase += fixpart2 * x2 * y2;
-                
+
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
             }
@@ -415,6 +421,7 @@ public class PatternImage {
             }
         }
     }
+
     public void paintCylindircal2() {
         WritableRaster raster = canvas.getRaster();
         int[] iArray = new int[1];
@@ -1111,39 +1118,28 @@ public class PatternImage {
             g.fill(rect2);
         }
     }
-//public void phaseRetarder(BufferedImage buffImg) {
-//      //  if (buffImg != null) {
-////            try {
-////                File file = new File("resources/jdclogo_150x155.png");
-////                System.out.println(">>>>>>>>>>>>>>>>Path : " + file.getAbsolutePath());
-////                buffImg = ImageIO.read(new File(file.getAbsolutePath()));
-////                System.out.println("buff : "+buffImg.getWidth());
-////            } catch (IOException ex) {
-////                Logger.getLogger(PatternImage.class.getName()).log(Level.SEVERE, null, ex);
-////            }
-//
-//            double scale = 1.0;
-//            scale = d_zoom / 100.0D;
-////        ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
-////        ColorConvertOp op = new ColorConvertOp(cs, null);
-////        BufferedImage gayBuff = op.filter(buffImg, null);
-//
-//            Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-//            g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-//            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-//                    RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-//            double canvasX = canvas.getWidth() / 2;
-//            double canvasY = canvas.getHeight() / 2;
-//            int imageWidth = buffImg.getWidth();
-//            int imageHeight = buffImg.getHeight();
-//            double x = (scale * imageWidth) / 2;
-//            double y = (scale * imageHeight) / 2;
-//            AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-//            at.scale(scale, scale);
-//            g2.drawRenderedImage(buffImg, at);
-//        }
-//   // }
-//}
+
+    public void signalPhoto(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType());
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        g2.drawRenderedImage(buffImg, at);
+    }
 
     public void phaseRetarder() {
         Graphics2D g = (Graphics2D) canvas.getGraphics();
@@ -1152,5 +1148,53 @@ public class PatternImage {
         Rectangle rect = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
         g.draw(rect);
         g.fill(rect);
+    }
+
+    /**
+     * scale image
+     *
+     * @param sbi image to scale
+     * @param imageType type of image
+     * @param dWidth width of destination image
+     * @param dHeight height of destination image
+     * @param fWidth x-factor for transformation / scaling
+     * @param fHeight y-factor for transformation / scaling
+     * @return scaled image
+     */
+    public static BufferedImage scale(BufferedImage sbi, int imageType, int dWidth, int dHeight, double fWidth, double fHeight) {
+        BufferedImage dbi = null;
+        if (sbi != null) {
+            dbi = new BufferedImage(dWidth, dHeight, imageType);
+            Graphics2D g = dbi.createGraphics();
+            AffineTransform at = AffineTransform.getScaleInstance(fWidth, fHeight);
+            g.drawRenderedImage(sbi, at);
+        }
+        return dbi;
+    }
+
+    private static BufferedImage resizeImage(BufferedImage originalImage, int type) {
+        BufferedImage resizedImage = new BufferedImage(1920, 1080, type);
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(originalImage, 0, 0, 1920, 1080, null);
+        g.dispose();
+
+        return resizedImage;
+    }
+
+    private static BufferedImage resizeImageWithHint(BufferedImage originalImage, int type) {
+
+        BufferedImage resizedImage = new BufferedImage(1920, 1080, type);
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(originalImage, 0, 0, 1920, 1080, null);
+        g.dispose();
+        g.setComposite(AlphaComposite.Src);
+
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.setRenderingHint(RenderingHints.KEY_RENDERING,
+                RenderingHints.VALUE_RENDER_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        return resizedImage;
     }
 }

@@ -731,8 +731,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addContainerGap()
                 .addGap(5, 5, 5)
                 .addComponent(jTabbedPaneOptics)
-                .addGap(5, 5, 5)
-                ));
+                .addGap(5, 5, 5)));
         panelGeneralLayout.setVerticalGroup(
                 panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelGeneralLayout.createSequentialGroup()
@@ -975,8 +974,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(s_single_position, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(s_single_gray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(s_single_spacing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                ))
+                .addGap(5, 5, 5)))
                 .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(buttonGennerateSlit)
@@ -1178,8 +1176,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(s_single_positionDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(s_single_grayDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(s_single_spacingDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                ))
+                .addGap(5, 5, 5)))
                 .addGroup(panelDoubleSlitLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(buttonGennerateDoubleSlit)
@@ -1415,8 +1412,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(s_processing_pos_y, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(s_processing_positionx, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(s_processing_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                ))
+                .addGap(5, 5, 5)))
                 .addGroup(jPanelProcessingLayout.createSequentialGroup()
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(lblHeightY)
@@ -1495,16 +1491,6 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonSecondDisplayProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOnProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)));
-
-//        tabbedDiagram.removeAll();
-//        diagramLens.removeAll();
-//
-//        lblDiagram.setIcon(null);
-//        lblDiagram.setText("Diagram of Microscope");
-//        diagramLens.add(lblDiagram);
-//        tabbedDiagram.addTab("Diagram", diagramLens);
-
-        //tabbedControl.addTab("Signal Processing", panelSignal);
         /*
          * Phase retarder
          */
@@ -1587,8 +1573,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(5, 5, 5)
-                )
+                .addGap(5, 5, 5))
                 .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1619,6 +1604,126 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+
+
+
+        /*
+         * Signal Photo
+         */
+        openFile = new javax.swing.JFileChooser();
+        s_phase_zoom = new javax.swing.JSlider();
+        buttonOpenFile = new javax.swing.JButton();
+        lblPleaseSelect = new javax.swing.JLabel();
+        lblZoom = new javax.swing.JLabel();
+        buttonSecondPhase = new javax.swing.JButton();
+        button11LensOnPhase = new javax.swing.JButton();
+        buttonGeneralPhase = new javax.swing.JButton();
+        txtZoom = new javax.swing.JTextField();
+        txtZoom.hide();
+
+        buttonOpenFile.setText("Open file");
+        buttonOpenFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_openFileActionPerformed(evt);
+            }
+        });
+        //buttonOpenFile.hide();
+        lblPleaseSelect.setText("Please open file photo (1920 x 1080)");
+
+        //lblZoom.setText("Zoom");
+        lblZoom.setText("Gray level");
+        lblZoom.hide();
+
+        buttonSecondPhase.setText("Second display ON");
+        buttonSecondPhase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSecondGenerateActionPerformedProcessingPhoto(evt);
+            }
+        });
+
+        button11LensOnPhase.setText("1:1 leans ON");
+        button11LensOnPhase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedProcessingPhoto(evt);
+            }
+        });
+
+        buttonGeneralPhase.setText("General");
+        buttonGeneralPhase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+                buttonGenerateActionPerformedProcessingPhoto(evt);
+            }
+        });
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_phase_zoom, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtZoom, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_phase_zoom.setMaximum(255);
+        s_phase_zoom.setValue(0);
+        s_phase_zoom.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedPhase(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+        s_phase_zoom.disable();
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(panelSignalPhoto);
+        panelSignalPhoto.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblZoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblPleaseSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(5, 5, 5))
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonSecondPhase)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))));
+        jPanel6Layout.setVerticalGroup(
+                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 73, Short.MAX_VALUE) //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonOpenFile)
+                .addComponent(lblPleaseSelect))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblZoom)))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonSecondPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+
         //tabbedControl.addTab("Phase Retarder", panelPhase);
         // END Phase retarder
 
@@ -1683,7 +1788,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
-        
+
         //rangeSlider.setPreferredSize(new Dimension(240, rangeSlider.getPreferredSize().height));
         rangeSlider.setMinimum(-20000);
         rangeSlider.setMaximum(20000);
@@ -1895,7 +2000,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
-        
+
         tabbedDesLog.addTab("Description", desTelephotoLens);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -1975,6 +2080,7 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.add(lblDiagram);
         tabbedDiagram.addTab("Diagram", diagramLens);
     }
+
     public void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         tabbedDiagram.removeAll();
@@ -2192,7 +2298,7 @@ public class EduControlerPattern extends OpticsPane {
             this.xoff = xoff;
             this.yoff = yoff;
             this.focal = focal;
-            
+
             this.xoffMichelson = xoffMi;
             this.yoffMichelson = yoffMi;
             this.focalMichelson = focalMi;
@@ -2239,8 +2345,9 @@ public class EduControlerPattern extends OpticsPane {
             try {
                 buffImages = ImageIO.read(new File(file.getAbsolutePath()));
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updatePhaseRetarderParameter(zoom, grayLevel);
-                image.phaseRetarder();
+                System.out.println(">>>>>>>>>>>vaoooooooooooooooooo");
+              //  image.updatePhaseRetarderParameter(zoom, grayLevel);
+                image.signalPhoto(buffImages);
                 EduPatternTest.updateLensPatternPattern(image, genLogPhase());
                 imageGenerated = true;
             } catch (IOException ex) {
@@ -2272,7 +2379,7 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogLen() {
         return String.format(logmessageLen, Double.toString(xoff), Double.toString(yoff), Double.toString(focal));
     }
-    
+
     private String genLogLensMichelson() {
         return String.format(logmessageLensMichelson, Double.toString(xoffMichelson), Double.toString(yoffMichelson), Double.toString(focalMichelson));
     }
@@ -2305,6 +2412,7 @@ public class EduControlerPattern extends OpticsPane {
         return String.format(logmessagePhase, Double.toString(zoom));
     }
     // Lens
+
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         actionTag = "Len";
         if (parseArguments()) {
@@ -2615,8 +2723,50 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }
-    //End
-//Phase
+    /*
+     * Signal Photo
+     */
+
+    private void buttonGenerateActionPerformedProcessingPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
+        actionTag = "ProcessingPhoto";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            //   image.updateParameterDrawSignalPhoto(buffImages.get);
+            image.signalPhoto(buffImages);
+            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            setLog(genLogProcessing());
+            imageGenerated = true;
+        }
+
+    }
+
+    private void buttonSecondGenerateActionPerformedProcessingPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "ProcessingPhoto";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+            image.signalPhoto(buffImages);
+            EduPatternTest.updateLensPattern(image, genLogProcessing());
+            setLog(genLogProcessing());
+            //EduPatternTest.updateLensPatternPattern(image, genLog());
+            imageGenerated = true;
+        }
+    }
+
+    private void sliderGenerateActionPerformedProcessingPhoto(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "ProcessingPhoto";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            //  image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+            image.signalPhoto(buffImages);
+            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            setLog(genLogProcessing());
+            imageGenerated = true;
+        }
+    }
+    /*
+     * Phase
+     */
 
     private void buttonGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "Phase";
@@ -2842,6 +2992,13 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextField text_width_processing_x;
     private javax.swing.JTextField text_width_processing_y;
     /*
+     * Photo
+     */
+    private javax.swing.JButton button11LensOnPhoto;
+    private javax.swing.JButton buttonGeneralPhoto;
+    private javax.swing.JButton buttonSecondPhoto;
+
+    /*
      *@Param Phase retarder 
      */
     private javax.swing.JButton button11LensOnPhase;
@@ -2862,7 +3019,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel diagramLens;
     private javax.swing.JLabel lblDiagram;
     private String actionTag = "Len";
-    
     // Description
     private javax.swing.JLabel desTelephotoLens =
             new JLabel("<html><b>Description of Telephoto lens</b><br></html>");
