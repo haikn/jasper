@@ -1867,11 +1867,12 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorSpectometerLensOn = new javax.swing.JButton();
         buttonMirrorSpectometerDisplaySecondOn = new javax.swing.JButton();
         buttonMirrorSpectometerGeneral = new javax.swing.JButton();
-        lblPhySpectometer.setText("Phy");
+        
+        lblPhySpectometer.setText("Phy/100px");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPhyMirrorSpectometer, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPhyMirrorSpectometer, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        lblThetaMirrorSpectometer.setText("Theta");
+        lblThetaMirrorSpectometer.setText("Theta/100px");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderThetaMirrorSpectometer, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtThetaMirrorSpectometer, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1924,9 +1925,11 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(5, 5, 5)
                 .addComponent(lblThetaMirrorSpectometer)
                 .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
-                .addComponent(lblPhySpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblPhySpectometer)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(txtThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
@@ -2430,8 +2433,8 @@ public class EduControlerPattern extends OpticsPane {
             this.phy = phyoff;
             this.theta = thetaoff;
             
-            this.thetaSpectrometer = thetaSpec;
-            this.phySpectrometer = phySpec;
+            this.thetaSpectrometer = thetaSpec/100;
+            this.phySpectrometer = phySpec/100;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, warnings);
             textXpos.setText(String.valueOf(this.yoff));

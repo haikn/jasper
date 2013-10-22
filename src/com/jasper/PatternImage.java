@@ -536,8 +536,8 @@ public class PatternImage {
 
         int[] iArray = new int[1];
         double phase, x, y;
-        double phy = Math.toRadians(mirrorPhySpectometer/100);
-        double theta = Math.toRadians(mirrorThetaSpectometer/100);
+        double phy = Math.toRadians(mirrorPhySpectometer);
+        double theta = Math.toRadians(mirrorThetaSpectometer);
 
         double xcomp = Math.sin(phy) * Math.cos(theta);
         double ycomp = Math.sin(phy) * Math.sin(theta);
