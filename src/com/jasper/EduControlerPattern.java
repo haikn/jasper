@@ -1625,7 +1625,7 @@ public class EduControlerPattern extends OpticsPane {
                 if (buffImages != null) {
                     buttonSecondGenerateActionPerformedProcessingPhoto(evt);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please enter a file images !", "Failure", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please import an images file !", "Failure", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -2452,7 +2452,7 @@ public class EduControlerPattern extends OpticsPane {
                 ext = ".bmp";
             }
             if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Please enter image formats !", "Failure", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
                     buffImages = ImageIO.read(new File(file.getAbsolutePath()));
