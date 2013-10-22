@@ -1946,7 +1946,10 @@ public class EduControlerPattern extends OpticsPane {
         // BEGIN Fresnel
         jPanelFresnel = new javax.swing.JPanel();
         // END Fresnel
-
+        
+        // BEGIN Talbot
+        jPanelTalbot = new javax.swing.JPanel();
+        // END Talbot
 
         tabbedControl.setBounds(580, 0, 665, 335);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -2248,7 +2251,7 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
-        jTabbedPaneOptics.addTab("Lens", null);
+        jTabbedPaneOptics.addTab("Talbot images", jPanelTalbot);
 
         tabbedDesLog.addTab("Description", desTalbotImage);
         jTextAreaLog.setColumns(20);
@@ -3083,6 +3086,9 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel jPanelMirrorSpectometer;
     // Fresnel
     private javax.swing.JPanel jPanelFresnel;
+    
+    // Talbot
+    private javax.swing.JPanel jPanelTalbot;
     /*
      *@Param Slit
      */
