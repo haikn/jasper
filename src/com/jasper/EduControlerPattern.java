@@ -1606,126 +1606,115 @@ public class EduControlerPattern extends OpticsPane {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
 
-
         /*
          * Signal Photo
          */
         openFile = new javax.swing.JFileChooser();
-        s_phase_zoom = new javax.swing.JSlider();
+        s_Signal_zoomPhoto = new javax.swing.JSlider();
         buttonOpenFile = new javax.swing.JButton();
-        lblPleaseSelect = new javax.swing.JLabel();
-        lblZoom = new javax.swing.JLabel();
-        buttonSecondPhase = new javax.swing.JButton();
-        button11LensOnPhase = new javax.swing.JButton();
-        buttonGeneralPhase = new javax.swing.JButton();
-        txtZoom = new javax.swing.JTextField();
-        txtZoom.hide();
-
+        lblPleaseSelectPhoto = new javax.swing.JLabel();
+        lblZoomPhto = new javax.swing.JLabel();
+        buttonSecondPhoto = new javax.swing.JButton();
+        button11LensOnPhoto = new javax.swing.JButton();
+        buttonGeneralPhoto = new javax.swing.JButton();
+        txtZoomPhoto = new javax.swing.JTextField();
+        txtZoomPhoto.hide();
         buttonOpenFile.setText("Open file");
         buttonOpenFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_openFileActionPerformed(evt);
             }
         });
-        //buttonOpenFile.hide();
-        lblPleaseSelect.setText("Please open file photo (1920 x 1080)");
-
-        //lblZoom.setText("Zoom");
-        lblZoom.setText("Gray level");
-        lblZoom.hide();
-
-        buttonSecondPhase.setText("Second display ON");
-        buttonSecondPhase.addActionListener(new java.awt.event.ActionListener() {
+        lblPleaseSelectPhoto.setText("Please open file");
+        //lblZoomPhto.setText("Zoom");
+        lblZoomPhto.setText("Gray level");
+        lblZoomPhto.hide();
+        buttonSecondPhoto.setText("Second display ON");
+        buttonSecondPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedProcessingPhoto(evt);
             }
         });
 
-        button11LensOnPhase.setText("1:1 leans ON");
-        button11LensOnPhase.addActionListener(new java.awt.event.ActionListener() {
+        button11LensOnPhoto.setText("1:1 leans ON");
+        button11LensOnPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedProcessingPhoto(evt);
             }
         });
-
-        buttonGeneralPhase.setText("General");
-        buttonGeneralPhase.addActionListener(new java.awt.event.ActionListener() {
+        buttonGeneralPhoto.setText("General");
+        buttonGeneralPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
                 buttonGenerateActionPerformedProcessingPhoto(evt);
             }
         });
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_phase_zoom, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtZoom, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_phase_zoom.setMaximum(255);
-        s_phase_zoom.setValue(0);
-        s_phase_zoom.addChangeListener(new javax.swing.event.ChangeListener() {
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_Signal_zoomPhoto, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtZoomPhoto, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_Signal_zoomPhoto.setMaximum(255);
+        s_Signal_zoomPhoto.setValue(0);
+        s_Signal_zoomPhoto.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedPhase(evt);
             }
         });
+        s_Signal_zoomPhoto.hide();
         bindingGroup.addBinding(binding);
-        s_phase_zoom.disable();
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(panelSignalPhoto);
-        panelSignalPhoto.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
+
+        javax.swing.GroupLayout signalPhotoLayout = new javax.swing.GroupLayout(panelSignalPhoto);
+        panelSignalPhoto.setLayout(signalPhotoLayout);
+        signalPhotoLayout.setHorizontalGroup(
+                signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(signalPhotoLayout.createSequentialGroup()
                 .addContainerGap()
-                //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(signalPhotoLayout.createSequentialGroup()
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalPhotoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalPhotoLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblZoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblZoomPhto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtZoomPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblPleaseSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblPleaseSelectPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(signalPhotoLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(s_Signal_zoomPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
-                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(signalPhotoLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonSecondPhase)
+                .addComponent(buttonSecondPhoto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))));
-        jPanel6Layout.setVerticalGroup(
-                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+        signalPhotoLayout.setVerticalGroup(
+                signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalPhotoLayout.createSequentialGroup()
                 .addGap(0, 73, Short.MAX_VALUE) //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )
-                .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(signalPhotoLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonOpenFile)
-                .addComponent(lblPleaseSelect))
+                .addComponent(lblPleaseSelectPhoto))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblZoom)))
+                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(s_Signal_zoomPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(txtZoomPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblZoomPhto)))
                 .addGap(50, 50, 50)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonSecondPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-
-        //tabbedControl.addTab("Phase Retarder", panelPhase);
-        // END Phase retarder
 
         // BEGIN Lens Michelson
         lblFocalLensMichelson.setText("Focal length");
@@ -2345,7 +2334,7 @@ public class EduControlerPattern extends OpticsPane {
             try {
                 buffImages = ImageIO.read(new File(file.getAbsolutePath()));
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-              //  image.updatePhaseRetarderParameter(zoom, grayLevel);
+                //  image.updatePhaseRetarderParameter(zoom, grayLevel);
                 image.signalPhoto(buffImages);
                 EduPatternTest.updateLensPatternPattern(image, genLogPhase());
                 imageGenerated = true;
@@ -2996,6 +2985,10 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton button11LensOnPhoto;
     private javax.swing.JButton buttonGeneralPhoto;
     private javax.swing.JButton buttonSecondPhoto;
+    private javax.swing.JLabel lblPleaseSelectPhoto;
+    private javax.swing.JLabel lblZoomPhto;
+    private javax.swing.JSlider s_Signal_zoomPhoto;
+    private javax.swing.JTextField txtZoomPhoto;
 
     /*
      *@Param Phase retarder 
