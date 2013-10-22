@@ -2345,7 +2345,6 @@ public class EduControlerPattern extends OpticsPane {
             try {
                 buffImages = ImageIO.read(new File(file.getAbsolutePath()));
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                System.out.println(">>>>>>>>>>>vaoooooooooooooooooo");
               //  image.updatePhaseRetarderParameter(zoom, grayLevel);
                 image.signalPhoto(buffImages);
                 EduPatternTest.updateLensPatternPattern(image, genLogPhase());
@@ -3163,6 +3162,10 @@ public class EduControlerPattern extends OpticsPane {
             } else if (actionTag.equalsIgnoreCase("Processing")) {
                 image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
                 image.signalProcessing();
+                EduPatternTest.updateLensPattern(image, genLogProcessing());
+            } else if (actionTag.equalsIgnoreCase("ProcessingPhoto")) {
+                //image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+                image.signalPhoto(buffImages);
                 EduPatternTest.updateLensPattern(image, genLogProcessing());
             } else if (actionTag.equalsIgnoreCase("Phase")) {
                 image.updatePhaseRetarderParameter(zoom, grayLevel);
