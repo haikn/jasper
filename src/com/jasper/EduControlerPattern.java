@@ -1606,15 +1606,11 @@ public class EduControlerPattern extends OpticsPane {
          * Signal Photo
          */
         openFile = new javax.swing.JFileChooser();
-        s_Signal_zoomPhoto = new javax.swing.JSlider();
         buttonOpenFile = new javax.swing.JButton();
         lblPleaseSelectPhoto = new javax.swing.JLabel();
-        lblZoomPhto = new javax.swing.JLabel();
         buttonSecondPhoto = new javax.swing.JButton();
         button11LensOnPhoto = new javax.swing.JButton();
         buttonGeneralPhoto = new javax.swing.JButton();
-        txtZoomPhoto = new javax.swing.JTextField();
-        txtZoomPhoto.hide();
         buttonOpenFile.setText("Open file");
         buttonOpenFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1622,97 +1618,75 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         lblPleaseSelectPhoto.setText("Please open file");
-        //lblZoomPhto.setText("Zoom");
-        lblZoomPhto.setText("Gray level");
-        lblZoomPhto.hide();
+
         buttonSecondPhoto.setText("Second display ON");
         buttonSecondPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedProcessingPhoto(evt);
+                if (buffImages != null) {
+                    buttonSecondGenerateActionPerformedProcessingPhoto(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a file images !", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
-
         button11LensOnPhoto.setText("1:1 leans ON");
         button11LensOnPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedProcessingPhoto(evt);
+                if (buffImages != null) {
+                    buttonGenerateActionPerformedProcessingPhoto(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a file images !", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         buttonGeneralPhoto.setText("General");
         buttonGeneralPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedProcessingPhoto(evt);
+                if (buffImages != null) {
+                    buttonGenerateActionPerformedProcessingPhoto(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a file images !", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_Signal_zoomPhoto, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtZoomPhoto, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_Signal_zoomPhoto.setMaximum(255);
-        s_Signal_zoomPhoto.setValue(0);
-        s_Signal_zoomPhoto.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedPhase(evt);
-            }
-        });
-        s_Signal_zoomPhoto.hide();
-        bindingGroup.addBinding(binding);
-
         javax.swing.GroupLayout signalPhotoLayout = new javax.swing.GroupLayout(panelSignalPhoto);
         panelSignalPhoto.setLayout(signalPhotoLayout);
         signalPhotoLayout.setHorizontalGroup(
                 signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(signalPhotoLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGap(74, 74, 74)
                 .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalPhotoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalPhotoLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblZoomPhto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtZoomPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)))
-                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblPleaseSelectPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(s_Signal_zoomPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(5, 5, 5))
-                .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
                 .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonSecondPhoto)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))));
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(signalPhotoLayout.createSequentialGroup()
+                .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(lblPleaseSelectPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(167, 167, 167)))));
         signalPhotoLayout.setVerticalGroup(
                 signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalPhotoLayout.createSequentialGroup()
-                .addGap(0, 73, Short.MAX_VALUE) //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                )
+                .addGap(0, 20, Short.MAX_VALUE)
                 .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(10, 10, 10)
                 .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonOpenFile)
                 .addComponent(lblPleaseSelectPhoto))
-                .addGap(21, 21, 21)
-                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(s_Signal_zoomPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(txtZoomPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblZoomPhto)))
-                .addGap(50, 50, 50)
-                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-
-        // BEGIN Lens Michelson
+                .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))));
+        /*
+         * Lens Michelson
+         */
         lblFocalLensMichelson.setText("Focal length");
         //binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rangeSlider, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
         //bindingGroup.addBinding(binding);
@@ -1855,7 +1829,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jButtonLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE)));
         // END Michelson
-        
+
         // BEGIN Spectremeter
         jPanelMirrorSpectometer = new javax.swing.JPanel();
         lblPhySpectometer = new javax.swing.JLabel();
@@ -1867,7 +1841,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorSpectometerLensOn = new javax.swing.JButton();
         buttonMirrorSpectometerDisplaySecondOn = new javax.swing.JButton();
         buttonMirrorSpectometerGeneral = new javax.swing.JButton();
-        
+
         lblPhySpectometer.setText("Phy/100px");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPhyMirrorSpectometer, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPhyMirrorSpectometer, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1968,7 +1942,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonMirrorSpectometerDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE)));
         // END Spectremeter
-        
+
         // BEGIN Fresnel
         jPanelFresnel = new javax.swing.JPanel();
         // END Fresnel
@@ -2392,7 +2366,7 @@ public class EduControlerPattern extends OpticsPane {
             // Spectrometer
             double phySpec = Double.valueOf(txtPhyMirrorSpectometer.getText());
             double thetaSpec = Double.valueOf(txtThetaMirrorSpectometer.getText());
-            
+
             //Processing
             processing_widthX = Double.valueOf(s_processing_width_x.getValue());
             processing_widthY = Double.valueOf(s_processing_width_y.getValue());
@@ -2437,9 +2411,9 @@ public class EduControlerPattern extends OpticsPane {
 
             this.phy = phyoff;
             this.theta = thetaoff;
-            
-            this.thetaSpectrometer = thetaSpec/100;
-            this.phySpectrometer = phySpec/100;
+
+            this.thetaSpectrometer = thetaSpec / 100;
+            this.phySpectrometer = phySpec / 100;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, warnings);
             textXpos.setText(String.valueOf(this.yoff));
@@ -2455,19 +2429,47 @@ public class EduControlerPattern extends OpticsPane {
         int returnVal = openFile.showOpenDialog(this);
         if (returnVal == openFile.APPROVE_OPTION) {
             File file = openFile.getSelectedFile();
-            try {
-                buffImages = ImageIO.read(new File(file.getAbsolutePath()));
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                //  image.updatePhaseRetarderParameter(zoom, grayLevel);
-                image.signalPhoto(buffImages);
-                EduPatternTest.updateLensPatternPattern(image, genLogPhase());
-                imageGenerated = true;
-            } catch (IOException ex) {
-                System.out.println("problem accessing file" + file.getAbsolutePath());
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            System.out.println("Extenten : " + extension);
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please enter image formats !", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImages = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    //  image.updatePhaseRetarderParameter(zoom, grayLevel);
+                    image.signalPhoto(buffImages);
+                    EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
             }
         } else {
             System.out.println("File access cancelled by user.");
         }
+
     }
 
 //    public void logString(String msg) {
@@ -2523,11 +2525,11 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogPhase() {
         return String.format(logmessagePhase, Double.toString(zoom));
     }
-    
+
     private String genLogMirrorSpectrometer() {
         return String.format(logmessageMirrorSpectrometer, Double.toString(phySpectrometer), Double.toString(thetaSpectrometer));
     }
-    
+
     // Lens
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         actionTag = "Len";
@@ -2920,7 +2922,7 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }
-    
+
     // Mirror
     private void buttonGenerateActionPerformedMirrorSpectometer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirrorSpectometer
         actionTag = "MirrorSpectometer";
@@ -3068,7 +3070,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel jLabelSelectExperiment;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
-     // Spectometer
+    // Spectometer
     private javax.swing.JLabel lblPhySpectometer;
     private javax.swing.JLabel lblThetaMirrorSpectometer;
     private javax.swing.JSlider jSliderPhyMirrorSpectometer;
@@ -3081,7 +3083,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel jPanelMirrorSpectometer;
     // Fresnel
     private javax.swing.JPanel jPanelFresnel;
-    
     /*
      *@Param Slit
      */
@@ -3167,12 +3168,8 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonGeneralPhoto;
     private javax.swing.JButton buttonSecondPhoto;
     private javax.swing.JLabel lblPleaseSelectPhoto;
-    private javax.swing.JLabel lblZoomPhto;
-    private javax.swing.JSlider s_Signal_zoomPhoto;
-    private javax.swing.JTextField txtZoomPhoto;
-
     /*
-     *@Param Phase retarder 
+     *@Param Phase retarder
      */
     private javax.swing.JButton button11LensOnPhase;
     private javax.swing.JButton buttonGeneralPhase;
