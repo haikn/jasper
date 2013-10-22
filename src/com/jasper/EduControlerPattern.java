@@ -1968,6 +1968,10 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonMirrorSpectometerDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE)));
         // END Spectremeter
+        
+        // BEGIN Fresnel
+        jPanelFresnel = new javax.swing.JPanel();
+        // END Fresnel
 
 
         tabbedControl.setBounds(580, 0, 665, 335);
@@ -2291,9 +2295,10 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
-        jTabbedPaneOptics.addTab("Lens", null);
+        jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        jTabbedPaneOptics.addTab("Fresnel Transform", jPanelFresnel);
 
         tabbedDesLog.addTab("Description", desWavefront);
         jTextAreaLog.setColumns(20);
@@ -3074,6 +3079,9 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonMirrorSpectometerDisplaySecondOn;
     private javax.swing.JButton buttonMirrorSpectometerGeneral;
     private javax.swing.JPanel jPanelMirrorSpectometer;
+    // Fresnel
+    private javax.swing.JPanel jPanelFresnel;
+    
     /*
      *@Param Slit
      */
