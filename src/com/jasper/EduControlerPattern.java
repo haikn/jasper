@@ -2048,7 +2048,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(layoutDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)));
@@ -2058,10 +2058,11 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(5, 5, 5)
                 .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGap(15, 15, 15)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, true)
+                .addGap(1, 1, 1)
                 .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                
+                .addGap(5, 5, 5)
                 .addComponent(layoutDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)));
 
