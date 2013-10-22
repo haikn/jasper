@@ -139,6 +139,7 @@ public class EduControlerPattern extends OpticsPane {
         panelSlit = new javax.swing.JPanel();
         panelDoubleSlit = new javax.swing.JPanel();
         panelSignal = new javax.swing.JPanel();
+        panelSignalPhoto = new javax.swing.JPanel();
         panelPhase = new javax.swing.JPanel();
         jPanelPattern = new javax.swing.JPanel();
 
@@ -2023,6 +2024,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Signal processing", panelSignal);
+        jTabbedPaneOptics.addTab("Photo", panelSignalPhoto);
 
         tabbedDesLog.addTab("Description", desSignalProcessing);
         jTextAreaLog.setColumns(20);
@@ -2754,6 +2756,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelGeneral;
     private javax.swing.JPanel panelPhase;
     private javax.swing.JPanel panelSignal;
+    private javax.swing.JPanel panelSignalPhoto;
     private javax.swing.JPanel panelSlit;
     private javax.swing.JPanel panelDoubleSlit;
     private javax.swing.JTabbedPane tabbedControl;
