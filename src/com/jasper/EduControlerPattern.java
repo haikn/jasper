@@ -265,7 +265,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderXPositionLens.setMaximum(100);
+        jSliderXPositionLens.setMaximum(1000);
         jSliderXPositionLens.setMinimum(-100);
         jSliderXPositionLens.setValue(0);
         jSliderXPositionLens.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -274,7 +274,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderYPositionLens.setMaximum(100);
+        jSliderYPositionLens.setMaximum(1000);
         jSliderYPositionLens.setMinimum(-100);
         jSliderYPositionLens.setValue(0);
         jSliderYPositionLens.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -2463,11 +2463,11 @@ public class EduControlerPattern extends OpticsPane {
     }
 
     private String genLogLen() {
-        return String.format(logmessageLen, Double.toString(xoff), Double.toString(yoff), Double.toString(focal));
+        return String.format(logmessageLen, Double.toString(focal), Double.toString(xoff), Double.toString(yoff));
     }
 
     private String genLogLensMichelson() {
-        return String.format(logmessageLensMichelson, Double.toString(xoffMichelson), Double.toString(yoffMichelson), Double.toString(focalMichelson));
+        return String.format(logmessageLensMichelson, Double.toString(focalMichelson), Double.toString(xoffMichelson), Double.toString(yoffMichelson));
     }
 
     private String genLogMicroscope() {
@@ -3219,10 +3219,10 @@ public class EduControlerPattern extends OpticsPane {
             image.paintLens();
         }
     }
-    static String logmessageLen = "Len : focal=%s posX=%s posY=%s";
-    static String logmessageLensMichelson = "Lens Michelson : focal=%s posX=%s posY=%s";
-    static String logmessageMicroscope = "Microscope : focal=%s posX=%s posY=%s";
-    static String logmessageCyllin = "Cyllin : focal=%s posX=%s posY=%s";
+    static String logmessageLen = "Telephoto lens: Focal length=%s X Position=%s Y Position=%s";
+    static String logmessageLensMichelson = "Michelson lens: Focal length=%s X Position=%s Y Position=%s";
+    static String logmessageMicroscope = "Microscope : Focal length=%s X Position=%s Y Position=%s";
+    static String logmessageCyllin = "Cyllin : Focal length=%s X Position=%s Y Position=%s";
     static String logmessageMirror = "Mirror : Phy=%s Theta=%s";
     static String logmessageSlit = "Slit: w=%s r=%s p=%s g=%s";
     static String logmessageDoubleSlit = "Double Slit: w=%s r=%s p=%s g=%s s=%s";
