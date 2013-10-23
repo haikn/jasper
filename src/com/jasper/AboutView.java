@@ -101,7 +101,10 @@ public class AboutView extends JDialog {
                                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                                                                     .addComponent(buttonClose)))
                                                     .addContainerGap(-1, Short.MAX_VALUE))
-                                                    .addComponent(jLabel2, GroupLayout.Alignment.TRAILING))));
+                                                    .addComponent(jLabel2, GroupLayout.Alignment.TRAILING)
+                                                    )
+                                                    .addGap(5, 5, 5)
+                    ));
 
             setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
             setModal(true);
