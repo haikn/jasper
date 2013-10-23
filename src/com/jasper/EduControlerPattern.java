@@ -550,6 +550,11 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
+        // hide
+        lblFocalCyllin.hide();
+        txtFocalCyllin.hide();
+        jSliderFocalCyllin.hide();
+        
         javax.swing.GroupLayout jPanelCyllindricalLayout = new javax.swing.GroupLayout(jPanelCyllindrical);
         jPanelCyllindrical.setLayout(jPanelCyllindricalLayout);
         jPanelCyllindricalLayout.setHorizontalGroup(
@@ -566,14 +571,14 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblYPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(txtYPositionCyllin)
+                .addComponent(txtYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addComponent(txtFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addComponent(txtXPositionCyllin))))
+                .addComponent(txtXPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))))
                 .addGap(5, 5, 5)
                 .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(jSliderFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
-                .addComponent(jSliderXPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jSliderXPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)))
                 .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(buttonCyllinGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1749,7 +1754,6 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        //rangeSlider.setPreferredSize(new Dimension(240, rangeSlider.getPreferredSize().height));
         rangeSlider.setMinimum(-20000);
         rangeSlider.setMaximum(20000);
         rangeSlider.setValue(10000);
@@ -1757,7 +1761,6 @@ public class EduControlerPattern extends OpticsPane {
         int tmp = Integer.valueOf(rangeSlider.getValue());
         int tmp2 = Integer.valueOf(rangeSlider.getUpperValue());
         int valueSlider = tmp2 - tmp;
-        //System.out.println("tmp2: " + tmp2 + " tmp: " + tmp + "  valueSlider: " + valueSlider);
         txtFocalLensMichelson.setText(String.valueOf(valueSlider));
         rangeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -1765,7 +1768,6 @@ public class EduControlerPattern extends OpticsPane {
                 int tmp2 = Integer.valueOf(rangeSlider.getUpperValue());
                 int valueSlider = tmp2 - tmp;
                 txtFocalLensMichelson.setText(String.valueOf(valueSlider));
-                //System.out.println("tmp2: " + tmp2 + " tmp: " + tmp + "  valueSlider: " + valueSlider);
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
@@ -1971,60 +1973,13 @@ public class EduControlerPattern extends OpticsPane {
                 patternFrame.show();
             }
         });
+        //  END show full screen
+        
         //TODO
         layoutControl.addMouseMotionListener(behavior);
         layoutControl.addMouseListener(behavior);
         layoutControl.addMouseWheelListener(behavior);
-        //  END show full screen
-
-//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this());
-//        this.setLayout(layout);
-//        layout.setHorizontalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-//                .addContainerGap()
-//                .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1271, Short.MAX_VALUE)
-//                .addGap(5, 5, 5))
-//        );
-//        layout.setVerticalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-//                .addGap(5, 5, 5)
-//                .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(5, 5, 5))
-//        );
-
-//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-//        this.setLayout(layout);
-//        layout.setHorizontalGroup(
-//                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-//                .addContainerGap()
-//                .addComponent(layoutControl, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
-//                .addGap(5, 5, 5))
-//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                .addComponent(jTabbedPaneOptics)
-//                //.addGroup(layout.createSequentialGroup()
-//                //.addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                //.addGap(11, 11, 11)
-//                //.addComponent(tabbedDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
-//                //)
-//                )
-//                );
-//        layout.setVerticalGroup(
-//                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-//                .addGap(5, 5, 5)
-//                .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(5, 5, 5))
-//                //.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                //.addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-//                //.addComponent(tabbedDiagram)
-//                //)
-//                );
-        //jTextAreaDesc.setColumns(20);
-        //jTextAreaDesc.setRows(5);
-        //jTextAreaDesc.setFont(new Font("Courier New", Font.PLAIN, 12));
+        
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
