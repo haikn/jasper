@@ -2057,14 +2057,21 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, true)
-                .addGap(1, 1, 1)
-                .addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(layoutDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)));
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(layoutDiagram, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                ))
+                //.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                //.addGap(8, 8, 8)
+                //.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, true)
+                //.addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                //.addComponent(layoutDiagram, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                //.addGap(5, 5, 5)
+                ));
 
 //        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
 //            public void stateChanged(ChangeEvent e) {
