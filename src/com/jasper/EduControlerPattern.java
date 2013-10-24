@@ -1359,17 +1359,17 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-        
+
         lblSpacingProcessing.setText("Spacing");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_spacing.setMaximum(255);
-        s_processing_spacing.setValue(255);
+        s_processing_spacing.setMaximum(image1.getBounds().height);
+        s_processing_spacing.setValue(400);
         s_processing_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
             }
         });
-        
+
         bindingGroup.addBinding(binding);
 
 
@@ -1468,23 +1468,18 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(s_processing_height_x, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                 .addComponent(s_processing_width_y, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                
                 .addGroup(jPanelProcessingLayout.createSequentialGroup()
                 .addComponent(lblRotationProcessing)
                 .addGap(27, 27, 27)
                 .addComponent(text_rotation_processing, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(s_processing_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
-                
                 .addGroup(jPanelProcessingLayout.createSequentialGroup()
                 .addComponent(lblSpacingProcessing)
                 .addGap(27, 27, 27)
                 .addComponent(text_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(s_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
-                
-                ))
-                
+                .addComponent(s_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanelProcessingLayout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addComponent(buttonGennerateProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1543,7 +1538,6 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(text_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(s_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblSpacingProcessing))
-                
                 .addGap(8, 8, 8)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonGennerateProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2366,7 +2360,7 @@ public class EduControlerPattern extends OpticsPane {
     // double slit
     private double d_widthX_double = Double.valueOf(image1.getBounds().width), d_heightX_double = 100, d_rotation_double = 0, d_postionX_double = 0, d_grayLevel_double = 255, d_spacing_double = 400;
     //Processing
-    private double processing_widthX = Double.valueOf(image1.getBounds().width), processing_widthY = 100, processing_heightX = 100, processing_heightY = Double.valueOf(image1.getBounds().height), processing_rotation = 0, processing_positionX = 0, processing_positionY = 0, processing_grayLevel = 255;
+    private double processing_widthX = Double.valueOf(image1.getBounds().width), processing_widthY = 100, processing_heightX = 100, processing_heightY = Double.valueOf(image1.getBounds().height), processing_rotation = 0, processing_positionX = 0, processing_positionY = 0, processing_grayLevel = 255, processing_spacing = 400;
     private double zoom = 100.0, grayLevel = 255;
 
     private boolean parseArguments() {
@@ -2422,6 +2416,7 @@ public class EduControlerPattern extends OpticsPane {
             processing_positionX = Double.valueOf(s_processing_positionx.getValue());
             processing_positionY = Double.valueOf(s_processing_pos_y.getValue());
             processing_grayLevel = Double.valueOf(s_processing_gray.getValue());
+            processing_spacing = Double.valueOf(s_processing_spacing.getValue());
             //phase
             zoom = Double.valueOf(s_phase_zoom.getValue());
             ret = true;
@@ -2565,7 +2560,7 @@ public class EduControlerPattern extends OpticsPane {
     }
 
     private String genLogProcessing() {
-        return String.format(logmessageProcessing, Double.toString(processing_heightX), Double.toString(processing_widthY), Double.toString(processing_rotation), Double.toString(processing_positionX), Double.toString(processing_positionY), Double.toString(processing_grayLevel));
+        return String.format(logmessageProcessing, Double.toString(processing_heightX), Double.toString(processing_widthY), Double.toString(processing_rotation), Double.toString(processing_positionX), Double.toString(processing_positionY), Double.toString(processing_grayLevel), Double.toString(processing_spacing));
     }
 
     private String genLogPhase() {
@@ -2599,7 +2594,7 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
-            
+
             if (countLenOnTelephoto % 2 == 0) {
                 magFrameLenon.dispose();
             } else {
@@ -2664,7 +2659,7 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogLensMichelson());
             setLog(genLogLensMichelson());
             imageGenerated = true;
-            
+
             if (countLenOnMichelson % 2 == 0) {
                 magFrameLenon.dispose();
             } else {
@@ -3035,7 +3030,7 @@ public class EduControlerPattern extends OpticsPane {
         actionTag = "Processing";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
             EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
@@ -3048,12 +3043,12 @@ public class EduControlerPattern extends OpticsPane {
         actionTag = "Processing";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
             EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
-            
+
             if (countLenOnProcessing % 2 == 0) {
                 magFrameLenon.dispose();
             } else {
@@ -3066,14 +3061,13 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setVisible(true);
             }
         }
-
     }//GEN-LAST:event_button11LensOnProcessingActionPerformed
 
     private void buttonSecondGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
         actionTag = "Processing";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
             EduPatternTest.updateLensPattern(image, genLogProcessing());
             setLog(genLogProcessing());
@@ -3086,7 +3080,7 @@ public class EduControlerPattern extends OpticsPane {
         actionTag = "Processing";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
             EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
@@ -3601,7 +3595,7 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageMirror = "Mirror : Phy=%s Theta=%s";
     static String logmessageSlit = "Slit: w=%s r=%s p=%s g=%s";
     static String logmessageDoubleSlit = "Double Slit: w=%s r=%s p=%s g=%s s=%s";
-    static String logmessageProcessing = "Signal processing: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s";
+    static String logmessageProcessing = "Signal processing: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
     static String logmessagePhase = "Phase retarder: gray=%s";
     static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
 }

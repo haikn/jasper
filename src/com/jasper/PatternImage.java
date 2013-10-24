@@ -169,7 +169,7 @@ public class PatternImage {
         title = (slit < 2 ? "Draw Single Slit " : "Draw Double Slit ") + d_widthX + " " + d_heightX + " " + this.d_postionX + " " + this.d_rotation + " " + this.d_grayLevel;
     }
 
-    void updateParameterDrawSignalProcessing(double widthX, double widthY, double heightX, double heightY, double postionX, double postionY, double rotation, double grayLevel) {
+    void updateParameterDrawSignalProcessing(double widthX, double widthY, double heightX, double heightY, double postionX, double postionY, double rotation, double grayLevel, double processingSpac) {
         this.d_widthX = widthX;
         this.d_widthY = widthY;
         this.d_heightX = heightX;
@@ -178,7 +178,8 @@ public class PatternImage {
         this.d_postionY = postionY;
         this.d_rotation = rotation;
         this.d_grayLevel = grayLevel;
-        title = "Draw Signal Processing " + d_widthX + " " + d_widthY + " " + this.d_heightX + " " + this.d_heightY + " " + this.d_postionX + " " + this.d_postionY + " " + this.d_rotation + " " + this.d_grayLevel;
+        this.d_spacing = processingSpac;
+        title = "Draw Signal Processing " + d_widthX + " " + d_widthY + " " + this.d_heightX + " " + this.d_heightY + " " + this.d_postionX + " " + this.d_postionY + " " + this.d_rotation + " " + this.d_grayLevel + " " + this.d_spacing;
     }
 
     void updateParameterDrawSignalPhoto(double widthX, double heightX) {
@@ -216,7 +217,7 @@ public class PatternImage {
         this.mirrorTheta = theta;
         title = "mirror " + phy + " " + theta;
     }
-    
+
     void updateMirrorSpectometerParameter(double phy, double theta) {
         this.mirrorPhySpectometer = phy;
         this.mirrorThetaSpectometer = theta;
@@ -529,7 +530,7 @@ public class PatternImage {
             }
         }
     }
-    
+
     // Mirror Spectrometer algorithms
     public void paintMirrorSpectrometer() {
         WritableRaster raster = canvas.getRaster();
@@ -1110,6 +1111,7 @@ public class PatternImage {
         int linePostionX = (int) d_postionX;
         int linePostionY = (int) d_postionY;
         int lineGray = (int) d_grayLevel;
+        int spac = (int) d_spacing;
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         int NumCol = 5;
@@ -1129,8 +1131,12 @@ public class PatternImage {
         int DelY = canvas.getHeight() / NumRow;
         for (int i = 0; i < RowY.length; i++) {
             // if (linePostionX > 0) {
-            RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
-//            } else {
+            if (i % 2 == 0) {
+                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) - spac / 2);
+            } else {
+                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) + spac / 2);
+            }
+            //            } else {
 //                RowY[i] = DelY / 2 + DelY * i;
 //            }
         }

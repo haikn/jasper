@@ -50,7 +50,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         panelOptic = new EduControlerPattern();
 
-        panelSignalProcessing = new com.jasper.SignalProcessing();
+       // panelSignalProcessing = new com.jasper.SignalProcessing();
         jPanelDescriptionLens = new DescriptionLens();
         jPanelDescriptionMicroscope = new DescriptionMicroscope();
         jPanelDescriptionAberration = new DescriptionAberration();
@@ -174,7 +174,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jPanelCalibration = new javax.swing.JPanel();
         jPanelSlit = new Slit();
-        jPanelSignalProcessing = new SignalProcessing();
+       // jPanelSignalProcessing = new SignalProcessing();
         jLayeredPane5 = new javax.swing.JLayeredPane();
         jPanelPhaseRetarder = new javax.swing.JPanel();
         jLayeredPane6 = new javax.swing.JLayeredPane();
