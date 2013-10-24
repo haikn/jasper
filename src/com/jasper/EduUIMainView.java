@@ -210,7 +210,7 @@ public class EduUIMainView extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(panelOptic, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelOptic, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 //.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 //.addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
