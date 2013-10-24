@@ -30,22 +30,22 @@ public class EduLensOn11 extends JComponent
         implements MouseMotionListener {
 
     double zoom;
-    JComponent comp;
+    // JComponent comp;
     Point point;
     Dimension mySize;
     Robot robot;
 
     public EduLensOn11(JComponent comp, Dimension size, double zoom) {
-        this.comp = comp;
         // flag to say don't draw until we get a MouseMotionEvent
         point = new Point(-1, -1);
         comp.addMouseMotionListener(this);
+        // this.comp = comp;
         this.mySize = size;
         this.zoom = zoom;
+        // comp.addMouseMotionListener(this);
         // if we can't get a robot, then we just never
         // paint anything
         try {
-
             robot = new Robot();
         } catch (AWTException awte) {
             System.err.println("Can't get a Robot");
@@ -88,8 +88,9 @@ public class EduLensOn11 extends JComponent
 
     // MouseMotionListener implementations
     public void mouseMoved(MouseEvent e) {
-        Point offsetPoint = comp.getLocationOnScreen();
-        e.translatePoint(offsetPoint.x, offsetPoint.y);
+        //  Point offsetPoint = com.getLocationOnScreen();
+        //  System.out.println(">>>>>>>>>E : " + e.getPoint());
+        //   e.translatePoint(.x, offsetPoint.y);
         point = e.getPoint();
         repaint();
     }
