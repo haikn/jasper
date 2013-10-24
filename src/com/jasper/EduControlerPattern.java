@@ -538,7 +538,7 @@ public class EduControlerPattern extends OpticsPane {
         lblFocalCyllin.hide();
         txtFocalCyllin.hide();
         jSliderFocalCyllin.hide();
-        
+
         javax.swing.GroupLayout jPanelCyllindricalLayout = new javax.swing.GroupLayout(jPanelCyllindrical);
         jPanelCyllindrical.setLayout(jPanelCyllindricalLayout);
         jPanelCyllindricalLayout.setHorizontalGroup(
@@ -1329,14 +1329,19 @@ public class EduControlerPattern extends OpticsPane {
                 buttonGenerateActionPerformedProcessing(evt);
             }
         });
-
         button11LensOnProcessing.setText("1:1 lens ON");
         button11LensOnProcessing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button11LensOnProcessingActionPerformed(evt);
+                //   boolean_checkLen = false;
+                countLenOnProcessing++;
+                if (countLenOnProcessing % 2 == 0) {
+                    button11LensOnProcessing.setText("1:1 lens OFF");
+                } else {
+                    button11LensOnProcessing.setText("1:1 lens ON");
+                }
             }
         });
-
         buttonSecondDisplayProcessing.setText("Second display ON");
         buttonSecondDisplayProcessing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1933,7 +1938,7 @@ public class EduControlerPattern extends OpticsPane {
         // BEGIN Fresnel
         jPanelFresnel = new javax.swing.JPanel();
         // END Fresnel
-        
+
         // BEGIN Talbot
         jPanelTalbot = new javax.swing.JPanel();
         // END Talbot
@@ -1958,7 +1963,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         //  END show full screen
-        
+
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -1992,14 +1997,12 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(5, 5, 5)
                 .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(layoutDiagram, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                ))
-                //.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(layoutDiagram, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 //.addGap(8, 8, 8)
                 //.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, true)
                 //.addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2494,7 +2497,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformed
-        
+
     private void button11LensOnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnActionPerformed
         actionTag = "Len";
         if (parseArguments()) {
@@ -2504,14 +2507,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnActionPerformed
@@ -2555,7 +2558,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedMichelSon
-    
+
     private void button11LensOnMichelsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMichelsonActionPerformed
         actionTag = "LensMichelson";
         if (parseArguments()) {
@@ -2565,14 +2568,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogLensMichelson());
             setLog(genLogLensMichelson());
             imageGenerated = true;
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnMichelsonActionPerformed
@@ -2614,7 +2617,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedMicroscope
-    
+
     private void button11LensOnMicroscopeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMicroscopeActionPerformed
         actionTag = "Microscope";
         if (parseArguments()) {
@@ -2624,15 +2627,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogMicroscope());
             setLog(genLogMicroscope());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnMicroscopeActionPerformed
@@ -2675,7 +2678,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-    
+
     private void button11LensOnCyllinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCyllinActionPerformed
         actionTag = "Cyllin";
         if (parseArguments()) {
@@ -2685,15 +2688,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnCyllinActionPerformed
@@ -2736,7 +2739,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-    
+
     private void button11LensOnMirrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorActionPerformed
         actionTag = "Cyllin";
         if (parseArguments()) {
@@ -2746,15 +2749,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogMirror());
             setLog(genLogMirror());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnMirrorActionPerformed
@@ -2797,7 +2800,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-    
+
     private void button11LensOnSlitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnSlitActionPerformed
         actionTag = "Slit";
         if (parseArguments()) {
@@ -2807,15 +2810,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogSlit());
             setLog(genLogSlit());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnSlitActionPerformed
@@ -2858,7 +2861,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedDoubleSlit
-    
+
     private void button11LensOnDoubleSlitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnDoubleSlitActionPerformed
         actionTag = "DoubleSlit";
         if (parseArguments()) {
@@ -2868,15 +2871,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogDoubleSlit());
             setLog(genLogDoubleSlit());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnDoubleSlitActionPerformed
@@ -2919,7 +2922,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-    
+
     private void button11LensOnProcessingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnProcessingActionPerformed
         actionTag = "Processing";
         if (parseArguments()) {
@@ -2929,15 +2932,17 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
-            magFrame.getContentPane().add(mag);
-            magFrame.pack();
-            magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                    panelPattern.getLocation().y));
-            magFrame.setVisible(true);
-            
+            if (countLenOnProcessing % 2 == 0) {
+                magFrameLenon.dispose();
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
+                        panelPattern.getLocation().y));
+                magFrameLenon.setVisible(true);
+            }
         }
 
     }//GEN-LAST:event_button11LensOnProcessingActionPerformed
@@ -2982,7 +2987,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }
-    
+
     private void button11LensOnProcessingPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnProcessingPhotoActionPerformed
         actionTag = "ProcessingPhoto";
         if (parseArguments()) {
@@ -2991,15 +2996,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnProcessingPhotoActionPerformed
@@ -3043,7 +3048,7 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-    
+
     private void button11LensOnPhaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnPhaseActionPerformed
         actionTag = "Phase";
         if (parseArguments()) {
@@ -3053,15 +3058,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogPhase());
             setLog(genLogPhase());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnPhaseActionPerformed
@@ -3104,7 +3109,7 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }//GEN-LAST:event_buttonGenerateActionPerformedMirrorSpectometer
-    
+
     private void button11LensOnMirrorSpectometerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorSpectometerActionPerformed
         actionTag = "MirrorSpectometer";
         if (parseArguments()) {
@@ -3114,15 +3119,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogMirrorSpectrometer());
             setLog(genLogMirrorSpectrometer());
             imageGenerated = true;
-            
-            JFrame magFrame = new JFrame ("1:1 Lens On");
+
+            JFrame magFrame = new JFrame("1:1 Lens On");
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
             magFrame.getContentPane().add(mag);
             magFrame.pack();
             magFrame.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                     panelPattern.getLocation().y));
             magFrame.setVisible(true);
-            
+
         }
 
     }//GEN-LAST:event_button11LensOnMirrorSpectometerActionPerformed
@@ -3260,7 +3265,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel jLabelSelectExperiment;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
-    
     private javax.swing.JPanel layoutDiagram;
     // Spectometer
     private javax.swing.JLabel lblPhySpectometer;
@@ -3275,7 +3279,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel jPanelMirrorSpectometer;
     // Fresnel
     private javax.swing.JPanel jPanelFresnel;
-    
     // Talbot
     private javax.swing.JPanel jPanelTalbot;
     /*
@@ -3356,6 +3359,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextField text_rotation_processing;
     private javax.swing.JTextField text_width_processing_x;
     private javax.swing.JTextField text_width_processing_y;
+    private int countLenOnProcessing = 1;
     /*
      * Photo
      */
@@ -3384,6 +3388,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel diagramLens;
     private javax.swing.JLabel lblDiagram;
     private String actionTag = "Len";
+    private JFrame magFrameLenon;
     // Description
     private javax.swing.JLabel desTelephotoLens =
             new JLabel("<html><b>Description of Telephoto lens</b><br></html>");
