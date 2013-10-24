@@ -2605,6 +2605,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
         }
 
@@ -2670,6 +2672,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
 
         }
@@ -2734,6 +2738,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
 
         }
@@ -2799,6 +2805,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
 
         }
@@ -2864,6 +2872,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
 
         }
@@ -2929,6 +2939,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
 
         }
@@ -2994,6 +3006,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
 
         }
@@ -3059,6 +3073,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
         }
     }//GEN-LAST:event_button11LensOnProcessingActionPerformed
@@ -3123,6 +3139,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
 
         }
@@ -3189,6 +3207,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
         }
 
@@ -3253,6 +3273,8 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLensOnSpectrometer.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
                         panelPattern.getLocation().y));
                 magFrameLensOnSpectrometer.setVisible(true);
+                magFrameLensOnSpectrometer.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLensOnSpectrometer.setResizable(false);
             }
 
         }
