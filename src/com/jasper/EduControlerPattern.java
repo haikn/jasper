@@ -14,10 +14,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -158,7 +161,7 @@ public class EduControlerPattern extends OpticsPane {
         lblPhy = new javax.swing.JLabel();
         lblThetaMirror = new javax.swing.JLabel();
         jSliderPhyMirror = new javax.swing.JSlider();
-        jSliderThetaMirror = new javax.swing.JSlider();
+        //jSliderThetaMirror = new javax.swing.JSlider();
         txtPhyMirror = new javax.swing.JTextField();
         txtThetaMirror = new javax.swing.JTextField();
         buttonMirrorLensOn = new javax.swing.JButton();
@@ -627,8 +630,8 @@ public class EduControlerPattern extends OpticsPane {
 
         lblThetaMirror.setText("Theta");
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderThetaMirror, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtThetaMirror, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
+//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderThetaMirror, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtThetaMirror, org.jdesktop.beansbinding.BeanProperty.create("text"));
+//        bindingGroup.addBinding(binding);
 
         buttonMirrorGeneral.setText("General");
         buttonMirrorGeneral.addActionListener(new java.awt.event.ActionListener() {
@@ -657,20 +660,37 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderPhyMirror.setMaximum(10000);
-        jSliderPhyMirror.setMinimum(-1000);
-        jSliderPhyMirror.setValue(522);
+        jSliderPhyMirror.setMaximum(180);
+        jSliderPhyMirror.setMinimum(-180);
+        jSliderPhyMirror.setValue(1);
         jSliderPhyMirror.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedMirror(evt);
             }
         });
-
-        jSliderThetaMirror.setMaximum(10000);
-        jSliderThetaMirror.setMinimum(-1000);
-        jSliderThetaMirror.setValue(522);
+        
+        jSliderThetaMirror = new DoubleJSlider(-1000, 1000, 1000, 10);
+        //jSliderThetaMirror.setMaximum(1000);
+        //jSliderThetaMirror.setMinimum(-1000);
+        jSliderThetaMirror.setValue(1);
+        txtThetaMirror.setText(String.valueOf(jSliderThetaMirror.getValue()));
+        
         jSliderThetaMirror.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                DecimalFormat df = new DecimalFormat("0.####");
+                txtThetaMirror.setText(df.format(jSliderThetaMirror.getScaledValue()));
+//                txtThetaMirror.addKeyListener(new KeyAdapter(){
+//                    @Override
+//                    public void keyReleased(KeyEvent ke) {
+//                        String typed = txtThetaMirror.getText();
+//                        jSliderThetaMirror.setValue(0);
+//                        if(!typed.matches("\\d+(\\.\\d*)?")) {
+//                            return;
+//                        }
+//                        double value = Double.parseDouble(typed)*jSliderThetaMirror.scale;
+//                        jSliderThetaMirror.setValue((int)value);
+//                    }
+//                });
                 sliderGenerateActionPerformedMirror(evt);
             }
         });
@@ -1823,10 +1843,10 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        rangeSlider.setMinimum(-20000);
-        rangeSlider.setMaximum(20000);
-        rangeSlider.setValue(10000);
-        rangeSlider.setUpperValue(1522);
+        rangeSlider.setMinimum(-1000);
+        rangeSlider.setMaximum(1000);
+        rangeSlider.setValue(1000);
+        rangeSlider.setUpperValue(572);
         int tmp = Integer.valueOf(rangeSlider.getValue());
         int tmp2 = Integer.valueOf(rangeSlider.getUpperValue());
         int valueSlider = tmp2 - tmp;
@@ -1835,7 +1855,7 @@ public class EduControlerPattern extends OpticsPane {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 int tmp = Integer.valueOf(rangeSlider.getValue());
                 int tmp2 = Integer.valueOf(rangeSlider.getUpperValue());
-                int valueSlider = tmp2 - tmp;
+                double valueSlider = tmp2 + tmp;
                 txtFocalLensMichelson.setText(String.valueOf(valueSlider));
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
@@ -2353,7 +2373,7 @@ public class EduControlerPattern extends OpticsPane {
     private double xoffMichelson = 0.0, yoffMichelson = 0.0, focalMichelson = 522;
     private double xoffCyllin = 150.0, yoffCyllin = 200.0, focalCyllin = 522;
     // Mirror
-    private double phy = 522, theta = 522;
+    private double phy = 1, theta = 1;
     // Spectrometer
     private double phySpectrometer = 522, thetaSpectrometer = 522;
     private double d_widthX = Double.valueOf(image1.getBounds().width), d_heightX = 100, d_rotation = 0, d_postionX = 0, d_grayLevel = 255, d_spacing = 400;
@@ -3387,7 +3407,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel lblPhy;
     private javax.swing.JLabel lblThetaMirror;
     private javax.swing.JSlider jSliderPhyMirror;
-    private javax.swing.JSlider jSliderThetaMirror;
+    private DoubleJSlider jSliderThetaMirror;
     private javax.swing.JTextField txtPhyMirror;
     private javax.swing.JTextField txtThetaMirror;
     private javax.swing.JButton buttonMirrorLensOn;
@@ -3527,6 +3547,8 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnPhoto = 1;
     private int countLenOnSlit = 1;
     private int countLenOnDoubleSlit = 1;
+    
+    DoubleJSlider slider;
     /*
      * Photo
      */

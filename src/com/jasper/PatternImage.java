@@ -310,17 +310,17 @@ public class PatternImage {
         int[] iArray = new int[1];
         double x2, y2, phase;
         double y1;
-        double fixpart = Math.PI / lambda / (focalMichelson / 10000);
+        double fixpart = Math.PI / lambda / (focalMichelson / 1000);
 
         for (int i = 0; i < height; i++) {
             x2 = (double) (i - height / 2 + 1) * pxsize;
-            x2 -= (-yoffMichelson / 100000);
+            x2 -= (-yoffMichelson / 1000);
             x2 = Math.pow(x2, 2.0);
             Math.getExponent(x2);
             double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
             for (int j = 0; j < width; j++) {
                 y2 = (double) (j - width / 2 + 1) * pxsize;
-                y2 -= (xoffMichelson / 100000);
+                y2 -= (xoffMichelson / 1000);
                 y1 = y2;
                 y2 = Math.pow(y2, 2.0);
 
