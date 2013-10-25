@@ -2622,8 +2622,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -2689,8 +2688,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -2755,8 +2753,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+               magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -2822,8 +2819,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -2889,8 +2885,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -2956,8 +2951,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -3090,8 +3084,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -3156,8 +3149,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -3224,8 +3216,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
@@ -3290,8 +3281,7 @@ public class EduControlerPattern extends OpticsPane {
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
                 magFrameLensOnSpectrometer.getContentPane().add(mag);
                 magFrameLensOnSpectrometer.pack();
-                magFrameLensOnSpectrometer.setLocation(new Point(panelPattern.getLocation().x + panelPattern.getWidth(),
-                        panelPattern.getLocation().y));
+                magFrameLensOnSpectrometer.setLocation(new Point(500, 420));
                 magFrameLensOnSpectrometer.setVisible(true);
                 magFrameLensOnSpectrometer.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLensOnSpectrometer.setResizable(false);
