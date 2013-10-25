@@ -153,6 +153,12 @@ public class PatternImage {
         title = "lens " + xoff + " " + yoff + " " + focal;
     }
 
+    void updateFresnelParameter(double width, double height) {
+        this.d_widthX = width;
+        this.d_heightX = height;
+        title = "Fresnel " + width + " " + height;
+    }
+
 //    void updateLensParameterCyllin(double xoff, double yoff, double focal) {
 //        this.xoffCyllin = xoff;
 //        this.yoffCyllin = yoff;
@@ -1166,7 +1172,7 @@ public class PatternImage {
         double scale = 1.0;
         // scale = d_zoom / 100.0D;
         //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType());
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
@@ -1180,6 +1186,42 @@ public class PatternImage {
         AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
         at.scale(scale, scale);
         /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        g2.drawRenderedImage(buffImg, at);
+    }
+
+    public void fresnel(BufferedImage buffImg) {
+        int width = 0;
+        try {
+            width = (int) d_widthX;
+        } catch (Exception e) {
+        }
+        if (width < 17) {
+            width = 17;
+        }
+        width = (width / 10) * 16;
+        int height = 0;
+        try {
+            height = (int) d_heightX;
+        } catch (Exception e) {
+        }
+        if (height < 15) {
+            height = 15;
+        }
+        height = (height / 10) * 9;
+        double scale = 1.0;
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), width, height);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
         g2.drawRenderedImage(buffImg, at);
     }
 
@@ -1214,10 +1256,10 @@ public class PatternImage {
         return dbi;
     }
 
-    private static BufferedImage resizeImage(BufferedImage originalImage, int type) {
-        BufferedImage resizedImage = new BufferedImage(1920, 1080, type);
+    private static BufferedImage resizeImage(BufferedImage originalImage, int type, int width, int height) {
+        BufferedImage resizedImage = new BufferedImage(width, height, type);
         Graphics2D g = resizedImage.createGraphics();
-        g.drawImage(originalImage, 0, 0, 1920, 1080, null);
+        g.drawImage(originalImage, 0, 0, width, height, null);
         g.dispose();
 
         return resizedImage;

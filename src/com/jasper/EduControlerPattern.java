@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,9 +34,9 @@ import javax.swing.JOptionPane;
  * @author sonnv
  */
 public class EduControlerPattern extends OpticsPane {
-
+    
     PatternImage image1 = new PatternImage();
-
+    
     public EduControlerPattern() {
         initComponents();
         image1 = ((EduPatternJPanel) panelPattern).pimage;
@@ -57,13 +58,13 @@ public class EduControlerPattern extends OpticsPane {
         //diagramLens = new LensDiagram();
         diagramLens = new javax.swing.JPanel();
         lblDiagram = new javax.swing.JLabel();
-
+        
         panelPattern = new EduPatternJPanel();
         jTabbedPaneOptics = new javax.swing.JTabbedPane();
         textFocal = new javax.swing.JTextField();
         textYpos = new javax.swing.JTextField();
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
-
+        
         jLabel1 = new javax.swing.JLabel();
         textFocal = new javax.swing.JTextField();
         sliderFocal = new javax.swing.JSlider();
@@ -75,10 +76,10 @@ public class EduControlerPattern extends OpticsPane {
         ok = new javax.swing.JButton();
         btnLensON = new javax.swing.JButton();
         btnSecond = new javax.swing.JButton();
-
+        
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderFocal, org.jdesktop.beansbinding.ELProperty.create("${value}"), textFocal, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         layoutControl = new javax.swing.JLayeredPane();
         layoutDiagram = new javax.swing.JPanel();
         tabbedControl = new javax.swing.JTabbedPane();
@@ -167,19 +168,19 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorLensOn = new javax.swing.JButton();
         buttonMirrorDisplaySecondOn = new javax.swing.JButton();
         buttonMirrorGeneral = new javax.swing.JButton();
-
+        
         tabbedControl.setAlignmentX(100);
-
+        
         jLabelSelectExperiment.setText("Select Experiment");
         jLabelSelectExperiment.setForeground(Color.red);
-
+        
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
             "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
             "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation", "11. Wavelength Selective Switch"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JComboBox comboBox = (JComboBox) evt.getSource();
-
+                
                 Object selected = comboBox.getSelectedItem();
                 if (selected.equals("      ------ Select experiment ------")) {
                     //jMenuItemDefaultExperimentPerformed(evt);
@@ -208,27 +209,27 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
+        
         jLabel3.setText("Focal length");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalLens, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLens, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         jLabel4.setText("X Position");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionLens, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionLens, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         jLabel2.setText("Y Position");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionLens, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionLens, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         jButtonLens.setText("General");
         jButtonLens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformed(evt);
             }
         });
-
+        
         jButton11LensOn.setText("1:1 lens ON");
         jButton11LensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,14 +242,14 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
+        
         jButtonDisplaySecondOn.setText("Second display ON");
         jButtonDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformed(evt);
             }
         });
-
+        
         jSliderFocalLens.setMaximum(100000);
         jSliderFocalLens.setMinimum(-1000);
         jSliderFocalLens.setValue(522);
@@ -257,7 +258,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformed(evt);
             }
         });
-
+        
         jSliderXPositionLens.setMaximum(1000);
         jSliderXPositionLens.setMinimum(-100);
         jSliderXPositionLens.setValue(0);
@@ -266,7 +267,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformed(evt);
             }
         });
-
+        
         jSliderYPositionLens.setMaximum(1000);
         jSliderYPositionLens.setMinimum(-100);
         jSliderYPositionLens.setValue(0);
@@ -275,7 +276,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformed(evt);
             }
         });
-
+        
         javax.swing.GroupLayout jPanelCyllindrical1Layout = new javax.swing.GroupLayout(jPanelCyllindrical1);
         jPanelCyllindrical1.setLayout(jPanelCyllindrical1Layout);
         jPanelCyllindrical1Layout.setHorizontalGroup(
@@ -359,23 +360,23 @@ public class EduControlerPattern extends OpticsPane {
         lblFocalMicroscope.setText("Focal length");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalMicroscope, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalMicroscope, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         lblXPosMicroscope.setText("X Position");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionMicroscope, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionMicroscope, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         lblYPosMicroscope.setText("Y Position");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionMicroscope, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionMicroscope, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         buttonMicroscopeGeneral.setText("General");
         buttonMicroscopeGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedMicroscope(evt);
             }
         });
-
+        
         buttonMicroscopeLensOn.setText("1:1 lens ON");
         buttonMicroscopeLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,14 +389,14 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
+        
         buttonMicroscopeDisplaySecondOn.setText("Second display ON");
         buttonMicroscopeDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMicroscope(evt);
             }
         });
-
+        
         jSliderFocalMicroscope.setMaximum(100);
         jSliderFocalMicroscope.setMinimum(-100);
         jSliderFocalMicroscope.setValue(10);
@@ -404,7 +405,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMicroscope(evt);
             }
         });
-
+        
         jSliderXPositionMicroscope.setMaximum(100);
         jSliderXPositionMicroscope.setMinimum(-100);
         jSliderXPositionMicroscope.setValue(0);
@@ -413,7 +414,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMicroscope(evt);
             }
         });
-
+        
         jSliderYPositionMicroscope.setMaximum(100);
         jSliderYPositionMicroscope.setMinimum(-100);
         jSliderYPositionMicroscope.setValue(0);
@@ -422,7 +423,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMicroscope(evt);
             }
         });
-
+        
         javax.swing.GroupLayout jPanelMicroscopeLayout = new javax.swing.GroupLayout(jPanelMicroscope);
         jPanelMicroscope.setLayout(jPanelMicroscopeLayout);
         jPanelMicroscopeLayout.setHorizontalGroup(
@@ -482,7 +483,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE)));
-
+        
         jTabbedControler.addTab("Lens", jPanelMicroscope);
         // END Microscope
 
@@ -491,23 +492,23 @@ public class EduControlerPattern extends OpticsPane {
         lblFocalCyllin.setText("Focal length");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         lblXPosCyllin.setText("X Position");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         lblYPosCyllin.setText("Y Position");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         buttonCyllinGeneral.setText("General");
         buttonCyllinGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedCyllin(evt);
             }
         });
-
+        
         buttonCyllinLensOn.setText("1:1 lens ON");
         buttonCyllinLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -520,14 +521,14 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
+        
         buttonCyllinDisplaySecondOn.setText("Second display ON");
         buttonCyllinDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedCyllin(evt);
             }
         });
-
+        
         jSliderFocalCyllin.setMaximum(10000);
         jSliderFocalCyllin.setMinimum(-1000);
         jSliderFocalCyllin.setValue(522);
@@ -536,7 +537,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedCyllin(evt);
             }
         });
-
+        
         jSliderXPositionCyllin.setMaximum(1000);
         jSliderXPositionCyllin.setMinimum(-100);
         jSliderXPositionCyllin.setValue(150);
@@ -545,7 +546,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedCyllin(evt);
             }
         });
-
+        
         jSliderYPositionCyllin.setMaximum(1000);
         jSliderYPositionCyllin.setMinimum(-100);
         jSliderYPositionCyllin.setValue(200);
@@ -559,7 +560,7 @@ public class EduControlerPattern extends OpticsPane {
         lblFocalCyllin.hide();
         txtFocalCyllin.hide();
         jSliderFocalCyllin.hide();
-
+        
         javax.swing.GroupLayout jPanelCyllindricalLayout = new javax.swing.GroupLayout(jPanelCyllindrical);
         jPanelCyllindrical.setLayout(jPanelCyllindricalLayout);
         jPanelCyllindricalLayout.setHorizontalGroup(
@@ -619,7 +620,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCyllinLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCyllinDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE)));
-
+        
         jTabbedControler.addTab("Cyllindrical", jPanelCyllindrical);
         // END Panel Cyllindrical
 
@@ -627,7 +628,7 @@ public class EduControlerPattern extends OpticsPane {
         lblPhy.setText("Phy");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPhyMirror, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPhyMirror, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         lblThetaMirror.setText("Theta");
 
 //        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderThetaMirror, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtThetaMirror, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -639,7 +640,7 @@ public class EduControlerPattern extends OpticsPane {
                 buttonGenerateActionPerformedMirror(evt);
             }
         });
-
+        
         buttonMirrorLensOn.setText("1:1 lens ON");
         buttonMirrorLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -652,14 +653,14 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
+        
         buttonMirrorDisplaySecondOn.setText("Second display ON");
         buttonMirrorDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMirror(evt);
             }
         });
-
+        
         jSliderPhyMirror.setMaximum(180);
         jSliderPhyMirror.setMinimum(-180);
         jSliderPhyMirror.setValue(1);
@@ -668,13 +669,13 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMirror(evt);
             }
         });
-
+        
         jSliderThetaMirror = new DoubleJSlider(-1000, 1000, 1000, 10);
         //jSliderThetaMirror.setMaximum(1000);
         //jSliderThetaMirror.setMinimum(-1000);
         jSliderThetaMirror.setValue(1);
         txtThetaMirror.setText(String.valueOf(jSliderThetaMirror.getValue()));
-
+        
         jSliderThetaMirror.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 DecimalFormat df = new DecimalFormat("0.####");
@@ -694,7 +695,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMirror(evt);
             }
         });
-
+        
         javax.swing.GroupLayout jPanelMirrorlLayout = new javax.swing.GroupLayout(jPanelMirror);
         jPanelMirror.setLayout(jPanelMirrorlLayout);
         jPanelMirrorlLayout.setHorizontalGroup(
@@ -744,9 +745,9 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE)));
-
+        
         jTabbedControler.addTab("Mirror", jPanelMirror);
-
+        
         javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
         panelGeneralLayout.setHorizontalGroup(
@@ -774,9 +775,9 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jTabbedPaneOptics)
                 .addGap(5, 5, 5)
                 .addContainerGap()));
-
+        
         tabbedControl.addTab("General", panelGeneral);
-
+        
         javax.swing.GroupLayout panelCalebrationLayout = new javax.swing.GroupLayout(panelCalebration);
         panelCalebration.setLayout(panelCalebrationLayout);
         panelCalebrationLayout.setHorizontalGroup(
@@ -785,7 +786,7 @@ public class EduControlerPattern extends OpticsPane {
         panelCalebrationLayout.setVerticalGroup(
                 panelCalebrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 272, Short.MAX_VALUE));
-
+        
         tabbedControl.addTab("Calibration", panelCalebration);
         /*
          * Slit
@@ -835,35 +836,35 @@ public class EduControlerPattern extends OpticsPane {
         buttonGennerateDoubleSlit = new javax.swing.JButton();
         buttong11LensOnDoubleSlit = new javax.swing.JButton();
         buttonSecondDisplayDoubleSlit = new javax.swing.JButton();
-
-
+        
+        
         lblWidthSlit.setText("Width");
-
+        
         lblHeightSlit.setText("Width");
-
+        
         lblRotationSlit.setText("Rotation");
-
+        
         lblPosSlit.setText("Positions");
-
+        
         lblGraySlit.setText("GrayLevel ");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_width, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_width, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_height, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_height, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_rotation, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_position, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_position, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         jLabelSpacingSlit.setText("Spacing");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -924,7 +925,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedSlit(evt);
             }
         });
-
+        
         buttonGennerateSlit.setText("Generate");
         buttonGennerateSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -958,7 +959,7 @@ public class EduControlerPattern extends OpticsPane {
                     jLabelSpacingSlit.hide();
                     text_single_spacing.hide();
                     s_single_spacing.hide();
-
+                    
                 }
                 if (selected.equals("Double Slit")) {
                     slit = 2;
@@ -1072,32 +1073,32 @@ public class EduControlerPattern extends OpticsPane {
         //tabbedControl.addTab("  Slit  ", panelSlit);
 
         lblWidthDoubleSlit.setText("Width");
-
+        
         lblHeightDoubleSlit.setText("Width");
-
+        
         lblRotationDoubleSlit.setText("Rotation");
-
+        
         lblPosDoubleSlit.setText("Positions");
-
+        
         lblGrayDoubleSlit.setText("GrayLevel ");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_widthDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_widthDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_heightDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_heightDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_rotationDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_rotationDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_positionDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_positionDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_grayDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_grayDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         jLabelSpacingDoubleSlit.setText("Spacing");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacingDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacingDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -1155,7 +1156,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedDoubleSlit(evt);
             }
         });
-
+        
         buttonGennerateDoubleSlit.setText("Generate");
         buttonGennerateDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1309,13 +1310,13 @@ public class EduControlerPattern extends OpticsPane {
         s_processing_height_x = new javax.swing.JSlider();
         // lblWidthY.setText("Width Y");
         lblHeightY.setText("Width Y");
-
+        
         lblRotationProcessing.setText("Rotation");
-
+        
         lblPosX.setText("Position X");
-
+        
         lblPosY.setText("Position Y");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_width_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_width_y.setMaximum(image1.getBounds().width);
         s_processing_width_y.setValue(100);
@@ -1325,7 +1326,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_height_y.setMaximum(9999);
         s_processing_height_y.setValue(9999);
@@ -1335,7 +1336,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_rotation_processing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_rotation.setMaximum(180);
         s_processing_rotation.setMinimum(-180);
@@ -1346,7 +1347,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_positionx, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_positionx.setMaximum(image1.getBounds().height / 2);
         s_processing_positionx.setMinimum(-(image1.getBounds().height / 2));
@@ -1357,7 +1358,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_pos_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_pos_y.setMaximum(image1.getBounds().width / 2);
         s_processing_pos_y.setMinimum(-(image1.getBounds().width / 2));
@@ -1368,7 +1369,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         jLabelGrayProcessing.setText("GrayLevel");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_gray.setMaximum(255);
@@ -1379,7 +1380,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         lblSpacingProcessing.setText("Spacing");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_spacing.setMaximum(image1.getBounds().height);
@@ -1389,11 +1390,11 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedProcessing(evt);
             }
         });
-
+        
         bindingGroup.addBinding(binding);
-
-
-
+        
+        
+        
         buttonGennerateProcessing.setText("Generate");
         buttonGennerateProcessing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1431,9 +1432,9 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         lblHeightX.setText("Width X");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_height_x.setMaximum(image1.getBounds().height);
         s_processing_height_x.setValue(100);
@@ -1443,7 +1444,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         javax.swing.GroupLayout jPanelProcessingLayout = new javax.swing.GroupLayout(panelSignal);
         panelSignal.setLayout(jPanelProcessingLayout);
         jPanelProcessingLayout.setHorizontalGroup(
@@ -1588,14 +1589,14 @@ public class EduControlerPattern extends OpticsPane {
 
         //lblZoom.setText("Zoom");
         lblZoom.setText("Gray level");
-
+        
         buttonSecondPhase.setText("Second display ON");
         buttonSecondPhase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedPhase(evt);
             }
         });
-
+        
         button11LensOnPhase.setText("1:1 leans ON");
         button11LensOnPhase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1608,14 +1609,14 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
+        
         buttonGeneralPhase.setText("General");
         buttonGeneralPhase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedPhase(evt);
             }
         });
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_phase_zoom, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtZoom, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_phase_zoom.setMaximum(255);
         s_phase_zoom.setValue(0);
@@ -1625,7 +1626,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
-
+        
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(panelPhase);
         panelPhase.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -1701,7 +1702,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         lblPleaseSelectPhoto.setText("Please open file");
-
+        
         buttonSecondPhoto.setText("Second display ON");
         buttonSecondPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1783,19 +1784,19 @@ public class EduControlerPattern extends OpticsPane {
         lblXLensMichelson.setText("X Position");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         lblYLensMichelson.setText("Y Position");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         jButtonLensMichelson.setText("General");
         jButtonLensMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedMichelSon(evt);
             }
         });
-
+        
         jButton11LensOnMichelson.setText("1:1 lens ON");
         jButton11LensOnMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1808,14 +1809,14 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
+        
         jButtonDisplaySecondOnMichelson.setText("Second display ON");
         jButtonDisplaySecondOnMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMichelSon(evt);
             }
         });
-
+        
         jSliderFocalLensMichelson.setMaximum(100000);
         jSliderFocalLensMichelson.setMinimum(-1000);
         jSliderFocalLensMichelson.setValue(522);
@@ -1824,7 +1825,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMicroscope(evt);
             }
         });
-
+        
         jSliderXPositionLensMichelson.setMaximum(1000);
         jSliderXPositionLensMichelson.setMinimum(-1000);
         jSliderXPositionLensMichelson.setValue(0);
@@ -1833,7 +1834,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
-
+        
         jSliderYPositionLensMichelson.setMaximum(1000);
         jSliderYPositionLensMichelson.setMinimum(-1000);
         jSliderYPositionLensMichelson.setValue(0);
@@ -1842,7 +1843,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
-
+        
         rangeSlider.setMinimum(-1000);
         rangeSlider.setMaximum(1000);
         rangeSlider.setValue(1000);
@@ -1860,7 +1861,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
-
+        
         javax.swing.GroupLayout jPanelLensMichelsonLayout = new javax.swing.GroupLayout(jPanelLensMichelson);
         jPanelLensMichelson.setLayout(jPanelLensMichelsonLayout);
         jPanelLensMichelsonLayout.setHorizontalGroup(
@@ -1933,23 +1934,23 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorSpectometerLensOn = new javax.swing.JButton();
         buttonMirrorSpectometerDisplaySecondOn = new javax.swing.JButton();
         buttonMirrorSpectometerGeneral = new javax.swing.JButton();
-
+        
         lblPhySpectometer.setText("Phy/100px");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderPhyMirrorSpectometer, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPhyMirrorSpectometer, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         lblThetaMirrorSpectometer.setText("Theta/100px");
-
+        
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderThetaMirrorSpectometer, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtThetaMirrorSpectometer, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
-
+        
         buttonMirrorSpectometerGeneral.setText("General");
         buttonMirrorSpectometerGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedMirrorSpectometer(evt);
             }
         });
-
+        
         buttonMirrorSpectometerLensOn.setText("1:1 lens ON");
         buttonMirrorSpectometerLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1962,14 +1963,14 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
+        
         buttonMirrorSpectometerDisplaySecondOn.setText("Second display ON");
         buttonMirrorSpectometerDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMirrorSpectometer(evt);
             }
         });
-
+        
         jSliderPhyMirrorSpectometer.setMaximum(314);
         jSliderPhyMirrorSpectometer.setMinimum(-314);
         jSliderPhyMirrorSpectometer.setValue(314);
@@ -1978,7 +1979,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMirrorSpectometer(evt);
             }
         });
-
+        
         jSliderThetaMirrorSpectometer.setMaximum(314);
         jSliderThetaMirrorSpectometer.setMinimum(-314);
         jSliderThetaMirrorSpectometer.setValue(314);
@@ -1987,7 +1988,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMirrorSpectometer(evt);
             }
         });
-
+        
         javax.swing.GroupLayout jPanelMirrorSpectometerlLayout = new javax.swing.GroupLayout(jPanelMirrorSpectometer);
         jPanelMirrorSpectometer.setLayout(jPanelMirrorSpectometerlLayout);
         jPanelMirrorSpectometerlLayout.setHorizontalGroup(
@@ -2043,6 +2044,114 @@ public class EduControlerPattern extends OpticsPane {
 
         // BEGIN Fresnel
         jPanelFresnel = new javax.swing.JPanel();
+        label_fresnel_width = new javax.swing.JLabel();
+        label_fresnel_height = new javax.swing.JLabel();
+        lblPleaseSelectFresnel = new javax.swing.JLabel();
+        text_fresnel_width = new javax.swing.JTextField();
+        text_fresnel_height = new javax.swing.JTextField();
+        s_fresnel_width = new javax.swing.JSlider();
+        s_fresnel_height = new javax.swing.JSlider();
+        buttonSecondFresnel = new javax.swing.JButton();
+        button11LensOnFresnel = new javax.swing.JButton();
+        buttonGeneralFresnel = new javax.swing.JButton();
+        buttonOpenFileFresnel = new JButton();
+        buttonOpenFileFresnel.setText("Open file images");
+        buttonOpenFileFresnel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_openFileActionPerformedFresnel(evt);
+            }
+        });
+        lblPleaseSelectFresnel.setText("Please open file");
+        
+        buttonSecondFresnel.setText("Second display ON");
+        buttonSecondFresnel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // buttonSecondFresnelActionPerformed(evt);
+            }
+        });
+        
+        button11LensOnFresnel.setText("1:1 leans ON");
+        button11LensOnFresnel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // button11LensOnFresnelActionPerformed(evt);
+            }
+        });
+        
+        buttonGeneralFresnel.setText("General");
+        buttonGeneralFresnel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //   buttonGeneralFresnelActionPerformed(evt);
+            }
+        });
+        
+        label_fresnel_width.setText("X");
+        label_fresnel_width.hide();
+        s_fresnel_width.setMaximum(1920);
+        s_fresnel_width.hide();
+        text_fresnel_width.setPreferredSize(new java.awt.Dimension(45, 20));
+        text_fresnel_height.setPreferredSize(new java.awt.Dimension(45, 20));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_fresnel_width, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_fresnel_width, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+        
+        s_fresnel_width.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedFresnel(evt);
+            }
+        });
+        text_fresnel_width.hide();
+        text_fresnel_height.setText("" + height_fresnel);
+        text_fresnel_height.hide();
+        javax.swing.GroupLayout layoutFresnel = new javax.swing.GroupLayout(jPanelFresnel);
+        jPanelFresnel.setLayout(layoutFresnel);
+        
+        layoutFresnel.setHorizontalGroup(
+                layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layoutFresnel.createSequentialGroup()
+                .addContainerGap()
+                .addGap(74, 74, 74)
+                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layoutFresnel.createSequentialGroup()
+                .addComponent(buttonGeneralFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(button11LensOnFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonSecondFresnel))
+                .addGroup(layoutFresnel.createSequentialGroup()
+                .addComponent(buttonOpenFileFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(lblPleaseSelectFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layoutFresnel.createSequentialGroup()
+                .addComponent(text_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_fresnel_width)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(text_fresnel_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(s_fresnel_width, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(144, Short.MAX_VALUE)));
+        layoutFresnel.setVerticalGroup(
+                layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutFresnel.createSequentialGroup()
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layoutFresnel.createSequentialGroup()
+                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonOpenFileFresnel)
+                .addComponent(lblPleaseSelectFresnel))
+                .addGap(18, 18, 18)
+                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(label_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_fresnel_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(s_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonGeneralFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOnFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonSecondFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)) //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                )));
         // END Fresnel
 
         // BEGIN Talbot
@@ -2051,7 +2160,7 @@ public class EduControlerPattern extends OpticsPane {
 
         tabbedControl.setBounds(580, 0, 665, 345);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
+        
         javax.swing.GroupLayout jPanelPatternLayout = new javax.swing.GroupLayout(jPanelPattern);
         jPanelPattern.setLayout(jPanelPatternLayout);
         jPanelPatternLayout.setHorizontalGroup(
@@ -2081,7 +2190,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         tabbedDiagram.setBounds(580, 580, 665, 335);
         layoutDiagram.add(tabbedDiagram, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -2134,16 +2243,16 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
-
+        
         tabbedDesLog.addTab("Description", desTelephotoLens);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/lens.png")));
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
@@ -2157,72 +2266,72 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
-
+        
         tabbedDesLog.addTab("Description", desMicroscope);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Microscope");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemAberrationActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Lens", null);
-
+        
         tabbedDesLog.addTab("Description", desAberration);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Aberration");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemMichelsonActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Lens", jPanelLensMichelson);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-
+        
         tabbedDesLog.addTab("Description", desMichelson);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Michelson");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Single Slit", panelSlit);
         jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
         tabbedDesLog.addTab("Description", desDiffaction);
@@ -2231,137 +2340,137 @@ public class EduControlerPattern extends OpticsPane {
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Diffraction");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemSpectrometerActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Mirror", jPanelMirrorSpectometer);
-
+        
         tabbedDesLog.addTab("Description", desSpectrometer);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Spectrometer");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemSignalProcessingActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Signal processing", panelSignal);
         jTabbedPaneOptics.addTab("Photo", panelSignalPhoto);
-
+        
         tabbedDesLog.addTab("Description", desSignalProcessing);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of SignalProcessing");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemPhaseShiftingActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Phase retarder", panelPhase);
-
+        
         tabbedDesLog.addTab("Description", desPhaseRetarder);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of haseShifting");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemTalbotImagesActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Talbot images", jPanelTalbot);
-
+        
         tabbedDesLog.addTab("Description", desTalbotImage);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Talbot");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemWavefrontActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
         jTabbedPaneOptics.addTab("Fresnel Transform", jPanelFresnel);
-
+        
         tabbedDesLog.addTab("Description", desWavefront);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavefront");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
-
+    
     public void jMenuItemWavelengthActionPerformed(java.awt.event.ActionEvent evt) {
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-
+        
         jTabbedPaneOptics.addTab("Lens", null);
-
+        
         tabbedDesLog.addTab("Description", desWavelength);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
-
+        
         lblDiagram.setIcon(null);
         lblDiagram.setText("Diagram of Wavelength");
         diagramLens.add(lblDiagram);
@@ -2382,7 +2491,9 @@ public class EduControlerPattern extends OpticsPane {
     //Processing
     private double processing_widthX = Double.valueOf(image1.getBounds().width), processing_widthY = 100, processing_heightX = 100, processing_heightY = Double.valueOf(image1.getBounds().height), processing_rotation = 0, processing_positionX = 0, processing_positionY = 0, processing_grayLevel = 255, processing_spacing = 400;
     private double zoom = 100.0, grayLevel = 255;
-
+    //Fresnel
+    private double width_fresnel = 1920, height_fresnel = 1080;
+    
     private boolean parseArguments() {
         boolean ret = false;
         try {
@@ -2437,42 +2548,46 @@ public class EduControlerPattern extends OpticsPane {
             processing_positionY = Double.valueOf(s_processing_pos_y.getValue());
             processing_grayLevel = Double.valueOf(s_processing_gray.getValue());
             processing_spacing = Double.valueOf(s_processing_spacing.getValue());
+            
+            width_fresnel = Double.valueOf(text_fresnel_width.getText());
+            height_fresnel = Double.valueOf(text_fresnel_height.getText());
+
             //phase
             zoom = Double.valueOf(s_phase_zoom.getValue());
             ret = true;
             this.xoff = xoff;
             this.yoff = yoff;
             this.focal = focal;
-
+            
             this.xoffMichelson = xoffMi;
             this.yoffMichelson = yoffMi;
             this.focalMichelson = focalMi;
-
+            
             this.xoffMicroscope = xoffMicroscope;
             this.yoffMicroscope = yoffMicroscope;
             this.focalMicroscope = focalMicroscope;
-
+            
             this.xoffCyllin = xoffCyllin;
             this.yoffCyllin = yoffCyllin;
             this.focalCyllin = focalCyllin;
-
+            
             this.d_widthX = widthSlit;
             this.d_heightX = heightSlit;
             this.d_postionX = postionSlit;
             this.d_rotation = rotationSlit;
             this.d_grayLevel = grayLevelSlit;
             this.d_spacing = spacingSlit;
-
+            
             this.d_widthX_double = widthDoubleSlit;
             this.d_heightX_double = heightDoubleSlit;
             this.d_postionX_double = postionDoubleSlit;
             this.d_rotation_double = rotationDoubleSlit;
             this.d_grayLevel_double = grayLevelDoubleSlit;
             this.d_spacing_double = spacingDoubleSlit;
-
+            
             this.phy = phyoff;
             this.theta = thetaoff;
-
+            
             this.thetaSpectrometer = thetaSpec / 100;
             this.phySpectrometer = phySpec / 100;
         } catch (Exception e) {
@@ -2484,7 +2599,8 @@ public class EduControlerPattern extends OpticsPane {
         return ret;
     }
     private static BufferedImage buffImages = null;
-
+    private static BufferedImage buffImagesFresnel = null;
+    
     private void b_openFileActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int returnVal = openFile.showOpenDialog(this);
@@ -2493,7 +2609,6 @@ public class EduControlerPattern extends OpticsPane {
             String ext = "";
             String extension = file.getName();
             extension = extension.toLowerCase();
-            System.out.println("Extenten : " + extension);
             if (extension.contains("jpg")) {
                 ext = ".jpg";
             }
@@ -2530,7 +2645,62 @@ public class EduControlerPattern extends OpticsPane {
         } else {
             System.out.println("File access cancelled by user.");
         }
-
+        
+    }
+    
+    private void b_openFileActionPerformedFresnel(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            System.out.println("Extenten : " + extension);
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    System.out.println("vaoooooooooooooooooooo");
+                    buffImagesFresnel = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.updateFresnelParameter(buffImagesFresnel.getWidth(), buffImagesFresnel.getHeight());
+                    image.fresnel(buffImagesFresnel);
+                    EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+                    text_fresnel_width.setText("" + buffImagesFresnel.getWidth());
+                    text_fresnel_width.show();
+                    text_fresnel_height.setText("" + buffImagesFresnel.getHeight());
+                    text_fresnel_height.show();
+                    label_fresnel_width.show();
+                    s_fresnel_width.show();
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            System.out.println("File access cancelled by user.");
+        }
+        
     }
 
 //    public void logString(String msg) {
@@ -2550,43 +2720,43 @@ public class EduControlerPattern extends OpticsPane {
     public void setLog(String msg) {
         jTextAreaLog.append(msg + System.getProperty("line.separator"));
     }
-
+    
     private String genLogLen() {
         return String.format(logmessageLen, Double.toString(focal), Double.toString(xoff), Double.toString(yoff));
     }
-
+    
     private String genLogLensMichelson() {
         return String.format(logmessageLensMichelson, Double.toString(focalMichelson), Double.toString(xoffMichelson), Double.toString(yoffMichelson));
     }
-
+    
     private String genLogMicroscope() {
         return String.format(logmessageMicroscope, Double.toString(focalMicroscope), Double.toString(xoffMicroscope), Double.toString(yoffMicroscope));
     }
-
+    
     private String genLogCyllin() {
         return String.format(logmessageCyllin, Double.toString(focalCyllin), Double.toString(xoffCyllin), Double.toString(yoffCyllin));
     }
-
+    
     private String genLogMirror() {
         return String.format(logmessageMirror, Double.toString(phy), Double.toString(theta));
     }
-
+    
     private String genLogSlit() {
         return String.format(logmessageSlit, Double.toString(d_heightX), Double.toString(d_rotation), Double.toString(d_postionX), Double.toString(d_grayLevel));
     }
-
+    
     private String genLogDoubleSlit() {
         return String.format(logmessageDoubleSlit, Double.toString(d_heightX_double), Double.toString(d_rotation_double), Double.toString(d_postionX_double), Double.toString(d_grayLevel_double), Double.toString(d_spacing_double));
     }
-
+    
     private String genLogProcessing() {
         return String.format(logmessageProcessing, Double.toString(processing_heightX), Double.toString(processing_widthY), Double.toString(processing_rotation), Double.toString(processing_positionX), Double.toString(processing_positionY), Double.toString(processing_grayLevel), Double.toString(processing_spacing));
     }
-
+    
     private String genLogPhase() {
         return String.format(logmessagePhase, Double.toString(zoom));
     }
-
+    
     private String genLogMirrorSpectrometer() {
         return String.format(logmessageMirrorSpectrometer, Double.toString(phySpectrometer), Double.toString(thetaSpectrometer));
     }
@@ -2602,7 +2772,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogLen());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformed
 
     private void button11LensOnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnActionPerformed
@@ -2614,14 +2784,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
-
+            
             if (countLenOnTelephoto % 2 == 0) {
                 magFrameLenon.dispose();
-                  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -2633,7 +2803,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setResizable(false);
             }
         }
-
+        
     }//GEN-LAST:event_button11LensOnActionPerformed
 
     private void buttonSecondGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
@@ -2661,8 +2831,86 @@ public class EduControlerPattern extends OpticsPane {
         }
     }//GEN-LAST:event_sliderGenerateActionPerformed
     // END Lens
+  /*
+     * Fresnel
+     */
+    
+    private void buttonGenerateActionPerformedFresnel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
+        actionTag = "Fresnel";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateFresnelParameter(width_fresnel, height_fresnel);
+            image.fresnel(buffImagesFresnel);
+            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            setLog(genLogLen());
+            imageGenerated = true;
+        }
+        
+    }//GEN-LAST:event_buttonGenerateActionPerformed
 
+    private void button11LensOnActionPerformedFresnel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnActionPerformed
+        actionTag = "Fresnel";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateFresnelParameter(width_fresnel, height_fresnel);
+            image.fresnel(buffImagesFresnel);
+            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            setLog(genLogLen());
+            imageGenerated = true;
+            
+            if (countLenOnTelephoto % 2 == 0) {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        patternFrame.show();
+                    }
+                });
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
+            }
+        }
+        
+    }//GEN-LAST:event_button11LensOnActionPerformed
+
+    private void buttonSecondGenerateActionPerformedFresnel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
+        actionTag = "Fresnel";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateFresnelParameter(width_fresnel, height_fresnel);
+            image.fresnel(buffImagesFresnel);
+            EduPatternTest.updateLensPattern(image, genLogLen());
+            setLog(genLogLen());
+            //EduPatternTest.updateLensPatternPattern(image, genLog());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_buttonSecondGenerateActionPerformed
+
+    private void sliderGenerateActionPerformedFresnel(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
+        actionTag = "Fresnel";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            float IMG_HEIGHT = 0;
+            try {
+                IMG_HEIGHT = (float) buffImagesFresnel.getHeight() / ((float) buffImagesFresnel.getWidth() / (float) width_fresnel);
+                text_fresnel_height.setText("" + (int) IMG_HEIGHT);
+            } catch (Exception e) {
+            }
+            image.updateFresnelParameter(width_fresnel, IMG_HEIGHT);
+            image.fresnel(buffImagesFresnel);
+            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            setLog(genLogLen());
+            imageGenerated = true;
+        }
+    }
     // Lens Michelson
+
     private void buttonGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMichelSon
         actionTag = "LensMichelson";
         if (parseArguments()) {
@@ -2673,7 +2921,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogLensMichelson());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformedMichelSon
 
     private void button11LensOnMichelsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMichelsonActionPerformed
@@ -2685,14 +2933,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogLensMichelson());
             setLog(genLogLensMichelson());
             imageGenerated = true;
-
+            
             if (countLenOnMichelson % 2 == 0) {
                 magFrameLenon.dispose();
-                  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -2703,9 +2951,9 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
             }
-
+            
         }
-
+        
     }//GEN-LAST:event_button11LensOnMichelsonActionPerformed
 
     private void buttonSecondGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMichelSon
@@ -2743,7 +2991,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogMicroscope());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformedMicroscope
 
     private void button11LensOnMicroscopeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMicroscopeActionPerformed
@@ -2755,14 +3003,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogMicroscope());
             setLog(genLogMicroscope());
             imageGenerated = true;
-
+            
             if (countLenOnMicroscope % 2 == 0) {
                 magFrameLenon.dispose();
-                  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -2773,9 +3021,9 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
             }
-
+            
         }
-
+        
     }//GEN-LAST:event_button11LensOnMicroscopeActionPerformed
 
     private void buttonSecondGenerateActionPerformedMicroscope(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMicroscope
@@ -2814,7 +3062,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogCyllin());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void button11LensOnCyllinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCyllinActionPerformed
@@ -2826,14 +3074,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
-
+            
             if (countLenOnCyllin % 2 == 0) {
                 magFrameLenon.dispose();
-                  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -2844,9 +3092,9 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
             }
-
+            
         }
-
+        
     }//GEN-LAST:event_button11LensOnCyllinActionPerformed
 
     private void buttonSecondGenerateActionPerformedCyllin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
@@ -2885,7 +3133,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogMirror());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void button11LensOnMirrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorActionPerformed
@@ -2897,14 +3145,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogMirror());
             setLog(genLogMirror());
             imageGenerated = true;
-
+            
             if (countLenOnMirror % 2 == 0) {
                 magFrameLenon.dispose();
-                  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -2915,9 +3163,9 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
             }
-
+            
         }
-
+        
     }//GEN-LAST:event_button11LensOnMirrorActionPerformed
 
     private void buttonSecondGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
@@ -2956,7 +3204,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogSlit());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void button11LensOnSlitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnSlitActionPerformed
@@ -2968,13 +3216,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogSlit());
             setLog(genLogSlit());
             imageGenerated = true;
-
+            
             if (countLenOnSlit % 2 == 0) {
-                magFrameLenon.dispose();  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
                 
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
@@ -2986,9 +3235,9 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
             }
-
+            
         }
-
+        
     }//GEN-LAST:event_button11LensOnSlitActionPerformed
 
     private void buttonSecondGenerateActionPerformedSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
@@ -3027,7 +3276,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogDoubleSlit());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformedDoubleSlit
 
     private void button11LensOnDoubleSlitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnDoubleSlitActionPerformed
@@ -3039,14 +3288,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogDoubleSlit());
             setLog(genLogDoubleSlit());
             imageGenerated = true;
-
+            
             if (countLenOnDoubleSlit % 2 == 0) {
                 magFrameLenon.dispose();
-                  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -3058,9 +3307,9 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
             }
-
+            
         }
-
+        
     }//GEN-LAST:event_button11LensOnDoubleSlitActionPerformed
 
     private void buttonSecondGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedDoubleSlit
@@ -3099,7 +3348,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogProcessing());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
 
     private void button11LensOnProcessingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnProcessingActionPerformed
@@ -3117,7 +3366,7 @@ public class EduControlerPattern extends OpticsPane {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -3158,7 +3407,7 @@ public class EduControlerPattern extends OpticsPane {
     /*
      * Signal Photo
      */
-
+    
     private void buttonGenerateActionPerformedProcessingPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "ProcessingPhoto";
         if (parseArguments()) {
@@ -3169,9 +3418,9 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogProcessing());
             imageGenerated = true;
         }
-
+        
     }
-
+    
     private void button11LensOnProcessingPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnProcessingPhotoActionPerformed
         actionTag = "ProcessingPhoto";
         if (parseArguments()) {
@@ -3180,15 +3429,15 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
-
+            
             if (countLenOnPhoto % 2 == 0) {
                 magFrameLenon.dispose();
-                  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
-
+                });
+                
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -3199,9 +3448,9 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLenon.setResizable(false);
             }
-
+            
         }
-
+        
     }//GEN-LAST:event_button11LensOnProcessingPhotoActionPerformed
 
     private void buttonSecondGenerateActionPerformedProcessingPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
@@ -3216,7 +3465,7 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }
-
+    
     private void sliderGenerateActionPerformedProcessingPhoto(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
         actionTag = "ProcessingPhoto";
         if (parseArguments()) {
@@ -3231,7 +3480,7 @@ public class EduControlerPattern extends OpticsPane {
     /*
      * Phase
      */
-
+    
     private void buttonGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "Phase";
         if (parseArguments()) {
@@ -3253,14 +3502,14 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogPhase());
             setLog(genLogPhase());
             imageGenerated = true;
-
+            
             if (countLenOnPhase % 2 == 0) {
                 magFrameLenon.dispose();
-                  panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         patternFrame.show();
                     }
-               });
+                });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
@@ -3272,7 +3521,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setResizable(false);
             }
         }
-
+        
     }//GEN-LAST:event_button11LensOnPhaseActionPerformed
 
     private void buttonSecondGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
@@ -3311,7 +3560,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogMirrorSpectrometer());
             imageGenerated = true;
         }
-
+        
     }//GEN-LAST:event_buttonGenerateActionPerformedMirrorSpectometer
 
     private void button11LensOnMirrorSpectometerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorSpectometerActionPerformed
@@ -3323,7 +3572,7 @@ public class EduControlerPattern extends OpticsPane {
             EduPatternTest.updateLensPatternPattern(image, genLogMirrorSpectrometer());
             setLog(genLogMirrorSpectrometer());
             imageGenerated = true;
-
+            
             if (countLenOnSpectrometer % 2 == 0) {
                 magFrameLensOnSpectrometer.dispose();
             } else {
@@ -3336,9 +3585,9 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLensOnSpectrometer.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 magFrameLensOnSpectrometer.setResizable(false);
             }
-
+            
         }
-
+        
     }//GEN-LAST:event_button11LensOnMirrorSpectometerActionPerformed
 
     private void buttonSecondGenerateActionPerformedMirrorSpectometer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMirrorSpectometer
@@ -3487,7 +3736,18 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonMirrorSpectometerGeneral;
     private javax.swing.JPanel jPanelMirrorSpectometer;
     // Fresnel
+    private javax.swing.JButton buttonOpenFileFresnel;
     private javax.swing.JPanel jPanelFresnel;
+    private javax.swing.JButton button11LensOnFresnel;
+    private javax.swing.JButton buttonSecondFresnel;
+    private javax.swing.JButton buttonGeneralFresnel;
+    private javax.swing.JLabel label_fresnel_height;
+    private javax.swing.JLabel label_fresnel_width;
+    private javax.swing.JSlider s_fresnel_height;
+    private javax.swing.JSlider s_fresnel_width;
+    private javax.swing.JTextField text_fresnel_height;
+    private javax.swing.JTextField text_fresnel_width;
+    private javax.swing.JLabel lblPleaseSelectFresnel;
     // Talbot
     private javax.swing.JPanel jPanelTalbot;
     /*
@@ -3663,7 +3923,7 @@ public class EduControlerPattern extends OpticsPane {
         image.updateLensParameter(xoff, yoff, focal);
         image.paintLens();
     }
-
+    
     void updateRegenerate() {
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
         if (imageGenerated) {
