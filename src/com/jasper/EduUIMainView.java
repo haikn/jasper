@@ -51,12 +51,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         panelOptic = new EduControlerPattern();
 
        // panelSignalProcessing = new com.jasper.SignalProcessing();
-        jPanelDescriptionLens = new DescriptionLens();
-        jPanelDescriptionMicroscope = new DescriptionMicroscope();
-        jPanelDescriptionAberration = new DescriptionAberration();
-        jPanelDescriptionMicheson = new DescriptionMicheson();
         jPanelExperimentDefault = new ExperimentDefault();
-        jPanelCalibration = new Calibration();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollDesc = new javax.swing.JScrollPane();
         jTextAreaLog = new javax.swing.JTextArea();
@@ -173,7 +168,6 @@ public class EduUIMainView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jPanelCalibration = new javax.swing.JPanel();
-        jPanelSlit = new Slit();
        // jPanelSignalProcessing = new SignalProcessing();
         jLayeredPane5 = new javax.swing.JLayeredPane();
         jPanelPhaseRetarder = new javax.swing.JPanel();
@@ -244,7 +238,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     public void changeLabTitle(String msg) {
         logString("Optical experiment " + msg);
         this.setTitle(eduKitTitle + " (" + msg + ")");
-        EduPatternTest.disablePatternFrame();
+        EduPatternShowOn.disablePatternFrame();
     }
     /*
      * Log String
@@ -255,7 +249,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
 
         // start logging if user chose to
-        if (EduPatternTest.logging == 1) {
+        if (EduPatternShowOn.logging == 1) {
             try {
                 BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
                 jTextAreaLog.write(logFileOut);
@@ -289,7 +283,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jTextAreaLog.append(msg + System.getProperty("line.separator"));
         jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
         // start logging if user chose to
-        if (EduPatternTest.logging == 1) {
+        if (EduPatternShowOn.logging == 1) {
             try {
                 BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
                 jTextAreaLog.write(logFileOut);

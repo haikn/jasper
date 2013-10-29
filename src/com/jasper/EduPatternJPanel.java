@@ -41,9 +41,9 @@ public class EduPatternJPanel extends JPanel {
 
     public EduPatternJPanel() {
         pimage = new PatternImage();
-        pimage.init(EduPatternTest.lambda);
+        pimage.init(EduPatternShowOn.lambda);
         pimage1 = new PatternImage();
-        pimage1.init(EduPatternTest.lambda);
+        pimage1.init(EduPatternShowOn.lambda);
         isScreen = false;
     }
 
@@ -78,7 +78,7 @@ public class EduPatternJPanel extends JPanel {
         if (isScreen) {
             // draw title string to the screen
             Graphics2D g2 = (Graphics2D) g;
-            String title = "JDC EDUKIT " + PatternImage.width + "x" + bounds.height + " (" + EduPatternTest.lambdaStr + "nm)" + ": " + pimage.title;
+            String title = "JDC EDUKIT " + PatternImage.width + "x" + bounds.height + " (" + EduPatternShowOn.lambdaStr + "nm)" + ": " + pimage.title;
             g2.setFont(font);
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
             g2.setColor(Color.yellow);

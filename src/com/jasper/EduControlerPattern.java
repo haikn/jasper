@@ -9,7 +9,7 @@
  */
 package com.jasper;
 
-import static com.jasper.EduPatternTest.patternFrame;
+import static com.jasper.EduPatternShowOn.patternFrame;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -90,6 +90,7 @@ public class EduControlerPattern extends OpticsPane {
         jPanelLens = new javax.swing.JPanel();
         jPanelCyllindrical1 = new javax.swing.JPanel();
         jPanelMicroscope = new javax.swing.JPanel();
+        jPanelNoSelect = new javax.swing.JPanel();
         // Lens
         jLabel3 = new javax.swing.JLabel();
         jSliderFocalLens = new javax.swing.JSlider();
@@ -183,7 +184,7 @@ public class EduControlerPattern extends OpticsPane {
                 
                 Object selected = comboBox.getSelectedItem();
                 if (selected.equals("      ------ Select experiment ------")) {
-                    //jMenuItemDefaultExperimentPerformed(evt);
+                    jMenuItemNoSelectActionPerformed(evt);
                 } else if (selected.equals("1. Telephoto lens")) {
                     jMenuItemTelephotoActionPerformed(evt);
                 } else if (selected.equals("2. Microscope")) {
@@ -970,7 +971,7 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
                 image.slit(slit);
-                EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+                EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
                 imageGenerated = true;
             }
         });
@@ -2236,6 +2237,31 @@ public class EduControlerPattern extends OpticsPane {
 
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void jMenuItemNoSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNoSelectActionPerformed
+//        changeLabTitle(labTitleTele);
+        jTabbedPaneOptics.removeAll();
+        layoutDiagram.removeAll();
+        diagramLens.removeAll();
+        tabbedDesLog.removeAll();
+        
+        //jTabbedPaneOptics.add(null);
+        layoutControl.add(tabbedControl);
+        
+        tabbedDesLog.addTab("Description", desNoSelect);
+        jTextAreaLog.setColumns(20);
+        jTextAreaLog.setRows(5);
+        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+        jScrollPane2.setViewportView(jTextAreaLog);
+        tabbedDesLog.addTab("Log", jScrollPane2);
+        
+        lblDiagram.setIcon(null);
+        lblDiagram.setText(null);
+        diagramLens.add(lblDiagram);
+        layoutDiagram.add(diagramLens);
+        //setTabPanelEnable(jTabbedPaneOptics, true);
+
+    }//GEN-LAST:event_jMenuItemNoSelectActionPerformed
 
     public void jMenuItemTelephotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelephotoActionPerformed
 //        changeLabTitle(labTitleTele);
@@ -2277,7 +2303,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of Microscope");
+        lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -2298,7 +2324,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of Aberration");
+        lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -2363,7 +2389,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of Spectrometer");
+        lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -2385,7 +2411,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of SignalProcessing");
+        lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -2406,7 +2432,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of haseShifting");
+        lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -2427,7 +2453,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of Talbot");
+        lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -2451,7 +2477,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of Wavefront");
+        lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -2472,7 +2498,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         lblDiagram.setIcon(null);
-        lblDiagram.setText("Diagram of Wavelength");
+        lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -2636,7 +2662,7 @@ public class EduControlerPattern extends OpticsPane {
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                     //  image.updatePhaseRetarderParameter(zoom, grayLevel);
                     image.signalPhoto(buffImages);
-                    EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
                     imageGenerated = true;
                 } catch (IOException ex) {
                     System.out.println("problem accessing file" + file.getAbsolutePath());
@@ -2685,7 +2711,7 @@ public class EduControlerPattern extends OpticsPane {
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                     image.updateFresnelParameter(buffImagesFresnel.getWidth(), buffImagesFresnel.getHeight());
                     image.fresnel(buffImagesFresnel);
-                    EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
                     text_fresnel_width.setText("" + buffImagesFresnel.getWidth());
                     text_fresnel_width.show();
                     text_fresnel_height.setText("" + buffImagesFresnel.getHeight());
@@ -2708,7 +2734,7 @@ public class EduControlerPattern extends OpticsPane {
 //        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
 //
 //        // start logging if user chose to
-//        if (EduPatternTest.logging == 1) {
+//        if (EduPatternShowOn.logging == 1) {
 //            try {
 //                BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
 //                jTextAreaLog.write(logFileOut);
@@ -2768,7 +2794,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
-            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
         }
@@ -2781,7 +2807,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
-            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
             
@@ -2812,7 +2838,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
-            EduPatternTest.updateLensPattern(image, genLogLen());
+            EduPatternShowOn.updateLensPattern(image, genLogLen());
             setLog(genLogLen());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -2825,7 +2851,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
-            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
         }
@@ -2841,7 +2867,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateFresnelParameter(width_fresnel, height_fresnel);
             image.fresnel(buffImagesFresnel);
-            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
         }
@@ -2854,7 +2880,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateFresnelParameter(width_fresnel, height_fresnel);
             image.fresnel(buffImagesFresnel);
-            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
             
@@ -2885,7 +2911,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateFresnelParameter(width_fresnel, height_fresnel);
             image.fresnel(buffImagesFresnel);
-            EduPatternTest.updateLensPattern(image, genLogLen());
+            EduPatternShowOn.updateLensPattern(image, genLogLen());
             setLog(genLogLen());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -2904,7 +2930,7 @@ public class EduControlerPattern extends OpticsPane {
             }
             image.updateFresnelParameter(width_fresnel, IMG_HEIGHT);
             image.fresnel(buffImagesFresnel);
-            EduPatternTest.updateLensPatternPattern(image, genLogLen());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
             setLog(genLogLen());
             imageGenerated = true;
         }
@@ -2917,7 +2943,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
             image.paintLensMichelson();
-            EduPatternTest.updateLensPatternPattern(image, genLogLensMichelson());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLensMichelson());
             setLog(genLogLensMichelson());
             imageGenerated = true;
         }
@@ -2930,7 +2956,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
             image.paintLensMichelson();
-            EduPatternTest.updateLensPatternPattern(image, genLogLensMichelson());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLensMichelson());
             setLog(genLogLensMichelson());
             imageGenerated = true;
             
@@ -2962,7 +2988,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
             image.paintLensMichelson();
-            EduPatternTest.updateLensPattern(image, genLogLensMichelson());
+            EduPatternShowOn.updateLensPattern(image, genLogLensMichelson());
             setLog(genLogLensMichelson());
             imageGenerated = true;
         }
@@ -2974,7 +3000,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
             image.paintLensMichelson();
-            EduPatternTest.updateLensPatternPattern(image, genLogLensMichelson());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLensMichelson());
             setLog(genLogLensMichelson());
             imageGenerated = true;
         }
@@ -2987,7 +3013,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
-            EduPatternTest.updateLensPatternPattern(image, genLogMicroscope());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMicroscope());
             setLog(genLogMicroscope());
             imageGenerated = true;
         }
@@ -3000,7 +3026,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
-            EduPatternTest.updateLensPatternPattern(image, genLogMicroscope());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMicroscope());
             setLog(genLogMicroscope());
             imageGenerated = true;
             
@@ -3032,7 +3058,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
-            EduPatternTest.updateLensPattern(image, genLogMicroscope());
+            EduPatternShowOn.updateLensPattern(image, genLogMicroscope());
             setLog(genLogMicroscope());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -3045,7 +3071,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
-            EduPatternTest.updateLensPatternPattern(image, genLogMicroscope());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMicroscope());
             setLog(genLogMicroscope());
             imageGenerated = true;
         }
@@ -3058,7 +3084,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
-            EduPatternTest.updateLensPatternPattern(image, genLogCyllin());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
         }
@@ -3071,7 +3097,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
-            EduPatternTest.updateLensPatternPattern(image, genLogCyllin());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
             
@@ -3103,7 +3129,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
-            EduPatternTest.updateLensPattern(image, genLogCyllin());
+            EduPatternShowOn.updateLensPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -3116,7 +3142,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
-            EduPatternTest.updateLensPatternPattern(image, genLogCyllin());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
         }
@@ -3129,7 +3155,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
-            EduPatternTest.updateLensPatternPattern(image, genLogMirror());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
             setLog(genLogMirror());
             imageGenerated = true;
         }
@@ -3142,7 +3168,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
-            EduPatternTest.updateLensPatternPattern(image, genLogMirror());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
             setLog(genLogMirror());
             imageGenerated = true;
             
@@ -3174,7 +3200,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
-            EduPatternTest.updateLensPattern(image, genLogMirror());
+            EduPatternShowOn.updateLensPattern(image, genLogMirror());
             setLog(genLogMirror());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -3187,7 +3213,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
-            EduPatternTest.updateLensPatternPattern(image, genLogMirror());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
             setLog(genLogMirror());
             imageGenerated = true;
         }
@@ -3200,7 +3226,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
-            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
             setLog(genLogSlit());
             imageGenerated = true;
         }
@@ -3213,7 +3239,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
-            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
             setLog(genLogSlit());
             imageGenerated = true;
             
@@ -3246,7 +3272,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
-            EduPatternTest.updateLensPattern(image, genLogSlit());
+            EduPatternShowOn.updateLensPattern(image, genLogSlit());
             setLog(genLogSlit());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -3259,7 +3285,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
-            EduPatternTest.updateLensPatternPattern(image, genLogSlit());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
             setLog(genLogSlit());
             imageGenerated = true;
         }
@@ -3272,7 +3298,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
-            EduPatternTest.updateLensPatternPattern(image, genLogDoubleSlit());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogDoubleSlit());
             setLog(genLogDoubleSlit());
             imageGenerated = true;
         }
@@ -3285,7 +3311,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
-            EduPatternTest.updateLensPatternPattern(image, genLogDoubleSlit());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogDoubleSlit());
             setLog(genLogDoubleSlit());
             imageGenerated = true;
             
@@ -3318,7 +3344,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
-            EduPatternTest.updateLensPattern(image, genLogDoubleSlit());
+            EduPatternShowOn.updateLensPattern(image, genLogDoubleSlit());
             setLog(genLogDoubleSlit());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -3331,7 +3357,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
-            EduPatternTest.updateLensPatternPattern(image, genLogDoubleSlit());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogDoubleSlit());
             setLog(genLogDoubleSlit());
             imageGenerated = true;
         }
@@ -3344,7 +3370,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
-            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
         }
@@ -3357,7 +3383,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
-            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
             if (countLenOnProcessing % 2 == 0) {
@@ -3386,7 +3412,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
-            EduPatternTest.updateLensPattern(image, genLogProcessing());
+            EduPatternShowOn.updateLensPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -3399,7 +3425,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
-            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
         }
@@ -3414,7 +3440,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             //   image.updateParameterDrawSignalPhoto(buffImages.get);
             image.signalPhoto(buffImages);
-            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
         }
@@ -3426,7 +3452,7 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.signalPhoto(buffImages);
-            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
             
@@ -3459,7 +3485,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalPhoto(buffImages);
-            EduPatternTest.updateLensPattern(image, genLogProcessing());
+            EduPatternShowOn.updateLensPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -3472,7 +3498,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             //  image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalPhoto(buffImages);
-            EduPatternTest.updateLensPatternPattern(image, genLogProcessing());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
             setLog(genLogProcessing());
             imageGenerated = true;
         }
@@ -3487,7 +3513,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
-            EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
             setLog(genLogPhase());
             imageGenerated = true;
         }
@@ -3499,7 +3525,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
-            EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
             setLog(genLogPhase());
             imageGenerated = true;
             
@@ -3530,7 +3556,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
-            EduPatternTest.updateLensPattern(image, genLogPhase());
+            EduPatternShowOn.updateLensPattern(image, genLogPhase());
             setLog(genLogPhase());
             //EduPatternTest.updateLensPatternPattern(image, genLog());
             imageGenerated = true;
@@ -3543,7 +3569,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
-            EduPatternTest.updateLensPatternPattern(image, genLogPhase());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
             setLog(genLogPhase());
             imageGenerated = true;
         }
@@ -3556,7 +3582,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
             image.paintMirrorSpectrometer();
-            EduPatternTest.updateLensPatternPattern(image, genLogMirrorSpectrometer());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorSpectrometer());
             setLog(genLogMirrorSpectrometer());
             imageGenerated = true;
         }
@@ -3569,7 +3595,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
             image.paintMirrorSpectrometer();
-            EduPatternTest.updateLensPatternPattern(image, genLogMirrorSpectrometer());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorSpectrometer());
             setLog(genLogMirrorSpectrometer());
             imageGenerated = true;
             
@@ -3596,7 +3622,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
             image.paintMirrorSpectrometer();
-            EduPatternTest.updateLensPattern(image, genLogMirrorSpectrometer());
+            EduPatternShowOn.updateLensPattern(image, genLogMirrorSpectrometer());
             setLog(genLogMirrorSpectrometer());
             imageGenerated = true;
         }
@@ -3608,7 +3634,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
             image.paintMirrorSpectrometer();
-            EduPatternTest.updateLensPatternPattern(image, genLogMirrorSpectrometer());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorSpectrometer());
             setLog(genLogMirrorSpectrometer());
             imageGenerated = true;
         }
@@ -3704,6 +3730,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonMirrorGeneral;
     private javax.swing.JPanel jPanelMirror;
     // END Mirror
+    private javax.swing.JPanel jPanelNoSelect;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JPanel jPanelCyllindrical;
     private javax.swing.JPanel jPanelCyllindrical1;
@@ -3879,28 +3906,30 @@ public class EduControlerPattern extends OpticsPane {
     private JFrame magFrameLenon;
     private JFrame magFrameLensOnSpectrometer;
     // Description
+    private javax.swing.JLabel desNoSelect =
+            new JLabel("");
     private javax.swing.JLabel desTelephotoLens =
-            new JLabel("<html><b>Description of Telephoto lens</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desMicroscope =
-            new JLabel("<html><b>Description of Microscope</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desAberration =
-            new JLabel("<html><b>Description of Aberration</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desMichelson =
-            new JLabel("<html><b>Description of Michelson</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desDiffaction =
-            new JLabel("<html><b>Description of Diffaction</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desSpectrometer =
-            new JLabel("<html><b>Description of Spectrometer</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desSignalProcessing =
-            new JLabel("<html><b>Description of Signal processing</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desPhaseRetarder =
-            new JLabel("<html><b>Description of Phase retarder</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desTalbotImage =
-            new JLabel("<html><b>Description of Talbot image</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desWavefront =
-            new JLabel("<html><b>Description of Wavefront</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desWavelength =
-            new JLabel("<html><b>Description of Wavelength</b><br></html>");
+            new JLabel("<html><b>No description available</b><br></html>");
 
     //End 
     @Override
@@ -3911,7 +3940,7 @@ public class EduControlerPattern extends OpticsPane {
             image.paintLens();
             imageGenerated = true;
         }
-        EduPatternTest.updatePatternScreen(image, "");
+        EduPatternShowOn.updatePatternScreen(image, "");
     }
     // paint boot screen, lens only
 
