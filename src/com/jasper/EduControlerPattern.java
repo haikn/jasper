@@ -248,6 +248,12 @@ public class EduControlerPattern extends OpticsPane {
         jButtonDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformed(evt);
+                countSecondDisplayTelephoto++;
+                if (countSecondDisplayTelephoto % 2 == 0) {
+                    jButtonDisplaySecondOn.setText("Second display OFF");
+                } else {
+                    jButtonDisplaySecondOn.setText("Second display ON");
+                }
             }
         });
         
@@ -2829,8 +2835,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
-                JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
+             
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensParameter(xoff, yoff, focal);
                 image.paintLens();
@@ -2838,6 +2843,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogLen());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayTelephoto % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformed
@@ -3937,6 +3945,8 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnPhoto = 1;
     private int countLenOnSlit = 1;
     private int countLenOnDoubleSlit = 1;
+    // Second display
+    private int countSecondDisplayTelephoto = 1;
     DoubleJSlider slider;
     /*
      * Photo
