@@ -380,7 +380,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionMicroscope, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionMicroscope, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         
-        buttonMicroscopeGeneral.setText("General");
+        buttonMicroscopeGeneral.setText("Generate");
         buttonMicroscopeGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedMicroscope(evt);
