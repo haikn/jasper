@@ -3403,7 +3403,6 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
                 countSecondDisplayTelephoto++;
-                System.out.println("countSecondDisplayTelephoto: " + countSecondDisplayTelephoto);
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -4340,16 +4339,16 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
             
             if (countLenOnSpectrometer % 2 == 0) {
-                magFrameLensOnSpectrometer.dispose();
+                magFrameLenon.dispose();
             } else {
-                magFrameLensOnSpectrometer = new JFrame("1:1 Lens On");
+                magFrameLenon = new JFrame("1:1 Lens On");
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
-                magFrameLensOnSpectrometer.getContentPane().add(mag);
-                magFrameLensOnSpectrometer.pack();
-                magFrameLensOnSpectrometer.setLocation(new Point(500, 420));
-                magFrameLensOnSpectrometer.setVisible(true);
-                magFrameLensOnSpectrometer.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLensOnSpectrometer.setResizable(false);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
             }
             
         }
