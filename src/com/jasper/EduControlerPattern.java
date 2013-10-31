@@ -3423,6 +3423,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformed(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
         actionTag = "Len";
         if (parseArguments()) {
+            jButton11LensOn.setEnabled(true);
+            jButtonDisplaySecondOn.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
@@ -3509,6 +3512,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedFresnel(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
         actionTag = "Fresnel";
         if (parseArguments()) {
+            button11LensOnFresnel.setEnabled(true);
+            buttonSecondFresnel.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             float IMG_HEIGHT = 0;
             try {
@@ -3598,6 +3604,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedLensMichelSon(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedLensMichelSon
         actionTag = "LensMichelson";
         if (parseArguments()) {
+            jButton11LensOnMichelson.setEnabled(true);
+            jButtonDisplaySecondOnMichelson.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
             image.paintLensMichelson();
@@ -3682,6 +3691,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedMicroscope(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedMicroscope
         actionTag = "Microscope";
         if (parseArguments()) {
+            buttonMicroscopeLensOn.setEnabled(true);
+            buttonMicroscopeDisplaySecondOn.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
@@ -3766,6 +3778,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedCyllin(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
         actionTag = "Cyllin";
         if (parseArguments()) {
+            buttonCyllinLensOn.setEnabled(true);
+            buttonCyllinDisplaySecondOn.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
@@ -3850,6 +3865,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedMirror(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
         actionTag = "Mirror";
         if (parseArguments()) {
+            buttonMirrorLensOn.setEnabled(true);
+            buttonMirrorDisplaySecondOn.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
@@ -3935,6 +3953,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedSlit(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
         actionTag = "Slit";
         if (parseArguments()) {
+            buttong11LensOnSlit.setEnabled(true);
+            buttonSecondDisplaySlit.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
@@ -4019,6 +4040,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedDoubleSlit(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedDoubleSlit
         actionTag = "DoubleSlit";
         if (parseArguments()) {
+            buttong11LensOnDoubleSlit.setEnabled(true);
+            buttonSecondDisplayDoubleSlit.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
@@ -4100,6 +4124,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedProcessing(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
         actionTag = "Processing";
         if (parseArguments()) {
+            button11LensOnProcessing.setEnabled(true);
+            buttonSecondDisplayProcessing.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
@@ -4186,6 +4213,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedProcessingPhoto(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
         actionTag = "ProcessingPhoto";
         if (parseArguments()) {
+            buttonSecondPhoto.setEnabled(true);
+            button11LensOnPhoto.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             //  image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
             image.signalPhoto(buffImages);
@@ -4270,6 +4300,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedPhase(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
         actionTag = "Phase";
         if (parseArguments()) {
+            buttonSecondPhase.setEnabled(true);
+            button11LensOnPhase.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
@@ -4348,6 +4381,9 @@ public class EduControlerPattern extends OpticsPane {
     private void sliderGenerateActionPerformedMirrorSpectometer(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedMirrorSpectometer
         actionTag = "MirrorSpectometer";
         if (parseArguments()) {
+            buttonMirrorSpectometerLensOn.setEnabled(true);
+            buttonMirrorSpectometerDisplaySecondOn.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
             image.paintMirrorSpectrometer();
