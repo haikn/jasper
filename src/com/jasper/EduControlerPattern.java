@@ -2438,7 +2438,9 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                magFrameLenon.dispose();
+                if(magFrameLenon != null){
+                    magFrameLenon.dispose();
+                }
             }
         });
         
