@@ -28,42 +28,6 @@ import javax.swing.JOptionPane;
 public class EduPatternShowOn {
 
     static public GraphicsDevice device;
-
-    public static void setDevice() {
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = env.getScreenDevices();
-
-        // if only one device is detected, then user selection is not required
-        if (devices.length == 1) {
-            EduPatternShowOn.device = devices[0];
-            return;
-        }
-
-        String shortenedlist[] = new String[devices.length];
-        int cnt = 0;
-        for (GraphicsDevice dev : devices) {
-            shortenedlist[cnt++] = dev.getIDstring();
-        }
-        int suggested = devices.length - 1;
-        int selected = suggested;
-        URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-        ImageIcon icon = new ImageIcon(url, "help");
-        ResourceBundle bundle = ResourceBundle.getBundle("resources/Text");
-        String chosen = (String) JOptionPane.showInputDialog(null,
-                bundle.getString("DISPLAY_SELECT_BODY"),
-                bundle.getString("DISPLAY_SELECT_HEAD"),
-                JOptionPane.INFORMATION_MESSAGE, icon, shortenedlist,
-                shortenedlist[suggested]);
-        if (chosen != null) {
-            for (int i = 0; i < shortenedlist.length; i++) {
-                if (shortenedlist[i].equals(chosen)) {
-                    selected = i;
-                    break;
-                }
-            }
-        }
-        EduPatternShowOn.device = devices[selected];
-    }
     static PatternImage pimage;
     static EduPatternJPanel patternPanel;
     static EduPatternJPanel patternPanel2;
@@ -270,6 +234,42 @@ public class EduPatternShowOn {
         }
     }
 
+    public static void setDevice() {
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = env.getScreenDevices();
+
+        // if only one device is detected, then user selection is not required
+        if (devices.length == 1) {
+            EduPatternShowOn.device = devices[0];
+            return;
+        }
+
+        String shortenedlist[] = new String[devices.length];
+        int cnt = 0;
+        for (GraphicsDevice dev : devices) {
+            shortenedlist[cnt++] = dev.getIDstring();
+        }
+        int suggested = devices.length - 1;
+        int selected = suggested;
+        URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+        ImageIcon icon = new ImageIcon(url, "help");
+        ResourceBundle bundle = ResourceBundle.getBundle("resources/Text");
+        String chosen = (String) JOptionPane.showInputDialog(null,
+                bundle.getString("DISPLAY_SELECT_BODY"),
+                bundle.getString("DISPLAY_SELECT_HEAD"),
+                JOptionPane.INFORMATION_MESSAGE, icon, shortenedlist,
+                shortenedlist[suggested]);
+        if (chosen != null) {
+            for (int i = 0; i < shortenedlist.length; i++) {
+                if (shortenedlist[i].equals(chosen)) {
+                    selected = i;
+                    break;
+                }
+            }
+        }
+        EduPatternShowOn.device = devices[selected];
+    }
+    
     public static void main(String[] args) {
         // parse arguments
         for (String arg : args) {

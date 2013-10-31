@@ -28,6 +28,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -230,20 +232,21 @@ public class EduControlerPattern extends OpticsPane {
                 buttonGenerateActionPerformed(evt);
             }
         });
-        
-        jButton11LensOn.setText("1:1 lens ON");
+        jButton11LensOn.setEnabled(false);
         jButton11LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnActionPerformed(evt);
-                countLenOnTelephoto++;
-                if (countLenOnTelephoto % 2 == 0) {
-                    jButton11LensOn.setText("1:1 lens OFF");
-                } else {
-                    jButton11LensOn.setText("1:1 lens ON");
-                }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            button11LensOnActionPerformed(evt);
+            countLenOnTelephoto++;
+            if (countLenOnTelephoto % 2 == 0) {
+                jButton11LensOn.setText("1:1 lens OFF");
+            } else {
+                jButton11LensOn.setText("1:1 lens ON");
             }
+        }
         });
+        jButton11LensOn.setText("1:1 lens ON");
         
+        jButtonDisplaySecondOn.setEnabled(false);
         jButtonDisplaySecondOn.setText("Second display ON");
         jButtonDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,6 +387,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeLensOn.setText("1:1 lens ON");
         buttonMicroscopeLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -397,10 +401,17 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setText("Second display ON");
         buttonMicroscopeDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMicroscope(evt);
+                countSecondDisplayMicroscope++;
+                if (countSecondDisplayMicroscope % 2 == 0) {
+                    buttonMicroscopeDisplaySecondOn.setText("Second display OFF");
+                } else {
+                    buttonMicroscopeDisplaySecondOn.setText("Second display ON");
+                }
             }
         });
         
@@ -516,6 +527,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        buttonCyllinLensOn.setEnabled(false);
         buttonCyllinLensOn.setText("1:1 lens ON");
         buttonCyllinLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -529,10 +541,17 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        buttonCyllinDisplaySecondOn.setEnabled(false);
         buttonCyllinDisplaySecondOn.setText("Second display ON");
         buttonCyllinDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedCyllin(evt);
+                countSecondDisplayCyllin++;
+                if (countSecondDisplayCyllin % 2 == 0) {
+                    buttonCyllinDisplaySecondOn.setText("Second display OFF");
+                } else {
+                    buttonCyllinDisplaySecondOn.setText("Second display ON");
+                }
             }
         });
         
@@ -648,6 +667,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        buttonMirrorLensOn.setEnabled(false);
         buttonMirrorLensOn.setText("1:1 lens ON");
         buttonMirrorLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -661,10 +681,17 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        buttonMirrorDisplaySecondOn.setEnabled(false);
         buttonMirrorDisplaySecondOn.setText("Second display ON");
         buttonMirrorDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMirror(evt);
+                countSecondDisplayMirror++;
+                if (countSecondDisplayMirror % 2 == 0) {
+                    buttonMirrorDisplaySecondOn.setText("Second display OFF");
+                } else {
+                    buttonMirrorDisplaySecondOn.setText("Second display ON");
+                }
             }
         });
         
@@ -939,6 +966,8 @@ public class EduControlerPattern extends OpticsPane {
                 buttonGenerateActionPerformedSlit(evt);
             }
         });
+        
+        buttong11LensOnSlit.setEnabled(false);
         buttong11LensOnSlit.setText("1:1 lens ON");
         buttong11LensOnSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -951,10 +980,18 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
+        
+        buttonSecondDisplaySlit.setEnabled(false);
         buttonSecondDisplaySlit.setText("Second display ON");
         buttonSecondDisplaySlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedSlit(evt);
+                countSecondDisplaySlit++;
+                if (countSecondDisplaySlit % 2 == 0) {
+                    buttonSecondDisplaySlit.setText("Second display OFF");
+                } else {
+                    buttonSecondDisplaySlit.setText("Second display ON");
+                }
             }
         });
         comboBoxSlit.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Single Slit", "Double Slit"}));
@@ -1076,6 +1113,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )));
+        
 
         //tabbedControl.addTab("  Slit  ", panelSlit);
 
@@ -1170,6 +1208,7 @@ public class EduControlerPattern extends OpticsPane {
                 buttonGenerateActionPerformedDoubleSlit(evt);
             }
         });
+        buttong11LensOnDoubleSlit.setEnabled(false);
         buttong11LensOnDoubleSlit.setText("1:1 lens ON");
         buttong11LensOnDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1182,10 +1221,17 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
         buttonSecondDisplayDoubleSlit.setText("Second display ON");
         buttonSecondDisplayDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedDoubleSlit(evt);
+                countSecondDisplayDoubleSlit++;
+                if (countSecondDisplayDoubleSlit % 2 == 0) {
+                    buttonSecondDisplayDoubleSlit.setText("Second display OFF");
+                } else {
+                    buttonSecondDisplayDoubleSlit.setText("Second display ON");
+                }
             }
         });
 
@@ -1408,6 +1454,7 @@ public class EduControlerPattern extends OpticsPane {
                 buttonGenerateActionPerformedProcessing(evt);
             }
         });
+        button11LensOnProcessing.setEnabled(false);
         button11LensOnProcessing.setText("1:1 lens ON");
         button11LensOnProcessing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1421,10 +1468,17 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
+        buttonSecondDisplayProcessing.setEnabled(false);
         buttonSecondDisplayProcessing.setText("Second display ON");
         buttonSecondDisplayProcessing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedProcessing(evt);
+                countSecondDisplayProcessing++;
+                if (countSecondDisplayProcessing % 2 == 0) {
+                    buttonSecondDisplayProcessing.setText("Second display OFF");
+                } else {
+                    buttonSecondDisplayProcessing.setText("Second display ON");
+                }
             }
         });
 
@@ -1597,14 +1651,22 @@ public class EduControlerPattern extends OpticsPane {
         //lblZoom.setText("Zoom");
         lblZoom.setText("Gray level");
         
+        buttonSecondPhase.setEnabled(false);
         buttonSecondPhase.setText("Second display ON");
         buttonSecondPhase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedPhase(evt);
+                countSecondDisplayPhase++;
+                if (countSecondDisplayPhase % 2 == 0) {
+                    buttonSecondPhase.setText("Second display OFF");
+                } else {
+                    buttonSecondPhase.setText("Second display ON");
+                }
             }
         });
         
-        button11LensOnPhase.setText("1:1 leans ON");
+        button11LensOnPhase.setEnabled(false);
+        button11LensOnPhase.setText("1:1 lens ON");
         button11LensOnPhase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button11LensOnPhaseActionPerformed(evt);
@@ -1710,17 +1772,25 @@ public class EduControlerPattern extends OpticsPane {
         });
         lblPleaseSelectPhoto.setText("Please open file");
         
+        buttonSecondPhoto.setEnabled(false);
         buttonSecondPhoto.setText("Second display ON");
         buttonSecondPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (buffImages != null) {
                     buttonSecondGenerateActionPerformedProcessingPhoto(evt);
+                    countSecondDisplayPhoto++;
+                    if (countSecondDisplayPhoto % 2 == 0) {
+                        buttonSecondPhoto.setText("Second display OFF");
+                    } else {
+                        buttonSecondPhoto.setText("Second display ON");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-        button11LensOnPhoto.setText("1:1 leans ON");
+        button11LensOnPhoto.setEnabled(false);
+        button11LensOnPhoto.setText("1:1 lens ON");
         button11LensOnPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (buffImages != null) {
@@ -1804,6 +1874,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        jButton11LensOnMichelson.setEnabled(false);
         jButton11LensOnMichelson.setText("1:1 lens ON");
         jButton11LensOnMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1817,10 +1888,17 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
         jButtonDisplaySecondOnMichelson.setText("Second display ON");
         jButtonDisplaySecondOnMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMichelSon(evt);
+                countSecondDisplayMichelson++;
+                if (countSecondDisplayMichelson % 2 == 0) {
+                    jButtonDisplaySecondOnMichelson.setText("Second display OFF");
+                } else {
+                    jButtonDisplaySecondOnMichelson.setText("Second display ON");
+                }
             }
         });
         
@@ -1958,6 +2036,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        buttonMirrorSpectometerLensOn.setEnabled(false);
         buttonMirrorSpectometerLensOn.setText("1:1 lens ON");
         buttonMirrorSpectometerLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1971,10 +2050,17 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
         buttonMirrorSpectometerDisplaySecondOn.setText("Second display ON");
         buttonMirrorSpectometerDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedMirrorSpectometer(evt);
+                countSecondDisplaySpectrometer++;
+                if (countSecondDisplaySpectrometer % 2 == 0) {
+                    buttonMirrorSpectometerDisplaySecondOn.setText("Second display OFF");
+                } else {
+                    buttonMirrorSpectometerDisplaySecondOn.setText("Second display ON");
+                }
             }
         });
         
@@ -2070,24 +2156,61 @@ public class EduControlerPattern extends OpticsPane {
         });
         lblPleaseSelectFresnel.setText("Please open file");
         
-        buttonSecondFresnel.setText("Second display ON");
-        buttonSecondFresnel.addActionListener(new java.awt.event.ActionListener() {
+        buttonGeneralPhoto.setText("General");
+        buttonGeneralPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // buttonSecondFresnelActionPerformed(evt);
+                if (buffImages != null) {
+                    buttonGenerateActionPerformedProcessingPhoto(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         
+        buttonSecondFresnel.setEnabled(false);
+        buttonSecondFresnel.setText("Second display ON");
+        buttonSecondFresnel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesFresnel != null) {
+                    buttonSecondGenerateActionPerformedFresnel(evt);
+                    countSecondDisplayFresnel++;
+                    if (countSecondDisplayFresnel % 2 == 0) {
+                        buttonSecondFresnel.setText("Second display OFF");
+                    } else {
+                        buttonSecondFresnel.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        button11LensOnFresnel.setEnabled(false);
         button11LensOnFresnel.setText("1:1 lens ON");
         button11LensOnFresnel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // button11LensOnFresnelActionPerformed(evt);
+                if (buffImagesFresnel != null) {
+                    button11LensOnActionPerformedFresnel(evt);
+                    countLenOnFresnel++;
+                    if (countLenOnFresnel % 2 == 0) {
+                        button11LensOnFresnel.setText("1:1 lens OFF");
+                    } else {
+                        button11LensOnFresnel.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         
         buttonGeneralFresnel.setText("General");
         buttonGeneralFresnel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //   buttonGeneralFresnelActionPerformed(evt);
+                if (buffImagesFresnel != null) {
+                    buttonGenerateActionPerformedFresnel(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         
@@ -2165,6 +2288,16 @@ public class EduControlerPattern extends OpticsPane {
         // BEGIN Talbot
         jPanelTalbot = new javax.swing.JPanel();
         // END Talbot
+        
+      
+        
+//        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+//            public void stateChanged(ChangeEvent e) {
+//                 System.out.println("Tab: " + jTabbedPaneOptics.getSelectedIndex());
+//                //int newIndex = tabbedControl.getSelectedIndex();
+//                //System.out.println("newIndex: " + newIndex);
+//            }
+//        });
 
         tabbedControl.setBounds(580, 0, 665, 345);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -2250,7 +2383,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        
+                
         tabbedDesLog.addTab("Description", desNoSelect);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -2262,12 +2395,52 @@ public class EduControlerPattern extends OpticsPane {
 
     public void jMenuItemTelephotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelephotoActionPerformed
 //        changeLabTitle(labTitleTele);
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
+        
         jTabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
+        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                magFrameLenon.dispose();
+            }
+        });
         
         tabbedDesLog.addTab("Description", desTelephotoLens);
         jTextAreaLog.setColumns(20);
@@ -2290,6 +2463,41 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
+        
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
         
         tabbedDesLog.addTab("Description", desMicroscope);
@@ -2310,6 +2518,41 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
         
         jTabbedPaneOptics.addTab("Lens", null);
         
@@ -2332,9 +2575,54 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
+        
         jTabbedPaneOptics.addTab("Lens", jPanelLensMichelson);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                jButton11LensOnMichelson.setEnabled(false);
+                jButtonDisplaySecondOnMichelson.setEnabled(false);
+                buttonCyllinLensOn.setEnabled(false);
+                buttonCyllinDisplaySecondOn.setEnabled(false);
+                buttonMirrorLensOn.setEnabled(false);
+                buttonMirrorDisplaySecondOn.setEnabled(false);
+            }
+        });
         
         tabbedDesLog.addTab("Description", desMichelson);
         jTextAreaLog.setColumns(20);
@@ -2355,8 +2643,52 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
+        
         jTabbedPaneOptics.addTab("Single Slit", panelSlit);
         jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
+        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                buttong11LensOnSlit.setEnabled(false);
+                buttonSecondDisplaySlit.setEnabled(false);
+                buttong11LensOnDoubleSlit.setEnabled(false);
+                buttonSecondDisplayDoubleSlit.setEnabled(false);
+            }
+        });
+        
         tabbedDesLog.addTab("Description", desDiffaction);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
@@ -2375,6 +2707,41 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
         
         jTabbedPaneOptics.addTab("Mirror", jPanelMirrorSpectometer);
         
@@ -2397,8 +2764,51 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
+        
         jTabbedPaneOptics.addTab("Signal processing", panelSignal);
         jTabbedPaneOptics.addTab("Photo", panelSignalPhoto);
+        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                buttonSecondPhoto.setEnabled(false);
+                button11LensOnPhoto.setEnabled(false);
+                 button11LensOnProcessing.setEnabled(false);
+                buttonSecondDisplayProcessing.setEnabled(false);
+            }
+        });
         
         tabbedDesLog.addTab("Description", desSignalProcessing);
         jTextAreaLog.setColumns(20);
@@ -2418,6 +2828,41 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
         
         jTabbedPaneOptics.addTab("Phase retarder", panelPhase);
         
@@ -2440,6 +2885,41 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
+        
         jTabbedPaneOptics.addTab("Talbot images", jPanelTalbot);
         
         tabbedDesLog.addTab("Description", desTalbotImage);
@@ -2461,10 +2941,57 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
+        
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
         jTabbedPaneOptics.addTab("Fresnel Transform", jPanelFresnel);
+        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                jButton11LensOn.setEnabled(false);
+                jButtonDisplaySecondOn.setEnabled(false);
+                buttonSecondFresnel.setEnabled(false);
+                button11LensOnFresnel.setEnabled(false);
+                buttonCyllinLensOn.setEnabled(false);
+                buttonCyllinDisplaySecondOn.setEnabled(false);
+                buttonMirrorLensOn.setEnabled(false);
+                buttonMirrorDisplaySecondOn.setEnabled(false);
+            }
+        });
         
         tabbedDesLog.addTab("Description", desWavefront);
         jTextAreaLog.setColumns(20);
@@ -2484,6 +3011,41 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        
+        buttonMicroscopeLensOn.setEnabled(false);
+        buttonMicroscopeDisplaySecondOn.setEnabled(false);
+
+        buttonCyllinLensOn.setEnabled(false);
+        buttonCyllinDisplaySecondOn.setEnabled(false);
+
+        buttonMirrorLensOn.setEnabled(false);
+        buttonMirrorDisplaySecondOn.setEnabled(false);
+
+        buttong11LensOnSlit.setEnabled(false);
+        buttonSecondDisplaySlit.setEnabled(false);
+
+        buttong11LensOnDoubleSlit.setEnabled(false);
+        buttonSecondDisplayDoubleSlit.setEnabled(false);
+
+        button11LensOnProcessing.setEnabled(false);
+        buttonSecondDisplayProcessing.setEnabled(false);
+
+        buttonSecondPhase.setEnabled(false);
+        button11LensOnPhase.setEnabled(false);
+
+        buttonSecondPhoto.setEnabled(false);
+        button11LensOnPhoto.setEnabled(false);
+
+        jButton11LensOnMichelson.setEnabled(false);
+        jButtonDisplaySecondOnMichelson.setEnabled(false);
+
+        buttonMirrorSpectometerLensOn.setEnabled(false);
+        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
+
+        buttonSecondFresnel.setEnabled(false);
+        button11LensOnFresnel.setEnabled(false);
+        jButton11LensOn.setEnabled(false);
+        jButtonDisplaySecondOn.setEnabled(false);
         
         jTabbedPaneOptics.addTab("Lens", null);
         
@@ -2788,6 +3350,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         actionTag = "Len";
         if (parseArguments()) {
+            jButton11LensOn.setEnabled(true);
+            jButtonDisplaySecondOn.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameter(xoff, yoff, focal);
             image.paintLens();
@@ -2835,7 +3400,10 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
-             
+                countSecondDisplayTelephoto++;
+                System.out.println("countSecondDisplayTelephoto: " + countSecondDisplayTelephoto);
+                JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensParameter(xoff, yoff, focal);
                 image.paintLens();
@@ -2869,6 +3437,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedFresnel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
         actionTag = "Fresnel";
         if (parseArguments()) {
+            button11LensOnFresnel.setEnabled(true);
+            buttonSecondFresnel.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateFresnelParameter(width_fresnel, height_fresnel);
             image.fresnel(buffImagesFresnel);
@@ -2889,7 +3460,7 @@ public class EduControlerPattern extends OpticsPane {
             setLog(genLogLen());
             imageGenerated = true;
             
-            if (countLenOnTelephoto % 2 == 0) {
+            if (countLenOnFresnel % 2 == 0) {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2916,6 +3487,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayFresnel--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -2925,6 +3497,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogLen());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayFresnel % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformed
@@ -2951,6 +3526,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMichelSon
         actionTag = "LensMichelson";
         if (parseArguments()) {
+            jButton11LensOnMichelson.setEnabled(true);
+            jButtonDisplaySecondOnMichelson.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
             image.paintLensMichelson();
@@ -2999,6 +3577,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayMichelson--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3007,6 +3586,9 @@ public class EduControlerPattern extends OpticsPane {
                 EduPatternShowOn.updateLensPattern(image, genLogLensMichelson());
                 setLog(genLogLensMichelson());
                 imageGenerated = true;
+                if (countSecondDisplayMichelson % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedMichelSon
@@ -3027,6 +3609,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedMicroscope(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMicroscope
         actionTag = "Microscope";
         if (parseArguments()) {
+            buttonMicroscopeLensOn.setEnabled(true);
+            buttonMicroscopeDisplaySecondOn.setEnabled(true);
+
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
             image.paintMicroscope();
@@ -3075,6 +3660,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayMicroscope--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3084,6 +3670,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogMicroscope());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayMicroscope % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedMicroscope
@@ -3104,6 +3693,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedCyllin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "Cyllin";
         if (parseArguments()) {
+            buttonCyllinLensOn.setEnabled(true);
+            buttonCyllinDisplaySecondOn.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
             image.paintCylindircal();
@@ -3152,6 +3744,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayCyllin--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3161,6 +3754,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogCyllin());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayCyllin % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
@@ -3181,6 +3777,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "Mirror";
         if (parseArguments()) {
+            buttonMirrorLensOn.setEnabled(true);
+            buttonMirrorDisplaySecondOn.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorParameter(phy, theta);
             image.paintMirror();
@@ -3229,6 +3828,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayMirror--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3238,6 +3838,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogMirror());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayMirror % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
@@ -3258,6 +3861,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "Slit";
         if (parseArguments()) {
+            buttong11LensOnSlit.setEnabled(true);
+            buttonSecondDisplaySlit.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
             image.slit(slit);
@@ -3307,6 +3913,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplaySlit--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3316,6 +3923,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogSlit());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplaySlit % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
@@ -3336,6 +3946,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedDoubleSlit
         actionTag = "DoubleSlit";
         if (parseArguments()) {
+            buttong11LensOnDoubleSlit.setEnabled(true);
+            buttonSecondDisplayDoubleSlit.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
             image.slit(2);
@@ -3385,6 +3998,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayDoubleSlit--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3394,6 +4008,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogDoubleSlit());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayDoubleSlit % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedDoubleSlit
@@ -3414,6 +4031,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "Processing";
         if (parseArguments()) {
+            button11LensOnProcessing.setEnabled(true);
+            buttonSecondDisplayProcessing.setEnabled(true);
+
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
             image.signalProcessing();
@@ -3459,6 +4079,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayProcessing--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3468,6 +4089,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogProcessing());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayProcessing % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
@@ -3490,6 +4114,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedProcessingPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "ProcessingPhoto";
         if (parseArguments()) {
+            buttonSecondPhoto.setEnabled(true);
+            button11LensOnPhoto.setEnabled(true);
+            
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             //   image.updateParameterDrawSignalPhoto(buffImages.get);
             image.signalPhoto(buffImages);
@@ -3538,6 +4165,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayPhoto--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3547,6 +4175,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogProcessing());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayPhoto % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }
@@ -3569,6 +4200,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
         actionTag = "Phase";
         if (parseArguments()) {
+            buttonSecondPhase.setEnabled(true);
+            button11LensOnPhase.setEnabled(true);
+
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
             image.phaseRetarder();
@@ -3615,6 +4249,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplayPhase--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3624,6 +4259,9 @@ public class EduControlerPattern extends OpticsPane {
                 setLog(genLogPhase());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
+                if (countSecondDisplayPhase % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
@@ -3644,6 +4282,9 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedMirrorSpectometer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirrorSpectometer
         actionTag = "MirrorSpectometer";
         if (parseArguments()) {
+            buttonMirrorSpectometerLensOn.setEnabled(true);
+            buttonMirrorSpectometerDisplaySecondOn.setEnabled(true);
+
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
             image.paintMirrorSpectrometer();
@@ -3687,6 +4328,7 @@ public class EduControlerPattern extends OpticsPane {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] devices = env.getScreenDevices();
             if (devices.length == 1) {
+                countSecondDisplaySpectrometer--;
                 JOptionPane.showMessageDialog(null,  "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3695,6 +4337,9 @@ public class EduControlerPattern extends OpticsPane {
                 EduPatternShowOn.updateLensPattern(image, genLogMirrorSpectrometer());
                 setLog(genLogMirrorSpectrometer());
                 imageGenerated = true;
+                if (countSecondDisplaySpectrometer % 2 == 0) {
+                    patternFrame.dispose();
+                }
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedMirrorSpectometer
@@ -3945,8 +4590,42 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnPhoto = 1;
     private int countLenOnSlit = 1;
     private int countLenOnDoubleSlit = 1;
+    private int countLenOnFresnel = 1;
     // Second display
     private int countSecondDisplayTelephoto = 1;
+    private int countSecondDisplayProcessing = 1;
+    private int countSecondDisplayMirror = 1;
+    private int countSecondDisplayCyllin = 1;
+    private int countSecondDisplayMicroscope = 1;
+    private int countSecondDisplayMichelson = 1;
+    private int countSecondDisplayDiffaction = 1;
+    private int countSecondDisplaySpectrometer = 1;
+    private int countSecondDisplayTalbot = 1;
+    private int countSecondDisplayPhase = 1;
+    private int countSecondDisplayWavefront = 1;
+    private int countSecondDisplayWavelength = 1;
+    private int countSecondDisplayPhoto = 1;
+    private int countSecondDisplaySlit = 1;
+    private int countSecondDisplayDoubleSlit = 1;
+    private int countSecondDisplayFresnel = 1;
+    // Check disable lens ON
+//    private int countDisableTelephoto = 0;
+//    private int countDisableProcessing = 0;
+//    private int countDisableMirror = 0;
+//    private int countDisableCyllin = 0;
+//    private int countDisableMicroscope = 0;
+//    private int countDisableMichelson = 0;
+//    private int countDisableDiffaction = 0;
+//    private int countDisableSpectrometer = 0;
+//    private int countDisableTalbot = 0;
+//    private int countDisablePhase = 0;
+//    private int countDisableWavefront = 0;
+//    private int countDisableWavelength = 0;
+//    private int countDisablePhoto = 0;
+//    private int countDisableSlit = 0;
+//    private int countDisableDoubleSlit = 0;
+//    private int countDisableFresnel = 0;
+    
     DoubleJSlider slider;
     /*
      * Photo

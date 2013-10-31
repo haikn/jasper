@@ -51,7 +51,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         panelOptic = new EduControlerPattern();
 
        // panelSignalProcessing = new com.jasper.SignalProcessing();
-        jPanelExperimentDefault = new ExperimentDefault();
+        //jPanelExperimentDefault = new ExperimentDefault();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollDesc = new javax.swing.JScrollPane();
         jTextAreaLog = new javax.swing.JTextArea();
@@ -113,7 +113,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         // BEGIN paint boot screen, a lens pattern
-        ((ExperimentDefault) jPanelExperimentDefault).bootScreen();
+        //((ExperimentDefault) jPanelExperimentDefault).bootScreen();
 
         jTabbedPaneOptics.add(panelOptic);
        
