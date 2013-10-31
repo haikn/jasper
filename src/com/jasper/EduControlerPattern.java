@@ -226,7 +226,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionLens, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionLens, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         
-        jButtonLens.setText("General");
+        jButtonLens.setText("Generate");
         jButtonLens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformed(evt);
@@ -520,7 +520,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         
-        buttonCyllinGeneral.setText("General");
+        buttonCyllinGeneral.setText("Generate");
         buttonCyllinGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedCyllin(evt);
@@ -660,7 +660,7 @@ public class EduControlerPattern extends OpticsPane {
 //        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderThetaMirror, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtThetaMirror, org.jdesktop.beansbinding.BeanProperty.create("text"));
 //        bindingGroup.addBinding(binding);
 
-        buttonMirrorGeneral.setText("General");
+        buttonMirrorGeneral.setText("Generate");
         buttonMirrorGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedMirror(evt);
@@ -1679,7 +1679,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
-        buttonGeneralPhase.setText("General");
+        buttonGeneralPhase.setText("Generate");
         buttonGeneralPhase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedPhase(evt);
@@ -1806,7 +1806,7 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-        buttonGeneralPhoto.setText("General");
+        buttonGeneralPhoto.setText("Generate");
         buttonGeneralPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (buffImages != null) {
@@ -1867,7 +1867,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         
-        jButtonLensMichelson.setText("General");
+        jButtonLensMichelson.setText("Generate");
         jButtonLensMichelson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedMichelSon(evt);
@@ -2029,7 +2029,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderThetaMirrorSpectometer, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtThetaMirrorSpectometer, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         
-        buttonMirrorSpectometerGeneral.setText("General");
+        buttonMirrorSpectometerGeneral.setText("Generate");
         buttonMirrorSpectometerGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedMirrorSpectometer(evt);
@@ -2156,7 +2156,7 @@ public class EduControlerPattern extends OpticsPane {
         });
         lblPleaseSelectFresnel.setText("Please open file");
         
-        buttonGeneralPhoto.setText("General");
+        buttonGeneralPhoto.setText("Generate");
         buttonGeneralPhoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (buffImages != null) {
@@ -2203,7 +2203,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
-        buttonGeneralFresnel.setText("General");
+        buttonGeneralFresnel.setText("Generate");
         buttonGeneralFresnel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (buffImagesFresnel != null) {
