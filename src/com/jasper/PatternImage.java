@@ -405,6 +405,52 @@ public class PatternImage {
 //	}
 
     // Cylindircal algorithms
+    public void paintCylindircal0() {
+		WritableRaster raster = canvas.getRaster();
+
+		int[] iArray = new int[1];
+		double x1, y1, x2, phase;
+
+		double fixpart2 = 2.0 * Math.PI / lambda;
+		double fixpart = Math.PI / lambda / focalCyllin;
+
+		double costheta = Math.cos(Math.toRadians(yoffCyllin));
+		double sintheta = Math.sin(Math.toRadians(yoffCyllin));
+
+// following statement is for debugging
+//		System.out.println("paintCylindircal");
+		/*
+                 [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+
+                xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
+
+                % wavefront and its phase
+                wave=exp(1i*pi/wl*xt.^2);
+                phase=angle(wave)+pi;
+
+                % Hologram
+                hologram=phase/pi/2;
+                imshow(hologram) 
+                 */
+		for (int i = 0; i < height; i++) {
+			x1 = (double) (i - height/2 + 1) * pxsize;
+			x1 -= xoffCyllin;
+			for (int j = 0; j < width; j++) {
+				y1 = (double) (j - width/2 + 1) * pxsize;
+				x2 = x1 * costheta + y1 * sintheta;
+				x2 = Math.pow(x2, 2.0);
+				phase = fixpart * x2 + fixpart2 * y1;
+
+// following two statements are for debugging
+//				phase = fixpart2 * y1;
+//				System.out.println("i="+i+" j="+j+" phase="+phase);
+				
+				iArray[0] = phase2gray(phase);
+				raster.setPixel(j, i, iArray);
+			}
+		}
+	}
+    
     public void paintCylindircal() {
         WritableRaster raster = canvas.getRaster();
 
@@ -424,11 +470,11 @@ public class PatternImage {
         double fixpart = 2.0 * Math.PI / lambda;
 
         for (int i = 0; i < height; i++) {
-            x = (double) (i - height / 2 + 1) * pxsize;
+            x = (double) (i - height / 2) * pxsize;
             x = xcomp * x;
             for (int j = 0; j < width; j++) {
-                y = (double) (j - width / 2 + 1) * pxsize;
-                y = ycomp * y;
+                y = (double) (j - width / 2) * pxsize;
+                y = ycomp * Math.pow(y, 2.0);
                 phase = fixpart * (x + y);
 
                 iArray[0] = phase2gray(phase);

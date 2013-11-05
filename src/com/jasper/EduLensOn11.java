@@ -30,7 +30,7 @@ public class EduLensOn11 extends JComponent
         implements MouseMotionListener {
 
     double zoom;
-    // JComponent comp;
+    JComponent comp;
     Point point;
     Dimension mySize;
     Robot robot;
@@ -39,10 +39,10 @@ public class EduLensOn11 extends JComponent
         // flag to say don't draw until we get a MouseMotionEvent
         point = new Point(-1, -1);
         comp.addMouseMotionListener(this);
-        // this.comp = comp;
+        this.comp = comp;
         this.mySize = size;
         this.zoom = zoom;
-        // comp.addMouseMotionListener(this);
+        comp.addMouseMotionListener(this);
         // if we can't get a robot, then we just never
         // paint anything
         try {
@@ -71,7 +71,7 @@ public class EduLensOn11 extends JComponent
         int grabWidth = (int) ((double) mySize.width / zoom);
         int grabHeight = (int) ((double) mySize.height / zoom);
         // upper-left corner is current point
-        return new Rectangle(point.x, point.y, grabWidth, grabHeight);
+        return new Rectangle(point.x, point.y, grabWidth + 10, grabHeight + 10 );
     }
 
     public Dimension getPreferredSize() {
@@ -92,6 +92,11 @@ public class EduLensOn11 extends JComponent
         //  System.out.println(">>>>>>>>>E : " + e.getPoint());
         //   e.translatePoint(.x, offsetPoint.y);
         point = e.getPoint();
+        
+//        Point offsetPoint = comp.getLocationOnScreen();
+//        e.translatePoint (offsetPoint.x, offsetPoint.y);
+//        point = e.getPoint();
+        
         repaint();
     }
 

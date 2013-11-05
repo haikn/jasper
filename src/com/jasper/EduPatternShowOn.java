@@ -175,7 +175,7 @@ public class EduPatternShowOn {
         controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         controlFrame.setLocation(0, 0);
         //controlFrame.setBounds(0,0,1300,760);
-        controlFrame.setPreferredSize(new Dimension(1286, 720));
+        controlFrame.setPreferredSize(new Dimension(1286, 730));
 
         controlFrame.pack();
         controlFrame.setVisible(true);
