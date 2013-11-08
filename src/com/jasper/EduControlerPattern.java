@@ -5732,7 +5732,7 @@ public class EduControlerPattern extends OpticsPane {
 "I=|U|^2=|〖 U〗_1+U_2 |^2=|U_1 |^2+|U_2 |^2+U_1^* U_2+U_1 U_2^* <br />\n" +
 "其中|U_1 |^2=I_1、|U_2 |^2=I_2，則上式可寫成<br />\n" +
 "I=I_1+I_2+2〖(I_1 I_2)〗^(1⁄2) cos⁡(δ) <br />\n" +
-"其中〖δ=k ⃑〗_1∙r ⃑+ε_1-k ⃑_2∙r ⃑-ε_2為光程與起始相位所造成的相位差。當 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"
+"其中〖δ=k ⃑〗_1∙r ⃑+ε_1-k ⃑_2∙r ⃑-ε_2為光程與起始相位所造成的相位差。當  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"
             + "      <br />δ=0,±2π,±4π…為完全建設性干涉(total constructive interference)，<br />而δ=±π,±3π,±5π…為完全破壞性干涉(total destructive <br />interference)。<br />\n" +
 "    本實驗的干涉儀利用了分光鏡將入射的雷射光分成兩道光，一道穿透光<br />與一道反射光，這種分光的原理被分類為振幅分光(division of amplitude) <br />和楊格雙狹縫干涉中利用相鄰的兩條狹縫把同一道波前分成兩道新的光源的<br />波前分光(division of wave front)不同。接著由分光所分出的穿透光經由<br />相位調制器產生各種波前與反射光經由面鏡反射回來在空間中交會產生干涉，<br />並能在屏幕上觀察到干涉圖形。"
             + "<br />" +
