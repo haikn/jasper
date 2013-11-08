@@ -57,6 +57,17 @@ public class PatternImage {
     private double d_zoom;
     private double d_spacing;
     //end
+    // Talbot
+    private double d_widthXTalbot;
+    private double d_widthYTalbot;
+    private double d_heightXTalbot;
+    private double d_heightYTalbot;
+    private double d_postionXTalbot;
+    private double d_postionYTalbot;
+    private double d_rotationTalbot;
+    private double d_grayLevelTalbot;
+    private double d_zoomTalbot;
+    private double d_spacingTalbot;
     public BufferedImage canvas;
     public static int width;
     public static int height;
@@ -79,6 +90,10 @@ public class PatternImage {
     public Dimension rectSize = new Dimension();
     public int zoom_layout = 80;
     public int action = 0;
+    // Calibrationn
+    private double xoffCalibration;
+    private double yoffCalibration;
+    private double focalCalibration;
     // title string
     public String title;
 
@@ -187,6 +202,19 @@ public class PatternImage {
         this.d_spacing = processingSpac;
         title = "Draw Signal Processing " + d_widthX + " " + d_widthY + " " + this.d_heightX + " " + this.d_heightY + " " + this.d_postionX + " " + this.d_postionY + " " + this.d_rotation + " " + this.d_grayLevel + " " + this.d_spacing;
     }
+    
+    void updateParameterDrawTalbot(double widthX, double widthY, double heightX, double heightY, double postionX, double postionY, double rotation, double grayLevel, double processingSpac) {
+        this.d_widthXTalbot = widthX;
+        this.d_widthYTalbot = widthY;
+        this.d_heightXTalbot = heightX;
+        this.d_heightYTalbot = heightY;
+        this.d_postionXTalbot = postionX;
+        this.d_postionYTalbot = postionY;
+        this.d_rotationTalbot = rotation;
+        this.d_grayLevelTalbot = grayLevel;
+        this.d_spacingTalbot = processingSpac;
+        title = "Draw Talbot " + d_widthXTalbot + " " + d_widthYTalbot + " " + this.d_heightXTalbot + " " + this.d_heightYTalbot + " " + this.d_postionXTalbot + " " + this.d_postionYTalbot + " " + this.d_rotationTalbot + " " + this.d_grayLevelTalbot + " " + this.d_spacingTalbot;
+    }
 
     void updateParameterDrawSignalPhoto(double widthX, double heightX) {
         this.d_widthX = widthX;
@@ -209,6 +237,13 @@ public class PatternImage {
         this.yoffCyllin = angle;
         this.focalCyllin = focal;
         title = "cylindrical " + xoff + " " + angle + " " + focal;
+    }
+    
+    void updateCalibrationParameter(double xoff, double yoff, double focal) {
+        this.xoffCalibration = xoff;
+        this.yoffCalibration = yoff;
+        this.focalCalibration = focal;
+        title = "calibration " + xoff + " " + yoff + " " + focal;
     }
 
     void updateMicoscopeParameter(double xoff, double yoff, double focal) {
@@ -406,52 +441,52 @@ public class PatternImage {
 
     // Cylindircal algorithms
     public void paintCylindircal0() {
-		WritableRaster raster = canvas.getRaster();
+        WritableRaster raster = canvas.getRaster();
 
-		int[] iArray = new int[1];
-		double x1, y1, x2, phase;
+        int[] iArray = new int[1];
+        double x1, y1, x2, phase;
 
-		double fixpart2 = 2.0 * Math.PI / lambda;
-		double fixpart = Math.PI / lambda / focalCyllin;
+        double fixpart2 = 2.0 * Math.PI / lambda;
+        double fixpart = Math.PI / lambda / focalCyllin;
 
-		double costheta = Math.cos(Math.toRadians(yoffCyllin));
-		double sintheta = Math.sin(Math.toRadians(yoffCyllin));
+        double costheta = Math.cos(Math.toRadians(yoffCyllin));
+        double sintheta = Math.sin(Math.toRadians(yoffCyllin));
 
 // following statement is for debugging
 //		System.out.println("paintCylindircal");
 		/*
-                 [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+         [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
 
-                xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
+         xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
 
-                % wavefront and its phase
-                wave=exp(1i*pi/wl*xt.^2);
-                phase=angle(wave)+pi;
+         % wavefront and its phase
+         wave=exp(1i*pi/wl*xt.^2);
+         phase=angle(wave)+pi;
 
-                % Hologram
-                hologram=phase/pi/2;
-                imshow(hologram) 
-                 */
-		for (int i = 0; i < height; i++) {
-			x1 = (double) (i - height/2 + 1) * pxsize;
-			x1 -= xoffCyllin;
-			for (int j = 0; j < width; j++) {
-				y1 = (double) (j - width/2 + 1) * pxsize;
-				x2 = x1 * costheta + y1 * sintheta;
-				x2 = Math.pow(x2, 2.0);
-				phase = fixpart * x2 + fixpart2 * y1;
+         % Hologram
+         hologram=phase/pi/2;
+         imshow(hologram) 
+         */
+        for (int i = 0; i < height; i++) {
+            x1 = (double) (i - height / 2 + 1) * pxsize;
+            x1 -= xoffCyllin;
+            for (int j = 0; j < width; j++) {
+                y1 = (double) (j - width / 2 + 1) * pxsize;
+                x2 = x1 * costheta + y1 * sintheta;
+                x2 = Math.pow(x2, 2.0);
+                phase = fixpart * x2 + fixpart2 * y1;
 
 // following two statements are for debugging
 //				phase = fixpart2 * y1;
 //				System.out.println("i="+i+" j="+j+" phase="+phase);
-				
-				iArray[0] = phase2gray(phase);
-				raster.setPixel(j, i, iArray);
-			}
-		}
-	}
-    
-    public void paintCylindircal() {
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+
+    public void paintCylindircal11() {
         WritableRaster raster = canvas.getRaster();
 
         int[] iArray = new int[1];
@@ -483,7 +518,50 @@ public class PatternImage {
         }
     }
 
-    public void paintCylindircal2() {
+//    public void paintCylindircal() {
+//        WritableRaster raster = canvas.getRaster();
+//
+//        int[] iArray = new int[1];
+//        double phase, x, y;
+//        double phy = Math.toRadians(xoffCyllin);
+//        double theta = Math.toRadians(yoffCyllin);
+////        double pi = Math.toRadians(mirrorPhy);
+////        double th = Math.toRadians(mirrorTheta);
+////        double phy = pi/10.0D;
+////        double theta = th/10.0D;
+//        double focal = Math.toRadians(mirrorPhy);
+//
+//        double costheta = Math.cos(Math.toRadians(yoffCyllin));
+//        double sintheta = Math.sin(Math.toRadians(yoffCyllin));
+//        double xcomp = Math.sin(phy) * Math.cos(theta);
+//        double ycomp = Math.sin(phy) * Math.sin(theta);
+//
+////        wave=exp(j*pi/wl*xt.^2);
+////        phase=angle(wave)+pi;
+////        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
+////
+////xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
+////yt=-(x-x0)*sin(theta)+(y-y0)*cos(theta);
+////
+////% wavefront and its phase
+////wave=exp(1i*pi/wl*xt.^2);
+//        double fixpart = 2.0 * Math.PI / lambda;
+//
+//        for (int i = 0; i < height; i++) {
+//            x = (double) (i - height / 2 + 1) * pxsize;
+//            x = xcomp * x;
+//            for (int j = 0; j < width; j++) {
+//                y = (double) (j - width / 2 + 1) * pxsize;
+//                y = ycomp * y;
+//                phase = fixpart * (x + y);
+//
+//                iArray[0] = phase2gray(phase);
+//                raster.setPixel(j, i, iArray);
+//            }
+//        }
+//    }
+
+    public void paintCylindircal1() {
         WritableRaster raster = canvas.getRaster();
         int[] iArray = new int[1];
         double x2, y2, phase;
@@ -504,14 +582,13 @@ public class PatternImage {
 
                 Math.getExponent(y2);
                 phase = fixpart * (x2 + y2);
-                phase += fixpart2 * x2 * y2;
+                //phase += fixpart2 * x2 * y2;
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
             }
         }
     }
-
-    public void paintCylindircal1() {
+    public void paintCylindircal() {
 //        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
 //
 //        xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
@@ -529,7 +606,7 @@ public class PatternImage {
         int[] iArray = new int[1];
         double x1, y1, x2, phase;
 
-        double fixpart2 = 2.0 * Math.PI / lambda * Math.cos(Math.toRadians(3.0));
+        double fixpart2 = 2.0 * Math.PI / lambda;
         double fixpart = Math.PI / lambda / focalCyllin;
 
         double costheta = Math.cos(Math.toRadians(yoffCyllin));
@@ -542,7 +619,8 @@ public class PatternImage {
                 y1 = (double) (j - width / 2 + 1) * pxsize;
                 x2 = x1 * costheta - y1 * sintheta;
                 x2 = Math.pow(x2, 2.0);
-                phase = fixpart * x2 + fixpart2 * y1;
+                //phase = fixpart * x2 + fixpart2 * y1;
+                phase = fixpart * x2 + fixpart2 * Math.pow(x2, 2.0);
 
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
@@ -787,54 +865,6 @@ public class PatternImage {
         }
     }
 
-    // Talbot algorithms
-    public void paintTalbot() {
-        WritableRaster raster = canvas.getRaster();
-
-        int[] iArray = new int[1];
-        double phase, x, y;
-
-        double phy = Math.toRadians(mirrorPhy);
-        double theta = Math.toRadians(mirrorTheta);
-//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
-//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
-//        double phy = Math.PI/300;
-//        double theta = Math.PI/10;
-        double focal = Math.toRadians(mirrorPhy);
-
-// following statement is for debugging
-//		pi = Math.toRadians(3.0);
-
-        double xcomp = Math.sin(phy) * Math.cos(theta);
-        double ycomp = Math.sin(phy) * Math.sin(theta);
-
-        double fixpart = 2.0 * Math.PI / lambda;
-//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-//
-//        xt=x*cos(theta)+y*sin(theta);
-//
-//        yt=-x*sin(theta)+y*cos(theta);
-//
-//        % wavefront and its phase
-//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-
-        for (int i = 0; i < height; i++) {
-            x = (double) (i - height / 2 + 1) * pxsize;
-            x = xcomp * x;
-            for (int j = 0; j < width; j++) {
-                y = (double) (j - width / 2 + 1) * pxsize;
-                y = ycomp * y;
-                phase = fixpart * (x + y);
-
-// following statement is for debugging
-//				System.out.println("i="+i+" j="+j+" phase="+phase);
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
-
     // Wavefront algorithms
     public void paintWavefront() {
         WritableRaster raster = canvas.getRaster();
@@ -972,6 +1002,35 @@ public class PatternImage {
 
 // following statement is for debugging
 //				System.out.println("i="+i+" j="+j+" phase="+phase);
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+    }
+    
+    
+    // Calibration algorithms
+    public void paintCalibration() {
+        WritableRaster raster = canvas.getRaster();
+
+        int[] iArray = new int[1];
+        double x1, y1, x2, phase;
+
+        double fixpart2 = 2.0 * Math.PI / lambda * Math.cos(Math.toRadians(3.0));
+        double fixpart = Math.PI / lambda / focalCalibration;
+
+        double costheta = Math.cos(Math.toRadians(angle));
+        double sintheta = Math.sin(Math.toRadians(angle));
+        double x = xoffCalibration * 0.1D;
+        for (int i = 0; i < height; i++) {
+            x1 = (double) (i - height/2 + 1) * pxsize;
+            x1 -= x;
+            for (int j = 0; j < width; j++) {
+                y1 = (double) (j - width/2 + 1) * pxsize;
+                x2 = x1 * costheta - y1 * sintheta;
+                x2 = Math.pow(x2, 2.0);
+                phase = fixpart * x2 + fixpart2 * y1;
 
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
@@ -1212,6 +1271,66 @@ public class PatternImage {
             g.fill(rect2);
         }
     }
+    
+     public void paintTalbot() {
+
+        int lineWidthX = (int) d_widthXTalbot;
+        int lineHeightX = (int) d_heightXTalbot;
+        int lineWidthY = (int) d_widthYTalbot;
+        int lineHeightY = (int) d_heightYTalbot;
+        int lineRotation = (int) d_rotationTalbot;
+        int linePostionX = (int) d_postionXTalbot;
+        int linePostionY = (int) d_postionYTalbot;
+        int lineGray = (int) d_grayLevelTalbot;
+        int spac = (int) d_spacingTalbot;
+        Graphics2D g = (Graphics2D) canvas.getGraphics();
+        g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        int NumCol = 5;
+        int NumRow = 2;
+        int[] ColX;
+        int[] RowY;
+        ColX = new int[NumCol];
+        int DelX = canvas.getWidth() / NumCol;
+        for (int i = 0; i < ColX.length; i++) {
+            //if (linePostionY > 0) {
+            ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
+//            } else {
+//                ColX[i] = (DelX / 2 + DelX * i);
+//            }
+        }
+        RowY = new int[NumRow];
+        int DelY = canvas.getHeight() / NumRow;
+        for (int i = 0; i < RowY.length; i++) {
+            // if (linePostionX > 0) {
+            if (i % 2 == 0) {
+                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) - spac / 2);
+            } else {
+                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) + spac / 2);
+            }
+            //            } else {
+//                RowY[i] = DelY / 2 + DelY * i;
+//            }
+        }
+        Rectangle rect2;
+        for (int i = 0; i < NumCol; i++) {
+            g = (Graphics2D) canvas.getGraphics();
+            g.setColor(new Color(lineGray, lineGray, lineGray));
+            rect2 = new Rectangle(ColX[i] - lineWidthY / 2, (canvas.getHeight() - lineHeightY) / 2, lineWidthY, lineHeightY);
+            // g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
+            g.draw(rect2);
+            g.fill(rect2);
+        }
+        for (int i = 0; i < NumRow; i++) {
+            g = (Graphics2D) canvas.getGraphics();
+            g.setColor(new Color(lineGray, lineGray, lineGray));
+            rect2 = new Rectangle((canvas.getWidth() - lineWidthX) / 2, RowY[i] - lineHeightX / 2, lineWidthX, lineHeightX);
+            //g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
+            g.draw(rect2);
+            g.fill(rect2);
+        }
+    }
 
     public void signalPhoto(BufferedImage buffImg) {
 
@@ -1278,6 +1397,28 @@ public class PatternImage {
         Rectangle rect = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
         g.draw(rect);
         g.fill(rect);
+    }
+    
+    public void paintTalbotPhoto(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        g2.drawRenderedImage(buffImg, at);
     }
 
     /**

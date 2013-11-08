@@ -12,7 +12,6 @@ package com.jasper;
 import static com.jasper.EduPatternShowOn.patternFrame;
 import java.awt.Color;
 import java.awt.Component;
-import static java.awt.Component.LEFT_ALIGNMENT;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -38,9 +37,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 
 /**
  *
@@ -74,7 +73,6 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens = new javax.swing.JPanel();
         lblDiagram = new javax.swing.JLabel();
 
-        buttonPanel  = new javax.swing.JPanel();
         panelPattern = new EduPatternJPanel();
         jTabbedPaneOptics = new javax.swing.JTabbedPane();
         textFocal = new javax.swing.JTextField();
@@ -185,9 +183,6 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorLensOn = new javax.swing.JButton();
         buttonMirrorDisplaySecondOn = new javax.swing.JButton();
         buttonMirrorGeneral = new javax.swing.JButton();
-        
-        panelTelephoto = new javax.swing.JPanel();
-        panelMicroscope = new javax.swing.JPanel();
 
         tabbedControl.setAlignmentX(100);
 
@@ -303,35 +298,6 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformed(evt);
             }
         });
-        
-        // Button telephoto lens
-        
-        javax.swing.GroupLayout panelTelephotoLayout = new javax.swing.GroupLayout(panelTelephoto);
-        panelTelephoto.setLayout(panelTelephotoLayout);
-        panelTelephotoLayout.setHorizontalGroup(
-                panelTelephotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelTelephotoLayout.createSequentialGroup()
-                .addGroup(panelTelephotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelTelephotoLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jButtonLens, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
-                ));
-        panelTelephotoLayout.setVerticalGroup(
-                panelTelephotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelTelephotoLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(panelTelephotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButtonLens, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                //.addContainerGap(5, Short.MAX_VALUE)
-                //.addGap(5, 5, 5)
-                ));
 
         javax.swing.GroupLayout jPanelCyllindrical1Layout = new javax.swing.GroupLayout(jPanelCyllindrical1);
         jPanelCyllindrical1.setLayout(jPanelCyllindrical1Layout);
@@ -357,20 +323,18 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jSliderFocalLens, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
                 .addComponent(jSliderXPositionLens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSliderYPositionLens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-//                .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
-//                .addGap(98, 98, 98)
-//                .addComponent(jButtonLens, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
-                //.addContainerGap(23, Short.MAX_VALUE)
-                ));
+                .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jButtonLens, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE)));
         jPanelCyllindrical1Layout.setVerticalGroup(
                 jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(21, 21, 21)
                 .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(jSliderFocalLens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -388,12 +352,28 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jLabel2)
                 .addComponent(txtYPositionLens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSliderYPositionLens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-//                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-//                .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(jButtonLens, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
+                .addGap(20, 20, 20)
+                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonLens, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE)));
+
+//        javax.swing.GroupLayout jPanelLensLayout = new javax.swing.GroupLayout(jPanelLens);
+//        jPanelLens.setLayout(jPanelLensLayout);
+//        jPanelLensLayout.setHorizontalGroup(
+//            jPanelLensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(jPanelLensLayout.createSequentialGroup()
+//                .addGap(5, 5, 5)
+//                .addComponent(jPanelCyllindrical1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                .addContainerGap())
+//        );
+//        jPanelLensLayout.setVerticalGroup(
+//            jPanelLensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(jPanelLensLayout.createSequentialGroup()
+//                .addComponent(jPanelCyllindrical1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(0, 0, Short.MAX_VALUE))
+//        );
 
         jTabbedControler.addTab("Lens", jPanelLens);
         // END Telephone lens
@@ -474,30 +454,6 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        javax.swing.GroupLayout panelMicroscopeLayout = new javax.swing.GroupLayout(panelMicroscope);
-        panelMicroscope.setLayout(panelMicroscopeLayout);
-        panelMicroscopeLayout.setHorizontalGroup(
-                panelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMicroscopeLayout.createSequentialGroup()
-                .addGroup(panelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMicroscopeLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonMicroscopeGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )));
-        panelMicroscopeLayout.setVerticalGroup(
-                panelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMicroscopeLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(panelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMicroscopeGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
         javax.swing.GroupLayout jPanelMicroscopeLayout = new javax.swing.GroupLayout(jPanelMicroscope);
         jPanelMicroscope.setLayout(jPanelMicroscopeLayout);
         jPanelMicroscopeLayout.setHorizontalGroup(
@@ -522,19 +478,18 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jSliderFocalMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
                 .addComponent(jSliderXPositionMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSliderYPositionMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-//                .addGroup(jPanelMicroscopeLayout.createSequentialGroup()
-//                .addGap(98, 98, 98)
-//                .addComponent(buttonMicroscopeGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
+                .addGroup(jPanelMicroscopeLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(buttonMicroscopeGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE)));
         jPanelMicroscopeLayout.setVerticalGroup(
                 jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelMicroscopeLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(21, 21, 21)
                 .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(jSliderFocalMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -552,13 +507,12 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblYPosMicroscope)
                 .addComponent(txtYPositionMicroscope, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSliderYPositionMicroscope, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-//                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-//                .addComponent(buttonMicroscopeGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                //.addContainerGap(30, Short.MAX_VALUE)
-                ));
+                .addGap(20, 20, 20)
+                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonMicroscopeGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE)));
 
         jTabbedControler.addTab("Lens", jPanelMicroscope);
         // END Microscope
@@ -569,7 +523,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        lblXPosCyllin.setText("X Position");
+        lblXPosCyllin.setText("Position");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -613,8 +567,8 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderFocalCyllin.setMaximum(100000);
-        jSliderFocalCyllin.setMinimum(-1000);
+        jSliderFocalCyllin.setMaximum(100);
+        jSliderFocalCyllin.setMinimum(-100);
         jSliderFocalCyllin.setValue(1);
         jSliderFocalCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -622,8 +576,8 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderXPositionCyllin.setMaximum(10000);
-        jSliderXPositionCyllin.setMinimum(-100);
+        jSliderXPositionCyllin.setMaximum(1000);
+        jSliderXPositionCyllin.setMinimum(-1000);
         jSliderXPositionCyllin.setValue(0);
         jSliderXPositionCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -631,8 +585,8 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderYPositionCyllin.setMaximum(10000);
-        jSliderYPositionCyllin.setMinimum(-100);
+        jSliderYPositionCyllin.setMaximum(180);
+        jSliderYPositionCyllin.setMinimum(-180);
         jSliderYPositionCyllin.setValue(0);
         jSliderYPositionCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -840,34 +794,6 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedControler.addTab("Mirror", jPanelMirror);
 
-//        javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
-//        panelGeneral.setLayout(panelGeneralLayout);
-//        panelGeneralLayout.setHorizontalGroup(
-//                panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(panelGeneralLayout.createSequentialGroup()
-//                .addGap(24, 24, 24)
-//                .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGeneralLayout.createSequentialGroup()
-//                .addContainerGap()
-//                .addGap(5, 5, 5)
-//                .addComponent(jTabbedPaneOptics)
-//                .addGap(5, 5, 5)));
-//        panelGeneralLayout.setVerticalGroup(
-//                panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(panelGeneralLayout.createSequentialGroup()
-//                .addContainerGap()
-//                .addGap(5, 5, 5)
-//                .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(5, 5, 5)
-//                .addComponent(jTabbedPaneOptics)
-//                .addGap(5, 5, 5)
-//                .addContainerGap()));
-
         javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
         panelGeneralLayout.setHorizontalGroup(
@@ -881,14 +807,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGeneralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGap(5, 5, 5)
-                .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGeneralLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                )
-                );
+                .addComponent(jTabbedPaneOptics)
+                .addGap(5, 5, 5)));
         panelGeneralLayout.setVerticalGroup(
                 panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelGeneralLayout.createSequentialGroup()
@@ -898,46 +818,10 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPaneOptics)
                 .addGap(5, 5, 5)
                 .addContainerGap()));
-        
-//        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(panelGeneral);
-//        panelGeneral.setLayout(jPanel1Layout);
-//        jPanel1Layout.setHorizontalGroup(
-//            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(jPanel1Layout.createSequentialGroup()
-//                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                    .addGroup(jPanel1Layout.createSequentialGroup()
-//                        .addGap(5, 5, 5)
-//                        .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addGroup(jPanel1Layout.createSequentialGroup()
-//                            .addGap(24, 24, 24)
-//                            .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                        .addGroup(jPanel1Layout.createSequentialGroup()
-//                            .addGap(3, 3, 3)
-//                            .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-//                .addContainerGap(1, Short.MAX_VALUE))
-//        );
-//        jPanel1Layout.setVerticalGroup(
-//            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(jPanel1Layout.createSequentialGroup()
-//                .addContainerGap()
-//                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                    .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(5, 5, 5)
-//                .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-//                .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                )
-//        );
-        
+
         tabbedControl.addTab("General", panelGeneral);
 
         javax.swing.GroupLayout panelCalebrationLayout = new javax.swing.GroupLayout(panelCalebration);
@@ -948,8 +832,227 @@ public class EduControlerPattern extends OpticsPane {
         panelCalebrationLayout.setVerticalGroup(
                 panelCalebrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 272, Short.MAX_VALUE));
+        
+        // Calibration
+        lblFocalCalibration = new javax.swing.JLabel();
+        lblXPosCalibration = new javax.swing.JLabel();
+        lblYPosCalibration = new javax.swing.JLabel();
+        jSliderFocalCalibration = new javax.swing.JSlider();
+        jSliderXPositionCalibration = new javax.swing.JSlider();
+        jSliderYPositionCalibration = new javax.swing.JSlider();
+        txtFocalCalibration = new javax.swing.JTextField();
+        txtXPositionCalibration = new javax.swing.JTextField();
+        txtYPositionCalibration = new javax.swing.JTextField();
+        buttonCalibrationLensOn = new javax.swing.JButton();
+        buttonCalibrationDisplaySecondOn = new javax.swing.JButton();
+        buttonCalibrationGeneral = new javax.swing.JButton();
+        
+        lblFocalCalibration.setText("Phy");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        lblXPosCalibration.setText("Theta");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        lblYPosCalibration.setText("Rotation");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        buttonCalibrationGeneral.setText("Generate");
+        buttonCalibrationGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedCalibration(evt);
+            }
+        });
+
+        buttonCalibrationLensOn.setEnabled(false);
+        buttonCalibrationLensOn.setText("1:1 lens ON");
+        buttonCalibrationLensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button11LensOnCalibrationActionPerformed(evt);
+                countLenOnCalibration++;
+                if (countLenOnCalibration % 2 == 0) {
+                    buttonCalibrationLensOn.setText("1:1 lens OFF");
+                } else {
+                    buttonCalibrationLensOn.setText("1:1 lens ON");
+                }
+            }
+        });
+
+        buttonCalibrationDisplaySecondOn.setEnabled(false);
+        buttonCalibrationDisplaySecondOn.setText("Second display ON");
+        buttonCalibrationDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSecondGenerateActionPerformedCalibration(evt);
+                countSecondDisplayCalibration++;
+                if (countSecondDisplayCalibration % 2 == 0) {
+                    buttonCalibrationDisplaySecondOn.setText("Second display OFF");
+                } else {
+                    buttonCalibrationDisplaySecondOn.setText("Second display ON");
+                }
+            }
+        });
+
+        jSliderFocalCalibration.setMaximum(100);
+        jSliderFocalCalibration.setMinimum(-100);
+        jSliderFocalCalibration.setValue(1);
+        jSliderFocalCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedCalibration(evt);
+            }
+        });
+
+        jSliderXPositionCalibration.setMaximum(100);
+        jSliderXPositionCalibration.setMinimum(-100);
+        jSliderXPositionCalibration.setValue(0);
+        jSliderXPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedCalibration(evt);
+            }
+        });
+
+        jSliderYPositionCalibration.setMaximum(180);
+        jSliderYPositionCalibration.setMinimum(-180);
+        jSliderYPositionCalibration.setValue(0);
+        jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedCalibration(evt);
+            }
+        });
+        
+        javax.swing.GroupLayout jPanelCalibrationdricalLayout = new javax.swing.GroupLayout(panelCalebration);
+        panelCalebration.setLayout(jPanelCalibrationdricalLayout);
+        jPanelCalibrationdricalLayout.setHorizontalGroup(
+                jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblFocalCalibration)
+                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(lblXPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                //.addComponent(lblYPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                )
+                .addGap(29, 29, 29)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                //.addComponent(txtYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(txtFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))))
+                .addGap(5, 5, 5)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                //.addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                ))
+                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE)));
+        jPanelCalibrationdricalLayout.setVerticalGroup(
+                jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtFocalCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblXPosCalibration)
+                .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                //.addComponent(lblYPosCalibration)
+                //.addComponent(txtYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )
+                //.addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )
+                .addGap(20, 20, 20)
+                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE)));
 
         tabbedControl.addTab("Calibration", panelCalebration);
+        tabbedControl.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
+                int index = sourceTabbedPane.getSelectedIndex();
+//                System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(index));
+//                System.out.println("Tab changed to - index: " + index);
+                if (index == 1) {
+                    System.out.println("Tab changed to - Calibration: ");
+                    //jTabbedPaneOptics.removeAll();
+                    layoutDiagram.removeAll();
+                    diagramLens.removeAll();
+                    tabbedDesLog.removeAll();
+                    
+                    tabbedDesLog.addTab("Description", desCalibration);
+                    jTextAreaLog.setColumns(20);
+                    jTextAreaLog.setRows(5);
+                    jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                    jScrollPane2.setViewportView(jTextAreaLog);
+                    tabbedDesLog.addTab("Log", jScrollPane2);
+
+                    lblDiagram.setIcon(null);
+                    lblDiagram.setText("No Diagram available");
+                    diagramLens.add(lblDiagram);
+                    layoutDiagram.add(diagramLens);
+                }
+                if (index == 0) {
+                    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
+                        "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
+                        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation", "11. Wavelength Selective Switch"}));
+                    jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            JComboBox comboBox = (JComboBox) evt.getSource();
+
+                            Object selected = comboBox.getSelectedItem();
+                            if (selected.equals("      ------ Select experiment ------")) {
+                                jMenuItemNoSelectActionPerformed(evt);
+                            } else if (selected.equals("1. Telephoto lens")) {
+                                jMenuItemTelephotoActionPerformed(evt);
+                            } else if (selected.equals("2. Microscope")) {
+                                jMenuItemMicroscopeActionPerformed(evt);
+                            } else if (selected.equals("3. Aberration (Foucault test)")) {
+                                jMenuItemAberrationActionPerformed(evt);
+                            } else if (selected.equals("4. Michelson Interferometer")) {
+                                jMenuItemMichelsonActionPerformed(evt);
+                            } else if (selected.equals("5. Diffraction and Interference")) {
+                                jMenuItemDiffractionActionPerformed(evt);
+                            } else if (selected.equals("6. Spectrometer")) {
+                                jMenuItemSpectrometerActionPerformed(evt);
+                            } else if (selected.equals("7. Signal Processing (4-f system)")) {
+                                jMenuItemSignalProcessingActionPerformed(evt);
+                            } else if (selected.equals("8. Phase Shifting Digital Holography")) {
+                                jMenuItemPhaseShiftingActionPerformed(evt);
+                            } else if (selected.equals("9. Talbot Images")) {
+                                jMenuItemTalbotImagesActionPerformed(evt);
+                            } else if (selected.equals("10. Wavefront Modulation")) {
+                                jMenuItemWavefrontActionPerformed(evt);
+                            } else if (selected.equals("11. Wavelength Selective Switch")) {
+                                jMenuItemWavelengthActionPerformed(evt);
+                            }
+                        }
+                    });
+                    jMenuItemNoSelectActionPerformed(null);
+                }
+            }
+        });
+
         /*
          * Slit
          */
@@ -2414,7 +2517,400 @@ public class EduControlerPattern extends OpticsPane {
 
         // BEGIN Talbot
         jPanelTalbot = new javax.swing.JPanel();
+        jPanelTalbotPhoto  = new javax.swing.JPanel();
+        
+        /*
+         * Talbot
+         */
+        lblWidthYTalbot = new javax.swing.JLabel();
+        lblHeightYTalbot = new javax.swing.JLabel();
+        lblRotationtalbot = new javax.swing.JLabel();
+        lblPosXTalbot = new javax.swing.JLabel();
+        lblPosYTalbot = new javax.swing.JLabel();
+        lblSpacingtalbot = new javax.swing.JLabel();
+        text_width_talbot_y = new javax.swing.JTextField();
+        text_height_talbot_y = new javax.swing.JTextField();
+        text_rotation_talbot = new javax.swing.JTextField();
+        text_position_talbot_x = new javax.swing.JTextField();
+        text_position_talbot_y = new javax.swing.JTextField();
+        text_talbot_spacing = new javax.swing.JTextField();
+        s_talbot_width_y = new javax.swing.JSlider();
+        s_talbot_height_y = new javax.swing.JSlider();
+        s_talbot_rotation = new javax.swing.JSlider();
+        s_talbot_positionx = new javax.swing.JSlider();
+        s_talbot_pos_y = new javax.swing.JSlider();
+        s_talbot_spacing = new javax.swing.JSlider();
+        jLabelGraytalbot = new javax.swing.JLabel();
+        text_talbot_gray = new javax.swing.JTextField();
+        s_talbot_gray = new javax.swing.JSlider();
+        buttonGenneratetalbot = new javax.swing.JButton();
+        button11LensOntalbot = new javax.swing.JButton();
+        buttonSecondDisplaytalbot = new javax.swing.JButton();
+        lblWidthXTalbot = new javax.swing.JLabel();
+        text_width_talbot_x = new javax.swing.JTextField();
+        s_talbot_width_x = new javax.swing.JSlider();
+        lblHeightXTalbot = new javax.swing.JLabel();
+        text_height_talbot_x = new javax.swing.JTextField();
+        s_talbot_height_x = new javax.swing.JSlider();
+        // lblWidthY.setText("Width Y");
+        lblHeightYTalbot.setText("Width Y");
+
+        lblRotationtalbot.setText("Rotation");
+
+        lblPosXTalbot.setText("Position X");
+
+        lblPosYTalbot.setText("Position Y");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_width_y.setMaximum(image1.getBounds().width);
+        s_talbot_width_y.setValue(100);
+        s_talbot_width_y.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_height_y.setMaximum(9999);
+        s_talbot_height_y.setValue(9999);
+        s_talbot_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_rotation_talbot, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_rotation.setMaximum(180);
+        s_talbot_rotation.setMinimum(-180);
+        s_talbot_rotation.setValue(0);
+        s_talbot_rotation.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_positionx, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_positionx.setMaximum(image1.getBounds().height / 2);
+        s_talbot_positionx.setMinimum(-(image1.getBounds().height / 2));
+        s_talbot_positionx.setValue(0);
+        s_talbot_positionx.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_pos_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_pos_y.setMaximum(image1.getBounds().width / 2);
+        s_talbot_pos_y.setMinimum(-(image1.getBounds().width / 2));
+        s_talbot_pos_y.setValue(0);
+        s_talbot_pos_y.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+        jLabelGraytalbot.setText("Gray level");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_gray.setMaximum(255);
+        s_talbot_gray.setValue(255);
+        s_talbot_gray.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+        lblSpacingtalbot.setText("Spacing");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_spacing.setMaximum(image1.getBounds().height);
+        s_talbot_spacing.setValue(400);
+        s_talbot_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+
+        bindingGroup.addBinding(binding);
+
+
+
+        buttonGenneratetalbot.setText("Generate");
+        buttonGenneratetalbot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedTalbot(evt);
+            }
+        });
+        button11LensOntalbot.setEnabled(false);
+        button11LensOntalbot.setText("1:1 lens ON");
+        button11LensOntalbot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button11LensOnTalbotActionPerformed(evt);
+                //   boolean_checkLen = false;
+                countLenOnTalbot++;
+                if (countLenOnTalbot % 2 == 0) {
+                    button11LensOntalbot.setText("1:1 lens OFF");
+                } else {
+                    button11LensOntalbot.setText("1:1 lens ON");
+                }
+            }
+        });
+        buttonSecondDisplaytalbot.setEnabled(false);
+        buttonSecondDisplaytalbot.setText("Second display ON");
+        buttonSecondDisplaytalbot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSecondGenerateActionPerformedTalbot(evt);
+                countSecondDisplayTalbot++;
+                if (countSecondDisplayTalbot % 2 == 0) {
+                    buttonSecondDisplaytalbot.setText("Second display OFF");
+                } else {
+                    buttonSecondDisplaytalbot.setText("Second display ON");
+                }
+            }
+        });
+
+        // lblWidthX.setText("Width X");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_width_x.setMaximum(3866);
+        s_talbot_width_x.setValue(3866);
+        s_talbot_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+        lblHeightXTalbot.setText("Width X");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_height_x.setMaximum(image1.getBounds().height);
+        s_talbot_height_x.setValue(100);
+        s_talbot_height_x.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPaneltalbotLayout = new javax.swing.GroupLayout(jPanelTalbot);
+        jPanelTalbot.setLayout(jPaneltalbotLayout);
+        jPaneltalbotLayout.setHorizontalGroup(
+                jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneltalbotLayout.createSequentialGroup()
+                .addComponent(lblPosXTalbot)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(text_position_talbot_x, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblPosYTalbot)
+                .addComponent(jLabelGraytalbot))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(text_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_position_talbot_y))))
+                .addGap(17, 17, 17)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(s_talbot_pos_y, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(s_talbot_positionx, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(s_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)))
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblHeightYTalbot)
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addComponent(lblHeightXTalbot)
+                .addGap(31, 31, 31)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(text_width_talbot_y, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_height_talbot_x, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(s_talbot_height_x, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+                .addComponent(s_talbot_width_y, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addComponent(lblRotationtalbot)
+                .addGap(27, 27, 27)
+                .addComponent(text_rotation_talbot, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(s_talbot_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addComponent(lblSpacingtalbot)
+                .addGap(27, 27, 27)
+                .addComponent(text_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(s_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(buttonGenneratetalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(button11LensOntalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(buttonSecondDisplaytalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE)));
+        jPaneltalbotLayout.setVerticalGroup(
+                jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneltalbotLayout.createSequentialGroup()
+                .addGap(8, 8, 8))
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addComponent(s_talbot_height_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
+                .addGroup(jPaneltalbotLayout.createSequentialGroup()
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(text_height_talbot_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblHeightXTalbot))
+                .addGap(6, 6, 6)))
+                .addGap(2, 2, 2)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(text_width_talbot_y, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblHeightYTalbot))
+                .addComponent(s_talbot_width_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(text_rotation_talbot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblRotationtalbot))
+                .addComponent(s_talbot_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(s_talbot_positionx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(text_position_talbot_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPosXTalbot)))
+                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(text_position_talbot_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPosYTalbot)
+                .addComponent(s_talbot_pos_y, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(text_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(s_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelGraytalbot))
+                .addGap(8, 8, 8)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(text_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(s_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblSpacingtalbot))
+                .addGap(8, 8, 8)
+                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonGenneratetalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonSecondDisplaytalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOntalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)));
         // END Talbot
+        
+        // Talbot Photo
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileTalbotPhoto = new javax.swing.JButton();
+        lblPleaseSelectTalbotPhoto = new javax.swing.JLabel();
+        buttonSecondTalbotPhoto = new javax.swing.JButton();
+        button11LensOnTalbotPhoto = new javax.swing.JButton();
+        buttonGeneralTalbotPhoto = new javax.swing.JButton();
+        buttonOpenFileTalbotPhoto.setText("Open file");
+        buttonOpenFileTalbotPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_openFileActionPerformedTalbotPhoto(evt);
+            }
+        });
+        lblPleaseSelectTalbotPhoto.setText("Please open file");
+
+        buttonSecondTalbotPhoto.setEnabled(false);
+        buttonSecondTalbotPhoto.setText("Second display ON");
+        buttonSecondTalbotPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesTalbotPhoto != null) {
+                    buttonSecondGenerateActionPerformedTalbotPhoto(evt);
+                    countSecondDisplayTalbotPhoto++;
+                    if (countSecondDisplayTalbotPhoto % 2 == 0) {
+                        buttonSecondTalbotPhoto.setText("Second display OFF");
+                    } else {
+                        buttonSecondTalbotPhoto.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        button11LensOnTalbotPhoto.setEnabled(false);
+        button11LensOnTalbotPhoto.setText("1:1 lens ON");
+        button11LensOnTalbotPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesTalbotPhoto != null) {
+                    button11LensOnTalbotPhotoActionPerformed(evt);
+                    countLenOnTalbotPhoto++;
+                    if (countLenOnTalbotPhoto % 2 == 0) {
+                        button11LensOnTalbotPhoto.setText("1:1 lens OFF");
+                    } else {
+                        button11LensOnTalbotPhoto.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonGeneralTalbotPhoto.setText("Generate");
+        buttonGeneralTalbotPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesTalbotPhoto != null) {
+                    buttonGenerateActionPerformedTalbotPhoto(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        javax.swing.GroupLayout signalTalbotPhotoLayout = new javax.swing.GroupLayout(jPanelTalbotPhoto);
+        jPanelTalbotPhoto.setLayout(signalTalbotPhotoLayout);
+        signalTalbotPhotoLayout.setHorizontalGroup(
+                signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(signalTalbotPhotoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGap(74, 74, 74)
+                .addGroup(signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(signalTalbotPhotoLayout.createSequentialGroup()
+                .addComponent(buttonGeneralTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(button11LensOnTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonSecondTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(signalTalbotPhotoLayout.createSequentialGroup()
+                .addComponent(buttonOpenFileTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(lblPleaseSelectTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(167, 167, 167)))));
+        signalTalbotPhotoLayout.setVerticalGroup(
+                signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalTalbotPhotoLayout.createSequentialGroup()
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addGroup(signalTalbotPhotoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonOpenFileTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPleaseSelectTalbotPhoto))
+                .addGap(41, 41, 41)
+                .addGroup(signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonGeneralTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOnTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonSecondTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))));
 
 
 
@@ -2426,7 +2922,7 @@ public class EduControlerPattern extends OpticsPane {
 //            }
 //        });
 
-        tabbedControl.setBounds(580, 0, 665, 365);
+        tabbedControl.setBounds(580, 0, 665, 345);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jPanelPatternLayout = new javax.swing.GroupLayout(jPanelPattern);
@@ -2437,7 +2933,7 @@ public class EduControlerPattern extends OpticsPane {
         jPanelPatternLayout.setVerticalGroup(
                 jPanelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 290, Short.MAX_VALUE));
-        panelPattern.setBounds(0, 0, 568, 365);
+        panelPattern.setBounds(0, 0, 568, 345);
         //  BEGIN show full screen
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
@@ -2478,14 +2974,14 @@ public class EduControlerPattern extends OpticsPane {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(layoutControl, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tabbedDesLog, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(layoutDiagram, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(layoutDiagram, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 //.addGap(8, 8, 8)
                 //.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, true)
                 //.addComponent(tabbedDesLog, javax.swing.GroupLayout.DEFAULT_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2510,9 +3006,6 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        buttonPanel.removeAll();
-        
-        //buttonPanel.add(panelTelephoto, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tabbedDesLog.addTab("Description", desNoSelect);
         jTextAreaLog.setColumns(20);
@@ -2564,9 +3057,6 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        buttonPanel.removeAll();
-        
-        buttonPanel.add(panelTelephoto);
 
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
@@ -2632,11 +3122,6 @@ public class EduControlerPattern extends OpticsPane {
         button11LensOnFresnel.setEnabled(false);
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
-        
-        buttonPanel.removeAll();
-        panelMicroscope.setAlignmentX(LEFT_ALIGNMENT);
-        panelMicroscope.setLocation(new Point(400, 420));
-        buttonPanel.add(panelMicroscope);
 
         jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
 
@@ -2764,25 +3249,10 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        tabbedDesLog.addTab("Description", desMichelson);
-//        tabbedDesLog.addTab("Description", jScrollDes);
-//        descriptionMichelson.setColumns(20);
-//        descriptionMichelson.setRows(5);
-//        descriptionMichelson.setDocument(null);
-//        descriptionMichelson.setFont(new Font("Courier New", Font.PLAIN, 12));
-//        descriptionMichelson.setText("干涉的現象是由兩個或兩個以上的光波疊加於空間之中而產生。由光程差所造成的相位差而產生亮紋（建設性干涉）與暗紋（破壞性干涉）等干涉條紋。要觀察到干涉條紋除了需要上述的相位差所造成的建設性干涉與破壞性干涉之外，還需要注意光波偏振方向與相干性（coherence），簡而言之，兩個有相同偏振的光波到達屏幕的光程差越接近的話，干涉條紋的對比也會越好。\n"
-//                + "假設有相同偏振方向的兩束光U_1 (r ⃑)和U_2 (r ⃑)，分別為\n"
-//                + "〖 U〗_1=U_01 exp[j(k ⃑_1∙r ⃑+ε_1 ) ]\n"
-//                + "及U_2=U_02 exp[j(k ⃑_2∙r ⃑+ε_2 ) ]\n"
-//                + "兩波相疊後所得到的光強為\n"
-//                + "I=|U|^2=|〖 U〗_1+U_2 |^2=|U_1 |^2+|U_2 |^2+U_1^* U_2+U_1 U_2^*\n"
-//                + "其中|U_1 |^2=I_1、|U_2 |^2=I_2，則上式可寫成\n"
-//                + "I=I_1+I_2+2〖(I_1 I_2)〗^(1⁄2) cos⁡(δ)\n"
-//                + "其中〖δ=k ⃑〗_1∙r ⃑+ε_1-k ⃑_2∙r ⃑-ε_2為光程與起始相位所造成的相位差。當δ=0,±2π,±4π…為完全建設性干涉(total constructive interference)，而δ=±π,±3π,±5π…為完全破壞性干涉(total destructive interference)。\n"
-//                + "    本實驗的干涉儀利用了分光鏡將入射的雷射光分成兩道光，一道穿透光與一道反射光，這種分光的原理被分類為振幅分光(division of amplitude)和楊格雙狹縫干涉中利用相鄰的兩條狹縫把同一道波前分成兩道新的光源的波前分光(division of wave front)不同。接著由分光所分出的穿透光經由相位調制器產生各種波前與反射光經由面鏡反射回來在空間中交會產生干涉，並能在屏幕上觀察到干涉圖形。");
-//        jScrollDes.setViewportView(descriptionMichelson);
-
-
+        //tabbedDesLog.addTab("Description", desMichelson);
+        jScrollDes.setViewportView(desMichelson);
+        tabbedDesLog.addTab("Description", jScrollDes);
+        
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -2967,8 +3437,8 @@ public class EduControlerPattern extends OpticsPane {
                 buttonSecondDisplayProcessing.setEnabled(false);
             }
         });
-
-        tabbedDesLog.addTab("Description", desSignalProcessing);
+        jScrollDes.setViewportView(desSignalProcessing);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -3024,7 +3494,9 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Phase retarder", panelPhase);
 
-        tabbedDesLog.addTab("Description", desPhaseRetarder);
+        //tabbedDesLog.addTab("Description", desPhaseRetarder);
+        jScrollDes.setViewportView(desPhaseRetarder);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -3078,7 +3550,8 @@ public class EduControlerPattern extends OpticsPane {
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
 
-        jTabbedPaneOptics.addTab("Talbot images", jPanelTalbot);
+        jTabbedPaneOptics.addTab("Talbot", jPanelTalbot);
+        jTabbedPaneOptics.addTab("Talbot photo", jPanelTalbotPhoto);
 
         tabbedDesLog.addTab("Description", desTalbotImage);
         jTextAreaLog.setColumns(20);
@@ -3236,6 +3709,11 @@ public class EduControlerPattern extends OpticsPane {
     private double zoom = 100.0, grayLevel = 255;
     //Fresnel
     private double width_fresnel = 1920, height_fresnel = 1080;
+    // Calibration
+    private double xoffCalibration = 0, yoffCalibration = 0, focalCalibration = 1;
+    //Talbot
+    private double talbot_widthX = Double.valueOf(image1.getBounds().width), talbot_widthY = 100, talbot_heightX = 100, talbot_heightY = Double.valueOf(image1.getBounds().height), talbot_rotation = 0, talbot_positionX = 0, talbot_positionY = 0, talbot_grayLevel = 255, talbot_spacing = 400;
+    
 
     private boolean parseArguments() {
         boolean ret = false;
@@ -3280,6 +3758,10 @@ public class EduControlerPattern extends OpticsPane {
             // Spectrometer
             double phySpec = Double.valueOf(txtPhyMirrorSpectometer.getText());
             double thetaSpec = Double.valueOf(txtThetaMirrorSpectometer.getText());
+            // Calibration
+            double xoffCali = Double.valueOf(txtXPositionCalibration.getText());
+            double yoffCali = Double.valueOf(txtYPositionCalibration.getText());
+            double focalCali= Double.valueOf(txtFocalCalibration.getText());
 
             //Processing
             processing_widthX = Double.valueOf(s_processing_width_x.getValue());
@@ -3291,6 +3773,17 @@ public class EduControlerPattern extends OpticsPane {
             processing_positionY = Double.valueOf(s_processing_pos_y.getValue());
             processing_grayLevel = Double.valueOf(s_processing_gray.getValue());
             processing_spacing = Double.valueOf(s_processing_spacing.getValue());
+            
+            //Talbot
+            talbot_widthX = Double.valueOf(s_talbot_width_x.getValue());
+            talbot_widthY = Double.valueOf(s_talbot_width_y.getValue());
+            talbot_heightX = Double.valueOf(s_talbot_height_x.getValue());
+            talbot_heightY = Double.valueOf(s_talbot_height_y.getValue());
+            talbot_rotation = Double.valueOf(s_talbot_rotation.getValue());
+            talbot_positionX = Double.valueOf(s_talbot_positionx.getValue());
+            talbot_positionY = Double.valueOf(s_talbot_pos_y.getValue());
+            talbot_grayLevel = Double.valueOf(s_talbot_gray.getValue());
+            talbot_spacing = Double.valueOf(s_talbot_spacing.getValue());
 
             width_fresnel = Double.valueOf(text_fresnel_width.getText());
             height_fresnel = Double.valueOf(text_fresnel_height.getText());
@@ -3312,7 +3805,7 @@ public class EduControlerPattern extends OpticsPane {
 
             this.xoffCyllin = xoffCyllin;
             this.yoffCyllin = yoffCyllin;
-            this.focalCyllin = focalCyllin;
+            this.focalCyllin = focalCyllin/10;
 
             this.d_widthX = widthSlit;
             this.d_heightX = heightSlit;
@@ -3333,6 +3826,11 @@ public class EduControlerPattern extends OpticsPane {
 
             this.thetaSpectrometer = thetaSpec / 100;
             this.phySpectrometer = phySpec / 100;
+            
+            this.xoffCalibration = xoffCali;
+            this.yoffCalibration = yoffCali;
+            this.focalCalibration = focalCali;
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, warnings);
             textXpos.setText(String.valueOf(this.yoff));
@@ -3343,6 +3841,7 @@ public class EduControlerPattern extends OpticsPane {
     }
     private static BufferedImage buffImages = null;
     private static BufferedImage buffImagesFresnel = null;
+    private static BufferedImage buffImagesTalbotPhoto = null;
 
     private void b_openFileActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -3445,6 +3944,51 @@ public class EduControlerPattern extends OpticsPane {
         }
 
     }
+    
+    private void b_openFileActionPerformedTalbotPhoto(java.awt.event.ActionEvent evt) {
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesTalbotPhoto = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    //  image.updatePhaseRetarderParameter(zoom, grayLevel);
+                    image.paintTalbotPhoto(buffImagesTalbotPhoto);
+                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            System.out.println("File access cancelled by user.");
+        }
+    }
 
 //    public void logString(String msg) {
 //        jTextAreaLog.append(msg + System.getProperty("line.separator"));
@@ -3495,6 +4039,10 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogProcessing() {
         return String.format(logmessageProcessing, Double.toString(processing_heightX), Double.toString(processing_widthY), Double.toString(processing_rotation), Double.toString(processing_positionX), Double.toString(processing_positionY), Double.toString(processing_grayLevel), Double.toString(processing_spacing));
     }
+    
+    private String genLogTalbot() {
+        return String.format(logmessageTalbot, Double.toString(talbot_heightX), Double.toString(talbot_widthY), Double.toString(talbot_rotation), Double.toString(talbot_positionX), Double.toString(talbot_positionY), Double.toString(talbot_grayLevel), Double.toString(talbot_spacing));
+    }
 
     private String genLogPhase() {
         return String.format(logmessagePhase, Double.toString(zoom));
@@ -3502,6 +4050,9 @@ public class EduControlerPattern extends OpticsPane {
 
     private String genLogMirrorSpectrometer() {
         return String.format(logmessageMirrorSpectrometer, Double.toString(phySpectrometer), Double.toString(thetaSpectrometer));
+    }
+    private String genLogCalibration() {
+        return String.format(logmessageCalibration, Double.toString(focalCalibration), Double.toString(xoffCalibration), Double.toString(yoffCalibration));
     }
 
     // Lens
@@ -3639,7 +4190,7 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -3731,7 +4282,7 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -3817,7 +4368,7 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -3904,7 +4455,7 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -3956,7 +4507,7 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
 
     // Mirror
-    private void buttonGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
+    private void buttonGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirror
         actionTag = "Mirror";
         if (parseArguments()) {
             buttonMirrorLensOn.setEnabled(true);
@@ -3970,7 +4521,7 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
 
-    }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
+    }//GEN-LAST:event_buttonGenerateActionPerformedMirror
 
     private void button11LensOnMirrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorActionPerformed
         actionTag = "Cyllin";
@@ -3991,7 +4542,7 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -4079,7 +4630,7 @@ public class EduControlerPattern extends OpticsPane {
 
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -4166,7 +4717,7 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -4252,7 +4803,7 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -4300,6 +4851,89 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }
+    
+    //Talbot
+    private void buttonGenerateActionPerformedTalbot(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedTalbot
+        actionTag = "Talbot";
+        if (parseArguments()) {
+            button11LensOntalbot.setEnabled(true);
+            buttonSecondDisplaytalbot.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
+            image.paintTalbot();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
+            setLog(genLogTalbot());
+            imageGenerated = true;
+        }
+
+    }//GEN-LAST:event_buttonGenerateActionPerformedTalbot
+
+    private void button11LensOnTalbotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnTalbotActionPerformed
+        actionTag = "Talbot";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
+            image.paintTalbot();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
+            setLog(genLogTalbot());
+            imageGenerated = true;
+            if (countLenOnTalbot % 2 == 0) {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        patternFrame.show();
+                    }
+                });
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
+            }
+        }
+    }//GEN-LAST:event_button11LensOnTalbotActionPerformed
+
+    private void buttonSecondGenerateActionPerformedTalbot(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedTalbot
+        actionTag = "Talbot";
+        if (parseArguments()) {
+            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice[] devices = env.getScreenDevices();
+            if (devices.length == 1) {
+                countSecondDisplayTalbot--;
+                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
+                image.paintTalbot();
+                EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
+                setLog(genLogTalbot());
+                imageGenerated = true;
+                if (countSecondDisplayTalbot % 2 == 0) {
+                    patternFrame.dispose();
+                }
+            }
+        }
+    }//GEN-LAST:event_buttonSecondGenerateActionPerformedTalbot
+
+    private void sliderGenerateActionPerformedTalbot(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedTalbot
+        actionTag = "Talbot";
+        if (parseArguments()) {
+            button11LensOntalbot.setEnabled(true);
+            buttonSecondDisplaytalbot.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
+            image.paintTalbot();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
+            setLog(genLogTalbot());
+            imageGenerated = true;
+        }
+    }
     /*
      * Signal Photo
      */
@@ -4339,7 +4973,7 @@ public class EduControlerPattern extends OpticsPane {
 
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -4427,7 +5061,7 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -4508,7 +5142,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(150, 150), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -4557,6 +5191,168 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedMirrorSpectometer
+    
+    
+    // Calibration
+    private void buttonGenerateActionPerformedCalibration(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCalibration
+        actionTag = "Calibration";
+        if (parseArguments()) {
+            buttonCalibrationLensOn.setEnabled(true);
+            buttonCalibrationDisplaySecondOn.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+            image.paintCalibration();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
+            setLog(genLogCalibration());
+            imageGenerated = true;
+        }
+
+    }//GEN-LAST:event_buttonGenerateActionPerformedCalibration
+
+    private void button11LensOnCalibrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCalibrationActionPerformed
+        actionTag = "Calibration";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+            image.paintCalibration();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
+            setLog(genLogCalibration());
+            imageGenerated = true;
+
+            if (countLenOnCalibration % 2 == 0) {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        patternFrame.show();
+                    }
+                });
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
+            }
+
+        }
+
+    }//GEN-LAST:event_button11LensOnCalibrationActionPerformed
+	
+	private void buttonSecondGenerateActionPerformedCalibration(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "Calibration";
+        if (parseArguments()) {
+            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice[] devices = env.getScreenDevices();
+            if (devices.length == 1) {
+                countSecondDisplayCalibration--;
+                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+                image.paintCalibration();
+                EduPatternShowOn.updateLensPattern(image, genLogCalibration());
+                setLog(genLogCalibration());
+                //EduPatternTest.updateLensPatternPattern(image, genLog());
+                imageGenerated = true;
+                if (countSecondDisplayCalibration % 2 == 0) {
+                    patternFrame.dispose();
+                }
+            }
+        }
+    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
+
+    private void sliderGenerateActionPerformedCalibration(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Calibration";
+        if (parseArguments()) {
+            buttonCalibrationLensOn.setEnabled(true);
+            buttonCalibrationDisplaySecondOn.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+            image.paintCalibration();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
+            setLog(genLogCalibration());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
+    
+    /*
+     * Talbot Photo
+     */
+
+    private void buttonGenerateActionPerformedTalbotPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedTalbotPhoto
+        actionTag = "TalbotPhoto";
+        if (parseArguments()) {
+             button11LensOnTalbotPhoto.setEnabled(true);
+            buttonSecondTalbotPhoto.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintTalbotPhoto(buffImagesTalbotPhoto);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            setLog("");
+            imageGenerated = true;
+        }
+
+    }
+
+    private void button11LensOnTalbotPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnTalbotPhotoActionPerformed
+        actionTag = "TalbotPhoto";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintTalbotPhoto(buffImagesTalbotPhoto);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            setLog("");
+            imageGenerated = true;
+
+            if (countLenOnTalbotPhoto % 2 == 0) {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        patternFrame.show();
+                    }
+                });
+
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
+            }
+
+        }
+
+    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
+
+    private void buttonSecondGenerateActionPerformedTalbotPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedTalbotPhoto
+        actionTag = "TalbotPhoto";
+        if (parseArguments()) {
+            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice[] devices = env.getScreenDevices();
+            if (devices.length == 1) {
+                countSecondDisplayTalbotPhoto--;
+                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+                image.paintTalbotPhoto(buffImagesTalbotPhoto);
+                EduPatternShowOn.updateLensPatternPattern(image, "");
+                setLog("");
+                //EduPatternTest.updateLensPatternPattern(image, genLog());
+                imageGenerated = true;
+                if (countSecondDisplayTalbotPhoto% 2 == 0) {
+                    patternFrame.dispose();
+                }
+            }
+        }
+    }
     //End
 
     private void textFocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFocalActionPerformed
@@ -4695,6 +5491,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel lblPleaseSelectFresnel;
     // Talbot
     private javax.swing.JPanel jPanelTalbot;
+     private javax.swing.JPanel jPanelTalbotPhoto;
     /*
      *@Param Slit
      */
@@ -4776,6 +5573,44 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextField text_width_processing_x;
     private javax.swing.JTextField text_width_processing_y;
     private javax.swing.JTextField text_processing_spacing;
+    /*
+     *@Param Talbot
+     */
+    private javax.swing.JButton button11LensOntalbot;
+    private javax.swing.JButton buttonGenneratetalbot;
+    private javax.swing.JButton buttonSecondDisplaytalbot;
+    private javax.swing.JLabel jLabelGraytalbot;
+    private javax.swing.JLabel lblHeightYTalbot;
+    private javax.swing.JLabel lblHeightXTalbot;
+    private javax.swing.JLabel lblPosXTalbot;
+    private javax.swing.JLabel lblPosYTalbot;
+    private javax.swing.JLabel lblRotationtalbot;
+    private javax.swing.JLabel lblSpacingtalbot;
+    private javax.swing.JLabel lblWidthYTalbot;
+    private javax.swing.JLabel lblWidthXTalbot;
+    private javax.swing.JSlider s_talbot_gray;
+    private javax.swing.JSlider s_talbot_height_x;
+    private javax.swing.JSlider s_talbot_height_y;
+    private javax.swing.JSlider s_talbot_pos_y;
+    private javax.swing.JSlider s_talbot_positionx;
+    private javax.swing.JSlider s_talbot_rotation;
+    private javax.swing.JSlider s_talbot_width_x;
+    private javax.swing.JSlider s_talbot_width_y;
+    private javax.swing.JSlider s_talbot_spacing;
+    private javax.swing.JTextField text_height_talbot_x;
+    private javax.swing.JTextField text_height_talbot_y;
+    private javax.swing.JTextField text_position_talbot_x;
+    private javax.swing.JTextField text_position_talbot_y;
+    private javax.swing.JTextField text_talbot_gray;
+    private javax.swing.JTextField text_rotation_talbot;
+    private javax.swing.JTextField text_width_talbot_x;
+    private javax.swing.JTextField text_width_talbot_y;
+    private javax.swing.JTextField text_talbot_spacing;
+    private javax.swing.JButton buttonOpenFileTalbotPhoto;
+    private javax.swing.JLabel lblPleaseSelectTalbotPhoto;
+    private javax.swing.JButton buttonSecondTalbotPhoto;
+    private javax.swing.JButton button11LensOnTalbotPhoto;
+    private javax.swing.JButton buttonGeneralTalbotPhoto;
     // Lens On 11 function
     private int countLenOnProcessing = 1;
     private int countLenOnTelephoto = 1;
@@ -4786,6 +5621,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnDiffaction = 1;
     private int countLenOnSpectrometer = 1;
     private int countLenOnTalbot = 1;
+    private int countLenOnTalbotPhoto = 1;
     private int countLenOnPhase = 1;
     private int countLenOnWavefront = 1;
     private int countLenOnWavelength = 1;
@@ -4793,6 +5629,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnSlit = 1;
     private int countLenOnDoubleSlit = 1;
     private int countLenOnFresnel = 1;
+    private int countLenOnCalibration = 1;
     // Second display
     private int countSecondDisplayTelephoto = 1;
     private int countSecondDisplayProcessing = 1;
@@ -4803,6 +5640,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countSecondDisplayDiffaction = 1;
     private int countSecondDisplaySpectrometer = 1;
     private int countSecondDisplayTalbot = 1;
+    private int countSecondDisplayTalbotPhoto = 1;
     private int countSecondDisplayPhase = 1;
     private int countSecondDisplayWavefront = 1;
     private int countSecondDisplayWavelength = 1;
@@ -4810,6 +5648,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countSecondDisplaySlit = 1;
     private int countSecondDisplayDoubleSlit = 1;
     private int countSecondDisplayFresnel = 1;
+    private int countSecondDisplayCalibration = 1;
     // Check disable lens ON
 //    private int countDisableTelephoto = 0;
 //    private int countDisableProcessing = 0;
@@ -4860,9 +5699,19 @@ public class EduControlerPattern extends OpticsPane {
     private JFrame magFrameLenon;
     private JFrame magFrameLensOnSpectrometer;
     
-    private javax.swing.JPanel buttonPanel;
-    private javax.swing.JPanel panelTelephoto;
-    private javax.swing.JPanel panelMicroscope;
+    // Calibration
+    public javax.swing.JLabel lblFocalCalibration;
+    private javax.swing.JLabel lblXPosCalibration;
+    private javax.swing.JLabel lblYPosCalibration;
+    private javax.swing.JSlider jSliderFocalCalibration;
+    private javax.swing.JSlider jSliderXPositionCalibration;
+    private javax.swing.JSlider jSliderYPositionCalibration;
+    private javax.swing.JTextField txtFocalCalibration;
+    private javax.swing.JTextField txtXPositionCalibration;
+    private javax.swing.JTextField txtYPositionCalibration;
+    private javax.swing.JButton buttonCalibrationLensOn;
+    private javax.swing.JButton buttonCalibrationDisplaySecondOn;
+    private javax.swing.JButton buttonCalibrationGeneral;
     // Description
     private javax.swing.JTextArea descriptionMichelson;
     private javax.swing.JLabel desNoSelect =
@@ -4874,55 +5723,61 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel desAberration =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desMichelson =
-            new JLabel("<html><b>干涉的現象是由兩個或兩個以上的光波疊加於空間之中而產生。由光程<br />"
-            + "差所造成的相位差而產生亮紋（建設性干涉）與暗紋（破壞性干涉）<br />"
-            + "等干涉條紋。要觀察到干涉條紋除了需要上述的相位差所造成的建設<br />"
-            + "性干涉與破壞性干涉之外，還需要注意光波偏振方向與相干性（coherence），<br />"
-            + "簡而言之，兩個有相同偏振的光波到達屏幕的光程差越接近的話，干涉條紋的對比也會越好。\n"
-            + "假設有相同偏振方向的兩束光U_1 (r ⃑)和U_2 (r ⃑)，分別為\n"
-            + "〖 U〗_1=U_01 exp[j(k ⃑_1∙r ⃑+ε_1 ) ]\n"
-            + "及U_2=U_02 exp[j(k ⃑_2∙r ⃑+ε_2 ) ]\n"
-            + "兩波相疊後所得到的光強為\n"
-            + "I=|U|^2=|〖 U〗_1+U_2 |^2=|U_1 |^2+|U_2 |^2+U_1^* U_2+U_1 U_2^*\n"
-            + "其中|U_1 |^2=I_1、|U_2 |^2=I_2，則上式可寫成\n"
-            + "I=I_1+I_2+2〖(I_1 I_2)〗^(1⁄2) cos⁡(δ)\n"
-            + "其中〖δ=k ⃑〗_1∙r ⃑+ε_1-k ⃑_2∙r ⃑-ε_2為光程與起始相位所造成的相位差。當δ=0,±2π,±4π…為完全建設性干涉(total constructive interference)，而δ=±π,±3π,±5π…為完全破壞性干涉(total destructive interference)。\n"
-            + "    本實驗的干涉儀利用了分光鏡將入射的雷射光分成兩道光，一道穿透光與一道反射光，這種分光的原理被分類為振幅分光(division of amplitude)和楊格雙狹縫干涉中利用相鄰的兩條狹縫把同一道波前分成兩道新的光源的波前分光(division of wave front)不同。接著由分光所分出的穿透光經由相位調制器產生各種波前與反射光經由面鏡反射回來在空間中交會產生干涉，並能在屏幕上觀察到干涉圖形。</b><br></html>");
+            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;\">" +
+"干涉的現象是由兩個或兩個以上的光波疊加於空間之中而產生。由光程<br />差所造成的相位差而產生亮紋（建設性干涉）與暗紋（破壞性干涉）等干涉<br />條紋。要觀察到干涉條紋除了需要上述的相位差所造成的建設性干涉與破壞<br />性干涉之外，還需要注意光波偏振方向與相干性（coherence），簡而言之，<br />兩個有相同偏振的光波到達屏幕的光程差越接近的話，干涉條紋的對比也會<br />越好。<br />\n" +
+"假設有相同偏振方向的兩束光U_1 (r ⃑)和U_2 (r ⃑)，分別為<br />\n" +
+"〖 U〗_1=U_01 exp[j(k ⃑_1∙r ⃑+ε_1 ) ] <br />\n" +
+"及U_2=U_02 exp[j(k ⃑_2∙r ⃑+ε_2 ) ] <br />\n" +
+"兩波相疊後所得到的光強為<br />\n" +
+"I=|U|^2=|〖 U〗_1+U_2 |^2=|U_1 |^2+|U_2 |^2+U_1^* U_2+U_1 U_2^* <br />\n" +
+"其中|U_1 |^2=I_1、|U_2 |^2=I_2，則上式可寫成<br />\n" +
+"I=I_1+I_2+2〖(I_1 I_2)〗^(1⁄2) cos⁡(δ) <br />\n" +
+"其中〖δ=k ⃑〗_1∙r ⃑+ε_1-k ⃑_2∙r ⃑-ε_2為光程與起始相位所造成的相位差。當 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"
+            + "      <br />δ=0,±2π,±4π…為完全建設性干涉(total constructive interference)，<br />而δ=±π,±3π,±5π…為完全破壞性干涉(total destructive <br />interference)。<br />\n" +
+"    本實驗的干涉儀利用了分光鏡將入射的雷射光分成兩道光，一道穿透光<br />與一道反射光，這種分光的原理被分類為振幅分光(division of amplitude) <br />和楊格雙狹縫干涉中利用相鄰的兩條狹縫把同一道波前分成兩道新的光源的<br />波前分光(division of wave front)不同。接著由分光所分出的穿透光經由<br />相位調制器產生各種波前與反射光經由面鏡反射回來在空間中交會產生干涉，<br />並能在屏幕上觀察到干涉圖形。"
+            + "<br />" +
+"</div></html>");
     private javax.swing.JLabel desDiffaction =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desSpectrometer =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desSignalProcessing =
-            new JLabel("<html>在繞射實驗中我們依光束行進的方向做整理，並推算出其亮暗紋，這樣的推算方式是繞射理論中的Fraunhofer 繞射，其內容為某x-y平面上的光場U(x,y)在空間中依z軸的方向傳遞一段相當長的距離〖 z〗_0使得原本的Fresnel繞射公式\n"
-            + "U(ξ,η)=e^(jkz_0 )/(jλz_0 ) ∬▒〖U(x,y)exp{j π/(λz_0 ) [(ξ-x)^2+(η-y)^2 ] } 〗 dxdy\n"
-            + "變成\n"
-            + "U(ξ,η)=e^(jkz_0 )/(jλz_0 ) exp[(ξ^2+η^2 ) ] ∬▒〖U(x,y)exp[j 2π/(λz_0 ) (xξ+yη) ] 〗 dxdy\n"
-            + "其中U(ξ,η)為傳遞後的光場分布，λ為波長。這是由於傳遞距離遠大於x平方項而所做的省略，將x⁄(λz_0 )及y⁄(λz_0 )視為新的變數f_x及f_y，則整個方程式可以看成對U(x,y)做傅氏轉換。但一般而言Fraunhofer繞射所需要的距離非常長，不適合在實驗室內做記錄及觀察，因此，一般都會借助透鏡來幫助聚焦，將原本要呈在遠處的頻譜面拉至透鏡距焦上呈現。而原本的公式會變成\n"
-            + "U(ξ,η)=e^jkf/jλf exp[(ξ^2+η^2 ) ] ∬▒〖U(x,y)exp[j 2π/λf (xξ+yη) ] 〗 dxdy\n"
-            + "其中f為透鏡焦距，且U(ξ,η)會呈現在焦平面上。\n"
-            + "4f的光學系統就是將輸入的資料U(x,y)放置於第一面透鏡的前焦平面上，並在後焦平面產生其頻譜，接著經過濾波後，再由第二面透鏡再做一次傅氏轉換最後產生濾波後的圖形。\n"
-            + "接下來我們來討論圖形經過濾波後會發生什麼情形，假設原圖形為井字形的方格矩陣，用數學表示則為\n"
-            + "u(x,y)=comb(x/D)*rect( x/d)∙comb(y/D)*rect( y/d)\n"
-            + "其中*為convolution，	D為方格間距，d為方格大小。對其做傅氏轉換變成\n"
-            + "U(f_x,f_y )=comb(Df_x )∙sinc(df_x)∙comb(Df_y )∙sinc(df_y)\n"
-            + "頻譜如圖，此圖形我們能在第一面透鏡的後焦平面上觀察到，進行濾波時就在此頻譜面遮擋不要的頻率，遮擋高頻、低頻、x方向的頻率、y方向的頻率皆會在最後的成像面上有不同的變化。<br></html>");
+            new JLabel("<html><div style=\"padding-left:5px;line-height:2.5;background-color:white;\">" +
+"在繞射實驗中我們依光束行進的方向做整理，並推算出其亮暗紋，這樣<br />的推算方式是繞射理論中的Fraunhofer 繞射，其內容為某x-y平面上的光<br />場U(x,y)在空間中依z軸的方向傳遞一段相當長的距離〖 z〗_0使得原本的<br />Fresnel繞射公式<br />\n" +
+"U(ξ,η)=e^(jkz_0 )/(jλz_0 ) ∬▒〖U(x,y)exp{j π/(λz_0 ) [(ξ-x)^2+(η-y)^2 ] } 〗 dxdy\n" +
+"變成\n" +
+"U(ξ,η)=e^(jkz_0 )/(jλz_0 ) exp[(ξ^2+η^2 ) ] ∬▒〖U(x,y)exp[j 2π/(λz_0 ) (xξ+yη) ] 〗 dxdy\n" +
+"其中U(ξ,η)為傳遞後的光場分布，λ為波長。這是由於傳遞距離遠大於x <br />平方項而所做的省略，將x⁄(λz_0 )及y⁄(λz_0 )視為新的變數f_x及f_y，則整個方程式可<br />以看成對U(x,y)做傅氏轉換。但一般而言Fraunhofer繞射所需要的距離非常<br />長，不適合在實驗室內做記錄及觀察，因此，一般都會借助透鏡來幫助聚焦，<br />將原本要呈在遠處的頻譜面拉至透鏡距焦上呈現。而原本的公式會變成<br />\n" +
+"U(ξ,η)=e^jkf/jλf exp[(ξ^2+η^2 ) ] ∬▒〖U(x,y)exp[j 2π/λf (xξ+yη) ] 〗 dxdy\n" +
+"其中f為透鏡焦距，且U(ξ,η)會呈現在焦平面上。<br />\n" +
+"4f的光學系統就是將輸入的資料U(x,y)放置於第一面透鏡的前焦平面上，<br />並在後焦平面產生其頻譜，接著經過濾波後，再由第二面透鏡再做一次傅氏<br />轉換最後產生濾波後的圖形。<br />\n" +
+"接下來我們來討論圖形經過濾波後會發生什麼情形，假設原圖形為井字<br />形的方格矩陣，用數學表示則為<br />\n" +
+"u(x,y)=comb(x/D)*rect( x/d)∙comb(y/D)*rect( y/d)\n" +
+"其中*為convolution，	D為方格間距，d為方格大小。對其做傅氏轉換變成<br />\n" +
+"U(f_x,f_y )=comb(Df_x )∙sinc(df_x)∙comb(Df_y )∙sinc(df_y) <br />\n" +
+"頻譜如圖，此圖形我們能在第一面透鏡的後焦平面上觀察到，進行濾波時就<br />在此頻譜面遮擋不要的頻率，遮擋高頻、低頻、x方向的頻率、y方向<br />的頻率皆會在最後的成像面上有不同的變化。<br />\n" +
+"</div></html>");
     private javax.swing.JLabel desPhaseRetarder =
-            new JLabel("<html>相移式數位全像術使用了物光及三至四組不同起始相位的參考光所干涉的條紋，計算出原光波的振幅及一般光學儀器無法探測的相位。其原理如下，假設物波及參考波在干涉的平面上分別為O(x,y)及R(x,y)而他們的相位分別是ϕ及θ並用下列的方式表示\n"
-            + "{█(O(x,y)=|O(x,y) | e^iϕ(x,y) @R(x,y)=|R(x,y) | e^iθ(x,y)  )┤\n"
-            + "當兩波干涉時所觀察到的干涉條紋光強I為\n"
-            + "I=|O|^2+|R|^2+2|O||R|cos(ϕ-θ)\n"
-            + "當我們控制參考波的起始相位讓θ=0、 π⁄2 、π、 3π⁄2時，我們可得到下列四組干涉條紋\n"
-            + "{█(I_0=|O|^2+|R|^2+2|O||R|cos(ϕ)@■(I_(π⁄2)=|O|^2+|R|^2+2|O||R|sin(ϕ)@〖     I〗_π=|O|^2+|R|^2-2|O||R|cos(ϕ) )@I_(3π⁄2)=|O|^2+|R|^2-2|O||R|sin(ϕ) )┤\n"
-            + "接下來可以利用下列的式子求得物波的振幅及相位資訊\n"
-            + "O(x,y)=1/4|R|  [(I_0-I_π )+i(I_(π⁄2)-I_(3π⁄2) ) ]\n"
-            + "或是只利用三組干涉條紋的算法為\n"
-            + "O(x,y)=1/4|R|  [(I_0-I_(π⁄2) )+i(I_(π⁄2)-I_π ) ]\n"
-            + "    由上面的公式中我們能得知原物波的完整資訊，接下來我們便能利用這完整的物波資訊配合Fresnel Diffraction來重新回推出原物體的形狀。<br></html>");
+            new JLabel("<html><div style=\"padding-left:5px;line-height:2.5;background-color:white;\">" +
+"\n" +
+"相移式數位全像術使用了物光及三至四組不同起始相位的參考光所干涉<br />的條紋，計算出原光波的振幅及一般光學儀器無法探測的相位。其原理如下，<br />假設物波及參考波在干涉的平面上分別為O(x,y)及R(x,y)而他們的相位分別<br />是ϕ及θ並用下列的方式表示<br />\n" +
+"{█(O(x,y)=|O(x,y) | e^iϕ(x,y) @R(x,y)=|R(x,y) | e^iθ(x,y)  )┤ <br />\n" +
+"當兩波干涉時所觀察到的干涉條紋光強I為<br />\n" +
+"I=|O|^2+|R|^2+2|O||R|cos(ϕ-θ) <br />\n" +
+"當我們控制參考波的起始相位讓θ=0、 π⁄2 、π、 3π⁄2時，我們可得到下列<br />四組干涉條紋<br />\n" +
+"{█(I_0=|O|^2+|R|^2+2|O||R|cos(ϕ)@■(I_(π⁄2)=|O|^2+|R|^2+2|O||R|sin(ϕ)@〖     I〗_π=|O|^2+|R|^2-2|O||R|cos(ϕ) )@I_(3π⁄2)=|O|^2+|R|^2-2|O||R|sin(ϕ) )┤ <br />\n" +
+"接下來可以利用下列的式子求得物波的振幅及相位資訊<br />\n" +
+"O(x,y)=1/4|R|  [(I_0-I_π )+i(I_(π⁄2)-I_(3π⁄2) ) ] <br />\n" +
+"或是只利用三組干涉條紋的算法為<br />\n" +
+"O(x,y)=1/4|R|  [(I_0-I_(π⁄2) )+i(I_(π⁄2)-I_π ) ] <br />\n" +
+"    由上面的公式中我們能得知原物波的完整資訊，接下來我們便能利用這<br />完整的物波資訊配合Fresnel Diffraction來重新回推出原物體的形狀。<br /></div></html>");
     private javax.swing.JLabel desTalbotImage =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desWavefront =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desWavelength =
+            new JLabel("<html><b>No description available</b><br></html>");
+    private javax.swing.JLabel desCalibration =
             new JLabel("<html><b>No description available</b><br></html>");
 
     //End 
@@ -4962,9 +5817,12 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageSlit = "Slit: w=%s r=%s p=%s g=%s";
     static String logmessageDoubleSlit = "Double Slit: w=%s r=%s p=%s g=%s s=%s";
     static String logmessageProcessing = "Signal processing: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
+    static String logmessageTalbot = "Talbot images: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
     static String logmessagePhase = "Phase retarder: gray=%s";
     static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
+    static String logmessageCalibration = "Calibration : Focal length=%s X Position=%s Y Position=%s";
 }
+
 class LabelGlassPane extends JComponent {
 
     public JFrame frame;
