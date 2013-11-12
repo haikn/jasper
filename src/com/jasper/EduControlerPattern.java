@@ -937,7 +937,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblXPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 //.addComponent(lblYPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 )
-                .addGap(29, 29, 29)
+                .addGap(39, 39, 39)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 //.addComponent(txtYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addComponent(txtFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
@@ -949,7 +949,7 @@ public class EduControlerPattern extends OpticsPane {
                 //.addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
                 ))
                 .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(82, 82, 82)
                 .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1050,9 +1050,171 @@ public class EduControlerPattern extends OpticsPane {
                     });
                     jMenuItemNoSelectActionPerformed(null);
                 }
+                if (index == 2) {
+                    System.out.println("Tab changed to - Import file: ");
+                    layoutDiagram.removeAll();
+                    diagramLens.removeAll();
+                    tabbedDesLog.removeAll();
+                    
+                    tabbedDesLog.addTab("Description", desImportfile);
+                    jTextAreaLog.setColumns(20);
+                    jTextAreaLog.setRows(5);
+                    jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                    jScrollPane2.setViewportView(jTextAreaLog);
+                    tabbedDesLog.addTab("Log", jScrollPane2);
+
+                    lblDiagram.setIcon(null);
+                    lblDiagram.setText("No Diagram available");
+                    diagramLens.add(lblDiagram);
+                    layoutDiagram.add(diagramLens);
+                    
+//                    int returnVal = openFile.showOpenDialog(panelImportfile);
+//                    if (returnVal == openFile.APPROVE_OPTION) {
+//                        File file = openFile.getSelectedFile();
+//                        String ext = "";
+//                        String extension = file.getName();
+//                        extension = extension.toLowerCase();
+//                        if (extension.contains("jpg")) {
+//                            ext = ".jpg";
+//                        }
+//                        if (extension.contains("png")) {
+//                            ext = ".png";
+//                        }
+//                        if (extension.contains("gif")) {
+//                            ext = ".gif";
+//                        }
+//                        if (extension.contains("wbmp")) {
+//                            ext = ".wbmp";
+//                        }
+//                        if (extension.contains("jpeg")) {
+//                            ext = ".jpeg";
+//                        }
+//                        if (extension.contains("bmp")) {
+//                            ext = ".bmp";
+//                        }
+//                        if (ext.equals("")) {
+//                            JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+//                            panelImportfile = new javax.swing.JPanel();
+//                        } else {
+//                            try {
+//                                buffImagesImportfile = ImageIO.read(new File(file.getAbsolutePath()));
+//            //                    //String ext = File.probeContentType(file.getAbsolutePath());
+//            //                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+//            //                    //  image.updatePhaseRetarderParameter(zoom, grayLevel);
+//            //                    image.signalPhoto(buffImagesImportfile);
+//            //                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
+//            //                    imageGenerated = true;
+//                            } catch (IOException ex) {
+//                                System.out.println("problem accessing file" + file.getAbsolutePath());
+//                            }
+//                        }
+//                    } else {
+//                        System.out.println("File access cancelled by user.");
+//                        panelImportfile = new javax.swing.JPanel();
+//                    }
+                }
             }
         });
+        // BEGIN Import file
+        panelImportfile = new javax.swing.JPanel();
+        // Import file
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileImportFile = new javax.swing.JButton();
+        lblPleaseSelectImportFile = new javax.swing.JLabel();
+        buttonSecondImportFile = new javax.swing.JButton();
+        button11LensOnImportFile = new javax.swing.JButton();
+        buttonGeneralImportFile = new javax.swing.JButton();
+        buttonOpenFileImportFile.setText("Import file");
+        buttonOpenFileImportFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_openFileActionPerformedImportFile(evt);
+            }
+        });
+        lblPleaseSelectImportFile.setText("Please import file");
 
+        buttonSecondImportFile.setEnabled(false);
+        buttonSecondImportFile.setText("Second display ON");
+        buttonSecondImportFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesImportfile != null) {
+                    buttonSecondGenerateActionPerformedImportFile(evt);
+                    countSecondDisplayImportFile++;
+                    if (countSecondDisplayImportFile % 2 == 0) {
+                        buttonSecondImportFile.setText("Second display OFF");
+                    } else {
+                        buttonSecondImportFile.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        button11LensOnImportFile.setEnabled(false);
+        button11LensOnImportFile.setText("1:1 lens ON");
+        button11LensOnImportFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesImportfile != null) {
+                    button11LensOnImportFileActionPerformed(evt);
+                    countLenOnImportFile++;
+                    if (countLenOnImportFile % 2 == 0) {
+                        button11LensOnImportFile.setText("1:1 lens OFF");
+                    } else {
+                        button11LensOnImportFile.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonGeneralImportFile.setText("Generate");
+        buttonGeneralImportFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesImportfile != null) {
+                    buttonGenerateActionPerformedImportFile(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        javax.swing.GroupLayout signalImportFileLayout = new javax.swing.GroupLayout(panelImportfile);
+        panelImportfile.setLayout(signalImportFileLayout);
+        signalImportFileLayout.setHorizontalGroup(
+                signalImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(signalImportFileLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGap(74, 74, 74)
+                .addGroup(signalImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(signalImportFileLayout.createSequentialGroup()
+                .addComponent(buttonGeneralImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(button11LensOnImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonSecondImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(signalImportFileLayout.createSequentialGroup()
+                .addComponent(buttonOpenFileImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(lblPleaseSelectImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(221, 221, 221)))));
+        signalImportFileLayout.setVerticalGroup(
+                signalImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalImportFileLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(signalImportFileLayout.createSequentialGroup()
+                .addGroup(signalImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonOpenFileImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPleaseSelectImportFile))
+                .addGap(36, 36, 36)
+                .addGroup(signalImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buttonGeneralImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOnImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonSecondImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))));
+        
+        tabbedControl.addTab("Import file", panelImportfile);
+        
+        // END Import file
+        
         /*
          * Slit
          */
@@ -1668,7 +1830,8 @@ public class EduControlerPattern extends OpticsPane {
         lblSpacingProcessing.setText("Spacing");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_spacing.setMaximum(image1.getBounds().height);
-        s_processing_spacing.setValue(400);
+        s_processing_spacing.setMinimum(-(image1.getBounds().height));
+        s_processing_spacing.setValue(0);
         s_processing_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -2628,7 +2791,8 @@ public class EduControlerPattern extends OpticsPane {
         lblSpacingtalbot.setText("Spacing");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_spacing.setMaximum(image1.getBounds().height);
-        s_talbot_spacing.setValue(400);
+         s_talbot_spacing.setMinimum(image1.getBounds().height);
+        s_talbot_spacing.setValue(0);
         s_talbot_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
@@ -2936,12 +3100,14 @@ public class EduControlerPattern extends OpticsPane {
         panelPattern.setBounds(0, 0, 568, 345);
         //  BEGIN show full screen
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        layoutControl.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                patternFrame.show();
-            }
-        });
+//        layoutControl.addMouseListener(new ClickListener() {
+//            public void doubleClick(MouseEvent e) {
+//                patternFrame.show();
+//            }
+//        });
         //  END show full screen
+        
+        
 
         tabbedDesLog.addTab("Description", null);
         jTextAreaLog.setColumns(20);
@@ -2949,11 +3115,45 @@ public class EduControlerPattern extends OpticsPane {
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
+        
+        // BEGIN show full screen for desTelephotoLens
+        desTelephotoLens.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                desTelephotoLens.setBounds(0,0,screenSize.width, screenSize.height);
+                //patternFrame.show();
+//                GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//                GraphicsDevice device = graphicsEnvironment.getDefaultScreenDevice();
+//                if (device.isFullScreenSupported()) {
+//                    device.setFullScreenWindow(desTelephotoLens);
+//                    desTelephotoLens.validate();
+//                }
+                System.out.println("desTelephotoLens full screen action");
+            }
+        });
+        //  END show full screen for desTelephotoLens
 
         //tabbedDiagram.addTab("Diagram", null);
         layoutDiagram.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         tabbedDiagram.setBounds(580, 580, 665, 335);
         layoutDiagram.add(tabbedDiagram, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        // BEGIN show full screen for layoutDiagram
+        layoutDiagram.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                layoutDiagram.setBounds(0,0,screenSize.width, screenSize.height);
+                
+                GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                GraphicsDevice device = graphicsEnvironment.getDefaultScreenDevice();
+                if (device.isFullScreenSupported()) {
+                    //device.setFullScreenWindow(layoutDiagram);
+                    layoutDiagram.validate();
+                }
+                //patternFrame.show();
+                System.out.println("layoutDiagram full screen action");
+            }
+        });
+        //  END show full screen for layoutDiagram
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -3842,6 +4042,7 @@ public class EduControlerPattern extends OpticsPane {
     private static BufferedImage buffImages = null;
     private static BufferedImage buffImagesFresnel = null;
     private static BufferedImage buffImagesTalbotPhoto = null;
+    private static BufferedImage buffImagesImportfile = null;
 
     private void b_openFileActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -3979,6 +4180,49 @@ public class EduControlerPattern extends OpticsPane {
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                     //  image.updatePhaseRetarderParameter(zoom, grayLevel);
                     image.paintTalbotPhoto(buffImagesTalbotPhoto);
+                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            System.out.println("File access cancelled by user.");
+        }
+    }
+    
+    private void b_openFileActionPerformedImportFile(java.awt.event.ActionEvent evt) {
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesImportfile = ImageIO.read(new File(file.getAbsolutePath()));
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.paintImportFile(buffImagesImportfile);
                     EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -5353,6 +5597,78 @@ public class EduControlerPattern extends OpticsPane {
             }
         }
     }
+    
+    /*
+     * Import File
+     */
+
+    private void buttonGenerateActionPerformedImportFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedImportFile
+        actionTag = "ImportFile";
+        if (parseArguments()) {
+            button11LensOnImportFile.setEnabled(true);
+            buttonSecondImportFile.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintImportFile(buffImagesImportfile);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            setLog("");
+            imageGenerated = true;
+        }
+
+    }
+
+    private void button11LensOnImportFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnImportFileActionPerformed
+        actionTag = "ImportFile";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintImportFile(buffImagesImportfile);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            setLog("");
+            imageGenerated = true;
+
+            if (countLenOnImportFile % 2 == 0) {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        patternFrame.show();
+                    }
+                });
+
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setResizable(false);
+            }
+
+        }
+
+    }//GEN-LAST:event_button11LensOnImportFileActionPerformed
+
+    private void buttonSecondGenerateActionPerformedImportFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedImportFile
+        actionTag = "ImportFile";
+        if (parseArguments()) {
+            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice[] devices = env.getScreenDevices();
+            if (devices.length == 1) {
+                countSecondDisplayImportFile--;
+                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                image.paintImportFile(buffImagesImportfile);
+                EduPatternShowOn.updateLensPatternPattern(image, "");
+                setLog("");
+                imageGenerated = true;
+                if (countSecondDisplayImportFile % 2 == 0) {
+                    patternFrame.dispose();
+                }
+            }
+        }
+    }
     //End
 
     private void textFocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFocalActionPerformed
@@ -5611,6 +5927,13 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonSecondTalbotPhoto;
     private javax.swing.JButton button11LensOnTalbotPhoto;
     private javax.swing.JButton buttonGeneralTalbotPhoto;
+    // Import file
+    private javax.swing.JPanel panelImportfile;
+    private javax.swing.JButton buttonOpenFileImportFile;
+    private javax.swing.JLabel lblPleaseSelectImportFile;
+    private javax.swing.JButton buttonSecondImportFile;
+    private javax.swing.JButton button11LensOnImportFile;
+    private javax.swing.JButton buttonGeneralImportFile;
     // Lens On 11 function
     private int countLenOnProcessing = 1;
     private int countLenOnTelephoto = 1;
@@ -5630,6 +5953,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnDoubleSlit = 1;
     private int countLenOnFresnel = 1;
     private int countLenOnCalibration = 1;
+    private int countLenOnImportFile = 1;
     // Second display
     private int countSecondDisplayTelephoto = 1;
     private int countSecondDisplayProcessing = 1;
@@ -5649,6 +5973,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countSecondDisplayDoubleSlit = 1;
     private int countSecondDisplayFresnel = 1;
     private int countSecondDisplayCalibration = 1;
+    private int countSecondDisplayImportFile = 1;
     // Check disable lens ON
 //    private int countDisableTelephoto = 0;
 //    private int countDisableProcessing = 0;
@@ -5778,6 +6103,8 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel desWavelength =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desCalibration =
+            new JLabel("<html><b>No description available</b><br></html>");
+    private javax.swing.JLabel  desImportfile =
             new JLabel("<html><b>No description available</b><br></html>");
 
     //End 
