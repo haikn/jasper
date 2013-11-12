@@ -1212,7 +1212,7 @@ public class PatternImage {
         }
     }
 
-    public void signalProcessing() {
+    public void signalProcessing0() {
 
         int lineWidthX = (int) d_widthX;
         int lineHeightX = (int) d_heightX;
@@ -1272,21 +1272,21 @@ public class PatternImage {
         }
     }
     
-     public void paintTalbot() {
+    public void signalProcessing() {
 
-        int lineWidthX = (int) d_widthXTalbot;
-        int lineHeightX = (int) d_heightXTalbot;
-        int lineWidthY = (int) d_widthYTalbot;
-        int lineHeightY = (int) d_heightYTalbot;
-        int lineRotation = (int) d_rotationTalbot;
-        int linePostionX = (int) d_postionXTalbot;
-        int linePostionY = (int) d_postionYTalbot;
-        int lineGray = (int) d_grayLevelTalbot;
-        int spac = (int) d_spacingTalbot;
+        int lineWidthX = (int) d_widthX;
+        int lineHeightX = (int) d_heightX;
+        int lineWidthY = (int) d_widthY;
+        int lineHeightY = (int) d_heightY;
+        int lineRotation = (int) d_rotation;
+        int linePostionX = (int) d_postionX;
+        int linePostionY = (int) d_postionY;
+        int lineGray = (int) d_grayLevel;
+        int spac = (int) d_spacing;
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         int NumCol = 5;
-        int NumRow = 2;
+        int NumRow = 4;
         int[] ColX;
         int[] RowY;
         ColX = new int[NumCol];
@@ -1299,17 +1299,74 @@ public class PatternImage {
 //            }
         }
         RowY = new int[NumRow];
-        int DelY = canvas.getHeight() / NumRow;
+        int DelY = canvas.getHeight() / NumRow + spac / NumRow;
         for (int i = 0; i < RowY.length; i++) {
             // if (linePostionX > 0) {
-            if (i % 2 == 0) {
-                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) - spac / 2);
-            } else {
-                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) + spac / 2);
-            }
+             RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
+//            if (i == 0) {
+//                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + (DelY / 2 + (DelY * i - spac / 4));
+//            } else if (i == 1) {
+//                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + (DelY / 2 + (DelY * i + spac / 4));
+//            } else if (i == 2) {
+//                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + (DelY / 2 + (DelY * i - spac / 4));
+//            } else if (i == 3) {
+//                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + (DelY / 2 + (DelY * i + spac / 4));
+//            }
             //            } else {
 //                RowY[i] = DelY / 2 + DelY * i;
 //            }
+        }
+        Rectangle rect2;
+        for (int i = 0; i < NumCol; i++) {
+            g = (Graphics2D) canvas.getGraphics();
+            g.setColor(new Color(lineGray, lineGray, lineGray));
+            rect2 = new Rectangle(ColX[i] - lineWidthY / 2, (canvas.getHeight() - lineHeightY) / 2, lineWidthY, lineHeightY);
+            // g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
+            g.draw(rect2);
+            g.fill(rect2);
+        }
+        for (int i = 0; i < NumRow; i++) {
+            g = (Graphics2D) canvas.getGraphics();
+            g.setColor(new Color(lineGray, lineGray, lineGray));
+            rect2 = new Rectangle((canvas.getWidth() - lineWidthX) / 2, RowY[i] - lineHeightX / 2, lineWidthX, lineHeightX);
+            //g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
+            g.draw(rect2);
+            g.fill(rect2);
+        }
+    }
+    
+     public void paintTalbot() {
+        int lineWidthX = (int) d_widthXTalbot;
+        int lineHeightX = (int) d_heightXTalbot;
+        int lineWidthY = (int) d_widthYTalbot;
+        int lineHeightY = (int) d_heightYTalbot;
+        int lineRotation = (int) d_rotationTalbot;
+        int linePostionX = (int) d_postionXTalbot;
+        int linePostionY = (int) d_postionYTalbot;
+        int lineGray = (int) d_grayLevelTalbot;
+        int spac = (int) d_spacingTalbot;
+        Graphics2D g = (Graphics2D) canvas.getGraphics();
+        g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        int NumCol = 5;
+        int NumRow = 4;
+        int[] ColX;
+        int[] RowY;
+        ColX = new int[NumCol];
+        int DelX = canvas.getWidth() / NumCol;
+        for (int i = 0; i < ColX.length; i++) {
+            //if (linePostionY > 0) {
+            ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
+//            } else {
+//                ColX[i] = (DelX / 2 + DelX * i);
+//            }
+        }
+        RowY = new int[NumRow];
+        int DelY = canvas.getHeight() / NumRow + spac / NumRow;
+        for (int i = 0; i < RowY.length; i++) {
+            // if (linePostionX > 0) {
+             RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
         }
         Rectangle rect2;
         for (int i = 0; i < NumCol; i++) {
@@ -1400,6 +1457,28 @@ public class PatternImage {
     }
     
     public void paintTalbotPhoto(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
+    public void paintImportFile(BufferedImage buffImg) {
 
         double scale = 1.0;
         // scale = d_zoom / 100.0D;
