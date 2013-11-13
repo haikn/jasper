@@ -95,7 +95,6 @@ public class KeyReader {
             return false;
         }        
         
-        System.out.println(key1Decrypted);
         
         //Get the current date
         Calendar current = Calendar.getInstance();
