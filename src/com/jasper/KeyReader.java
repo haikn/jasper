@@ -62,12 +62,12 @@ public class KeyReader {
         String key_initial = propertiesFile.getProperty("KEYIN");
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        if(key_initial == null) {
-            if(key1 == null) {
+        if(key_initial == null || key_initial.equals("")) {
+            if(key1 == null || key1.equals("")) {
                 return false;
             }
         } else {
-            if(key1 == null) {
+            if(key1 == null || key1.equals("")) {
                 Calendar cal1 = Calendar.getInstance();
 
                 String key1Value = dateFormat.format(cal1.getTime());
