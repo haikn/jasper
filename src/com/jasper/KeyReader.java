@@ -53,7 +53,7 @@ public class KeyReader {
      */
     public boolean verifyKey() throws IOException {
         //File file = new File("config.properties");
-        FileInputStream fIn = new FileInputStream("./src/resources/config.properties");
+        FileInputStream fIn = new FileInputStream("config.properties");
         
         
         Properties propertiesFile = new Properties();
@@ -93,7 +93,9 @@ public class KeyReader {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-        }
+        }        
+        
+        System.out.println(key1Decrypted);
         
         //Get the current date
         Calendar current = Calendar.getInstance();
@@ -137,7 +139,7 @@ public class KeyReader {
         }
         
         try {
-            File file = new File("./src/resources/config.properties");
+            File file = new File("config.properties");
             FileOutputStream fOut = new FileOutputStream(file);       
             Properties propertiesFile = new Properties();
             propertiesFile.setProperty(inputKeyName, encryptedStr);
@@ -190,9 +192,8 @@ public class KeyReader {
             return new String(utf8, "UTF8");
         } catch (Exception e) {
             e.printStackTrace();
-            return "";
         }
-        
+        return null;
     }    
     
     private static void paramInit(String method) {
