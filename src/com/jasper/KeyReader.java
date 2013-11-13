@@ -81,7 +81,7 @@ public class KeyReader {
         propertiesFile.load(fIn);
         key1 = propertiesFile.getProperty("KEY1");
         
-        if(key1.equalsIgnoreCase(null)) {
+        if(key1.equalsIgnoreCase("")) {
             return false;
         }
         
