@@ -17,10 +17,8 @@ public class EduUIMainProg {
 	public static void main(String[] args) throws IOException{
             KeyReader keyreader = new KeyReader();
             boolean key = keyreader.verifyKey();
-            if(key == false) {
-                System.exit(0);
+            if(key) {
+                EduPatternShowOn.main(args);
             }
-            
-            EduPatternShowOn.main(args);
 	}
 }

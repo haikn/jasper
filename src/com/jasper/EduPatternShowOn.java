@@ -18,8 +18,11 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -65,6 +68,7 @@ public class EduPatternShowOn {
         patternFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         patternFrame.setSize(bounds.width, bounds.height);
         patternFrame.setLocation(bounds.x, bounds.y);
+        
 
         // full screen
         patternFrame.setUndecorated(true);
@@ -271,19 +275,26 @@ public class EduPatternShowOn {
     }
     
     public static void main(String[] args) {
-        // parse arguments
-        for (String arg : args) {
-            parse_opt(arg);
+        try {
+            KeyReader keyreader = new KeyReader();
+            boolean key = keyreader.verifyKey();
+            if(key) {
+                // parse arguments
+                for (String arg : args) {
+                    parse_opt(arg);
+                }
+                EduPatternShowOn.initPatternFrame();
+                EduPatternShowOn.initControlFrame();
+
+                // set icon using JDC logo
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                controlFrame.setIconImage(img);
+                patternFrame.setIconImage(img);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(EduPatternShowOn.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        EduPatternShowOn.initPatternFrame();
-        EduPatternShowOn.initControlFrame();
-
-        // set icon using JDC logo
-        URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Image img = kit.createImage(url);
-        controlFrame.setIconImage(img);
-        patternFrame.setIconImage(img);
     }
 }
