@@ -16,7 +16,10 @@ import java.awt.Font;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
@@ -26,7 +29,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     /**
      * Creates new form EduUIMainView
      */
-    public EduUIMainView() {
+    public EduUIMainView() throws IOException{
         initComponents();
     }
 
@@ -37,7 +40,10 @@ public class EduUIMainView extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents() throws IOException {
+        KeyReader keyreader = new KeyReader();
+        boolean key = keyreader.verifyKey();
+        if(key) {
 
         jTabbedPaneOptics = new javax.swing.JPanel();
         tabbedGaneral = new javax.swing.JTabbedPane();
@@ -225,7 +231,8 @@ public class EduUIMainView extends javax.swing.JFrame {
 //        });
 
 
-        setTitle(eduKitTitle);
+        setTitle(eduKitTitle + " - Trial version");
+        }
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -340,7 +347,11 @@ public class EduUIMainView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EduUIMainView().setVisible(true);
+                try {
+                    new EduUIMainView().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(EduUIMainView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
