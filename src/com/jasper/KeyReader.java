@@ -53,7 +53,7 @@ public class KeyReader {
      */
     public boolean verifyKey() throws IOException {
         //File file = new File("config.properties");
-        FileInputStream fIn = new FileInputStream("config.properties");
+        FileInputStream fIn = new FileInputStream("./src/resources/config.properties");
         
         
         Properties propertiesFile = new Properties();
@@ -138,7 +138,7 @@ public class KeyReader {
         }
         
         try {
-            File file = new File("config.properties");
+            File file = new File("./src/resources/config.properties");
             FileOutputStream fOut = new FileOutputStream(file);       
             Properties propertiesFile = new Properties();
             propertiesFile.setProperty(inputKeyName, encryptedStr);
