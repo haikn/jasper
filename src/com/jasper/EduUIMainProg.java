@@ -9,9 +9,18 @@
  */
 package com.jasper;
 
+import java.io.IOException;
+
+
 public class EduUIMainProg {
 
-	public static void main(String[] args) {
-		EduPatternShowOn.main(args);
+	public static void main(String[] args) throws IOException{
+            KeyReader keyreader = new KeyReader();
+            boolean key = keyreader.verifyKey();
+            if(key == false) {
+                System.exit(0);
+            }
+            
+            EduPatternShowOn.main(args);
 	}
 }
