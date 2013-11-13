@@ -10,6 +10,7 @@
 package com.jasper;
 
 import static com.jasper.EduPatternShowOn.patternFrame;
+import com.sun.org.apache.bcel.internal.generic.BREAKPOINT;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -19,6 +20,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -27,6 +29,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -69,9 +72,10 @@ public class EduControlerPattern extends OpticsPane {
         jTextAreaDesc = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollDes = new javax.swing.JScrollPane();
-        //diagramLens = new LensDiagram();
+        diagramLensFull = new javax.swing.JPanel();
         diagramLens = new javax.swing.JPanel();
         lblDiagram = new javax.swing.JLabel();
+        lblDiagramFull = new javax.swing.JLabel();
 
         panelPattern = new EduPatternJPanel();
         jTabbedPaneOptics = new javax.swing.JTabbedPane();
@@ -96,6 +100,7 @@ public class EduControlerPattern extends OpticsPane {
 
         layoutControl = new javax.swing.JLayeredPane();
         layoutDiagram = new javax.swing.JPanel();
+        layoutDiagramFull = new javax.swing.JPanel();
         tabbedControl = new javax.swing.JTabbedPane();
         panelGeneral = new javax.swing.JPanel();
         jLabelSelectExperiment = new javax.swing.JLabel();
@@ -2791,7 +2796,7 @@ public class EduControlerPattern extends OpticsPane {
         lblSpacingtalbot.setText("Spacing");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_spacing.setMaximum(image1.getBounds().height);
-         s_talbot_spacing.setMinimum(image1.getBounds().height);
+         s_talbot_spacing.setMinimum(-(image1.getBounds().height));
         s_talbot_spacing.setValue(0);
         s_talbot_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -3100,11 +3105,11 @@ public class EduControlerPattern extends OpticsPane {
         panelPattern.setBounds(0, 0, 568, 345);
         //  BEGIN show full screen
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
-//        layoutControl.addMouseListener(new ClickListener() {
-//            public void doubleClick(MouseEvent e) {
-//                patternFrame.show();
-//            }
-//        });
+        layoutControl.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                patternFrame.show();
+            }
+        });
         //  END show full screen
         
         
@@ -3119,19 +3124,478 @@ public class EduControlerPattern extends OpticsPane {
         // BEGIN show full screen for desTelephotoLens
         desTelephotoLens.addMouseListener(new ClickListener() {
             public void doubleClick(MouseEvent e) {
-                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                desTelephotoLens.setBounds(0,0,screenSize.width, screenSize.height);
-                //patternFrame.show();
-//                GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//                GraphicsDevice device = graphicsEnvironment.getDefaultScreenDevice();
-//                if (device.isFullScreenSupported()) {
-//                    device.setFullScreenWindow(desTelephotoLens);
-//                    desTelephotoLens.validate();
-//                }
-                System.out.println("desTelephotoLens full screen action");
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desTelephotoLens.getText());
+                
+                    descriptionFullScreen.setBackground(Color.WHITE);
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
             }
         });
         //  END show full screen for desTelephotoLens
+        
+        // BEGIN show full screen for desMicroscope
+        desMicroscope.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desMicroscope.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desMicroscope
+        
+        // BEGIN show full screen for desAberration
+        desAberration.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desAberration.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desAberration
+        
+        // BEGIN show full screen for desMichelson
+        desMichelson.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desMichelson.getText());
+                
+                    descriptionFullScreen.setBackground(Color.WHITE);
+                    descriptionFullScreen.setForeground(Color.WHITE);
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desMichelson
+        
+        // BEGIN show full screen for desDiffaction
+        desDiffaction.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desDiffaction.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desDiffaction
+        // BEGIN show full screen for desSpectrometer
+        desSpectrometer.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desSpectrometer.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desSpectrometer
+        // BEGIN show full screen for desSignalProcessing
+        desSignalProcessing.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desSignalProcessing.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desSignalProcessing
+        // BEGIN show full screen for desPhaseRetarder
+        desPhaseRetarder.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desPhaseRetarder.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desPhaseRetarder
+        // BEGIN show full screen for desTalbotImage
+        desTalbotImage.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desTalbotImage.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desTalbotImage
+        // BEGIN show full screen for desWavefront
+        desWavefront.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desWavefront.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desWavefront
+        // BEGIN show full screen for desWavelength
+        desWavelength.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desWavelength.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desWavelength
+        // BEGIN show full screen for desCalibration
+        desCalibration.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desCalibration.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desCalibration
+        // BEGIN show full screen for desImportfile
+        desImportfile.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                desFullScreen = new javax.swing.JLabel();
+                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
+                
+                if(layoutDescriptionFullOpen ==  0){
+                    desFullScreen.setText(desImportfile.getText());
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    descriptionFullScreen.setIconImage(img);
+                    descriptionFullScreen.getContentPane().add(desFullScreen);
+                    descriptionFullScreen.pack();
+                    layoutDescriptionFullOpen++;
+
+                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    descriptionFullScreen.setVisible(true);
+                   
+                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    descriptionFullScreen.setAlwaysOnTop(true);
+                    descriptionFullScreen.setResizable(true);
+                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDescriptionFullOpen = 0;
+                            descriptionFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
+                }
+            }
+        });
+        //  END show full screen for desImportfile
 
         //tabbedDiagram.addTab("Diagram", null);
         layoutDiagram.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -3140,17 +3604,38 @@ public class EduControlerPattern extends OpticsPane {
         // BEGIN show full screen for layoutDiagram
         layoutDiagram.addMouseListener(new ClickListener() {
             public void doubleClick(MouseEvent e) {
-                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                layoutDiagram.setBounds(0,0,screenSize.width, screenSize.height);
+                diagramFullScreen = new JFrame("JDC Education Kit - Diagram full screen");
                 
-                GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                GraphicsDevice device = graphicsEnvironment.getDefaultScreenDevice();
-                if (device.isFullScreenSupported()) {
-                    //device.setFullScreenWindow(layoutDiagram);
-                    layoutDiagram.validate();
+                if(layoutDiagramFullOpen ==  0){
+                    lblDiagramFull.setIcon(lblDiagram.getIcon());
+                    lblDiagramFull.setText(lblDiagram.getText());
+                    diagramLensFull.add(lblDiagramFull);
+                    layoutDiagramFull.add(diagramLensFull);
+                
+                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Image img = kit.createImage(url);
+                    diagramFullScreen.setIconImage(img);
+                    diagramFullScreen.getContentPane().add(layoutDiagramFull);
+                    diagramFullScreen.pack();
+                    layoutDiagramFullOpen++;
+
+                    diagramFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
+                    diagramFullScreen.setVisible(true);
+                   
+                    diagramFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    diagramFullScreen.setAlwaysOnTop(true);
+                    diagramFullScreen.setResizable(true);
+                    diagramFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            layoutDiagramFullOpen = 0;
+                            diagramFullScreen.dispose();
+                    }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(null, "This window is already open");
                 }
-                //patternFrame.show();
-                System.out.println("layoutDiagram full screen action");
             }
         });
         //  END show full screen for layoutDiagram
@@ -3517,7 +4002,9 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        tabbedDesLog.addTab("Description", desDiffaction);
+        //tabbedDesLog.addTab("Description", desDiffaction);
+        jScrollDes.setViewportView(desDiffaction);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -3573,7 +4060,10 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Mirror", jPanelMirrorSpectometer);
 
-        tabbedDesLog.addTab("Description", desSpectrometer);
+        //tabbedDesLog.addTab("Description", desSpectrometer);
+        jScrollDes.setViewportView(desSpectrometer);
+        tabbedDesLog.addTab("Description", jScrollDes);
+        
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -4338,20 +4828,27 @@ public class EduControlerPattern extends OpticsPane {
                     }
                 });
             } else {
-                Point hotspot = new Point((int) (16), (int) (16));
-                Toolkit tk = Toolkit.getDefaultToolkit();
-                //Cursor cursor = tk.createCustomCursor(pima,hotspot,"JoshyMag");
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                //magFrameLenon.setGlassPane(panelPattern);
-                //magFrameLenon.setUndecorated(true);
-                //magFrameLenon.setCursor(cursor);
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.setResizable(false);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnTelephoto--;
+                            jButton11LensOn.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
         }
 
@@ -4434,13 +4931,26 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.setResizable(false);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnFresnel--;
+                            button11LensOnFresnel.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
         }
 
@@ -4526,13 +5036,26 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.setResizable(false);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnMichelson--;
+                            jButton11LensOnMichelson.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -4612,13 +5135,24 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnMicroscope--;
+                            buttonMicroscopeLensOn.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -4699,13 +5233,24 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnCyllin--;
+                            buttonCyllinLensOn.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -4786,13 +5331,24 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnMirror--;
+                            buttonMirrorLensOn.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -4874,13 +5430,24 @@ public class EduControlerPattern extends OpticsPane {
 
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnSlit--;
+                            buttong11LensOnSlit.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -4961,13 +5528,24 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnDoubleSlit--;
+                            buttong11LensOnDoubleSlit.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -5047,13 +5625,25 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnProcessing--;
+                            button11LensOnProcessing.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
         }
     }//GEN-LAST:event_button11LensOnProcessingActionPerformed
@@ -5131,13 +5721,25 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnTalbot--;
+                            button11LensOntalbot.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
         }
     }//GEN-LAST:event_button11LensOnTalbotActionPerformed
@@ -5217,13 +5819,25 @@ public class EduControlerPattern extends OpticsPane {
 
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnPhoto--;
+                            button11LensOnPhoto.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -5305,13 +5919,25 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnPhase--;
+                            button11LensOnPhase.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
         }
 
@@ -5386,13 +6012,25 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnSpectrometer--;
+                            buttonMirrorSpectometerLensOn.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -5473,13 +6111,25 @@ public class EduControlerPattern extends OpticsPane {
                 });
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnCalibration--;
+                            buttonCalibrationLensOn.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -5562,13 +6212,25 @@ public class EduControlerPattern extends OpticsPane {
 
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnTalbotPhoto--;
+                            button11LensOnTalbotPhoto.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -5636,13 +6298,25 @@ public class EduControlerPattern extends OpticsPane {
 
             } else {
                 magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                magFrameLenon.setResizable(false);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnImportFile--;
+                            button11LensOnImportFile.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
             }
 
         }
@@ -5781,6 +6455,10 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel jLabelSelectExperiment;
     private javax.swing.JTabbedPane jTabbedPaneOptics;
     private javax.swing.JPanel layoutDiagram;
+    private javax.swing.JPanel layoutDiagramFull;
+    private byte layoutDiagramFullOpen = 0;
+    private byte layoutDescriptionFullOpen = 0;
+    private byte frameLensOnOpen = 0;
     // Spectometer
     private javax.swing.JLabel lblPhySpectometer;
     private javax.swing.JLabel lblThetaMirrorSpectometer;
@@ -6019,10 +6697,14 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollDes;
     private javax.swing.JPanel diagramLens;
+    private javax.swing.JPanel diagramLensFull;
     private javax.swing.JLabel lblDiagram;
+    private javax.swing.JLabel lblDiagramFull;
     private String actionTag = "Len";
     private JFrame magFrameLenon;
     private JFrame magFrameLensOnSpectrometer;
+    private JFrame diagramFullScreen;
+    private JFrame descriptionFullScreen;
     
     // Calibration
     public javax.swing.JLabel lblFocalCalibration;
@@ -6038,6 +6720,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonCalibrationDisplaySecondOn;
     private javax.swing.JButton buttonCalibrationGeneral;
     // Description
+    private javax.swing.JLabel desFullScreen;
     private javax.swing.JTextArea descriptionMichelson;
     private javax.swing.JLabel desNoSelect =
             new JLabel("");
@@ -6048,26 +6731,49 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel desAberration =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desMichelson =
-            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;\">" +
-"干涉的現象是由兩個或兩個以上的光波疊加於空間之中而產生。由光程<br />差所造成的相位差而產生亮紋（建設性干涉）與暗紋（破壞性干涉）等干涉<br />條紋。要觀察到干涉條紋除了需要上述的相位差所造成的建設性干涉與破壞<br />性干涉之外，還需要注意光波偏振方向與相干性（coherence），簡而言之，<br />兩個有相同偏振的光波到達屏幕的光程差越接近的話，干涉條紋的對比也會<br />越好。<br />\n" +
-"假設有相同偏振方向的兩束光U_1 (r ⃑)和U_2 (r ⃑)，分別為<br />\n" +
-"〖 U〗_1=U_01 exp[j(k ⃑_1∙r ⃑+ε_1 ) ] <br />\n" +
-"及U_2=U_02 exp[j(k ⃑_2∙r ⃑+ε_2 ) ] <br />\n" +
-"兩波相疊後所得到的光強為<br />\n" +
-"I=|U|^2=|〖 U〗_1+U_2 |^2=|U_1 |^2+|U_2 |^2+U_1^* U_2+U_1 U_2^* <br />\n" +
-"其中|U_1 |^2=I_1、|U_2 |^2=I_2，則上式可寫成<br />\n" +
-"I=I_1+I_2+2〖(I_1 I_2)〗^(1⁄2) cos⁡(δ) <br />\n" +
-"其中〖δ=k ⃑〗_1∙r ⃑+ε_1-k ⃑_2∙r ⃑-ε_2為光程與起始相位所造成的相位差。當  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"
-            + "      <br />δ=0,±2π,±4π…為完全建設性干涉(total constructive interference)，<br />而δ=±π,±3π,±5π…為完全破壞性干涉(total destructive <br />interference)。<br />\n" +
-"    本實驗的干涉儀利用了分光鏡將入射的雷射光分成兩道光，一道穿透光<br />與一道反射光，這種分光的原理被分類為振幅分光(division of amplitude) <br />和楊格雙狹縫干涉中利用相鄰的兩條狹縫把同一道波前分成兩道新的光源的<br />波前分光(division of wave front)不同。接著由分光所分出的穿透光經由<br />相位調制器產生各種波前與反射光經由面鏡反射回來在空間中交會產生干涉，<br />並能在屏幕上觀察到干涉圖形。"
-            + "<br />" +
+            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;letter-spacing:2px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">" +
+"&nbsp; &nbsp; &nbsp; 干 涉 的 現 象 是 由 兩 個 或 兩 個 以 上 的 光 波 疊 加 於 空 間 之 中 而 產 生。由 光 程 差 所<br /><br />\n" +
+"造 成 的 相 位 差 而 產 生 亮 紋 （建 設 性 干 涉）與 暗 紋（破 壞 性 干 涉）等 干 涉 條 紋。要<br /><br />\n" +
+"觀 察 到 干 涉 條 紋 除 了 需 要 上 述 的 相 位 差 所 造 成 的 建 設 性 干 涉 與 破 壞 性 干 涉 之 外，<br /><br /> \n" +
+"還 需 要 注 意 光 波 偏 振 方 向 與 相 干 性（coherence），簡 而 言 之，兩 個 有 相 同 偏 振<br /><br /> \n" +
+"的 光 波 到 達 屏 幕 的 光 程 差越 接 近 的 話，干 涉 條 紋 的 對 比 也 會 越 好。&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br /> <br />\n" +
+"本 實 驗 中 的 干 涉 儀 利 用 了 分 光 鏡 將 入 射 的 雷 射 光 分 成 兩 道 光 ，一 道 穿 透 光 與<br /><br />\n" +
+"一 道 反 射 光，這 種 分 光 的 原 理 被 分 類 為 振 幅 分 光(division of amplitude)和 楊<br /><br /> \n" +
+"格 雙 狹 縫 干 涉 中 利 用 相 鄰 的 兩 條 狹 縫 把 同 一 道 波 前 分 成 兩 道 新 的 光 源 的 波 前 分<br /><br /> \n" +
+"光(division of wave front)不 同 。 接 著 由 分 光 所 分 出 的 穿 透 光 經 由 相 位 調 制 器 產 生<br /><br />" + 
+"各 種 波 前 與 反 射 光 經 由 面 鏡 反 射 回 來 在 空 間 中 交 會 產 生 干 涉，並 能 在 屏 幕 上<br /><br /> \n" +
+"觀 察 到 干 涉 圖 形。<br /><br />" +
 "</div></html>");
     private javax.swing.JLabel desDiffaction =
-            new JLabel("<html><b>No description available</b><br></html>");
+            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">"
+            + "&nbsp; &nbsp; &nbsp; 光的波動性質 可 以 很 容 易 地 從 干 涉 與 繞 射 的 現 象 中 觀 察 到，要 解 釋 其 原 因 得<br />  \n" +
+"先 從 Huygens-Fresnel 原 理 說 起，其 內 容 為 波 前 上 每 一 點 都 可 視 為 新 的 點 波 源 各 自 發<br /><br />出 次 級 球 面 波，波 前 的 新 位 置 則 是 這 些 球 面 的 包 絡 面。因 此 在 單 狹 縫 繞 射 實<br /><br />\n" +
+"驗 中，平 面 波 遇 上 狹 縫 後，狹 縫 上 的 每 一 點 都 視 為 新 的 點 光 源 在 各 方 向 發 出 光  波，<br /><br />  \n" +
+"直 進 的 非 繞 射 光 在 遠 處 以 相 同 的 相 位 到 達 屏 幕 形 成 亮 點。現 在 有 另 一 束 光 以 與 水<br /><br />\n" +
+"平 夾 角  的 方 向 行 進，當 光 束 最 上 層 與 最 下 層 的 光 程 差 剛 好 為 一 個波長時，正中<br /><br />  \n" +
+"間 的 光 束 會 與 最 上 面 的 光 束 相 差 了 半 個 波 長 (相 位 相 差 )而 相 消，接 著 往 下 推 下 去 整 束 光 都<br /><br />會 相 差 半 波 長 而 相 消 掉，最 後 在 屏 幕 上 顯 示 暗 紋。依 相 同 的 原 理 可 推<br /><br />\n" +
+"得 當 光 程 差 為 波 長 整 數 倍 時 即 會 產生 暗 紋。<br /><br />\n" +
+"楊 格 的 雙 狹 縫 實 驗 為 波 前 分 光 的 干 涉 儀，原 波 前 被 兩 條 狹 縫 擋 住 只 留 下 通 過<br /><br />\n" +
+"狹 縫 的 部 份，通 過 狹 縫 的 光 被 視 為 新 的 點 波 源 在 遠 處 屏 幕 上 形 成 干 涉 條 紋，兩 個 點 波 源 會 往<br /><br />四 面 八 方 散 出 光 線，當 射 出 光 線 與 水 平 夾 角 為 ，光 程 差 為 一 個 波 長 時，兩 束 為 建 設 性 干 涉 <br /><br />，最 後 在 遠 處 屏 幕 形 成 亮 紋。此 結 果 與 單 狹 縫 不 同，同 樣<br /><br />\n" +
+"在 最 上 方 與 最 下 方 的 光 源 處 相 差 整 數 倍 波 長，但 產 生 的 結 果 為 一 個 暗 紋 一 個 亮 紋，<br /><br />\n" +
+"至 於 雙 狹 縫 的 暗 紋 則 會 在 光 程 差 等 於 半 波 長 造 成 破 壞 性 干 涉 時 產 生。<br /><br />"
+            + "</div></html>");
     private javax.swing.JLabel desSpectrometer =
-            new JLabel("<html><b>No description available</b><br></html>");
-    private javax.swing.JLabel desSignalProcessing =
-            new JLabel("<html><div style=\"padding-left:5px;line-height:2.5;background-color:white;\">" +
+            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">"
+            + "<br />&nbsp; &nbsp; &nbsp; 光 譜 儀 常 被 應 用 於 各 種 材 料 的 光 特 性 分 析 上， 這 是 由 於 光 譜 儀 可 以 分 析 光 譜<br /><br />\n" +
+"並 量 測 各 波 長 的 強 度 分 布 。 其 原 理 為 利 用 不 同 頻 率 的 光 對 同 一 周 期 性 光 柵 會 有 不<br /><br />\n" +
+"同 的 繞 射 角 度，假 設 光 柵 周 期 為 d、 波 長 為 、 繞 射 角 度 為 ，當 周 期 性 的 光 柵<br /><br />\n" +
+"與 波 長 關 係 如 下 時<br /><br />  \n" +
+"\n" +
+"\n" +
+"其 中 m 為 繞 射 階 數，此 時 與 原 光 路 夾 	的 方 向 便 有 繞 射 光 產 生。隨 著 波 長 的 不 \n" +
+"<br /><br /> \n" +
+"同 所 造 成 的 繞 射 角 度 也 不 同 ， 結 果 如 下 圖，檢 測 光 入 射 至 光 柵 裡 受 周 期 性 光 柵 的<br /><br />  \n" +
+"影 響 不 同 波 長 的 光 繞 射 至 不 同 方 向，紅 色 由 於 波 長 較 長 所 以 角 度 也 會 跟 著 變 大， 藍 色 由 於 波<br /><br />長 較 短 所 以 角 度 會 比 較 接 近 原 反 射 路 線，接 著 由 透 鏡 將 不 同 波 長 的 光<br /><br />\n" +
+"聚 焦 在 焦 平 面 上，並 量 測 各 波 段 位 置、角 度 來 推 算 其 波 長。<br /><br />"
+            + "</div></html>");
+    private javax.swing.JLabel desSignalProcessing0 =
+            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">" +
 "在繞射實驗中我們依光束行進的方向做整理，並推算出其亮暗紋，這樣<br />的推算方式是繞射理論中的Fraunhofer 繞射，其內容為某x-y平面上的光<br />場U(x,y)在空間中依z軸的方向傳遞一段相當長的距離〖 z〗_0使得原本的<br />Fresnel繞射公式<br />\n" +
 "U(ξ,η)=e^(jkz_0 )/(jλz_0 ) ∬▒〖U(x,y)exp{j π/(λz_0 ) [(ξ-x)^2+(η-y)^2 ] } 〗 dxdy\n" +
 "變成\n" +
@@ -6082,8 +6788,23 @@ public class EduControlerPattern extends OpticsPane {
 "U(f_x,f_y )=comb(Df_x )∙sinc(df_x)∙comb(Df_y )∙sinc(df_y) <br />\n" +
 "頻譜如圖，此圖形我們能在第一面透鏡的後焦平面上觀察到，進行濾波時就<br />在此頻譜面遮擋不要的頻率，遮擋高頻、低頻、x方向的頻率、y方向<br />的頻率皆會在最後的成像面上有不同的變化。<br />\n" +
 "</div></html>");
+private javax.swing.JLabel desSignalProcessing =
+            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">" +
+"<br />&nbsp; &nbsp; &nbsp; 系 統 為 光 學 上 常 見 的 訊 號 處 理 系 統，系 統 為 就 是 將 輸 入 的 資 料 	放 置 於 第<br /><br />\n" +
+" \n" +
+"一面 透 鏡 的 前 焦 平 面 上，並 在 後 焦 平 面 產 生 其 頻 譜，接 著 經 過 濾 波 後，再 由 第 二<br /><br />\n" +
+"\n" +
+"面 透 鏡 再 做 一 次 傅 氏 轉 換 最 後 產 生 濾 波 後 的 圖 形 。 進 行 濾 波 時 就 在 此 頻 譜 面 遮 擋<br /><br />\n" +
+"\n" +
+"不 要 的 頻 率 ，遮 擋 高 頻、低 頻、x 方 向 的 頻 率、y 方 向 的 頻 率 皆 會 在 最 後 的 成 像<br /><br />\n" +
+"\n" +
+"面 上 有 不 同 的 變 化。<br /><br />\n" +
+"<br /><br />\n" +
+"<br /><br />\n" +
+"<br /><br />" +
+"</div></html>");
     private javax.swing.JLabel desPhaseRetarder =
-            new JLabel("<html><div style=\"padding-left:5px;line-height:2.5;background-color:white;\">" +
+            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">" +
 "\n" +
 "相移式數位全像術使用了物光及三至四組不同起始相位的參考光所干涉<br />的條紋，計算出原光波的振幅及一般光學儀器無法探測的相位。其原理如下，<br />假設物波及參考波在干涉的平面上分別為O(x,y)及R(x,y)而他們的相位分別<br />是ϕ及θ並用下列的方式表示<br />\n" +
 "{█(O(x,y)=|O(x,y) | e^iϕ(x,y) @R(x,y)=|R(x,y) | e^iθ(x,y)  )┤ <br />\n" +
@@ -6148,50 +6869,4 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessagePhase = "Phase retarder: gray=%s";
     static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
     static String logmessageCalibration = "Calibration : Focal length=%s X Position=%s Y Position=%s";
-}
-
-class LabelGlassPane extends JComponent {
-
-    public JFrame frame;
-    public int x, y;
-
-    public LabelGlassPane() {
-        //this.frame = frame;
-        this.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseMoved(MouseEvent evt) {
-                x = evt.getX();
-                y = evt.getY();
-                LabelGlassPane.this.repaint();
-            }
-        });
-    }
-
-    public void paint(Graphics g) {
-        g.setColor(Color.red);
-        Container root = patternFrame.getContentPane();
-        Rectangle clip = g.getClipBounds();
-        g.setClip(this.x - 16, this.y - 16, 32, 32);
-        rPaint(root, g);
-        g.setClip(clip);
-    }
-
-    private void rPaint(Container cont, Graphics g) {
-        for (int i = 0; i < cont.getComponentCount(); i++) {
-            Component comp = cont.getComponent(i);
-            if (!(comp instanceof JPanel)) {
-                int x = comp.getX();
-                int y = comp.getY();
-                int w = comp.getWidth();
-                int h = comp.getHeight();
-                g.setColor(new Color(100, 100, 100, 100));
-                g.drawRect(x + 4, y + 4, w - 8, h - 8);
-                g.drawString(comp.getClass().getName(), x + 10, y + 20);
-                g.setColor(new Color(255, 0, 0, 100));
-                g.drawString(this.x + "," + this.y, this.x - 16, this.y - 5);
-            }
-            if (comp instanceof Container) {
-                rPaint((Container) comp, g);
-            }
-        }
-    }
 }
