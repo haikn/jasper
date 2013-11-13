@@ -3944,8 +3944,8 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/michelson.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -6731,7 +6731,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel desAberration =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desMichelson =
-            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;letter-spacing:2px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">" +
+            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
 "&nbsp; &nbsp; &nbsp; 干 涉 的 現 象 是 由 兩 個 或 兩 個 以 上 的 光 波 疊 加 於 空 間 之 中 而 產 生。由 光 程 差 所<br /><br />\n" +
 "造 成 的 相 位 差 而 產 生 亮 紋 （建 設 性 干 涉）與 暗 紋（破 壞 性 干 涉）等 干 涉 條 紋。要<br /><br />\n" +
 "觀 察 到 干 涉 條 紋 除 了 需 要 上 述 的 相 位 差 所 造 成 的 建 設 性 干 涉 與 破 壞 性 干 涉 之 外，<br /><br /> \n" +
@@ -6759,8 +6759,8 @@ public class EduControlerPattern extends OpticsPane {
 "至 於 雙 狹 縫 的 暗 紋 則 會 在 光 程 差 等 於 半 波 長 造 成 破 壞 性 干 涉 時 產 生。<br /><br />"
             + "</div></html>");
     private javax.swing.JLabel desSpectrometer =
-            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">"
-            + "<br />&nbsp; &nbsp; &nbsp; 光 譜 儀 常 被 應 用 於 各 種 材 料 的 光 特 性 分 析 上， 這 是 由 於 光 譜 儀 可 以 分 析 光 譜<br /><br />\n" +
+            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">"
+            + "&nbsp; &nbsp; &nbsp; 光 譜 儀 常 被 應 用 於 各 種 材 料 的 光 特 性 分 析 上， 這 是 由 於 光 譜 儀 可 以 分 析 光 譜<br /><br />\n" +
 "並 量 測 各 波 長 的 強 度 分 布 。 其 原 理 為 利 用 不 同 頻 率 的 光 對 同 一 周 期 性 光 柵 會 有 不<br /><br />\n" +
 "同 的 繞 射 角 度，假 設 光 柵 周 期 為 d、 波 長 為 、 繞 射 角 度 為 ，當 周 期 性 的 光 柵<br /><br />\n" +
 "與 波 長 關 係 如 下 時<br /><br />  \n" +
@@ -6789,8 +6789,8 @@ public class EduControlerPattern extends OpticsPane {
 "頻譜如圖，此圖形我們能在第一面透鏡的後焦平面上觀察到，進行濾波時就<br />在此頻譜面遮擋不要的頻率，遮擋高頻、低頻、x方向的頻率、y方向<br />的頻率皆會在最後的成像面上有不同的變化。<br />\n" +
 "</div></html>");
 private javax.swing.JLabel desSignalProcessing =
-            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">" +
-"<br />&nbsp; &nbsp; &nbsp; 系 統 為 光 學 上 常 見 的 訊 號 處 理 系 統，系 統 為 就 是 將 輸 入 的 資 料 	放 置 於 第<br /><br />\n" +
+            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
+"&nbsp; &nbsp; &nbsp; 系 統 為 光 學 上 常 見 的 訊 號 處 理 系 統，系 統 為 就 是 將 輸 入 的 資 料 	放 置 於 第<br /><br />\n" +
 " \n" +
 "一面 透 鏡 的 前 焦 平 面 上，並 在 後 焦 平 面 產 生 其 頻 譜，接 著 經 過 濾 波 後，再 由 第 二<br /><br />\n" +
 "\n" +
@@ -6804,7 +6804,7 @@ private javax.swing.JLabel desSignalProcessing =
 "<br /><br />" +
 "</div></html>");
     private javax.swing.JLabel desPhaseRetarder =
-            new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">" +
+            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
 "\n" +
 "相移式數位全像術使用了物光及三至四組不同起始相位的參考光所干涉<br />的條紋，計算出原光波的振幅及一般光學儀器無法探測的相位。其原理如下，<br />假設物波及參考波在干涉的平面上分別為O(x,y)及R(x,y)而他們的相位分別<br />是ϕ及θ並用下列的方式表示<br />\n" +
 "{█(O(x,y)=|O(x,y) | e^iϕ(x,y) @R(x,y)=|R(x,y) | e^iθ(x,y)  )┤ <br />\n" +
