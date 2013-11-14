@@ -10,22 +10,15 @@
 package com.jasper;
 
 import static com.jasper.EduPatternShowOn.patternFrame;
-import com.sun.org.apache.bcel.internal.generic.BREAKPOINT;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,11 +28,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -196,7 +187,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
             "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
-            "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation", "11. Wavelength Selective Switch"}));
+            "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JComboBox comboBox = (JComboBox) evt.getSource();
@@ -3759,7 +3750,7 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/lens.png")));
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
@@ -3817,8 +3808,8 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -3873,8 +3864,8 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -4011,8 +4002,8 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp5diffraction.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -4070,8 +4061,8 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp6spectrometer.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -4135,8 +4126,8 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp7signalprocessing.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -4193,8 +4184,8 @@ public class EduControlerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp8phaseshifting.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -4243,15 +4234,17 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Talbot", jPanelTalbot);
         jTabbedPaneOptics.addTab("Talbot photo", jPanelTalbotPhoto);
 
-        tabbedDesLog.addTab("Description", desTalbotImage);
+        //tabbedDesLog.addTab("Description", desTalbotImage);
+        jScrollDes.setViewportView(desTalbotImage);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp9talbot.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -4314,15 +4307,17 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        tabbedDesLog.addTab("Description", desWavefront);
+        //tabbedDesLog.addTab("Description", desWavefront);
+        jScrollDes.setViewportView(desWavefront);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
 
-        lblDiagram.setIcon(null);
-        lblDiagram.setText("No Diagram available");
+        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp10wavefrontmodulation.png")));
+        lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
     }
@@ -4370,7 +4365,9 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Lens", null);
 
-        tabbedDesLog.addTab("Description", desWavelength);
+        //tabbedDesLog.addTab("Description", desWavelength);
+        jScrollDes.setViewportView(desWavelength);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -6732,45 +6729,60 @@ public class EduControlerPattern extends OpticsPane {
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desMichelson =
             new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
-"&nbsp; &nbsp; &nbsp; 干 涉 的 現 象 是 由 兩 個 或 兩 個 以 上 的 光 波 疊 加 於 空 間 之 中 而 產 生。由 光 程 差 所<br /><br />\n" +
-"造 成 的 相 位 差 而 產 生 亮 紋 （建 設 性 干 涉）與 暗 紋（破 壞 性 干 涉）等 干 涉 條 紋。要<br /><br />\n" +
-"觀 察 到 干 涉 條 紋 除 了 需 要 上 述 的 相 位 差 所 造 成 的 建 設 性 干 涉 與 破 壞 性 干 涉 之 外，<br /><br /> \n" +
-"還 需 要 注 意 光 波 偏 振 方 向 與 相 干 性（coherence），簡 而 言 之，兩 個 有 相 同 偏 振<br /><br /> \n" +
-"的 光 波 到 達 屏 幕 的 光 程 差越 接 近 的 話，干 涉 條 紋 的 對 比 也 會 越 好。&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br /> <br />\n" +
-"本 實 驗 中 的 干 涉 儀 利 用 了 分 光 鏡 將 入 射 的 雷 射 光 分 成 兩 道 光 ，一 道 穿 透 光 與<br /><br />\n" +
-"一 道 反 射 光，這 種 分 光 的 原 理 被 分 類 為 振 幅 分 光(division of amplitude)和 楊<br /><br /> \n" +
-"格 雙 狹 縫 干 涉 中 利 用 相 鄰 的 兩 條 狹 縫 把 同 一 道 波 前 分 成 兩 道 新 的 光 源 的 波 前 分<br /><br /> \n" +
-"光(division of wave front)不 同 。 接 著 由 分 光 所 分 出 的 穿 透 光 經 由 相 位 調 制 器 產 生<br /><br />" + 
-"各 種 波 前 與 反 射 光 經 由 面 鏡 反 射 回 來 在 空 間 中 交 會 產 生 干 涉，並 能 在 屏 幕 上<br /><br /> \n" +
-"觀 察 到 干 涉 圖 形。<br /><br />" +
+"&nbsp; &nbsp; &nbsp; 干 涉 的 現 象 是 由 兩 個 或 兩 個 以 上 的 光 波 疊 加 於 空 間 之 中<br /><div style=\"width:100%;height:3px;\"></div> 而 產 生。由 光 程 差 所\n" +
+"造 成 的 相 位 差 而 產 生 亮 紋（建 設 性 干 涉）與<br /><div style=\"width:100%;height:3px;\"></div> 暗 紋（破 壞 性 干 涉）等 干 涉 條 紋。要\n" +
+"觀 察 到 干 涉 條 紋 除 了 需 要 上 <br /><div style=\"width:100%;height:3px;\"></div> 述 的 相 位 差 所 造 成 的 建 設 性 干 涉 與 破 壞 性 干 涉 之 外,\n" +
+"還 需 要<br /><div style=\"width:100%;height:3px;\"></div>注 意 光 波 偏 振 方 向 與 相 干 性（coherence，簡 而 言 之，兩 個 有 相 同 <br /><div style=\"width:100%;height:3px;\"></div>\n" +
+"偏 振 的 光 波 到 達 屏 幕 的 光 程 差越 接 近 的 話，干 涉 條 紋 的 對 比 也<br /><div style=\"width:100%;height:3px;\"></div> 會 越 好。" +
+//+ "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br /> <br />\n" +
+"<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "&nbsp; &nbsp; &nbsp; 本 實 驗 中 的 干 涉 儀 利 用 了 分 光 鏡 將 入 射 的 雷 射 光 分 成 兩<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "道 光 ，一 道 穿 透 光 與 一 道 反 射 光，這 種 分 光 的 原 理 被 分 類 為 振<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "幅 分 光 (division of amplitude) 和 楊 格 雙 狹 縫 干 涉 中 利 用 相 鄰 的 兩<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "條 狹 縫 把 同 一 道 波 前 分 成 兩 道 新 的 光 源 的 波 前 分 光(division of<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "wave front) 不 同 。 接 著 由 分 光 所 分 出 的 穿 透 光 經 由 相 位 調 制 器<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "產 生 各 種 波 前 與 反 射 光 經 由 面 鏡 反 射 回 來 在 空 間 中 交 會 產 生<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "干 涉， 並 能 在 屏 幕 上 觀 察 到 干 涉 圖 形。<br /><div style=\"width:100%;height:3px;\"></div>" +
 "</div></html>");
     private javax.swing.JLabel desDiffaction =
             new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">"
-            + "&nbsp; &nbsp; &nbsp; 光的波動性質 可 以 很 容 易 地 從 干 涉 與 繞 射 的 現 象 中 觀 察 到，要 解 釋 其 原 因 得<br />  \n" +
-"先 從 Huygens-Fresnel 原 理 說 起，其 內 容 為 波 前 上 每 一 點 都 可 視 為 新 的 點 波 源 各 自 發<br /><br />出 次 級 球 面 波，波 前 的 新 位 置 則 是 這 些 球 面 的 包 絡 面。因 此 在 單 狹 縫 繞 射 實<br /><br />\n" +
-"驗 中，平 面 波 遇 上 狹 縫 後，狹 縫 上 的 每 一 點 都 視 為 新 的 點 光 源 在 各 方 向 發 出 光  波，<br /><br />  \n" +
-"直 進 的 非 繞 射 光 在 遠 處 以 相 同 的 相 位 到 達 屏 幕 形 成 亮 點。現 在 有 另 一 束 光 以 與 水<br /><br />\n" +
-"平 夾 角  的 方 向 行 進，當 光 束 最 上 層 與 最 下 層 的 光 程 差 剛 好 為 一 個波長時，正中<br /><br />  \n" +
-"間 的 光 束 會 與 最 上 面 的 光 束 相 差 了 半 個 波 長 (相 位 相 差 )而 相 消，接 著 往 下 推 下 去 整 束 光 都<br /><br />會 相 差 半 波 長 而 相 消 掉，最 後 在 屏 幕 上 顯 示 暗 紋。依 相 同 的 原 理 可 推<br /><br />\n" +
-"得 當 光 程 差 為 波 長 整 數 倍 時 即 會 產生 暗 紋。<br /><br />\n" +
-"楊 格 的 雙 狹 縫 實 驗 為 波 前 分 光 的 干 涉 儀，原 波 前 被 兩 條 狹 縫 擋 住 只 留 下 通 過<br /><br />\n" +
-"狹 縫 的 部 份，通 過 狹 縫 的 光 被 視 為 新 的 點 波 源 在 遠 處 屏 幕 上 形 成 干 涉 條 紋，兩 個 點 波 源 會 往<br /><br />四 面 八 方 散 出 光 線，當 射 出 光 線 與 水 平 夾 角 為 ，光 程 差 為 一 個 波 長 時，兩 束 為 建 設 性 干 涉 <br /><br />，最 後 在 遠 處 屏 幕 形 成 亮 紋。此 結 果 與 單 狹 縫 不 同，同 樣<br /><br />\n" +
-"在 最 上 方 與 最 下 方 的 光 源 處 相 差 整 數 倍 波 長，但 產 生 的 結 果 為 一 個 暗 紋 一 個 亮 紋，<br /><br />\n" +
-"至 於 雙 狹 縫 的 暗 紋 則 會 在 光 程 差 等 於 半 波 長 造 成 破 壞 性 干 涉 時 產 生。<br /><br />"
+            + "&nbsp; &nbsp; &nbsp; 光 的 波 動 性 質 可 以 很 容 易 地 從 干 涉 與 繞 射 的 現 象 中 觀 察<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "到，要 解 釋 其 原 因 得 先 從 <strong>Huygens-Fresnel</strong> 原 理 說 起，其 內 容 為 波<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "前 上 每 一 點 都可 視 為 新 的 點 波 源 各 自 發 出 次 級 球 面 波，波 前 的<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "新 位 置 則 是 這 些 球 面 的 包 絡 面。因 此 在 單 狹 縫 繞 射 實 驗 中，平<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "面 波 遇 上 狹 縫 後，狹 縫 上 的 每 一 點 都 視 為 新 的 點 光 源 在 各 方<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "向 發 出 光 波，直 進 的 非 繞 射 光 在 遠 處 以 相 同 的 相 位 到 達 屏 幕<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "形 成 亮 點。現 在 有 另 一 束 光 以 與 水 平 夾 角 θ 的 方 向 行 進，當 光<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "束 最 上 層 與 最 下 層 的 光 程 差 剛 好 為 一 個波長時， 正中 間 的 光 束<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "會 與 最 上 面 的 光 束 相 差 了 半 個 波 長 (相 位 相 差 ö)而 相 消，接 著<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "往 下 推 下 去 整 束 光 都 會 相 差 半 波 長 而 相 消 掉，最 後 在 屏 幕 上<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "顯 示 暗 紋。依 相 同 的 原 理 可 推 得 當 光 程 差 為 波 長 整 數 倍 時 即<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "會 產  生 暗 紋。 楊 格 的 雙 狹 縫 實 驗 為 波 前 分 光 的 干 涉 儀,原 波<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "前 被 兩 條 狹 縫 擋 住 只 留 下 通 過 狹 縫 的 部 份，通 過 狹 縫 的 光 被<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "視 為 新 的 點 波 源 在 遠 處 屏 幕 上 形 成 干 涉 條 紋， 兩 個 點 波源 會<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "往 四 面 八 方 散 出 光 線，當 射 出 光 線 與 水 平 夾 角 為 ，光 程 差 為<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "一 個 波 長 時，兩 束 為 建 設 性 干 涉，最 後 在 遠 處 屏 幕 形 成 亮 紋 。<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "此 結 果 與 單 狹 縫 不 同，同 樣 在 最 上 方 與 最 下 方 的 光 源 處 相 差<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "整 數 倍 波 長，但 產 生 的 結 果 為 一 個 暗 紋 一 個 亮 紋，至 於 雙 狹 縫<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "的 暗 紋 則 會 在 光 程 差 等 於 半 波 長 造 成 破 壞 性 干 涉 時 產 生。<br /><br />"
+            + ""
             + "</div></html>");
     private javax.swing.JLabel desSpectrometer =
             new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">"
-            + "&nbsp; &nbsp; &nbsp; 光 譜 儀 常 被 應 用 於 各 種 材 料 的 光 特 性 分 析 上， 這 是 由 於 光 譜 儀 可 以 分 析 光 譜<br /><br />\n" +
-"並 量 測 各 波 長 的 強 度 分 布 。 其 原 理 為 利 用 不 同 頻 率 的 光 對 同 一 周 期 性 光 柵 會 有 不<br /><br />\n" +
-"同 的 繞 射 角 度，假 設 光 柵 周 期 為 d、 波 長 為 、 繞 射 角 度 為 ，當 周 期 性 的 光 柵<br /><br />\n" +
-"與 波 長 關 係 如 下 時<br /><br />  \n" +
-"\n" +
-"\n" +
-"其 中 m 為 繞 射 階 數，此 時 與 原 光 路 夾 	的 方 向 便 有 繞 射 光 產 生。隨 著 波 長 的 不 \n" +
-"<br /><br /> \n" +
-"同 所 造 成 的 繞 射 角 度 也 不 同 ， 結 果 如 下 圖，檢 測 光 入 射 至 光 柵 裡 受 周 期 性 光 柵 的<br /><br />  \n" +
-"影 響 不 同 波 長 的 光 繞 射 至 不 同 方 向，紅 色 由 於 波 長 較 長 所 以 角 度 也 會 跟 著 變 大， 藍 色 由 於 波<br /><br />長 較 短 所 以 角 度 會 比 較 接 近 原 反 射 路 線，接 著 由 透 鏡 將 不 同 波 長 的 光<br /><br />\n" +
-"聚 焦 在 焦 平 面 上，並 量 測 各 波 段 位 置、角 度 來 推 算 其 波 長。<br /><br />"
+            + "&nbsp; &nbsp; &nbsp; 光 譜 儀 常 被 應 用 於 各 種 材 料 的 光 特 性 分 析 上， 這 是 由 於<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "光 譜 儀 可 以 分 析 光 譜 並 量 測 各 波 長 的 強 度 分 布。 其 原 理 為 利<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "用 不 同 頻 率 的 光 對 同 一 周 期 性 光 柵 會 有 不 同 的 繞 射 角 度， 假<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "設 光 柵 周 期 為 d、 波 長 為 λ、 繞 射 角 度 為 θ，當 周 期 性 的 光 柵<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "與 波 長 關 係 如 下 時<br /><div style=\"width:100%;height:6px;\"></div>"
+            + "<div style=\"font-size:16px;font-weight:bold;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; dsinθm = m </div> "
+            + "<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "其 中 m 為 繞 射 階 數， 此 時 與 原 光 路 夾 θm 的 方 向 便 有 繞 射 光 產<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "生。隨 著 波 長 的 不 同 所 造 成 的 繞 射 角 度 也 不 同 ， 結 果 如 下 圖，<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "檢 測 光 入 射 至 光 柵 裡 受 周 期 性 光 柵 的 影 響 不 同 波 長 的 光 繞 射<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "至 不 同 方 向，紅 色 由 於 波 長 較 長 所 以 角 度 也 會 跟 著 變 大， 藍 色<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "由 於 波 長 較 短 所 以 角 度 會 比 較 接 近 原 反 射 路 線， 接 著 由 透 鏡<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "將 不 同 波 長 的 光 聚 焦 在 焦 平 面 上， 並 量 測 各 波 段 位 置、角 度 來<br /><div style=\"width:100%;height:3px;\"></div>"
+            + " 推 算 其 波 長。"
             + "</div></html>");
     private javax.swing.JLabel desSignalProcessing0 =
             new JLabel("<html><div style=\"padding-left:5px;line-height:3.5;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:12px;\">" +
@@ -6789,38 +6801,50 @@ public class EduControlerPattern extends OpticsPane {
 "頻譜如圖，此圖形我們能在第一面透鏡的後焦平面上觀察到，進行濾波時就<br />在此頻譜面遮擋不要的頻率，遮擋高頻、低頻、x方向的頻率、y方向<br />的頻率皆會在最後的成像面上有不同的變化。<br />\n" +
 "</div></html>");
 private javax.swing.JLabel desSignalProcessing =
-            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
-"&nbsp; &nbsp; &nbsp; 系 統 為 光 學 上 常 見 的 訊 號 處 理 系 統，系 統 為 就 是 將 輸 入 的 資 料 	放 置 於 第<br /><br />\n" +
-" \n" +
-"一面 透 鏡 的 前 焦 平 面 上，並 在 後 焦 平 面 產 生 其 頻 譜，接 著 經 過 濾 波 後，再 由 第 二<br /><br />\n" +
-"\n" +
-"面 透 鏡 再 做 一 次 傅 氏 轉 換 最 後 產 生 濾 波 後 的 圖 形 。 進 行 濾 波 時 就 在 此 頻 譜 面 遮 擋<br /><br />\n" +
-"\n" +
-"不 要 的 頻 率 ，遮 擋 高 頻、低 頻、x 方 向 的 頻 率、y 方 向 的 頻 率 皆 會 在 最 後 的 成 像<br /><br />\n" +
-"\n" +
-"面 上 有 不 同 的 變 化。<br /><br />\n" +
-"<br /><br />\n" +
-"<br /><br />\n" +
-"<br /><br />" +
+            new JLabel("<html><div style=\"padding-left:6px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
+"&nbsp; &nbsp; &nbsp; 系 統 為 光 學 上 常 見 的 訊 號 處 理 系 統，系 統 為 就 是 將 輸 入 的<br /><div style=\"width:100%;height:3px;\"></div>"
++ "資 料 放 置 於 第 一 面 透 鏡 的 前 焦 平 面 上，並 在 後 焦 平 面 產 生 其 頻<br /><div style=\"width:100%;height:3px;\"></div>"
++ "譜，接 著 經 過 濾 波 後，再 由 第 二 面 透 鏡 再 做 一 次 傅 氏 轉 換 最 後 產<br /><div style=\"width:100%;height:3px;\"></div>"
++ "生 濾 波 後 的 圖 形 。 進 行 濾 波 時 就 在 此 頻 譜 面 遮 擋 不 要 的 頻 率，<br /><div style=\"width:100%;height:3px;\"></div>"
++ "遮 擋 高 頻、低 頻、x 方 向 的 頻 率、y 方 向 的 頻 率 皆 會 在 最 後 的 成 像<br /><div style=\"width:100%;height:3px;\"></div>"
++ "面 上 有 不 同 的 變 化。"
++ "<br /><div style=\"width:100%;height:80px;\"></div>" +
 "</div></html>");
     private javax.swing.JLabel desPhaseRetarder =
-            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
-"\n" +
-"相移式數位全像術使用了物光及三至四組不同起始相位的參考光所干涉<br />的條紋，計算出原光波的振幅及一般光學儀器無法探測的相位。其原理如下，<br />假設物波及參考波在干涉的平面上分別為O(x,y)及R(x,y)而他們的相位分別<br />是ϕ及θ並用下列的方式表示<br />\n" +
-"{█(O(x,y)=|O(x,y) | e^iϕ(x,y) @R(x,y)=|R(x,y) | e^iθ(x,y)  )┤ <br />\n" +
-"當兩波干涉時所觀察到的干涉條紋光強I為<br />\n" +
-"I=|O|^2+|R|^2+2|O||R|cos(ϕ-θ) <br />\n" +
-"當我們控制參考波的起始相位讓θ=0、 π⁄2 、π、 3π⁄2時，我們可得到下列<br />四組干涉條紋<br />\n" +
-"{█(I_0=|O|^2+|R|^2+2|O||R|cos(ϕ)@■(I_(π⁄2)=|O|^2+|R|^2+2|O||R|sin(ϕ)@〖     I〗_π=|O|^2+|R|^2-2|O||R|cos(ϕ) )@I_(3π⁄2)=|O|^2+|R|^2-2|O||R|sin(ϕ) )┤ <br />\n" +
-"接下來可以利用下列的式子求得物波的振幅及相位資訊<br />\n" +
-"O(x,y)=1/4|R|  [(I_0-I_π )+i(I_(π⁄2)-I_(3π⁄2) ) ] <br />\n" +
-"或是只利用三組干涉條紋的算法為<br />\n" +
-"O(x,y)=1/4|R|  [(I_0-I_(π⁄2) )+i(I_(π⁄2)-I_π ) ] <br />\n" +
-"    由上面的公式中我們能得知原物波的完整資訊，接下來我們便能利用這<br />完整的物波資訊配合Fresnel Diffraction來重新回推出原物體的形狀。<br /></div></html>");
+            new JLabel("<html><div style=\"padding-left:6px;padding-right:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
+"&nbsp; &nbsp; &nbsp; 相 移 式 數 位 全 像 術 以 光 的 干 涉 原 理 為 基 礎，"
+            + "改 變 物 光 及 參<br /><div style=\"width:100%;height:3px;\"></div> "
++ "考 光 的 相 對 相 位，通 常 是 利 用 壓 電 材 料 改 變 參 考 光 的 光 程 來 造<br /><div style=\"width:100%;height:3px;\"></div>"
++ "成 相 位 差 使 干 涉 條 紋 分 布 改 變，重 複 數 次 後 得 到 多 張 不 同 干 涉<br /><div style=\"width:100%;height:3px;\"></div>"
++ "條 紋，再 經 由 這 些 干 涉 圖 形 的 光 強 分 布 變 化 求得 原 物 波 的 相 位<br /><div style=\"width:100%;height:3px;\"></div>"
++ "分 布。得 到 了 物 波 的 光 強 及 相 位，我 們 即 能 利 用 近 場 繞 射 理 論 <br /><div style=\"width:100%;height:3px;\"></div>"
++ "回 推 出 原 體。"
++ "<br /><div style=\"width:100%;height:80px;\"></div>"
+ + "</div></html>");
     private javax.swing.JLabel desTalbotImage =
-            new JLabel("<html><b>No description available</b><br></html>");
+            new JLabel("<html><div style=\"padding-left:6px;padding-right:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
+"&nbsp; &nbsp; &nbsp; 繞 射 理 論 中 的 近 場 繞 射 理 論 (Fresnel Diffraction) 有 著 相 當 複<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "雜 的 積 分 公 式, 一 般 積 分 的 結 果 可 由 方 孔 繞 射 看 出 是 相 當 龐 大<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "且 複 雜，但 週 期 性 光 柵 的 繞 射 卻 有 較 簡 單 的 結 果 及 特 殊 的 自 成<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "像 現 象 發 生. Talbot Images 為 週 期 性 光 柵 在 近 場 繞 射 時 所 產 生 的<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "自 成 像，其 產 生 的 位 置 與 光 柵 週 期 平 方 成 正 比，波 長 成 反 比， 並<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "在 其 整 數 倍 的 距 離 上 會 一 直 看 到 自 成 像，而 在 這 些 成 像 的 中 間<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "還 能 觀 察 到 與 原 影 像 對 比 相 反 的 自 成 像，實 驗 中 由 &nbsp;SLM&nbsp; 產 生 週 <br /><div style=\"width:100%;height:3px;\"></div>"
+            + "期 性 光 柵，並 由 CCD 拍 攝 所 產 生 的 自 成 像，改 變 CCD 的 位 置 觀 察 影<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "像 變 化 及 位 置。<br /><div style=\"width:100%;height:15px;\"></div>"
+            + "</div></html>");
     private javax.swing.JLabel desWavefront =
-            new JLabel("<html><b>No description available</b><br></html>");
+            new JLabel("<html><div style=\"padding-left:6px;padding-right:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
+"&nbsp; &nbsp; SLM (Spatial Light Modulator) 能 接 受 電 子 訊 號 來 改 變 光 訊 號 電 子<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "訊 號 使 液 晶 分 子 排 列 方 向 偏 轉 改 變 液 晶 的 折 射 率， 使 得 通 過<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "SLM 的 光 能 有 不 同 的 相 位 延 遲 來 造 成 偏 振 態 的 改 變，再 配 合 上<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "偏 振 片 及 檢 偏 片 的 使 用 來 改 變 光 波 的 振 幅 或 相 位。調 制 出 合 適<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "的 光 訊 號 除了能 造 成 各 種 不 同 物 波 來 產 生 影 像 外，還 能 讓 SLM 擬<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "出 各 種 簡 單 的 波 形，如 球 面 波、圓 柱 波、及 各 種 不 同 方 向 傳 模 遞<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "的 平 面 波，而 這 些 波 形一般 都 是 由 透 鏡、圓 柱 透 鏡、平 面 鏡 來 產 生<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "所 以 能 製 造 出 這 些 波 形 也 代 表 著 SLM 能 當 作 可 調 變 的 光 學 元 件<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "<br /><div style=\"width:100%;height:15px;\"></div>"
++ "</div></html>");
     private javax.swing.JLabel desWavelength =
             new JLabel("<html><b>No description available</b><br></html>");
     private javax.swing.JLabel desCalibration =
