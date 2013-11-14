@@ -174,7 +174,7 @@ public class EduPatternShowOn {
     static int debugging = 0;
     static int logging = 0;
 
-    public static void initControlFrame() {
+    public static void initControlFrame() throws IOException {
         controlFrame = new EduUIMainView();
         controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         controlFrame.setLocation(0, 0);
@@ -292,9 +292,12 @@ public class EduPatternShowOn {
                 Image img = kit.createImage(url);
                 controlFrame.setIconImage(img);
                 patternFrame.setIconImage(img);
+            } else {
+                JOptionPane.showMessageDialog(null, "error install key!");
             }
         } catch (IOException ex) {
             Logger.getLogger(EduPatternShowOn.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.toString());
         }
     }
 }
