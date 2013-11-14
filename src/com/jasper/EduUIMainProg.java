@@ -15,7 +15,7 @@ import java.io.IOException;
 public class EduUIMainProg {
 
 	public static void main(String[] args) throws IOException{
-            KeyReader keyreader = new KeyReader();
+            KeyReaderTrial keyreader = new KeyReaderTrial();
             boolean key = keyreader.verifyKey();
             if(key) {
                 EduPatternShowOn.main(args);

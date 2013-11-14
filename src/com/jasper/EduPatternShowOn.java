@@ -276,7 +276,7 @@ public class EduPatternShowOn {
     
     public static void main(String[] args) {
         try {
-            KeyReader keyreader = new KeyReader();
+            KeyReaderTrial keyreader = new KeyReaderTrial();
             boolean key = keyreader.verifyKey();
             if(key) {
                 // parse arguments
@@ -293,7 +293,7 @@ public class EduPatternShowOn {
                 controlFrame.setIconImage(img);
                 patternFrame.setIconImage(img);
             } else {
-                JOptionPane.showMessageDialog(null, "error install key!");
+                JOptionPane.showMessageDialog(null, "This trial has expired. Please contact us for further information!");
             }
         } catch (IOException ex) {
             Logger.getLogger(EduPatternShowOn.class.getName()).log(Level.SEVERE, null, ex);

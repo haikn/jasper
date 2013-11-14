@@ -185,40 +185,40 @@ public class EduControlerPattern extends OpticsPane {
         jLabelSelectExperiment.setText("Select Experiment");
         jLabelSelectExperiment.setForeground(Color.red);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
-            "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
-            "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation"}));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JComboBox comboBox = (JComboBox) evt.getSource();
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1.SLM Basic Property Test", "2. Amplitude Modulation (Projection System)", "3. Phase Modulation",
+                        "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
+                        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation"}));
+                    jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            JComboBox comboBox = (JComboBox) evt.getSource();
 
-                Object selected = comboBox.getSelectedItem();
-                if (selected.equals("      ------ Select experiment ------")) {
-                    jMenuItemNoSelectActionPerformed(evt);
-                } else if (selected.equals("1. Telephoto lens")) {
-                    jMenuItemTelephotoActionPerformed(evt);
-                } else if (selected.equals("2. Microscope")) {
-                    jMenuItemMicroscopeActionPerformed(evt);
-                } else if (selected.equals("3. Aberration (Foucault test)")) {
-                    jMenuItemAberrationActionPerformed(evt);
-                } else if (selected.equals("4. Michelson Interferometer")) {
-                    jMenuItemMichelsonActionPerformed(evt);
-                } else if (selected.equals("5. Diffraction and Interference")) {
-                    jMenuItemDiffractionActionPerformed(evt);
-                } else if (selected.equals("6. Spectrometer")) {
-                    jMenuItemSpectrometerActionPerformed(evt);
-                } else if (selected.equals("7. Signal Processing (4-f system)")) {
-                    jMenuItemSignalProcessingActionPerformed(evt);
-                } else if (selected.equals("8. Phase Shifting Digital Holography")) {
-                    jMenuItemPhaseShiftingActionPerformed(evt);
-                } else if (selected.equals("9. Talbot Images")) {
-                    jMenuItemTalbotImagesActionPerformed(evt);
-                } else if (selected.equals("10. Wavefront Modulation")) {
-                    jMenuItemWavefrontActionPerformed(evt);
-                } else if (selected.equals("11. Wavelength Selective Switch")) {
-                    jMenuItemWavelengthActionPerformed(evt);
-                }
-            }
+                            Object selected = comboBox.getSelectedItem();
+                            if (selected.equals("      ------ Select experiment ------")) {
+                                jMenuItemNoSelectActionPerformed(evt);
+                            } else if (selected.equals("1.SLM Basic Property Test")) {
+                                jMenuItemTelephotoActionPerformed(evt);
+                            } else if (selected.equals("2. Amplitude Modulation (Projection System)")) {
+                                jMenuItemMicroscopeActionPerformed(evt);
+                            } else if (selected.equals("3. Phase Modulation")) {
+                                jMenuItemAberrationActionPerformed(evt);
+                            } else if (selected.equals("4. Michelson Interferometer")) {
+                                jMenuItemMichelsonActionPerformed(evt);
+                            } else if (selected.equals("5. Diffraction and Interference")) {
+                                jMenuItemDiffractionActionPerformed(evt);
+                            } else if (selected.equals("6. Spectrometer")) {
+                                jMenuItemSpectrometerActionPerformed(evt);
+                            } else if (selected.equals("7. Signal Processing (4-f system)")) {
+                                jMenuItemSignalProcessingActionPerformed(evt);
+                            } else if (selected.equals("8. Phase Shifting Digital Holography")) {
+                                jMenuItemPhaseShiftingActionPerformed(evt);
+                            } else if (selected.equals("9. Talbot Images")) {
+                                jMenuItemTalbotImagesActionPerformed(evt);
+                            } else if (selected.equals("10. Wavefront Modulation")) {
+                                jMenuItemWavefrontActionPerformed(evt);
+                            } else if (selected.equals("11. Wavelength Selective Switch")) {
+                                jMenuItemWavelengthActionPerformed(evt);
+                            }
+                        }
         });
 
         jLabel3.setText("Focal length");
@@ -1009,9 +1009,9 @@ public class EduControlerPattern extends OpticsPane {
                     layoutDiagram.add(diagramLens);
                 }
                 if (index == 0) {
-                    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1. Telephoto lens", "2. Microscope", "3. Aberration (Foucault test)",
+                    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1.SLM Basic Property Test", "2. Amplitude Modulation (Projection System)", "3. Phase Modulation",
                         "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
-                        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation", "11. Wavelength Selective Switch"}));
+                        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation"}));
                     jComboBox1.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             JComboBox comboBox = (JComboBox) evt.getSource();
@@ -1019,11 +1019,11 @@ public class EduControlerPattern extends OpticsPane {
                             Object selected = comboBox.getSelectedItem();
                             if (selected.equals("      ------ Select experiment ------")) {
                                 jMenuItemNoSelectActionPerformed(evt);
-                            } else if (selected.equals("1. Telephoto lens")) {
+                            } else if (selected.equals("1.SLM Basic Property Test")) {
                                 jMenuItemTelephotoActionPerformed(evt);
-                            } else if (selected.equals("2. Microscope")) {
+                            } else if (selected.equals("2. Amplitude Modulation (Projection System)")) {
                                 jMenuItemMicroscopeActionPerformed(evt);
-                            } else if (selected.equals("3. Aberration (Foucault test)")) {
+                            } else if (selected.equals("3. Phase Modulation")) {
                                 jMenuItemAberrationActionPerformed(evt);
                             } else if (selected.equals("4. Michelson Interferometer")) {
                                 jMenuItemMichelsonActionPerformed(evt);
@@ -3734,7 +3734,7 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
 
-        jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
+        jTabbedPaneOptics.addTab("Gray Level", panelPhase);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 if (magFrameLenon != null) {
@@ -3743,7 +3743,9 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        tabbedDesLog.addTab("Description", desTelephotoLens);
+        //tabbedDesLog.addTab("Description", desTelephotoLens);
+        jScrollDes.setViewportView(desTelephotoLens);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -3799,9 +3801,11 @@ public class EduControlerPattern extends OpticsPane {
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
 
-        jTabbedPaneOptics.addTab("Lens", jPanelMicroscope);
+        jTabbedPaneOptics.addTab("Photo", panelSignalPhoto);
 
-        tabbedDesLog.addTab("Description", desMicroscope);
+        //tabbedDesLog.addTab("Description", desMicroscope);
+        jScrollDes.setViewportView(desMicroscope);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -3855,9 +3859,11 @@ public class EduControlerPattern extends OpticsPane {
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
 
-        jTabbedPaneOptics.addTab("Lens", null);
+        jTabbedPaneOptics.addTab("Beam Steerer", jPanelMirror);
 
-        tabbedDesLog.addTab("Description", desAberration);
+        //tabbedDesLog.addTab("Description", desAberration);
+        jScrollDes.setViewportView(desAberration);
+        tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -6722,11 +6728,33 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel desNoSelect =
             new JLabel("");
     private javax.swing.JLabel desTelephotoLens =
-            new JLabel("<html><b>No description available</b><br></html>");
+            new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
+ "&nbsp; &nbsp; &nbsp; LCOS-SLM (Liquid Crystal on Silicon- Spatial Light Modulator)是 能 調 制<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "光 振 幅 及 相 位 的 空 間 光 調 制 器，其 內 部 結 構 如 同 一 般 的 液 晶 顯<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "示 器，是 由 許 多 格 狀 的 像 素 所 組 成 的 矩 陣 結 構，當 施 加 電 壓 時 每<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "一 個 像 素 上 的 液 晶 會 依 電 壓 大  小 有 不 同 角 度 的 偏 轉 造 成 不 同<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "的 折 射 率 而 達 到 調 制 的 效 果。 在 未 給 予 訊 號 的 情 形 下 SLM 基 本<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "的 結 構 就 會 影 響 到 光 的 表 現，包 括 最 大 繞 射 角 度、繞 射 效 率、及<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "偏 振 態 的 變 化，利 用 這 些 特 性 我 們 便 能 推 算 出 SLM 各 項 基 本 參<br /><div style=\"width:100%;height:3px;\"></div>"
+            + " 數，如 像 素 大 小、開  口 率、及 配 向 角  度。<br /><div style=\"width:100%;height:25px;\"></div>"
+            + "<br></div></html>");
     private javax.swing.JLabel desMicroscope =
-            new JLabel("<html><b>No description available</b><br></html>");
+            new JLabel("<html><div style=\"padding-left:6px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
+            "&nbsp; &nbsp; &nbsp;SLM 配 合 偏 振 片(Polarizer)與 檢 偏 片(Analyzer)的 角 度 調 整 能 使 SLM<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "變 成 振 幅 調 制 器(Amplitude Modulator)或 是 相 位 調 制 器 (Phase Modulator)<br /><div style=\"width:100%;height:3px;\"></div>"
+            + "在 此 實 驗 中 我 們 調 整 偏 振 片 及 檢 偏 片 的 角 度 使 其 與 配 向 角 夾<div style=\"width:100%;height:3px;\"></div>"
+            + "四 十 五 度，在 此 設 定 下 SLM 為 振 幅 調 制 器，整 組 光 學 系 統 就 是 簡<div style=\"width:100%;height:3px;\"></div>"
+            + "單 的 投 影 系 統，也 利 用 此 系 統 了 解 成 像 系 統 中 的 各 項 參 數 如: <div style=\"width:100%;height:3px;\"></div>"
+            + "f-number, Aperture Stop, Entrance Pupil, Exit pupil..等。 <br /><div style=\"width:100%;height:80px;\"></div>"
+            + "</div></html>");
     private javax.swing.JLabel desAberration =
-            new JLabel("<html><b>No description available</b><br></html>");
+            new JLabel("<html><div style=\"padding-left:6px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
+            "&nbsp; &nbsp; &nbsp; 在 實 驗 二 裡，我 們 使 偏 振 片 及 檢 偏 片 的 角 度 與 配 向 角 夾 四<div style=\"width:100%;height:3px;\"></div>"
+            + "十 五 度 做 為 振 幅 調 制 器。在 相 位 調 制 上，我 們 這 次 改 變 偏 振 片 及<div style=\"width:100%;height:3px;\"></div>"
+            + "檢 偏 片 的 角 度 使 其 與 配 向 角 平 行 做 為 相 位 調 制 器，接 著 我 們 利<div style=\"width:100%;height:3px;\"></div>"
+            + "用 傾 斜 式 光 柵(Blazed Grating)讓 相 位 調 制 器 做 簡 單 的 光 束 控 制<div style=\"width:100%;height:3px;\"></div>"
+            + "(Beam Steering) 實 驗 來 了 解 繞 射 角 度 的 極 限。 <div style=\"width:100%;height:100px;\"></div>"
+            + "</html>");
     private javax.swing.JLabel desMichelson =
             new JLabel("<html><div style=\"padding-left:5px;padding-top:5px;margin: 0 0.07em 0 -0.13em;background-color:white;width:100%;word-spacing:30px;font-family:MS Mincho;font-size:11px;font-weight: normal;\">" +
 "&nbsp; &nbsp; &nbsp; 干 涉 的 現 象 是 由 兩 個 或 兩 個 以 上 的 光 波 疊 加 於 空 間 之 中<br /><div style=\"width:100%;height:3px;\"></div> 而 產 生。由 光 程 差 所\n" +

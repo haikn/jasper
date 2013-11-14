@@ -41,7 +41,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() throws IOException {
-        KeyReader keyreader = new KeyReader();
+        KeyReaderTrial keyreader = new KeyReaderTrial();
         boolean key = keyreader.verifyKey();
         if(key) {
 
