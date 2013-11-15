@@ -61,20 +61,4 @@ public class ClickListener extends MouseAdapter implements ActionListener {
 
     public void doubleClick(MouseEvent e) {
     }
-
-//    public static void main(String[] args) {
-//        JFrame frame = new JFrame("Double Click Test");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.addMouseListener(new ClickListener() {
-//            public void singleClick(MouseEvent e) {
-//                System.out.println("single");
-//            }
-//
-//            public void doubleClick(MouseEvent e) {
-//                System.out.println("double");
-//            }
-//        });
-//        frame.setSize(200, 200);
-//        frame.setVisible(true);
-//    }
 }
