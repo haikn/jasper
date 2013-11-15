@@ -295,7 +295,7 @@ public class PatternImage {
         int[] iArray = new int[1];
         double x2, y2, phase;
         double y1;
-        double fixpart = Math.PI / lambda / (focal / 10000);
+        double fixpart = Math.PI / lambda / (focal / 1000);
 
         // 2*pi/la*0.1*x*psize
         //double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
