@@ -18,6 +18,8 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -678,7 +680,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderPhyMirror = new DoubleJSlider(-18000, 18000, 1000, 10);
+        jSliderPhyMirror = new DoubleJSlider(-28, 28, 10, 10);
         jSliderPhyMirror.setValue(1);
         txtPhyMirror.setText(String.valueOf(jSliderPhyMirror.getValue()));
 
@@ -689,8 +691,20 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMirror(evt);
             }
         });
+        
+        txtPhyMirror.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedMirror(ke);
+            }
+        });
+        
+        txtThetaMirror.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedMirror(ke);
+            }
+        });
 
-        jSliderThetaMirror = new DoubleJSlider(-1000, 1000, 1000, 10);
+        jSliderThetaMirror = new DoubleJSlider(-1800, 1800, 100, 10);
         jSliderThetaMirror.setValue(1);
         txtThetaMirror.setText(String.valueOf(jSliderThetaMirror.getValue()));
 
@@ -2357,7 +2371,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderPhyMirrorSpectometer = new DoubleJSlider(-314, 314, 100, 10);
+        jSliderPhyMirrorSpectometer = new DoubleJSlider(-28, 28, 10, 10);
         jSliderPhyMirrorSpectometer.setValue(1);
         txtPhyMirrorSpectometer.setText(String.valueOf(jSliderPhyMirrorSpectometer.getValue()));
 
@@ -2369,7 +2383,13 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
-        jSliderThetaMirrorSpectometer = new DoubleJSlider(-314, 314, 100, 10);
+        txtPhyMirrorSpectometer.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedMirrorSpectometer(ke);
+            }
+        });
+        
+        jSliderThetaMirrorSpectometer = new DoubleJSlider(-1800, 1800, 100, 10);
         jSliderThetaMirrorSpectometer.setValue(1);
         txtThetaMirrorSpectometer.setText(String.valueOf(jSliderThetaMirrorSpectometer.getValue()));
 
@@ -2378,6 +2398,11 @@ public class EduControlerPattern extends OpticsPane {
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtThetaMirrorSpectometer.setText(df.format(jSliderThetaMirrorSpectometer.getScaledValue()));
                 sliderGenerateActionPerformedMirrorSpectometer(evt);
+            }
+        });
+        txtThetaMirrorSpectometer.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedMirrorSpectometer(ke);
             }
         });
 
@@ -5287,6 +5312,20 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
+    private void keyEventGenerateActionPerformedMirror(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Mirror";
+        if (parseArguments()) {
+            buttonMirrorLensOn.setEnabled(true);
+            buttonMirrorDisplaySecondOn.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorParameter(phy, theta);
+            image.paintMirror();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
+            setLog(genLogMirror());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
 
     // Slit
     private void buttonGenerateActionPerformedSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
@@ -5953,6 +5992,21 @@ public class EduControlerPattern extends OpticsPane {
             }
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedMirrorSpectometer
+    
+    private void keyEventGenerateActionPerformedMirrorSpectometer(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyEventGenerateActionPerformedMirrorSpectometer
+        actionTag = "MirrorSpectometer";
+        if (parseArguments()) {
+            buttonMirrorSpectometerLensOn.setEnabled(true);
+            buttonMirrorSpectometerDisplaySecondOn.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
+            image.paintMirrorSpectrometer();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorSpectrometer());
+            setLog(genLogMirrorSpectrometer());
+            imageGenerated = true;
+        }
+    }
 
     private void sliderGenerateActionPerformedMirrorSpectometer(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedMirrorSpectometer
         actionTag = "MirrorSpectometer";
