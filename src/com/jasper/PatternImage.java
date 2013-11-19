@@ -296,7 +296,6 @@ public class PatternImage {
         double x2, y2, phase;
         double y1;
         double fixpart = Math.PI / lambda / (focal / 1000);
-
         // 2*pi/la*0.1*x*psize
         //double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
 
@@ -320,26 +319,9 @@ public class PatternImage {
                 // Albert 2013/09/05
                 Math.getExponent(y2);
                 phase = fixpart * (x2 + y2);
-                //phase = fixpart * (22*x2 + 10*y2) ;
-//                                phase=exp(i*pi/wavelength/focallength*(x.^2+y.^2));
-//                                hologram=((angle(phase)+pi)/2/pi);
-
-                //wave=exp(j*pi/wl*(xt.^2+yt.^2));
-                // added fixpart2 from David's LensMaekr0402_2013
-
-                // added fixpart2 from David's LensMaekr0916_2013
-                // wave=exp(j*pi/wl/f*(xt.^2+yt.^2));
-
-//                                if(xoff > 0) {
-//                                    phase += fixpart2 * y1 / xoff ;
-//                                } else {
                 phase += fixpart2 * x2 * y2;
-                //}
-                //phase = (fixpart * (x2 + y2) + (fixpart2 * y1));
-                //phase += phase/2;
-                //phase += fixpart2 * y1 ;
+               
                 iArray[0] = phase2gray(phase);
-                //raster.setPixel(j, i, iArray);
                 raster.setPixel(j, i, iArray);
             }
         }
@@ -403,42 +385,6 @@ public class PatternImage {
             }
         }
     }
-//        public void paintMicroscope() {
-//		WritableRaster raster = canvas.getRaster();
-//
-//		int[] iArray = new int[1];
-//		double x2, y2, phase;
-//		double y1;
-//
-//		double fixpart = Math.PI / lambda / focal;
-//
-//		// 2*pi/la*0.1*x*psize
-//		//double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
-//
-//		// calculate phase of each pixel;
-//		for (int i = 0; i < height; i++) {
-//			x2 = (double) (i - height/2 + 1) * pxsize;
-//			//x2 -= xoff;
-//                        x2 -= yoff;
-//			x2 = Math.pow(x2, 2.0);
-//                        // 2*pi/la*0.1*x*psize
-//                        double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1; 
-//			for (int j = 0; j < width; j++) {
-//				y2 = (double) (j - width/2 + 1) * pxsize;
-//				//y2 -= yoff;
-//                                y2 -= xoff;
-//				y1 = y2;
-//				y2 = Math.pow(y2, 2.0);
-//				phase = (fixpart * (x2 + y2));
-//                                
-//				//phase += ((fixpart2 * y1)/200/Math.PI);
-//                                //phase += fixpart2 * y1;
-//				iArray[0] = phase2gray(phase);
-//				raster.setPixel(j, i, iArray);
-//			}
-//		}
-//	}
-
     // Cylindircal algorithms
     public void paintCylindircal0() {
         WritableRaster raster = canvas.getRaster();
@@ -960,55 +906,6 @@ public class PatternImage {
             }
         }
     }
-
-    // Aber algorithms
-    public void paintAber() {
-        WritableRaster raster = canvas.getRaster();
-
-        int[] iArray = new int[1];
-        double phase, x, y;
-
-        double phy = Math.toRadians(mirrorPhy);
-        double theta = Math.toRadians(mirrorTheta);
-//        double phy = Math.toRadians(mirrorPhy) + Math.PI/300;
-//        double theta = Math.toRadians(mirrorTheta) + Math.PI/10;
-//        double phy = Math.PI/300;
-//        double theta = Math.PI/10;
-        double focal = Math.toRadians(mirrorPhy);
-
-// following statement is for debugging
-//		pi = Math.toRadians(3.0);
-
-        double xcomp = Math.sin(phy) * Math.cos(theta);
-        double ycomp = Math.sin(phy) * Math.sin(theta);
-
-        double fixpart = 2.0 * Math.PI / lambda;
-//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-//
-//        xt=x*cos(theta)+y*sin(theta);
-//
-//        yt=-x*sin(theta)+y*cos(theta);
-//
-//        % wavefront and its phase
-//        wave=exp(1i*2*pi/wl*sin(phi)*xt);
-
-        for (int i = 0; i < height; i++) {
-            x = (double) (i - height / 2 + 1) * pxsize;
-            x = xcomp * x;
-            for (int j = 0; j < width; j++) {
-                y = (double) (j - width / 2 + 1) * pxsize;
-                y = ycomp * y;
-                phase = fixpart * (x + y);
-
-// following statement is for debugging
-//				System.out.println("i="+i+" j="+j+" phase="+phase);
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
-    
     
     // Calibration algorithms
     public void paintCalibration() {
@@ -1479,6 +1376,28 @@ public class PatternImage {
     }
     
     public void paintImportFile(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
+    public void paintImportFileMichelson(BufferedImage buffImg) {
 
         double scale = 1.0;
         // scale = d_zoom / 100.0D;
