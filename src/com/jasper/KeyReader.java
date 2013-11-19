@@ -156,7 +156,7 @@ public class KeyReader {
     }
     
     /**
-     * 
+     * @Author Khuc Nam Hai
      * @param str
      * @return 
      */
