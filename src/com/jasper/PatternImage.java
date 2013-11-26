@@ -94,6 +94,15 @@ public class PatternImage {
     private double xoffCalibration;
     private double yoffCalibration;
     private double focalCalibration;
+    // Import file
+    private double k;
+    private double r;
+    private double e;
+    private double kr;
+    private double width_importFile;
+    private double rotation_importFile;
+    private double position_importFile;
+    private double grayLevel_importFile;
     // title string
     public String title;
 
@@ -263,6 +272,19 @@ public class PatternImage {
         this.mirrorPhySpectometer = phy;
         this.mirrorThetaSpectometer = theta;
         title = "mirror " + phy + " " + theta;
+    }
+    
+    public void updateParameterImportFile(double k, double r, double e, double kr
+            , double width, double positions, double rotation, double grayLevel) {
+        this.k = k;
+        this.r = r;
+        this.e = e;
+        this.kr = kr;
+        this.width_importFile = width;
+        this.rotation_importFile = rotation;
+        this.position_importFile = positions;
+        this.grayLevel_importFile = grayLevel;
+        title = "ImportFile ";
     }
 
     private void initGray2phase() {
@@ -783,34 +805,34 @@ public class PatternImage {
     
     // paintCalibration algorithms
     public void paintCalibration() {
+        
         WritableRaster raster = canvas.getRaster();
-        int[] iArray = new int[1];
-        double x2, y2, phase;
-        double y1;
-        double fixpart = Math.PI / lambda / (focalCalibration / 1000);
-        double costheta = Math.cos(Math.toRadians(3/4*Math.PI));
-        double sintheta = Math.sin(Math.toRadians(Math.PI/6000));
 
-        for (int i = 0; i < height; i++) {
-            x2 = (double) (i - height / 2 + 1) * pxsize;
-            x2 -= (-yoffCalibration / 1000);
-            x2 = Math.pow(x2, 2.0);
-            Math.getExponent(x2);
-            double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
-            for (int j = 0; j < width; j++) {
-                y2 = (double) (j - width / 2 + 1) * pxsize;
-                y2 -= (xoffCalibration / 1000);
-                y1 = y2;
-                y2 = Math.pow(y2, 2.0);
+		int[] iArray = new int[1];
+		double x1, y1, x2, phase;
 
-                Math.getExponent(y2);
-                phase = fixpart * (x2 + y2);
-                phase += fixpart2 * x2 * y2;
+		double fixpart2 = 2.0 * Math.PI / lambda * Math.cos(Math.toRadians(3.0));
+		double fixpart = Math.PI / lambda / focalCalibration;
 
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
+		double costheta = Math.cos(Math.toRadians(yoffCalibration));
+                double sintheta = Math.sin(Math.toRadians(yoffCalibration));
+		
+		for (int i = 0; i < height; i++) {
+			x1 = (double) (i - height/2 + 1) * pxsize;
+			x1 -= xoffCalibration;
+			for (int j = 0; j < width; j++) {
+				y1 = (double) (j - width/2 + 1) * pxsize;
+				x2 = x1 * costheta / y1 * sintheta;
+				x2 = Math.pow(x2, 2.0);
+				//phase = fixpart * x2 + fixpart2 * y1;
+                                phase = (Math.PI / lambda / focalCalibration) * x2 + fixpart2 * y1;
+                                // wave=exp(j*2*pi/wl*sin(Mphi)*xm);
+                                
+				
+				iArray[0] = phase2gray(phase);
+				raster.setPixel(j, i, iArray);
+			}
+		}
     }
 
     private static int[] parseElement(String s) throws IOException {
@@ -1253,26 +1275,9 @@ public class PatternImage {
         g2.drawRenderedImage(buffImg, at);
     }
     
-    public void paintImportFile(BufferedImage buffImg) {
+    public void paintImportFile() {
 
-        double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
-        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        double canvasX = canvas.getWidth() / 2;
-        double canvasY = canvas.getHeight() / 2;
-        int imageWidth = buffImg.getWidth();
-        int imageHeight = buffImg.getHeight();
-        double x = (scale * imageWidth) / 2;
-        double y = (scale * imageHeight) / 2;
-        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-        at.scale(scale, scale);
-        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
-        g2.drawRenderedImage(buffImg, at);
+        // TO DO
     }
     
     public void paintImportFileMichelson(BufferedImage buffImg) {

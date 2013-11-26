@@ -823,7 +823,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCalibrationDisplaySecondOn = new javax.swing.JButton();
         buttonCalibrationGeneral = new javax.swing.JButton();
         
-        lblFocalCalibration.setText("Focal length");
+        lblFocalCalibration.setText("Focal length(cm)");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -914,16 +914,16 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblXPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblYPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 )
-                .addGap(50, 50, 50)
+                .addGap(75, 75, 75)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(txtYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addComponent(txtFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))))
                 .addGap(5, 5, 5)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
-                .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
-                .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+                .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+                .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                 ))
                 .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -936,13 +936,13 @@ public class EduControlerPattern extends OpticsPane {
         jPanelCalibrationdricalLayout.setVerticalGroup(
                 jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(15, 15, 15)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lblFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtFocalCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
+                .addGap(19, 19, 19)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lblXPosCalibration)
@@ -956,14 +956,14 @@ public class EduControlerPattern extends OpticsPane {
                 )
                 .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 )
-                .addGap(168, 168, 168)
+                .addGap(174, 174, 174)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
 
-        tabbedControl.addTab("Calibration", panelCalebration);
+        tabbedControl.addTab("Fine Tuning", panelCalebration);
         tabbedControl.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -1062,453 +1062,6 @@ public class EduControlerPattern extends OpticsPane {
         panelImportfile = new javax.swing.JPanel();
         // Import file
         
-//        lblWidthImportFile = new javax.swing.JLabel();
-//        lblHeightImportFile = new javax.swing.JLabel();
-//        lblRotationImportFile = new javax.swing.JLabel();
-//        lblPosImportFile = new javax.swing.JLabel();
-//        lblGrayImportFile = new javax.swing.JLabel();
-//        text_single_widthImportFile = new javax.swing.JTextField();
-//        text_single_heightImportFile = new javax.swing.JTextField();
-//        text_single_rotationImportFile = new javax.swing.JTextField();
-//        text_single_positionImportFile = new javax.swing.JTextField();
-//        text_single_grayImportFile = new javax.swing.JTextField();
-//        s_single_widthImportFile = new javax.swing.JSlider();
-//        s_single_heightImportFile = new javax.swing.JSlider();
-//        s_single_rotationImportFile = new javax.swing.JSlider();
-//        s_single_positionImportFile = new javax.swing.JSlider();
-//        s_single_grayImportFile = new javax.swing.JSlider();
-//        jLabelSpacingImportFile = new javax.swing.JLabel();
-//        text_single_spacingImportFile = new javax.swing.JTextField();
-//        s_single_spacingImportFile = new javax.swing.JSlider();
-//        buttonGennerateImportFile = new javax.swing.JButton();
-//        buttong11LensOnImportFile = new javax.swing.JButton();
-//        buttonSecondDisplayImportFile = new javax.swing.JButton();
-//        
-//        checkboxUseImage = new javax.swing.JCheckBox();
-//        checkboxUseImage.setText("Use image");
-//        checkboxUseImage.addItemListener(new ItemListener() {
-//            @Override
-//            public void itemStateChanged(ItemEvent e) {
-//                if(e.getSource() == checkboxUseImage){
-//                    if(checkboxUseImage.isSelected()) {
-//                        System.out.println("one has been selected");
-//                        buttonOpenFileImportFile.setEnabled(true);
-//                    } else {
-//                        System.out.println("nothing");
-//                        buttonOpenFileImportFile.setEnabled(false);
-//                    }
-//                }
-//            }
-//        });
-//        
-//        openFile = new javax.swing.JFileChooser();
-//        buttonOpenFileImportFile = new javax.swing.JButton();
-//        lblPleaseSelectImportFile = new javax.swing.JLabel();
-//        buttonSecondImportFile = new javax.swing.JButton();
-//        button11LensOnImportFile = new javax.swing.JButton();
-//        buttonGeneralImportFile = new javax.swing.JButton();
-//        buttonOpenFileImportFile.setText("Browse...");
-//        buttonOpenFileImportFile.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                b_openFileActionPerformedImportFile(evt);
-//            }
-//        });
-//        buttonOpenFileImportFile.setEnabled(false);
-//        lblPleaseSelectImportFile.setText("Select the file to import.");
-//
-//        buttonSecondImportFile.setEnabled(false);
-//        buttonSecondImportFile.setText("Second display ON");
-//        buttonSecondImportFile.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                if (buffImagesImportfile != null) {
-//                    buttonSecondGenerateActionPerformedImportFile(evt);
-//                    countSecondDisplayImportFile++;
-//                    if (countSecondDisplayImportFile % 2 == 0) {
-//                        buttonSecondImportFile.setText("Second display OFF");
-//                    } else {
-//                        buttonSecondImportFile.setText("Second display ON");
-//                    }
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                }
-//            }
-//        });
-//        button11LensOnImportFile.setEnabled(false);
-//        button11LensOnImportFile.setText("1:1 lens ON");
-//        button11LensOnImportFile.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                if (buffImagesImportfile != null) {
-//                    button11LensOnImportFileActionPerformed(evt);
-//                    countLenOnImportFile++;
-//                    if (countLenOnImportFile % 2 == 0) {
-//                        button11LensOnImportFile.setText("1:1 lens OFF");
-//                    } else {
-//                        button11LensOnImportFile.setText("1:1 lens ON");
-//                    }
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                }
-//            }
-//        });
-//        buttonGeneralImportFile.setText("Generate");
-//        buttonGeneralImportFile.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                if (buffImagesImportfile != null) {
-//                    buttonGenerateActionPerformedImportFile(evt);
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                }
-//            }
-//        });
-//        
-//        jComboBoxImportFile = new javax.swing.JComboBox();
-//        jComboBoxImportFile.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"1.SLM Basic Property Test", "2. Amplitude Modulation (Projection System)", "3. Phase Modulation",
-//                        "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
-//                        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation"}));
-//                    jComboBoxImportFile.addActionListener(new java.awt.event.ActionListener() {
-//                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                            JComboBox comboBox = (JComboBox) evt.getSource();
-//
-//                            Object selected = comboBox.getSelectedItem();
-//                            if (selected.equals("      ------ Select experiment ------")) {
-//                                //jMenuItemNoSelectActionPerformed(evt);
-//                            } else if (selected.equals("1.SLM Basic Property Test")) {
-//                                //jMenuItemTelephotoActionPerformed(evt);
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("2. Amplitude Modulation (Projection System)")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("3. Phase Modulation")) {
-//                               if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("4. Michelson Interferometer")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFileMichelson(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("5. Diffraction and Interference")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("6. Spectrometer")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("7. Signal Processing (4-f system)")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("8. Phase Shifting Digital Holography")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("9. Talbot Images")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("10. Wavefront Modulation")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            } else if (selected.equals("11. Wavelength Selective Switch")) {
-//                                if (buffImagesImportfile != null) {
-//                                    buttonGenerateActionPerformedImportFile(evt);
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-//                                }
-//                            }
-//                        }
-//        });
-//        lblSelectExper_Importfile = new javax.swing.JLabel();
-//        lblSelectFile_Importfile = new javax.swing.JLabel();
-//        lblSelectExper_Importfile.setText("Select Experiment");
-//        lblSelectExper_Importfile.setForeground(Color.red);
-//        lblSelectFile_Importfile.setText("Select the file to import");
-////        javax.swing.GroupLayout importFileLayout = new javax.swing.GroupLayout(panelImportfile);
-////        panelImportfile.setLayout(importFileLayout);
-////        importFileLayout.setHorizontalGroup(
-////            importFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////            .addGroup(importFileLayout.createSequentialGroup()
-////                .addGap(15, 15, 15)
-////                .addGroup(importFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////                    .addGroup(importFileLayout.createSequentialGroup()
-////                        .addComponent(lblSelectExper_Importfile, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                        //.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-////                        .addGap(10, 10, 10)
-////                        .addComponent(jComboBoxImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                    .addGroup(importFileLayout.createSequentialGroup()
-////                        .addGroup(importFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////                            .addComponent(buttonGeneralImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                            .addComponent(buttonOpenFileImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                        .addGap(18, 18, 18)
-////                        .addGroup(importFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////                            .addGroup(importFileLayout.createSequentialGroup()
-////                                .addComponent(button11LensOnImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                                .addGap(18, 18, 18)
-////                                .addComponent(buttonSecondImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                            .addComponent(lblSelectFile_Importfile, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-////                        .addGroup(importFileLayout.createSequentialGroup()
-////                        .addContainerGap()
-////                        .addComponent(checkboxUseImage, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                )
-////                //.addContainerGap(228, Short.MAX_VALUE)
-////                )
-////        );
-////        importFileLayout.setVerticalGroup(
-////            importFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////            .addGroup(importFileLayout.createSequentialGroup()
-////                .addGap(31, 31, 31)
-////                .addComponent(checkboxUseImage)
-////                .addGap(5, 5, 5)
-////                .addGroup(importFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-////                    .addComponent(buttonOpenFileImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                    .addComponent(lblSelectFile_Importfile))
-////                .addGap(32, 32, 32)
-////                .addGroup(importFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-////                    .addComponent(lblSelectExper_Importfile, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                    .addComponent(jComboBoxImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                .addGap(153, 153, 153)
-////                .addGroup(importFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-////                    .addComponent(buttonGeneralImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                    .addComponent(button11LensOnImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-////                    .addComponent(buttonSecondImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                .addGap(27, 27, 27))
-////        );
-//        lblWidthImportFile.setText("Width");
-//
-//        lblHeightImportFile.setText("Width");
-//
-//        lblRotationImportFile.setText("Rotation");
-//
-//        lblPosImportFile.setText("Positions");
-//
-//        lblGrayImportFile.setText("Gray level ");
-//
-//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_widthImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_widthImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-//        bindingGroup.addBinding(binding);
-//
-//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_heightImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_heightImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-//        bindingGroup.addBinding(binding);
-//
-//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_rotationImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_rotationImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-//        bindingGroup.addBinding(binding);
-//
-//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_positionImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_positionImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-//        bindingGroup.addBinding(binding);
-//
-//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_grayImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_grayImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-//        bindingGroup.addBinding(binding);
-//
-//        jLabelSpacingImportFile.setText("Spacing");
-//
-//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacingImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacingImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-//        bindingGroup.addBinding(binding);
-//
-//
-//        // s_single_width.setMaximum(image1.getBounds().width);
-//        // s_single_width.setValue(image1.getBounds().width);
-//        s_single_widthImportFile.setMaximum(3866);
-//        s_single_widthImportFile.setValue(3866);
-//        s_single_widthImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                //sliderGenerateActionPerformedImportFile(evt);
-//            }
-//        });
-//        s_single_heightImportFile.setMaximum(image1.getBounds().height);
-//        s_single_heightImportFile.setValue(100);
-//        s_single_heightImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                //sliderGenerateActionPerformedImportFile(evt);
-//            }
-//        });
-//        s_single_rotationImportFile.setMaximum(180);
-//        s_single_rotationImportFile.setMinimum(-180);
-//        s_single_rotationImportFile.setValue(0);
-//        s_single_rotationImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                //sliderGenerateActionPerformedImportFile(evt);
-//            }
-//        });
-//        s_single_positionImportFile.setMaximum(image1.getBounds().height / 2);
-//        s_single_positionImportFile.setMinimum(-(image1.getBounds().height / 2));
-//        s_single_positionImportFile.setValue(0);
-//        s_single_positionImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                //sliderGenerateActionPerformedImportFile(evt);
-//            }
-//        });
-//        s_single_grayImportFile.setMaximum(255);
-//        s_single_grayImportFile.setValue(255);
-//        s_single_grayImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                //sliderGenerateActionPerformedImportFile(evt);
-//            }
-//        });
-//        s_single_spacingImportFile.setMaximum(image1.getBounds().height);
-//        s_single_spacingImportFile.setValue(400);
-//        s_single_spacingImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                //sliderGenerateActionPerformedImportFile(evt);
-//            }
-//        });
-//        s_single_spacingImportFile.setMaximum(image1.getBounds().height);
-//        s_single_spacingImportFile.setValue(400);
-//        s_single_spacingImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                //sliderGenerateActionPerformedImportFile(evt);
-//            }
-//        });
-//
-//        buttonGennerateImportFile.setText("Generate");
-//        buttonGennerateImportFile.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                buttonGenerateActionPerformedImportFile(evt);
-//            }
-//        });
-//        buttong11LensOnImportFile.setEnabled(false);
-//        buttong11LensOnImportFile.setText("1:1 lens ON");
-//        buttong11LensOnImportFile.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                button11LensOnImportFileActionPerformed(evt);
-//                countLenOnImportFile++;
-//                if (countLenOnImportFile % 2 == 0) {
-//                    buttong11LensOnImportFile.setText("1:1 lens OFF");
-//                } else {
-//                    buttong11LensOnImportFile.setText("1:1 lens ON");
-//                }
-//            }
-//        });
-//        buttonSecondDisplayImportFile.setEnabled(false);
-//        buttonSecondDisplayImportFile.setText("Second display ON");
-//        buttonSecondDisplayImportFile.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                buttonSecondGenerateActionPerformedImportFile(evt);
-//                countSecondDisplayImportFile++;
-//                if (countSecondDisplayImportFile % 2 == 0) {
-//                    buttonSecondDisplayImportFile.setText("Second display OFF");
-//                } else {
-//                    buttonSecondDisplayImportFile.setText("Second display ON");
-//                }
-//            }
-//        });
-//        
-//        javax.swing.GroupLayout panelImportFileLayout = new javax.swing.GroupLayout(panelImportfile);
-//        panelImportfile.setLayout(panelImportFileLayout);
-//        panelImportFileLayout.setHorizontalGroup(
-//                panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addContainerGap()
-//                .addGap(15, 15, 15)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addComponent(lblHeightImportFile)
-//                .addGap(37, 37, 37)
-//                .addComponent(text_single_heightImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                //.addComponent(s_single_heightImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(s_single_heightImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                )
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addComponent(lblGrayImportFile)
-//                .addGap(5, 5, 5)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addComponent(text_single_grayImportFile, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-//                //.addComponent(text_single_spacingImportFile)
-//                ))
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addComponent(lblRotationImportFile)
-//                .addGap(18, 18, 18)
-//                .addComponent(text_single_rotationImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                //.addComponent(jLabelSpacingImportFile)
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addComponent(lblPosImportFile)
-//                .addGap(13, 13, 13)
-//                .addComponent(text_single_positionImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                .addGap(18, 18, 18)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addComponent(s_single_rotationImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(s_single_positionImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(s_single_grayImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                //.addComponent(s_single_spacingImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(5, 5, 5)))
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addGap(0, 0, 0)
-//                .addComponent(buttonGennerateImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttong11LensOnImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-//                .addComponent(buttonSecondDisplayImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                .addContainerGap(28, Short.MAX_VALUE)));
-//        panelImportFileLayout.setVerticalGroup(
-//                panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportFileLayout.createSequentialGroup()
-//                .addGap(5, 5, 5)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addGap(3, 3, 3)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                .addGroup(panelImportFileLayout.createSequentialGroup()
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblHeightImportFile)
-//                .addComponent(text_single_heightImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(3, 3, 3))
-//                .addComponent(s_single_heightImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(10, 10, 10)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblRotationImportFile)
-//                .addComponent(text_single_rotationImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addComponent(s_single_rotationImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(10, 10, 10)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImportFileLayout.createSequentialGroup()
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblPosImportFile)
-//                .addComponent(text_single_positionImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addComponent(s_single_positionImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(10, 10, 10)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblGrayImportFile)
-//                .addComponent(text_single_grayImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                .addComponent(s_single_grayImportFile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(10, 10, 10)
-////                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-////                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-////                .addComponent(jLabelSpacingImportFile)
-////                .addComponent(text_single_spacingImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                .addComponent(s_single_spacingImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(65, 65, 65)
-//                .addGroup(panelImportFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(buttonGennerateImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttong11LensOnImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonSecondDisplayImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                )));
         lblHeaderImportFile = new javax.swing.JLabel();
         lblK = new javax.swing.JLabel();
         txtKImportFile = new javax.swing.JTextField();
@@ -1589,7 +1142,7 @@ public class EduControlerPattern extends OpticsPane {
         sliderWidthImportFile.setValue(0);
         sliderWidthImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                //sliderGenerateActionPerformedSlit(evt);
+                sliderGenerateActionPerformedImportFile(evt);
             }
         });
         sliderRotationImportFile.setMaximum(180);
@@ -1597,7 +1150,7 @@ public class EduControlerPattern extends OpticsPane {
         sliderRotationImportFile.setValue(0);
         sliderRotationImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                //sliderGenerateActionPerformedSlit(evt);
+                sliderGenerateActionPerformedImportFile(evt);
             }
         });
         sliderPositionImportFile.setMaximum(image1.getBounds().height / 2);
@@ -1605,7 +1158,7 @@ public class EduControlerPattern extends OpticsPane {
         sliderPositionImportFile.setValue(0);
         sliderPositionImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                //sliderGenerateActionPerformedSlit(evt);
+                sliderGenerateActionPerformedImportFile(evt);
             }
         });
         sliderGrayLevelImportFile.setMaximum(255);
@@ -1613,7 +1166,42 @@ public class EduControlerPattern extends OpticsPane {
         sliderGrayLevelImportFile.setValue(255);
         sliderGrayLevelImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                //sliderGenerateActionPerformedSlit(evt);
+                sliderGenerateActionPerformedImportFile(evt);
+            }
+        });
+        
+        btnGenerteImportFile.setText("Generate");
+        btnGenerteImportFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedImportFile(evt);
+            }
+        });
+
+        btnLensONImportFile.setEnabled(false);
+        btnLensONImportFile.setText("1:1 lens ON");
+        btnLensONImportFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button11LensOnImportFileActionPerformed(evt);
+                countLenOnImportFile++;
+                if (countLenOnImportFile % 2 == 0) {
+                    btnLensONImportFile.setText("1:1 lens OFF");
+                } else {
+                    btnLensONImportFile.setText("1:1 lens ON");
+                }
+            }
+        });
+
+        btnSecondImportFile.setEnabled(false);
+        btnSecondImportFile.setText("Second display ON");
+        btnSecondImportFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSecondGenerateActionPerformedImportFile(evt);
+                countSecondDisplayImportFile++;
+                if (countSecondDisplayImportFile % 2 == 0) {
+                    btnSecondImportFile.setText("Second display OFF");
+                } else {
+                    btnSecondImportFile.setText("Second display ON");
+                }
             }
         });
         
@@ -5328,50 +4916,6 @@ public class EduControlerPattern extends OpticsPane {
         }
     }
     
-    private void b_openFileActionPerformedImportFile(java.awt.event.ActionEvent evt) {
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            File file = openFile.getSelectedFile();
-            String ext = "";
-            String extension = file.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesImportfile = ImageIO.read(new File(file.getAbsolutePath()));
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintImportFile(buffImagesImportfile);
-                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-    }
-
 //    public void logString(String msg) {
 //        jTextAreaLog.append(msg + System.getProperty("line.separator"));
 //        jTextAreaLog.setCaretPosition(jTextAreaLog.getText().length() - 1);
@@ -6944,26 +6488,12 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedImportFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedImportFile
         actionTag = "ImportFile";
         if (parseArguments()) {
-            button11LensOnImportFile.setEnabled(true);
-            buttonSecondImportFile.setEnabled(true);
+            btnLensONImportFile.setEnabled(true);
+            btnSecondImportFile.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintImportFile(buffImagesImportfile);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
-            setLog("");
-            imageGenerated = true;
-        }
-
-    }
-    
-    private void buttonGenerateActionPerformedImportFileMichelson(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedImportFile
-        actionTag = "ImportFile";
-        if (parseArguments()) {
-            button11LensOnImportFile.setEnabled(true);
-            buttonSecondImportFile.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintImportFileMichelson(buffImagesImportfile);
+            image.updateParameterImportFile(1, 1, 1, 1, 1, 1, 1, 1);
+            image.paintImportFile();
             EduPatternShowOn.updateLensPatternPattern(image, "");
             setLog("");
             imageGenerated = true;
@@ -6975,7 +6505,8 @@ public class EduControlerPattern extends OpticsPane {
         actionTag = "ImportFile";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintImportFile(buffImagesImportfile);
+            image.updateParameterImportFile(1, 1, 1, 1, 1, 1, 1, 1);
+            image.paintImportFile();
             EduPatternShowOn.updateLensPatternPattern(image, "");
             setLog("");
             imageGenerated = true;
@@ -7005,7 +6536,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                             countLenOnImportFile--;
-                            button11LensOnImportFile.setText("1:1 lens ON");
+                            btnLensONImportFile.setText("1:1 lens ON");
                             magFrameLenon.dispose();
                     }
                 });
@@ -7025,7 +6556,8 @@ public class EduControlerPattern extends OpticsPane {
                 JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.paintImportFile(buffImagesImportfile);
+                image.updateParameterImportFile(1, 1, 1, 1, 1, 1, 1, 1);
+                image.paintImportFile();
                 EduPatternShowOn.updateLensPatternPattern(image, "");
                 setLog("");
                 imageGenerated = true;
@@ -7035,6 +6567,22 @@ public class EduControlerPattern extends OpticsPane {
             }
         }
     }
+    
+    private void sliderGenerateActionPerformedImportFile(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedImportFile
+        actionTag = "ImportFile";
+        if (parseArguments()) {
+            btnLensONImportFile.setEnabled(true);
+            btnSecondImportFile.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateParameterImportFile(1, 1, 1, 1, 1, 1, 1, 1);
+            image.paintImportFile();
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            setLog("");
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformedImportFile
+    
     //End
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel panelPattern;
