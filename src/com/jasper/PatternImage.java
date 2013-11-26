@@ -99,6 +99,7 @@ public class PatternImage {
     private double r;
     private double e;
     private double kr;
+    private String formula_importFile;
     private double width_importFile;
     private double rotation_importFile;
     private double position_importFile;
@@ -275,11 +276,12 @@ public class PatternImage {
     }
     
     public void updateParameterImportFile(double k, double r, double e, double kr
-            , double width, double positions, double rotation, double grayLevel) {
+            , double width, double positions, double rotation, double grayLevel, String formula) {
         this.k = k;
         this.r = r;
         this.e = e;
         this.kr = kr;
+        this.formula_importFile = formula;
         this.width_importFile = width;
         this.rotation_importFile = rotation;
         this.position_importFile = positions;

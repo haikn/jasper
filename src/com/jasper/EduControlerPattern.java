@@ -4615,8 +4615,9 @@ public class EduControlerPattern extends OpticsPane {
     private double xoffCalibration = 0, yoffCalibration = 0, focalCalibration = 1;
     //Talbot
     private double talbot_widthX = Double.valueOf(image1.getBounds().width), talbot_widthY = 100, talbot_heightX = 100, talbot_heightY = Double.valueOf(image1.getBounds().height), talbot_rotation = 0, talbot_positionX = 0, talbot_positionY = 0, talbot_grayLevel = 255, talbot_spacing = 400;
-    
-
+     // Import file
+    private double k = 0, r = 0, e = 0, kr = 0, width_importFile = 0, rotation_importFile = 0, position_importFile = 0, grayLevel_importFile = 0;
+    private String formula = "";
     private boolean parseArguments() {
         boolean ret = false;
         try {
@@ -4689,6 +4690,17 @@ public class EduControlerPattern extends OpticsPane {
 
             width_fresnel = Double.valueOf(text_fresnel_width.getText());
             height_fresnel = Double.valueOf(text_fresnel_height.getText());
+            
+            // Import file
+            String uImportFile = txtFormula.getText();
+            double kImportFile = Double.valueOf(txtKImportFile.getText());
+            double rImportFile= Double.valueOf(txtRImportFile.getText());
+            double eImportFile = Double.valueOf(txtE1ImportFile.getText());
+            double krImportFile= Double.valueOf(txtK1RImportFile.getText());
+            double widthImportFile = Double.valueOf(txtWidthImportFile.getText());
+            double positionImportFile = Double.valueOf(txtPositionImportFile.getText());
+            double rotationImportFile= Double.valueOf(txtRotationImportFile.getText());
+            double grayImportFile = Double.valueOf(txtGrayLevelImportFile.getText());
 
             //phase
             zoom = Double.valueOf(s_phase_zoom.getValue());
@@ -4732,6 +4744,17 @@ public class EduControlerPattern extends OpticsPane {
             this.xoffCalibration = xoffCali;
             this.yoffCalibration = yoffCali;
             this.focalCalibration = focalCali;
+            
+            // Import file
+            this.formula = uImportFile;
+            this.k = kImportFile;
+            this.r = rImportFile;
+            this.e = eImportFile;
+            this.kr = krImportFile;
+            this.width_importFile = widthImportFile;
+            this.position_importFile = positionImportFile;
+            this.rotation_importFile = rotationImportFile;
+            this.position_importFile = grayImportFile;
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, warnings);
@@ -6492,7 +6515,7 @@ public class EduControlerPattern extends OpticsPane {
             btnSecondImportFile.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterImportFile(1, 1, 1, 1, 1, 1, 1, 1);
+            image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
             image.paintImportFile();
             EduPatternShowOn.updateLensPatternPattern(image, "");
             setLog("");
@@ -6505,7 +6528,7 @@ public class EduControlerPattern extends OpticsPane {
         actionTag = "ImportFile";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterImportFile(1, 1, 1, 1, 1, 1, 1, 1);
+            image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
             image.paintImportFile();
             EduPatternShowOn.updateLensPatternPattern(image, "");
             setLog("");
@@ -6556,7 +6579,7 @@ public class EduControlerPattern extends OpticsPane {
                 JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateParameterImportFile(1, 1, 1, 1, 1, 1, 1, 1);
+                image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
                 image.paintImportFile();
                 EduPatternShowOn.updateLensPatternPattern(image, "");
                 setLog("");
@@ -6575,7 +6598,7 @@ public class EduControlerPattern extends OpticsPane {
             btnSecondImportFile.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterImportFile(1, 1, 1, 1, 1, 1, 1, 1);
+            image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
             image.paintImportFile();
             EduPatternShowOn.updateLensPatternPattern(image, "");
             setLog("");
