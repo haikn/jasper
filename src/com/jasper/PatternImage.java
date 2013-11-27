@@ -668,70 +668,6 @@ public class PatternImage {
         }
     }
 
-    // Calibration algorithms
-    public void paintCalibration0() {
-        WritableRaster raster = canvas.getRaster();
-
-        int[] iArray = new int[1];
-        double x1, y1, x2, phase;
-
-        double fixpart2 = 2.0 * Math.PI / lambda * Math.cos(Math.toRadians(3.0));
-        double fixpart = Math.PI / lambda / focalCalibration;
-
-        double costheta = Math.cos(Math.toRadians(angle));
-        double sintheta = Math.sin(Math.toRadians(angle));
-        double x = xoffCalibration * 0.01D;
-        for (int i = 0; i < height; i++) {
-            x1 = (double) (i - height/2 + 1) * pxsize;
-            x1 -= x;
-            for (int j = 0; j < width; j++) {
-                y1 = (double) (j - width/2 + 1) * pxsize;
-                x2 = x1 * costheta - y1 * sintheta;
-                x2 = Math.pow(x2, 2.0);
-                phase = fixpart * x2 + fixpart2 * y1;
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
-    
-    public void paintCalibration1() {
-        WritableRaster raster = canvas.getRaster();
-        // wave=exp(1i*pi/wl*xt.^2);
-        int[] iArray = new int[1];
-        double x1, y1, x2, phase;
-
-        double fixpart2 = 2.0 * Math.PI / lambda;
-        double fixpart = Math.PI / lambda / (focalCalibration/ 100);
-
-        double costheta = Math.cos(Math.toRadians(Math.PI/4));
-        double sintheta = Math.sin(Math.toRadians(Math.PI/4));
-
-//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-//        xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
-//        yt=-(x-x0)*sin(theta)+(y-y0)*cos(theta);
-//
-//        % wavefront and its phase
-//        wave=exp(j*pi/wl/f*xt.^2);
-//        phase=angle(wave)+pi;
-
-        for (int i = 0; i < height; i++) {
-            x1 = (double) (i - height / 2 + 1) * pxsize;
-            x1 -= xoffCalibration/10;
-            for (int j = 0; j < width; j++) {
-                y1 = (double) (j - width / 2 + 1) * pxsize;
-                y1 -= yoffCalibration/10;
-                x2 = x1 * costheta + y1 * sintheta;
-                x2 = Math.pow(x2, 2.0);
-                //phase = fixpart * x2 + fixpart2 * y1;
-                phase = fixpart * x2 + fixpart2 * y1;
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
     
     public void paintCalibration() {
         WritableRaster raster = this.canvas.getRaster();
@@ -759,126 +695,26 @@ public class PatternImage {
         }
     }
     
-    // Calibration algorithms
-    public void paintCalibration4() {
-        WritableRaster raster = canvas.getRaster();
-        int[] iArray = new int[1];
-        double x2, y2, phase;
-        double y1;
-        double fixpart = Math.PI / lambda;
-        // 2*pi/la*0.1*x*psize
-        //double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
+    public void paintFineTuning(BufferedImage buffImg) {
 
-        // calculate phase of each pixel;
-        for (int i = 0; i < height; i++) {
-            x2 = (double) (i - height / 2 + 1) * pxsize;
-            x2 -= (-xoffCalibration / 10000);
-            //Mphi=pi/6000;
-//            Mtheta=3/4*pi;
-//            Mphi=pi/6000;
-//            [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-//            xm=x*cos(Mtheta)+y*sin(Mtheta);
-//            ym=-x*sin(Mtheta)+y*cos(Mtheta);
-//            wave=exp(j*2*pi/wl*sin(Mphi)*xm);
-             
-            
-            //x2 -= 0.0;
-            x2 = Math.pow(x2, 2.0);
-            // Albert 2013/09/05
-            Math.getExponent(x2);
-            // 2*pi/la*0.1*x*psize
-            double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
-            for (int j = 0; j < width; j++) {
-                y2 = (double) (j - width / 2 + 1) * pxsize;
-                y2 -= (focalCalibration/10000);
-                //y2 -= 0.0;
-                y1 = y2;
-                y2 = Math.pow(y2, 2.0);
-//                xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
-//                yt=-(x-x0)*sin(theta)+(y-y0)*cos(theta);
-//
-//                % wavefront and its phase
-//                wave=exp(j*pi/wl/f*xt.^2);
-                
-                double Mphi = Math.sin(Math.PI/6);
-                double  xt = y2 * Math.cos(3/4*Math.PI) + x2 * Math.sin(3/4*Math.PI);
-
-                // Albert 2013/09/05
-                Math.getExponent(y2);
-                phase = fixpart * (x2 + y2) * Math.pow(xt, xt);
-                phase += fixpart2 * x2 * y2 ;
-               
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
-    
-    // paintCalibration algorithms
-    public void paintCalibration5() {
-        
-       WritableRaster raster = canvas.getRaster();
-        // wave=exp(1i*pi/wl*xt.^2);
-        int[] iArray = new int[1];
-        double x1, y1, x2, phase;
-
-        double fixpart2 = 2.0 * Math.PI / lambda;
-        double fixpart = Math.PI / lambda / focalCalibration;
-
-        double costheta = Math.cos(Math.toRadians(yoffCalibration));
-        double sintheta = Math.sin(Math.toRadians(yoffCalibration));
-
-        for (int i = 0; i < height; i++) {
-            x1 = (double) (i - height / 2 + 1) * pxsize;
-            x1 -= xoffCalibration;
-            for (int j = 0; j < width; j++) {
-                y1 = (double) (j - width / 2 + 1) * pxsize;
-                x2 = x1 * costheta - y1 * sintheta;
-                x2 = Math.pow(x2, 2.0);
-                //phase = fixpart * x2 + fixpart2 * y1;
-                phase = fixpart * x2 + fixpart2 * Math.pow(x2, 2.0) * fixpart;
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-        
-//        WritableRaster raster = canvas.getRaster();
-//        int[] iArray = new int[1];
-//        double x2, y2, phase;
-//        double y1;
-//        double fixpart = Math.PI / lambda / (focalCalibration / 100);
-//        // 2*pi/la*0.1*x*psize
-//        //double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
-//
-//        // calculate phase of each pixel;
-//        for (int i = 0; i < height; i++) {
-//            x2 = (double) (i - height / 2 + 1) * pxsize;
-//            x2 -= (-yoffCalibration / 10000);
-//            //x2 -= 0.0;
-//            x2 = Math.pow(x2, 2.0);
-//            // Albert 2013/09/05
-//            Math.getExponent(x2);
-//            // 2*pi/la*0.1*x*psize
-//            double fixpart2 = 2.0 * Math.PI / lambda * x2 * 6000.0;
-//            for (int j = 0; j < width; j++) {
-//                y2 = (double) (j - width / 2 + 1) * pxsize;
-//                y2 -= (xoffCalibration / 10000);
-//                //y2 -= 0.0;
-//                y1 = y2;
-//                y2 = Math.pow(y2, 2.0);
-//
-//                double expfixpart = Math.PI / lambda;
-//                double  xt = y2 * Math.cos(3/4*Math.PI) + x2 * Math.sin(3/4*Math.PI);
-//                // Albert 2013/09/05
-//                Math.getExponent(y2);
-//                phase = fixpart * (x2 + y2);
-//                phase += fixpart2 * x2 * y2 * Math.signum(100);
-//               
-//                iArray[0] = phase2gray(phase);
-//                raster.setPixel(j, i, iArray);
-//            }
-//        }
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        g2.drawRenderedImage(buffImg, at);
     }
 
     private static int[] parseElement(String s) throws IOException {
