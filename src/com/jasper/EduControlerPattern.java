@@ -184,7 +184,7 @@ public class EduControlerPattern extends OpticsPane {
         jLabelSelectExperiment.setText("Select Experiment");
         jLabelSelectExperiment.setForeground(Color.red);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1.SLM Basic Property Test", "2. Amplitude Modulation (Projection System)", "3. Phase Modulation",
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ... Select experiment ...    ", "1. SLM Basic Property Test", "2. Amplitude Modulation (Projection System)", "3. Phase Modulation",
                         "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
                         "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation"}));
                     jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -192,10 +192,10 @@ public class EduControlerPattern extends OpticsPane {
                             JComboBox comboBox = (JComboBox) evt.getSource();
 
                             Object selected = comboBox.getSelectedItem();
-                            if (selected.equals("      ------ Select experiment ------")) {
+                            if (selected.equals("      ... Select experiment ...    ")) {
                                 jMenuItemNoSelectActionPerformed(evt);
                                 tmpSelected = 0;
-                            } else if (selected.equals("1.SLM Basic Property Test")) {
+                            } else if (selected.equals("1. SLM Basic Property Test")) {
                                 jMenuItemTelephotoActionPerformed(evt);
                                 tmpSelected = 1;
                             } else if (selected.equals("2. Amplitude Modulation (Projection System)")) {
@@ -847,9 +847,9 @@ public class EduControlerPattern extends OpticsPane {
                     button11LensOnCalibrationActionPerformed(evt);
                     countLenOnCalibration++;
                     if (countLenOnCalibration % 2 == 0) {
-                        buttonCalibrationLensOn.setText("Second display OFF");
+                        buttonCalibrationLensOn.setText("1:1 lens OFF");
                     } else {
-                        buttonCalibrationLensOn.setText("Second display ON");
+                        buttonCalibrationLensOn.setText("1:1 lens ON");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
