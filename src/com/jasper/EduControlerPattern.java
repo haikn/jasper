@@ -1047,7 +1047,7 @@ public class EduControlerPattern extends OpticsPane {
                     tabbedDesLog.addTab("Log", jScrollPane2);
 
                     lblDiagram.setIcon(null);
-                    lblDiagram.setText("No Diagram available");
+                    lblDiagram.setText(null);
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
                 }
@@ -1252,7 +1252,7 @@ public class EduControlerPattern extends OpticsPane {
                     tabbedDesLog.addTab("Log", jScrollPane2);
 
                     lblDiagram.setIcon(null);
-                    lblDiagram.setText("No Diagram available");
+                    lblDiagram.setText(null);
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
                 }

@@ -153,7 +153,7 @@ public class EduDescription {
     public static javax.swing.JLabel desWavelength =
             new JLabel("<html><b>No description available</b><br></html>");
     public static javax.swing.JLabel desCalibration =
-            new JLabel("<html><b>No description available</b><br></html>");
+            new JLabel("");
     public static javax.swing.JLabel  desImportfile =
-            new JLabel("<html><b>No description available</b><br></html>");
+            new JLabel("");
 }
