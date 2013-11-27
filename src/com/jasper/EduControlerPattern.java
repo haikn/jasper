@@ -773,7 +773,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblThetaMirror)
                 .addComponent(txtThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(140, 140, 140)
+                .addGap(139, 139, 139)
                 .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -834,12 +834,6 @@ public class EduControlerPattern extends OpticsPane {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (buffImagesCalibration != null) {
                     buttonGenerateActionPerformedCalibration(evt);
-                    countSecondDisplayTalbotPhoto++;
-                    if (countSecondDisplayTalbotPhoto % 2 == 0) {
-                        buttonSecondTalbotPhoto.setText("Second display OFF");
-                    } else {
-                        buttonSecondTalbotPhoto.setText("Second display ON");
-                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
                 }
@@ -916,7 +910,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(fineTuningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonOpenFileCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPleaseSelectCalibration))
-                .addGap(218, 218, 218)
+                .addGap(216, 216, 216)
                 .addGroup(fineTuningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1351,10 +1345,10 @@ public class EduControlerPattern extends OpticsPane {
                         .addGap(0, 155, Short.MAX_VALUE))
                     .addGroup(layoutImportFile.createSequentialGroup()
                         .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblKR, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblE1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblR, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblK, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblKR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblE1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblK, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtK1RImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1428,7 +1422,7 @@ public class EduControlerPattern extends OpticsPane {
                         .addComponent(txtK1RImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblGrayLevelImportFile)
                         .addComponent(txtGrayLevelImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(85, 85, 85)
+                .addGap(87, 87, 87)
                 .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGenerteImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLensONImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1798,7 +1792,7 @@ public class EduControlerPattern extends OpticsPane {
                         .addComponent(lblGraySlit)
                         .addComponent(text_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(96, 96, 96)
+                .addGap(97, 97, 97)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2414,7 +2408,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblZoom)))
-                .addGap(160, 160, 160)
+                .addGap(158, 158, 158)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonSecondPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2486,39 +2480,38 @@ public class EduControlerPattern extends OpticsPane {
         javax.swing.GroupLayout signalPhotoLayout = new javax.swing.GroupLayout(panelSignalPhoto);
         panelSignalPhoto.setLayout(signalPhotoLayout);
         signalPhotoLayout.setHorizontalGroup(
-                signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addContainerGap()
+            signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signalPhotoLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
+                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFile, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                 .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(lblPleaseSelectPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(216, 216, 216)))));
+                    .addGroup(signalPhotoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(signalPhotoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
         signalPhotoLayout.setVerticalGroup(
-                signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalPhotoLayout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
-                .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+            signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signalPhotoLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblPleaseSelectPhoto))
-                .addGap(155, 155, 155)
+                    .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectPhoto))
+                .addGap(153, 153, 153)
                 .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                )));
+                    .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        
         /*
          * Lens Michelson
          */
