@@ -194,28 +194,40 @@ public class EduControlerPattern extends OpticsPane {
                             Object selected = comboBox.getSelectedItem();
                             if (selected.equals("      ------ Select experiment ------")) {
                                 jMenuItemNoSelectActionPerformed(evt);
+                                tmpSelected = 0;
                             } else if (selected.equals("1.SLM Basic Property Test")) {
                                 jMenuItemTelephotoActionPerformed(evt);
+                                tmpSelected = 1;
                             } else if (selected.equals("2. Amplitude Modulation (Projection System)")) {
                                 jMenuItemMicroscopeActionPerformed(evt);
+                                tmpSelected = 2;
                             } else if (selected.equals("3. Phase Modulation")) {
                                 jMenuItemAberrationActionPerformed(evt);
+                                tmpSelected = 3;
                             } else if (selected.equals("4. Michelson Interferometer")) {
                                 jMenuItemMichelsonActionPerformed(evt);
+                                tmpSelected = 4;
                             } else if (selected.equals("5. Diffraction and Interference")) {
                                 jMenuItemDiffractionActionPerformed(evt);
+                                tmpSelected = 5;
                             } else if (selected.equals("6. Spectrometer")) {
                                 jMenuItemSpectrometerActionPerformed(evt);
+                                tmpSelected = 6;
                             } else if (selected.equals("7. Signal Processing (4-f system)")) {
                                 jMenuItemSignalProcessingActionPerformed(evt);
+                                tmpSelected = 7;
                             } else if (selected.equals("8. Phase Shifting Digital Holography")) {
                                 jMenuItemPhaseShiftingActionPerformed(evt);
+                                tmpSelected = 8;
                             } else if (selected.equals("9. Talbot Images")) {
                                 jMenuItemTalbotImagesActionPerformed(evt);
+                                tmpSelected = 9;
                             } else if (selected.equals("10. Wavefront Modulation")) {
                                 jMenuItemWavefrontActionPerformed(evt);
+                                tmpSelected = 10;
                             } else if (selected.equals("11. Wavelength Selective Switch")) {
                                 jMenuItemWavelengthActionPerformed(evt);
+                                tmpSelected = 11;
                             }
                         }
         });
@@ -1041,57 +1053,191 @@ public class EduControlerPattern extends OpticsPane {
                 }
                 if (index == 0) {
                     
-                    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1.SLM Basic Property Test", "2. Amplitude Modulation (Projection System)", "3. Phase Modulation",
-                        "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
-                        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation"}));
-                    jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                            JComboBox comboBox = (JComboBox) evt.getSource();
-
-                            Object selected = comboBox.getSelectedItem();
-                            if (selected.equals("      ------ Select experiment ------")) {
-                                jMenuItemNoSelectActionPerformed(evt);
-                            } else if (selected.equals("1.SLM Basic Property Test")) {
-                                jMenuItemTelephotoActionPerformed(evt);
-                            } else if (selected.equals("2. Amplitude Modulation (Projection System)")) {
-                                jMenuItemMicroscopeActionPerformed(evt);
-                            } else if (selected.equals("3. Phase Modulation")) {
-                                jMenuItemAberrationActionPerformed(evt);
-                            } else if (selected.equals("4. Michelson Interferometer")) {
-                                jMenuItemMichelsonActionPerformed(evt);
-                            } else if (selected.equals("5. Diffraction and Interference")) {
-                                jMenuItemDiffractionActionPerformed(evt);
-                            } else if (selected.equals("6. Spectrometer")) {
-                                jMenuItemSpectrometerActionPerformed(evt);
-                            } else if (selected.equals("7. Signal Processing (4-f system)")) {
-                                jMenuItemSignalProcessingActionPerformed(evt);
-                            } else if (selected.equals("8. Phase Shifting Digital Holography")) {
-                                jMenuItemPhaseShiftingActionPerformed(evt);
-                            } else if (selected.equals("9. Talbot Images")) {
-                                jMenuItemTalbotImagesActionPerformed(evt);
-                            } else if (selected.equals("10. Wavefront Modulation")) {
-                                jMenuItemWavefrontActionPerformed(evt);
-                            } else if (selected.equals("11. Wavelength Selective Switch")) {
-                                jMenuItemWavelengthActionPerformed(evt);
-                            }
-                        }
-                    });
-                    jMenuItemNoSelectActionPerformed(null);
+//                    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"      ------ Select experiment ------", "1.SLM Basic Property Test", "2. Amplitude Modulation (Projection System)", "3. Phase Modulation",
+//                        "4. Michelson Interferometer", "5. Diffraction and Interference", "6. Spectrometer",
+//                        "7. Signal Processing (4-f system)", "8. Phase Shifting Digital Holography", "9. Talbot Images", "10. Wavefront Modulation"}));
+//                    jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+//                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                            JComboBox comboBox = (JComboBox) evt.getSource();
+//
+//                            Object selected = comboBox.getSelectedItem();
+//                            if (selected.equals("      ------ Select experiment ------")) {
+//                                jMenuItemNoSelectActionPerformed(evt);
+//                            } else if (selected.equals("1.SLM Basic Property Test")) {
+//                                jMenuItemTelephotoActionPerformed(evt);
+//                            } else if (selected.equals("2. Amplitude Modulation (Projection System)")) {
+//                                jMenuItemMicroscopeActionPerformed(evt);
+//                            } else if (selected.equals("3. Phase Modulation")) {
+//                                jMenuItemAberrationActionPerformed(evt);
+//                            } else if (selected.equals("4. Michelson Interferometer")) {
+//                                jMenuItemMichelsonActionPerformed(evt);
+//                            } else if (selected.equals("5. Diffraction and Interference")) {
+//                                jMenuItemDiffractionActionPerformed(evt);
+//                            } else if (selected.equals("6. Spectrometer")) {
+//                                jMenuItemSpectrometerActionPerformed(evt);
+//                            } else if (selected.equals("7. Signal Processing (4-f system)")) {
+//                                jMenuItemSignalProcessingActionPerformed(evt);
+//                            } else if (selected.equals("8. Phase Shifting Digital Holography")) {
+//                                jMenuItemPhaseShiftingActionPerformed(evt);
+//                            } else if (selected.equals("9. Talbot Images")) {
+//                                jMenuItemTalbotImagesActionPerformed(evt);
+//                            } else if (selected.equals("10. Wavefront Modulation")) {
+//                                jMenuItemWavefrontActionPerformed(evt);
+//                            } else if (selected.equals("11. Wavelength Selective Switch")) {
+//                                jMenuItemWavelengthActionPerformed(evt);
+//                            }
+//                        }
+//                    });
+                    //jMenuItemNoSelectActionPerformed(null);
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
-                    
-                    tabbedDesLog.addTab("Description", desNoSelect);
-                    jTextAreaLog.setColumns(20);
-                    jTextAreaLog.setRows(5);
-                    jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                    jScrollPane2.setViewportView(jTextAreaLog);
-                    tabbedDesLog.addTab("Log", jScrollPane2);
+                    // check selected
+                    if (tmpSelected == 0) {
+                        jScrollDes.setViewportView(desTelephotoLens);
+                        tabbedDesLog.addTab("Description", desNoSelect);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
-                    lblDiagram.setIcon(null);
-                    lblDiagram.setText(null);
-                    diagramLens.add(lblDiagram);
-                    layoutDiagram.add(diagramLens);
+                        lblDiagram.setIcon(null);
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 1) {
+                        jScrollDes.setViewportView(desTelephotoLens);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 2) {
+                        jScrollDes.setViewportView(desMicroscope);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 3) {
+                        jScrollDes.setViewportView(desAberration);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 4) {
+                        jScrollDes.setViewportView(desMichelson);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp4michelson.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 5) {
+                        jScrollDes.setViewportView(desDiffaction);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp5diffraction.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 6) {
+                        jScrollDes.setViewportView(desSpectrometer);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp6spectrometer.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 7) {
+                        jScrollDes.setViewportView(desSignalProcessing);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp7signalprocessing.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 8) {
+                        jScrollDes.setViewportView(desPhaseRetarder);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp8phaseshifting.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 9) {
+                        jScrollDes.setViewportView(desTalbotImage);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp9talbot.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    } else if (tmpSelected == 10) {
+                        jScrollDes.setViewportView(desWavefront);
+                        tabbedDesLog.addTab("Description", jScrollDes);
+                        jTextAreaLog.setColumns(20);
+                        jTextAreaLog.setRows(5);
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(jTextAreaLog);
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+
+                        lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp10wavefrontmodulation.png")));
+                        lblDiagram.setText(null);
+                        diagramLens.add(lblDiagram);
+                        layoutDiagram.add(diagramLens);
+                    }
+                    
                 }
                 if (index == 2) {
                     layoutDiagram.removeAll();
@@ -7109,6 +7255,9 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel desWavelength = EduDescription.desWavelength;
     private javax.swing.JLabel desCalibration = EduDescription.desCalibration;
     private javax.swing.JLabel  desImportfile = EduDescription.desImportfile;
+    
+    // Temp
+    private byte tmpSelected = 0;
 
     //End 
     @Override
