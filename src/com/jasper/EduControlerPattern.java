@@ -813,9 +813,9 @@ public class EduControlerPattern extends OpticsPane {
         lblFocalCalibration = new javax.swing.JLabel();
         lblXPosCalibration = new javax.swing.JLabel();
         lblYPosCalibration = new javax.swing.JLabel();
-        jSliderFocalCalibration = new javax.swing.JSlider();
-        jSliderXPositionCalibration = new javax.swing.JSlider();
-        jSliderYPositionCalibration = new javax.swing.JSlider();
+//        jSliderFocalCalibration = new javax.swing.JSlider();
+//        jSliderXPositionCalibration = new javax.swing.JSlider();
+//        jSliderYPositionCalibration = new javax.swing.JSlider();
         txtFocalCalibration = new javax.swing.JTextField();
         txtXPositionCalibration = new javax.swing.JTextField();
         txtYPositionCalibration = new javax.swing.JTextField();
@@ -823,18 +823,18 @@ public class EduControlerPattern extends OpticsPane {
         buttonCalibrationDisplaySecondOn = new javax.swing.JButton();
         buttonCalibrationGeneral = new javax.swing.JButton();
         
-        lblFocalCalibration.setText("Focal length(cm)");
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
+        lblFocalCalibration.setText("Focal length (cm)");
+//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
+//        bindingGroup.addBinding(binding);
 
-        lblXPosCalibration.setText("Phy");
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
+        lblXPosCalibration.setText("Phy (mm)");
+//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
+//        bindingGroup.addBinding(binding);
 
-        lblYPosCalibration.setText("Theta");
+        lblYPosCalibration.setText("Theta (mm)");
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
+//        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionCalibration, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionCalibration, org.jdesktop.beansbinding.BeanProperty.create("text"));
+//        bindingGroup.addBinding(binding);
 
         buttonCalibrationGeneral.setText("Generate");
         buttonCalibrationGeneral.addActionListener(new java.awt.event.ActionListener() {
@@ -870,33 +870,87 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
+        
+        txtFocalCalibration.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedCalibration(ke);
+            }
+        });
 
-        jSliderFocalCalibration.setMaximum(10000);
-        jSliderFocalCalibration.setMinimum(-10000);
+        jSliderFocalCalibration = new DoubleJSlider(-500, 500, 100, 10);
         jSliderFocalCalibration.setValue(1);
+        txtFocalCalibration.setText(String.valueOf(jSliderFocalCalibration.getValue()));
+
         jSliderFocalCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                DecimalFormat df = new DecimalFormat("0.####");
+                txtFocalCalibration.setText(df.format(jSliderFocalCalibration.getScaledValue()));
                 sliderGenerateActionPerformedCalibration(evt);
             }
         });
+        
+        txtXPositionCalibration.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedCalibration(ke);
+            }
+        });
 
-        jSliderXPositionCalibration.setMaximum(100);
-        jSliderXPositionCalibration.setMinimum(-100);
-        jSliderXPositionCalibration.setValue(0);
+        jSliderXPositionCalibration = new DoubleJSlider(-20, 20, 1, 1);
+        jSliderXPositionCalibration.setValue(1);
+        txtXPositionCalibration.setText(String.valueOf(jSliderXPositionCalibration.getValue()));
+
         jSliderXPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                DecimalFormat df = new DecimalFormat("0.####");
+                txtXPositionCalibration.setText(df.format(jSliderXPositionCalibration.getScaledValue()));
+                sliderGenerateActionPerformedCalibration(evt);
+            }
+        });
+        
+        txtYPositionCalibration.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedCalibration(ke);
+            }
+        });
+
+        jSliderYPositionCalibration = new DoubleJSlider(-1800, 1800, 100, 10);
+        jSliderYPositionCalibration.setValue(0);
+        txtYPositionCalibration.setText(String.valueOf(jSliderYPositionCalibration.getValue()));
+
+        jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                DecimalFormat df = new DecimalFormat("0.####");
+                txtYPositionCalibration.setText(df.format(jSliderYPositionCalibration.getScaledValue()));
                 sliderGenerateActionPerformedCalibration(evt);
             }
         });
 
-        jSliderYPositionCalibration.setMaximum(180);
-        jSliderYPositionCalibration.setMinimum(-180);
-        jSliderYPositionCalibration.setValue(0);
-        jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedCalibration(evt);
-            }
-        });
+//        jSliderFocalCalibration.setMaximum(10000);
+//        jSliderFocalCalibration.setMinimum(-10000);
+//        jSliderFocalCalibration.setValue(1);
+//        jSliderFocalCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
+//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+//                sliderGenerateActionPerformedCalibration(evt);
+//            }
+//        });
+//
+//        jSliderXPositionCalibration.setMaximum(100);
+//        jSliderXPositionCalibration.setMinimum(-100);
+//        jSliderXPositionCalibration.setValue(1);
+//        jSliderXPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
+//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+//                sliderGenerateActionPerformedCalibration(evt);
+//            }
+//        });
+//
+//        jSliderYPositionCalibration.setMaximum(180);
+//        jSliderYPositionCalibration.setMinimum(-180);
+//        jSliderYPositionCalibration.setValue(0);
+//        jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
+//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+//                sliderGenerateActionPerformedCalibration(evt);
+//            }
+//        });
         
         javax.swing.GroupLayout jPanelCalibrationdricalLayout = new javax.swing.GroupLayout(panelCalebration);
         panelCalebration.setLayout(jPanelCalibrationdricalLayout);
@@ -921,9 +975,9 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))))
                 .addGap(5, 5, 5)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+                .addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                 ))
                 .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -963,7 +1017,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
 
-        tabbedControl.addTab("Fine Tuning", panelCalebration);
+        tabbedControl.addTab("Fine tuning", panelCalebration);
         tabbedControl.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -4612,7 +4666,7 @@ public class EduControlerPattern extends OpticsPane {
     //Fresnel
     private double width_fresnel = 1920, height_fresnel = 1080;
     // Calibration
-    private double xoffCalibration = 0, yoffCalibration = 0, focalCalibration = 1;
+    private double xoffCalibration = 0, yoffCalibration = 50, focalCalibration = 522;
     //Talbot
     private double talbot_widthX = Double.valueOf(image1.getBounds().width), talbot_widthY = 100, talbot_heightX = 100, talbot_heightY = Double.valueOf(image1.getBounds().height), talbot_rotation = 0, talbot_positionX = 0, talbot_positionY = 0, talbot_grayLevel = 255, talbot_spacing = 400;
      // Import file
@@ -6418,6 +6472,21 @@ public class EduControlerPattern extends OpticsPane {
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
     
+    private void keyEventGenerateActionPerformedCalibration(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyEventGenerateActionPerformedCalibration
+        actionTag = "Calibration";
+        if (parseArguments()) {
+            buttonMirrorLensOn.setEnabled(true);
+            buttonMirrorDisplaySecondOn.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+            image.paintCalibration();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
+            setLog(genLogCalibration());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_keyEventGenerateActionPerformedCalibration
+    
     /*
      * Talbot Photo
      */
@@ -7015,9 +7084,9 @@ public class EduControlerPattern extends OpticsPane {
     public javax.swing.JLabel lblFocalCalibration;
     private javax.swing.JLabel lblXPosCalibration;
     private javax.swing.JLabel lblYPosCalibration;
-    private javax.swing.JSlider jSliderFocalCalibration;
-    private javax.swing.JSlider jSliderXPositionCalibration;
-    private javax.swing.JSlider jSliderYPositionCalibration;
+    private DoubleJSlider jSliderFocalCalibration;
+    private DoubleJSlider jSliderXPositionCalibration;
+    private DoubleJSlider jSliderYPositionCalibration;
     private javax.swing.JTextField txtFocalCalibration;
     private javax.swing.JTextField txtXPositionCalibration;
     private javax.swing.JTextField txtYPositionCalibration;
