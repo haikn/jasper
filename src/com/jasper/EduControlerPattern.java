@@ -3564,6 +3564,486 @@ public class EduControlerPattern extends OpticsPane {
                     .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
+        // CGH4 Pattern Import
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileCGH4 = new javax.swing.JButton();
+        buttonCGH4General = new javax.swing.JButton();
+        buttonCGH4LensOn = new javax.swing.JButton();
+        buttonCGH4DisplaySecondOn = new javax.swing.JButton();
+        lblPleaseSelectCGH4 = new javax.swing.JLabel();
+        
+        buttonCGH4General.setText("Generate");
+        buttonCGH4General.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH4 != null) {
+                    buttonGenerateActionPerformedCGH4(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonCGH4LensOn.setEnabled(false);
+        buttonCGH4LensOn.setText("1:1 lens ON");
+        buttonCGH4LensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH4 != null) {
+                    button11LensOnActionPerformedCGH4(evt);
+                    countLenOnCGH4++;
+                    if (countLenOnCGH4 % 2 == 0) {
+                        buttonCGH4LensOn.setText("1:1 lens OFF");
+                    } else {
+                        buttonCGH4LensOn.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        buttonCGH4DisplaySecondOn.setEnabled(false);
+        buttonCGH4DisplaySecondOn.setText("Second display ON");
+        buttonCGH4DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH4 != null) {
+                    buttonSecondActionPerformedCGH4(evt);
+                    countSecondDisplayCGH4++;
+                    if (countSecondDisplayCGH4 % 2 == 0) {
+                        buttonCGH4DisplaySecondOn.setText("Second display OFF");
+                    } else {
+                        buttonCGH4DisplaySecondOn.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        buttonOpenFileCGH4.setText("Browse...");
+        buttonOpenFileCGH4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openFileActionPerformedCGH4(evt);
+            }
+        });
+        lblPleaseSelectCGH4.setText("Select the file to import.");
+        
+        javax.swing.GroupLayout cGH4Layout = new javax.swing.GroupLayout(panelCGH4);
+        panelCGH4.setLayout(cGH4Layout);
+        cGH4Layout.setHorizontalGroup(
+            cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH4Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonCGH4General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cGH4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cGH4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH4LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH4DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        cGH4Layout.setVerticalGroup(
+            cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectCGH4))
+                .addGap(153, 153, 153)
+                .addGroup(cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCGH4General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH4LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH4DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        // CGH5 Pattern Import
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileCGH5 = new javax.swing.JButton();
+        buttonCGH5General = new javax.swing.JButton();
+        buttonCGH5LensOn = new javax.swing.JButton();
+        buttonCGH5DisplaySecondOn = new javax.swing.JButton();
+        lblPleaseSelectCGH5 = new javax.swing.JLabel();
+        
+        buttonCGH5General.setText("Generate");
+        buttonCGH5General.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH5 != null) {
+                    buttonGenerateActionPerformedCGH5(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonCGH5LensOn.setEnabled(false);
+        buttonCGH5LensOn.setText("1:1 lens ON");
+        buttonCGH5LensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH5 != null) {
+                    button11LensOnActionPerformedCGH5(evt);
+                    countLenOnCGH5++;
+                    if (countLenOnCGH5 % 2 == 0) {
+                        buttonCGH5LensOn.setText("1:1 lens OFF");
+                    } else {
+                        buttonCGH5LensOn.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        buttonCGH5DisplaySecondOn.setEnabled(false);
+        buttonCGH5DisplaySecondOn.setText("Second display ON");
+        buttonCGH5DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH5 != null) {
+                    buttonSecondActionPerformedCGH5(evt);
+                    countSecondDisplayCGH5++;
+                    if (countSecondDisplayCGH5 % 2 == 0) {
+                        buttonCGH5DisplaySecondOn.setText("Second display OFF");
+                    } else {
+                        buttonCGH5DisplaySecondOn.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        buttonOpenFileCGH5.setText("Browse...");
+        buttonOpenFileCGH5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openFileActionPerformedCGH5(evt);
+            }
+        });
+        lblPleaseSelectCGH5.setText("Select the file to import.");
+        
+        javax.swing.GroupLayout cGH5Layout = new javax.swing.GroupLayout(panelCGH5);
+        panelCGH5.setLayout(cGH5Layout);
+        cGH5Layout.setHorizontalGroup(
+            cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH5Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonCGH5General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cGH5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cGH5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        cGH5Layout.setVerticalGroup(
+            cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH5Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectCGH5))
+                .addGap(153, 153, 153)
+                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCGH5General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        // CGH6 Pattern Import
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileCGH6 = new javax.swing.JButton();
+        buttonCGH6General = new javax.swing.JButton();
+        buttonCGH6LensOn = new javax.swing.JButton();
+        buttonCGH6DisplaySecondOn = new javax.swing.JButton();
+        lblPleaseSelectCGH6 = new javax.swing.JLabel();
+        
+        buttonCGH6General.setText("Generate");
+        buttonCGH6General.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH6 != null) {
+                    buttonGenerateActionPerformedCGH6(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonCGH6LensOn.setEnabled(false);
+        buttonCGH6LensOn.setText("1:1 lens ON");
+        buttonCGH6LensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH6 != null) {
+                    button11LensOnActionPerformedCGH6(evt);
+                    countLenOnCGH6++;
+                    if (countLenOnCGH6 % 2 == 0) {
+                        buttonCGH6LensOn.setText("1:1 lens OFF");
+                    } else {
+                        buttonCGH6LensOn.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        buttonCGH6DisplaySecondOn.setEnabled(false);
+        buttonCGH6DisplaySecondOn.setText("Second display ON");
+        buttonCGH6DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH6 != null) {
+                    buttonSecondActionPerformedCGH6(evt);
+                    countSecondDisplayCGH6++;
+                    if (countSecondDisplayCGH6 % 2 == 0) {
+                        buttonCGH6DisplaySecondOn.setText("Second display OFF");
+                    } else {
+                        buttonCGH6DisplaySecondOn.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        buttonOpenFileCGH6.setText("Browse...");
+        buttonOpenFileCGH6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openFileActionPerformedCGH6(evt);
+            }
+        });
+        lblPleaseSelectCGH6.setText("Select the file to import.");
+        
+        javax.swing.GroupLayout cGH6Layout = new javax.swing.GroupLayout(panelCGH6);
+        panelCGH6.setLayout(cGH6Layout);
+        cGH6Layout.setHorizontalGroup(
+            cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH6Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonCGH6General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cGH6Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cGH6Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH6LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH6DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        cGH6Layout.setVerticalGroup(
+            cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH6Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectCGH6))
+                .addGap(153, 153, 153)
+                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCGH6General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH6LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH6DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        // CGH8 Pattern Import
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileCGH8 = new javax.swing.JButton();
+        buttonCGH8General = new javax.swing.JButton();
+        buttonCGH8LensOn = new javax.swing.JButton();
+        buttonCGH8DisplaySecondOn = new javax.swing.JButton();
+        lblPleaseSelectCGH8 = new javax.swing.JLabel();
+        
+        buttonCGH8General.setText("Generate");
+        buttonCGH8General.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH8 != null) {
+                    buttonGenerateActionPerformedCGH8(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonCGH8LensOn.setEnabled(false);
+        buttonCGH8LensOn.setText("1:1 lens ON");
+        buttonCGH8LensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH8 != null) {
+                    button11LensOnActionPerformedCGH8(evt);
+                    countLenOnCGH8++;
+                    if (countLenOnCGH8 % 2 == 0) {
+                        buttonCGH8LensOn.setText("1:1 lens OFF");
+                    } else {
+                        buttonCGH8LensOn.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        buttonCGH8DisplaySecondOn.setEnabled(false);
+        buttonCGH8DisplaySecondOn.setText("Second display ON");
+        buttonCGH8DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH8 != null) {
+                    buttonSecondActionPerformedCGH8(evt);
+                    countSecondDisplayCGH8++;
+                    if (countSecondDisplayCGH8 % 2 == 0) {
+                        buttonCGH8DisplaySecondOn.setText("Second display OFF");
+                    } else {
+                        buttonCGH8DisplaySecondOn.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        buttonOpenFileCGH8.setText("Browse...");
+        buttonOpenFileCGH8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openFileActionPerformedCGH8(evt);
+            }
+        });
+        lblPleaseSelectCGH8.setText("Select the file to import.");
+        
+        javax.swing.GroupLayout cGH8Layout = new javax.swing.GroupLayout(panelCGH8);
+        panelCGH8.setLayout(cGH8Layout);
+        cGH8Layout.setHorizontalGroup(
+            cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH8Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonCGH8General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cGH8Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cGH8Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH8LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH8DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        cGH8Layout.setVerticalGroup(
+            cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH8Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectCGH8))
+                .addGap(153, 153, 153)
+                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCGH8General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH8LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH8DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        // CGH10 Pattern Import
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileCGH10 = new javax.swing.JButton();
+        buttonCGH10General = new javax.swing.JButton();
+        buttonCGH10LensOn = new javax.swing.JButton();
+        buttonCGH10DisplaySecondOn = new javax.swing.JButton();
+        lblPleaseSelectCGH10 = new javax.swing.JLabel();
+        
+        buttonCGH10General.setText("Generate");
+        buttonCGH10General.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH10 != null) {
+                    buttonGenerateActionPerformedCGH10(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonCGH10LensOn.setEnabled(false);
+        buttonCGH10LensOn.setText("1:1 lens ON");
+        buttonCGH10LensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH10 != null) {
+                    button11LensOnActionPerformedCGH10(evt);
+                    countLenOnCGH10++;
+                    if (countLenOnCGH10 % 2 == 0) {
+                        buttonCGH10LensOn.setText("1:1 lens OFF");
+                    } else {
+                        buttonCGH10LensOn.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        buttonCGH10DisplaySecondOn.setEnabled(false);
+        buttonCGH10DisplaySecondOn.setText("Second display ON");
+        buttonCGH10DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH10 != null) {
+                    buttonSecondActionPerformedCGH10(evt);
+                    countSecondDisplayCGH10++;
+                    if (countSecondDisplayCGH10 % 2 == 0) {
+                        buttonCGH10DisplaySecondOn.setText("Second display OFF");
+                    } else {
+                        buttonCGH10DisplaySecondOn.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        buttonOpenFileCGH10.setText("Browse...");
+        buttonOpenFileCGH10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openFileActionPerformedCGH10(evt);
+            }
+        });
+        lblPleaseSelectCGH10.setText("Select the file to import.");
+        
+        javax.swing.GroupLayout cGH10Layout = new javax.swing.GroupLayout(panelCGH10);
+        panelCGH10.setLayout(cGH10Layout);
+        cGH10Layout.setHorizontalGroup(
+            cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH10Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonCGH10General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFileCGH10, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cGH10Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cGH10Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH10LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH10DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        cGH10Layout.setVerticalGroup(
+            cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH10Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFileCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectCGH10))
+                .addGap(153, 153, 153)
+                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCGH10General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH10LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH10DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
         
 
         tabbedControl.setBounds(580, 0, 665, 355);
