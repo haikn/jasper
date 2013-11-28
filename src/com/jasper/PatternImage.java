@@ -16,12 +16,15 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.awt.image.WritableRaster;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 
 /**
  * This PatternImage include the algorithms of application
@@ -249,11 +252,10 @@ public class PatternImage {
         title = "cylindrical " + xoff + " " + angle + " " + focal;
     }
     
-    void updateCalibrationParameter(double xoff, double yoff, double focal) {
+    void updateCalibrationParameter(double xoff, double yoff) {
         this.xoffCalibration = xoff;
         this.yoffCalibration = yoff;
-        this.focalCalibration = focal;
-        title = "calibration " + xoff + " " + yoff + " " + focal;
+        title = "calibration " + xoff + " " + yoff;
     }
 
     void updateMicoscopeParameter(double xoff, double yoff, double focal) {
@@ -670,28 +672,53 @@ public class PatternImage {
 
     
     public void paintCalibration() {
-        WritableRaster raster = this.canvas.getRaster();
+//        WritableRaster raster = this.canvas.getRaster();
+//
+//        int[] iArray = new int[1];
+//
+//        double fixpart2 = 2.0 * Math.PI / lambda * Math.cos(Math.toRadians(3.0D));
+//        double fixpart = Math.PI / this.lambda / this.focalCalibration;
+//
+//        double costheta = Math.cos(Math.toRadians(this.angle));
+//        double sintheta = Math.sin(Math.toRadians(this.angle));
+//        double x = this.yoffCalibration * 0.1D;
+//        for (int i = 0; i < height; i++) {
+//          double x1 = (i - height / 2 + 1) * this.pxsize;
+//          x1 -= x;
+//          for (int j = 0; j < width; j++) {
+//            double y1 = (j - width / 2 + 1) * this.pxsize;
+//            double x2 = x1 * costheta + y1 * sintheta;
+//            x2 = Math.pow(x2, 2.0D);
+//            double phase = fixpart * x2 + fixpart2 * y1 * xoffCalibration;
+//
+//            iArray[0] = phase2gray(phase);
+//            raster.setPixel(j, i, iArray);
+//          }
+//        }
+        
+        WritableRaster raster = canvas.getRaster();
 
         int[] iArray = new int[1];
+        double phase, x, y;
+        double phy = Math.toRadians(xoffCalibration);
+        double theta = Math.toRadians(yoffCalibration);
 
-        double fixpart2 = 2.0 * Math.PI / lambda * Math.cos(Math.toRadians(3.0D));
-        double fixpart = Math.PI / this.lambda / this.focalCalibration;
+        double xcomp = Math.sin(phy) * Math.cos(theta);
+        double ycomp = Math.sin(phy) * Math.sin(theta);
 
-        double costheta = Math.cos(Math.toRadians(this.angle));
-        double sintheta = Math.sin(Math.toRadians(this.angle));
-        double x = this.yoffCalibration * 0.1D;
+        double fixpart = 2.0 * Math.PI / lambda;
+
         for (int i = 0; i < height; i++) {
-          double x1 = (i - height / 2 + 1) * this.pxsize;
-          x1 -= x;
-          for (int j = 0; j < width; j++) {
-            double y1 = (j - width / 2 + 1) * this.pxsize;
-            double x2 = x1 * costheta + y1 * sintheta;
-            x2 = Math.pow(x2, 2.0D);
-            double phase = fixpart * x2 + fixpart2 * y1 * xoffCalibration;
+            x = (double) (i - height / 2 + 1) * pxsize;
+            x = xcomp * x;
+            for (int j = 0; j < width; j++) {
+                y = (double) (j - width / 2 + 1) * pxsize;
+                y = ycomp * y;
+                phase = fixpart * (x + y);
 
-            iArray[0] = phase2gray(phase);
-            raster.setPixel(j, i, iArray);
-          }
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
         }
     }
     
@@ -739,6 +766,14 @@ public class PatternImage {
         /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
         //double k =(imread('testHologram.bmp'))/255*2*pi;
         g2.drawRenderedImage(buffImg, at);
+        
+//        BufferedImage buff=new BufferedImage(buffImg.getWidth(),buffImg.getHeight(),BufferedImage.TYPE_INT_RGB);
+//	Graphics2D big = buffImg.createGraphics();
+//	//big.setPaint(getBackground());
+//        big.fillRect(0,0,buff.getWidth(),buff.getHeight());
+//	//setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(buffImg.getSource())));
+//	big.setPaint(Color.white);
+//	big.drawImage(buffImg,0,0,buffImg.getWidth(),buffImg.getHeight(), (ImageObserver) this);
     }
     
     public void paintCGH3(BufferedImage buffImg) {

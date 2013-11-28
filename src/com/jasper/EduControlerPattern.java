@@ -832,7 +832,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCalibrationDisplaySecondOn = new javax.swing.JButton();
         buttonCalibrationGeneral = new javax.swing.JButton();
         
-        lblFocalCalibration.setText("Focal length (cm)");
+        //lblFocalCalibration.setText("Focal length (cm)");
         lblXPosCalibration.setText("Phy (mm)");
         lblYPosCalibration.setText("Theta (mm)");
         
@@ -871,31 +871,13 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
-        txtFocalCalibration.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyEventGenerateActionPerformedCalibration(ke);
-            }
-        });
-
-        jSliderFocalCalibration = new DoubleJSlider(-500, 500, 100, 10);
-        jSliderFocalCalibration.setValue(1);
-        txtFocalCalibration.setText(String.valueOf(jSliderFocalCalibration.getValue()));
-
-        jSliderFocalCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtFocalCalibration.setText(df.format(jSliderFocalCalibration.getScaledValue()));
-                sliderGenerateActionPerformedCalibration(evt);
-            }
-        });
-        
         txtXPositionCalibration.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
                 keyEventGenerateActionPerformedCalibration(ke);
             }
         });
 
-        jSliderXPositionCalibration = new DoubleJSlider(-20, 20, 1, 1);
+        jSliderXPositionCalibration = new DoubleJSlider(-28, 28, 10, 10);
         jSliderXPositionCalibration.setValue(1);
         txtXPositionCalibration.setText(String.valueOf(jSliderXPositionCalibration.getValue()));
 
@@ -914,7 +896,7 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         jSliderYPositionCalibration = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderYPositionCalibration.setValue(0);
+        jSliderYPositionCalibration.setValue(1);
         txtYPositionCalibration.setText(String.valueOf(jSliderYPositionCalibration.getValue()));
 
         jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -5504,9 +5486,9 @@ public class EduControlerPattern extends OpticsPane {
             double phySpec = Double.valueOf(txtPhyMirrorSpectometer.getText());
             double thetaSpec = Double.valueOf(txtThetaMirrorSpectometer.getText());
             // Calibration
-//            double xoffCali = Double.valueOf(txtXPositionCalibration.getText());
-//            double yoffCali = Double.valueOf(txtYPositionCalibration.getText());
-//            double focalCali= Double.valueOf(txtFocalCalibration.getText());
+            double xoffCali = Double.valueOf(txtXPositionCalibration.getText());
+            double yoffCali = Double.valueOf(txtYPositionCalibration.getText());
+            //double focalCali= Double.valueOf(txtFocalCalibration.getText());
 
             //Processing
             processing_widthX = Double.valueOf(s_processing_width_x.getValue());
@@ -5583,9 +5565,9 @@ public class EduControlerPattern extends OpticsPane {
             this.thetaSpectrometer = thetaSpec;
             this.phySpectrometer = phySpec;
             
-//            this.xoffCalibration = xoffCali;
-//            this.yoffCalibration = yoffCali;
-//            this.focalCalibration = focalCali;
+            this.xoffCalibration = xoffCali;
+            this.yoffCalibration = yoffCali;
+            //this.focalCalibration = focalCali;
             
             // Import file
             this.formula = uImportFile;
@@ -6223,7 +6205,7 @@ public class EduControlerPattern extends OpticsPane {
         return String.format(logmessageMirrorSpectrometer, Double.toString(phySpectrometer), Double.toString(thetaSpectrometer));
     }
     private String genLogCalibration() {
-        return String.format(logmessageCalibration, Double.toString(focalCalibration), Double.toString(xoffCalibration), Double.toString(yoffCalibration));
+        return String.format(logmessageCalibration, Double.toString(xoffCalibration), Double.toString(yoffCalibration));
     }
 
     // Lens
@@ -7548,7 +7530,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCalibrationDisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+        image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
         image.paintCalibration();
         EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
         imageGenerated = true;
@@ -7557,7 +7539,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnCalibrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCalibrationActionPerformed
         actionTag = "Calibration";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+        image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
         image.paintCalibration();
         EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
         imageGenerated = true;
@@ -7603,7 +7585,7 @@ public class EduControlerPattern extends OpticsPane {
                 JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+                image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
                 image.paintCalibration();
                 EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
@@ -7621,7 +7603,7 @@ public class EduControlerPattern extends OpticsPane {
             buttonCalibrationDisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
             image.paintCalibration();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
             setLog(genLogCalibration());
@@ -7636,7 +7618,7 @@ public class EduControlerPattern extends OpticsPane {
             buttonMirrorDisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
             image.paintCalibration();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
             setLog(genLogCalibration());
@@ -8867,5 +8849,5 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageTalbot = "Talbot images: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
     static String logmessagePhase = "Phase retarder: gray=%s";
     static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
-    static String logmessageCalibration = "Calibration : Focal length=%s X Position=%s Y Position=%s";
+    static String logmessageCalibration = "Calibration: Phy=%s Theta=%s";
 }
