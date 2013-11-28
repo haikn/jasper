@@ -714,9 +714,171 @@ public class PatternImage {
         AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
         at.scale(scale, scale);
         /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        //double k =(imread('testHologram.bmp'))/255*2*pi;
         g2.drawRenderedImage(buffImg, at);
     }
+    
+    public void paintCGH1(BufferedImage buffImg) {
 
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        //double k =(imread('testHologram.bmp'))/255*2*pi;
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
+    public void paintCGH3(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        //double k =(imread('testHologram.bmp'))/255*2*pi;
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
+    public void paintCGH4(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        //double k =(imread('testHologram.bmp'))/255*2*pi;
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
+    public void paintCGH5(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        //double k =(imread('testHologram.bmp'))/255*2*pi;
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
+    public void paintCGH6(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        //double k =(imread('testHologram.bmp'))/255*2*pi;
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
+    public void paintCGH8(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        //double k =(imread('testHologram.bmp'))/255*2*pi;
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
+    public void paintCGH10(BufferedImage buffImg) {
+
+        double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
+        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
+        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        double canvasX = canvas.getWidth() / 2;
+        double canvasY = canvas.getHeight() / 2;
+        int imageWidth = buffImg.getWidth();
+        int imageHeight = buffImg.getHeight();
+        double x = (scale * imageWidth) / 2;
+        double y = (scale * imageHeight) / 2;
+        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
+        at.scale(scale, scale);
+        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
+        //double k =(imread('testHologram.bmp'))/255*2*pi;
+        g2.drawRenderedImage(buffImg, at);
+    }
+    
     private static int[] parseElement(String s) throws IOException {
         int[] ret = new int[gray2phase.length];
         int idx = 0;

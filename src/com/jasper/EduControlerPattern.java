@@ -141,6 +141,13 @@ public class EduControlerPattern extends OpticsPane {
         panelSignalPhoto = new javax.swing.JPanel();
         panelPhase = new javax.swing.JPanel();
         jPanelPattern = new javax.swing.JPanel();
+        panelCGH1 = new javax.swing.JPanel();
+        panelCGH3 = new javax.swing.JPanel();
+        panelCGH4 = new javax.swing.JPanel();
+        panelCGH5 = new javax.swing.JPanel();
+        panelCGH6 = new javax.swing.JPanel();
+        panelCGH8 = new javax.swing.JPanel();
+        panelCGH10 = new javax.swing.JPanel();
 
         // Microscope
         lblFocalMicroscope = new javax.swing.JLabel();
@@ -3496,6 +3503,201 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(button11LensOnTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 )));
+        
+        // CGH1 Pattern Import
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileCGH1 = new javax.swing.JButton();
+        buttonCGH1General = new javax.swing.JButton();
+        buttonCGH1LensOn = new javax.swing.JButton();
+        buttonCGH1DisplaySecondOn = new javax.swing.JButton();
+        lblPleaseSelectCGH1 = new javax.swing.JLabel();
+        
+        buttonCGH1General.setText("Generate");
+        buttonCGH1General.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH1 != null) {
+                    buttonGenerateActionPerformedCGH1(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonCGH1LensOn.setEnabled(false);
+        buttonCGH1LensOn.setText("1:1 lens ON");
+        buttonCGH1LensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH1 != null) {
+                    button11LensOnActionPerformedCGH1(evt);
+                    countLenOnCGH1++;
+                    if (countLenOnCGH1 % 2 == 0) {
+                        buttonCGH1LensOn.setText("1:1 lens OFF");
+                    } else {
+                        buttonCGH1LensOn.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        buttonCGH1DisplaySecondOn.setEnabled(false);
+        buttonCGH1DisplaySecondOn.setText("Second display ON");
+        buttonCGH1DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH1 != null) {
+                    buttonSecondActionPerformedCGH1(evt);
+                    countSecondDisplayCGH1++;
+                    if (countSecondDisplayCGH1 % 2 == 0) {
+                        buttonCGH1DisplaySecondOn.setText("Second display OFF");
+                    } else {
+                        buttonCGH1DisplaySecondOn.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        buttonOpenFileCGH1.setText("Browse...");
+        buttonOpenFileCGH1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openFileActionPerformedCGH1(evt);
+            }
+        });
+        lblPleaseSelectCGH1.setText("Select the file to import.");
+        
+        javax.swing.GroupLayout cGH1Layout = new javax.swing.GroupLayout(panelCGH1);
+        panelCGH1.setLayout(cGH1Layout);
+        cGH1Layout.setHorizontalGroup(
+            cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonCGH1General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cGH1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cGH1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH1LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH1DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        cGH1Layout.setVerticalGroup(
+            cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectCGH1))
+                .addGap(155, 155, 155)
+                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCGH1General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH1LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH1DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        
+        // CGH3 Pattern Import
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileCGH3 = new javax.swing.JButton();
+        buttonCGH3General = new javax.swing.JButton();
+        buttonCGH3LensOn = new javax.swing.JButton();
+        buttonCGH3DisplaySecondOn = new javax.swing.JButton();
+        lblPleaseSelectCGH3 = new javax.swing.JLabel();
+        
+        buttonCGH3General.setText("Generate");
+        buttonCGH3General.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH3 != null) {
+                    buttonGenerateActionPerformedCGH3(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonCGH3LensOn.setEnabled(false);
+        buttonCGH3LensOn.setText("1:1 lens ON");
+        buttonCGH3LensOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH3 != null) {
+                    button11LensOnActionPerformedCGH3(evt);
+                    countLenOnCGH3++;
+                    if (countLenOnCGH3 % 2 == 0) {
+                        buttonCGH3LensOn.setText("1:1 lens OFF");
+                    } else {
+                        buttonCGH3LensOn.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        buttonCGH3DisplaySecondOn.setEnabled(false);
+        buttonCGH3DisplaySecondOn.setText("Second display ON");
+        buttonCGH3DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesCGH3 != null) {
+                    buttonSecondActionPerformedCGH3(evt);
+                    countSecondDisplayCGH3++;
+                    if (countSecondDisplayCGH3 % 2 == 0) {
+                        buttonCGH3DisplaySecondOn.setText("Second display OFF");
+                    } else {
+                        buttonCGH3DisplaySecondOn.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        buttonOpenFileCGH3.setText("Browse...");
+        buttonOpenFileCGH3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openFileActionPerformedCGH3(evt);
+            }
+        });
+        lblPleaseSelectCGH3.setText("Select the file to import.");
+        
+        javax.swing.GroupLayout cGH3Layout = new javax.swing.GroupLayout(panelCGH3);
+        panelCGH3.setLayout(cGH3Layout);
+        cGH3Layout.setHorizontalGroup(
+            cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonCGH3General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cGH3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cGH3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        cGH3Layout.setVerticalGroup(
+            cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cGH3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectCGH3))
+                .addGap(155, 155, 155)
+                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCGH3General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        
 
         tabbedControl.setBounds(580, 0, 665, 355);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -4230,6 +4432,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
 
         jTabbedPaneOptics.addTab("Gray Level", panelPhase);
+        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH1);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 if (magFrameLenon != null) {
@@ -4355,6 +4558,7 @@ public class EduControlerPattern extends OpticsPane {
         jButtonDisplaySecondOn.setEnabled(false);
 
         jTabbedPaneOptics.addTab("Beam Steerer", jPanelMirror);
+        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH3);
 
         //tabbedDesLog.addTab("Description", desAberration);
         jScrollDes.setViewportView(desAberration);
@@ -4415,6 +4619,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", jPanelLensMichelson);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH4);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 jButton11LensOnMichelson.setEnabled(false);
@@ -4485,6 +4690,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Single Slit", panelSlit);
         jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
+        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH5);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 buttong11LensOnSlit.setEnabled(false);
@@ -4551,6 +4757,7 @@ public class EduControlerPattern extends OpticsPane {
         jButtonDisplaySecondOn.setEnabled(false);
 
         jTabbedPaneOptics.addTab("Mirror", jPanelMirrorSpectometer);
+        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH6);
 
         //tabbedDesLog.addTab("Description", desSpectrometer);
         jScrollDes.setViewportView(desSpectrometer);
@@ -4675,6 +4882,7 @@ public class EduControlerPattern extends OpticsPane {
         jButtonDisplaySecondOn.setEnabled(false);
 
         jTabbedPaneOptics.addTab("Phase retarder", panelPhase);
+        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH8);
 
         //tabbedDesLog.addTab("Description", desPhaseRetarder);
         jScrollDes.setViewportView(desPhaseRetarder);
@@ -4794,6 +5002,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
+        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH10);
         //jTabbedPaneOptics.addTab("Fresnel Transform", jPanelFresnel);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -5055,6 +5264,14 @@ public class EduControlerPattern extends OpticsPane {
     private static BufferedImage buffImagesTalbotPhoto = null;
     private static BufferedImage buffImagesImportfile = null;
     private static BufferedImage buffImagesCalibration = null;
+    private static BufferedImage buffImagesCGH1 = null;
+    private static BufferedImage buffImagesCGH3 = null;
+    private static BufferedImage buffImagesCGH4 = null;
+    private static BufferedImage buffImagesCGH5 = null;
+    private static BufferedImage buffImagesCGH6 = null;
+    private static BufferedImage buffImagesCGH8 = null;
+    private static BufferedImage buffImagesCGH10 = null;
+    
 
     private File browseForFile(String current) {
     	// file filter
@@ -5271,6 +5488,330 @@ public class EduControlerPattern extends OpticsPane {
         } else {
             //System.out.println("File access cancelled by user.");
         }
+    }
+    
+    private void openFileActionPerformedCGH1(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesCGH1 = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.paintCGH1(buffImagesCGH1);
+                    EduPatternShowOn.updateLensPatternPattern(image, "");
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    //System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            //System.out.println("File access cancelled by user.");
+        }
+
+    }
+    private void openFileActionPerformedCGH3(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesCGH3 = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.paintCGH3(buffImagesCGH3);
+                    EduPatternShowOn.updateLensPatternPattern(image, "");
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    //System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            //System.out.println("File access cancelled by user.");
+        }
+
+    }
+    
+    private void openFileActionPerformedCGH4(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesCGH4 = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.paintCGH4(buffImagesCGH4);
+                    EduPatternShowOn.updateLensPatternPattern(image, "");
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    //System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            //System.out.println("File access cancelled by user.");
+        }
+
+    }
+    private void openFileActionPerformedCGH5(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesCGH5 = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.paintCGH5(buffImagesCGH5);
+                    EduPatternShowOn.updateLensPatternPattern(image, "");
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    //System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            //System.out.println("File access cancelled by user.");
+        }
+
+    }
+    private void openFileActionPerformedCGH6(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesCGH6 = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.paintCGH6(buffImagesCGH6);
+                    EduPatternShowOn.updateLensPatternPattern(image, "");
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    //System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            //System.out.println("File access cancelled by user.");
+        }
+
+    }
+    private void openFileActionPerformedCGH8(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesCGH8 = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.paintCGH8(buffImagesCGH8);
+                    EduPatternShowOn.updateLensPatternPattern(image, "");
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    //System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            //System.out.println("File access cancelled by user.");
+        }
+
+    }
+    private void openFileActionPerformedCGH10(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == openFile.APPROVE_OPTION) {
+            File file = openFile.getSelectedFile();
+            String ext = "";
+            String extension = file.getName();
+            extension = extension.toLowerCase();
+            if (extension.contains("jpg")) {
+                ext = ".jpg";
+            }
+            if (extension.contains("png")) {
+                ext = ".png";
+            }
+            if (extension.contains("gif")) {
+                ext = ".gif";
+            }
+            if (extension.contains("wbmp")) {
+                ext = ".wbmp";
+            }
+            if (extension.contains("jpeg")) {
+                ext = ".jpeg";
+            }
+            if (extension.contains("bmp")) {
+                ext = ".bmp";
+            }
+            if (ext.equals("")) {
+                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    buffImagesCGH10 = ImageIO.read(new File(file.getAbsolutePath()));
+                    //String ext = File.probeContentType(file.getAbsolutePath());
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.paintCGH10(buffImagesCGH10);
+                    EduPatternShowOn.updateLensPatternPattern(image, "");
+                    imageGenerated = true;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    //System.out.println("problem accessing file" + file.getAbsolutePath());
+                }
+            }
+        } else {
+            //System.out.println("File access cancelled by user.");
+        }
+
     }
     
 //    public void logString(String msg) {
@@ -6944,6 +7485,496 @@ public class EduControlerPattern extends OpticsPane {
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedImportFile
     
+    // CGH1
+    private void buttonGenerateActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
+        actionTag = "CGH1";
+        buttonCGH1LensOn.setEnabled(true);
+        buttonCGH1DisplaySecondOn.setEnabled(true);
+
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH1(buffImagesCGH1);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+    }
+
+    private void button11LensOnActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
+        actionTag = "CGH1";
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH1(buffImagesCGH1);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+
+        if (countLenOnCGH1 % 2 == 0) {
+            magFrameLenon.dispose();
+            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    patternFrame.show();
+                }
+            });
+
+        } else {
+            magFrameLenon = new JFrame("1:1 Lens On");
+            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(url);
+            magFrameLenon.setIconImage(img);
+            magFrameLenon.setResizable(false);
+
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            magFrameLenon.getContentPane().add(mag);
+            magFrameLenon.pack();
+            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setVisible(true);
+            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                        countLenOnCGH1--;
+                        buttonCGH1LensOn.setText("1:1 lens ON");
+                        magFrameLenon.dispose();
+                }
+            });
+        }
+
+    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
+
+    private void buttonSecondActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
+        actionTag = "CGH1";
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = env.getScreenDevices();
+        if (devices.length == 1) {
+            countSecondDisplayCGH1--;
+            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintCGH1(buffImagesCGH1);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            imageGenerated = true;
+            if (countSecondDisplayCGH1% 2 == 0) {
+                patternFrame.dispose();
+            }
+        }
+    }
+    
+    // CGH3
+    private void buttonGenerateActionPerformedCGH3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH3
+        actionTag = "CGH3";
+        buttonCGH3LensOn.setEnabled(true);
+        buttonCGH3DisplaySecondOn.setEnabled(true);
+
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH3(buffImagesCGH3);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+    }
+
+    private void button11LensOnActionPerformedCGH3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH3
+        actionTag = "CGH3";
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH3(buffImagesCGH3);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+
+        if (countLenOnCGH3 % 2 == 0) {
+            magFrameLenon.dispose();
+            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    patternFrame.show();
+                }
+            });
+
+        } else {
+            magFrameLenon = new JFrame("1:1 Lens On");
+            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(url);
+            magFrameLenon.setIconImage(img);
+            magFrameLenon.setResizable(false);
+
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            magFrameLenon.getContentPane().add(mag);
+            magFrameLenon.pack();
+            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setVisible(true);
+            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                        countLenOnCGH3--;
+                        buttonCGH3LensOn.setText("1:1 lens ON");
+                        magFrameLenon.dispose();
+                }
+            });
+        }
+
+    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
+
+    private void buttonSecondActionPerformedCGH3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH3
+        actionTag = "CGH3";
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = env.getScreenDevices();
+        if (devices.length == 1) {
+            countSecondDisplayCGH3--;
+            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintCGH3(buffImagesCGH3);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            imageGenerated = true;
+            if (countSecondDisplayCGH3% 2 == 0) {
+                patternFrame.dispose();
+            }
+        }
+    }
+    
+    // CGH4
+    private void buttonGenerateActionPerformedCGH4(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH4
+        actionTag = "CGH4";
+        buttonCGH4LensOn.setEnabled(true);
+        buttonCGH4DisplaySecondOn.setEnabled(true);
+
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH4(buffImagesCGH4);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+    }
+
+    private void button11LensOnActionPerformedCGH4(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH4
+        actionTag = "CGH4";
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH4(buffImagesCGH4);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+
+        if (countLenOnCGH4 % 2 == 0) {
+            magFrameLenon.dispose();
+            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    patternFrame.show();
+                }
+            });
+
+        } else {
+            magFrameLenon = new JFrame("1:1 Lens On");
+            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(url);
+            magFrameLenon.setIconImage(img);
+            magFrameLenon.setResizable(false);
+
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            magFrameLenon.getContentPane().add(mag);
+            magFrameLenon.pack();
+            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setVisible(true);
+            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                        countLenOnCGH4--;
+                        buttonCGH4LensOn.setText("1:1 lens ON");
+                        magFrameLenon.dispose();
+                }
+            });
+        }
+
+    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
+
+    private void buttonSecondActionPerformedCGH4(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH4
+        actionTag = "CGH4";
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = env.getScreenDevices();
+        if (devices.length == 1) {
+            countSecondDisplayCGH4--;
+            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintCGH4(buffImagesCGH4);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            imageGenerated = true;
+            if (countSecondDisplayCGH4% 2 == 0) {
+                patternFrame.dispose();
+            }
+        }
+    }
+    
+    // CGH5
+    private void buttonGenerateActionPerformedCGH5(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH5
+        actionTag = "CGH5";
+        buttonCGH5LensOn.setEnabled(true);
+        buttonCGH5DisplaySecondOn.setEnabled(true);
+
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH5(buffImagesCGH5);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+    }
+
+    private void button11LensOnActionPerformedCGH5(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH5
+        actionTag = "CGH5";
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH5(buffImagesCGH5);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+
+        if (countLenOnCGH5 % 2 == 0) {
+            magFrameLenon.dispose();
+            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    patternFrame.show();
+                }
+            });
+
+        } else {
+            magFrameLenon = new JFrame("1:1 Lens On");
+            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(url);
+            magFrameLenon.setIconImage(img);
+            magFrameLenon.setResizable(false);
+
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            magFrameLenon.getContentPane().add(mag);
+            magFrameLenon.pack();
+            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setVisible(true);
+            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                        countLenOnCGH5--;
+                        buttonCGH5LensOn.setText("1:1 lens ON");
+                        magFrameLenon.dispose();
+                }
+            });
+        }
+
+    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
+
+    private void buttonSecondActionPerformedCGH5(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH5
+        actionTag = "CGH5";
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = env.getScreenDevices();
+        if (devices.length == 1) {
+            countSecondDisplayCGH5--;
+            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintCGH5(buffImagesCGH5);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            imageGenerated = true;
+            if (countSecondDisplayCGH5% 2 == 0) {
+                patternFrame.dispose();
+            }
+        }
+    }
+    
+    // CGH6
+    private void buttonGenerateActionPerformedCGH6(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH6
+        actionTag = "CGH6";
+        buttonCGH6LensOn.setEnabled(true);
+        buttonCGH6DisplaySecondOn.setEnabled(true);
+
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH6(buffImagesCGH6);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+    }
+
+    private void button11LensOnActionPerformedCGH6(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH6
+        actionTag = "CGH6";
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH6(buffImagesCGH6);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+
+        if (countLenOnCGH6 % 2 == 0) {
+            magFrameLenon.dispose();
+            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    patternFrame.show();
+                }
+            });
+
+        } else {
+            magFrameLenon = new JFrame("1:1 Lens On");
+            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(url);
+            magFrameLenon.setIconImage(img);
+            magFrameLenon.setResizable(false);
+
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            magFrameLenon.getContentPane().add(mag);
+            magFrameLenon.pack();
+            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setVisible(true);
+            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                        countLenOnCGH6--;
+                        buttonCGH6LensOn.setText("1:1 lens ON");
+                        magFrameLenon.dispose();
+                }
+            });
+        }
+
+    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
+
+    private void buttonSecondActionPerformedCGH6(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH6
+        actionTag = "CGH6";
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = env.getScreenDevices();
+        if (devices.length == 1) {
+            countSecondDisplayCGH6--;
+            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintCGH6(buffImagesCGH6);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            imageGenerated = true;
+            if (countSecondDisplayCGH6% 2 == 0) {
+                patternFrame.dispose();
+            }
+        }
+    }
+    
+    // CGH8
+    private void buttonGenerateActionPerformedCGH8(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH8
+        actionTag = "CGH8";
+        buttonCGH8LensOn.setEnabled(true);
+        buttonCGH8DisplaySecondOn.setEnabled(true);
+
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH8(buffImagesCGH8);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+    }
+
+    private void button11LensOnActionPerformedCGH8(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH8
+        actionTag = "CGH8";
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH8(buffImagesCGH8);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+
+        if (countLenOnCGH8 % 2 == 0) {
+            magFrameLenon.dispose();
+            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    patternFrame.show();
+                }
+            });
+
+        } else {
+            magFrameLenon = new JFrame("1:1 Lens On");
+            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(url);
+            magFrameLenon.setIconImage(img);
+            magFrameLenon.setResizable(false);
+
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            magFrameLenon.getContentPane().add(mag);
+            magFrameLenon.pack();
+            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setVisible(true);
+            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                        countLenOnCGH8--;
+                        buttonCGH8LensOn.setText("1:1 lens ON");
+                        magFrameLenon.dispose();
+                }
+            });
+        }
+
+    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
+
+    private void buttonSecondActionPerformedCGH8(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH8
+        actionTag = "CGH8";
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = env.getScreenDevices();
+        if (devices.length == 1) {
+            countSecondDisplayCGH8--;
+            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintCGH8(buffImagesCGH8);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            imageGenerated = true;
+            if (countSecondDisplayCGH8% 2 == 0) {
+                patternFrame.dispose();
+            }
+        }
+    }
+    
+    // CGH10
+    private void buttonGenerateActionPerformedCGH10(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
+        actionTag = "CGH10";
+        buttonCGH10LensOn.setEnabled(true);
+        buttonCGH10DisplaySecondOn.setEnabled(true);
+
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH10(buffImagesCGH10);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+    }
+
+    private void button11LensOnActionPerformedCGH10(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
+        actionTag = "CGH10";
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintCGH10(buffImagesCGH10);
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+
+        if (countLenOnCGH10 % 2 == 0) {
+            magFrameLenon.dispose();
+            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    patternFrame.show();
+                }
+            });
+
+        } else {
+            magFrameLenon = new JFrame("1:1 Lens On");
+            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(url);
+            magFrameLenon.setIconImage(img);
+            magFrameLenon.setResizable(false);
+
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            magFrameLenon.getContentPane().add(mag);
+            magFrameLenon.pack();
+            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setVisible(true);
+            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                        countLenOnCGH10--;
+                        buttonCGH10LensOn.setText("1:1 lens ON");
+                        magFrameLenon.dispose();
+                }
+            });
+        }
+
+    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
+
+    private void buttonSecondActionPerformedCGH10(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
+        actionTag = "CGH10";
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = env.getScreenDevices();
+        if (devices.length == 1) {
+            countSecondDisplayCGH10--;
+            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.paintCGH10(buffImagesCGH10);
+            EduPatternShowOn.updateLensPatternPattern(image, "");
+            imageGenerated = true;
+            if (countSecondDisplayCGH10% 2 == 0) {
+                patternFrame.dispose();
+            }
+        }
+    }
+    
     //End
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel panelPattern;
@@ -7039,6 +8070,13 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelSignalPhoto;
     private javax.swing.JPanel panelSlit;
     private javax.swing.JPanel panelDoubleSlit;
+    private javax.swing.JPanel panelCGH1;
+    private javax.swing.JPanel panelCGH3;
+    private javax.swing.JPanel panelCGH4;
+    private javax.swing.JPanel panelCGH5;
+    private javax.swing.JPanel panelCGH6;
+    private javax.swing.JPanel panelCGH8;
+    private javax.swing.JPanel panelCGH10;
     private javax.swing.JTabbedPane tabbedControl;
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel jLabelSelectExperiment;
@@ -7275,6 +8313,13 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnFresnel = 1;
     private int countLenOnCalibration = 1;
     private int countLenOnImportFile = 1;
+    private int countLenOnCGH1 = 1;
+    private int countLenOnCGH3 = 1;
+    private int countLenOnCGH4 = 1;
+    private int countLenOnCGH5 = 1;
+    private int countLenOnCGH6 = 1;
+    private int countLenOnCGH8 = 1;
+    private int countLenOnCGH10 = 1;
     // Second display
     private int countSecondDisplayTelephoto = 1;
     private int countSecondDisplayProcessing = 1;
@@ -7295,6 +8340,14 @@ public class EduControlerPattern extends OpticsPane {
     private int countSecondDisplayFresnel = 1;
     private int countSecondDisplayCalibration = 1;
     private int countSecondDisplayImportFile = 1;
+    private int countSecondDisplayCGH1 = 1;
+    private int countSecondDisplayCGH3 = 1;
+    private int countSecondDisplayCGH4 = 1;
+    private int countSecondDisplayCGH5 = 1;
+    private int countSecondDisplayCGH6 = 1;
+    private int countSecondDisplayCGH8 = 1;
+    private int countSecondDisplayCGH10 = 1;
+    
     // Check disable lens ON
 //    private int countDisableTelephoto = 0;
 //    private int countDisableProcessing = 0;
@@ -7382,6 +8435,48 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonOpenFileCalibration;
     private javax.swing.JLabel lblPleaseSelectCalibration;
     
+    // CGH1
+    private javax.swing.JButton buttonCGH1LensOn;
+    private javax.swing.JButton buttonCGH1DisplaySecondOn;
+    private javax.swing.JButton buttonCGH1General;
+    private javax.swing.JButton buttonOpenFileCGH1;
+    private javax.swing.JLabel lblPleaseSelectCGH1;
+    // CGH3
+    private javax.swing.JButton buttonCGH3LensOn;
+    private javax.swing.JButton buttonCGH3DisplaySecondOn;
+    private javax.swing.JButton buttonCGH3General;
+    private javax.swing.JButton buttonOpenFileCGH3;
+    private javax.swing.JLabel lblPleaseSelectCGH3;
+    // CGH4
+    private javax.swing.JButton buttonCGH4LensOn;
+    private javax.swing.JButton buttonCGH4DisplaySecondOn;
+    private javax.swing.JButton buttonCGH4General;
+    private javax.swing.JButton buttonOpenFileCGH4;
+    private javax.swing.JLabel lblPleaseSelectCGH4;
+    // CGH5
+    private javax.swing.JButton buttonCGH5LensOn;
+    private javax.swing.JButton buttonCGH5DisplaySecondOn;
+    private javax.swing.JButton buttonCGH5General;
+    private javax.swing.JButton buttonOpenFileCGH5;
+    private javax.swing.JLabel lblPleaseSelectCGH5;
+    // CGH6
+    private javax.swing.JButton buttonCGH6LensOn;
+    private javax.swing.JButton buttonCGH6DisplaySecondOn;
+    private javax.swing.JButton buttonCGH6General;
+    private javax.swing.JButton buttonOpenFileCGH6;
+    private javax.swing.JLabel lblPleaseSelectCGH6;
+    // CGH8
+    private javax.swing.JButton buttonCGH8LensOn;
+    private javax.swing.JButton buttonCGH8DisplaySecondOn;
+    private javax.swing.JButton buttonCGH8General;
+    private javax.swing.JButton buttonOpenFileCGH8;
+    private javax.swing.JLabel lblPleaseSelectCGH8;
+    // CGH10
+    private javax.swing.JButton buttonCGH10LensOn;
+    private javax.swing.JButton buttonCGH10DisplaySecondOn;
+    private javax.swing.JButton buttonCGH10General;
+    private javax.swing.JButton buttonOpenFileCGH10;
+    private javax.swing.JLabel lblPleaseSelectCGH10;
     // Temp
     private byte tmpSelected = 0;
 
