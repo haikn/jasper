@@ -333,7 +333,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(txtXPositionLens))))
                 .addGap(5, 5, 5)
                 .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalLens, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addComponent(jSliderFocalLens, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addComponent(jSliderXPositionLens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSliderYPositionLens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
@@ -343,7 +343,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE)));
+                //.addContainerGap(23, Short.MAX_VALUE)
+                ));
         jPanelCyllindrical1Layout.setVerticalGroup(
                 jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
@@ -605,7 +606,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                 //.addComponent(lblXPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblYPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
+                .addGap(45, 45, 45)
                 .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(txtYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addComponent(txtFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
@@ -613,9 +614,9 @@ public class EduControlerPattern extends OpticsPane {
                 )))
                 .addGap(5, 5, 5)
                 .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addComponent(jSliderFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 //.addComponent(jSliderXPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)))
+                .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)))
                 .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(buttonCyllinGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -623,7 +624,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCyllinLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonCyllinDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE)));
+                //.addContainerGap(23, Short.MAX_VALUE)
+                ));
         jPanelCyllindricalLayout.setVerticalGroup(
                 jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
@@ -645,7 +647,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblYPosCyllin)
                 .addComponent(txtYPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(134, 134, 134)
+                .addGap(133, 133, 133)
                 .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonCyllinGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCyllinLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -910,7 +912,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(fineTuningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonOpenFileCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPleaseSelectCalibration))
-                .addGap(216, 216, 216)
+                .addGap(214, 214, 214)
                 .addGroup(fineTuningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1422,7 +1424,7 @@ public class EduControlerPattern extends OpticsPane {
                         .addComponent(txtK1RImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblGrayLevelImportFile)
                         .addComponent(txtGrayLevelImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(87, 87, 87)
+                .addGap(85, 85, 85)
                 .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGenerteImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLensONImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1988,7 +1990,7 @@ public class EduControlerPattern extends OpticsPane {
                         .addComponent(jLabelSpacingDoubleSlit)
                         .addComponent(text_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(s_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
+                .addGap(68, 68, 68)
                 .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2290,7 +2292,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(text_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(s_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblSpacingProcessing))
-                .addGap(8, 8, 8)
+                .addGap(7, 7, 7)
                 .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonGennerateProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplayProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2382,8 +2384,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblPleaseSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(5, 5, 5))
+                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(55, 55, 55))
                 .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2391,7 +2393,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonSecondPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))));
+                //.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                ))));
         jPanel5Layout.setVerticalGroup(
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
@@ -2620,7 +2623,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(txtXPositionLensMichelson))))
                 .addGap(5, 5, 5)
                 .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addComponent(jSliderFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addComponent(jSliderXPositionLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSliderYPositionLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
@@ -2630,7 +2633,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(jButton11LensOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonDisplaySecondOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE)));
+                //.addContainerGap(23, Short.MAX_VALUE)
+                ));
         jPanelLensMichelsonLayout.setVerticalGroup(
                 jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
@@ -2789,7 +2793,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(lblThetaMirrorSpectometer)
                 .addComponent(txtThetaMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSliderThetaMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(145, 146, 146)
+                .addGap(145, 145, 145)
                 .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonMirrorSpectometerGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonMirrorSpectometerLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2877,9 +2881,9 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         label_fresnel_width.setText("X");
-        label_fresnel_width.hide();
+        label_fresnel_width.setEnabled(false);
         s_fresnel_width.setMaximum(1920);
-        s_fresnel_width.hide();
+        s_fresnel_width.setEnabled(false);
         text_fresnel_width.setPreferredSize(new java.awt.Dimension(45, 20));
         text_fresnel_height.setPreferredSize(new java.awt.Dimension(45, 20));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_fresnel_width, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_fresnel_width, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -2890,9 +2894,9 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedFresnel(evt);
             }
         });
-        text_fresnel_width.hide();
+        text_fresnel_width.setEnabled(false);
         text_fresnel_height.setText("" + height_fresnel);
-        text_fresnel_height.hide();
+        text_fresnel_height.setEnabled(false);
         javax.swing.GroupLayout layoutFresnel = new javax.swing.GroupLayout(jPanelFresnel);
         jPanelFresnel.setLayout(layoutFresnel);
 
@@ -2937,7 +2941,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(text_fresnel_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(text_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(s_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(143, 143, 143)
+                .addGap(120, 120, 120)
                 .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonGeneralFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOnFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3242,7 +3246,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(text_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(s_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblSpacingtalbot))
-                .addGap(8, 8, 8)
+                .addGap(7, 7, 7)
                 .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonGenneratetalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonSecondDisplaytalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3338,7 +3342,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonOpenFileTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblPleaseSelectTalbotPhoto))
-                .addGap(151, 151, 151)
+                .addGap(148, 148, 148)
                 .addGroup(signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(buttonGeneralTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOnTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -5058,11 +5062,11 @@ public class EduControlerPattern extends OpticsPane {
                     image.fresnel(buffImagesFresnel);
                     EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
                     text_fresnel_width.setText("" + buffImagesFresnel.getWidth());
-                    text_fresnel_width.show();
+                    text_fresnel_width.setEnabled(true);
                     text_fresnel_height.setText("" + buffImagesFresnel.getHeight());
-                    text_fresnel_height.show();
-                    label_fresnel_width.show();
-                    s_fresnel_width.show();
+                    text_fresnel_height.setEnabled(true);
+                    label_fresnel_width.setEnabled(true);
+                    s_fresnel_width.setEnabled(true);
                     imageGenerated = true;
                 } catch (IOException ex) {
                     ex.printStackTrace();
