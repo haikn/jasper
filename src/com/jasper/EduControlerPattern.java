@@ -813,15 +813,6 @@ public class EduControlerPattern extends OpticsPane {
                 .addContainerGap()));
 
         tabbedControl.addTab("General", panelGeneral);
-
-//        javax.swing.GroupLayout panelCalebrationLayout = new javax.swing.GroupLayout(panelCalebration);
-//        panelCalebration.setLayout(panelCalebrationLayout);
-//        panelCalebrationLayout.setHorizontalGroup(
-//                panelCalebrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGap(0, 665, Short.MAX_VALUE));
-//        panelCalebrationLayout.setVerticalGroup(
-//                panelCalebrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGap(0, 272, Short.MAX_VALUE));
         
         // Calibration
 //        openFile = new javax.swing.JFileChooser();
@@ -1023,70 +1014,6 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-//        javax.swing.GroupLayout jPanelCalibrationdricalLayout = new javax.swing.GroupLayout(panelCalebration);
-//        panelCalebration.setLayout(jPanelCalibrationdricalLayout);
-//        jPanelCalibrationdricalLayout.setHorizontalGroup(
-//                jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-//                .addContainerGap()
-//                .addGap(15, 15, 15)
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                //.addComponent(lblFocalCalibration)
-//                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-//                .addComponent(lblXPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                .addComponent(lblYPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                )
-//                .addGap(55, 55, 55)
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addComponent(txtYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-//                //.addComponent(txtFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-//                .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))))
-//                .addGap(5, 5, 5)
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                //.addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-//                .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-//                .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-//                ))
-//                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-//                .addGap(15, 15, 15)
-//                .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                .addContainerGap(23, Short.MAX_VALUE)));
-//        jPanelCalibrationdricalLayout.setVerticalGroup(
-//                jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-//                .addGap(15, 15, 15)
-////                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-////                .addComponent(jSliderFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-////                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-////                .addComponent(lblFocalCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-////                .addComponent(txtFocalCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                //.addGap(19, 19, 19)
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblXPosCalibration)
-//                .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(15, 15, 15)
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblYPosCalibration)
-//                .addComponent(txtYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                )
-//                .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                )
-//                .addGap(174, 174, 174)
-//                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-//                .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                ));
         javax.swing.GroupLayout jPanelCalibrationdricalLayout = new javax.swing.GroupLayout(panelCalebration);
         panelCalebration.setLayout(jPanelCalibrationdricalLayout);
         jPanelCalibrationdricalLayout.setHorizontalGroup(
@@ -1132,7 +1059,7 @@ public class EduControlerPattern extends OpticsPane {
                     .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(201, 201, 201)
+                .addGap(203, 203, 203)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -6733,22 +6660,18 @@ public class EduControlerPattern extends OpticsPane {
         buttonCalibrationDisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-//            image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
-//            image.paintCalibration();
-        image.paintFineTuning(buffImagesCalibration);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        setLog("");
+        image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+        image.paintCalibration();
+        EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
         imageGenerated = true;
     }//GEN-LAST:event_buttonGenerateActionPerformedCalibration
 
     private void button11LensOnCalibrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCalibrationActionPerformed
         actionTag = "Calibration";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintFineTuning(buffImagesCalibration);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        setLog("");
-
-        setLog("");
+        image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+        image.paintCalibration();
+        EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
         imageGenerated = true;
 
         if (countLenOnCalibration % 2 == 0) {
@@ -6792,11 +6715,9 @@ public class EduControlerPattern extends OpticsPane {
                 JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-    //                image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
-    //                image.paintCalibration();
-                image.paintFineTuning(buffImagesCalibration);
-                EduPatternShowOn.updateLensPattern(image, "");
-                setLog("");
+                image.updateCalibrationParameter(xoffCalibration, yoffCalibration, focalCalibration);
+                image.paintCalibration();
+                EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayCalibration % 2 == 0) {
