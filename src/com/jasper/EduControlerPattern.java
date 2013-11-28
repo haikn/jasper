@@ -1432,7 +1432,7 @@ public class EduControlerPattern extends OpticsPane {
                 //.addGap(36, 36, 36)
                 )
         );
-        tabbedControl.addTab("Import file", panelImportfile);
+        tabbedControl.addTab("Import formula", panelImportfile);
         // END Import file
         
         /*
@@ -4646,7 +4646,7 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Lens", jPanelCyllindrical1);
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        jTabbedPaneOptics.addTab("Fresnel Transform", jPanelFresnel);
+        //jTabbedPaneOptics.addTab("Fresnel Transform", jPanelFresnel);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 jButton11LensOn.setEnabled(false);
