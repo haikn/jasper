@@ -7525,73 +7525,78 @@ public class EduControlerPattern extends OpticsPane {
     
     // Calibration
     private void buttonGenerateActionPerformedCalibration(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCalibration
-        actionTag = "Calibration";
-        buttonCalibrationLensOn.setEnabled(true);
-        buttonCalibrationDisplaySecondOn.setEnabled(true);
-
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-        image.paintCalibration();
-        EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
-        imageGenerated = true;
+        if (parseArguments()) {
+            actionTag = "Calibration";
+            buttonCalibrationLensOn.setEnabled(true);
+            buttonCalibrationDisplaySecondOn.setEnabled(true);
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
+            image.paintCalibration();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
+            imageGenerated = true;
+        }
     }//GEN-LAST:event_buttonGenerateActionPerformedCalibration
 
     private void button11LensOnCalibrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCalibrationActionPerformed
-        actionTag = "Calibration";
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-        image.paintCalibration();
-        EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
-        imageGenerated = true;
+        if (parseArguments()) {
+            actionTag = "Calibration";
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
+            image.paintCalibration();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
+            imageGenerated = true;
 
-        if (countLenOnCalibration % 2 == 0) {
-            magFrameLenon.dispose();
-            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrame.show();
-                }
-            });
-        } else {
-            magFrameLenon = new JFrame("1:1 Lens On");
-            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Image img = kit.createImage(url);
-            magFrameLenon.setIconImage(img);
-            magFrameLenon.setResizable(false);
+            if (countLenOnCalibration % 2 == 0) {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        patternFrame.show();
+                    }
+                });
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
 
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-            magFrameLenon.getContentPane().add(mag);
-            magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(500, 420));
-            magFrameLenon.setVisible(true);
-            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                        countLenOnCalibration--;
-                        buttonCalibrationLensOn.setText("1:1 lens ON");
-                        magFrameLenon.dispose();
-                }
-            });
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnCalibration--;
+                            buttonCalibrationLensOn.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
+            }
         }
 
     }//GEN-LAST:event_button11LensOnCalibrationActionPerformed
 	
 	private void buttonSecondGenerateActionPerformedCalibration(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-            actionTag = "Calibration";
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayCalibration--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-                image.paintCalibration();
-                EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayCalibration % 2 == 0) {
-                    patternFrame.dispose();
+            if (parseArguments()) {
+                actionTag = "Calibration";
+                GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                GraphicsDevice[] devices = env.getScreenDevices();
+                if (devices.length == 1) {
+                    countSecondDisplayCalibration--;
+                    JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                    image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
+                    image.paintCalibration();
+                    EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
+                    //EduPatternTest.updateLensPatternPattern(image, genLog());
+                    imageGenerated = true;
+                    if (countSecondDisplayCalibration % 2 == 0) {
+                        patternFrame.dispose();
+                    }
                 }
             }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
