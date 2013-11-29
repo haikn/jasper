@@ -20,10 +20,13 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -720,6 +723,48 @@ public class PatternImage {
             }
         }
     }
+    
+    public int[][] compute(File file) {
+        try {
+            BufferedImage img = ImageIO.read(file);
+            Raster raster = img.getData();
+            int w = raster.getWidth(), h = raster.getHeight();
+            int pixels[][] = new int[w][h];
+            for (int x = 0; x < w; x++) {
+                for (int y = 0; y < h; y++) {
+                    pixels[x][y] = raster.getSample(x, y, 0);
+                }
+            }
+
+            return pixels;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public java.awt.Image getImage(int pixels[][]) {
+        int w = pixels.length;
+        int h = pixels[0].length;
+        BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_BYTE_GRAY);
+        WritableRaster raster = (WritableRaster) image.getData();
+        for (int i = 0; i < w; i++) {
+            for (int j = 0; j < h; j++) {
+                raster.setSample(i, j, 0, pixels[i][j]);
+            }
+        }
+
+        File output = new File("check.jpg");
+        try {
+            ImageIO.write(image, "jpg", output);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return image;
+    }
+    
+    
     
     public void paintFineTuning(BufferedImage buffImg) {
 
