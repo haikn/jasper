@@ -703,17 +703,16 @@ public class PatternImage {
         double phy = Math.toRadians(xoffCalibration);
         double theta = Math.toRadians(yoffCalibration);
 
-        double xcomp = Math.sin(phy) * Math.cos(theta);
-        double ycomp = Math.sin(phy) * Math.sin(theta);
-
+        double xm = Math.sin(phy) * Math.cos(theta);
+        double ym = Math.sin(phy) * Math.sin(theta);
         double fixpart = 2.0 * Math.PI / lambda;
 
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
-            x = xcomp * x;
+            x = xm * x;
             for (int j = 0; j < width; j++) {
                 y = (double) (j - width / 2 + 1) * pxsize;
-                y = ycomp * y;
+                y = ym * y;
                 phase = fixpart * (x + y);
 
                 iArray[0] = phase2gray(phase);
@@ -750,7 +749,7 @@ public class PatternImage {
         double scale = 1.0;
         // scale = d_zoom / 100.0D;
         //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
+        buffImg = PatternImage.resizeImage(buffImg, BufferedImage.TYPE_INT_RGB, 1920, 1080);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
@@ -765,7 +764,8 @@ public class PatternImage {
         at.scale(scale, scale);
         /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
         //double k =(imread('testHologram.bmp'))/255*2*pi;
-        g2.drawRenderedImage(buffImg, at);
+        g2.drawRenderedImage(buffImg, null);
+        g2.drawImage(buffImg, null, width, width);
         
 //        BufferedImage buff=new BufferedImage(buffImg.getWidth(),buffImg.getHeight(),BufferedImage.TYPE_INT_RGB);
 //	Graphics2D big = buffImg.createGraphics();
