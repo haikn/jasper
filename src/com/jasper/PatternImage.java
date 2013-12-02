@@ -110,6 +110,7 @@ public class PatternImage {
     private double rotation_importFile;
     private double position_importFile;
     private double grayLevel_importFile;
+    private PatternImage patternImage;
     // title string
     public String title;
 
@@ -673,7 +674,7 @@ public class PatternImage {
         }
     }
 
-    
+    public javax.swing.JPanel panelPattern;
     public void paintCalibration() {
 //        WritableRaster raster = this.canvas.getRaster();
 //
@@ -698,14 +699,22 @@ public class PatternImage {
 //            raster.setPixel(j, i, iArray);
 //          }
 //        }
+        // try 
+//        int[][] iArray2;
+//        File file = new File("./src/resources/diagram/exp10wavefrontmodulation.png");
+//        iArray2 = compute(file);
+//        System.out.println("iArray2" + iArray2);
+        // patternImage
+        //test
+        patternImage.getLambda();
+        System.out.println("patternImage.getLambda(): " + patternImage.getLambda());
         
         WritableRaster raster = canvas.getRaster();
-
         int[] iArray = new int[1];
         double phase, x, y;
         double phy = Math.toRadians(xoffCalibration);
         double theta = Math.toRadians(yoffCalibration);
-
+        
         double xm = Math.sin(phy) * Math.cos(theta);
         double ym = Math.sin(phy) * Math.sin(theta);
         double fixpart = 2.0 * Math.PI / lambda;
@@ -716,6 +725,8 @@ public class PatternImage {
             for (int j = 0; j < width; j++) {
                 y = (double) (j - width / 2 + 1) * pxsize;
                 y = ym * y;
+                // khologram=exp(j*k).*wave;
+                // phase=angle(khologram)+pi;
                 phase = fixpart * (x + y);
 
                 iArray[0] = phase2gray(phase);
@@ -789,8 +800,8 @@ public class PatternImage {
         g2.drawRenderedImage(buffImg, at);
     }
     
-    public void paintCGH1(BufferedImage buffImg) {
-
+    public void paintCGH1(BufferedImage buffImg, PatternImage image) {
+        patternImage = image;
         double scale = 1.0;
         // scale = d_zoom / 100.0D;
         //buffImg = buffImg.gets
