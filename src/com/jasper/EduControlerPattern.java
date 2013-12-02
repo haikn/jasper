@@ -5852,7 +5852,7 @@ public class EduControlerPattern extends OpticsPane {
                     buffImagesCGH1 = ImageIO.read(new File(file.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH1);
+                    image.paintCGH1(buffImagesCGH1, image);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -7826,7 +7826,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCGH1DisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH1);
+        image.paintCGH1(buffImagesCGH1, image);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
@@ -7834,7 +7834,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
         actionTag = "CGH1";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH1);
+        image.paintCGH1(buffImagesCGH1, image);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
 
@@ -7880,7 +7880,7 @@ public class EduControlerPattern extends OpticsPane {
             JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH1);
+            image.paintCGH1(buffImagesCGH1, image);
             EduPatternShowOn.updateLensPatternPattern(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH1% 2 == 0) {
