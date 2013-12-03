@@ -111,6 +111,7 @@ public class PatternImage {
     private double position_importFile;
     private double grayLevel_importFile;
     private PatternImage patternImage;
+    private BufferedImage buffImgCGH1;
     // title string
     public String title;
 
@@ -700,15 +701,15 @@ public class PatternImage {
 //          }
 //        }
         // try 
-//        int[][] iArray2;
-//        File file = new File("./src/resources/diagram/exp10wavefrontmodulation.png");
-//        iArray2 = compute(file);
+        int[][] iArray2;
+        File file = new File("./src/resources/diagram/exp10wavefrontmodulation.png");
+        iArray2 = compute(file);
 //        System.out.println("iArray2" + iArray2);
         // patternImage
         //test
-        patternImage.getLambda();
-        System.out.println("patternImage.getLambda(): " + patternImage.getLambda());
-        
+        //patternImage.getLambda();
+        //System.out.println("patternImage.getLambda(): " + patternImage.getLambda());
+        //patternImage.
         WritableRaster raster = canvas.getRaster();
         int[] iArray = new int[1];
         double phase, x, y;
@@ -718,7 +719,19 @@ public class PatternImage {
         double xm = Math.sin(phy) * Math.cos(theta);
         double ym = Math.sin(phy) * Math.sin(theta);
         double fixpart = 2.0 * Math.PI / lambda;
-
+        //WritableRaster raster = (WritableRaster) buffImgCGH1.getData();
+        //raster.setDataElements(width, width, buffImgCGH1);
+        int w = raster.getWidth(), h = raster.getHeight();
+        
+//        WritableRaster raster1 = (WritableRaster) buffImgCGH1.getData();
+//        int w = raster1.getWidth(), h = raster.getHeight();
+//                    for (int m = 0; m < w; m++) {
+//                for (int z = 0; z < h; z++) {
+//                    canvas.getRaster().getSample(m, z, 0);
+//                    raster1.getSample(m, z, 0);
+//                    //raster.setPix
+//                }
+//            }
         for (int i = 0; i < height; i++) {
             x = (double) (i - height / 2 + 1) * pxsize;
             x = xm * x;
@@ -727,10 +740,23 @@ public class PatternImage {
                 y = ym * y;
                 // khologram=exp(j*k).*wave;
                 // phase=angle(khologram)+pi;
-                phase = fixpart * (x + y);
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
+                //for(int a = 0; a < iArray2.length; a++){
+                    //phase = a * fixpart * (x + y);
+                    
+//                    WritableRaster raster1 = (WritableRaster) buffImgCGH1.getData();
+//                    for (int i = 0; i < w; i++) {
+//                        for (int j = 0; j < h; j++) {
+//                            raster.setSample(i, j, 0, pixels[i][j]);
+//                        }
+//                    }
+                    phase = fixpart * (x + y);
+                    iArray[0] = phase2gray(phase);
+                    raster.setPixel(j, i, iArray);
+                //}
+//                phase = fixpart * (x + y);
+//
+//                iArray[0] = phase2gray(phase);
+//                raster.setPixel(j, i, iArray);
             }
         }
     }
@@ -802,6 +828,7 @@ public class PatternImage {
     
     public void paintCGH1(BufferedImage buffImg, PatternImage image) {
         patternImage = image;
+        buffImgCGH1 = buffImg;
         double scale = 1.0;
         // scale = d_zoom / 100.0D;
         //buffImg = buffImg.gets
