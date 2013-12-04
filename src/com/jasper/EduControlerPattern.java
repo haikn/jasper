@@ -10,6 +10,7 @@
 package com.jasper;
 
 import static com.jasper.EduPatternShowOn.patternFrame;
+import static com.jasper.EduPatternShowOn.patternFrameDoubleClick;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -256,6 +257,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnTelephoto++;
                 if (countLenOnTelephoto % 2 == 0) {
                     jButton11LensOn.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     jButton11LensOn.setText("1:1 lens ON");
                 }
@@ -412,6 +418,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnMicroscope++;
                 if (countLenOnMicroscope % 2 == 0) {
                     buttonMicroscopeLensOn.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     buttonMicroscopeLensOn.setText("1:1 lens ON");
                 }
@@ -552,6 +563,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnCyllin++;
                 if (countLenOnCyllin % 2 == 0) {
                     buttonCyllinLensOn.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     buttonCyllinLensOn.setText("1:1 lens ON");
                 }
@@ -683,6 +699,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnMirror++;
                 if (countLenOnMirror % 2 == 0) {
                     buttonMirrorLensOn.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     buttonMirrorLensOn.setText("1:1 lens ON");
                 }
@@ -851,6 +872,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnCalibration++;
                 if (countLenOnCalibration % 2 == 0) {
                     buttonCalibrationLensOn.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     buttonCalibrationLensOn.setText("1:1 lens ON");
                 }
@@ -1279,6 +1305,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnImportFile++;
                 if (countLenOnImportFile % 2 == 0) {
                     btnLensONImportFile.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     btnLensONImportFile.setText("1:1 lens ON");
                 }
@@ -1592,6 +1623,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnSlit++;
                 if (countLenOnSlit % 2 == 0) {
                     buttong11LensOnSlit.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     buttong11LensOnSlit.setText("1:1 lens ON");
                 }
@@ -1905,6 +1941,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnDoubleSlit++;
                 if (countLenOnDoubleSlit % 2 == 0) {
                     buttong11LensOnDoubleSlit.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     buttong11LensOnDoubleSlit.setText("1:1 lens ON");
                 }
@@ -2138,6 +2179,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnProcessing++;
                 if (countLenOnProcessing % 2 == 0) {
                     button11LensOnProcessing.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     button11LensOnProcessing.setText("1:1 lens ON");
                 }
@@ -2340,6 +2386,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnPhase++;
                 if (countLenOnPhase % 2 == 0) {
                     button11LensOnPhase.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     button11LensOnPhase.setText("1:1 lens ON");
                 }
@@ -2466,6 +2517,11 @@ public class EduControlerPattern extends OpticsPane {
                     countLenOnPhoto++;
                     if (countLenOnPhoto % 2 == 0) {
                         button11LensOnPhoto.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         button11LensOnPhoto.setText("1:1 lens ON");
                     }
@@ -2545,6 +2601,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnMichelson++;
                 if (countLenOnMichelson % 2 == 0) {
                     jButton11LensOnMichelson.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     jButton11LensOnMichelson.setText("1:1 lens ON");
                 }
@@ -2697,6 +2758,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnSpectrometer++;
                 if (countLenOnSpectrometer % 2 == 0) {
                     buttonMirrorSpectometerLensOn.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     buttonMirrorSpectometerLensOn.setText("1:1 lens ON");
                 }
@@ -2864,6 +2930,11 @@ public class EduControlerPattern extends OpticsPane {
                     countLenOnFresnel++;
                     if (countLenOnFresnel % 2 == 0) {
                         button11LensOnFresnel.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         button11LensOnFresnel.setText("1:1 lens ON");
                     }
@@ -3093,6 +3164,11 @@ public class EduControlerPattern extends OpticsPane {
                 countLenOnTalbot++;
                 if (countLenOnTalbot % 2 == 0) {
                     button11LensOntalbot.setText("1:1 lens OFF");
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                 } else {
                     button11LensOntalbot.setText("1:1 lens ON");
                 }
@@ -3299,6 +3375,11 @@ public class EduControlerPattern extends OpticsPane {
                     countLenOnTalbotPhoto++;
                     if (countLenOnTalbotPhoto % 2 == 0) {
                         button11LensOnTalbotPhoto.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         button11LensOnTalbotPhoto.setText("1:1 lens ON");
                     }
@@ -3380,6 +3461,11 @@ public class EduControlerPattern extends OpticsPane {
                     countLenOnCGH1++;
                     if (countLenOnCGH1 % 2 == 0) {
                         buttonCGH1LensOn.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         buttonCGH1LensOn.setText("1:1 lens ON");
                     }
@@ -3495,6 +3581,11 @@ public class EduControlerPattern extends OpticsPane {
                     countSecondDisplayCGH3++;
                     if (countSecondDisplayCGH3 % 2 == 0) {
                         buttonCGH3DisplaySecondOn.setText("Second display OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         buttonCGH3DisplaySecondOn.setText("Second display ON");
                     }
@@ -3573,6 +3664,11 @@ public class EduControlerPattern extends OpticsPane {
                     countLenOnCGH4++;
                     if (countLenOnCGH4 % 2 == 0) {
                         buttonCGH4LensOn.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         buttonCGH4LensOn.setText("1:1 lens ON");
                     }
@@ -3687,6 +3783,11 @@ public class EduControlerPattern extends OpticsPane {
                     countSecondDisplayCGH5++;
                     if (countSecondDisplayCGH5 % 2 == 0) {
                         buttonCGH5DisplaySecondOn.setText("Second display OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         buttonCGH5DisplaySecondOn.setText("Second display ON");
                     }
@@ -3765,6 +3866,11 @@ public class EduControlerPattern extends OpticsPane {
                     countLenOnCGH6++;
                     if (countLenOnCGH6 % 2 == 0) {
                         buttonCGH6LensOn.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         buttonCGH6LensOn.setText("1:1 lens ON");
                     }
@@ -3861,6 +3967,11 @@ public class EduControlerPattern extends OpticsPane {
                     countLenOnCGH8++;
                     if (countLenOnCGH8 % 2 == 0) {
                         buttonCGH8LensOn.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         buttonCGH8LensOn.setText("1:1 lens ON");
                     }
@@ -3957,8 +4068,14 @@ public class EduControlerPattern extends OpticsPane {
                     countLenOnCGH10++;
                     if (countLenOnCGH10 % 2 == 0) {
                         buttonCGH10LensOn.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
                     } else {
                         buttonCGH10LensOn.setText("1:1 lens ON");
+                         
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
@@ -4044,7 +4161,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
             public void doubleClick(MouseEvent e) {
-                patternFrame.show();
+                patternFrameDoubleClick.show();
             }
         });
         //  END show full screen
@@ -6243,7 +6360,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -6285,12 +6402,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensParameter(xoff, yoff, focal);
                 image.paintLens();
-                EduPatternShowOn.updateLensPattern(image, genLogLen());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogLen());
                 setLog(genLogLen());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayTelephoto % 2 == 0) {
-                    patternFrame.dispose();
+                    patternFrameDoubleClick.dispose();
                 }
             }
         }
@@ -6345,7 +6462,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -6387,12 +6504,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateFresnelParameter(width_fresnel, height_fresnel);
                 image.fresnel(buffImagesFresnel);
-                EduPatternShowOn.updateLensPattern(image, genLogLen());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogLen());
                 setLog(genLogLen());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayFresnel % 2 == 0) {
-                    patternFrame.dispose();
+                    patternFrameDoubleClick.dispose();
                 }
             }
         }
@@ -6450,7 +6567,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -6493,10 +6610,11 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
                 image.paintLensMichelson();
-                EduPatternShowOn.updateLensPattern(image, genLogLensMichelson());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogLensMichelson());
                 setLog(genLogLensMichelson());
                 imageGenerated = true;
                 if (countSecondDisplayMichelson % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -6549,7 +6667,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -6590,11 +6708,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
                 image.paintMicroscope();
-                EduPatternShowOn.updateLensPattern(image, genLogMicroscope());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogMicroscope());
                 setLog(genLogMicroscope());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayMicroscope % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -6647,7 +6766,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -6688,11 +6807,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
                 image.paintCylindircal();
-                EduPatternShowOn.updateLensPattern(image, genLogCyllin());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogCyllin());
                 setLog(genLogCyllin());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayCyllin % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -6745,7 +6865,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -6786,11 +6906,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateMirrorParameter(phy, theta);
                 image.paintMirror();
-                EduPatternShowOn.updateLensPattern(image, genLogMirror());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogMirror());
                 setLog(genLogMirror());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayMirror % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -6857,7 +6978,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
 
@@ -6899,11 +7020,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
                 image.slit(slit);
-                EduPatternShowOn.updateLensPattern(image, genLogSlit());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogSlit());
                 setLog(genLogSlit());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplaySlit % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -6956,7 +7078,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -6997,11 +7119,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
                 image.slit(2);
-                EduPatternShowOn.updateLensPattern(image, genLogDoubleSlit());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogDoubleSlit());
                 setLog(genLogDoubleSlit());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayDoubleSlit % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -7053,7 +7176,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -7093,11 +7216,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
                 image.signalProcessing();
-                EduPatternShowOn.updateLensPattern(image, genLogProcessing());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogProcessing());
                 setLog(genLogProcessing());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayProcessing % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -7149,7 +7273,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -7189,10 +7313,11 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
                 image.paintTalbot();
-                EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogTalbot());
                 setLog(genLogTalbot());
                 imageGenerated = true;
                 if (countSecondDisplayTalbot % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -7246,7 +7371,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
 
@@ -7289,11 +7414,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
                 image.signalPhoto(buffImages);
-                EduPatternShowOn.updateLensPattern(image, genLogProcessing());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogProcessing());
                 setLog(genLogProcessing());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayPhoto % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -7347,7 +7473,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -7388,11 +7514,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updatePhaseRetarderParameter(zoom, grayLevel);
                 image.phaseRetarder();
-                EduPatternShowOn.updateLensPattern(image, genLogPhase());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogPhase());
                 setLog(genLogPhase());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayPhase % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -7482,10 +7609,11 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
                 image.paintMirrorSpectrometer();
-                EduPatternShowOn.updateLensPattern(image, genLogMirrorSpectrometer());
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogMirrorSpectrometer());
                 setLog(genLogMirrorSpectrometer());
                 imageGenerated = true;
                 if (countSecondDisplaySpectrometer % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -7550,7 +7678,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
             } else {
@@ -7591,10 +7719,11 @@ public class EduControlerPattern extends OpticsPane {
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                     image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
                     image.paintCalibration();
-                    EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
+                    EduPatternShowOn.updatePatternSecondDisplay(image, genLogCalibration());
                     //EduPatternTest.updateLensPatternPattern(image, genLog());
                     imageGenerated = true;
                     if (countSecondDisplayCalibration % 2 == 0) {
+                        patternFrameDoubleClick.dispose();
                         patternFrame.dispose();
                     }
                 }
@@ -7663,7 +7792,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
 
@@ -7706,11 +7835,12 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
                 image.paintTalbotPhoto(buffImagesTalbotPhoto);
-                EduPatternShowOn.updateLensPatternPattern(image, "");
+                EduPatternShowOn.updatePatternSecondDisplay(image, "");
                 setLog("");
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayTalbotPhoto% 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -7751,7 +7881,7 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.dispose();
                 panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrame.show();
+                        patternFrameDoubleClick.show();
                     }
                 });
 
@@ -7794,10 +7924,11 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
                 image.paintImportFile();
-                EduPatternShowOn.updateLensPatternPattern(image, "");
+                EduPatternShowOn.updatePatternSecondDisplay(image, "");
                 setLog("");
                 imageGenerated = true;
                 if (countSecondDisplayImportFile % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
                     patternFrame.dispose();
                 }
             }
@@ -7842,7 +7973,7 @@ public class EduControlerPattern extends OpticsPane {
             magFrameLenon.dispose();
             panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrame.show();
+                    patternFrameDoubleClick.show();
                 }
             });
 
@@ -7880,10 +8011,13 @@ public class EduControlerPattern extends OpticsPane {
             JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            EduPatternJPanel eduPatternJPanel = new EduPatternJPanel();
+            pimg = eduPatternJPanel.getPimage();
             image.paintCGH1(buffImagesCGH1, image);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
+            EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH1% 2 == 0) {
+                patternFrameDoubleClick.dispose();
                 patternFrame.dispose();
             }
         }
@@ -7912,7 +8046,7 @@ public class EduControlerPattern extends OpticsPane {
             magFrameLenon.dispose();
             panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrame.show();
+                    patternFrameDoubleClick.show();
                 }
             });
 
@@ -7951,9 +8085,10 @@ public class EduControlerPattern extends OpticsPane {
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.paintCGH3(buffImagesCGH3);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
+            EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH3% 2 == 0) {
+                patternFrameDoubleClick.dispose();
                 patternFrame.dispose();
             }
         }
@@ -7982,7 +8117,7 @@ public class EduControlerPattern extends OpticsPane {
             magFrameLenon.dispose();
             panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrame.show();
+                    patternFrameDoubleClick.show();
                 }
             });
 
@@ -8021,9 +8156,10 @@ public class EduControlerPattern extends OpticsPane {
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.paintCGH4(buffImagesCGH4);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
+            EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH4% 2 == 0) {
+                patternFrameDoubleClick.dispose();
                 patternFrame.dispose();
             }
         }
@@ -8052,7 +8188,7 @@ public class EduControlerPattern extends OpticsPane {
             magFrameLenon.dispose();
             panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrame.show();
+                    patternFrameDoubleClick.show();
                 }
             });
 
@@ -8091,9 +8227,10 @@ public class EduControlerPattern extends OpticsPane {
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.paintCGH5(buffImagesCGH5);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
+            EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH5% 2 == 0) {
+                patternFrameDoubleClick.dispose();
                 patternFrame.dispose();
             }
         }
@@ -8122,7 +8259,7 @@ public class EduControlerPattern extends OpticsPane {
             magFrameLenon.dispose();
             panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrame.show();
+                    patternFrameDoubleClick.show();
                 }
             });
 
@@ -8161,9 +8298,10 @@ public class EduControlerPattern extends OpticsPane {
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.paintCGH6(buffImagesCGH6);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
+            EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH6% 2 == 0) {
+                patternFrameDoubleClick.dispose();
                 patternFrame.dispose();
             }
         }
@@ -8192,7 +8330,7 @@ public class EduControlerPattern extends OpticsPane {
             magFrameLenon.dispose();
             panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrame.show();
+                    patternFrameDoubleClick.show();
                 }
             });
 
@@ -8231,9 +8369,10 @@ public class EduControlerPattern extends OpticsPane {
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.paintCGH8(buffImagesCGH8);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
+            EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH8% 2 == 0) {
+                patternFrameDoubleClick.dispose();
                 patternFrame.dispose();
             }
         }
@@ -8262,7 +8401,7 @@ public class EduControlerPattern extends OpticsPane {
             magFrameLenon.dispose();
             panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrame.show();
+                    patternFrameDoubleClick.show();
                 }
             });
 
@@ -8301,9 +8440,10 @@ public class EduControlerPattern extends OpticsPane {
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.paintCGH10(buffImagesCGH10);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
+            EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH10% 2 == 0) {
+                patternFrameDoubleClick.dispose();
                 patternFrame.dispose();
             }
         }
@@ -8312,6 +8452,7 @@ public class EduControlerPattern extends OpticsPane {
     //End
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel panelPattern;
+    public javax.swing.JPanel panelPatternFullScreen;
     // Lens
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -8735,6 +8876,7 @@ public class EduControlerPattern extends OpticsPane {
     private JFrame magFrameLensOnSpectrometer;
     private JFrame diagramFullScreen;
     private JFrame descriptionFullScreen;
+    private JFrame patternFullScreen;
     
     // Calibration
     public javax.swing.JLabel lblFocalCalibration;
@@ -8843,6 +8985,7 @@ public class EduControlerPattern extends OpticsPane {
             image.paintLens();
         }
     }
+    public PatternImage pimg;
     static String logmessageLen = "Telephoto lens: Focal length=%s X Position=%s Y Position=%s";
     static String logmessageLensMichelson = "Michelson lens: Focal length=%s X Position=%s Y Position=%s";
     static String logmessageMicroscope = "Microscope : Focal length=%s X Position=%s Y Position=%s";

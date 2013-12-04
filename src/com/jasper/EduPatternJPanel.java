@@ -52,6 +52,10 @@ public class EduPatternJPanel extends JPanel {
         isScreen = true;
     }
 
+    public PatternImage getPimage() {
+        return pimage;
+    }
+
     public void setImage(PatternImage pimage) {
         this.pimage = pimage;
     }

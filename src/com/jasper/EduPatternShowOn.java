@@ -32,13 +32,16 @@ public class EduPatternShowOn {
 
     static public GraphicsDevice device;
     static PatternImage pimage;
+    static PatternImage pimage2;
     static EduPatternJPanel patternPanel;
     static EduPatternJPanel patternPanel2;
     static JFrame patternFrame;
+    static JFrame patternFrameDoubleClick;
     static EduUIMainView controlFrame;
     // use 2nd display
     static boolean use2ndDisplay = true;
     static public double lambda = 5.32e-7;
+    static public double lambda2 = 5.32e-7;
     static public String lambdaStr = "532";
 
     public static void initPatternFrame() {
@@ -57,7 +60,7 @@ public class EduPatternShowOn {
 
         pimage = new PatternImage(bounds.width, bounds.height);
         pimage.init(lambda);
-
+        
         // for debugging purpose, show wavelength
         // System.out.println("wavelength = " + pimage.getLambda());
 
@@ -69,27 +72,31 @@ public class EduPatternShowOn {
         patternFrame.setSize(bounds.width, bounds.height);
         patternFrame.setLocation(bounds.x, bounds.y);
         
+        patternFrameDoubleClick = new JFrame("JDC Education Kit - Pattern full screen");
+        URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Image img = kit.createImage(url);
+        patternFrameDoubleClick.setIconImage(img);
+        pimage2 = new PatternImage(bounds.width, bounds.height);
+        pimage2.init(lambda2);
+        patternPanel2 = new EduPatternJPanel(pimage2);
+        patternFrameDoubleClick.getContentPane().add(patternPanel2);
 
-        // full screen
-        patternFrame.setUndecorated(true);
-        patternFrame.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                patternFrame.dispose();
-            }
+        patternFrameDoubleClick.setSize(bounds.width, bounds.height);
+        patternFrameDoubleClick.setLocation(bounds.x, bounds.y);
+        patternFrameDoubleClick.addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent e) {
+                patternFrameDoubleClick.dispose();
+        }
         });
 
-//                patternPanel.addMouseListener(new ClickListener() {
-//                   public void doubleClick(MouseEvent e) {
-//                       //patternFrame.setVisible(true);
-//                       if (patternPanel.contains(e.getPoint())) {//check if mouse is clicked within shape
-//                        System.out.println("Clicked a "+patternPanel.getClass().getName());
-//                    }
-//                       // log
-//                       //System.out.println("double");
-//                   }
-//               });
-
-
+        patternFrameDoubleClick.addMouseListener(new ClickListener() {
+            public void doubleClick(MouseEvent e) {
+                patternFrameDoubleClick.dispose();
+            }
+        });
+        // full screen
+        patternFrame.setUndecorated(true);
 
         // not run first
         patternFrame.setVisible(false);
@@ -118,6 +125,8 @@ public class EduPatternShowOn {
 
         patternFrame.repaint();
         patternFrame.setVisible(true);
+        patternFrameDoubleClick.repaint();
+        patternFrameDoubleClick.setVisible(true);
         controlFrame.repaint();
     }
 
@@ -127,9 +136,24 @@ public class EduPatternShowOn {
         //controlFrame.setImage(pimage);
         patternPanel.setImage(pimage);
         patternPanel.revalidate();
+        patternPanel2.setImage(pimage);
+        patternPanel2.revalidate();
 
         patternFrame.repaint();
+        patternFrameDoubleClick.repaint();
         //patternFrame.setVisible(true);
+        controlFrame.repaint();
+    }
+    
+    public static void updatePatternSecondDisplay(PatternImage pimage, String log) {
+        controlFrame.logString(log);
+        controlFrame.updatePattern(pimage);
+        //controlFrame.setImage(pimage);
+        patternPanel.setImage(pimage);
+        patternPanel.revalidate();
+
+        patternFrame.repaint();
+        patternFrame.setVisible(true);
         controlFrame.repaint();
     }
 
@@ -139,6 +163,8 @@ public class EduPatternShowOn {
         //controlFrame.setImage(pimage);
         patternPanel.setImage(pimage);
         patternPanel.revalidate();
+        patternPanel2.setImage(pimage);
+        patternPanel2.revalidate();
 
         patternFrame.repaint();
         //patternFrame.setVisible(true);
@@ -285,6 +311,7 @@ public class EduPatternShowOn {
                 }
                 EduPatternShowOn.initPatternFrame();
                 EduPatternShowOn.initControlFrame();
+                //EduPatternShowOn.initPatternFrameFullScreen();
 
                 // set icon using JDC logo
                 URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
