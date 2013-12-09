@@ -683,36 +683,41 @@ public class PatternImage {
 
     public javax.swing.JPanel panelPattern;
     public void paintCalibration() {
-        double[][] iArray2;
+        double[][] cHGPattern;
         if(fileCGH1 != null) {
-            System.out.println("width: " + width);
-            System.out.println("height: " + height);
-            iArray2 = compute(fileCGH1);
-            WritableRaster raster = canvas.getRaster();
-            System.out.println("raster width: " + raster.getWidth());
-            System.out.println("raster height: " + raster.getHeight());
-            System.out.println("iArray2.length: " + iArray2.length);
-            
-            double[] iArray = new double[1];
-            double phase, x, y;
-            double phy = Math.PI / xoffCalibration;
-            double theta = Math.PI * yoffCalibration;
-            
-            
-            double xm = Math.sin(phy) * Math.cos(theta);
-            double ym = Math.sin(phy) * Math.sin(theta);
-            double fixpart = 2.0 * Math.PI / lambda;
-            for (int i = 0; i < width; i++) {
-                x = (double) (i - width / 2 + 1) * pxsize;
-                x = xm * x;
-                for (int j = 0; j < height; j++) {
-                    y = (double) (height / 2 - j + 1) * pxsize;
-                    y = ym * y;
-                    
-                    phase = fixpart * (x + y) + iArray2[i][j];
-                    iArray[0] = phase2gray(phase);
-                    raster.setPixel(j, i, iArray);
+            try {
+                File tmpFile = new File("./src/resources/cHGPatternTmp.jpg");
+                BufferedImage originalImage = ImageIO.read(fileCGH1);
+                BufferedImage resizeImageJpg = resizeImage(originalImage, originalImage.getType(), width, height);
+                ImageIO.write(resizeImageJpg, "jpg", tmpFile); 
+                
+                cHGPattern = compute(tmpFile);
+                tmpFile.delete();
+                WritableRaster raster = canvas.getRaster();
+                
+                double[] iArray = new double[1];
+                double phase, x, y;
+                double phy = Math.PI / xoffCalibration;
+                double theta = Math.PI * yoffCalibration;
+                
+                double xm = Math.sin(phy) * Math.cos(theta);
+                double ym = Math.sin(phy) * Math.sin(theta);
+                double fixpart = 2.0 * Math.PI / lambda;
+                
+                for (int i = 0; i < width; i++) {
+                    x = (double) (i - width / 2 + 1) * pxsize;
+                    x = xm * x;
+                    for (int j = 0; j < height; j++) {
+                        y = (double) (height / 2 - j + 1) * pxsize;
+                        y = ym * y;
+                        
+                        phase = fixpart * (x + y) + cHGPattern[i][j];
+                        iArray[0] = phase2gray(phase);
+                        raster.setPixel(i, j, iArray);
+                    }
                 }
+            } catch (IOException ex) {
+                Logger.getLogger(PatternImage.class.getName()).log(Level.SEVERE, null, ex);
             }
             
 
@@ -735,11 +740,8 @@ public class PatternImage {
                     temp = ((double)raster.getSample(x, y, 0)/255)*2*Math.PI;
                     pixels[x][y] = temp;
                 }
-                
             }
-
             return pixels;
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -797,7 +799,7 @@ public class PatternImage {
 //        System.out.println("buffImg.getSource(): " + buffImgCGH1.getSource());
         // scale = d_zoom / 100.0D;
         //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, BufferedImage.TYPE_INT_RGB, 1280, 720);
+        buffImg = PatternImage.resizeImage(buffImg, BufferedImage.TYPE_INT_RGB, 1366, 768);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,

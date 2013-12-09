@@ -903,8 +903,8 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderXPositionCalibration = new DoubleJSlider(-28, 28, 10, 10);
-        jSliderXPositionCalibration.setValue(5);
+        jSliderXPositionCalibration = new DoubleJSlider(-180000, 180000, 10, 10);
+        jSliderXPositionCalibration.setValue(9000);
         txtXPositionCalibration.setText(String.valueOf(jSliderXPositionCalibration.getValue()));
 
         jSliderXPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -922,7 +922,7 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         jSliderYPositionCalibration = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderYPositionCalibration.setValue(5);
+        jSliderYPositionCalibration.setValue(75);
         txtYPositionCalibration.setText(String.valueOf(jSliderYPositionCalibration.getValue()));
 
         jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
