@@ -686,7 +686,9 @@ public class PatternImage {
         double[][] cHGPattern;
         if(fileCGH1 != null) {
             try {
-                File tmpFile = new File("./src/resources/cHGPatternTmp.jpg");
+                String canonicalPathTmp = fileCGH1.getCanonicalPath();
+                String canonicalPath = canonicalPathTmp.substring(0, canonicalPathTmp.length() - 4) + "tmp.jpg";
+                File tmpFile = new File(canonicalPath);
                 BufferedImage originalImage = ImageIO.read(fileCGH1);
                 BufferedImage resizeImageJpg = resizeImage(originalImage, originalImage.getType(), width, height);
                 ImageIO.write(resizeImageJpg, "jpg", tmpFile); 
