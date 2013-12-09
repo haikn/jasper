@@ -683,50 +683,63 @@ public class PatternImage {
 
     public javax.swing.JPanel panelPattern;
     public void paintCalibration() {
-        int[][] iArray2;
+        double[][] iArray2;
         if(fileCGH1 != null) {
+            System.out.println("width: " + width);
+            System.out.println("height: " + height);
             iArray2 = compute(fileCGH1);
             WritableRaster raster = canvas.getRaster();
-            int[] iArray = new int[1];
+            System.out.println("raster width: " + raster.getWidth());
+            System.out.println("raster height: " + raster.getHeight());
+            System.out.println("iArray2.length: " + iArray2.length);
+            
+            double[] iArray = new double[1];
             double phase, x, y;
-//            double phy = Math.toRadians(xoffCalibration);
-//            double theta = Math.toRadians(yoffCalibration);
             double phy = Math.PI / xoffCalibration;
             double theta = Math.PI * yoffCalibration;
-
+            
+            
             double xm = Math.sin(phy) * Math.cos(theta);
             double ym = Math.sin(phy) * Math.sin(theta);
             double fixpart = 2.0 * Math.PI / lambda;
-            for (int i = 0; i < height; i++) {
-                x = (double) (i - height / 2 + 1) * pxsize;
+            for (int i = 0; i < width; i++) {
+                x = (double) (i - width / 2 + 1) * pxsize;
                 x = xm * x;
-                for (int j = 0; j < width; j++) {
-                    y = (double) (j - width / 2 + 1) * pxsize;
+                for (int j = 0; j < height; j++) {
+                    y = (double) (height / 2 - j + 1) * pxsize;
                     y = ym * y;
                     
-                    phase = fixpart * (x + y) * iArray2[0][0];
+                    phase = fixpart * (x + y) + iArray2[i][j];
                     iArray[0] = phase2gray(phase);
                     raster.setPixel(j, i, iArray);
                 }
             }
+            
 
         } else {
                 JOptionPane.showMessageDialog(null, "Please select the experiment CGH to Fine tuning before", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
-    public int[][] compute(File file) {
+    public double[][] compute(File file) {
         try {
             BufferedImage img = ImageIO.read(file);
+            
             Raster raster = img.getData();
             int w = raster.getWidth(), h = raster.getHeight();
-            int pixels[][] = new int[w][h];
+            
+            double temp;
+            double pixels[][] = new double[w][h];
             for (int x = 0; x < w; x++) {
                 for (int y = 0; y < h; y++) {
-                    pixels[x][y] = raster.getSample(x, y, 0);
+                    temp = ((double)raster.getSample(x, y, 0)/255)*2*Math.PI;
+                    pixels[x][y] = temp;
                 }
+                
             }
+
             return pixels;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -784,7 +797,7 @@ public class PatternImage {
 //        System.out.println("buffImg.getSource(): " + buffImgCGH1.getSource());
         // scale = d_zoom / 100.0D;
         //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, BufferedImage.TYPE_INT_RGB, 1920, 1080);
+        buffImg = PatternImage.resizeImage(buffImg, BufferedImage.TYPE_INT_RGB, 1280, 720);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
