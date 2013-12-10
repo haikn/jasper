@@ -533,8 +533,8 @@ public class PatternImage {
         WritableRaster raster = canvas.getRaster();
         double[] iArray = new double[1];
         double phase, x, y;
-        double phy = Math.PI / xoffCalibration;
-        double theta = Math.PI * yoffCalibration;
+        double phy = xoffCalibration; //double phy = Math.PI / xoffCalibration;
+        double theta = yoffCalibration; //double theta = Math.PI * yoffCalibration;
 
         double xm = Math.sin(phy) * Math.cos(theta);
         double ym = Math.sin(phy) * Math.sin(theta);

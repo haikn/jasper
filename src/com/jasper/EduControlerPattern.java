@@ -294,6 +294,40 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformed(evt);
             }
         });
+        
+        txtXPositionLens.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtXPositionLens.getText() == null || txtXPositionLens.getText().equals("")){
+                    jLabel4.setForeground(Color.red);
+                } else {
+                    jLabel4.setForeground(Color.black);
+                }
+                keyEventGenerateActionPerformedWavelength(ke);
+            }
+        });
+        
+        txtYPositionLens.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtYPositionLens.getText() == null || txtYPositionLens.getText().equals("")){
+                    jLabel2.setForeground(Color.red);
+                } else {
+                    jLabel2.setForeground(Color.black);
+                }
+                keyEventGenerateActionPerformedWavelength(ke);
+            }
+        });
+        
+        txtFocalLens.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtFocalLens.getText() == null || txtFocalLens.getText().equals("")){
+                    jLabel3.setForeground(Color.red);
+                } else {
+                    jLabel3.setForeground(Color.black);
+                }
+                keyEventGenerateActionPerformedWavelength(ke);
+            }
+        });
+        
         jSliderYPositionLens = new DoubleJSlider(-30, 30, 1, 10);
         jSliderYPositionLens.setValue(0);
         txtYPositionLens.setText(String.valueOf(jSliderYPositionLens.getValue()));
@@ -548,6 +582,37 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+        txtFocalCyllin.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtFocalCyllin.getText() == null || txtFocalCyllin.getText().equals("")){
+                    lblFocalCyllin.setForeground(Color.red);
+                } else {
+                    lblFocalCyllin.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedCyllin(ke);
+            }
+        });
+        txtXPositionCyllin.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtXPositionCyllin.getText() == null || txtXPositionCyllin.getText().equals("")){
+                    lblXPosCyllin.setForeground(Color.red);
+                } else {
+                    lblXPosCyllin.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedCyllin(ke);
+            }
+        });
+        txtYPositionCyllin.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtYPositionCyllin.getText() == null || txtYPositionCyllin.getText().equals("")){
+                    lblYPosCyllin.setForeground(Color.red);
+                } else {
+                    lblYPosCyllin.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedCyllin(ke);
+            }
+        });
+        
         buttonCyllinGeneral.setText("Generate");
         buttonCyllinGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -738,12 +803,22 @@ public class EduControlerPattern extends OpticsPane {
         
         txtPhyMirror.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                if(txtPhyMirror.getText() == null || txtPhyMirror.getText().equals("")){
+                    lblPhy.setForeground(Color.red);
+                } else {
+                    lblPhy.setForeground(Color.black);
+                }
                 keyEventGenerateActionPerformedMirror(ke);
             }
         });
         
         txtThetaMirror.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                if(txtThetaMirror.getText() == null || txtThetaMirror.getText().equals("")){
+                    lblThetaMirror.setForeground(Color.red);
+                } else {
+                    lblThetaMirror.setForeground(Color.black);
+                }
                 keyEventGenerateActionPerformedMirror(ke);
             }
         });
@@ -908,14 +983,15 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderXPositionCalibration = new DoubleJSlider(-180000, 180000, 10, 10);
-        jSliderXPositionCalibration.setValue(9000);
+        jSliderXPositionCalibration = new DoubleJSlider(-11, 11, 1, 10);
+        jSliderXPositionCalibration.setValue(0);
         txtXPositionCalibration.setText(String.valueOf(jSliderXPositionCalibration.getValue()));
 
         jSliderXPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 DecimalFormat df = new DecimalFormat("0.####");
-                txtXPositionCalibration.setText(df.format(jSliderXPositionCalibration.getScaledValue()));
+                double tmp = Math.PI / jSliderXPositionCalibration.getScaledValue();
+                txtXPositionCalibration.setText(df.format(tmp));
                 sliderGenerateActionPerformedCalibration(evt);
             }
         });
@@ -931,14 +1007,15 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderYPositionCalibration = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderYPositionCalibration.setValue(75);
+        jSliderYPositionCalibration = new DoubleJSlider(-573, 573, 100, 10);
+        jSliderYPositionCalibration.setValue(0);
         txtYPositionCalibration.setText(String.valueOf(jSliderYPositionCalibration.getValue()));
 
         jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 DecimalFormat df = new DecimalFormat("0.####");
-                txtYPositionCalibration.setText(df.format(jSliderYPositionCalibration.getScaledValue()));
+                double tmp = Math.PI * jSliderYPositionCalibration.getScaledValue();
+                txtYPositionCalibration.setText(df.format(tmp));
                 sliderGenerateActionPerformedCalibration(evt);
             }
         });
@@ -1006,8 +1083,8 @@ public class EduControlerPattern extends OpticsPane {
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
                     
-                    jSliderYPositionCalibration.setValue(75);
-                    jSliderXPositionCalibration.setValue(9000);
+                    jSliderYPositionCalibration.setValue(0);
+                    jSliderXPositionCalibration.setValue(0);
                     
                     tabbedDesLog.addTab("Description", desCalibration);
                     jTextAreaLog.setColumns(20);
@@ -1342,42 +1419,6 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-        
-//        sliderPositionImportFile = new DoubleJSlider(-1000, 1000, 10, 10);
-//        sliderPositionImportFile.setValue(1);
-//        txtPositionImportFile.setText(String.valueOf(sliderPositionImportFile.getValue()));
-//
-//        sliderPositionImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                DecimalFormat df = new DecimalFormat("0.####");
-//                txtPositionImportFile.setText(df.format(sliderPositionImportFile.getScaledValue()));
-//                //sliderGenerateActionPerformedMirrorSpectometer(evt);
-//            }
-//        });
-//        
-//        txtPositionImportFile.addKeyListener(new KeyAdapter(){
-//            public void keyReleased(KeyEvent ke) {
-//                //keyEventGenerateActionPerformedMirrorSpectometer(ke);
-//            }
-//        });
-//        
-//        sliderGrayLevelImportFile = new DoubleJSlider(-2550, 2550, 10, 10);
-//        sliderGrayLevelImportFile.setValue(255);
-//        txtGrayLevelImportFile.setText(String.valueOf(sliderGrayLevelImportFile.getValue()));
-//
-//        sliderGrayLevelImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                DecimalFormat df = new DecimalFormat("0.####");
-//                txtGrayLevelImportFile.setText(df.format(sliderGrayLevelImportFile.getScaledValue()));
-//                //sliderGenerateActionPerformedMirrorSpectometer(evt);
-//            }
-//        });
-//        
-//        txtGrayLevelImportFile.addKeyListener(new KeyAdapter(){
-//            public void keyReleased(KeyEvent ke) {
-//                //keyEventGenerateActionPerformedMirrorSpectometer(ke);
-//            }
-//        });
 
         javax.swing.GroupLayout layoutImportFile = new javax.swing.GroupLayout(panelImportfile);
         panelImportfile.setLayout(layoutImportFile);
@@ -1563,6 +1604,56 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+        text_single_width.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_width.getText() == null || text_single_width.getText().equals("")){
+                    lblWidthSlit.setForeground(Color.red);
+                } else {
+                    lblWidthSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedSlit(ke);
+            }
+        });
+        text_single_rotation.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_rotation.getText() == null || text_single_rotation.getText().equals("")){
+                    lblRotationSlit.setForeground(Color.red);
+                } else {
+                    lblRotationSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedSlit(ke);
+            }
+        });
+        text_single_position.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_position.getText() == null || text_single_position.getText().equals("")){
+                    lblPosSlit.setForeground(Color.red);
+                } else {
+                    lblPosSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedSlit(ke);
+            }
+        });
+        text_single_gray.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_gray.getText() == null || text_single_gray.getText().equals("")){
+                    lblGraySlit.setForeground(Color.red);
+                } else {
+                    lblGraySlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedSlit(ke);
+            }
+        });
+        text_single_gray.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_gray.getText() == null || text_single_gray.getText().equals("")){
+                    jLabelSpacingSlit.setForeground(Color.red);
+                } else {
+                    jLabelSpacingSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedSlit(ke);
+            }
+        });
         // disable when slit = 1
         jLabelSpacingSlit.hide();
         text_single_spacing.hide();
@@ -6440,6 +6531,21 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformed
+    
+    private void keyEventGenerateActionPerformedWavelength(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyEventGenerateActionPerformedCalibration
+        actionTag = "Len";
+        if (parseArguments()) {
+            jButton11LensOn.setEnabled(true);
+            jButtonDisplaySecondOn.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameter(xoff, yoff, focal);
+            image.paintLens();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
+            setLog(genLogLen());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_keyEventGenerateActionPerformedCalibration
     // END Lens
   /*
      * Fresnel
@@ -6846,6 +6952,21 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
+    
+    private void keyeventGenerateActionPerformedCyllin(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Cyllin";
+        if (parseArguments()) {
+            buttonCyllinLensOn.setEnabled(true);
+            buttonCyllinDisplaySecondOn.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
+            image.paintCylindircal();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
+            setLog(genLogCyllin());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
 
     // Mirror
     private void buttonGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirror
@@ -7059,6 +7180,21 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
+    
+    private void keyeventGenerateActionPerformedSlit(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Slit";
+        if (parseArguments()) {
+            buttong11LensOnSlit.setEnabled(true);
+            buttonSecondDisplaySlit.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
+            image.slit(slit);
+            EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
+            setLog(genLogSlit());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_keyeventGenerateActionPerformedSlit
 
     // doubel slit 
     private void buttonGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedDoubleSlit
