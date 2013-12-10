@@ -996,6 +996,9 @@ public class EduControlerPattern extends OpticsPane {
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
                     
+                    jSliderYPositionCalibration.setValue(75);
+                    jSliderXPositionCalibration.setValue(9000);
+                    
                     tabbedDesLog.addTab("Description", desCalibration);
                     jTextAreaLog.setColumns(20);
                     jTextAreaLog.setRows(5);
@@ -5698,7 +5701,7 @@ public class EduControlerPattern extends OpticsPane {
             this.position_importFile = grayImportFile;
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, warnings);
+            //JOptionPane.showMessageDialog(null, warnings);
             textXpos.setText(String.valueOf(this.yoff));
             textYpos.setText(String.valueOf(this.yoff));
             textFocal.setText(String.valueOf(this.focal));
