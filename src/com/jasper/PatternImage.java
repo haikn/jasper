@@ -16,11 +16,8 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.ImageObserver;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.BufferedReader;
@@ -30,7 +27,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -118,6 +114,8 @@ public class PatternImage {
     private PatternImage patternImage;
     private BufferedImage buffImgCGH1;
     private File fileCGH1;
+    private double[][] buferPattern;
+    private byte flag = 0;
     // title string
     public String title;
 
@@ -371,6 +369,8 @@ public class PatternImage {
                 raster.setPixel(j, i, iArray);
             }
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     // Michelson Lens algorithms
@@ -401,6 +401,8 @@ public class PatternImage {
                 raster.setPixel(j, i, iArray);
             }
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     // Microscope algorithms
@@ -430,169 +432,11 @@ public class PatternImage {
                 raster.setPixel(j, i, iArray);
             }
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
     // Cylindircal algorithms
-    public void paintCylindircal0() {
-        WritableRaster raster = canvas.getRaster();
-
-        int[] iArray = new int[1];
-        double x1, y1, x2, phase;
-
-        double fixpart2 = 2.0 * Math.PI / lambda;
-        double fixpart = Math.PI / lambda / focalCyllin;
-
-        double costheta = Math.cos(Math.toRadians(yoffCyllin));
-        double sintheta = Math.sin(Math.toRadians(yoffCyllin));
-
-// following statement is for debugging
-//		System.out.println("paintCylindircal");
-		/*
-         [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-
-         xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
-
-         % wavefront and its phase
-         wave=exp(1i*pi/wl*xt.^2);
-         phase=angle(wave)+pi;
-
-         % Hologram
-         hologram=phase/pi/2;
-         imshow(hologram) 
-         */
-        for (int i = 0; i < height; i++) {
-            x1 = (double) (i - height / 2 + 1) * pxsize;
-            x1 -= xoffCyllin;
-            for (int j = 0; j < width; j++) {
-                y1 = (double) (j - width / 2 + 1) * pxsize;
-                x2 = x1 * costheta + y1 * sintheta;
-                x2 = Math.pow(x2, 2.0);
-                phase = fixpart * x2 + fixpart2 * y1;
-
-// following two statements are for debugging
-//				phase = fixpart2 * y1;
-//				System.out.println("i="+i+" j="+j+" phase="+phase);
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
-
-    public void paintCylindircal11() {
-        WritableRaster raster = canvas.getRaster();
-
-        int[] iArray = new int[1];
-        double phase, x, y;
-        double phy = Math.toRadians(xoffCyllin);
-        double theta = Math.toRadians(yoffCyllin);
-//        double pi = Math.toRadians(mirrorPhy);
-//        double th = Math.toRadians(mirrorTheta);
-//        double phy = pi/10.0D;
-//        double theta = th/10.0D;
-        double focal = Math.toRadians(mirrorPhy);
-
-        double xcomp = Math.sin(phy) * Math.cos(theta);
-        double ycomp = Math.sin(phy) * Math.sin(theta);
-
-        double fixpart = 2.0 * Math.PI / lambda;
-
-        for (int i = 0; i < height; i++) {
-            x = (double) (i - height / 2) * pxsize;
-            x = xcomp * x;
-            for (int j = 0; j < width; j++) {
-                y = (double) (j - width / 2) * pxsize;
-                y = ycomp * Math.pow(y, 2.0);
-                phase = fixpart * (x + y);
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
-
-//    public void paintCylindircal() {
-//        WritableRaster raster = canvas.getRaster();
-//
-//        int[] iArray = new int[1];
-//        double phase, x, y;
-//        double phy = Math.toRadians(xoffCyllin);
-//        double theta = Math.toRadians(yoffCyllin);
-////        double pi = Math.toRadians(mirrorPhy);
-////        double th = Math.toRadians(mirrorTheta);
-////        double phy = pi/10.0D;
-////        double theta = th/10.0D;
-//        double focal = Math.toRadians(mirrorPhy);
-//
-//        double costheta = Math.cos(Math.toRadians(yoffCyllin));
-//        double sintheta = Math.sin(Math.toRadians(yoffCyllin));
-//        double xcomp = Math.sin(phy) * Math.cos(theta);
-//        double ycomp = Math.sin(phy) * Math.sin(theta);
-//
-////        wave=exp(j*pi/wl*xt.^2);
-////        phase=angle(wave)+pi;
-////        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-////
-////xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
-////yt=-(x-x0)*sin(theta)+(y-y0)*cos(theta);
-////
-////% wavefront and its phase
-////wave=exp(1i*pi/wl*xt.^2);
-//        double fixpart = 2.0 * Math.PI / lambda;
-//
-//        for (int i = 0; i < height; i++) {
-//            x = (double) (i - height / 2 + 1) * pxsize;
-//            x = xcomp * x;
-//            for (int j = 0; j < width; j++) {
-//                y = (double) (j - width / 2 + 1) * pxsize;
-//                y = ycomp * y;
-//                phase = fixpart * (x + y);
-//
-//                iArray[0] = phase2gray(phase);
-//                raster.setPixel(j, i, iArray);
-//            }
-//        }
-//    }
-
-    public void paintCylindircal1() {
-        WritableRaster raster = canvas.getRaster();
-        int[] iArray = new int[1];
-        double x2, y2, phase;
-        double fixpart = Math.PI / lambda / (focalCyllin);
-
-        // calculate phase of each pixel;
-        for (int i = 0; i < height; i++) {
-            x2 = (double) (i - height / 2 + 1) * pxsize;
-            x2 -= (-yoffCyllin / 1000);
-            x2 = Math.pow(x2, 2.0);
-            Math.getExponent(x2);
-            // 2*pi/la*0.1*x*psize
-            double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
-            for (int j = 0; j < width; j++) {
-                y2 = (double) (j - width / 2 + 1) * pxsize;
-                y2 -= (xoffCyllin / 1000);
-                y2 = Math.pow(y2, 2.0);
-
-                Math.getExponent(y2);
-                phase = fixpart * (x2 + y2);
-                //phase += fixpart2 * x2 * y2;
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
     public void paintCylindircal() {
-//        [x,y]=meshgrid(-960*p:p:959*p,540*p:-p:-539*p);
-//
-//        xt=(x-x0)*cos(theta)+(y-y0)*sin(theta);
-//        yt=-(x-x0)*sin(theta)+(y-y0)*cos(theta);
-//
-//        % wavefront and its phase
-//        wave=exp(1i*pi/wl*xt.^2);
-//        phase=angle(wave)+pi;
-//
-//        % Hologram
-//        hologram=phase/pi/2;
-//        imshow(hologram)
         WritableRaster raster = canvas.getRaster();
         // wave=exp(1i*pi/wl*xt.^2);
         int[] iArray = new int[1];
@@ -618,6 +462,8 @@ public class PatternImage {
                 raster.setPixel(j, i, iArray);
             }
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     // Mirror algorithms
@@ -628,11 +474,6 @@ public class PatternImage {
         double phase, x, y;
         double phy = Math.toRadians(mirrorPhy);
         double theta = Math.toRadians(mirrorTheta);
-//        double pi = Math.toRadians(mirrorPhy);
-//        double th = Math.toRadians(mirrorTheta);
-//        double phy = pi/10.0D;
-//        double theta = th/10.0D;
-        double focal = Math.toRadians(mirrorPhy);
 
         double xcomp = Math.sin(phy) * Math.cos(theta);
         double ycomp = Math.sin(phy) * Math.sin(theta);
@@ -651,6 +492,8 @@ public class PatternImage {
                 raster.setPixel(j, i, iArray);
             }
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     // Mirror Spectrometer algorithms
@@ -677,14 +520,26 @@ public class PatternImage {
 
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
+                
             }
         }
+        buferPattern = compute(canvas);
+        flag = 1;
+        
     }
 
-    public javax.swing.JPanel panelPattern;
     public void paintCalibration() {
         double[][] cHGPattern;
-        if(fileCGH1 != null) {
+        WritableRaster raster = canvas.getRaster();
+        double[] iArray = new double[1];
+        double phase, x, y;
+        double phy = Math.PI / xoffCalibration;
+        double theta = Math.PI * yoffCalibration;
+
+        double xm = Math.sin(phy) * Math.cos(theta);
+        double ym = Math.sin(phy) * Math.sin(theta);
+        double fixpart = 2.0 * Math.PI / lambda;
+        if(flag == 2) {
             try {
                 String canonicalPathTmp = fileCGH1.getCanonicalPath();
                 String canonicalPath = canonicalPathTmp.substring(0, canonicalPathTmp.length() - 4) + "tmp.jpg";
@@ -695,16 +550,6 @@ public class PatternImage {
                 
                 cHGPattern = compute(tmpFile);
                 tmpFile.delete();
-                WritableRaster raster = canvas.getRaster();
-                
-                double[] iArray = new double[1];
-                double phase, x, y;
-                double phy = Math.PI / xoffCalibration;
-                double theta = Math.PI * yoffCalibration;
-                
-                double xm = Math.sin(phy) * Math.cos(theta);
-                double ym = Math.sin(phy) * Math.sin(theta);
-                double fixpart = 2.0 * Math.PI / lambda;
                 
                 for (int i = 0; i < width; i++) {
                     x = (double) (i - width / 2 + 1) * pxsize;
@@ -722,9 +567,21 @@ public class PatternImage {
                 Logger.getLogger(PatternImage.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+        } else if (flag == 1) {
+            for (int i = 0; i < width; i++) {
+                x = (double) (i - width / 2 + 1) * pxsize;
+                x = xm * x;
+                for (int j = 0; j < height; j++) {
+                    y = (double) (height / 2 - j + 1) * pxsize;
+                    y = ym * y;
 
+                    phase = fixpart * (x + y) + buferPattern[i][j];
+                    iArray[0] = phase2gray(phase);
+                    raster.setPixel(i, j, iArray);
+                }
+            }
         } else {
-                JOptionPane.showMessageDialog(null, "Please select the experiment CGH to Fine tuning before", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select the Experiment or CGH Pattern Import to Fine tuning before", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -735,6 +592,25 @@ public class PatternImage {
             Raster raster = img.getData();
             int w = raster.getWidth(), h = raster.getHeight();
             
+            double temp;
+            double pixels[][] = new double[w][h];
+            for (int x = 0; x < w; x++) {
+                for (int y = 0; y < h; y++) {
+                    temp = ((double)raster.getSample(x, y, 0)/255)*2*Math.PI;
+                    pixels[x][y] = temp;
+                }
+            }
+            return pixels;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public double[][] compute(BufferedImage img) {
+        try {
+            Raster raster = img.getData();
+            int w = raster.getWidth(), h = raster.getHeight();
             double temp;
             double pixels[][] = new double[w][h];
             for (int x = 0; x < w; x++) {
@@ -792,20 +668,13 @@ public class PatternImage {
         g2.drawRenderedImage(buffImg, at);
     }
     
-    public void paintCGH1(BufferedImage buffImg, PatternImage image, File file) {
-        patternImage = image;
-        buffImgCGH1 = buffImg;
+    public void paintCGH1(BufferedImage buffImg, File file) {
         fileCGH1 = file;
         double scale = 1.0;
-//        System.out.println("buffImg.getSource(): " + buffImg.getSource().getClass());
-//        System.out.println("buffImg.getSource(): " + buffImgCGH1.getSource());
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
         buffImg = PatternImage.resizeImage(buffImg, BufferedImage.TYPE_INT_RGB, 1366, 768);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         double canvasX = canvas.getWidth() / 2;
         double canvasY = canvas.getHeight() / 2;
         int imageWidth = buffImg.getWidth();
@@ -814,156 +683,14 @@ public class PatternImage {
         double y = (scale * imageHeight) / 2;
         AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
         at.scale(scale, scale);
-        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
-        //double k =(imread('testHologram.bmp'))/255*2*pi;
         g2.drawRenderedImage(buffImg, null);
         g2.drawImage(buffImg, null, width, width);
-        
-//        BufferedImage buff=new BufferedImage(buffImg.getWidth(),buffImg.getHeight(),BufferedImage.TYPE_INT_RGB);
-//	Graphics2D big = buffImg.createGraphics();
-//	//big.setPaint(getBackground());
-//        big.fillRect(0,0,buff.getWidth(),buff.getHeight());
-//	//setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(buffImg.getSource())));
-//	big.setPaint(Color.white);
-//	big.drawImage(buffImg,0,0,buffImg.getWidth(),buffImg.getHeight(), (ImageObserver) this);
-    }
-    
-    public void paintCGH3(BufferedImage buffImg) {
-
-        double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
-        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        double canvasX = canvas.getWidth() / 2;
-        double canvasY = canvas.getHeight() / 2;
-        int imageWidth = buffImg.getWidth();
-        int imageHeight = buffImg.getHeight();
-        double x = (scale * imageWidth) / 2;
-        double y = (scale * imageHeight) / 2;
-        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-        at.scale(scale, scale);
-        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
-        //double k =(imread('testHologram.bmp'))/255*2*pi;
-        g2.drawRenderedImage(buffImg, at);
-    }
-    
-    public void paintCGH4(BufferedImage buffImg) {
-
-        double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
-        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        double canvasX = canvas.getWidth() / 2;
-        double canvasY = canvas.getHeight() / 2;
-        int imageWidth = buffImg.getWidth();
-        int imageHeight = buffImg.getHeight();
-        double x = (scale * imageWidth) / 2;
-        double y = (scale * imageHeight) / 2;
-        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-        at.scale(scale, scale);
-        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
-        //double k =(imread('testHologram.bmp'))/255*2*pi;
-        g2.drawRenderedImage(buffImg, at);
-    }
-    
-    public void paintCGH5(BufferedImage buffImg) {
-
-        double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
-        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        double canvasX = canvas.getWidth() / 2;
-        double canvasY = canvas.getHeight() / 2;
-        int imageWidth = buffImg.getWidth();
-        int imageHeight = buffImg.getHeight();
-        double x = (scale * imageWidth) / 2;
-        double y = (scale * imageHeight) / 2;
-        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-        at.scale(scale, scale);
-        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
-        //double k =(imread('testHologram.bmp'))/255*2*pi;
-        g2.drawRenderedImage(buffImg, at);
-    }
-    
-    public void paintCGH6(BufferedImage buffImg) {
-
-        double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
-        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        double canvasX = canvas.getWidth() / 2;
-        double canvasY = canvas.getHeight() / 2;
-        int imageWidth = buffImg.getWidth();
-        int imageHeight = buffImg.getHeight();
-        double x = (scale * imageWidth) / 2;
-        double y = (scale * imageHeight) / 2;
-        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-        at.scale(scale, scale);
-        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
-        //double k =(imread('testHologram.bmp'))/255*2*pi;
-        g2.drawRenderedImage(buffImg, at);
-    }
-    
-    public void paintCGH8(BufferedImage buffImg) {
-
-        double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
-        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        double canvasX = canvas.getWidth() / 2;
-        double canvasY = canvas.getHeight() / 2;
-        int imageWidth = buffImg.getWidth();
-        int imageHeight = buffImg.getHeight();
-        double x = (scale * imageWidth) / 2;
-        double y = (scale * imageHeight) / 2;
-        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-        at.scale(scale, scale);
-        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
-        //double k =(imread('testHologram.bmp'))/255*2*pi;
-        g2.drawRenderedImage(buffImg, at);
-    }
-    
-    public void paintCGH10(BufferedImage buffImg) {
-
-        double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
-        buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
-        Graphics2D g2 = (Graphics2D) canvas.getGraphics();
-        g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        double canvasX = canvas.getWidth() / 2;
-        double canvasY = canvas.getHeight() / 2;
-        int imageWidth = buffImg.getWidth();
-        int imageHeight = buffImg.getHeight();
-        double x = (scale * imageWidth) / 2;
-        double y = (scale * imageHeight) / 2;
-        AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
-        at.scale(scale, scale);
-        /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
-        //double k =(imread('testHologram.bmp'))/255*2*pi;
-        g2.drawRenderedImage(buffImg, at);
+        g2.dispose();
+        flag = 2;
+//        canvas = new BufferedImage(buffImg.getWidth(), buffImg.getHeight(), BufferedImage.TYPE_INT_ARGB);
+//        Graphics2D g2D = canvas.createGraphics();
+//        g2D.drawRenderedImage(buffImg, null);
+//        g2D.dispose();
     }
     
     private static int[] parseElement(String s) throws IOException {
@@ -1056,37 +783,6 @@ public class PatternImage {
         return retValue;
     }
 
-    public void paintMichelson() {
-        WritableRaster raster = canvas.getRaster();
-        //System out to make sure the code run thru this function
-        System.out.println("Enter the Michelson");
-        int[] iArray = new int[1];
-        double phase, x, y;
-
-        double phy = Math.toRadians(mirrorPhy);
-        double theta = Math.toRadians(mirrorTheta);
-
-
-        double xcomp = Math.sin(phy) * Math.cos(theta);
-        double ycomp = Math.sin(phy) * Math.sin(theta);
-
-        //double fixpart = 2.0 * Math.PI / lambda;
-        double fixpart = 5.0 * Math.PI / lambda;
-
-        for (int i = 0; i < height; i++) {
-            x = (double) (i - height / 2 + 1) * pxsize;
-            x = xcomp * x;
-            for (int j = 0; j < width; j++) {
-                y = (double) (j - width / 2 + 1) * pxsize;
-                y = ycomp * y;
-                phase = fixpart * (x + y);
-
-                iArray[0] = phase2gray(phase);
-                raster.setPixel(j, i, iArray);
-            }
-        }
-    }
-
     public void slit(int slit) {
         if (slit == 0) {
             slit = 1;
@@ -1118,7 +814,6 @@ public class PatternImage {
             for (int i = 0; i < RowY.length; i++) {
 
 //                if (linePostion != 384) {
-//                    System.out.println(">>>>>>>>>>>>>>>vaoooooooooo");
 //                    RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
 //                / else {
                 if (i == 0) {
@@ -1138,6 +833,8 @@ public class PatternImage {
             g.draw(rect2);
             g.fill(rect2);
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     public void signalProcessing0() {
@@ -1198,6 +895,8 @@ public class PatternImage {
             g.draw(rect2);
             g.fill(rect2);
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
     
     public void signalProcessing() {
@@ -1263,6 +962,8 @@ public class PatternImage {
             g.draw(rect2);
             g.fill(rect2);
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
     
      public void paintTalbot() {
@@ -1315,6 +1016,8 @@ public class PatternImage {
             g.draw(rect2);
             g.fill(rect2);
         }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     public void signalPhoto(BufferedImage buffImg) {
@@ -1337,6 +1040,8 @@ public class PatternImage {
         at.scale(scale, scale);
         /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
         g2.drawRenderedImage(buffImg, at);
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     public void fresnel(BufferedImage buffImg) {
@@ -1373,6 +1078,8 @@ public class PatternImage {
         AffineTransform at = AffineTransform.getTranslateInstance(canvasX - x, canvasY - y);
         at.scale(scale, scale);
         g2.drawRenderedImage(buffImg, at);
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     public void phaseRetarder() {
@@ -1382,6 +1089,8 @@ public class PatternImage {
         Rectangle rect = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
         g.draw(rect);
         g.fill(rect);
+        buferPattern = compute(canvas);
+        flag = 1;
     }
     
     public void paintTalbotPhoto(BufferedImage buffImg) {
@@ -1404,11 +1113,53 @@ public class PatternImage {
         at.scale(scale, scale);
         /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
         g2.drawRenderedImage(buffImg, at);
+        buferPattern = compute(canvas);
+        flag = 1;
     }
     
     public void paintImportFile() {
 
         // TO DO
+        // U1 = Uexp[j(k.r+e)]
+        //    phase = k.r + e
+        //    exp[j(k.r + e)] = cos(phase) + isin(phase)
+        //    fixpart = U = 2.0 * Math.PI / lambda 
+        WritableRaster raster = canvas.getRaster();
+        int[] iArray = new int[1];
+        double x2, y2, phase;
+        double y1;
+        double fixpart = 2.0 * Math.PI / lambda;
+        
+        double phy = Math.toRadians(width_importFile);
+        //double xcomp = Math.sin(phy) * Math.cos(theta);
+           
+        //System.out.println("fixpar: " + fixpart);
+
+        for (int i = 0; i < height; i++) {
+            x2 = (double) (i - height / 2 + 1) * pxsize;
+            //x2 = xcomp * x2;
+            //x2 = (double) (i - height / 2 + 1) * pxsize;
+            //x2 -= (-yoffMichelson / 1000);
+            //x2 = Math.pow(x2, 2.0);
+            //Math.getExponent(x2);
+            //double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
+            for (int j = 0; j < width; j++) {
+                //y2 = (double) (j - width / 2 + 1) * pxsize;
+                //y2 -= (xoffMichelson / 1000);
+                //y1 = y2;
+                //y2 = Math.pow(y2, 2.0);
+
+                //Math.getExponent(y2);
+                phase = fixpart * (k*r + e);
+                //System.out.println("phase: " + phase + " at x =" + i + " and j =" + j);
+                //phase += fixpart2 * x2 * y2;
+
+                iArray[0] = phase2gray(phase);
+                raster.setPixel(j, i, iArray);
+            }
+        }
+        buferPattern = compute(canvas);
+        flag = 1;
     }
     
     public void paintImportFileMichelson(BufferedImage buffImg) {
@@ -1431,6 +1182,8 @@ public class PatternImage {
         at.scale(scale, scale);
         /// AffineTransform at = AffineTransform.getScaleInstance(1920, 1080);
         g2.drawRenderedImage(buffImg, at);
+        buferPattern = compute(canvas);
+        flag = 1;
     }
 
     /**
@@ -1463,20 +1216,4 @@ public class PatternImage {
 
         return resizedImage;
     }
-//    private static BufferedImage resizeImageWithHint(BufferedImage originalImage, int type) {
-//
-//        BufferedImage resizedImage = new BufferedImage(1920, 1080, type);
-//        Graphics2D g = resizedImage.createGraphics();
-//        g.drawImage(originalImage, 0, 0, 1920, 1080, null);
-//        g.dispose();
-//        g.setComposite(AlphaComposite.Src);
-//
-//        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-//                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-//        g.setRenderingHint(RenderingHints.KEY_RENDERING,
-//                RenderingHints.VALUE_RENDER_QUALITY);
-//        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//                RenderingHints.VALUE_ANTIALIAS_ON);
-//        return resizedImage;
-//    }
 }

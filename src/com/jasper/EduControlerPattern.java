@@ -5969,7 +5969,7 @@ public class EduControlerPattern extends OpticsPane {
                     buffImagesCGH1 = ImageIO.read(new File(fileCGH1.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH1, image, fileCGH1);
+                    image.paintCGH1(buffImagesCGH1, fileCGH1);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -6015,7 +6015,7 @@ public class EduControlerPattern extends OpticsPane {
                     buffImagesCGH3 = ImageIO.read(new File(fileCGH3.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH3, image, fileCGH3);
+                    image.paintCGH1(buffImagesCGH3, fileCGH3);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -6062,7 +6062,7 @@ public class EduControlerPattern extends OpticsPane {
                     buffImagesCGH4 = ImageIO.read(new File(fileCGH4.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH4, image, fileCGH4);
+                    image.paintCGH1(buffImagesCGH4, fileCGH4);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -6108,7 +6108,7 @@ public class EduControlerPattern extends OpticsPane {
                     buffImagesCGH5 = ImageIO.read(new File(fileCGH5.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH5, image, fileCGH5);
+                    image.paintCGH1(buffImagesCGH5, fileCGH5);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -6154,7 +6154,7 @@ public class EduControlerPattern extends OpticsPane {
                     buffImagesCGH6 = ImageIO.read(new File(fileCGH6.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH6, image, fileCGH6);
+                    image.paintCGH1(buffImagesCGH6,  fileCGH6);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -6200,7 +6200,7 @@ public class EduControlerPattern extends OpticsPane {
                     buffImagesCGH8 = ImageIO.read(new File(fileCGH8.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH8, image, fileCGH8);
+                    image.paintCGH1(buffImagesCGH8, fileCGH8);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -6246,7 +6246,7 @@ public class EduControlerPattern extends OpticsPane {
                     buffImagesCGH10 = ImageIO.read(new File(fileCGH10.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH10, image, fileCGH10);
+                    image.paintCGH1(buffImagesCGH10, fileCGH10);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
                     imageGenerated = true;
                 } catch (IOException ex) {
@@ -7957,7 +7957,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCGH1DisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH1, image, fileCGH1);
+        image.paintCGH1(buffImagesCGH1, fileCGH1);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
@@ -7965,7 +7965,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
         actionTag = "CGH1";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH1, image, fileCGH1);
+        image.paintCGH1(buffImagesCGH1, fileCGH1);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
 
@@ -8013,7 +8013,7 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             EduPatternJPanel eduPatternJPanel = new EduPatternJPanel();
             pimg = eduPatternJPanel.getPimage();
-            image.paintCGH1(buffImagesCGH1, image, fileCGH1);
+            image.paintCGH1(buffImagesCGH1, fileCGH1);
             EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH1% 2 == 0) {
@@ -8030,7 +8030,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCGH3DisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH3, image, fileCGH3);
+        image.paintCGH1(buffImagesCGH3, fileCGH3);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
@@ -8038,7 +8038,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnActionPerformedCGH3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH3
         actionTag = "CGH3";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH3, image, fileCGH3);
+        image.paintCGH1(buffImagesCGH3, fileCGH3);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
 
@@ -8084,7 +8084,7 @@ public class EduControlerPattern extends OpticsPane {
             JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH3, image, fileCGH3);
+            image.paintCGH1(buffImagesCGH3, fileCGH3);
             EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH3% 2 == 0) {
@@ -8101,7 +8101,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCGH4DisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH4, image, fileCGH4);
+        image.paintCGH1(buffImagesCGH4, fileCGH4);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
@@ -8109,7 +8109,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnActionPerformedCGH4(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH4
         actionTag = "CGH4";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH4, image, fileCGH4);
+        image.paintCGH1(buffImagesCGH4, fileCGH4);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
 
@@ -8155,7 +8155,7 @@ public class EduControlerPattern extends OpticsPane {
             JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH4, image, fileCGH4);
+            image.paintCGH1(buffImagesCGH4, fileCGH4);
             EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH4% 2 == 0) {
@@ -8172,7 +8172,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCGH5DisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH5, image, fileCGH5);
+        image.paintCGH1(buffImagesCGH5, fileCGH5);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
@@ -8180,7 +8180,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnActionPerformedCGH5(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH5
         actionTag = "CGH5";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH5, image, fileCGH5);
+        image.paintCGH1(buffImagesCGH5, fileCGH5);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
 
@@ -8226,7 +8226,7 @@ public class EduControlerPattern extends OpticsPane {
             JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH5, image, fileCGH5);
+            image.paintCGH1(buffImagesCGH5, fileCGH5);
             EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH5% 2 == 0) {
@@ -8243,7 +8243,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCGH6DisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH6, image, fileCGH6);
+        image.paintCGH1(buffImagesCGH6, fileCGH6);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
@@ -8251,7 +8251,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnActionPerformedCGH6(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH6
         actionTag = "CGH6";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH6, image, fileCGH6);
+        image.paintCGH1(buffImagesCGH6, fileCGH6);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
 
@@ -8297,7 +8297,7 @@ public class EduControlerPattern extends OpticsPane {
             JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH6, image, fileCGH6);
+            image.paintCGH1(buffImagesCGH6, fileCGH6);
             EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH6% 2 == 0) {
@@ -8314,7 +8314,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCGH8DisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH8, image, fileCGH8);
+        image.paintCGH1(buffImagesCGH8, fileCGH8);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
@@ -8322,7 +8322,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnActionPerformedCGH8(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH8
         actionTag = "CGH8";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH8, image, fileCGH8);
+        image.paintCGH1(buffImagesCGH8, fileCGH8);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
 
@@ -8368,7 +8368,7 @@ public class EduControlerPattern extends OpticsPane {
             JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH8, image, fileCGH8);
+            image.paintCGH1(buffImagesCGH8, fileCGH8);
             EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH8% 2 == 0) {
@@ -8385,7 +8385,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonCGH10DisplaySecondOn.setEnabled(true);
 
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH10, image, fileCGH10);
+        image.paintCGH1(buffImagesCGH10, fileCGH10);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
@@ -8393,7 +8393,7 @@ public class EduControlerPattern extends OpticsPane {
     private void button11LensOnActionPerformedCGH10(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
         actionTag = "CGH10";
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH10, image, fileCGH10);
+        image.paintCGH1(buffImagesCGH10, fileCGH10);
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
 
@@ -8439,7 +8439,7 @@ public class EduControlerPattern extends OpticsPane {
             JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH10, image, fileCGH10);
+            image.paintCGH1(buffImagesCGH10, fileCGH10);
             EduPatternShowOn.updatePatternSecondDisplay(image, "");
             imageGenerated = true;
             if (countSecondDisplayCGH10% 2 == 0) {
