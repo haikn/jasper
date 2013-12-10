@@ -899,6 +899,11 @@ public class EduControlerPattern extends OpticsPane {
         
         txtXPositionCalibration.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                if(txtXPositionCalibration.getText() == null || txtXPositionCalibration.getText().equals("")){
+                    lblXPosCalibration.setForeground(Color.red);
+                } else {
+                    lblXPosCalibration.setForeground(Color.black);
+                }
                 keyEventGenerateActionPerformedCalibration(ke);
             }
         });
@@ -917,6 +922,11 @@ public class EduControlerPattern extends OpticsPane {
         
         txtYPositionCalibration.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                if(txtYPositionCalibration.getText() == null || txtYPositionCalibration.getText().equals("")){
+                    lblYPosCalibration.setForeground(Color.red);
+                } else {
+                    lblYPosCalibration.setForeground(Color.black);
+                }
                 keyEventGenerateActionPerformedCalibration(ke);
             }
         });

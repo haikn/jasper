@@ -581,7 +581,19 @@ public class PatternImage {
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please select the Experiment or CGH Pattern Import to Fine tuning before", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "There is no pattern to Fine tune. Please select an experiment or import a CGH pattern", "Error", JOptionPane.ERROR_MESSAGE);
+//            for (int i = 0; i < width; i++) {
+//                x = (double) (i - width / 2 + 1) * pxsize;
+//                x = xm * x;
+//                for (int j = 0; j < height; j++) {
+//                    y = (double) (height / 2 - j + 1) * pxsize;
+//                    y = ym * y;
+//
+//                    phase = fixpart * (x + y);
+//                    iArray[0] = phase2gray(phase);
+//                    raster.setPixel(i, j, iArray);
+//                }
+//            }
         }
     }
     
