@@ -977,8 +977,8 @@ public class EduControlerPattern extends OpticsPane {
                 if(txtXPositionCalibration.getText() == null || txtXPositionCalibration.getText().equals("")){
                     lblXPosCalibration.setForeground(Color.red);
                 } else {
-                    double tmp = Math.PI / jSliderXPositionCalibration.getScaledValue();
-                    txtXPositionCalibration.setText(String.valueOf(tmp));
+                    //double tmp = Math.PI / jSliderXPositionCalibration.getScaledValue();
+                    //txtXPositionCalibration.setText(String.valueOf(tmp));
                     lblXPosCalibration.setForeground(Color.black);
                 }
                 keyEventGenerateActionPerformedCalibration(ke);
@@ -1007,8 +1007,8 @@ public class EduControlerPattern extends OpticsPane {
                 if(txtYPositionCalibration.getText() == null || txtYPositionCalibration.getText().equals("")){
                     lblYPosCalibration.setForeground(Color.red);
                 } else {
-                    double tmp = Math.PI / jSliderYPositionCalibration.getScaledValue();
-                    txtYPositionCalibration.setText(String.valueOf(tmp));
+                    //double tmp = Math.PI / jSliderYPositionCalibration.getScaledValue();
+                    //txtYPositionCalibration.setText(String.valueOf(tmp));
                     lblYPosCalibration.setForeground(Color.black);
                 }
                 keyEventGenerateActionPerformedCalibration(ke);
