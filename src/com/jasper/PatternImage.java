@@ -533,15 +533,9 @@ public class PatternImage {
         WritableRaster raster = canvas.getRaster();
         double[] iArray = new double[1];
         double phase, x, y;
-        //Mtheta=3/4*pi;
-        //MPhy = pi/9000
-        //double phy = Math.PI / xoffCalibration;
-        //double theta = Math.PI * yoffCalibration;
-        //double phy = Math.toRadians(xoffCalibration); 
-        //double theta = Math.toRadians(yoffCalibration); 
+        // Matlab formula: Mtheta=3/4*pi;MPhy = pi/9000;
         double phy = xoffCalibration / 9000;
         double thetaValue = 3 * yoffCalibration / 4;
-        //double thetaValue = 3/4 * yoffCalibration;
         double theta = Math.toRadians(thetaValue); 
 
         double xm = Math.sin(phy) * Math.cos(theta);

@@ -977,27 +977,20 @@ public class EduControlerPattern extends OpticsPane {
                 if(txtXPositionCalibration.getText() == null || txtXPositionCalibration.getText().equals("")){
                     lblXPosCalibration.setForeground(Color.red);
                 } else {
-                    //double tmp = Math.PI / jSliderXPositionCalibration.getScaledValue();
-                    //txtXPositionCalibration.setText(String.valueOf(tmp));
                     lblXPosCalibration.setForeground(Color.black);
                 }
                 keyEventGenerateActionPerformedCalibration(ke);
             }
         });
 
-        ///jSliderXPositionCalibration = new DoubleJSlider(-11, 11, 1, 10);
         jSliderXPositionCalibration = new DoubleJSlider(-28, 28, 1, 10);
         jSliderXPositionCalibration.setValue(0);
-        //jSliderXPositionCalibration.setMaximum(3);
-        //jSliderXPositionCalibration.setMinimum(-3);
         txtXPositionCalibration.setText(String.valueOf(jSliderXPositionCalibration.getValue()));
 
         jSliderXPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                //DecimalFormat df = new DecimalFormat("0.####");
-                //double tmp = Math.PI / jSliderXPositionCalibration.getScaledValue();
-                //txtXPositionCalibration.setText(df.format(tmp));
-                txtXPositionCalibration.setText(String.valueOf(jSliderXPositionCalibration.getScaledValue()));
+                DecimalFormat df = new DecimalFormat("0.####");
+                txtXPositionCalibration.setText(df.format(jSliderXPositionCalibration.getScaledValue()));
                 sliderGenerateActionPerformedCalibration(evt);
             }
         });
@@ -1007,25 +1000,20 @@ public class EduControlerPattern extends OpticsPane {
                 if(txtYPositionCalibration.getText() == null || txtYPositionCalibration.getText().equals("")){
                     lblYPosCalibration.setForeground(Color.red);
                 } else {
-                    //double tmp = Math.PI / jSliderYPositionCalibration.getScaledValue();
-                    //txtYPositionCalibration.setText(String.valueOf(tmp));
                     lblYPosCalibration.setForeground(Color.black);
                 }
                 keyEventGenerateActionPerformedCalibration(ke);
             }
         });
 
-        //jSliderYPositionCalibration = new DoubleJSlider(-573, 573, 100, 10);
         jSliderYPositionCalibration = new DoubleJSlider(-1800, 1800, 100, 10);
         jSliderYPositionCalibration.setValue(0);
         txtYPositionCalibration.setText(String.valueOf(jSliderYPositionCalibration.getValue()));
 
         jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                //DecimalFormat df = new DecimalFormat("0.####");
-                //double tmp = Math.PI * jSliderYPositionCalibration.getScaledValue();
-                //txtYPositionCalibration.setText(df.format(tmp));
-                txtYPositionCalibration.setText(String.valueOf(jSliderYPositionCalibration.getScaledValue()));
+                DecimalFormat df = new DecimalFormat("0.####");
+                txtYPositionCalibration.setText(df.format(jSliderYPositionCalibration.getScaledValue()));
                 sliderGenerateActionPerformedCalibration(evt);
             }
         });
