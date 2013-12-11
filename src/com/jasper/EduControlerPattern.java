@@ -9346,7 +9346,7 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageTalbot = "Talbot images: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
     static String logmessagePhase = "Phase retarder: gray=%s";
     static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
-    static String logmessageCalibration = "Calibration: Phy=%s Theta=%s";
+    static String logmessageCalibration = "Fine tuning: Phy=%s Theta=%s";
     static String logmessageSignalPhoto = "Signal photo: widht=%s height=%s";
     static String logmessageTalbotPhoto = "Talbot photo: widht=%s height=%s";
     static String logmessageExp2 = "Amplitude Modulation: widht=%s height=%s";
