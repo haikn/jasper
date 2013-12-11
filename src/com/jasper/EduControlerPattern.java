@@ -4246,6 +4246,107 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(0, 0, 0))
         );
         
+        // Experiment 2
+        panelExp2 = new javax.swing.JPanel();
+        openFile = new javax.swing.JFileChooser();
+        buttonOpenFileExp2 = new javax.swing.JButton();
+        lblPleaseSelectExp2 = new javax.swing.JLabel();
+        buttonSecondExp2 = new javax.swing.JButton();
+        button11LensOnExp2 = new javax.swing.JButton();
+        buttonGeneralExp2 = new javax.swing.JButton();
+        buttonOpenFileExp2.setText("Browse...");
+        buttonOpenFileExp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_openFileActionPerformedExp2(evt);
+            }
+        });
+        lblPleaseSelectExp2.setText("Select the file to import.");
+
+        buttonSecondExp2.setEnabled(false);
+        buttonSecondExp2.setText("Second display ON");
+        buttonSecondExp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesExp2 != null) {
+                    buttonSecondGenerateActionPerformedExp2(evt);
+                    countSecondDisplayExp2++;
+                    if (countSecondDisplayExp2 % 2 == 0) {
+                        buttonSecondExp2.setText("Second display OFF");
+                    } else {
+                        buttonSecondExp2.setText("Second display ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        button11LensOnExp2.setEnabled(false);
+        button11LensOnExp2.setText("1:1 lens ON");
+        button11LensOnExp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesExp2 != null) {
+                    button11LensOnExp2ActionPerformed(evt);
+                    countLenOnExp2++;
+                    if (countLenOnExp2 % 2 == 0) {
+                        button11LensOnExp2.setText("1:1 lens OFF");
+                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
+                    } else {
+                        button11LensOnExp2.setText("1:1 lens ON");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonGeneralExp2.setText("Generate");
+        buttonGeneralExp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (buffImagesExp2 != null) {
+                    buttonGenerateActionPerformedExp2(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        javax.swing.GroupLayout exp2PhotoLayout = new javax.swing.GroupLayout(panelExp2);
+        panelExp2.setLayout(exp2PhotoLayout);
+        exp2PhotoLayout.setHorizontalGroup(
+            exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exp2PhotoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonOpenFileExp2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(exp2PhotoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPleaseSelectExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(exp2PhotoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        exp2PhotoLayout.setVerticalGroup(
+            exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exp2PhotoLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonOpenFileExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseSelectExp2))
+                .addGap(153, 153, 153)
+                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+        
 
         tabbedControl.setBounds(580, 0, 665, 355);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -5047,7 +5148,7 @@ public class EduControlerPattern extends OpticsPane {
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
 
-        jTabbedPaneOptics.addTab("Photo", panelSignalPhoto);
+        jTabbedPaneOptics.addTab("Photo", panelExp2);
 
         //tabbedDesLog.addTab("Description", desMicroscope);
         jScrollDes.setViewportView(desMicroscope);
@@ -5819,6 +5920,7 @@ public class EduControlerPattern extends OpticsPane {
     private static BufferedImage buffImagesCGH6 = null;
     private static BufferedImage buffImagesCGH8 = null;
     private static BufferedImage buffImagesCGH10 = null;
+    private static BufferedImage buffImagesExp2 = null;
     
 
     private File browseForFile(String current) {
@@ -5875,9 +5977,9 @@ public class EduControlerPattern extends OpticsPane {
                     buffImages = ImageIO.read(new File(file.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    //  image.updatePhaseRetarderParameter(zoom, grayLevel);
                     image.signalPhoto(buffImages);
-                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
+                    EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
+                    setLog(genLogSignalPhoto());
                     imageGenerated = true;
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -5890,7 +5992,7 @@ public class EduControlerPattern extends OpticsPane {
 
     }
     
-    private void openFileActionPerformedCalibration(java.awt.event.ActionEvent evt) {
+    private void b_openFileActionPerformedExp2(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int returnVal = openFile.showOpenDialog(this);
         if (returnVal == openFile.APPROVE_OPTION) {
@@ -5920,11 +6022,12 @@ public class EduControlerPattern extends OpticsPane {
                 JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
-                    buffImagesCalibration = ImageIO.read(new File(file.getAbsolutePath()));
+                    buffImagesExp2 = ImageIO.read(new File(file.getAbsolutePath()));
                     //String ext = File.probeContentType(file.getAbsolutePath());
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintFineTuning(buffImagesCalibration);
-                    EduPatternShowOn.updateLensPatternPattern(image, "");
+                    image.signalPhoto(buffImagesExp2);
+                    EduPatternShowOn.updateLensPatternPattern(image, genLogExp2());
+                    setLog(genLogExp2());
                     imageGenerated = true;
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -6026,7 +6129,8 @@ public class EduControlerPattern extends OpticsPane {
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                     //  image.updatePhaseRetarderParameter(zoom, grayLevel);
                     image.paintTalbotPhoto(buffImagesTalbotPhoto);
-                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
+                    EduPatternShowOn.updateLensPatternPattern(image, genLogTalbotPhoto());
+                    setLog(genLogTalbotPhoto());
                     imageGenerated = true;
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -6426,6 +6530,19 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogCalibration() {
         return String.format(logmessageCalibration, Double.toString(xoffCalibration), Double.toString(yoffCalibration));
     }
+    
+    private String genLogSignalPhoto() {
+        return String.format(logmessageSignalPhoto, Double.toString(buffImages.getWidth()), Double.toString(buffImages.getHeight()));
+    }
+    
+    private String genLogTalbotPhoto() {
+        return String.format(logmessageTalbotPhoto, Double.toString(buffImagesTalbotPhoto.getWidth()), Double.toString(buffImagesTalbotPhoto.getHeight()));
+    }
+    
+    private String genLogExp2() {
+        return String.format(logmessageExp2, Double.toString(buffImagesExp2.getWidth()), Double.toString(buffImagesExp2.getHeight()));
+    }
+    
 
     // Lens
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
@@ -7498,8 +7615,8 @@ public class EduControlerPattern extends OpticsPane {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             //   image.updateParameterDrawSignalPhoto(buffImages.get);
             image.signalPhoto(buffImages);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
-            setLog(genLogProcessing());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
+            setLog(genLogSignalPhoto());
             imageGenerated = true;
         }
 
@@ -7510,8 +7627,8 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.signalPhoto(buffImages);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
-            setLog(genLogProcessing());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
+            setLog(genLogSignalPhoto());
             imageGenerated = true;
 
             if (countLenOnPhoto % 2 == 0) {
@@ -7561,8 +7678,8 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
                 image.signalPhoto(buffImages);
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogProcessing());
-                setLog(genLogProcessing());
+                EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
+                setLog(genLogSignalPhoto());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayPhoto % 2 == 0) {
@@ -7572,21 +7689,90 @@ public class EduControlerPattern extends OpticsPane {
             }
         }
     }
-
-    private void sliderGenerateActionPerformedProcessingPhoto(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        actionTag = "ProcessingPhoto";
+    // Experiment 2 function
+    private void buttonGenerateActionPerformedExp2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
+        actionTag = "Experiment2";
         if (parseArguments()) {
-            buttonSecondPhoto.setEnabled(true);
-            button11LensOnPhoto.setEnabled(true);
+            buttonSecondExp2.setEnabled(true);
+            button11LensOnExp2.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            //  image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
-            image.signalPhoto(buffImages);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
-            setLog(genLogProcessing());
+            image.signalPhoto(buffImagesExp2);
+            EduPatternShowOn.updateLensPatternPattern(image, genLogExp2());
+            setLog(genLogExp2());
             imageGenerated = true;
         }
+
     }
+
+    private void button11LensOnExp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnProcessingPhotoActionPerformed
+        actionTag = "Experiment2";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.signalPhoto(buffImagesExp2);
+            EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
+            setLog(genLogSignalPhoto());
+            imageGenerated = true;
+
+            if (countLenOnExp2 % 2 == 0) {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        patternFrameDoubleClick.show();
+                    }
+                });
+
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                magFrameLenon.setResizable(false);
+                
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnExp2--;
+                            button11LensOnExp2.setText("1:1 lens ON");
+                            magFrameLenon.dispose();
+                    }
+                });
+            }
+
+        }
+
+    }//GEN-LAST:event_button11LensOnProcessingPhotoActionPerformed
+
+    private void buttonSecondGenerateActionPerformedExp2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "Experiment2";
+        if (parseArguments()) {
+            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice[] devices = env.getScreenDevices();
+            if (devices.length == 1) {
+                countSecondDisplayExp2--;
+                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
+                image.signalPhoto(buffImagesExp2);
+                EduPatternShowOn.updateLensPatternPattern(image, genLogExp2());
+                setLog(genLogExp2());
+                //EduPatternTest.updateLensPatternPattern(image, genLog());
+                imageGenerated = true;
+                if (countSecondDisplayExp2 % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
+                    patternFrame.dispose();
+                }
+            }
+        }
+    }
+
     /*
      * Phase
      */
@@ -7919,8 +8105,8 @@ public class EduControlerPattern extends OpticsPane {
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.paintTalbotPhoto(buffImagesTalbotPhoto);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
-            setLog("");
+            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbotPhoto());
+            setLog(genLogTalbotPhoto());
             imageGenerated = true;
         }
 
@@ -7931,8 +8117,8 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.paintTalbotPhoto(buffImagesTalbotPhoto);
-            EduPatternShowOn.updateLensPatternPattern(image, "");
-            setLog("");
+            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbotPhoto());
+            setLog(genLogTalbotPhoto());
             imageGenerated = true;
 
             if (countLenOnTalbotPhoto % 2 == 0) {
@@ -7982,8 +8168,8 @@ public class EduControlerPattern extends OpticsPane {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
                 image.paintTalbotPhoto(buffImagesTalbotPhoto);
-                EduPatternShowOn.updatePatternSecondDisplay(image, "");
-                setLog("");
+                EduPatternShowOn.updateLensPatternPattern(image, genLogTalbotPhoto());
+                setLog(genLogTalbotPhoto());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayTalbotPhoto% 2 == 0) {
@@ -8690,6 +8876,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelPhase;
     private javax.swing.JPanel panelSignal;
     private javax.swing.JPanel panelSignalPhoto;
+    private javax.swing.JPanel panelExp2;
     private javax.swing.JPanel panelSlit;
     private javax.swing.JPanel panelDoubleSlit;
     private javax.swing.JPanel panelCGH1;
@@ -8942,6 +9129,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnCGH6 = 1;
     private int countLenOnCGH8 = 1;
     private int countLenOnCGH10 = 1;
+    private int countLenOnExp2 = 1;
     // Second display
     private int countSecondDisplayTelephoto = 1;
     private int countSecondDisplayProcessing = 1;
@@ -8969,6 +9157,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countSecondDisplayCGH6 = 1;
     private int countSecondDisplayCGH8 = 1;
     private int countSecondDisplayCGH10 = 1;
+    private int countSecondDisplayExp2 = 1;
     
     // Check disable lens ON
 //    private int countDisableTelephoto = 0;
@@ -9109,6 +9298,12 @@ public class EduControlerPattern extends OpticsPane {
     private File fileCGH6;
     private File fileCGH8;
     private File fileCGH10;
+    // Experiment 2
+    private javax.swing.JButton buttonOpenFileExp2;
+    private javax.swing.JButton button11LensOnExp2;
+    private javax.swing.JButton buttonGeneralExp2;
+    private javax.swing.JButton buttonSecondExp2;
+    private javax.swing.JLabel lblPleaseSelectExp2;
 
     //End 
     @Override
@@ -9152,4 +9347,7 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessagePhase = "Phase retarder: gray=%s";
     static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
     static String logmessageCalibration = "Calibration: Phy=%s Theta=%s";
+    static String logmessageSignalPhoto = "Signal photo: widht=%s height=%s";
+    static String logmessageTalbotPhoto = "Talbot photo: widht=%s height=%s";
+    static String logmessageExp2 = "Amplitude Modulation: widht=%s height=%s";
 }
