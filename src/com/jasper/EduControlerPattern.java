@@ -2148,6 +2148,16 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedProcessing(evt);
             }
         });
+        text_width_processing_y.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_width_processing_y.getText() == null || text_width_processing_y.getText().equals("")){
+                    lblHeightY.setForeground(Color.red);
+                } else {
+                    lblHeightY.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedProcessing(ke);
+            }
+        });
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -2158,6 +2168,7 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedProcessing(evt);
             }
         });
+        
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_rotation_processing, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -2167,6 +2178,16 @@ public class EduControlerPattern extends OpticsPane {
         s_processing_rotation.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
+            }
+        });
+        text_rotation_processing.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_rotation_processing.getText() == null || text_rotation_processing.getText().equals("")){
+                    lblRotationProcessing.setForeground(Color.red);
+                } else {
+                    lblRotationProcessing.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -2180,6 +2201,16 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedProcessing(evt);
             }
         });
+        text_position_processing_x.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_position_processing_x.getText() == null || text_position_processing_x.getText().equals("")){
+                    lblPosX.setForeground(Color.red);
+                } else {
+                    lblPosX.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedProcessing(ke);
+            }
+        });
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_pos_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -2191,6 +2222,16 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedProcessing(evt);
             }
         });
+        text_position_processing_y.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_position_processing_y.getText() == null || text_position_processing_y.getText().equals("")){
+                    lblPosY.setForeground(Color.red);
+                } else {
+                    lblPosY.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedProcessing(ke);
+            }
+        });
         bindingGroup.addBinding(binding);
 
         jLabelGrayProcessing.setText("Gray level");
@@ -2200,6 +2241,16 @@ public class EduControlerPattern extends OpticsPane {
         s_processing_gray.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
+            }
+        });
+        text_processing_gray.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_processing_gray.getText() == null || text_processing_gray.getText().equals("")){
+                    jLabelGrayProcessing.setForeground(Color.red);
+                } else {
+                    jLabelGrayProcessing.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -3207,6 +3258,16 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
+        text_width_talbot_y.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_width_talbot_y.getText() == null || text_width_talbot_y.getText().equals("")){
+                    lblHeightYTalbot.setForeground(Color.red);
+                } else {
+                    lblHeightYTalbot.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedTalbot(ke);
+            }
+        });
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -3215,6 +3276,16 @@ public class EduControlerPattern extends OpticsPane {
         s_talbot_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        text_height_talbot_y.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_height_talbot_y.getText() == null || text_height_talbot_y.getText().equals("")){
+                    lblHeightXTalbot.setForeground(Color.red);
+                } else {
+                    lblHeightXTalbot.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedTalbot(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -3228,6 +3299,17 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
+        text_rotation_talbot.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_rotation_talbot.getText() == null || text_rotation_talbot.getText().equals("")){
+                    lblRotationtalbot.setForeground(Color.red);
+                } else {
+                    lblRotationtalbot.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedTalbot(ke);
+            }
+        });
+        
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_positionx, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -3237,6 +3319,16 @@ public class EduControlerPattern extends OpticsPane {
         s_talbot_positionx.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        text_position_talbot_x.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_position_talbot_x.getText() == null || text_position_talbot_x.getText().equals("")){
+                    lblPosXTalbot.setForeground(Color.red);
+                } else {
+                    lblPosXTalbot.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedTalbot(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -3250,6 +3342,16 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
+        text_position_talbot_y.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_position_talbot_y.getText() == null || text_position_talbot_y.getText().equals("")){
+                    lblPosYTalbot.setForeground(Color.red);
+                } else {
+                    lblPosYTalbot.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedTalbot(ke);
+            }
+        });
         bindingGroup.addBinding(binding);
 
         jLabelGraytalbot.setText("Gray level");
@@ -3259,6 +3361,16 @@ public class EduControlerPattern extends OpticsPane {
         s_talbot_gray.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        text_talbot_gray.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_talbot_gray.getText() == null || text_talbot_gray.getText().equals("")){
+                    jLabelGraytalbot.setForeground(Color.red);
+                } else {
+                    jLabelGraytalbot.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedTalbot(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -3273,9 +3385,49 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-
+        text_talbot_spacing.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_talbot_spacing.getText() == null || text_talbot_spacing.getText().equals("")){
+                    lblSpacingtalbot.setForeground(Color.red);
+                } else {
+                    lblSpacingtalbot.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedTalbot(ke);
+            }
+        });
+        bindingGroup.addBinding(binding);
+        
+        lblHeightXTalbot.setText("Width X");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_width_x.setMaximum(3866);
+        s_talbot_width_x.setValue(3866);
+        s_talbot_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        
         bindingGroup.addBinding(binding);
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        s_talbot_height_x.setMaximum(image1.getBounds().height);
+        s_talbot_height_x.setValue(100);
+        s_talbot_height_x.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedTalbot(evt);
+            }
+        });
+        text_height_talbot_x.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_height_talbot_x.getText() == null || text_height_talbot_x.getText().equals("")){
+                    lblHeightXTalbot.setForeground(Color.red);
+                } else {
+                    lblHeightXTalbot.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedTalbot(ke);
+            }
+        });
+        bindingGroup.addBinding(binding);
 
 
         buttonGenneratetalbot.setText("Generate");
@@ -3316,29 +3468,6 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_width_x.setMaximum(3866);
-        s_talbot_width_x.setValue(3866);
-        s_talbot_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        lblHeightXTalbot.setText("Width X");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_height_x.setMaximum(image1.getBounds().height);
-        s_talbot_height_x.setValue(100);
-        s_talbot_height_x.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        bindingGroup.addBinding(binding);
-
         javax.swing.GroupLayout jPaneltalbotLayout = new javax.swing.GroupLayout(jPanelTalbot);
         jPanelTalbot.setLayout(jPaneltalbotLayout);
         jPaneltalbotLayout.setHorizontalGroup(
@@ -7659,6 +7788,20 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedTalbot
 
     private void sliderGenerateActionPerformedTalbot(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedTalbot
+        actionTag = "Talbot";
+        if (parseArguments()) {
+            button11LensOntalbot.setEnabled(true);
+            buttonSecondDisplaytalbot.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
+            image.paintTalbot();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
+            setLog(genLogTalbot());
+            imageGenerated = true;
+        }
+    }
+    private void keyeventGenerateActionPerformedTalbot(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyeventGenerateActionPerformedTalbot
         actionTag = "Talbot";
         if (parseArguments()) {
             button11LensOntalbot.setEnabled(true);
