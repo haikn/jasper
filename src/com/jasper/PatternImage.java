@@ -535,8 +535,7 @@ public class PatternImage {
         double phase, x, y;
         // Matlab formula: Mtheta=3/4*pi;MPhy = pi/9000;
         double phy = xoffCalibration / 9000;
-        double thetaValue = 3 * yoffCalibration / 4;
-        double theta = Math.toRadians(thetaValue); 
+        double theta = Math.toRadians(yoffCalibration); 
 
         double xm = Math.sin(phy) * Math.cos(theta);
         double ym = Math.sin(phy) * Math.sin(theta);

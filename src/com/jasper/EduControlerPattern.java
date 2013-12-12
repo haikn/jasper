@@ -1602,12 +1602,12 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        text_single_width.addKeyListener(new KeyAdapter(){
+        text_single_height.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
-                if(text_single_width.getText() == null || text_single_width.getText().equals("")){
-                    lblWidthSlit.setForeground(Color.red);
+                if(text_single_height.getText() == null || text_single_height.getText().equals("")){
+                    lblHeightSlit.setForeground(Color.red);
                 } else {
-                    lblWidthSlit.setForeground(Color.black);
+                    lblHeightSlit.setForeground(Color.black);
                 }
                 keyeventGenerateActionPerformedSlit(ke);
             }
@@ -1773,108 +1773,6 @@ public class EduControlerPattern extends OpticsPane {
                 imageGenerated = true;
             }
         });
-//        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(panelSlit);
-//        panelSlit.setLayout(jPanel4Layout);
-//        jPanel4Layout.setHorizontalGroup(
-//                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addContainerGap()
-//                //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(15, 15, 15)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addComponent(lblHeightSlit)
-//                .addGap(36, 36, 36)
-//                .addComponent(text_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(s_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                //.addComponent(s_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                )
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addComponent(lblGraySlit)
-//                .addGap(5, 5, 5)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addComponent(text_single_gray, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-//                .addComponent(text_single_spacing)))
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addComponent(lblRotationSlit)
-//                .addGap(17, 17, 17)
-//                .addComponent(text_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addComponent(jLabelSpacingSlit)
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addComponent(lblPosSlit)
-//                .addGap(12, 12, 12)
-//                .addComponent(text_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                .addGap(18, 18, 18)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, true)
-//                //.addComponent(s_single_rotation, javax.swing.GroupLayout.DEFAULT_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(s_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(s_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(s_single_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                //.addComponent(s_single_position, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                //.addComponent(s_single_gray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                //.addComponent(s_single_spacing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(5, 5, 5)))
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addGap(0, 0, 0)
-//                .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-//                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)) //.addComponent(comboBoxSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                )
-//                //.addContainerGap(28, Short.MAX_VALUE)
-//                ));
-//        jPanel4Layout.setVerticalGroup(
-//                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-//                .addGap(5, 5, 5)
-//                //.addComponent(comboBoxSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(3, 3, 3)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addGap(3, 3, 3)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                .addGroup(jPanel4Layout.createSequentialGroup()
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblHeightSlit)
-//                .addComponent(text_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(3, 3, 3))
-//                .addComponent(s_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(10, 10, 10)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblRotationSlit)
-//                .addComponent(text_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addComponent(s_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(10, 10, 10)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblPosSlit)
-//                .addComponent(text_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addComponent(s_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(10, 10, 10)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblGraySlit)
-//                .addComponent(text_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                .addComponent(s_single_gray, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(10, 10, 10)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(jLabelSpacingSlit)
-//                .addComponent(text_single_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addComponent(s_single_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(82, 82, 82)
-//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))) //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                )));
         
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(panelSlit);
         panelSlit.setLayout(jPanel4Layout);
@@ -2026,6 +1924,61 @@ public class EduControlerPattern extends OpticsPane {
         s_single_spacingDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
+            }
+        });
+        
+        text_single_heightDoubleSlit.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_heightDoubleSlit.getText() == null || text_single_heightDoubleSlit.getText().equals("")){
+                    lblHeightDoubleSlit.setForeground(Color.red);
+                } else {
+                    lblHeightDoubleSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedDoubleSlit(ke);
+            }
+        });
+        
+        text_single_rotationDoubleSlit.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_rotationDoubleSlit.getText() == null || text_single_rotationDoubleSlit.getText().equals("")){
+                    lblRotationDoubleSlit.setForeground(Color.red);
+                } else {
+                    lblRotationDoubleSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedDoubleSlit(ke);
+            }
+        });
+        
+        text_single_positionDoubleSlit.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_positionDoubleSlit.getText() == null || text_single_positionDoubleSlit.getText().equals("")){
+                    lblPosDoubleSlit.setForeground(Color.red);
+                } else {
+                    lblPosDoubleSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedDoubleSlit(ke);
+            }
+        });
+        
+        text_single_grayDoubleSlit.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_grayDoubleSlit.getText() == null || text_single_grayDoubleSlit.getText().equals("")){
+                    lblGrayDoubleSlit.setForeground(Color.red);
+                } else {
+                    lblGrayDoubleSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedDoubleSlit(ke);
+            }
+        });
+        
+        text_single_spacingDoubleSlit.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_single_spacingDoubleSlit.getText() == null || text_single_spacingDoubleSlit.getText().equals("")){
+                    jLabelSpacingDoubleSlit.setForeground(Color.red);
+                } else {
+                    jLabelSpacingDoubleSlit.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedDoubleSlit(ke);
             }
         });
 
@@ -2261,7 +2214,16 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedProcessing(evt);
             }
         });
-
+        text_processing_spacing.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_processing_spacing.getText() == null || text_processing_spacing.getText().equals("")){
+                    lblSpacingProcessing.setForeground(Color.red);
+                } else {
+                    lblSpacingProcessing.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedProcessing(ke);
+            }
+        });
         bindingGroup.addBinding(binding);
 
 
@@ -2325,6 +2287,16 @@ public class EduControlerPattern extends OpticsPane {
         s_processing_height_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
+            }
+        });
+        text_height_processing_x.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(text_height_processing_x.getText() == null || text_height_processing_x.getText().equals("")){
+                    lblHeightX.setForeground(Color.red);
+                } else {
+                    lblHeightX.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -2515,6 +2487,17 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         bindingGroup.addBinding(binding);
+        
+        txtZoom.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtZoom.getText() == null || txtZoom.getText().equals("")){
+                    lblZoom.setForeground(Color.red);
+                } else {
+                    lblZoom.setForeground(Color.black);
+                }
+                keyeventGenerateActionPerformedPhase(ke);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(panelPhase);
         panelPhase.setLayout(jPanel5Layout);
@@ -2767,6 +2750,39 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
+        
+        txtFocalLensMichelson.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtFocalLensMichelson.getText() == null || txtFocalLensMichelson.getText().equals("")){
+                    lblFocalLensMichelson.setForeground(Color.red);
+                } else {
+                    lblFocalLensMichelson.setForeground(Color.black);
+                }
+                keyenventGenerateActionPerformedLensMichelSon(ke);
+            }
+        });
+        
+        txtXPositionLensMichelson.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtXPositionLensMichelson.getText() == null || txtXPositionLensMichelson.getText().equals("")){
+                    lblXLensMichelson.setForeground(Color.red);
+                } else {
+                    lblXLensMichelson.setForeground(Color.black);
+                }
+                keyenventGenerateActionPerformedLensMichelSon(ke);
+            }
+        });
+        
+        txtYPositionLensMichelson.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                if(txtYPositionLensMichelson.getText() == null || txtYPositionLensMichelson.getText().equals("")){
+                    lblYLensMichelson.setForeground(Color.red);
+                } else {
+                    lblYLensMichelson.setForeground(Color.black);
+                }
+                keyenventGenerateActionPerformedLensMichelSon(ke);
+            }
+        });
 
         javax.swing.GroupLayout jPanelLensMichelsonLayout = new javax.swing.GroupLayout(jPanelLensMichelson);
         jPanelLensMichelson.setLayout(jPanelLensMichelsonLayout);
@@ -2851,6 +2867,7 @@ public class EduControlerPattern extends OpticsPane {
                 buttonGenerateActionPerformedMirrorSpectometer(evt);
             }
         });
+        
 
         buttonMirrorSpectometerLensOn.setEnabled(false);
         buttonMirrorSpectometerLensOn.setText("1:1 lens ON");
@@ -2899,6 +2916,11 @@ public class EduControlerPattern extends OpticsPane {
         
         txtPhyMirrorSpectometer.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                if(txtPhyMirrorSpectometer.getText() == null || txtPhyMirrorSpectometer.getText().equals("")){
+                    lblPhySpectometer.setForeground(Color.red);
+                } else {
+                    lblPhySpectometer.setForeground(Color.black);
+                }
                 keyEventGenerateActionPerformedMirrorSpectometer(ke);
             }
         });
@@ -2916,6 +2938,11 @@ public class EduControlerPattern extends OpticsPane {
         });
         txtThetaMirrorSpectometer.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                if(txtThetaMirrorSpectometer.getText() == null || txtThetaMirrorSpectometer.getText().equals("")){
+                    lblThetaMirrorSpectometer.setForeground(Color.red);
+                } else {
+                    lblThetaMirrorSpectometer.setForeground(Color.black);
+                }
                 keyEventGenerateActionPerformedMirrorSpectometer(ke);
             }
         });
@@ -6869,6 +6896,21 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedLensMichelSon
+    
+    private void keyenventGenerateActionPerformedLensMichelSon(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyenventGenerateActionPerformedLensMichelSon
+        actionTag = "LensMichelson";
+        if (parseArguments()) {
+            jButton11LensOnMichelson.setEnabled(true);
+            jButtonDisplaySecondOnMichelson.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
+            image.paintLensMichelson();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogLensMichelson());
+            setLog(genLogLensMichelson());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_keyenventGenerateActionPerformedLensMichelSon
 
     // Microscope
     private void buttonGenerateActionPerformedMicroscope(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMicroscope
@@ -7409,6 +7451,20 @@ public class EduControlerPattern extends OpticsPane {
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedDoubleSlit
+    private void keyeventGenerateActionPerformedDoubleSlit(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyeventGenerateActionPerformedDoubleSlit
+        actionTag = "DoubleSlit";
+        if (parseArguments()) {
+            buttong11LensOnDoubleSlit.setEnabled(true);
+            buttonSecondDisplayDoubleSlit.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
+            image.slit(2);
+            EduPatternShowOn.updateLensPatternPattern(image, genLogDoubleSlit());
+            setLog(genLogDoubleSlit());
+            imageGenerated = true;
+        }
+    }
 
 //Processing
     private void buttonGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
@@ -7493,6 +7549,20 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
 
     private void sliderGenerateActionPerformedProcessing(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Processing";
+        if (parseArguments()) {
+            button11LensOnProcessing.setEnabled(true);
+            buttonSecondDisplayProcessing.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
+            image.signalProcessing();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
+            setLog(genLogProcessing());
+            imageGenerated = true;
+        }
+    }
+    private void keyeventGenerateActionPerformedProcessing(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyeventGenerateActionPerformedProcessing
         actionTag = "Processing";
         if (parseArguments()) {
             button11LensOnProcessing.setEnabled(true);
@@ -7860,6 +7930,20 @@ public class EduControlerPattern extends OpticsPane {
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
 
     private void sliderGenerateActionPerformedPhase(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Phase";
+        if (parseArguments()) {
+            buttonSecondPhase.setEnabled(true);
+            button11LensOnPhase.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updatePhaseRetarderParameter(zoom, grayLevel);
+            image.phaseRetarder();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
+            setLog(genLogPhase());
+            imageGenerated = true;
+        }
+    }
+    private void keyeventGenerateActionPerformedPhase(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
         actionTag = "Phase";
         if (parseArguments()) {
             buttonSecondPhase.setEnabled(true);
