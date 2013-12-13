@@ -1246,4 +1246,13 @@ public class PatternImage {
 
         return resizedImage;
     }
+    
+    public void paintDefault() {
+        Graphics2D g = (Graphics2D) canvas.getGraphics();
+        g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        g.setColor(new Color((int) 233, (int) 233, (int) 233));
+        Rectangle rect = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
+        g.draw(rect);
+        g.fill(rect);
+    }
 }

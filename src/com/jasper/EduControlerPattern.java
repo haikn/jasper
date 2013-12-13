@@ -188,7 +188,10 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorGeneral = new javax.swing.JButton();
 
         tabbedControl.setAlignmentX(100);
-
+        // Boot screen
+        PatternImage imageBoot = ((EduPatternJPanel) panelPattern).pimage;
+        imageBoot.paintDefault();
+        
         jLabelSelectExperiment.setText("Select Experiment");
         jLabelSelectExperiment.setForeground(Color.red);
 
@@ -203,6 +206,7 @@ public class EduControlerPattern extends OpticsPane {
                             if (selected.equals("      ------ Select experiment ---...")) {
                                 jMenuItemNoSelectActionPerformed(evt);
                                 tmpSelected = 0;
+                                generateActionPerformedDefault(evt);
                             } else if (selected.equals("1. SLM Basic Property Test")) {
                                 jMenuItemTelephotoActionPerformed(evt);
                                 tmpSelected = 1;
@@ -929,8 +933,8 @@ public class EduControlerPattern extends OpticsPane {
         buttonCalibrationGeneral = new javax.swing.JButton();
         
         //lblFocalCalibration.setText("Focal length (cm)");
-        lblXPosCalibration.setText("Phy (mm)");
-        lblYPosCalibration.setText("Theta (mm)");
+        lblXPosCalibration.setText("Deviation angle (degree)");
+        lblYPosCalibration.setText("Rotation (degree)");
         
         buttonCalibrationGeneral.setText("Generate");
         buttonCalibrationGeneral.addActionListener(new java.awt.event.ActionListener() {
@@ -1038,10 +1042,10 @@ public class EduControlerPattern extends OpticsPane {
                         .addGap(15, 15, 15)
                         .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtYPositionCalibration)
-                            .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                        .addGap(25, 25, 25)
+                            .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
                         .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                            .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                             .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 0, 0))
         );
@@ -1095,6 +1099,7 @@ public class EduControlerPattern extends OpticsPane {
                     lblDiagram.setText(null);
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
+                    generateActionPerformedDefault(null);
                 }
                 if (index == 0) {
                     layoutDiagram.removeAll();
@@ -1248,6 +1253,7 @@ public class EduControlerPattern extends OpticsPane {
                     
                 }
                 if (index == 2) {
+                    generateActionPerformedDefault(null);
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
@@ -5191,6 +5197,7 @@ public class EduControlerPattern extends OpticsPane {
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
+        generateActionPerformedDefault(evt);
 
     }//GEN-LAST:event_jMenuItemNoSelectActionPerformed
 
@@ -5260,6 +5267,7 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
         //setTabPanelEnable(jTabbedPaneOptics, true);
+        generateActionPerformedDefault(evt);
 
     }//GEN-LAST:event_jMenuItemTelephotoActionPerformed
 
@@ -5319,6 +5327,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
 
     public void jMenuItemAberrationActionPerformed(java.awt.event.ActionEvent evt) {
@@ -5450,6 +5459,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
 
     public void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {
@@ -5518,6 +5528,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
 
     public void jMenuItemSpectrometerActionPerformed(java.awt.event.ActionEvent evt) {
@@ -5578,6 +5589,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
 
     public void jMenuItemSignalProcessingActionPerformed(java.awt.event.ActionEvent evt) {
@@ -5643,6 +5655,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
 
     public void jMenuItemPhaseShiftingActionPerformed(java.awt.event.ActionEvent evt) {
@@ -5702,6 +5715,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
 
     public void jMenuItemTalbotImagesActionPerformed(java.awt.event.ActionEvent evt) {
@@ -5761,6 +5775,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
 
     public void jMenuItemWavefrontActionPerformed(java.awt.event.ActionEvent evt) {
@@ -5835,6 +5850,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
 
     public void jMenuItemWavelengthActionPerformed(java.awt.event.ActionEvent evt) {
@@ -5893,6 +5909,7 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagram.setText("No Diagram available");
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
+        generateActionPerformedDefault(evt);
     }
     // Optical arguments, which will be parsed before reassigning the values
     private double xoffMicroscope = 0.0, yoffMicroscope = 0.0, focalMicroscope = 1.0;
@@ -6698,7 +6715,9 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogExp2() {
         return String.format(logmessageExp2, Double.toString(buffImagesExp2.getWidth()), Double.toString(buffImagesExp2.getHeight()));
     }
-    
+    private String genLogDefault() {
+        return String.format(logmessageDefault);
+    }
 
     // Lens
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
@@ -9009,6 +9028,16 @@ public class EduControlerPattern extends OpticsPane {
         }
     }
     
+    // selected default
+    private void generateActionPerformedDefault(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
+        actionTag = "default";
+
+        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+        image.paintDefault();
+        EduPatternShowOn.updateLensPatternPattern(image, "");
+        imageGenerated = true;
+    }
+    
     //End
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel panelPattern;
@@ -9547,11 +9576,8 @@ public class EduControlerPattern extends OpticsPane {
 
     void bootScreen() {
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        double xoff = 0.0;
-        double yoff = 0.0;
-        double focal = 522;
-        image.updateLensParameter(xoff, yoff, focal);
-        image.paintLens();
+        image.paintDefault();
+        EduPatternShowOn.updateLensPatternPattern(image, "");
     }
 
     void updateRegenerate() {
@@ -9577,4 +9603,5 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageSignalPhoto = "Signal photo: widht=%s height=%s";
     static String logmessageTalbotPhoto = "Talbot photo: widht=%s height=%s";
     static String logmessageExp2 = "Amplitude Modulation: widht=%s height=%s";
+    static String logmessageDefault = "Boot screen";
 }
