@@ -6715,9 +6715,6 @@ public class EduControlerPattern extends OpticsPane {
     private String genLogExp2() {
         return String.format(logmessageExp2, Double.toString(buffImagesExp2.getWidth()), Double.toString(buffImagesExp2.getHeight()));
     }
-    private String genLogDefault() {
-        return String.format(logmessageDefault);
-    }
 
     // Lens
     private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
@@ -6763,7 +6760,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -6880,7 +6876,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -6985,7 +6980,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -7100,7 +7094,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -7199,7 +7192,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -7313,7 +7305,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -7427,7 +7418,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -7764,7 +7754,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -7877,7 +7866,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -7960,7 +7948,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -8047,7 +8034,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -8155,7 +8141,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -8266,7 +8251,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -8381,7 +8365,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -8470,7 +8453,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -8562,7 +8544,6 @@ public class EduControlerPattern extends OpticsPane {
             Toolkit kit = Toolkit.getDefaultToolkit();
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
-            magFrameLenon.setResizable(false);
 
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
             magFrameLenon.getContentPane().add(mag);
@@ -8706,7 +8687,6 @@ public class EduControlerPattern extends OpticsPane {
             Toolkit kit = Toolkit.getDefaultToolkit();
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
-            magFrameLenon.setResizable(false);
 
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
             magFrameLenon.getContentPane().add(mag);
@@ -8848,7 +8828,6 @@ public class EduControlerPattern extends OpticsPane {
             Toolkit kit = Toolkit.getDefaultToolkit();
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
-            magFrameLenon.setResizable(false);
 
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
             magFrameLenon.getContentPane().add(mag);
@@ -8919,7 +8898,6 @@ public class EduControlerPattern extends OpticsPane {
             Toolkit kit = Toolkit.getDefaultToolkit();
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
-            magFrameLenon.setResizable(false);
 
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
             magFrameLenon.getContentPane().add(mag);
@@ -8990,7 +8968,6 @@ public class EduControlerPattern extends OpticsPane {
             Toolkit kit = Toolkit.getDefaultToolkit();
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
-            magFrameLenon.setResizable(false);
 
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
             magFrameLenon.getContentPane().add(mag);
