@@ -116,6 +116,7 @@ public class PatternImage {
     private File fileCGH1;
     private double[][] buferPattern;
     private byte flag = 0;
+    private boolean tuningFlag = false;
     // title string
     public String title;
 
@@ -371,6 +372,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     // Michelson Lens algorithms
@@ -403,6 +405,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     // Microscope algorithms
@@ -434,6 +437,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
     // Cylindircal algorithms
     public void paintCylindircal() {
@@ -464,6 +468,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     // Mirror algorithms
@@ -494,6 +499,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     // Mirror Spectrometer algorithms
@@ -525,6 +531,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
         
     }
 
@@ -533,14 +540,14 @@ public class PatternImage {
         WritableRaster raster = canvas.getRaster();
         double[] iArray = new double[1];
         double phase, x, y;
-        // Matlab formula: Mtheta=3/4*pi;MPhy = pi/9000;
-        double phy = xoffCalibration / 9000;
+        //phy and theta uses "radian" 
+        double phy = Math.toRadians(xoffCalibration);
         double theta = Math.toRadians(yoffCalibration); 
 
         double xm = Math.sin(phy) * Math.cos(theta);
         double ym = Math.sin(phy) * Math.sin(theta);
         double fixpart = 2.0 * Math.PI / lambda;
-        if(flag == 2) {
+        if(tuningFlag && flag == 2) {
             try {
                 String canonicalPathTmp = fileCGH1.getCanonicalPath();
                 String canonicalPath = canonicalPathTmp.substring(0, canonicalPathTmp.length() - 4) + "tmp.jpg";
@@ -551,7 +558,6 @@ public class PatternImage {
                 
                 cHGPattern = compute(tmpFile);
                 tmpFile.delete();
-                
                 for (int i = 0; i < width; i++) {
                     x = (double) (i - width / 2 + 1) * pxsize;
                     x = xm * x;
@@ -568,7 +574,7 @@ public class PatternImage {
                 Logger.getLogger(PatternImage.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-        } else if (flag == 1) {
+        } else if (tuningFlag && flag == 1) {
             for (int i = 0; i < width; i++) {
                 x = (double) (i - width / 2 + 1) * pxsize;
                 x = xm * x;
@@ -700,6 +706,7 @@ public class PatternImage {
         g2.drawImage(buffImg, null, width, width);
         g2.dispose();
         flag = 2;
+        tuningFlag = true;
 //        canvas = new BufferedImage(buffImg.getWidth(), buffImg.getHeight(), BufferedImage.TYPE_INT_ARGB);
 //        Graphics2D g2D = canvas.createGraphics();
 //        g2D.drawRenderedImage(buffImg, null);
@@ -848,6 +855,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     public void signalProcessing0() {
@@ -910,6 +918,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
     
     public void signalProcessing() {
@@ -977,6 +986,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
     
      public void paintTalbot() {
@@ -1031,6 +1041,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     public void signalPhoto(BufferedImage buffImg) {
@@ -1055,6 +1066,7 @@ public class PatternImage {
         g2.drawRenderedImage(buffImg, at);
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     public void fresnel(BufferedImage buffImg) {
@@ -1093,6 +1105,7 @@ public class PatternImage {
         g2.drawRenderedImage(buffImg, at);
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     public void phaseRetarder() {
@@ -1104,6 +1117,7 @@ public class PatternImage {
         g.fill(rect);
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
     
     public void paintTalbotPhoto(BufferedImage buffImg) {
@@ -1128,6 +1142,7 @@ public class PatternImage {
         g2.drawRenderedImage(buffImg, at);
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
     
     public void paintImportFile() {
@@ -1173,6 +1188,7 @@ public class PatternImage {
         }
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
     
     public void paintImportFileMichelson(BufferedImage buffImg) {
@@ -1197,6 +1213,7 @@ public class PatternImage {
         g2.drawRenderedImage(buffImg, at);
         buferPattern = compute(canvas);
         flag = 1;
+        tuningFlag = true;
     }
 
     /**
