@@ -936,6 +936,18 @@ public class EduControlerPattern extends OpticsPane {
         lblXPosCalibration.setText("Deviation angle (degree)");
         lblYPosCalibration.setText("Rotation (degree)");
         
+        buttonCalibrationReset = new javax.swing.JButton();
+        buttonCalibrationReset.setText("Default");
+        buttonCalibrationReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtXPositionCalibration.setText("0");
+                txtYPositionCalibration.setText("0");
+                jSliderXPositionCalibration.setValue(0);
+                jSliderYPositionCalibration.setValue(0);
+                buttonGenerateActionPerformedCalibration(evt);
+            }
+        });
+        
         buttonCalibrationGeneral.setText("Generate");
         buttonCalibrationGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1030,6 +1042,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(22, 22, 22)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
+                        .addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1069,6 +1083,7 @@ public class EduControlerPattern extends OpticsPane {
                         .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(203, 203, 203)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -9491,6 +9506,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonCalibrationLensOn;
     private javax.swing.JButton buttonCalibrationDisplaySecondOn;
     private javax.swing.JButton buttonCalibrationGeneral;
+    private javax.swing.JButton buttonCalibrationReset;
     // Description
     private javax.swing.JLabel desFullScreen;
     private javax.swing.JLabel desNoSelect = new JLabel("");
