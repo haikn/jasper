@@ -1775,7 +1775,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         s_single_height.setMaximum(image1.getBounds().height);
-        s_single_height.setValue(0);
+        s_single_height.setValue(100);
         s_single_height.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
@@ -1992,7 +1992,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         s_single_heightDoubleSlit.setMaximum(image1.getBounds().height);
-        s_single_heightDoubleSlit.setValue(0);
+        s_single_heightDoubleSlit.setValue(100);
         s_single_heightDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
