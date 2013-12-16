@@ -43,7 +43,7 @@ public class KeyReaderTrial {
                         return true;
                     }
                 } else if (m.equals("12") ){
-                    if( dCompare <= 15) {
+                    if( dCompare <= 30) {
                         return true;
                     }
                 }

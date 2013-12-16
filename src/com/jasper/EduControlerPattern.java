@@ -1081,12 +1081,13 @@ public class EduControlerPattern extends OpticsPane {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
                 if (index == 1) {
+                    generateActionPerformedDefault(null);
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
                     
-                    jSliderYPositionCalibration.setValue(0);
-                    jSliderXPositionCalibration.setValue(0);
+                    //jSliderYPositionCalibration.setValue(0);
+                    //jSliderXPositionCalibration.setValue(0);
                     
                     tabbedDesLog.addTab("Description", desCalibration);
                     jTextAreaLog.setColumns(20);
@@ -1099,7 +1100,7 @@ public class EduControlerPattern extends OpticsPane {
                     lblDiagram.setText(null);
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
-                    generateActionPerformedDefault(null);
+                    
                 }
                 if (index == 0) {
                     layoutDiagram.removeAll();
@@ -1132,6 +1133,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 2) {
                         jScrollDes.setViewportView(desMicroscope);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1145,6 +1149,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 3) {
                         jScrollDes.setViewportView(desAberration);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1158,6 +1165,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 4) {
                         jScrollDes.setViewportView(desMichelson);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1171,6 +1181,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 5) {
                         jScrollDes.setViewportView(desDiffaction);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1184,6 +1197,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 6) {
                         jScrollDes.setViewportView(desSpectrometer);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1197,6 +1213,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 7) {
                         jScrollDes.setViewportView(desSignalProcessing);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1210,6 +1229,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 8) {
                         jScrollDes.setViewportView(desPhaseRetarder);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1223,6 +1245,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 9) {
                         jScrollDes.setViewportView(desTalbotImage);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1236,6 +1261,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 10) {
                         jScrollDes.setViewportView(desWavefront);
                         tabbedDesLog.addTab("Description", jScrollDes);
@@ -1249,6 +1277,9 @@ public class EduControlerPattern extends OpticsPane {
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
+                        
+//                        jSliderYPositionCalibration.setValue(0);
+//                        jSliderXPositionCalibration.setValue(0);
                     }
                     
                 }
