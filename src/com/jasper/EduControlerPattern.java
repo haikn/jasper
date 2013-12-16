@@ -244,7 +244,7 @@ public class EduControlerPattern extends OpticsPane {
                         }
         });
 
-        jLabel3.setText("Focal length (cm)");
+        jLabel3.setText("Focal length (mm)");
         jLabel4.setText("X Position (mm)");
         jLabel2.setText("Y Position (mm)");
 
@@ -345,7 +345,7 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         jSliderFocalLens = new DoubleJSlider(-1000, 1000, 1000, 1);
-        jSliderFocalLens.setValue(522);
+        jSliderFocalLens.setValue(0);
         txtFocalLens.setText(String.valueOf(jSliderFocalLens.getValue()));
 
         jSliderFocalLens.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -428,7 +428,7 @@ public class EduControlerPattern extends OpticsPane {
         // END Telephone lens
 
         // Microscope
-        lblFocalMicroscope.setText("Focal length (cm)");
+        lblFocalMicroscope.setText("Focal length (mm)");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalMicroscope, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalMicroscope, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -573,7 +573,7 @@ public class EduControlerPattern extends OpticsPane {
 
         // BEGIN Panel Cyllindrical
 
-        lblFocalCyllin.setText("Focal length (cm)");
+        lblFocalCyllin.setText("Focal length (mm)");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -581,7 +581,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        lblYPosCyllin.setText("Rotation (cm)");
+        lblYPosCyllin.setText("Rotation (degree)");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -659,7 +659,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderFocalCyllin.setMaximum(100);
         jSliderFocalCyllin.setMinimum(-100);
-        jSliderFocalCyllin.setValue(1);
+        jSliderFocalCyllin.setValue(0);
         jSliderFocalCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedCyllin(evt);
@@ -698,7 +698,7 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                 //.addComponent(lblXPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblYPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(45, 45, 45)
+                .addGap(20, 20, 20)
                 .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(txtYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addComponent(txtFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
@@ -750,8 +750,8 @@ public class EduControlerPattern extends OpticsPane {
         // END Panel Cyllindrical
 
         // BEGIN Mirror
-        lblPhy.setText("Phy");
-        lblThetaMirror.setText("Theta");
+        lblPhy.setText("Diffraction angle (degree)");
+        lblThetaMirror.setText("Rotation (degree)");
 
         buttonMirrorGeneral.setText("Generate");
         buttonMirrorGeneral.addActionListener(new java.awt.event.ActionListener() {
@@ -794,7 +794,7 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         jSliderPhyMirror = new DoubleJSlider(-28, 28, 10, 10);
-        jSliderPhyMirror.setValue(1);
+        jSliderPhyMirror.setValue(0);
         txtPhyMirror.setText(String.valueOf(jSliderPhyMirror.getValue()));
 
         jSliderPhyMirror.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -828,7 +828,7 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         jSliderThetaMirror = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderThetaMirror.setValue(1);
+        jSliderThetaMirror.setValue(0);
         txtThetaMirror.setText(String.valueOf(jSliderThetaMirror.getValue()));
 
         jSliderThetaMirror.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -838,56 +838,113 @@ public class EduControlerPattern extends OpticsPane {
                 sliderGenerateActionPerformedMirror(evt);
             }
         });
-
+        
         javax.swing.GroupLayout jPanelMirrorlLayout = new javax.swing.GroupLayout(jPanelMirror);
         jPanelMirror.setLayout(jPanelMirrorlLayout);
         jPanelMirrorlLayout.setHorizontalGroup(
-                jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblThetaMirror)
-                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                .addComponent(lblPhy, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(txtThetaMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addComponent(txtPhyMirror))))
-                .addGap(5, 5, 5)
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
-                .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+            jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMirrorlLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE)));
+                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+                        //.addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        //.addGap(18, 18, 18)
+                        .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+                        .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblThetaMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                            .addComponent(lblPhy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtThetaMirror)
+                            .addComponent(txtPhyMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                            .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 0, 0))
+        );
         jPanelMirrorlLayout.setVerticalGroup(
-                jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblPhy)
-                .addComponent(txtPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblThetaMirror)
-                .addComponent(txtThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPhy)
+                        .addComponent(txtPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblThetaMirror)
+                            .addComponent(txtThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(139, 139, 139)
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
+                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    //.addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+
+//        javax.swing.GroupLayout jPanelMirrorlLayout = new javax.swing.GroupLayout(jPanelMirror);
+//        jPanelMirror.setLayout(jPanelMirrorlLayout);
+//        jPanelMirrorlLayout.setHorizontalGroup(
+//                jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+//                .addContainerGap()
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addComponent(lblThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+//                .addComponent(lblPhy, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(5, 5, 5)
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                .addComponent(txtThetaMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+//                .addComponent(txtPhyMirror))))
+//                .addGap(5, 5, 5)
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+//                .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+//                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+//                .addGap(15, 15, 15)
+//                .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(18, 18, 18)
+//                .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(18, 18, 18)
+//                .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+//                //.addContainerGap(23, Short.MAX_VALUE)
+//                ));
+//        jPanelMirrorlLayout.setVerticalGroup(
+//                jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
+//                .addGap(21, 21, 21)
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                .addComponent(lblPhy)
+//                .addComponent(txtPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                .addGap(15, 15, 15)
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                .addComponent(lblThetaMirror)
+//                .addComponent(txtThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                .addGap(139, 139, 139)
+//                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+//                .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                ));
 
         jTabbedControler.addTab("Mirror", jPanelMirror);
 
@@ -1042,8 +1099,8 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(22, 22, 22)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                        .addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        //.addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        //.addGap(18, 18, 18)
                         .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1083,14 +1140,14 @@ public class EduControlerPattern extends OpticsPane {
                         .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(203, 203, 203)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    //.addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         
-        tabbedControl.addTab("Fine tuning", panelCalebration);
+        tabbedControl.addTab("Beam shifting", panelCalebration);
         tabbedControl.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -1711,14 +1768,14 @@ public class EduControlerPattern extends OpticsPane {
         // s_single_width.setMaximum(image1.getBounds().width);
         // s_single_width.setValue(image1.getBounds().width);
         s_single_width.setMaximum(3866);
-        s_single_width.setValue(3866);
+        s_single_width.setValue(0);
         s_single_width.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
             }
         });
         s_single_height.setMaximum(image1.getBounds().height);
-        s_single_height.setValue(100);
+        s_single_height.setValue(0);
         s_single_height.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
@@ -1741,21 +1798,21 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         s_single_gray.setMaximum(255);
-        s_single_gray.setValue(255);
+        s_single_gray.setValue(0);
         s_single_gray.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
             }
         });
         s_single_spacing.setMaximum(image1.getBounds().height);
-        s_single_spacing.setValue(400);
+        s_single_spacing.setValue(0);
         s_single_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
             }
         });
         s_single_spacing.setMaximum(image1.getBounds().height);
-        s_single_spacing.setValue(400);
+        s_single_spacing.setValue(0);
         s_single_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
@@ -1928,14 +1985,14 @@ public class EduControlerPattern extends OpticsPane {
         // s_single_width.setMaximum(image1.getBounds().width);
         // s_single_width.setValue(image1.getBounds().width);
         s_single_widthDoubleSlit.setMaximum(3866);
-        s_single_widthDoubleSlit.setValue(3866);
+        s_single_widthDoubleSlit.setValue(0);
         s_single_widthDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
             }
         });
         s_single_heightDoubleSlit.setMaximum(image1.getBounds().height);
-        s_single_heightDoubleSlit.setValue(100);
+        s_single_heightDoubleSlit.setValue(0);
         s_single_heightDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
@@ -1958,21 +2015,21 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         s_single_grayDoubleSlit.setMaximum(255);
-        s_single_grayDoubleSlit.setValue(255);
+        s_single_grayDoubleSlit.setValue(0);
         s_single_grayDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
             }
         });
         s_single_spacingDoubleSlit.setMaximum(image1.getBounds().height);
-        s_single_spacingDoubleSlit.setValue(400);
+        s_single_spacingDoubleSlit.setValue(0);
         s_single_spacingDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
             }
         });
         s_single_spacingDoubleSlit.setMaximum(image1.getBounds().height);
-        s_single_spacingDoubleSlit.setValue(400);
+        s_single_spacingDoubleSlit.setValue(0);
         s_single_spacingDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
@@ -2194,7 +2251,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_width_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_width_y.setMaximum(image1.getBounds().width);
-        s_processing_width_y.setValue(100);
+        s_processing_width_y.setValue(0);
         s_processing_width_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -2214,7 +2271,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_height_y.setMaximum(9999);
-        s_processing_height_y.setValue(9999);
+        s_processing_height_y.setValue(0);
         s_processing_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -2289,7 +2346,7 @@ public class EduControlerPattern extends OpticsPane {
         jLabelGrayProcessing.setText("Gray level");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_gray.setMaximum(255);
-        s_processing_gray.setValue(255);
+        s_processing_gray.setValue(0);
         s_processing_gray.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -2374,7 +2431,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_width_x.setMaximum(3866);
-        s_processing_width_x.setValue(3866);
+        s_processing_width_x.setValue(0);
         s_processing_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -2386,7 +2443,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_height_x.setMaximum(image1.getBounds().height);
-        s_processing_height_x.setValue(100);
+        s_processing_height_x.setValue(0);
         s_processing_height_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -2766,7 +2823,7 @@ public class EduControlerPattern extends OpticsPane {
         /*
          * Lens Michelson
          */
-        lblFocalLensMichelson.setText("Focal length (cm)");
+        lblFocalLensMichelson.setText("Focal length (mm)");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -2840,7 +2897,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderFocalLensMichelson.setMaximum(1000);
         jSliderFocalLensMichelson.setMinimum(-1000);
-        jSliderFocalLensMichelson.setValue(522);
+        jSliderFocalLensMichelson.setValue(0);
         jSliderFocalLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 String tmp = txtFocalLensMichelson.getText();
@@ -2960,9 +3017,9 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorSpectometerDisplaySecondOn = new javax.swing.JButton();
         buttonMirrorSpectometerGeneral = new javax.swing.JButton();
 
-        lblPhySpectometer.setText("Phy");
+        lblPhySpectometer.setText("Diffraction angle (degree)");
 
-        lblThetaMirrorSpectometer.setText("Theta");
+        lblThetaMirrorSpectometer.setText("Rotation (degree)");
 
         buttonMirrorSpectometerGeneral.setText("Generate");
         buttonMirrorSpectometerGeneral.addActionListener(new java.awt.event.ActionListener() {
@@ -3006,7 +3063,7 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         jSliderPhyMirrorSpectometer = new DoubleJSlider(-28, 28, 10, 10);
-        jSliderPhyMirrorSpectometer.setValue(1);
+        jSliderPhyMirrorSpectometer.setValue(0);
         txtPhyMirrorSpectometer.setText(String.valueOf(jSliderPhyMirrorSpectometer.getValue()));
 
         jSliderPhyMirrorSpectometer.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -3029,7 +3086,7 @@ public class EduControlerPattern extends OpticsPane {
         });
         
         jSliderThetaMirrorSpectometer = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderThetaMirrorSpectometer.setValue(1);
+        jSliderThetaMirrorSpectometer.setValue(0);
         txtThetaMirrorSpectometer.setText(String.valueOf(jSliderThetaMirrorSpectometer.getValue()));
 
         jSliderThetaMirrorSpectometer.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -3060,17 +3117,17 @@ public class EduControlerPattern extends OpticsPane {
                 .addContainerGap()
                 .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(5, 5, 5)
-                .addComponent(lblThetaMirrorSpectometer)
+                .addComponent(lblThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(lblPhySpectometer)
-                .addGap(28, 28, 28)
+                .addGap(15, 15, 15)
                 .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(txtThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addComponent(txtPhyMirrorSpectometer))))
                 .addGap(5, 5, 5)
                 .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderPhyMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jSliderPhyMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                 .addComponent(jSliderThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -3304,7 +3361,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_width_y.setMaximum(image1.getBounds().width);
-        s_talbot_width_y.setValue(100);
+        s_talbot_width_y.setValue(0);
         s_talbot_width_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
@@ -3324,7 +3381,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_height_y.setMaximum(9999);
-        s_talbot_height_y.setValue(9999);
+        s_talbot_height_y.setValue(0);
         s_talbot_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
@@ -3409,7 +3466,7 @@ public class EduControlerPattern extends OpticsPane {
         jLabelGraytalbot.setText("Gray level");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_gray.setMaximum(255);
-        s_talbot_gray.setValue(255);
+        s_talbot_gray.setValue(0);
         s_talbot_gray.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
@@ -3452,7 +3509,7 @@ public class EduControlerPattern extends OpticsPane {
         lblHeightXTalbot.setText("Width X");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_width_x.setMaximum(3866);
-        s_talbot_width_x.setValue(3866);
+        s_talbot_width_x.setValue(0);
         s_talbot_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
@@ -3463,7 +3520,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_height_x.setMaximum(image1.getBounds().height);
-        s_talbot_height_x.setValue(100);
+        s_talbot_height_x.setValue(0);
         s_talbot_height_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
@@ -5618,7 +5675,7 @@ public class EduControlerPattern extends OpticsPane {
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
 
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirrorSpectometer);
+        jTabbedPaneOptics.addTab("Diffraction Pattern", jPanelMirrorSpectometer);
         jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH6);
 
         //tabbedDesLog.addTab("Description", desSpectrometer);

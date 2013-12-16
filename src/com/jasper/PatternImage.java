@@ -447,10 +447,10 @@ public class PatternImage {
         double x1, y1, x2, phase;
 
         double fixpart2 = 2.0 * Math.PI / lambda;
-        double fixpart = Math.PI / lambda / focalCyllin;
+        double fixpart = Math.PI / lambda / (focalCyllin * 10);
 
-        double costheta = Math.cos(Math.toRadians(yoffCyllin));
-        double sintheta = Math.sin(Math.toRadians(yoffCyllin));
+        double costheta = Math.cos(Math.toRadians((yoffCyllin * 10)));
+        double sintheta = Math.sin(Math.toRadians((yoffCyllin * 10)));
 
         for (int i = 0; i < height; i++) {
             x1 = (double) (i - height / 2 + 1) * pxsize;

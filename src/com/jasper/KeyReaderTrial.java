@@ -33,17 +33,16 @@ public class KeyReaderTrial {
         String d = endDate.substring(8, 10);
         String m = endDate.substring(5, 7);
         int dCompare = Integer.parseInt(d);
-        int mCompare = Integer.parseInt(m);
         if(key == null || key.equals("")) {
                 return false;
         } else {
-            if(key.equals("trialversion") && y.equals("2013")) {
-                if(m.equals("11")) {
-                    if( dCompare > 13) {
+            if(key.equals("trialversion")) {
+                if(m.equals("12") && y.equals("2013")) {
+                    if( dCompare >= 15) {
                         return true;
                     }
-                } else if (m.equals("12") ){
-                    if( dCompare <= 30) {
+                } else if (m.equals("1") && y.equals("2014")){
+                    if( dCompare <= 31) {
                         return true;
                     }
                 }
