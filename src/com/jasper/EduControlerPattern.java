@@ -1768,7 +1768,7 @@ public class EduControlerPattern extends OpticsPane {
         // s_single_width.setMaximum(image1.getBounds().width);
         // s_single_width.setValue(image1.getBounds().width);
         s_single_width.setMaximum(3866);
-        s_single_width.setValue(0);
+        s_single_width.setValue(3866);
         s_single_width.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
@@ -1798,7 +1798,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         s_single_gray.setMaximum(255);
-        s_single_gray.setValue(0);
+        s_single_gray.setValue(255);
         s_single_gray.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedSlit(evt);
@@ -1985,7 +1985,7 @@ public class EduControlerPattern extends OpticsPane {
         // s_single_width.setMaximum(image1.getBounds().width);
         // s_single_width.setValue(image1.getBounds().width);
         s_single_widthDoubleSlit.setMaximum(3866);
-        s_single_widthDoubleSlit.setValue(0);
+        s_single_widthDoubleSlit.setValue(3866);
         s_single_widthDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
@@ -2015,7 +2015,7 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         s_single_grayDoubleSlit.setMaximum(255);
-        s_single_grayDoubleSlit.setValue(0);
+        s_single_grayDoubleSlit.setValue(255);
         s_single_grayDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedDoubleSlit(evt);
@@ -2271,7 +2271,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_height_y.setMaximum(9999);
-        s_processing_height_y.setValue(0);
+        s_processing_height_y.setValue(9999);
         s_processing_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -2346,7 +2346,7 @@ public class EduControlerPattern extends OpticsPane {
         jLabelGrayProcessing.setText("Gray level");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_gray.setMaximum(255);
-        s_processing_gray.setValue(0);
+        s_processing_gray.setValue(255);
         s_processing_gray.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -2431,7 +2431,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_width_x.setMaximum(3866);
-        s_processing_width_x.setValue(0);
+        s_processing_width_x.setValue(3866);
         s_processing_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedProcessing(evt);
@@ -3381,7 +3381,7 @@ public class EduControlerPattern extends OpticsPane {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_height_y.setMaximum(9999);
-        s_talbot_height_y.setValue(0);
+        s_talbot_height_y.setValue(9999);
         s_talbot_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
@@ -3466,7 +3466,7 @@ public class EduControlerPattern extends OpticsPane {
         jLabelGraytalbot.setText("Gray level");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_gray.setMaximum(255);
-        s_talbot_gray.setValue(0);
+        s_talbot_gray.setValue(255);
         s_talbot_gray.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
@@ -3509,7 +3509,7 @@ public class EduControlerPattern extends OpticsPane {
         lblHeightXTalbot.setText("Width X");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_width_x.setMaximum(3866);
-        s_talbot_width_x.setValue(0);
+        s_talbot_width_x.setValue(3866);
         s_talbot_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
