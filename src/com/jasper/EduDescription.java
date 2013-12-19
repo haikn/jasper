@@ -155,5 +155,5 @@ public class EduDescription {
     public static javax.swing.JLabel desCalibration =
             new JLabel("");
     public static javax.swing.JLabel  desImportfile =
-            new JLabel("");
+            new JLabel("<html><b>No description available</b><br></html>");
 }

@@ -1157,19 +1157,19 @@ public class EduControlerPattern extends OpticsPane {
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
-//                    layoutDiagram.hide();
-//                    tabbedDesLog.hide();
-                    //jSliderYPositionCalibration.setValue(0);
-                    //jSliderXPositionCalibration.setValue(0);
+                    //jScrollDes.removeAll();
                     
-                    tabbedDesLog.addTab("Description", desCalibration);
+                    jScrollDes.getViewport();
+                    tabbedDesLog.addTab("Description", jScrollDes);
+                    
+                    //tabbedDesLog.addTab("Description", desCalibration);
                     jTextAreaLog.setColumns(20);
                     jTextAreaLog.setRows(5);
                     jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
                     jScrollPane2.setViewportView(jTextAreaLog);
                     tabbedDesLog.addTab("Log", jScrollPane2);
 
-                    lblDiagram.setIcon(null);
+                    lblDiagram.setIcon(lblDiagram.getIcon());
                     lblDiagram.setText(null);
                     //lblDiagram.setText("No Diagram available");
                     diagramLens.add(lblDiagram);
@@ -1182,7 +1182,7 @@ public class EduControlerPattern extends OpticsPane {
                     tabbedDesLog.removeAll();
                     // check selected
                     if (tmpSelected == 0) {
-                        jScrollDes.setViewportView(desTelephotoLens);
+                        //jScrollDes.setViewportView(desTelephotoLens);
                         tabbedDesLog.addTab("Description", desNoSelect);
                         jTextAreaLog.setColumns(20);
                         jTextAreaLog.setRows(5);
@@ -1371,8 +1371,8 @@ public class EduControlerPattern extends OpticsPane {
                     tabbedDesLog.addTab("Log", jScrollPane2);
 
                     lblDiagram.setIcon(null);
-                    lblDiagram.setText(null);
-                    //lblDiagram.setText("No Diagram available");
+                    //lblDiagram.setText(null);
+                    lblDiagram.setText("No Diagram available");
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
                 }
