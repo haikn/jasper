@@ -47,6 +47,7 @@ public class EduUIMainView extends javax.swing.JFrame {
            // panelSignalProcessing = new com.jasper.SignalProcessing();
             //jPanelExperimentDefault = new ExperimentDefault();
             jScrollPane2 = new javax.swing.JScrollPane();
+            jScrollPaneApp = new javax.swing.JScrollPane();
             jTextAreaLog = new javax.swing.JTextArea();
             jTextAreaDesc = new javax.swing.JTextArea();
             jMenuBarMain = new javax.swing.JMenuBar();
@@ -113,7 +114,8 @@ public class EduUIMainView extends javax.swing.JFrame {
 
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+            //jScrollPaneApp.setViewportView(panelOptic);
+            jScrollPaneApp.getViewport().setView(panelOptic);
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
@@ -121,13 +123,13 @@ public class EduUIMainView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelOptic))
+                    .addComponent(jScrollPaneApp))
                     .addGap(5, 5, 5)));
             layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(panelOptic, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneApp, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(5, 5, 5)));
 
@@ -260,6 +262,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JMenuItem jMenuItemImportExperiment;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPaneApp;
     private javax.swing.JPanel jTabbedPaneOptics;
     private javax.swing.JTextArea jTextAreaLog;
     private javax.swing.JTextArea jTextAreaDesc;
