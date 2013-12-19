@@ -657,8 +657,8 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
 
-        jSliderFocalCyllin.setMaximum(100);
-        jSliderFocalCyllin.setMinimum(-100);
+        jSliderFocalCyllin.setMaximum(1000);
+        jSliderFocalCyllin.setMinimum(-1000);
         jSliderFocalCyllin.setValue(0);
         jSliderFocalCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -873,7 +873,7 @@ public class EduControlerPattern extends OpticsPane {
             .addGroup(jPanelMirrorlLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblPhy)
                         .addComponent(txtPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -885,7 +885,7 @@ public class EduControlerPattern extends OpticsPane {
                             .addComponent(txtThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelMirrorlLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(139, 139, 139)
                 .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     //.addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1153,11 +1153,12 @@ public class EduControlerPattern extends OpticsPane {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
                 if (index == 1) {
-                    generateActionPerformedDefault(null);
+                    //generateActionPerformedDefault(null);
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
-                    
+//                    layoutDiagram.hide();
+//                    tabbedDesLog.hide();
                     //jSliderYPositionCalibration.setValue(0);
                     //jSliderXPositionCalibration.setValue(0);
                     
@@ -1170,6 +1171,7 @@ public class EduControlerPattern extends OpticsPane {
 
                     lblDiagram.setIcon(null);
                     lblDiagram.setText(null);
+                    //lblDiagram.setText("No Diagram available");
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
                     
@@ -1370,6 +1372,7 @@ public class EduControlerPattern extends OpticsPane {
 
                     lblDiagram.setIcon(null);
                     lblDiagram.setText(null);
+                    //lblDiagram.setText("No Diagram available");
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
                 }
@@ -4624,14 +4627,29 @@ public class EduControlerPattern extends OpticsPane {
         jPanelPatternLayout.setVerticalGroup(
                 jPanelPatternLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 290, Short.MAX_VALUE));
+        layoutCanvas = new javax.swing.JPanel();
+        layoutCanvas.setBounds(0, 0, 568, 355);
+        //layoutCanvas.add(panelPattern);
+        //frameTe.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        
+        javax.swing.JLayeredPane a = new javax.swing.JLayeredPane();
+        a.setBounds(0, 0, 568, 355);
+        a.add(panelPattern);
+        a.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        
+        layoutCanvas.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         panelPattern.setBounds(0, 0, 568, 355);
+        panelPattern.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 1));
+        //javax.swing.JLayeredPane
+        
         //  BEGIN show full screen
-        layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layoutControl.add(a, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layoutControl.addMouseListener(new ClickListener() {
             public void doubleClick(MouseEvent e) {
                 patternFrameDoubleClick.show();
             }
         });
+        //layoutControl.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         //  END show full screen
         
         tabbedDesLog.addTab("Description", null);
@@ -8033,8 +8051,8 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.signalPhoto(buffImagesExp2);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
-            setLog(genLogSignalPhoto());
+            EduPatternShowOn.updateLensPatternPattern(image, genLogExp2());
+            setLog(genLogExp2());
             imageGenerated = true;
 
             if (countLenOnExp2 % 2 == 0) {
@@ -9642,6 +9660,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonSecondExp2;
     private javax.swing.JLabel lblPleaseSelectExp2;
 
+    private javax.swing.JPanel layoutCanvas;
     //End 
     @Override
     void updatePatternScreen() {

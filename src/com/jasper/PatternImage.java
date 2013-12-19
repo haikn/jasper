@@ -447,7 +447,7 @@ public class PatternImage {
         double x1, y1, x2, phase;
 
         double fixpart2 = 2.0 * Math.PI / lambda;
-        double fixpart = Math.PI / lambda / (focalCyllin * 10);
+        double fixpart = Math.PI / lambda / (focalCyllin / 100);
 
         double costheta = Math.cos(Math.toRadians((yoffCyllin * 10)));
         double sintheta = Math.sin(Math.toRadians((yoffCyllin * 10)));
