@@ -1170,7 +1170,7 @@ public class EduControlerPattern extends OpticsPane {
                     tabbedDesLog.addTab("Log", jScrollPane2);
 
                     lblDiagram.setIcon(lblDiagram.getIcon());
-                    lblDiagram.setText(null);
+                    lblDiagram.setText(lblDiagram.getText());
                     //lblDiagram.setText("No Diagram available");
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
@@ -1363,7 +1363,10 @@ public class EduControlerPattern extends OpticsPane {
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
                     
-                    tabbedDesLog.addTab("Description", desImportfile);
+                    jScrollDes.setViewportView(desImportfile);
+                    tabbedDesLog.addTab("Description", jScrollDes);
+                    //tabbedDesLog.addTab("Description", desImportfile);
+                    
                     jTextAreaLog.setColumns(20);
                     jTextAreaLog.setRows(5);
                     jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
