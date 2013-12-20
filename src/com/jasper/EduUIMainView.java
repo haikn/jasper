@@ -124,14 +124,16 @@ public class EduUIMainView extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPaneApp))
-                    .addGap(5, 5, 5)));
+                    .addGap(10, 10, 10)
+                    ));
             layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(jScrollPaneApp, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneApp)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(5, 5, 5)));
+                    .addGap(5, 5, 5)
+                    ));
 
             pack();
 
