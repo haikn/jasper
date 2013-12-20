@@ -5545,16 +5545,16 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Cylindrical", jPanelCyllindrical);
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
         jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH4);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                jButton11LensOnMichelson.setEnabled(false);
-                jButtonDisplaySecondOnMichelson.setEnabled(false);
-                buttonCyllinLensOn.setEnabled(false);
-                buttonCyllinDisplaySecondOn.setEnabled(false);
-                buttonMirrorLensOn.setEnabled(false);
-                buttonMirrorDisplaySecondOn.setEnabled(false);
-            }
-        });
+//        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+//            public void stateChanged(ChangeEvent e) {
+//                jButton11LensOnMichelson.setEnabled(false);
+//                jButtonDisplaySecondOnMichelson.setEnabled(false);
+//                buttonCyllinLensOn.setEnabled(false);
+//                buttonCyllinDisplaySecondOn.setEnabled(false);
+//                buttonMirrorLensOn.setEnabled(false);
+//                buttonMirrorDisplaySecondOn.setEnabled(false);
+//            }
+//        });
 
         //tabbedDesLog.addTab("Description", desMichelson);
         jScrollDes.setViewportView(desMichelson);
@@ -5617,14 +5617,14 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Single Slit", panelSlit);
         jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
         jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH5);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                buttong11LensOnSlit.setEnabled(false);
-                buttonSecondDisplaySlit.setEnabled(false);
-                buttong11LensOnDoubleSlit.setEnabled(false);
-                buttonSecondDisplayDoubleSlit.setEnabled(false);
-            }
-        });
+//        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+//            public void stateChanged(ChangeEvent e) {
+//                buttong11LensOnSlit.setEnabled(false);
+//                buttonSecondDisplaySlit.setEnabled(false);
+//                buttong11LensOnDoubleSlit.setEnabled(false);
+//                buttonSecondDisplayDoubleSlit.setEnabled(false);
+//            }
+//        });
 
         //tabbedDesLog.addTab("Description", desDiffaction);
         jScrollDes.setViewportView(desDiffaction);
@@ -5746,14 +5746,14 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedPaneOptics.addTab("Signal processing", panelSignal);
         jTabbedPaneOptics.addTab("Photo", panelSignalPhoto);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                buttonSecondPhoto.setEnabled(false);
-                button11LensOnPhoto.setEnabled(false);
-                button11LensOnProcessing.setEnabled(false);
-                buttonSecondDisplayProcessing.setEnabled(false);
-            }
-        });
+//        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+//            public void stateChanged(ChangeEvent e) {
+//                buttonSecondPhoto.setEnabled(false);
+//                button11LensOnPhoto.setEnabled(false);
+//                button11LensOnProcessing.setEnabled(false);
+//                buttonSecondDisplayProcessing.setEnabled(false);
+//            }
+//        });
         jScrollDes.setViewportView(desSignalProcessing);
         tabbedDesLog.addTab("Description", jScrollDes);
         jTextAreaLog.setColumns(20);
@@ -5935,18 +5935,18 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
         jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH10);
         //jTabbedPaneOptics.addTab("Fresnel Transform", jPanelFresnel);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                jButton11LensOn.setEnabled(false);
-                jButtonDisplaySecondOn.setEnabled(false);
-                buttonSecondFresnel.setEnabled(false);
-                button11LensOnFresnel.setEnabled(false);
-                buttonCyllinLensOn.setEnabled(false);
-                buttonCyllinDisplaySecondOn.setEnabled(false);
-                buttonMirrorLensOn.setEnabled(false);
-                buttonMirrorDisplaySecondOn.setEnabled(false);
-            }
-        });
+//        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+//            public void stateChanged(ChangeEvent e) {
+//                jButton11LensOn.setEnabled(false);
+//                jButtonDisplaySecondOn.setEnabled(false);
+//                buttonSecondFresnel.setEnabled(false);
+//                button11LensOnFresnel.setEnabled(false);
+//                buttonCyllinLensOn.setEnabled(false);
+//                buttonCyllinDisplaySecondOn.setEnabled(false);
+//                buttonMirrorLensOn.setEnabled(false);
+//                buttonMirrorDisplaySecondOn.setEnabled(false);
+//            }
+//        });
 
         //tabbedDesLog.addTab("Description", desWavefront);
         jScrollDes.setViewportView(desWavefront);
