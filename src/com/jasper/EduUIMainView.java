@@ -16,6 +16,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +30,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     public EduUIMainView() throws IOException{
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +39,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() throws IOException {
+        ResourceBundle labels = ResourceBundle.getBundle("resources/Text", supportedLocales[0]);
         KeyReaderTrial keyreader = new KeyReaderTrial();
         boolean key = keyreader.verifyKey();
         if(key) {
@@ -73,15 +76,15 @@ public class EduUIMainView extends javax.swing.JFrame {
             jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
             jScrollPane2.setViewportView(jTextAreaLog);
 
-            jMenuFile.setText("File");
-            jMenuItemImportExperiment.setText("Import new experiment");
+            jMenuFile.setText(labels.getString("mnuFile"));
+            jMenuItemImportExperiment.setText(labels.getString("mnuImportExperiment"));
             jMenuItemImportExperiment.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     //jMenuItemExitActionPerformed(evt);
                 }
             });
             jMenuFile.add(jMenuItemImportExperiment);
-            jMenuItemImport.setText("Import new file");
+            jMenuItemImport.setText(labels.getString("mnuFileImport"));
             jMenuItemImport.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     //jMenuItemExitActionPerformed(evt);
@@ -89,7 +92,7 @@ public class EduUIMainView extends javax.swing.JFrame {
             });
             jMenuFile.add(jMenuItemImport);
 
-            jMenuItemExit.setText("Exit");
+            jMenuItemExit.setText(labels.getString("mnuExit"));
             jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     System.exit(0);
@@ -99,8 +102,8 @@ public class EduUIMainView extends javax.swing.JFrame {
 
             jMenuBarMain.add(jMenuFile);
 
-            jMenuHelp.setText("Help");
-            jMenuItemAbout.setText("About");
+            jMenuHelp.setText(labels.getString("mnuHelp"));
+            jMenuItemAbout.setText(labels.getString("mnuAbout"));
             jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jMenuItemAboutActionPerformed(evt);
@@ -138,6 +141,7 @@ public class EduUIMainView extends javax.swing.JFrame {
             pack();
 
             setTitle(eduKitTitle + " - Trial version");
+            EduDescription.initDescription();
         }
 
     }// </editor-fold>//GEN-END:initComponents
@@ -216,11 +220,17 @@ public class EduUIMainView extends javax.swing.JFrame {
             op.repaint();
         }
     }
+    
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+                
+      //ResourceBundle labels = ResourceBundle.getBundle("LabelsBundle",supportedLocales[0]);
+      //String value  = labels.getString(key);
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -275,4 +285,9 @@ public class EduUIMainView extends javax.swing.JFrame {
     final private String eduKitTitle = "JDC Education Kit";
     private ArrayList<OpticsPane> panelist;
     static String mapLoadErrorMessage = "Grayscale map table file load error: ";
+    
+    static Locale[] supportedLocales = {
+         Locale.ENGLISH,
+         Locale.TAIWAN
+      };
 }
