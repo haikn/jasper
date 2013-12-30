@@ -28,6 +28,7 @@ public class EduUIMainView extends javax.swing.JFrame {
      * Creates new form EduUIMainView
      */
     public EduUIMainView() throws IOException{
+        labels = ResourceBundle.getBundle("resources/Text", supportedLocales[locale]);
         initComponents();
     }
     
@@ -39,7 +40,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() throws IOException {
-        ResourceBundle labels = ResourceBundle.getBundle("resources/Text", supportedLocales[0]);
+        
         KeyReaderTrial keyreader = new KeyReaderTrial();
         boolean key = keyreader.verifyKey();
         if(key) {
@@ -55,12 +56,15 @@ public class EduUIMainView extends javax.swing.JFrame {
             jTextAreaDesc = new javax.swing.JTextArea();
             jMenuBarMain = new javax.swing.JMenuBar();
             jMenuFile = new javax.swing.JMenu();
+            jMenuLanguage = new javax.swing.JMenu();
             jMenuItemExit = new javax.swing.JMenuItem();
             jMenuItemImport = new javax.swing.JMenuItem();
             jMenuItemImportExperiment = new javax.swing.JMenuItem();
+            jMenuItemLanguageEnglish = new javax.swing.JMenuItem();
+            jMenuItemLanguageTaiwan = new javax.swing.JMenuItem();
             jMenuHelp = new javax.swing.JMenu();
             jMenuItemAbout = new javax.swing.JMenuItem();
-            panelOptic =  new EduControlerPattern();
+            panelOptic =  new EduControlerPattern(locale);
 
             // add optics panes to panelist
             panelist = new ArrayList<OpticsPane>();
@@ -101,6 +105,24 @@ public class EduUIMainView extends javax.swing.JFrame {
             jMenuFile.add(jMenuItemExit);
 
             jMenuBarMain.add(jMenuFile);
+            
+            jMenuLanguage.setText(labels.getString("mnuLanguage"));
+            jMenuItemLanguageEnglish.setText(labels.getString("mnuItemLanguageEnglish"));
+            jMenuItemLanguageEnglish.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    locale = 0;
+                }
+            });
+            jMenuItemLanguageTaiwan.setText(labels.getString("mnuItemLanguageTaiwan"));
+            jMenuItemLanguageTaiwan.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    locale = 1;
+                }
+            });
+            
+            jMenuLanguage.add(jMenuItemLanguageEnglish);
+            jMenuLanguage.add(jMenuItemLanguageTaiwan);
+            jMenuBarMain.add(jMenuLanguage);
 
             jMenuHelp.setText(labels.getString("mnuHelp"));
             jMenuItemAbout.setText(labels.getString("mnuAbout"));
@@ -269,10 +291,13 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBarMain;
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenu jMenuHelp;
+    private javax.swing.JMenu jMenuLanguage;
     private javax.swing.JMenuItem jMenuItemAbout;
     private javax.swing.JMenuItem jMenuItemExit;
     private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JMenuItem jMenuItemImportExperiment;
+    private javax.swing.JMenuItem jMenuItemLanguageEnglish;
+    private javax.swing.JMenuItem jMenuItemLanguageTaiwan;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneApp;
     private javax.swing.JPanel jTabbedPaneOptics;
@@ -290,4 +315,7 @@ public class EduUIMainView extends javax.swing.JFrame {
          Locale.ENGLISH,
          Locale.TAIWAN
       };
+    
+    int locale = 0;
+    ResourceBundle labels;
 }

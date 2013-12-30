@@ -48,9 +48,10 @@ import java.util.ResourceBundle;
 public class EduControlerPattern extends OpticsPane {
 
     PatternImage image1 = new PatternImage();
-    final ResourceBundle labels = ResourceBundle.getBundle("resources/Text", EduUIMainView.supportedLocales[0]);
+    ResourceBundle labels;
 
-    public EduControlerPattern() {
+    public EduControlerPattern(int locale) {
+        labels = ResourceBundle.getBundle("resources/Text", EduUIMainView.supportedLocales[locale]);
         initComponents();
         image1 = ((EduPatternJPanel) panelPattern).pimage;
     }
@@ -1433,19 +1434,19 @@ public class EduControlerPattern extends OpticsPane {
 
         txtK1RImportFile.setText("12");
 
-        lbltWidthImportFile.setText("Width");
+        lbltWidthImportFile.setText(labels.getString("paramWidth"));
 
         txtWidthImportFile.setText("100");
 
-        lblRotationImportFile.setText("Rotation");
+        lblRotationImportFile.setText(labels.getString("paramRotation"));
 
         txtRotationImportFile.setText("0");
 
-        lblPositionImportFile.setText("Positions");
+        lblPositionImportFile.setText(labels.getString("paramPositions"));
 
         txtPositionImportFile.setText("0");
 
-        lblGrayLevelImportFile.setText("Gray level");
+        lblGrayLevelImportFile.setText(labels.getString("paramGrayLevel"));
 
         txtGrayLevelImportFile.setText("255");
 
@@ -1638,7 +1639,7 @@ public class EduControlerPattern extends OpticsPane {
                 //.addGap(36, 36, 36)
                 )
         );
-        tabbedControl.addTab("Import formula", panelImportfile);
+        tabbedControl.addTab(labels.getString("tabImportFormula"), panelImportfile);
         // END Import file
         
         /*
@@ -1691,15 +1692,15 @@ public class EduControlerPattern extends OpticsPane {
         buttonSecondDisplayDoubleSlit = new javax.swing.JButton();
 
 
-        lblWidthSlit.setText("Width");
+        lblWidthSlit.setText(labels.getString("paramWidth"));
 
-        lblHeightSlit.setText("Width");
+        lblHeightSlit.setText(labels.getString("paramWidth"));
 
-        lblRotationSlit.setText("Rotation");
+        lblRotationSlit.setText(labels.getString("paramRotation"));
 
-        lblPosSlit.setText("Positions");
+        lblPosSlit.setText(labels.getString("paramPositions"));
 
-        lblGraySlit.setText("Gray level ");
+        lblGraySlit.setText(labels.getString("paramGrayLevel"));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_width, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_width, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1716,7 +1717,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jLabelSpacingSlit.setText("Spacing");
+        jLabelSpacingSlit.setText(labels.getString("paramSpacing"));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1961,15 +1962,15 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(1, 1, 1))
         );
 
-        lblWidthDoubleSlit.setText("Width");
+        lblWidthDoubleSlit.setText(labels.getString("paramWidth"));
 
-        lblHeightDoubleSlit.setText("Width");
+        lblHeightDoubleSlit.setText(labels.getString("paramWidth"));
 
-        lblRotationDoubleSlit.setText("Rotation");
+        lblRotationDoubleSlit.setText(labels.getString("paramRotation"));
 
-        lblPosDoubleSlit.setText("Positions");
+        lblPosDoubleSlit.setText(labels.getString("paramPositions"));
 
-        lblGrayDoubleSlit.setText("Gray level ");
+        lblGrayDoubleSlit.setText(labels.getString("paramGrayLevel"));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_widthDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_widthDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1986,7 +1987,7 @@ public class EduControlerPattern extends OpticsPane {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_grayDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_grayDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jLabelSpacingDoubleSlit.setText("Spacing");
+        jLabelSpacingDoubleSlit.setText(labels.getString("paramSpacing"));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacingDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacingDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -2253,7 +2254,7 @@ public class EduControlerPattern extends OpticsPane {
         // lblWidthY.setText("Width Y");
         lblHeightY.setText("Width Y");
 
-        lblRotationProcessing.setText("Rotation");
+        lblRotationProcessing.setText(labels.getString("paramRotation"));
 
         lblPosX.setText("Position X");
 
@@ -2353,7 +2354,7 @@ public class EduControlerPattern extends OpticsPane {
         });
         bindingGroup.addBinding(binding);
 
-        jLabelGrayProcessing.setText("Gray level");
+        jLabelGrayProcessing.setText(labels.getString("paramGrayLevel"));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_gray.setMaximum(255);
         s_processing_gray.setValue(255);
@@ -2374,7 +2375,7 @@ public class EduControlerPattern extends OpticsPane {
         });
         bindingGroup.addBinding(binding);
 
-        lblSpacingProcessing.setText("Spacing");
+        lblSpacingProcessing.setText(labels.getString("paramSpacing"));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_processing_spacing.setMaximum(image1.getBounds().height);
         s_processing_spacing.setMinimum(-(image1.getBounds().height));
@@ -2606,7 +2607,7 @@ public class EduControlerPattern extends OpticsPane {
         txtZoom = new javax.swing.JTextField();
 
         buttonOpenFile.hide();
-        lblZoom.setText("Gray level");
+        lblZoom.setText(labels.getString("paramGrayLevel"));
 
         buttonSecondPhase.setEnabled(false);
         buttonSecondPhase.setText(labels.getString("btnSecondDisplayOn"));
@@ -3363,7 +3364,7 @@ public class EduControlerPattern extends OpticsPane {
         s_talbot_height_x = new javax.swing.JSlider();
         lblHeightYTalbot.setText("Width Y");
 
-        lblRotationtalbot.setText("Rotation");
+        lblRotationtalbot.setText(labels.getString("paramRotation"));
 
         lblPosXTalbot.setText("Position X");
 
@@ -3473,7 +3474,7 @@ public class EduControlerPattern extends OpticsPane {
         });
         bindingGroup.addBinding(binding);
 
-        jLabelGraytalbot.setText("Gray level");
+        jLabelGraytalbot.setText(labels.getString("paramGrayLevel"));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_gray.setMaximum(255);
         s_talbot_gray.setValue(255);
@@ -3494,7 +3495,7 @@ public class EduControlerPattern extends OpticsPane {
         });
         bindingGroup.addBinding(binding);
 
-        lblSpacingtalbot.setText("Spacing");
+        lblSpacingtalbot.setText(labels.getString("paramSpacing"));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_spacing.setMaximum(image1.getBounds().height);
          s_talbot_spacing.setMinimum(-(image1.getBounds().height));
