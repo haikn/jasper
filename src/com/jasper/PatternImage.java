@@ -340,14 +340,14 @@ public class PatternImage {
         int[] iArray = new int[1];
         double x2, y2, phase;
         double y1;
-        double fixpart = Math.PI / lambda / (focal / 1000);
+        double fixpart = Math.PI / lambda / focal;
         // 2*pi/la*0.1*x*psize
         //double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
 
         // calculate phase of each pixel;
         for (int i = 0; i < height; i++) {
             x2 = (double) (i - height / 2 + 1) * pxsize;
-            x2 -= (-yoff / 10000);
+            x2 -= (-yoff);
             //x2 -= 0.0;
             x2 = Math.pow(x2, 2.0);
             // Albert 2013/09/05
@@ -356,7 +356,7 @@ public class PatternImage {
             double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
             for (int j = 0; j < width; j++) {
                 y2 = (double) (j - width / 2 + 1) * pxsize;
-                y2 -= (xoff / 10000);
+                y2 -= (xoff);
                 //y2 -= 0.0;
                 y1 = y2;
                 y2 = Math.pow(y2, 2.0);
@@ -381,17 +381,17 @@ public class PatternImage {
         int[] iArray = new int[1];
         double x2, y2, phase;
         double y1;
-        double fixpart = Math.PI / lambda / (focalMichelson / 1000);
+        double fixpart = Math.PI / lambda / (focalMichelson);
 
         for (int i = 0; i < height; i++) {
             x2 = (double) (i - height / 2 + 1) * pxsize;
-            x2 -= (-yoffMichelson / 1000);
+            x2 -= (-yoffMichelson);
             x2 = Math.pow(x2, 2.0);
             Math.getExponent(x2);
             double fixpart2 = 2.0 * Math.PI / lambda * x2 * 0.1;
             for (int j = 0; j < width; j++) {
                 y2 = (double) (j - width / 2 + 1) * pxsize;
-                y2 -= (xoffMichelson / 1000);
+                y2 -= (xoffMichelson);
                 y1 = y2;
                 y2 = Math.pow(y2, 2.0);
 
@@ -447,10 +447,10 @@ public class PatternImage {
         double x1, y1, x2, phase;
 
         double fixpart2 = 2.0 * Math.PI / lambda;
-        double fixpart = Math.PI / lambda / (focalCyllin / 100);
+        double fixpart = Math.PI / lambda / (focalCyllin);
 
-        double costheta = Math.cos(Math.toRadians((yoffCyllin * 10)));
-        double sintheta = Math.sin(Math.toRadians((yoffCyllin * 10)));
+        double costheta = Math.cos(Math.toRadians((yoffCyllin)));
+        double sintheta = Math.sin(Math.toRadians((yoffCyllin)));
 
         for (int i = 0; i < height; i++) {
             x1 = (double) (i - height / 2 + 1) * pxsize;

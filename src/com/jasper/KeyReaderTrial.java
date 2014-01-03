@@ -36,16 +36,17 @@ public class KeyReaderTrial {
         if(key == null || key.equals("")) {
                 return false;
         } else {
-            if(key.equals("trialversion")) {
-                if(m.equals("12") && y.equals("2013")) {
-                    if( dCompare >= 15) {
-                        return true;
-                    }
-                } else if (m.equals("1") && y.equals("2014")){
+            if(key.equals("trialversion") && y.equals("2014")) {
+                if(m.equals("01")) {
                     if( dCompare <= 31) {
                         return true;
                     }
-                }
+                } 
+//                else if (m.equals("02")){
+//                    if( dCompare <= 28) {
+//                        return true;
+//                    }
+//                }
                 return false;
             } else {
                 return false;

@@ -1368,21 +1368,37 @@ public class EduControlerPattern extends OpticsPane {
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
                     
-                    jScrollDes.setViewportView(desImportfile);
+                    jScrollDes.getViewport();
                     tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                    //tabbedDesLog.addTab("Description", desImportfile);
                     
+                    //tabbedDesLog.addTab("Description", desCalibration);
                     jTextAreaLog.setColumns(20);
                     jTextAreaLog.setRows(5);
                     jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
                     jScrollPane2.setViewportView(jTextAreaLog);
                     tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
 
-                    lblDiagram.setIcon(null);
-                    //lblDiagram.setText(null);
-                    lblDiagram.setText("No Diagram available");
+                    lblDiagram.setIcon(lblDiagram.getIcon());
+                    lblDiagram.setText(lblDiagram.getText());
+                    //lblDiagram.setText("No Diagram available");
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
+                    
+//                    jScrollDes.setViewportView(desImportfile);
+//                    tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
+//                    //tabbedDesLog.addTab("Description", desImportfile);
+//                    
+//                    jTextAreaLog.setColumns(20);
+//                    jTextAreaLog.setRows(5);
+//                    jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+//                    jScrollPane2.setViewportView(jTextAreaLog);
+//                    tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+//
+//                    lblDiagram.setIcon(null);
+//                    //lblDiagram.setText(null);
+//                    lblDiagram.setText("No Diagram available");
+//                    diagramLens.add(lblDiagram);
+//                    layoutDiagram.add(diagramLens);
                 }
             }
         });
@@ -6032,9 +6048,9 @@ public class EduControlerPattern extends OpticsPane {
     }
     // Optical arguments, which will be parsed before reassigning the values
     private double xoffMicroscope = 0.0, yoffMicroscope = 0.0, focalMicroscope = 1.0;
-    private double xoff = 0.0, yoff = 0.0, focal = 522;
-    private double xoffMichelson = 0.0, yoffMichelson = 0.0, focalMichelson = 522;
-    private double xoffCyllin = 0, yoffCyllin = 0, focalCyllin = 1;
+    private double xoff = 0.0, yoff = 0.0, focal = 0.0;
+    private double xoffMichelson = 0.0, yoffMichelson = 0.0, focalMichelson = 0.0;
+    private double xoffCyllin = 0, yoffCyllin = 0, focalCyllin = 0.0;
     // Mirror
     private double phy = 1, theta = 1;
     // Spectrometer
@@ -6141,21 +6157,21 @@ public class EduControlerPattern extends OpticsPane {
             //phase
             zoom = Double.valueOf(s_phase_zoom.getValue());
             ret = true;
-            this.xoff = xoff;
-            this.yoff = yoff;
-            this.focal = focal;
+            this.xoff = xoff / 1000;
+            this.yoff = yoff / 1000;
+            this.focal = focal / 1000;
 
-            this.xoffMichelson = xoffMi;
-            this.yoffMichelson = yoffMi;
-            this.focalMichelson = focalMi;
+            this.xoffMichelson = xoffMi / 1000;
+            this.yoffMichelson = yoffMi / 1000;
+            this.focalMichelson = focalMi / 1000;
 
             this.xoffMicroscope = xoffMicroscope;
             this.yoffMicroscope = yoffMicroscope;
             this.focalMicroscope = focalMicroscope;
 
-            this.xoffCyllin = xoffCyllin;
-            this.yoffCyllin = yoffCyllin;
-            this.focalCyllin = focalCyllin/10;
+            this.xoffCyllin = xoffCyllin * 10;
+            this.yoffCyllin = yoffCyllin * 10;
+            this.focalCyllin = focalCyllin/1000;
 
             this.d_widthX = widthSlit;
             this.d_heightX = heightSlit;
