@@ -6902,7 +6902,6 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.setResizable(false);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                             countLenOnTelephoto--;
@@ -7018,7 +7017,6 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.setResizable(false);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                             countLenOnFresnel--;
@@ -7122,7 +7120,6 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setLocation(new Point(500, 420));
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.setResizable(false);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                             countLenOnMichelson--;
@@ -7778,7 +7775,6 @@ public class EduControlerPattern extends OpticsPane {
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
                 
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
                 magFrameLenon.getContentPane().add(mag);
@@ -8892,7 +8888,6 @@ public class EduControlerPattern extends OpticsPane {
             Toolkit kit = Toolkit.getDefaultToolkit();
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
-            magFrameLenon.setResizable(false);
 
             EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
             magFrameLenon.getContentPane().add(mag);
