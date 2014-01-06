@@ -1712,7 +1712,7 @@ public class EduControlerPattern extends OpticsPane {
 
         lblHeightSlit.setText(labels.getString("paramWidth"));
 
-        lblRotationSlit.setText(labels.getString("paramRotation"));
+        lblRotationSlit.setText(labels.getString("paramRotationNoDegree"));
 
         lblPosSlit.setText(labels.getString("paramPositions"));
 
@@ -1982,7 +1982,7 @@ public class EduControlerPattern extends OpticsPane {
 
         lblHeightDoubleSlit.setText(labels.getString("paramWidth"));
 
-        lblRotationDoubleSlit.setText(labels.getString("paramRotation"));
+        lblRotationDoubleSlit.setText(labels.getString("paramRotationNoDegree"));
 
         lblPosDoubleSlit.setText(labels.getString("paramPositions"));
 
@@ -2270,7 +2270,7 @@ public class EduControlerPattern extends OpticsPane {
         // lblWidthY.setText("Width Y");
         lblHeightY.setText("Width Y");
 
-        lblRotationProcessing.setText(labels.getString("paramRotation"));
+        lblRotationProcessing.setText(labels.getString("paramRotationNoDegree"));
 
         lblPosX.setText("Position X");
 
@@ -3380,7 +3380,7 @@ public class EduControlerPattern extends OpticsPane {
         s_talbot_height_x = new javax.swing.JSlider();
         lblHeightYTalbot.setText("Width Y");
 
-        lblRotationtalbot.setText(labels.getString("paramRotation"));
+        lblRotationtalbot.setText(labels.getString("paramRotationNoDegree"));
 
         lblPosXTalbot.setText("Position X");
 
