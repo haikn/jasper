@@ -300,7 +300,7 @@ public class EduControlerPattern extends OpticsPane {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtXPositionLens.setText(df.format(jSliderXPositionLens.getScaledValue()));
-                sliderGenerateActionPerformed(evt);
+                //sliderGenerateActionPerformed(evt);
             }
         });
         
@@ -345,7 +345,7 @@ public class EduControlerPattern extends OpticsPane {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtYPositionLens.setText(df.format(jSliderYPositionLens.getScaledValue()));
-                sliderGenerateActionPerformed(evt);
+                //sliderGenerateActionPerformed(evt);
             }
         });
 
@@ -364,7 +364,7 @@ public class EduControlerPattern extends OpticsPane {
                 } else {
                     jLabel3.setForeground(Color.BLACK);
                 }
-                sliderGenerateActionPerformed(evt);
+                //sliderGenerateActionPerformed(evt);
             }
         });
    
@@ -804,9 +804,10 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderPhyMirror.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedMirror(evt);
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtPhyMirror.setText(df.format(jSliderPhyMirror.getScaledValue()));
-                sliderGenerateActionPerformedMirror(evt);
+                //sliderGenerateActionPerformedMirror(evt);
             }
         });
         
@@ -838,9 +839,10 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderThetaMirror.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedMirror(evt);                
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtThetaMirror.setText(df.format(jSliderThetaMirror.getScaledValue()));
-                sliderGenerateActionPerformedMirror(evt);
+                //sliderGenerateActionPerformedMirror(evt);
             }
         });
         
@@ -1067,9 +1069,9 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderXPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedCalibration(evt);
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtXPositionCalibration.setText(df.format(jSliderXPositionCalibration.getScaledValue()));
-                sliderGenerateActionPerformedCalibration(evt);
             }
         });
         
@@ -1090,9 +1092,9 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedCalibration(evt);
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtYPositionCalibration.setText(df.format(jSliderYPositionCalibration.getScaledValue()));
-                sliderGenerateActionPerformedCalibration(evt);
             }
         });
 
@@ -2065,56 +2067,56 @@ public class EduControlerPattern extends OpticsPane {
         
         text_single_heightDoubleSlit.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedDoubleSlit(ke);
                 if(text_single_heightDoubleSlit.getText() == null || text_single_heightDoubleSlit.getText().equals("")){
                     lblHeightDoubleSlit.setForeground(Color.red);
                 } else {
                     lblHeightDoubleSlit.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedDoubleSlit(ke);
             }
         });
         
         text_single_rotationDoubleSlit.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedDoubleSlit(ke);
                 if(text_single_rotationDoubleSlit.getText() == null || text_single_rotationDoubleSlit.getText().equals("")){
                     lblRotationDoubleSlit.setForeground(Color.red);
                 } else {
                     lblRotationDoubleSlit.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedDoubleSlit(ke);
             }
         });
         
         text_single_positionDoubleSlit.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedDoubleSlit(ke);
                 if(text_single_positionDoubleSlit.getText() == null || text_single_positionDoubleSlit.getText().equals("")){
                     lblPosDoubleSlit.setForeground(Color.red);
                 } else {
                     lblPosDoubleSlit.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedDoubleSlit(ke);
             }
         });
         
         text_single_grayDoubleSlit.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedDoubleSlit(ke);
                 if(text_single_grayDoubleSlit.getText() == null || text_single_grayDoubleSlit.getText().equals("")){
                     lblGrayDoubleSlit.setForeground(Color.red);
                 } else {
                     lblGrayDoubleSlit.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedDoubleSlit(ke);
             }
         });
         
         text_single_spacingDoubleSlit.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedDoubleSlit(ke);
                 if(text_single_spacingDoubleSlit.getText() == null || text_single_spacingDoubleSlit.getText().equals("")){
                     jLabelSpacingDoubleSlit.setForeground(Color.red);
                 } else {
                     jLabelSpacingDoubleSlit.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedDoubleSlit(ke);
             }
         });
 
@@ -2286,12 +2288,13 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_width_processing_y.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedProcessing(ke);
                 if(text_width_processing_y.getText() == null || text_width_processing_y.getText().equals("")){
                     lblHeightY.setForeground(Color.red);
                 } else {
                     lblHeightY.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedProcessing(ke);
+                
             }
         });
         bindingGroup.addBinding(binding);
@@ -2318,12 +2321,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_rotation_processing.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedProcessing(ke);
                 if(text_rotation_processing.getText() == null || text_rotation_processing.getText().equals("")){
                     lblRotationProcessing.setForeground(Color.red);
                 } else {
                     lblRotationProcessing.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -2339,12 +2342,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_position_processing_x.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedProcessing(ke);
                 if(text_position_processing_x.getText() == null || text_position_processing_x.getText().equals("")){
                     lblPosX.setForeground(Color.red);
                 } else {
                     lblPosX.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -2360,12 +2363,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_position_processing_y.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedProcessing(ke);
                 if(text_position_processing_y.getText() == null || text_position_processing_y.getText().equals("")){
                     lblPosY.setForeground(Color.red);
                 } else {
                     lblPosY.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -2381,12 +2384,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_processing_gray.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedProcessing(ke);
                 if(text_processing_gray.getText() == null || text_processing_gray.getText().equals("")){
                     jLabelGrayProcessing.setForeground(Color.red);
                 } else {
                     jLabelGrayProcessing.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -2403,12 +2406,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_processing_spacing.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedProcessing(ke);
                 if(text_processing_spacing.getText() == null || text_processing_spacing.getText().equals("")){
                     lblSpacingProcessing.setForeground(Color.red);
                 } else {
                     lblSpacingProcessing.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -2478,12 +2481,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_height_processing_x.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedProcessing(ke);
                 if(text_height_processing_x.getText() == null || text_height_processing_x.getText().equals("")){
                     lblHeightX.setForeground(Color.red);
                 } else {
                     lblHeightX.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedProcessing(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -2677,12 +2680,12 @@ public class EduControlerPattern extends OpticsPane {
         
         txtZoom.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedPhase(ke);
                 if(txtZoom.getText() == null || txtZoom.getText().equals("")){
                     lblZoom.setForeground(Color.red);
                 } else {
                     lblZoom.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedPhase(ke);
             }
         });
 
@@ -2904,9 +2907,9 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderXPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedLensMichelSon(evt);
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtXPositionLensMichelson.setText(df.format(jSliderXPositionLensMichelson.getScaledValue()));
-                sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
         
@@ -2916,9 +2919,9 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderYPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedLensMichelSon(evt);
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtYPositionLensMichelson.setText(df.format(jSliderYPositionLensMichelson.getScaledValue()));
-                sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
 
@@ -2927,6 +2930,7 @@ public class EduControlerPattern extends OpticsPane {
         jSliderFocalLensMichelson.setValue(0);
         jSliderFocalLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedLensMichelSon(evt);
                 String tmp = txtFocalLensMichelson.getText();
                 int value = Integer.parseInt(tmp);
                 if (value >= -30 && value <= 30) {
@@ -2934,40 +2938,39 @@ public class EduControlerPattern extends OpticsPane {
                 } else {
                     lblFocalLensMichelson.setForeground(Color.BLACK);
                 }
-                sliderGenerateActionPerformedLensMichelSon(evt);
             }
         });
         
         txtFocalLensMichelson.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyenventGenerateActionPerformedLensMichelSon(ke);
                 if(txtFocalLensMichelson.getText() == null || txtFocalLensMichelson.getText().equals("")){
                     lblFocalLensMichelson.setForeground(Color.red);
                 } else {
                     lblFocalLensMichelson.setForeground(Color.black);
                 }
-                keyenventGenerateActionPerformedLensMichelSon(ke);
             }
         });
         
         txtXPositionLensMichelson.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyenventGenerateActionPerformedLensMichelSon(ke);
                 if(txtXPositionLensMichelson.getText() == null || txtXPositionLensMichelson.getText().equals("")){
                     lblXLensMichelson.setForeground(Color.red);
                 } else {
                     lblXLensMichelson.setForeground(Color.black);
                 }
-                keyenventGenerateActionPerformedLensMichelSon(ke);
             }
         });
         
         txtYPositionLensMichelson.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyenventGenerateActionPerformedLensMichelSon(ke);
                 if(txtYPositionLensMichelson.getText() == null || txtYPositionLensMichelson.getText().equals("")){
                     lblYLensMichelson.setForeground(Color.red);
                 } else {
                     lblYLensMichelson.setForeground(Color.black);
                 }
-                keyenventGenerateActionPerformedLensMichelSon(ke);
             }
         });
 
@@ -3095,20 +3098,20 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderPhyMirrorSpectometer.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedMirrorSpectometer(evt);
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtPhyMirrorSpectometer.setText(df.format(jSliderPhyMirrorSpectometer.getScaledValue()));
-                sliderGenerateActionPerformedMirrorSpectometer(evt);
             }
         });
         
         txtPhyMirrorSpectometer.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedMirrorSpectometer(ke);
                 if(txtPhyMirrorSpectometer.getText() == null || txtPhyMirrorSpectometer.getText().equals("")){
                     lblPhySpectometer.setForeground(Color.red);
                 } else {
                     lblPhySpectometer.setForeground(Color.black);
                 }
-                keyEventGenerateActionPerformedMirrorSpectometer(ke);
             }
         });
         
@@ -3118,19 +3121,20 @@ public class EduControlerPattern extends OpticsPane {
 
         jSliderThetaMirrorSpectometer.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedMirrorSpectometer(evt);
                 DecimalFormat df = new DecimalFormat("0.####");
                 txtThetaMirrorSpectometer.setText(df.format(jSliderThetaMirrorSpectometer.getScaledValue()));
-                sliderGenerateActionPerformedMirrorSpectometer(evt);
             }
         });
         txtThetaMirrorSpectometer.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedMirrorSpectometer(ke);
                 if(txtThetaMirrorSpectometer.getText() == null || txtThetaMirrorSpectometer.getText().equals("")){
                     lblThetaMirrorSpectometer.setForeground(Color.red);
                 } else {
                     lblThetaMirrorSpectometer.setForeground(Color.black);
                 }
-                keyEventGenerateActionPerformedMirrorSpectometer(ke);
+                
             }
         });
 
@@ -3396,12 +3400,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_width_talbot_y.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedTalbot(ke);
                 if(text_width_talbot_y.getText() == null || text_width_talbot_y.getText().equals("")){
                     lblHeightYTalbot.setForeground(Color.red);
                 } else {
                     lblHeightYTalbot.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedTalbot(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -3416,12 +3420,13 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_height_talbot_y.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedTalbot(ke);
                 if(text_height_talbot_y.getText() == null || text_height_talbot_y.getText().equals("")){
                     lblHeightXTalbot.setForeground(Color.red);
                 } else {
                     lblHeightXTalbot.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedTalbot(ke);
+                
             }
         });
         bindingGroup.addBinding(binding);
@@ -3437,12 +3442,13 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_rotation_talbot.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedTalbot(ke);
                 if(text_rotation_talbot.getText() == null || text_rotation_talbot.getText().equals("")){
                     lblRotationtalbot.setForeground(Color.red);
                 } else {
                     lblRotationtalbot.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedTalbot(ke);
+                
             }
         });
         
@@ -3459,12 +3465,13 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_position_talbot_x.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedTalbot(ke);
                 if(text_position_talbot_x.getText() == null || text_position_talbot_x.getText().equals("")){
                     lblPosXTalbot.setForeground(Color.red);
                 } else {
                     lblPosXTalbot.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedTalbot(ke);
+                
             }
         });
         bindingGroup.addBinding(binding);
@@ -3480,12 +3487,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_position_talbot_y.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedTalbot(ke);
                 if(text_position_talbot_y.getText() == null || text_position_talbot_y.getText().equals("")){
                     lblPosYTalbot.setForeground(Color.red);
                 } else {
                     lblPosYTalbot.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedTalbot(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -3501,12 +3508,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_talbot_gray.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedTalbot(ke);
                 if(text_talbot_gray.getText() == null || text_talbot_gray.getText().equals("")){
                     jLabelGraytalbot.setForeground(Color.red);
                 } else {
                     jLabelGraytalbot.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedTalbot(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -3523,12 +3530,12 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_talbot_spacing.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedTalbot(ke);
                 if(text_talbot_spacing.getText() == null || text_talbot_spacing.getText().equals("")){
                     lblSpacingtalbot.setForeground(Color.red);
                 } else {
                     lblSpacingtalbot.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedTalbot(ke);
             }
         });
         bindingGroup.addBinding(binding);
@@ -3555,12 +3562,13 @@ public class EduControlerPattern extends OpticsPane {
         });
         text_height_talbot_x.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent ke) {
+                keyeventGenerateActionPerformedTalbot(ke);
                 if(text_height_talbot_x.getText() == null || text_height_talbot_x.getText().equals("")){
                     lblHeightXTalbot.setForeground(Color.red);
                 } else {
                     lblHeightXTalbot.setForeground(Color.black);
                 }
-                keyeventGenerateActionPerformedTalbot(ke);
+                
             }
         });
         bindingGroup.addBinding(binding);
