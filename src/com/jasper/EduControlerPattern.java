@@ -190,6 +190,15 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorLensOn = new javax.swing.JButton();
         buttonMirrorDisplaySecondOn = new javax.swing.JButton();
         buttonMirrorGeneral = new javax.swing.JButton();
+        
+        // Mirror Exp3
+        lblPhyExp3 = new javax.swing.JLabel();
+        lblThetaMirrorExp3 = new javax.swing.JLabel();
+        txtPhyMirrorExp3 = new javax.swing.JTextField();
+        txtThetaMirrorExp3 = new javax.swing.JTextField();
+        buttonMirrorLensOnExp3 = new javax.swing.JButton();
+        buttonMirrorDisplaySecondOnExp3 = new javax.swing.JButton();
+        buttonMirrorGeneralExp3 = new javax.swing.JButton();
 
         tabbedControl.setAlignmentX(100);
         // Boot screen
@@ -706,7 +715,7 @@ public class EduControlerPattern extends OpticsPane {
         panelCyllinLayout.setVerticalGroup(
                 panelCyllinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelCyllinLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(105, 105, 105)
                 .addGroup(panelCyllinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonCyllinDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCyllinLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -763,70 +772,165 @@ public class EduControlerPattern extends OpticsPane {
                 .addGap(15, 15, 15)
                 ));
 
-//        javax.swing.GroupLayout jPanelCyllindricalLayout = new javax.swing.GroupLayout(jPanelCyllindrical);
-//        jPanelCyllindrical.setLayout(jPanelCyllindricalLayout);
-//        jPanelCyllindricalLayout.setHorizontalGroup(
-//                jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-//                .addContainerGap()
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addComponent(lblFocalCyllin)
-//                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-//                //.addComponent(lblXPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                .addComponent(lblYPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                .addGap(20, 20, 20)
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addComponent(txtYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-//                .addComponent(txtFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-//                //.addComponent(txtXPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-//                )))
-//                .addGap(5, 5, 5)
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addComponent(jSliderFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-//                //.addComponent(jSliderXPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-//                .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)))
-//                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-//                .addGap(15, 15, 15)
-//                .addComponent(buttonCyllinGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttonCyllinLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttonCyllinDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                //.addContainerGap(23, Short.MAX_VALUE)
-//                ));
-//        jPanelCyllindricalLayout.setVerticalGroup(
-//                jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-//                .addGap(21, 21, 21)
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                .addComponent(jSliderFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                .addComponent(txtFocalCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-//                .addGap(21, 21, 21)
-////                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-////                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-////                .addComponent(lblXPosCyllin)
-////                .addComponent(txtXPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                .addComponent(jSliderXPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-////                .addGap(15, 15, 15)
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(lblYPosCyllin)
-//                .addComponent(txtYPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(133, 133, 133)
-//                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-//                .addComponent(buttonCyllinGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonCyllinLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonCyllinDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                ));
-
         jTabbedControler.addTab(labels.getString("tabCyllindrical"), jPanelCyllindrical);
         // END Panel Cyllindrical
+        
+        // BEGIN Mirror Exp3
+        lblPhyExp3.setText("Diffraction angle (degree)");
+        lblThetaMirrorExp3.setText("Rotation (degree)");
+
+        buttonMirrorGeneralExp3.setText(labels.getString("btnGenerate"));
+        buttonMirrorGeneralExp3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateActionPerformedMirrorExp3(evt);
+            }
+        });
+
+        buttonMirrorLensOnExp3.setEnabled(false);
+        buttonMirrorLensOnExp3.setText(labels.getString("btnLensOn"));
+        buttonMirrorLensOnExp3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button11LensOnMirrorExp3ActionPerformed(evt);
+                countLenOnMirrorExp3++;
+                if (countLenOnMirrorExp3 % 2 == 0) {
+                    buttonMirrorLensOnExp3.setText(labels.getString("btnLensOff"));
+                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            patternFrameDoubleClick.show();
+                        }
+                        });
+                } else {
+                    buttonMirrorLensOnExp3.setText(labels.getString("btnLensOn"));
+                }
+            }
+        });
+
+        buttonMirrorDisplaySecondOnExp3.setEnabled(false);
+        buttonMirrorDisplaySecondOnExp3.setText(labels.getString("btnSecondDisplayOn"));
+        buttonMirrorDisplaySecondOnExp3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSecondGenerateActionPerformedMirrorExp3(evt);
+                countSecondDisplayMirrorExp3++;
+                if (countSecondDisplayMirrorExp3 % 2 == 0) {
+                    buttonMirrorDisplaySecondOnExp3.setText(labels.getString("btnSecondDisplayOff"));
+                } else {
+                    buttonMirrorDisplaySecondOnExp3.setText(labels.getString("btnSecondDisplayOn"));
+                }
+            }
+        });
+
+        jSliderPhyMirrorExp3 = new DoubleJSlider(-28, 28, 10, 10);
+        jSliderPhyMirrorExp3.setValue(0);
+        txtPhyMirrorExp3.setText(String.valueOf(jSliderPhyMirrorExp3.getValue()));
+
+        jSliderPhyMirrorExp3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedMirrorExp3(evt);
+                DecimalFormat df = new DecimalFormat("0.####");
+                txtPhyMirrorExp3.setText(df.format(jSliderPhyMirrorExp3.getScaledValue()));
+                //sliderGenerateActionPerformedMirror(evt);
+            }
+        });
+        
+        txtPhyMirrorExp3.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedMirrorExp3(ke);
+                if(txtPhyMirrorExp3.getText() == null || txtPhyMirrorExp3.getText().equals("")){
+                    lblPhyExp3.setForeground(Color.red);
+                } else {
+                    lblPhyExp3.setForeground(Color.black);
+                }
+            }
+        });
+        
+        txtThetaMirrorExp3.addKeyListener(new KeyAdapter(){
+            public void keyReleased(KeyEvent ke) {
+                keyEventGenerateActionPerformedMirrorExp3(ke);
+                if(txtThetaMirrorExp3.getText() == null || txtThetaMirrorExp3.getText().equals("")){
+                    lblThetaMirrorExp3.setForeground(Color.red);
+                } else {
+                    lblThetaMirrorExp3.setForeground(Color.black);
+                }
+            }
+        });
+
+        jSliderThetaMirrorExp3 = new DoubleJSlider(-1800, 1800, 100, 10);
+        jSliderThetaMirrorExp3.setValue(0);
+        txtThetaMirrorExp3.setText(String.valueOf(jSliderThetaMirrorExp3.getValue()));
+
+        jSliderThetaMirrorExp3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderGenerateActionPerformedMirrorExp3(evt);                
+                DecimalFormat df = new DecimalFormat("0.####");
+                txtThetaMirrorExp3.setText(df.format(jSliderThetaMirrorExp3.getScaledValue()));
+            }
+        });
+        jPanelMirrorExp3 = new javax.swing.JPanel();
+        panelButtonMirrorExp3 = new javax.swing.JPanel();
+        javax.swing.GroupLayout panelButtonMirrorExp3Layout = new javax.swing.GroupLayout(panelButtonMirrorExp3);
+        panelButtonMirrorExp3.setLayout(panelButtonMirrorExp3Layout);
+        panelButtonMirrorExp3Layout.setHorizontalGroup(
+                panelButtonMirrorExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonMirrorExp3Layout.createSequentialGroup()
+                .addGroup(panelButtonMirrorExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonMirrorExp3Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(buttonMirrorGeneralExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonMirrorLensOnExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonMirrorDisplaySecondOnExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                )));
+        panelButtonMirrorExp3Layout.setVerticalGroup(
+                panelButtonMirrorExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonMirrorExp3Layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addGroup(panelButtonMirrorExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonMirrorDisplaySecondOnExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonMirrorLensOnExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonMirrorGeneralExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                ));
+        javax.swing.GroupLayout jPanelMirrorlExp3Layout = new javax.swing.GroupLayout(jPanelMirrorExp3);
+        jPanelMirrorExp3.setLayout(jPanelMirrorlExp3Layout);
+        jPanelMirrorlExp3Layout.setHorizontalGroup(
+            jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
+                        .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblThetaMirrorExp3, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                            .addComponent(lblPhyExp3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtThetaMirrorExp3)
+                            .addComponent(txtPhyMirrorExp3, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSliderThetaMirrorExp3, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                            .addComponent(jSliderPhyMirrorExp3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 0, 0))
+        );
+        jPanelMirrorlExp3Layout.setVerticalGroup(
+            jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSliderPhyMirrorExp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPhyExp3)
+                        .addComponent(txtPhyMirrorExp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblThetaMirrorExp3)
+                            .addComponent(txtThetaMirrorExp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jSliderThetaMirrorExp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+        );
 
         // BEGIN Mirror
         lblPhy.setText("Diffraction angle (degree)");
@@ -937,7 +1041,7 @@ public class EduControlerPattern extends OpticsPane {
         panelMirrorLayout.setVerticalGroup(
                 panelMirrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelMirrorLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(105, 105, 105)
                 .addGroup(panelMirrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2803,7 +2907,7 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-        
+        panelLayoutExp1 = new javax.swing.JPanel();
         panelButtonPhase = new javax.swing.JPanel();
         javax.swing.GroupLayout panelButtonPhaseLayout = new javax.swing.GroupLayout(panelButtonPhase);
         panelButtonPhase.setLayout(panelButtonPhaseLayout);
@@ -2824,73 +2928,40 @@ public class EduControlerPattern extends OpticsPane {
         panelButtonPhaseLayout.setVerticalGroup(
                 panelButtonPhaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelButtonPhaseLayout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addGap(161, 161, 161)
                 .addGroup(panelButtonPhaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonSecondPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(panelPhase);
-        panelPhase.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
+        
+        javax.swing.GroupLayout layoutExp1 = new javax.swing.GroupLayout(panelLayoutExp1);
+        panelLayoutExp1.setLayout(layoutExp1);
+        layoutExp1.setHorizontalGroup(
+            layoutExp1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layoutExp1.createSequentialGroup()
                 .addContainerGap()
-                //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addComponent(lblZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblZoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblPleaseSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0))
-//                .addGroup(jPanel5Layout.createSequentialGroup()
-//                .addGap(15, 15, 15)
-//                .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(18, 18, 18)
-//                .addComponent(buttonSecondPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                //.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                )
-                )));
-        jPanel5Layout.setVerticalGroup(
-                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 73, Short.MAX_VALUE) //.addComponent(jLayeredPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                )
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonOpenFile)
-                .addComponent(lblPleaseSelect))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblZoom)))
-                //.addGap(158, 158, 158)
-//                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                .addComponent(buttonSecondPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(button11LensOnPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-
+                .addGap(10, 10, 10)
+                .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        layoutExp1.setVerticalGroup(
+            layoutExp1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layoutExp1.createSequentialGroup()
+                .addGroup(layoutExp1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layoutExp1.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(s_phase_zoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layoutExp1.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layoutExp1.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblZoom)
+                            .addComponent(txtZoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(22, 22, 22))
+        );
 
         /*
          * Signal Photo
@@ -3134,7 +3205,7 @@ public class EduControlerPattern extends OpticsPane {
         panelMichelsonLayout.setVerticalGroup(
                 panelMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelMichelsonLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(105, 105, 105)
                 .addGroup(panelMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(jButtonDisplaySecondOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jButton11LensOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4092,7 +4163,7 @@ public class EduControlerPattern extends OpticsPane {
         panelButtonCGH1Layout.setVerticalGroup(
                 panelButtonCGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelButtonCGH1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(161, 161, 161)
                 .addGroup(panelButtonCGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonCGH1DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCGH1LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4124,11 +4195,11 @@ public class EduControlerPattern extends OpticsPane {
         cGH1Layout.setVerticalGroup(
             cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cGH1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(14, 14, 14)
                 .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPleaseSelectCGH1))
-                .addGap(0, 0, 0)
+                .addGap(3, 3, 3)
 //                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 //                    .addComponent(buttonCGH1General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
 //                    .addComponent(buttonCGH1LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4203,38 +4274,65 @@ public class EduControlerPattern extends OpticsPane {
         });
         lblPleaseSelectCGH3.setText("Select the file to import.");
         
+        panelButtonCGH3 = new javax.swing.JPanel();
+        javax.swing.GroupLayout panelButtonCGH3Layout = new javax.swing.GroupLayout(panelButtonCGH3);
+        panelButtonCGH3.setLayout(panelButtonCGH3Layout);
+        panelButtonCGH3Layout.setHorizontalGroup(
+                panelButtonCGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonCGH3Layout.createSequentialGroup()
+                .addGroup(panelButtonCGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonCGH3Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(buttonCGH3General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE)
+                )
+                )));
+        panelButtonCGH3Layout.setVerticalGroup(
+                panelButtonCGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonCGH3Layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addGroup(panelButtonCGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonCGH3General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                ));
+        
         javax.swing.GroupLayout cGH3Layout = new javax.swing.GroupLayout(panelCGH3);
         panelCGH3.setLayout(cGH3Layout);
         cGH3Layout.setHorizontalGroup(
             cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cGH3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(12, 12, 12)
                 .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonCGH3General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    //.addComponent(buttonCGH3General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                 .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cGH3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lblPleaseSelectCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cGH3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+//                    .addGroup(cGH3Layout.createSequentialGroup()
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                )
                 .addContainerGap(150, Short.MAX_VALUE))
         );
         cGH3Layout.setVerticalGroup(
             cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cGH3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(20, 20, 20)
                 .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPleaseSelectCGH3))
-                .addGap(153, 153, 153)
-                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCGH3General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonCGH3General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         // CGH4 Pattern Import
@@ -4324,7 +4422,7 @@ public class EduControlerPattern extends OpticsPane {
         panelButtonCGH4Layout.setVerticalGroup(
                 panelButtonCGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelButtonCGH4Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(105, 105, 105)
                 .addGroup(panelButtonCGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonCGH4DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCGH4LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4858,38 +4956,66 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        panelButtonExp2 = new javax.swing.JPanel();
+        javax.swing.GroupLayout panelButtonExp2Layout = new javax.swing.GroupLayout(panelButtonExp2);
+        panelButtonExp2.setLayout(panelButtonExp2Layout);
+        panelButtonExp2Layout.setHorizontalGroup(
+                panelButtonExp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonExp2Layout.createSequentialGroup()
+                .addGroup(panelButtonExp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonExp2Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE)
+                )
+                )));
+        panelButtonExp2Layout.setVerticalGroup(
+                panelButtonExp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonExp2Layout.createSequentialGroup()
+                .addGap(161, 161, 161)
+                .addGroup(panelButtonExp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                ));
+        
         javax.swing.GroupLayout exp2PhotoLayout = new javax.swing.GroupLayout(panelExp2);
         panelExp2.setLayout(exp2PhotoLayout);
         exp2PhotoLayout.setHorizontalGroup(
             exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(exp2PhotoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(8, 8, 8)
                 .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    //.addComponent(buttonGeneralExp2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonOpenFileExp2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                 .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(exp2PhotoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lblPleaseSelectExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(exp2PhotoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+//                    .addGroup(exp2PhotoLayout.createSequentialGroup()
+//                        .addGap(18, 18, 18)
+//                        .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                )
                 .addContainerGap(150, Short.MAX_VALUE))
         );
         exp2PhotoLayout.setVerticalGroup(
             exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(exp2PhotoLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(14, 14, 14)
                 .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonOpenFileExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPleaseSelectExp2))
-                .addGap(153, 153, 153)
-                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+//                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         
@@ -5633,9 +5759,9 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.removeAll();
         
         buttonPanel.removeAll();
-        buttonPanel.add(panelMichelson);
+        buttonPanel.add(panelButtonPhase);
 
-        jTabbedPaneOptics.addTab("Gray Level", panelPhase);
+        jTabbedPaneOptics.addTab("Gray Level", panelLayoutExp1);
         jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH1);
         jTabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -5655,6 +5781,7 @@ public class EduControlerPattern extends OpticsPane {
                     magFrameLenon.dispose();
                 }
             }
+            
         });
 
         //tabbedDesLog.addTab("Description", desTelephotoLens);
@@ -5716,7 +5843,9 @@ public class EduControlerPattern extends OpticsPane {
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
 
-        jTabbedPaneOptics.addTab("Photo", panelExp2);
+        buttonPanel.removeAll();
+        jTabbedPaneOptics.addTab("Photo ", panelExp2);
+        buttonPanel.add(panelButtonExp2);
 
         //tabbedDesLog.addTab("Description", desMicroscope);
         jScrollDes.setViewportView(desMicroscope);
@@ -5774,9 +5903,29 @@ public class EduControlerPattern extends OpticsPane {
         button11LensOnFresnel.setEnabled(false);
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
+        
+        buttonPanel.removeAll();
+        buttonPanel.add(panelButtonMirrorExp3);
 
-        jTabbedPaneOptics.addTab("Beam Steerer", jPanelMirror);
-        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH3);
+        jTabbedPaneOptics.addTab("Beam Steerer", jPanelMirrorExp3);
+        jTabbedPaneOptics.addTab(" CGH Pattern Import  ", panelCGH3);
+        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
+                int index = sourceTabbedPane.getSelectedIndex();
+                if (index >= 0) {
+                    String value = sourceTabbedPane.getTitleAt(index);
+                    if (value.equals("Beam Steerer")) {
+                        buttonPanel.removeAll();
+                        buttonPanel.add(panelButtonMirrorExp3);
+                    } if (value.equals(" CGH Pattern Import  ")) {
+                        buttonPanel.removeAll();
+                        buttonPanel.add(panelButtonCGH3);
+                    }
+                }
+                
+            }
+        });
 
         //tabbedDesLog.addTab("Description", desAberration);
         jScrollDes.setViewportView(desAberration);
@@ -5860,7 +6009,24 @@ public class EduControlerPattern extends OpticsPane {
                     } if (value.equals("CGH Pattern Import    ")){
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH4);
-                    } 
+                    } if (value.equals("Gray Level")) {
+                        buttonPanel.removeAll();
+                        buttonPanel.add(panelButtonPhase);
+                    } if (value.equals("CGH Pattern Import")) {
+                        buttonPanel.removeAll();
+                        buttonPanel.add(panelButtonCGH1);
+                    } if (value.equals("Photo ")) {
+                        buttonPanel.removeAll();
+                        buttonPanel.add(panelButtonExp2);
+                    }
+//                    if (value.equals("Beam steere")) {
+//                        buttonPanel.removeAll();
+//                        buttonPanel.add(panelButtonMirrorExp3);
+//                    } if (value.equals(" CGH Pattern Import  ")) {
+//                        buttonPanel.removeAll();
+//                        buttonPanel.add(panelButtonCGH3);
+//                    }
+                    
 //                    if (value.equals("Gray Level")) {
 //                        buttonPanel.removeAll();
 //                        buttonPanel.add(panelButtonPhase);
@@ -6353,6 +6519,8 @@ public class EduControlerPattern extends OpticsPane {
     private double xoffCyllin = 0, yoffCyllin = 0, focalCyllin = 0.0;
     // Mirror
     private double phy = 1, theta = 1;
+    // Mirror - Beam steere
+    private double phyExp3 = 0.0, thetaExp3 = 0.0;
     // Spectrometer
     private double phySpectrometer = 522, thetaSpectrometer = 522;
     private double d_widthX = Double.valueOf(image1.getBounds().width), d_heightX = 100, d_rotation = 0, d_postionX = 0, d_grayLevel = 255, d_spacing = 400;
@@ -6417,6 +6585,10 @@ public class EduControlerPattern extends OpticsPane {
             double xoffCali = Double.valueOf(txtXPositionCalibration.getText());
             double yoffCali = Double.valueOf(txtYPositionCalibration.getText());
             //double focalCali= Double.valueOf(txtFocalCalibration.getText());
+            
+            //mirro - beam steere
+            double phyoffExp3 = Double.valueOf(txtPhyMirrorExp3.getText());
+            double thetaoffExp3 = Double.valueOf(txtThetaMirrorExp3.getText());
 
             //Processing
             processing_widthX = Double.valueOf(s_processing_width_x.getValue());
@@ -6489,6 +6661,9 @@ public class EduControlerPattern extends OpticsPane {
 
             this.phy = phyoff;
             this.theta = thetaoff;
+            
+            this.phyExp3 = phyoffExp3;
+            this.thetaExp3 = thetaoffExp3;
 
             this.thetaSpectrometer = thetaSpec;
             this.phySpectrometer = phySpec;
@@ -7110,6 +7285,10 @@ public class EduControlerPattern extends OpticsPane {
 
     private String genLogMirror() {
         return String.format(logmessageMirror, Double.toString(phy), Double.toString(theta));
+    }
+    
+    private String genLogMirrorExp3() {
+        return String.format(logmessageMirrorExp3, Double.toString(phyExp3), Double.toString(thetaExp3));
     }
 
     private String genLogSlit() {
@@ -7805,6 +7984,118 @@ public class EduControlerPattern extends OpticsPane {
             image.paintMirror();
             EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
             setLog(genLogMirror());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
+    
+    // Mirror Beam steere
+    private void buttonGenerateActionPerformedMirrorExp3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirror
+        actionTag = "Beam steere";
+        if (parseArguments()) {
+            buttonMirrorLensOnExp3.setEnabled(true);
+            buttonMirrorDisplaySecondOnExp3.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
+            image.paintBeamSteere();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorExp3());
+            setLog(genLogMirrorExp3());
+            imageGenerated = true;
+        }
+
+    }//GEN-LAST:event_buttonGenerateActionPerformedMirror
+
+    private void button11LensOnMirrorExp3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorActionPerformed
+        actionTag = "Beam steere";
+        if (parseArguments()) {
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
+            image.paintBeamSteere();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorExp3());
+            setLog(genLogMirrorExp3());
+            imageGenerated = true;
+
+            if (countLenOnMirrorExp3 % 2 == 0) {
+                magFrameLenon.dispose();
+                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        patternFrameDoubleClick.show();
+                    }
+                });
+            } else {
+                magFrameLenon = new JFrame("1:1 Lens On");
+                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
+                Toolkit kit = Toolkit.getDefaultToolkit();
+                Image img = kit.createImage(url);
+                magFrameLenon.setIconImage(img);
+                
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                magFrameLenon.getContentPane().add(mag);
+                magFrameLenon.pack();
+                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setVisible(true);
+                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                            countLenOnMirrorExp3--;
+                            buttonMirrorLensOnExp3.setText(labels.getString("btnLensOn"));
+                            magFrameLenon.dispose();
+                    }
+                });
+            }
+
+        }
+
+    }//GEN-LAST:event_button11LensOnMirrorActionPerformed
+
+    private void buttonSecondGenerateActionPerformedMirrorExp3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
+        actionTag = "Beam steere";
+        if (parseArguments()) {
+            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice[] devices = env.getScreenDevices();
+            if (devices.length == 1) {
+                countSecondDisplayMirrorExp3--;
+                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+                image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
+                image.paintBeamSteere();
+                EduPatternShowOn.updatePatternSecondDisplay(image, genLogMirror());
+                setLog(genLogMirror());
+                //EduPatternTest.updateLensPatternPattern(image, genLog());
+                imageGenerated = true;
+                if (countSecondDisplayMirrorExp3 % 2 == 0) {
+                    patternFrameDoubleClick.dispose();
+                    patternFrame.dispose();
+                }
+            }
+        }
+    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
+
+    private void sliderGenerateActionPerformedMirrorExp3(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Beam steere";
+        if (parseArguments()) {
+            buttonMirrorLensOnExp3.setEnabled(true);
+            buttonMirrorDisplaySecondOnExp3.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
+            image.paintBeamSteere();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorExp3());
+            setLog(genLogMirrorExp3());
+            imageGenerated = true;
+        }
+    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
+    private void keyEventGenerateActionPerformedMirrorExp3(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
+        actionTag = "Beam steere";
+        if (parseArguments()) {
+            buttonMirrorLensOnExp3.setEnabled(true);
+            buttonMirrorDisplaySecondOnExp3.setEnabled(true);
+
+            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
+            image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
+            image.paintBeamSteere();
+            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorExp3());
+            setLog(genLogMirrorExp3());
             imageGenerated = true;
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
@@ -9525,6 +9816,19 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JButton buttonMirrorGeneral;
     private javax.swing.JPanel jPanelMirror;
     // END Mirror
+    // Mirror
+    private javax.swing.JLabel lblPhyExp3;
+    private javax.swing.JLabel lblThetaMirrorExp3;
+    private DoubleJSlider jSliderPhyMirrorExp3;
+    private DoubleJSlider jSliderThetaMirrorExp3;
+    private javax.swing.JTextField txtPhyMirrorExp3;
+    private javax.swing.JTextField txtThetaMirrorExp3;
+    private javax.swing.JButton buttonMirrorLensOnExp3;
+    private javax.swing.JButton buttonMirrorDisplaySecondOnExp3;
+    private javax.swing.JButton buttonMirrorGeneralExp3;
+    private javax.swing.JPanel jPanelMirrorExp3;
+    private javax.swing.JPanel panelButtonMirrorExp3;
+    // END Mirror
     private javax.swing.JPanel jPanelNoSelect;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JPanel jPanelCyllindrical;
@@ -9537,6 +9841,7 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelCalebration;
     private javax.swing.JPanel panelGeneral;
     private javax.swing.JPanel panelPhase;
+    private javax.swing.JPanel panelLayoutExp1;
     private javax.swing.JPanel panelSignal;
     private javax.swing.JPanel panelSignalPhoto;
     private javax.swing.JPanel panelExp2;
@@ -9769,6 +10074,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnProcessing = 1;
     private int countLenOnTelephoto = 1;
     private int countLenOnMirror = 1;
+    private int countLenOnMirrorExp3 = 1;
     private int countLenOnCyllin = 1;
     private int countLenOnMicroscope = 1;
     private int countLenOnMichelson = 1;
@@ -9797,6 +10103,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countSecondDisplayTelephoto = 1;
     private int countSecondDisplayProcessing = 1;
     private int countSecondDisplayMirror = 1;
+    private int countSecondDisplayMirrorExp3 = 1;
     private int countSecondDisplayCyllin = 1;
     private int countSecondDisplayMicroscope = 1;
     private int countSecondDisplayMichelson = 1;
@@ -9974,9 +10281,13 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelMirror;
     private javax.swing.JPanel panelButtonCGH4;
     private javax.swing.JPanel panelButtonCGH1;
+    private javax.swing.JPanel panelButtonCGH3;
+    private javax.swing.JPanel panelButtonCGH5;
+    private javax.swing.JPanel panelButtonCGH6;
     private javax.swing.JPanel panelMichelson;
     private javax.swing.JPanel panelButtonCyllin;
     private javax.swing.JPanel panelButtonPhase;
+    private javax.swing.JPanel panelButtonExp2;
     //End 
     @Override
     void updatePatternScreen() {
@@ -10009,11 +10320,12 @@ public class EduControlerPattern extends OpticsPane {
     static String logmessageMicroscope = "Microscope : Focal length=%s X Position=%s Y Position=%s";
     static String logmessageCyllin = "Cyllin : Focal length=%s X Position=%s Y Position=%s";
     static String logmessageMirror = "Mirror : Phy=%s Theta=%s";
+    static String logmessageMirrorExp3 = "Beam steere : Phy=%s Theta=%s";
     static String logmessageSlit = "Slit: w=%s r=%s p=%s g=%s";
     static String logmessageDoubleSlit = "Double Slit: w=%s r=%s p=%s g=%s s=%s";
     static String logmessageProcessing = "Signal processing: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
     static String logmessageTalbot = "Talbot images: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
-    static String logmessagePhase = "Phase retarder: gray=%s";
+    static String logmessagePhase = "Gray level: gray=%s";
     static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
     static String logmessageCalibration = "Fine tuning: Phy=%s Theta=%s";
     static String logmessageSignalPhoto = "Signal photo: widht=%s height=%s";
