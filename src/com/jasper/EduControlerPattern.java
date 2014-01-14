@@ -1105,7 +1105,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jTabbedControler.addTab(labels.getString("tabMirror"), jPanelMirror);
         buttonPanel = new javax.swing.JPanel();
-        
+        jTabbedPaneOptics.hide();
         javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
         panelGeneralLayout.setHorizontalGroup(
@@ -2131,6 +2131,33 @@ public class EduControlerPattern extends OpticsPane {
             }
         });
         
+        panelButtonSlit = new javax.swing.JPanel();
+        javax.swing.GroupLayout panelButtonSlitLayout = new javax.swing.GroupLayout(panelButtonSlit);
+        panelButtonSlit.setLayout(panelButtonSlitLayout);
+        panelButtonSlitLayout.setHorizontalGroup(
+                panelButtonSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonSlitLayout.createSequentialGroup()
+                .addGroup(panelButtonSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonSlitLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE)
+                )
+                )));
+        panelButtonSlitLayout.setVerticalGroup(
+                panelButtonSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonSlitLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addGroup(panelButtonSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                ));
+        
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(panelSlit);
         panelSlit.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -2138,12 +2165,12 @@ public class EduControlerPattern extends OpticsPane {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                    .addGroup(jPanel4Layout.createSequentialGroup()
+//                        .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblGraySlit, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
@@ -2191,11 +2218,11 @@ public class EduControlerPattern extends OpticsPane {
                         .addComponent(lblGraySlit)
                         .addComponent(text_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(97, 97, 97)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                //.addGap(97, 97, 97)
+//                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1))
         );
 
@@ -2378,6 +2405,33 @@ public class EduControlerPattern extends OpticsPane {
         });
 
         // double slit
+        panelButtonDoubleSlit = new javax.swing.JPanel();
+        javax.swing.GroupLayout panelButtonDoubleSlitLayout = new javax.swing.GroupLayout(panelButtonDoubleSlit);
+        panelButtonDoubleSlit.setLayout(panelButtonDoubleSlitLayout);
+        panelButtonDoubleSlitLayout.setHorizontalGroup(
+                panelButtonDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonDoubleSlitLayout.createSequentialGroup()
+                .addGroup(panelButtonDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonDoubleSlitLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE)
+                )
+                )));
+        panelButtonDoubleSlitLayout.setVerticalGroup(
+                panelButtonDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonDoubleSlitLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addGroup(panelButtonDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                ));
+        
         javax.swing.GroupLayout panelDoubleSlitLayout = new javax.swing.GroupLayout(panelDoubleSlit);
         panelDoubleSlit.setLayout(panelDoubleSlitLayout);
         panelDoubleSlitLayout.setHorizontalGroup(
@@ -2385,12 +2439,12 @@ public class EduControlerPattern extends OpticsPane {
             .addGroup(panelDoubleSlitLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDoubleSlitLayout.createSequentialGroup()
-                        .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                    .addGroup(panelDoubleSlitLayout.createSequentialGroup()
+//                        .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelDoubleSlitLayout.createSequentialGroup()
                         .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelSpacingDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2447,11 +2501,11 @@ public class EduControlerPattern extends OpticsPane {
                         .addComponent(jLabelSpacingDoubleSlit)
                         .addComponent(text_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(s_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
-                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                //.addGap(68, 68, 68)
+//                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1))
         );
 
@@ -4551,6 +4605,33 @@ public class EduControlerPattern extends OpticsPane {
         });
         lblPleaseSelectCGH5.setText("Select the file to import.");
         
+        panelButtonCGH5 = new javax.swing.JPanel();
+        javax.swing.GroupLayout panelButtonCGH5Layout = new javax.swing.GroupLayout(panelButtonCGH5);
+        panelButtonCGH5.setLayout(panelButtonCGH5Layout);
+        panelButtonCGH5Layout.setHorizontalGroup(
+                panelButtonCGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonCGH5Layout.createSequentialGroup()
+                .addGroup(panelButtonCGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonCGH5Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(buttonCGH5General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE)
+                )
+                )));
+        panelButtonCGH5Layout.setVerticalGroup(
+                panelButtonCGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelButtonCGH5Layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addGroup(panelButtonCGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonCGH5General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                ));
+        
         javax.swing.GroupLayout cGH5Layout = new javax.swing.GroupLayout(panelCGH5);
         panelCGH5.setLayout(cGH5Layout);
         cGH5Layout.setHorizontalGroup(
@@ -4558,17 +4639,18 @@ public class EduControlerPattern extends OpticsPane {
             .addGroup(cGH5Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonCGH5General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    //.addComponent(buttonCGH5General, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                 .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cGH5Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lblPleaseSelectCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cGH5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+//                    .addGroup(cGH5Layout.createSequentialGroup()
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                        .addGap(18, 18, 18)
+//                        .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                )
                 .addContainerGap(150, Short.MAX_VALUE))
         );
         cGH5Layout.setVerticalGroup(
@@ -4578,11 +4660,11 @@ public class EduControlerPattern extends OpticsPane {
                 .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPleaseSelectCGH5))
-                .addGap(153, 153, 153)
-                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCGH5General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                //.addGap(153, 153, 153)
+//                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonCGH5General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         // CGH6 Pattern Import
@@ -5700,6 +5782,8 @@ public class EduControlerPattern extends OpticsPane {
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         lblDiagram.removeAll();
+        buttonPanel.removeAll();
+        jTabbedPaneOptics.hide();
         
         lblDiagram.setIcon(null);
         lblDiagram.setText(null);
@@ -5720,6 +5804,7 @@ public class EduControlerPattern extends OpticsPane {
 //        changeLabTitle(labTitleTele);
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
+        jTabbedPaneOptics.show();
 
         buttonCyllinLensOn.setEnabled(false);
         buttonCyllinDisplaySecondOn.setEnabled(false);
@@ -5807,6 +5892,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -5868,6 +5954,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -5947,6 +6034,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -6068,6 +6156,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -6103,18 +6192,33 @@ public class EduControlerPattern extends OpticsPane {
         button11LensOnFresnel.setEnabled(false);
         jButton11LensOn.setEnabled(false);
         jButtonDisplaySecondOn.setEnabled(false);
+        
+        buttonPanel.removeAll();
+        buttonPanel.add(panelButtonSlit);
 
         jTabbedPaneOptics.addTab("Single Slit", panelSlit);
         jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
-        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH5);
-//        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
-//            public void stateChanged(ChangeEvent e) {
-//                buttong11LensOnSlit.setEnabled(false);
-//                buttonSecondDisplaySlit.setEnabled(false);
-//                buttong11LensOnDoubleSlit.setEnabled(false);
-//                buttonSecondDisplayDoubleSlit.setEnabled(false);
-//            }
-//        });
+        jTabbedPaneOptics.addTab("   CGH Pattern Import  ", panelCGH5);
+        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+            JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
+                int index = sourceTabbedPane.getSelectedIndex();
+                if (index >= 0) {
+                    String value = sourceTabbedPane.getTitleAt(index);
+                    if (value.equals("Single Slit")) {
+                        buttonPanel.removeAll();
+                        buttonPanel.add(panelButtonSlit);
+                    } if (value.equals("Double Slit")) {
+                        buttonPanel.removeAll();
+                        buttonPanel.add(panelButtonDoubleSlit);
+                    } if (value.equals("   CGH Pattern Import  ")) {
+                        buttonPanel.removeAll();
+                        buttonPanel.add(panelButtonCGH5);
+                    }
+                }
+                
+            }
+        });
 
         //tabbedDesLog.addTab("Description", desDiffaction);
         jScrollDes.setViewportView(desDiffaction);
@@ -6137,6 +6241,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -6198,6 +6303,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -6264,6 +6370,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -6324,6 +6431,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -6384,6 +6492,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -6459,6 +6568,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
+        jTabbedPaneOptics.show();
 
         buttonMicroscopeLensOn.setEnabled(false);
         buttonMicroscopeDisplaySecondOn.setEnabled(false);
@@ -10288,6 +10398,8 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelButtonCyllin;
     private javax.swing.JPanel panelButtonPhase;
     private javax.swing.JPanel panelButtonExp2;
+    private javax.swing.JPanel panelButtonSlit;
+    private javax.swing.JPanel panelButtonDoubleSlit;
     //End 
     @Override
     void updatePatternScreen() {
