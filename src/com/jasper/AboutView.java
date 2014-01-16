@@ -50,7 +50,7 @@ public class AboutView extends JDialog {
                         buttonCloseActionPerformed(evt);
                 }
             });
-            ResourceBundle bundle = ResourceBundle.getBundle("resources/Text");
+            ResourceBundle bundle = ResourceBundle.getBundle("resources/Text_en");
             labelAppVersion.setHorizontalAlignment(0);
             //labelAppVersion.setText(versionStr);
             labelAppVersion.setText(bundle.getString("VERSION"));
