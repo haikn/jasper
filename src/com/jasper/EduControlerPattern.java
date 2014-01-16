@@ -21,6 +21,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -5042,9 +5043,11 @@ public class EduControlerPattern extends OpticsPane {
         
         //  BEGIN show full screen
         layoutControl.add(panelPattern, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        layoutControl.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                patternFrameDoubleClick.show();
+        layoutControl.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  patternFrameDoubleClick.show();
+              }
             }
         });
         //layoutControl.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -5058,8 +5061,9 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         
         // BEGIN show full screen for desTelephotoLens
-        desTelephotoLens.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
+        desTelephotoLens.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
                 desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
@@ -5088,23 +5092,27 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desTelephotoLens
         
         // BEGIN show full screen for desMicroscope
-        desMicroscope.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desMicroscope.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5132,23 +5140,27 @@ public class EduControlerPattern extends OpticsPane {
                     }
                     });
                     
-                   descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                   descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desMicroscope
         
         // BEGIN show full screen for desAberration
-        desAberration.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desAberration.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5175,23 +5187,27 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desAberration
         
         // BEGIN show full screen for desMichelson
-        desMichelson.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desMichelson.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5220,23 +5236,27 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desMichelson
         
         // BEGIN show full screen for desDiffaction
-        desDiffaction.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desDiffaction.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5263,21 +5283,25 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desDiffaction
         // BEGIN show full screen for desSpectrometer
-        desSpectrometer.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
+        desSpectrometer.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
                 desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
@@ -5305,22 +5329,26 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desSpectrometer
         // BEGIN show full screen for desSignalProcessing
-        desSignalProcessing.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desSignalProcessing.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5347,22 +5375,26 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desSignalProcessing
         // BEGIN show full screen for desPhaseRetarder
-        desPhaseRetarder.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desPhaseRetarder.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5389,22 +5421,26 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desPhaseRetarder
         // BEGIN show full screen for desTalbotImage
-        desTalbotImage.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desTalbotImage.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5431,22 +5467,26 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desTalbotImage
         // BEGIN show full screen for desWavefront
-        desWavefront.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desWavefront.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5473,22 +5513,26 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desWavefront
         // BEGIN show full screen for desWavelength
-        desWavelength.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desWavelength.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5515,22 +5559,26 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desWavelength
         // BEGIN show full screen for desCalibration
-        desCalibration.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                desFullScreen = new javax.swing.JLabel();
+        desCalibration.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
@@ -5557,21 +5605,25 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
+                   descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desCalibration
         // BEGIN show full screen for desImportfile
-        desImportfile.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
+        desImportfile.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
                 desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
@@ -5599,15 +5651,18 @@ public class EduControlerPattern extends OpticsPane {
                             descriptionFullScreen.dispose();
                     }
                     });
-                    descriptionFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
-                            layoutDescriptionFullOpen = 0;
+                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
+                             layoutDescriptionFullOpen = 0;
                             descriptionFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for desImportfile
@@ -5616,10 +5671,12 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         tabbedDiagram.setBounds(580, 580, 665, 335);
         layoutDiagram.add(tabbedDiagram, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        
         // BEGIN show full screen for layoutDiagram
-        layoutDiagram.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                diagramFullScreen = new JFrame("JDC Education Kit - Diagram full screen");
+        layoutDiagram.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  diagramFullScreen = new JFrame("JDC Education Kit - Diagram full screen");
                 
                 if(layoutDiagramFullOpen ==  0){
                     lblDiagramFull.setIcon(lblDiagram.getIcon());
@@ -5648,15 +5705,18 @@ public class EduControlerPattern extends OpticsPane {
                             diagramFullScreen.dispose();
                     }
                     });
-                    diagramFullScreen.addMouseListener(new ClickListener() {
-                        public void doubleClick(MouseEvent e) {
+                    diagramFullScreen.addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent evt) {
+                          if (evt.getClickCount() == 2) {
                             layoutDiagramFullOpen = 0;
                             diagramFullScreen.dispose();
+                          }
                         }
-                   });
+                    });
                 } else {
                     JOptionPane.showMessageDialog(null, "This window is already open");
                 }
+              }
             }
         });
         //  END show full screen for layoutDiagram

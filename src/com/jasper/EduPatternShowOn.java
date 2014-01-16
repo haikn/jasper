@@ -17,6 +17,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -90,9 +91,11 @@ public class EduPatternShowOn {
         }
         });
 
-        patternFrameDoubleClick.addMouseListener(new ClickListener() {
-            public void doubleClick(MouseEvent e) {
-                patternFrameDoubleClick.dispose();
+        patternFrameDoubleClick.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+              if (evt.getClickCount() == 2) {
+                  patternFrameDoubleClick.dispose();
+              }
             }
         });
         // full screen
