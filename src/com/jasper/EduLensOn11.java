@@ -14,7 +14,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.PointerInfo;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.event.MouseEvent;
@@ -65,13 +67,19 @@ public class EduLensOn11 extends JComponent
 
         g.drawImage(scaleImg, 0, 0, null);
     }
-
+    
     private Rectangle computeGrabRect() {
         // width, height are size of this comp / zoom
         int grabWidth = (int) ((double) mySize.width / zoom);
         int grabHeight = (int) ((double) mySize.height / zoom);
         // upper-left corner is current point
-        return new Rectangle(point.x, point.y, grabWidth + 10, grabHeight + 10 );
+        
+        PointerInfo Pointer = MouseInfo.getPointerInfo();
+        Point MouseLocation = Pointer.getLocation();
+        int x = (int) MouseLocation.getX();
+        int y = (int) MouseLocation.getY();
+        
+        return new Rectangle(x - (int) grabWidth/2, y - (int) grabHeight/2, grabWidth, grabHeight);
     }
 
     public Dimension getPreferredSize() {
