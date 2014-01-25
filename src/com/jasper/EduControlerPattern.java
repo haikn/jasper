@@ -7657,6 +7657,14 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             jButton11LensOnMichelson.setEnabled(true);
             jButtonDisplaySecondOnMichelson.setEnabled(true);
+            buttonCyllinLensOn.setEnabled(true);
+            buttonCyllinDisplaySecondOn.setEnabled(true);
+            buttonMirrorLensOn.setEnabled(true);
+            buttonMirrorDisplaySecondOn.setEnabled(true);
+            buttonCGH4LensOn.setEnabled(true);
+            buttonCGH4DisplaySecondOn.setEnabled(true);
+            buttonCGH10LensOn.setEnabled(true);
+            buttonCGH10DisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
@@ -8099,6 +8107,8 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             buttonMirrorLensOnExp3.setEnabled(true);
             buttonMirrorDisplaySecondOnExp3.setEnabled(true);
+            buttonCGH3LensOn.setEnabled(true);
+            buttonCGH3DisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
@@ -8213,6 +8223,10 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             buttong11LensOnSlit.setEnabled(true);
             buttonSecondDisplaySlit.setEnabled(true);
+            buttong11LensOnDoubleSlit.setEnabled(true);
+            buttonSecondDisplayDoubleSlit.setEnabled(true);
+            buttonCGH5LensOn.setEnabled(true);
+            buttonCGH5DisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
@@ -8443,6 +8457,8 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             button11LensOnProcessing.setEnabled(true);
             buttonSecondDisplayProcessing.setEnabled(true);
+            buttonSecondPhoto.setEnabled(true);
+            button11LensOnPhoto.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
@@ -8555,6 +8571,8 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             button11LensOntalbot.setEnabled(true);
             buttonSecondDisplaytalbot.setEnabled(true);
+            button11LensOnTalbotPhoto.setEnabled(true);
+            buttonSecondTalbotPhoto.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
@@ -8841,6 +8859,10 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             buttonSecondPhase.setEnabled(true);
             button11LensOnPhase.setEnabled(true);
+            buttonCGH1LensOn.setEnabled(true);
+            buttonCGH1DisplaySecondOn.setEnabled(true);
+            buttonCGH8LensOn.setEnabled(true);
+            buttonCGH8DisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updatePhaseRetarderParameter(zoom, grayLevel);
@@ -8954,6 +8976,8 @@ public class EduControlerPattern extends OpticsPane {
         if (parseArguments()) {
             buttonMirrorSpectometerLensOn.setEnabled(true);
             buttonMirrorSpectometerDisplaySecondOn.setEnabled(true);
+            buttonCGH6LensOn.setEnabled(true);
+            buttonCGH6DisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
@@ -9176,7 +9200,7 @@ public class EduControlerPattern extends OpticsPane {
     private void buttonGenerateActionPerformedTalbotPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedTalbotPhoto
         actionTag = "TalbotPhoto";
         if (parseArguments()) {
-             button11LensOnTalbotPhoto.setEnabled(true);
+            button11LensOnTalbotPhoto.setEnabled(true);
             buttonSecondTalbotPhoto.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
