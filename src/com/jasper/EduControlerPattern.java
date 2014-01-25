@@ -7470,11 +7470,14 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
+                
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -7585,10 +7588,11 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -7688,10 +7692,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -7801,10 +7807,11 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -7899,10 +7906,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -8012,7 +8021,8 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
                 magFrameLenon.setLocation(new Point(500, 420));
@@ -8124,10 +8134,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -8237,10 +8249,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -8351,10 +8365,11 @@ public class EduControlerPattern extends OpticsPane {
                 magFrameLenon.setIconImage(img);
                 magFrameLenon.setResizable(false);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -8462,10 +8477,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -8572,10 +8589,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -8684,10 +8703,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -8766,10 +8787,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -8852,10 +8875,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -8959,10 +8984,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9069,10 +9096,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9183,10 +9212,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9271,10 +9302,12 @@ public class EduControlerPattern extends OpticsPane {
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
                 
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
+                magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
                 magFrameLenon.setVisible(true);
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9362,10 +9395,11 @@ public class EduControlerPattern extends OpticsPane {
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
 
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
             magFrameLenon.getContentPane().add(mag);
             magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setLocation(new Point(505, 420));
+                magFrameLenon.setResizable(false);
             magFrameLenon.setVisible(true);
             magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9435,10 +9469,11 @@ public class EduControlerPattern extends OpticsPane {
             magFrameLenon.setIconImage(img);
             magFrameLenon.setResizable(false);
 
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
             magFrameLenon.getContentPane().add(mag);
             magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setLocation(new Point(505, 420));
+            magFrameLenon.setResizable(false);
             magFrameLenon.setVisible(true);
             magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9505,10 +9540,11 @@ public class EduControlerPattern extends OpticsPane {
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
 
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
             magFrameLenon.getContentPane().add(mag);
             magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setLocation(new Point(505, 420));
+            magFrameLenon.setResizable(false);
             magFrameLenon.setVisible(true);
             magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9575,10 +9611,11 @@ public class EduControlerPattern extends OpticsPane {
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
 
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
             magFrameLenon.getContentPane().add(mag);
             magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setLocation(new Point(505, 420));
+            magFrameLenon.setResizable(false);
             magFrameLenon.setVisible(true);
             magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9645,10 +9682,11 @@ public class EduControlerPattern extends OpticsPane {
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
 
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
             magFrameLenon.getContentPane().add(mag);
             magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setLocation(new Point(505, 420));
+            magFrameLenon.setResizable(false);
             magFrameLenon.setVisible(true);
             magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9715,10 +9753,11 @@ public class EduControlerPattern extends OpticsPane {
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
 
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
             magFrameLenon.getContentPane().add(mag);
             magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setLocation(new Point(505, 420));
+            magFrameLenon.setResizable(false);
             magFrameLenon.setVisible(true);
             magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -9785,10 +9824,11 @@ public class EduControlerPattern extends OpticsPane {
             Image img = kit.createImage(url);
             magFrameLenon.setIconImage(img);
 
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
+            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
             magFrameLenon.getContentPane().add(mag);
             magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(500, 420));
+            magFrameLenon.setLocation(new Point(505, 420));
+            magFrameLenon.setResizable(false);
             magFrameLenon.setVisible(true);
             magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {

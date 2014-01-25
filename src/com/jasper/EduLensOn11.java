@@ -13,11 +13,7 @@ import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.MouseInfo;
 import java.awt.Point;
-import java.awt.PointerInfo;
-import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -28,22 +24,19 @@ import javax.swing.JComponent;
  *
  * @author sonnv
  */
-public class EduLensOn11 extends JComponent
-        implements MouseMotionListener {
+public class EduLensOn11 extends JComponent implements MouseMotionListener {
+    private JComponent comp;
+    private Point point;
+    private Dimension mySize;
+    private Robot robot;
+    public BufferedImage canvas;
 
-    double zoom;
-    JComponent comp;
-    Point point;
-    Dimension mySize;
-    Robot robot;
-
-    public EduLensOn11(JComponent comp, Dimension size, double zoom) {
+    public EduLensOn11(JComponent comp, Dimension size) {
         // flag to say don't draw until we get a MouseMotionEvent
         point = new Point(-1, -1);
         comp.addMouseMotionListener(this);
         this.comp = comp;
         this.mySize = size;
-        this.zoom = zoom;
         comp.addMouseMotionListener(this);
         // if we can't get a robot, then we just never
         // paint anything
@@ -61,25 +54,47 @@ public class EduLensOn11 extends JComponent
             g.fillRect(0, 0, mySize.width, mySize.height);
             return;
         }
-        Rectangle grabRect = computeGrabRect();
-        BufferedImage grabImg = robot.createScreenCapture(grabRect);
-        Image scaleImg = grabImg.getScaledInstance(mySize.width, mySize.height, Image.SCALE_FAST);
+        PatternImage image = ((EduPatternJPanel) comp).pimage;
+        //Pattern area size: 505x420
+        int patternAreaWidth = 563;
+        int patternAreaHeight = 368;
+        int fullScreenWidth = PatternImage.width;
+        int fullScreenHeight = PatternImage.height;
 
-        g.drawImage(scaleImg, 0, 0, null);
-    }
-    
-    private Rectangle computeGrabRect() {
-        // width, height are size of this comp / zoom
-        int grabWidth = (int) ((double) mySize.width / zoom);
-        int grabHeight = (int) ((double) mySize.height / zoom);
-        // upper-left corner is current point
-        
-        PointerInfo Pointer = MouseInfo.getPointerInfo();
-        Point MouseLocation = Pointer.getLocation();
-        int x = (int) MouseLocation.getX();
-        int y = (int) MouseLocation.getY();
-        
-        return new Rectangle(x - (int) grabWidth/2, y - (int) grabHeight/2, grabWidth, grabHeight);
+        //Mouse location
+        int mouseX = (int) point.x * fullScreenWidth / patternAreaWidth;
+        int mouseY = (int) point.y * fullScreenHeight / patternAreaHeight;
+
+        //Draw area location
+        int grabWidth = (int) ((double) mySize.width);
+        int grabHeight = (int) ((double) mySize.height);
+
+        int topLeftX = mouseX - (int) grabWidth/2;
+        int topLeftY = mouseY - (int) grabHeight/2;
+        int bottomRightX = mouseX + (int) grabWidth/2;
+        int bottomRightY = mouseY + (int) grabHeight/2;
+
+        //Caculate bounds
+        if(topLeftX < 0) {
+            topLeftX = 0;
+        }
+
+        if(bottomRightX > fullScreenWidth) {
+            topLeftX = fullScreenWidth - grabWidth;
+        }
+        if(topLeftY < 0) {
+            topLeftY = 0;
+        }
+
+        if(bottomRightY > fullScreenHeight) {
+            topLeftY = fullScreenHeight - grabHeight;
+        }
+
+        //Draw buffer with bounds
+        BufferedImage grabImg = image.canvas;
+        g.drawImage(grabImg, -topLeftX, -topLeftY, null);
+        g.dispose();
+
     }
 
     public Dimension getPreferredSize() {
@@ -96,15 +111,7 @@ public class EduLensOn11 extends JComponent
 
     // MouseMotionListener implementations
     public void mouseMoved(MouseEvent e) {
-        //  Point offsetPoint = com.getLocationOnScreen();
-        //  System.out.println(">>>>>>>>>E : " + e.getPoint());
-        //   e.translatePoint(.x, offsetPoint.y);
         point = e.getPoint();
-        
-//        Point offsetPoint = comp.getLocationOnScreen();
-//        e.translatePoint (offsetPoint.x, offsetPoint.y);
-//        point = e.getPoint();
-        
         repaint();
     }
 
