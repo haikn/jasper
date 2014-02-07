@@ -7,7 +7,7 @@
  * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
  * without permission from the copyright holder is strictly forbidden.
  */
-package com.jasper;
+package com.jasper.ui;
 
 import java.awt.Color;
 import java.awt.Font;

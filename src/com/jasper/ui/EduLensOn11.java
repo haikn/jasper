@@ -7,8 +7,9 @@
  * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
  * without permission from the copyright holder is strictly forbidden.
  */
-package com.jasper;
+package com.jasper.ui;
 
+import com.jasper.core.PatternImage;
 import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -55,7 +56,7 @@ public class EduLensOn11 extends JComponent implements MouseMotionListener {
             return;
         }
         PatternImage image = ((EduPatternJPanel) comp).pimage;
-        //Pattern area size: 505x420
+        //Pattern area size: 505x420 (size main view)
         int patternAreaWidth = 563;
         int patternAreaHeight = 368;
         int fullScreenWidth = PatternImage.width;

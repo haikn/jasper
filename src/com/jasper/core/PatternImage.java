@@ -7,7 +7,7 @@
  * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
  * without permission from the copyright holder is strictly forbidden.
  */
-package com.jasper;
+package com.jasper.core;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -74,7 +74,6 @@ public class PatternImage {
     private double d_postionYTalbot;
     private double d_rotationTalbot;
     private double d_grayLevelTalbot;
-    private double d_zoomTalbot;
     private double d_spacingTalbot;
     public BufferedImage canvas;
     public static int width;
@@ -102,7 +101,6 @@ public class PatternImage {
     // Calibrationn
     private double xoffCalibration;
     private double yoffCalibration;
-    private double focalCalibration;
     // Import file
     private double k;
     private double r;
@@ -127,10 +125,6 @@ public class PatternImage {
         height = h;
         canvas = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
         title = "";
-
-        //Graphics2D g2 = canvas.createGraphics();
-        //g2.setBackground(Color.RED);
-        //g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.0f));
     }
 
     public PatternImage(int w, int h, int a) {
@@ -146,10 +140,6 @@ public class PatternImage {
 
     public PatternImage() {
         canvas = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
-        //Graphics2D g2 = canvas.createGraphics();
-        //g2.setBackground(Color.RED);
-        //g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.0f));
-
     }
 
     public void init(double lambda) {
@@ -171,21 +161,21 @@ public class PatternImage {
         return new Rectangle(width, height);
     }
 
-    void updateLensParameter(double xoff, double yoff, double focal) {
+    public void updateLensParameter(double xoff, double yoff, double focal) {
         this.xoff = xoff;
         this.yoff = yoff;
         this.focal = focal;
         title = "lens " + xoff + " " + yoff + " " + focal;
     }
 
-    void updateLensMichelsonParameter(double xoff, double yoff, double focal) {
+    public void updateLensMichelsonParameter(double xoff, double yoff, double focal) {
         this.xoffMichelson = xoff;
         this.yoffMichelson = yoff;
         this.focalMichelson = focal;
         title = "lens michelson " + xoff + " " + yoff + " " + focal;
     }
 
-    void updateZoomparten(Point sp, Point recL, Dimension rectSize, int action) {
+    public void updateZoomparten(Point sp, Point recL, Dimension rectSize, int action) {
         this.startPoint = sp;
         this.rectLocale = recL;
         this.rectSize = rectSize;
@@ -193,18 +183,12 @@ public class PatternImage {
         title = "lens " + xoff + " " + yoff + " " + focal;
     }
 
-    void updateFresnelParameter(double width, double height) {
+    public void updateFresnelParameter(double width, double height) {
         this.d_widthX = width;
         this.d_heightX = height;
         title = "Fresnel " + width + " " + height;
     }
-
-//    void updateLensParameterCyllin(double xoff, double yoff, double focal) {
-//        this.xoffCyllin = xoff;
-//        this.yoffCyllin = yoff;
-//        this.focalCyllin = focal;
-//        title = "Cyllin " + xoff + " " + yoff + " " + focal;
-//    }
+    
     public void updateLensParameterDrawSlit(int slit, double width, double height, double postion, double rotation, double grayLevel, double spacing) {
         this.d_widthX = width;
         this.d_heightX = height;
@@ -215,7 +199,7 @@ public class PatternImage {
         title = (slit < 2 ? "Draw Single Slit " : "Draw Double Slit ") + d_widthX + " " + d_heightX + " " + this.d_postionX + " " + this.d_rotation + " " + this.d_grayLevel;
     }
 
-    void updateParameterDrawSignalProcessing(double widthX, double widthY, double heightX, double heightY, double postionX, double postionY, double rotation, double grayLevel, double processingSpac) {
+    public void updateParameterDrawSignalProcessing(double widthX, double widthY, double heightX, double heightY, double postionX, double postionY, double rotation, double grayLevel, double processingSpac) {
         this.d_widthX = widthX;
         this.d_widthY = widthY;
         this.d_heightX = heightX;
@@ -228,7 +212,7 @@ public class PatternImage {
         title = "Draw Signal Processing " + d_widthX + " " + d_widthY + " " + this.d_heightX + " " + this.d_heightY + " " + this.d_postionX + " " + this.d_postionY + " " + this.d_rotation + " " + this.d_grayLevel + " " + this.d_spacing;
     }
     
-    void updateParameterDrawTalbot(double widthX, double widthY, double heightX, double heightY, double postionX, double postionY, double rotation, double grayLevel, double processingSpac) {
+    public void updateParameterDrawTalbot(double widthX, double widthY, double heightX, double heightY, double postionX, double postionY, double rotation, double grayLevel, double processingSpac) {
         this.d_widthXTalbot = widthX;
         this.d_widthYTalbot = widthY;
         this.d_heightXTalbot = heightX;
@@ -241,55 +225,51 @@ public class PatternImage {
         title = "Draw Talbot " + d_widthXTalbot + " " + d_widthYTalbot + " " + this.d_heightXTalbot + " " + this.d_heightYTalbot + " " + this.d_postionXTalbot + " " + this.d_postionYTalbot + " " + this.d_rotationTalbot + " " + this.d_grayLevelTalbot + " " + this.d_spacingTalbot;
     }
 
-    void updateParameterDrawSignalPhoto(double widthX, double heightX) {
+    public void updateParameterDrawSignalPhoto(double widthX, double heightX) {
         this.d_widthX = widthX;
         this.d_heightX = heightX;
         title = "Signal Photo " + widthX + " " + heightX;
     }
 
-    void updatePhaseRetarderParameter(double zoom, double grayLevel) {
+    public void updatePhaseRetarderParameter(double zoom, double grayLevel) {
         this.d_zoom = zoom;
         this.d_grayLevel = grayLevel;
         title = "PhaseRetarder " + zoom + " " + grayLevel;
     }
 
-    void updateCyllindricalParameter(double xoff, double angle, double focal) {
-//        this.xoff = xoff;
-//        this.angle = angle;
-//        this.focal = focal;
-
+    public void updateCyllindricalParameter(double xoff, double angle, double focal) {
         this.xoffCyllin = xoff;
         this.yoffCyllin = angle;
         this.focalCyllin = focal;
         title = "cylindrical " + xoff + " " + angle + " " + focal;
     }
     
-    void updateCalibrationParameter(double xoff, double yoff) {
+    public void updateCalibrationParameter(double xoff, double yoff) {
         this.xoffCalibration = xoff;
         this.yoffCalibration = yoff;
         title = "calibration " + xoff + " " + yoff;
     }
 
-    void updateMicoscopeParameter(double xoff, double yoff, double focal) {
+    public void updateMicoscopeParameter(double xoff, double yoff, double focal) {
         this.xoffMicroscope = xoff;
         this.yoffMicroscope = yoff;
         this.focalMicroscope = focal;
         title = "microscope " + xoff + " " + yoff + " " + focal;
     }
 
-    void updateMirrorParameter(double phy, double theta) {
+    public void updateMirrorParameter(double phy, double theta) {
         this.mirrorPhy = phy;
         this.mirrorTheta = theta;
         title = "mirror " + phy + " " + theta;
     }
     
-    void updateMirrorExp3Parameter(double phy, double theta) {
+    public void updateMirrorExp3Parameter(double phy, double theta) {
         this.mirrorPhyExp3 = phy;
         this.mirrorThetaExp3 = theta;
         title = "mirror " + phy + " " + theta;
     }
 
-    void updateMirrorSpectometerParameter(double phy, double theta) {
+    public void updateMirrorSpectometerParameter(double phy, double theta) {
         this.mirrorPhySpectometer = phy;
         this.mirrorThetaSpectometer = theta;
         title = "mirror " + phy + " " + theta;
@@ -322,15 +302,6 @@ public class PatternImage {
         int gray = Math.min((int) Math.round(phase * scale), scale - 1);
         //Math.getExponent(gray);
         return gray2phase[gray];
-    }
-    
-    private byte phase2grayImportFile(double phase) {
-        int scale = gray2phase.length;
-        phase = phase / 2.0d / Math.PI;
-        phase -= Math.floor(phase);
-        int gray = Math.min((int) Math.round(phase * scale), scale - 1);
-        //Math.getExponent(gray);
-        return gray2phaseFinetuning[gray];
     }
 
     public void paintZoom(Rectangle rec) {
@@ -628,18 +599,6 @@ public class PatternImage {
             }
         } else {
             JOptionPane.showMessageDialog(null, "There is no pattern to Fine tune. Please select an experiment or import a CGH pattern", "Error", JOptionPane.ERROR_MESSAGE);
-//            for (int i = 0; i < width; i++) {
-//                x = (double) (i - width / 2 + 1) * pxsize;
-//                x = xm * x;
-//                for (int j = 0; j < height; j++) {
-//                    y = (double) (height / 2 - j + 1) * pxsize;
-//                    y = ym * y;
-//
-//                    phase = fixpart * (x + y);
-//                    iArray[0] = phase2gray(phase);
-//                    raster.setPixel(i, j, iArray);
-//                }
-//            }
         }
     }
     
@@ -746,10 +705,6 @@ public class PatternImage {
         g2.dispose();
         flag = 2;
         tuningFlag = true;
-//        canvas = new BufferedImage(buffImg.getWidth(), buffImg.getHeight(), BufferedImage.TYPE_INT_ARGB);
-//        Graphics2D g2D = canvas.createGraphics();
-//        g2D.drawRenderedImage(buffImg, null);
-//        g2D.dispose();
     }
     
     private static int[] parseElement(String s) throws IOException {
@@ -830,7 +785,7 @@ public class PatternImage {
             }
             retValue = true;
         } catch (Exception e) {
-            // System.out.println("parse or IO error");
+            e.printStackTrace();
         } finally {
             try {
                 if (br != null) {
@@ -846,7 +801,6 @@ public class PatternImage {
         if (slit == 0) {
             slit = 1;
         }
-
         int lineWidth = (int) d_widthX;
         int lineHeight = (int) d_heightX;
         int lineRotation = (int) d_rotation;
@@ -862,19 +816,11 @@ public class PatternImage {
 
         if (slit == 1) {
             for (int i = 0; i < RowY.length; i++) {
-                // if (linePostion == 384) {
                 RowY[i] = ((linePostion + canvas.getHeight() / 2) - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
-//                } else {
-//                    RowY[i] = DelY / 2 + DelY * i;
-//                }
             }
         } else {
 
             for (int i = 0; i < RowY.length; i++) {
-
-//                if (linePostion != 384) {
-//                    RowY[i] = (linePostion - canvas.getHeight() / 2) + DelY / 2 + DelY * i;
-//                / else {
                 if (i == 0) {
                     RowY[i] = ((linePostion + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) - spac / 2);
                 } else {
@@ -898,7 +844,6 @@ public class PatternImage {
     }
 
     public void signalProcessing0() {
-
         int lineWidthX = (int) d_widthX;
         int lineHeightX = (int) d_heightX;
         int lineWidthY = (int) d_widthY;
@@ -917,24 +862,16 @@ public class PatternImage {
         ColX = new int[NumCol];
         int DelX = canvas.getWidth() / NumCol;
         for (int i = 0; i < ColX.length; i++) {
-            //if (linePostionY > 0) {
             ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
-//            } else {
-//                ColX[i] = (DelX / 2 + DelX * i);
-//            }
         }
         RowY = new int[NumRow];
         int DelY = canvas.getHeight() / NumRow;
         for (int i = 0; i < RowY.length; i++) {
-            // if (linePostionX > 0) {
             if (i % 2 == 0) {
                 RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) - spac / 2);
             } else {
                 RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY) + spac / 2);
             }
-            //            } else {
-//                RowY[i] = DelY / 2 + DelY * i;
-//            }
         }
         Rectangle rect2;
         for (int i = 0; i < NumCol; i++) {
@@ -980,29 +917,12 @@ public class PatternImage {
         ColX = new int[NumCol];
         int DelX = canvas.getWidth() / NumCol;
         for (int i = 0; i < ColX.length; i++) {
-            //if (linePostionY > 0) {
             ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
-//            } else {
-//                ColX[i] = (DelX / 2 + DelX * i);
-//            }
         }
         RowY = new int[NumRow];
         int DelY = canvas.getHeight() / NumRow + spac / NumRow;
         for (int i = 0; i < RowY.length; i++) {
-            // if (linePostionX > 0) {
              RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
-//            if (i == 0) {
-//                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + (DelY / 2 + (DelY * i - spac / 4));
-//            } else if (i == 1) {
-//                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + (DelY / 2 + (DelY * i + spac / 4));
-//            } else if (i == 2) {
-//                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + (DelY / 2 + (DelY * i - spac / 4));
-//            } else if (i == 3) {
-//                RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + (DelY / 2 + (DelY * i + spac / 4));
-//            }
-            //            } else {
-//                RowY[i] = DelY / 2 + DelY * i;
-//            }
         }
         Rectangle rect2;
         for (int i = 0; i < NumCol; i++) {
@@ -1047,16 +967,11 @@ public class PatternImage {
         ColX = new int[NumCol];
         int DelX = canvas.getWidth() / NumCol;
         for (int i = 0; i < ColX.length; i++) {
-            //if (linePostionY > 0) {
             ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
-//            } else {
-//                ColX[i] = (DelX / 2 + DelX * i);
-//            }
         }
         RowY = new int[NumRow];
         int DelY = canvas.getHeight() / NumRow + spac / NumRow;
         for (int i = 0; i < RowY.length; i++) {
-            // if (linePostionX > 0) {
              RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
         }
         Rectangle rect2;
@@ -1086,8 +1001,6 @@ public class PatternImage {
     public void signalPhoto(BufferedImage buffImg) {
 
         double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
         buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -1162,8 +1075,6 @@ public class PatternImage {
     public void paintTalbotPhoto(BufferedImage buffImg) {
 
         double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
         buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());

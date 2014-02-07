@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jasper;
+package com.jasper.core;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -37,16 +37,16 @@ public class KeyReaderTrial {
                 return false;
         } else {
             if(key.equals("trialversion") && y.equals("2014")) {
-                if(m.equals("01")) {
-                    if( dCompare <= 31) {
+                if(m.equals("02")) {
+                    if( dCompare <= 28) {
                         return true;
                     }
                 } 
-//                else if (m.equals("02")){
-//                    if( dCompare <= 28) {
-//                        return true;
-//                    }
-//                }
+                else if (m.equals("03")){
+                    if( dCompare <= 31) {
+                        return true;
+                    }
+                }
                 return false;
             } else {
                 return false;

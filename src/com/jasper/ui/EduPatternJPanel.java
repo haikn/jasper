@@ -7,8 +7,9 @@
  * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
  * without permission from the copyright holder is strictly forbidden.
  */
-package com.jasper;
+package com.jasper.ui;
 
+import com.jasper.core.PatternImage;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -91,7 +92,7 @@ public class EduPatternJPanel extends JPanel {
             int hgt = metrics.getHeight();
             int adv = metrics.stringWidth(title);
 
-//			g2.drawString(title, bounds.width - adv - 2, hgt + 2);
+            // g2.drawString(title, bounds.width - adv - 2, hgt + 2);
             g2.drawString(title, 2, hgt - 2);
         }
         g.dispose();

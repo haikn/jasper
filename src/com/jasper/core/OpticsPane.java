@@ -7,30 +7,24 @@
  * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
  * without permission from the copyright holder is strictly forbidden.
  */
-package com.jasper;
+package com.jasper.core;
 
 import java.awt.Component;
 
 
 public abstract class OpticsPane extends javax.swing.JPanel {
-	
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-    protected String warnings="One or more parameters with incorrect input!";
+    private static final long serialVersionUID = 1L;
+    protected String warnings = "One or more parameters with incorrect input!";
+    protected boolean imageGenerated = false;
 
-	protected boolean imageGenerated = false;
-
-	@Override
+    @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        for (Component component : getComponents())
+        for (Component component : getComponents()) {
             component.setEnabled(enabled);
+        }
     }
-    
-    abstract void updatePatternScreen();
-    
-    abstract void updateRegenerate();
+
+    public abstract void updatePatternScreen();
+    public abstract void updateRegenerate();
 }
