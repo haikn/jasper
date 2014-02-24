@@ -55,7 +55,8 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemImport = new javax.swing.JMenuItem();
         jMenuItemImportExperiment = new javax.swing.JMenuItem();
         jMenuItemLanguageEnglish = new javax.swing.JMenuItem();
-        jMenuItemLanguageTaiwan = new javax.swing.JMenuItem();
+        jMenuItemLanguageChineseTraditional = new javax.swing.JMenuItem();
+        jMenuItemLanguageChineseSimplified = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
         jMenuItemAbout = new javax.swing.JMenuItem();
         panelOptic =  new EduControlerPattern(locale);
@@ -107,15 +108,23 @@ public class EduUIMainView extends javax.swing.JFrame {
                 locale = 0;
             }
         });
-        jMenuItemLanguageTaiwan.setText(labels.getString("mnuItemLanguageTaiwan"));
-        jMenuItemLanguageTaiwan.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemLanguageChineseTraditional.setText(labels.getString("mnuItemLanguageChineseTraditional"));
+        jMenuItemLanguageChineseTraditional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 locale = 1;
             }
         });
+        
+        jMenuItemLanguageChineseSimplified.setText(labels.getString("mnuItemLanguageChineseSimplified"));
+        jMenuItemLanguageChineseSimplified.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locale = 2;
+            }
+        });
 
         jMenuLanguage.add(jMenuItemLanguageEnglish);
-        jMenuLanguage.add(jMenuItemLanguageTaiwan);
+        jMenuLanguage.add(jMenuItemLanguageChineseTraditional);
+        jMenuLanguage.add(jMenuItemLanguageChineseSimplified);
         jMenuBarMain.add(jMenuLanguage);
 
         jMenuHelp.setText(labels.getString("mnuHelp"));
@@ -244,7 +253,8 @@ public class EduUIMainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JMenuItem jMenuItemImportExperiment;
     private javax.swing.JMenuItem jMenuItemLanguageEnglish;
-    private javax.swing.JMenuItem jMenuItemLanguageTaiwan;
+    private javax.swing.JMenuItem jMenuItemLanguageChineseTraditional;
+    private javax.swing.JMenuItem jMenuItemLanguageChineseSimplified;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneApp;
     private javax.swing.JPanel jTabbedPaneOptics;
@@ -260,6 +270,7 @@ public class EduUIMainView extends javax.swing.JFrame {
     
     static Locale[] supportedLocales = {
          Locale.ENGLISH,
+         Locale.CHINA,
          Locale.TAIWAN
       };
     
