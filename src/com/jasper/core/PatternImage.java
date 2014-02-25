@@ -24,6 +24,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -908,26 +909,92 @@ public class PatternImage {
         int linePostionY = (int) d_postionY;
         int lineGray = (int) d_grayLevel;
         int spac = (int) d_spacing;
+        //System.out.println(spac);
+        int MaxHeight = (int) (Math .sqrt(Math .pow(canvas.getHeight(), 2) + Math.pow(canvas.getWidth(), 2)));
+        
         Graphics2D g = (Graphics2D) canvas.getGraphics();
-        g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        int NumCol = 5;
-        int NumRow = 4;
+        g.clearRect(0, 0, canvas.getWidth(), MaxHeight);
+        int GapCol = 5;
+        int GapRow = 4;
+        int NumCol = GapCol + 4;
+        int NumRow;
         int[] ColX;
         int[] RowY;
         ColX = new int[NumCol];
-        int DelX = canvas.getWidth() / NumCol;
+        int DelX = canvas.getWidth()/ GapCol;
         for (int i = 0; i < ColX.length; i++) {
-            ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
+            //ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
+            ColX[i] = linePostionY  + (DelX / 2 + DelX * i);
+            
         }
+        
+        //Sort the ColX array
+        Arrays.sort(ColX);
+        int MaxX = ColX[ColX.length - 1];
+        for (int i = 0; i < ColX.length; i++) {
+            if(ColX[i]  <= ((canvas.getWidth() - MaxHeight)/2) ) {
+                ColX[i] = MaxX + DelX;
+                MaxX = ColX[i];
+            }
+            
+        }
+        Arrays.sort(ColX);
+        int MinX = ColX[0];
+        for (int i = 0; i < ColX.length; i++) {
+            
+            if(ColX[i] > ((canvas.getWidth() + MaxHeight)/2 )) {
+                ColX[i] = MinX - DelX;
+                MinX = ColX[i];
+            }
+            
+        }
+        Arrays.sort(ColX);        
+        
+        
+        int DelY = canvas.getHeight() / GapRow + spac / GapRow;
+        if(DelY == 0) {
+            DelY = 1;
+        }
+        //NumRow = (int) canvas.getHeight()/DelY + 1;
+        NumRow = (int) MaxHeight/DelY + 1;
+        
+        
         RowY = new int[NumRow];
-        int DelY = canvas.getHeight() / NumRow + spac / NumRow;
         for (int i = 0; i < RowY.length; i++) {
-             RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
+             //RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
+            RowY[i] = linePostionX  + ((DelY / 2) + DelY * i) + canvas.getHeight()/2 - MaxHeight/2 ;
         }
+        
+        //Sort the RowY array
+        Arrays.sort(RowY);
+        int MaxY = RowY[RowY.length - 1];
+        for (int i = 0; i < RowY.length; i++) {
+            
+            if(RowY[i]  <= ((canvas.getHeight() - MaxHeight)/2) ) {
+                RowY[i] = MaxY + DelY;
+                MaxY = RowY[i];
+            }
+            
+        }
+        Arrays.sort(RowY);
+        int MinY = RowY[0];
+        for (int i = 0; i < RowY.length; i++) {
+            
+            if(RowY[i] > ((canvas.getHeight() + MaxHeight)/2 )) {
+                RowY[i] = MinY - DelY;
+                MinY = RowY[i];
+            }
+            
+        }
+        Arrays.sort(RowY); 
+        
+        
         Rectangle rect2;
         for (int i = 0; i < NumCol; i++) {
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
+            
+            
             rect2 = new Rectangle(ColX[i] - lineWidthY / 2, (canvas.getHeight() - lineHeightY) / 2, lineWidthY, lineHeightY);
             // g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
@@ -935,14 +1002,18 @@ public class PatternImage {
             g.fill(rect2);
         }
         for (int i = 0; i < NumRow; i++) {
+            
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
+            
             rect2 = new Rectangle((canvas.getWidth() - lineWidthX) / 2, RowY[i] - lineHeightX / 2, lineWidthX, lineHeightX);
-            //g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            
             g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
+            
             g.draw(rect2);
             g.fill(rect2);
         }
+        
         buferPattern = compute(canvas);
         flag = 1;
         tuningFlag = true;
@@ -958,26 +1029,92 @@ public class PatternImage {
         int linePostionY = (int) d_postionYTalbot;
         int lineGray = (int) d_grayLevelTalbot;
         int spac = (int) d_spacingTalbot;
+        //System.out.println(spac);
+        int MaxHeight = (int) (Math .sqrt(Math .pow(canvas.getHeight(), 2) + Math.pow(canvas.getWidth(), 2)));
+        
         Graphics2D g = (Graphics2D) canvas.getGraphics();
-        g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        int NumCol = 5;
-        int NumRow = 4;
+        g.clearRect(0, 0, canvas.getWidth(), MaxHeight);
+        int GapCol = 5;
+        int GapRow = 4;
+        int NumCol = GapCol + 4;
+        int NumRow;
         int[] ColX;
         int[] RowY;
         ColX = new int[NumCol];
-        int DelX = canvas.getWidth() / NumCol;
+        int DelX = canvas.getWidth()/ GapCol;
         for (int i = 0; i < ColX.length; i++) {
-            ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
+            //ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
+            ColX[i] = linePostionY  + (DelX / 2 + DelX * i);
+            
         }
+        
+        //Sort the ColX array
+        Arrays.sort(ColX);
+        int MaxX = ColX[ColX.length - 1];
+        for (int i = 0; i < ColX.length; i++) {
+            if(ColX[i]  <= ((canvas.getWidth() - MaxHeight)/2) ) {
+                ColX[i] = MaxX + DelX;
+                MaxX = ColX[i];
+            }
+            
+        }
+        Arrays.sort(ColX);
+        int MinX = ColX[0];
+        for (int i = 0; i < ColX.length; i++) {
+            
+            if(ColX[i] > ((canvas.getWidth() + MaxHeight)/2 )) {
+                ColX[i] = MinX - DelX;
+                MinX = ColX[i];
+            }
+            
+        }
+        Arrays.sort(ColX);        
+        
+        
+        int DelY = canvas.getHeight() / GapRow + spac / GapRow;
+        if(DelY == 0) {
+            DelY = 1;
+        }
+        //NumRow = (int) canvas.getHeight()/DelY + 1;
+        NumRow = (int) MaxHeight/DelY + 1;
+        
+        
         RowY = new int[NumRow];
-        int DelY = canvas.getHeight() / NumRow + spac / NumRow;
         for (int i = 0; i < RowY.length; i++) {
-             RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
+             //RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
+            RowY[i] = linePostionX  + ((DelY / 2) + DelY * i) + canvas.getHeight()/2 - MaxHeight/2 ;
         }
+        
+        //Sort the RowY array
+        Arrays.sort(RowY);
+        int MaxY = RowY[RowY.length - 1];
+        for (int i = 0; i < RowY.length; i++) {
+            
+            if(RowY[i]  <= ((canvas.getHeight() - MaxHeight)/2) ) {
+                RowY[i] = MaxY + DelY;
+                MaxY = RowY[i];
+            }
+            
+        }
+        Arrays.sort(RowY);
+        int MinY = RowY[0];
+        for (int i = 0; i < RowY.length; i++) {
+            
+            if(RowY[i] > ((canvas.getHeight() + MaxHeight)/2 )) {
+                RowY[i] = MinY - DelY;
+                MinY = RowY[i];
+            }
+            
+        }
+        Arrays.sort(RowY); 
+        
+        
         Rectangle rect2;
         for (int i = 0; i < NumCol; i++) {
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
+            
+            
             rect2 = new Rectangle(ColX[i] - lineWidthY / 2, (canvas.getHeight() - lineHeightY) / 2, lineWidthY, lineHeightY);
             // g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
@@ -985,14 +1122,18 @@ public class PatternImage {
             g.fill(rect2);
         }
         for (int i = 0; i < NumRow; i++) {
+            
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
+            
             rect2 = new Rectangle((canvas.getWidth() - lineWidthX) / 2, RowY[i] - lineHeightX / 2, lineWidthX, lineHeightX);
-            //g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
+            
             g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
+            
             g.draw(rect2);
             g.fill(rect2);
         }
+        
         buferPattern = compute(canvas);
         flag = 1;
         tuningFlag = true;
