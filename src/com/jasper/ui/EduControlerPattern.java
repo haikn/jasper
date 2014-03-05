@@ -4133,33 +4133,68 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCGH1General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
         
-        javax.swing.GroupLayout cGH1Layout = new javax.swing.GroupLayout(panelCGH1);
-        panelCGH1.setLayout(cGH1Layout);
-        cGH1Layout.setHorizontalGroup(
-            cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH1Layout.createSequentialGroup()
+        scrollPaneCGH1 = new javax.swing.JScrollPane();
+        txtCGH1 = new javax.swing.JTextArea();
+        
+        txtCGH1.setColumns(10);
+        txtCGH1.setRows(4);
+        scrollPaneCGH1.setViewportView(txtCGH1);
+        
+        javax.swing.GroupLayout CGH1Layout = new javax.swing.GroupLayout(panelCGH1);
+        panelCGH1.setLayout(CGH1Layout);
+        CGH1Layout.setHorizontalGroup(
+            CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cGH1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPleaseSelectCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cGH1Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                ))
-                )
+                .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lblPleaseSelectCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-        cGH1Layout.setVerticalGroup(
-            cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectCGH1))
-                .addGap(3, 3, 3)
-                .addGap(0, 0, 0))
+        CGH1Layout.setVerticalGroup(
+            CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH1Layout.createSequentialGroup()
+                .addGroup(CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CGH1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPleaseSelectCGH1)))
+                    .addGroup(CGH1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
+        
+//        javax.swing.GroupLayout cGH1Layout = new javax.swing.GroupLayout(panelCGH1);
+//        panelCGH1.setLayout(cGH1Layout);
+//        cGH1Layout.setHorizontalGroup(
+//            cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH1Layout.createSequentialGroup()
+//                .addGap(10, 10, 10)
+//                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                    .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+//                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                    .addGroup(cGH1Layout.createSequentialGroup()
+//                        .addGap(18, 18, 18)
+//                        .addComponent(lblPleaseSelectCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                    .addGroup(cGH1Layout.createSequentialGroup()
+//                        .addGap(0, 0, 0)
+//                ))
+//                )
+//        );
+//        cGH1Layout.setVerticalGroup(
+//            cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH1Layout.createSequentialGroup()
+//                .addGap(14, 14, 14)
+//                .addGroup(cGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(lblPleaseSelectCGH1))
+//                .addGap(3, 3, 3)
+//                .addGap(0, 0, 0))
+//        );
         
         // CGH3 Pattern Import
         openFile = new javax.swing.JFileChooser();
@@ -4255,30 +4290,65 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCGH3General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
         
-        javax.swing.GroupLayout cGH3Layout = new javax.swing.GroupLayout(panelCGH3);
-        panelCGH3.setLayout(cGH3Layout);
-        cGH3Layout.setHorizontalGroup(
-            cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH3Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cGH3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPleaseSelectCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
-                .addContainerGap(150, Short.MAX_VALUE))
+        scrollPaneCGH3 = new javax.swing.JScrollPane();
+        txtCGH3 = new javax.swing.JTextArea();
+        
+        txtCGH3.setColumns(10);
+        txtCGH3.setRows(4);
+        scrollPaneCGH3.setViewportView(txtCGH3);
+        
+        javax.swing.GroupLayout CGH3Layout = new javax.swing.GroupLayout(panelCGH3);
+        panelCGH3.setLayout(CGH3Layout);
+        CGH3Layout.setHorizontalGroup(
+            CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lblPleaseSelectCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-        cGH3Layout.setVerticalGroup(
-            cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectCGH3))
-                .addGap(0, 0, 0))
+        CGH3Layout.setVerticalGroup(
+            CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH3Layout.createSequentialGroup()
+                .addGroup(CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CGH3Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPleaseSelectCGH3)))
+                    .addGroup(CGH3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
+        
+//        javax.swing.GroupLayout cGH3Layout = new javax.swing.GroupLayout(panelCGH3);
+//        panelCGH3.setLayout(cGH3Layout);
+//        cGH3Layout.setHorizontalGroup(
+//            cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH3Layout.createSequentialGroup()
+//                .addGap(12, 12, 12)
+//                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                    .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+//                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                    .addGroup(cGH3Layout.createSequentialGroup()
+//                        .addGap(18, 18, 18)
+//                        .addComponent(lblPleaseSelectCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                )
+//                .addContainerGap(150, Short.MAX_VALUE))
+//        );
+//        cGH3Layout.setVerticalGroup(
+//            cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH3Layout.createSequentialGroup()
+//                .addGap(20, 20, 20)
+//                .addGroup(cGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(lblPleaseSelectCGH3))
+//                .addGap(0, 0, 0))
+//        );
         // CGH4 Pattern Import
         openFile = new javax.swing.JFileChooser();
         buttonOpenFileCGH4 = new javax.swing.JButton();
@@ -4372,25 +4442,60 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCGH4LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCGH4General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
-        javax.swing.GroupLayout cGH4Layout = new javax.swing.GroupLayout(panelCGH4);
-        panelCGH4.setLayout(cGH4Layout);
-        cGH4Layout.setHorizontalGroup(
-            cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH4Layout.createSequentialGroup()
+        
+        scrollPaneCGH4 = new javax.swing.JScrollPane();
+        txtCGH4 = new javax.swing.JTextArea();
+        
+        txtCGH4.setColumns(10);
+        txtCGH4.setRows(4);
+        scrollPaneCGH4.setViewportView(txtCGH4);
+        
+        javax.swing.GroupLayout CGH4Layout = new javax.swing.GroupLayout(panelCGH4);
+        panelCGH4.setLayout(CGH4Layout);
+        CGH4Layout.setHorizontalGroup(
+            CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH4Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(lblPleaseSelectCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lblPleaseSelectCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-        cGH4Layout.setVerticalGroup(
-            cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH4Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectCGH4)))
+        CGH4Layout.setVerticalGroup(
+            CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH4Layout.createSequentialGroup()
+                .addGroup(CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CGH4Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPleaseSelectCGH4)))
+                    .addGroup(CGH4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
+//        javax.swing.GroupLayout cGH4Layout = new javax.swing.GroupLayout(panelCGH4);
+//        panelCGH4.setLayout(cGH4Layout);
+//        cGH4Layout.setHorizontalGroup(
+//            cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH4Layout.createSequentialGroup()
+//                .addGap(10, 10, 10)
+//                .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(10, 10, 10)
+//                .addComponent(lblPleaseSelectCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addContainerGap(53, Short.MAX_VALUE))
+//        );
+//        cGH4Layout.setVerticalGroup(
+//            cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH4Layout.createSequentialGroup()
+//                .addGap(38, 38, 38)
+//                .addGroup(cGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(lblPleaseSelectCGH4)))
+//        );
         // CGH5 Pattern Import
         openFile = new javax.swing.JFileChooser();
         buttonOpenFileCGH5 = new javax.swing.JButton();
@@ -4485,30 +4590,65 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCGH5General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
         
-        javax.swing.GroupLayout cGH5Layout = new javax.swing.GroupLayout(panelCGH5);
-        panelCGH5.setLayout(cGH5Layout);
-        cGH5Layout.setHorizontalGroup(
-            cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH5Layout.createSequentialGroup()
+        scrollPaneCGH5 = new javax.swing.JScrollPane();
+        txtCGH5 = new javax.swing.JTextArea();
+        
+        txtCGH5.setColumns(10);
+        txtCGH5.setRows(4);
+        scrollPaneCGH5.setViewportView(txtCGH5);
+        
+        javax.swing.GroupLayout CGH5Layout = new javax.swing.GroupLayout(panelCGH5);
+        panelCGH5.setLayout(CGH5Layout);
+        CGH5Layout.setHorizontalGroup(
+            CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH5Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cGH5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPleaseSelectCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addComponent(lblPleaseSelectCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-        cGH5Layout.setVerticalGroup(
-            cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH5Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectCGH5))
-                .addGap(0, 0, 0))
+        CGH5Layout.setVerticalGroup(
+            CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH5Layout.createSequentialGroup()
+                .addGroup(CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CGH5Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPleaseSelectCGH5)))
+                    .addGroup(CGH5Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
+        
+//        javax.swing.GroupLayout cGH5Layout = new javax.swing.GroupLayout(panelCGH5);
+//        panelCGH5.setLayout(cGH5Layout);
+//        cGH5Layout.setHorizontalGroup(
+//            cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH5Layout.createSequentialGroup()
+//                .addGap(15, 15, 15)
+//                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                    .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+//                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                    .addGroup(cGH5Layout.createSequentialGroup()
+//                        .addGap(18, 18, 18)
+//                        .addComponent(lblPleaseSelectCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                )
+//                .addContainerGap(150, Short.MAX_VALUE))
+//        );
+//        cGH5Layout.setVerticalGroup(
+//            cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH5Layout.createSequentialGroup()
+//                .addGap(58, 58, 58)
+//                .addGroup(cGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(lblPleaseSelectCGH5))
+//                .addGap(0, 0, 0))
+//        );
         // CGH6 Pattern Import
         openFile = new javax.swing.JFileChooser();
         buttonOpenFileCGH6 = new javax.swing.JButton();
@@ -4602,30 +4742,63 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCGH6LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonCGH6General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
+        scrollPaneCGH6 = new javax.swing.JScrollPane();
+        txtCGH6 = new javax.swing.JTextArea();
         
-        javax.swing.GroupLayout cGH6Layout = new javax.swing.GroupLayout(panelCGH6);
-        panelCGH6.setLayout(cGH6Layout);
-        cGH6Layout.setHorizontalGroup(
-            cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH6Layout.createSequentialGroup()
+        txtCGH6.setColumns(10);
+        txtCGH6.setRows(4);
+        scrollPaneCGH6.setViewportView(txtCGH6);
+        
+        javax.swing.GroupLayout CGH6Layout = new javax.swing.GroupLayout(panelCGH6);
+        panelCGH6.setLayout(CGH6Layout);
+        CGH6Layout.setHorizontalGroup(
+            CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH6Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cGH6Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPleaseSelectCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ))
+                .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lblPleaseSelectCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-        cGH6Layout.setVerticalGroup(
-            cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH6Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectCGH6))
-                .addGap(0, 0, 0))
+        CGH6Layout.setVerticalGroup(
+            CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH6Layout.createSequentialGroup()
+                .addGroup(CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CGH6Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPleaseSelectCGH6)))
+                    .addGroup(CGH6Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
+//        javax.swing.GroupLayout cGH6Layout = new javax.swing.GroupLayout(panelCGH6);
+//        panelCGH6.setLayout(cGH6Layout);
+//        cGH6Layout.setHorizontalGroup(
+//            cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH6Layout.createSequentialGroup()
+//                .addGap(10, 10, 10)
+//                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                    .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+//                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                    .addGroup(cGH6Layout.createSequentialGroup()
+//                        .addGap(18, 18, 18)
+//                        .addComponent(lblPleaseSelectCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                ))
+//        );
+//        cGH6Layout.setVerticalGroup(
+//            cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH6Layout.createSequentialGroup()
+//                .addGap(18, 18, 18)
+//                .addGroup(cGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(lblPleaseSelectCGH6))
+//                .addGap(0, 0, 0))
+//        );
         // CGH8 Pattern Import
         openFile = new javax.swing.JFileChooser();
         buttonOpenFileCGH8 = new javax.swing.JButton();
@@ -4720,29 +4893,64 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCGH8General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
         
-        javax.swing.GroupLayout cGH8Layout = new javax.swing.GroupLayout(panelCGH8);
-        panelCGH8.setLayout(cGH8Layout);
-        cGH8Layout.setHorizontalGroup(
-            cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH8Layout.createSequentialGroup()
+        scrollPaneCGH8 = new javax.swing.JScrollPane();
+        txtCGH8 = new javax.swing.JTextArea();
+        
+        txtCGH8.setColumns(10);
+        txtCGH8.setRows(4);
+        scrollPaneCGH8.setViewportView(txtCGH8);
+        
+        javax.swing.GroupLayout CGH8Layout = new javax.swing.GroupLayout(panelCGH8);
+        panelCGH8.setLayout(CGH8Layout);
+        CGH8Layout.setHorizontalGroup(
+            CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH8Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cGH8Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPleaseSelectCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ))
+                .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lblPleaseSelectCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-        cGH8Layout.setVerticalGroup(
-            cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH8Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectCGH8))
-                .addGap(3, 3, 3))
+        CGH8Layout.setVerticalGroup(
+            CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CGH8Layout.createSequentialGroup()
+                .addGroup(CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CGH8Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPleaseSelectCGH8)))
+                    .addGroup(CGH8Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
+        
+//        javax.swing.GroupLayout cGH8Layout = new javax.swing.GroupLayout(panelCGH8);
+//        panelCGH8.setLayout(cGH8Layout);
+//        cGH8Layout.setHorizontalGroup(
+//            cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH8Layout.createSequentialGroup()
+//                .addGap(10, 10, 10)
+//                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                    .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+//                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                    .addGroup(cGH8Layout.createSequentialGroup()
+//                        .addGap(18, 18, 18)
+//                        .addComponent(lblPleaseSelectCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                ))
+//        );
+//        cGH8Layout.setVerticalGroup(
+//            cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(cGH8Layout.createSequentialGroup()
+//                .addGap(14, 14, 14)
+//                .addGroup(cGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                    .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                    .addComponent(lblPleaseSelectCGH8))
+//                .addGap(3, 3, 3))
+//        );
         // CGH10 Pattern Import
         openFile = new javax.swing.JFileChooser();
         buttonOpenFileCGH10 = new javax.swing.JButton();
@@ -4809,7 +5017,7 @@ public class EduControlerPattern extends OpticsPane {
                 openFileActionPerformedCGH10(evt);
             }
         });
-        lblPleaseSelectCGH10.setText("Select the file to import.");
+        lblPleaseSelectCGH10.setText(labels.getString("lblSelectToImport"));
         
         panelButtonCGH10 = new javax.swing.JPanel();
         javax.swing.GroupLayout panelButtonCGH10Layout = new javax.swing.GroupLayout(panelButtonCGH10);
@@ -4838,28 +5046,39 @@ public class EduControlerPattern extends OpticsPane {
                 .addComponent(buttonCGH10General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
         
+        scrollPaneCGH10 = new javax.swing.JScrollPane();
+        txtCGH10 = new javax.swing.JTextArea();
+        
+        txtCGH10.setColumns(10);
+        txtCGH10.setRows(4);
+        scrollPaneCGH10.setViewportView(txtCGH10);
+        
         javax.swing.GroupLayout cGH10Layout = new javax.swing.GroupLayout(panelCGH10);
         panelCGH10.setLayout(cGH10Layout);
         cGH10Layout.setHorizontalGroup(
             cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cGH10Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonOpenFileCGH10, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                .addComponent(buttonOpenFileCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lblPleaseSelectCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cGH10Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(lblPleaseSelectCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
-                )
+                    .addComponent(scrollPaneCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         cGH10Layout.setVerticalGroup(
             cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cGH10Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFileCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectCGH10)).addGap(0, 0, 0))
+                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cGH10Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonOpenFileCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPleaseSelectCGH10)))
+                    .addGroup(cGH10Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         
         // Experiment 2
@@ -4876,7 +5095,7 @@ public class EduControlerPattern extends OpticsPane {
                 b_openFileActionPerformedExp2(evt);
             }
         });
-        lblPleaseSelectExp2.setText("Select the file to import.");
+        lblPleaseSelectExp2.setText(labels.getString("lblSelectToImport"));
 
         buttonSecondExp2.setEnabled(false);
         buttonSecondExp2.setText(labels.getString("btnSecondDisplayOn"));
@@ -10245,6 +10464,22 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelButtonSignal;
     private javax.swing.JPanel panelButtonTalbot;
     private javax.swing.JPanel panelButtonTalbotPhoto;
+    
+    // Textbox CGH
+    private javax.swing.JScrollPane scrollPaneCGH1;
+    private javax.swing.JTextArea txtCGH1;
+    private javax.swing.JScrollPane scrollPaneCGH3;
+    private javax.swing.JTextArea txtCGH3;
+    private javax.swing.JScrollPane scrollPaneCGH4;
+    private javax.swing.JTextArea txtCGH4;
+    private javax.swing.JScrollPane scrollPaneCGH5;
+    private javax.swing.JTextArea txtCGH5;
+    private javax.swing.JScrollPane scrollPaneCGH6;
+    private javax.swing.JTextArea txtCGH6;
+    private javax.swing.JScrollPane scrollPaneCGH8;
+    private javax.swing.JTextArea txtCGH8;
+    private javax.swing.JScrollPane scrollPaneCGH10;
+    private javax.swing.JTextArea txtCGH10;
     //End 
     @Override
     public void updatePatternScreen() {
