@@ -10,6 +10,13 @@
 
 package com.jasper.core.utils;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,20 +26,81 @@ import java.util.Date;
  *
  * @version 1.0 28 Aug 2013
  *
- * @author sonnv
+ * @author Albert Nguyen
  *
  */
 public class Utils {
     
     public static String dateNow() {
-        String rs = "";
-        
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        System.out.println(dateFormat.format(date));
-        rs = dateFormat.format(date);
         
+        return dateFormat.format(date).toString();
+    }
+    
+    public static String readFile(String filePath) {
+        String rs;
+        FileInputStream fos;
+        Reader reader;
+        BufferedReader buferReader;
+        StringBuilder text;
+        try {
+            fos = new FileInputStream(filePath);
+            reader = new java.io.InputStreamReader(fos, "UTF-8");
+            buferReader = new BufferedReader(reader);
+            text = new StringBuilder();
+            String line = null;
+            while ((line = buferReader.readLine()) != null) {
+                text.append(line + "\n");
+            }
+            reader.close();
+            rs = text.toString();
+        } catch (Exception ex) {
+            rs = "";
+            ex.printStackTrace();
+        }
         return rs;
     }
     
+    public static void writeFile(String path, String text, boolean orverWite) {
+        try {
+            String oldText = "";
+            if (!orverWite) {
+                oldText = readFile(path);
+            }
+            FileOutputStream fos = new FileOutputStream(path);
+            Writer out = new OutputStreamWriter(fos, "UTF-8");
+            out.write(oldText + text);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void createDirectory(String fileName) {
+        File file;
+        File fileDirectory;
+        try {
+            fileDirectory = new File(Constant.FILE_PATH);
+            fileDirectory.mkdir();
+            file = new File(Constant.FILE_PATH, fileName);
+            file.createNewFile();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static boolean checkFileExists(String fileName) {
+        boolean rs = false;
+        File file;
+        try {
+            file = new File(Constant.FILE_PATH, fileName);
+            if (file.exists()) {
+                rs = true;
+            }
+        } catch (Exception ex) {
+            
+        }
+        return rs;
+    }
 }

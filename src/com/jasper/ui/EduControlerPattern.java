@@ -13,6 +13,7 @@ import static com.jasper.ui.EduPatternShowOn.patternFrame;
 import static com.jasper.ui.EduPatternShowOn.patternFrameDoubleClick;
 import com.jasper.core.OpticsPane;
 import com.jasper.core.PatternImage;
+import com.jasper.core.utils.Constant;
 import com.jasper.core.utils.Utils;
 import com.jasper.ui.widget.DoubleJSlider;
 import com.jasper.ui.widget.RangeSlider;
@@ -29,7 +30,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -4136,9 +4139,15 @@ public class EduControlerPattern extends OpticsPane {
         
         scrollPaneCGH1 = new javax.swing.JScrollPane();
         txtCGH1 = new javax.swing.JTextArea();
+        // Check file logs exists
+        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH1)) {
+            Utils.createDirectory(Constant.FILE_NAME_CGH1);
+        }
+        getTextCGH1 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH1) ;
         
         txtCGH1.setColumns(10);
         txtCGH1.setRows(4);
+        txtCGH1.setText(getTextCGH1);
         scrollPaneCGH1.setViewportView(txtCGH1);
         
         javax.swing.GroupLayout CGH1Layout = new javax.swing.GroupLayout(panelCGH1);
@@ -4267,8 +4276,15 @@ public class EduControlerPattern extends OpticsPane {
         scrollPaneCGH3 = new javax.swing.JScrollPane();
         txtCGH3 = new javax.swing.JTextArea();
         
+        // Check file logs exists
+        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH3)) {
+            Utils.createDirectory(Constant.FILE_NAME_CGH3);
+        }
+        getTextCGH3 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH3) ;
+        
         txtCGH3.setColumns(10);
         txtCGH3.setRows(4);
+        txtCGH3.setText(getTextCGH3);
         scrollPaneCGH3.setViewportView(txtCGH3);
         
         javax.swing.GroupLayout CGH3Layout = new javax.swing.GroupLayout(panelCGH3);
@@ -4397,8 +4413,15 @@ public class EduControlerPattern extends OpticsPane {
         scrollPaneCGH4 = new javax.swing.JScrollPane();
         txtCGH4 = new javax.swing.JTextArea();
         
+        // Check file logs exists
+        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH4)) {
+            Utils.createDirectory(Constant.FILE_NAME_CGH4);
+        }
+        getTextCGH4 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH4) ;
+        
         txtCGH4.setColumns(10);
         txtCGH4.setRows(4);
+        txtCGH4.setText(getTextCGH4);
         scrollPaneCGH4.setViewportView(txtCGH4);
         
         javax.swing.GroupLayout CGH4Layout = new javax.swing.GroupLayout(panelCGH4);
@@ -4526,8 +4549,15 @@ public class EduControlerPattern extends OpticsPane {
         scrollPaneCGH5 = new javax.swing.JScrollPane();
         txtCGH5 = new javax.swing.JTextArea();
         
+        // Check file logs exists
+        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH5)) {
+            Utils.createDirectory(Constant.FILE_NAME_CGH5);
+        }
+        getTextCGH5 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH5) ;
+        
         txtCGH5.setColumns(10);
         txtCGH5.setRows(4);
+        txtCGH5.setText(getTextCGH5);
         scrollPaneCGH5.setViewportView(txtCGH5);
         
         javax.swing.GroupLayout CGH5Layout = new javax.swing.GroupLayout(panelCGH5);
@@ -4654,8 +4684,15 @@ public class EduControlerPattern extends OpticsPane {
         scrollPaneCGH6 = new javax.swing.JScrollPane();
         txtCGH6 = new javax.swing.JTextArea();
         
+        // Check file logs exists
+        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH6)) {
+            Utils.createDirectory(Constant.FILE_NAME_CGH6);
+        }
+        getTextCGH6 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH6);
+        
         txtCGH6.setColumns(10);
         txtCGH6.setRows(4);
+        txtCGH6.setText(getTextCGH6);
         scrollPaneCGH6.setViewportView(txtCGH6);
         
         javax.swing.GroupLayout CGH6Layout = new javax.swing.GroupLayout(panelCGH6);
@@ -4784,8 +4821,15 @@ public class EduControlerPattern extends OpticsPane {
         scrollPaneCGH8 = new javax.swing.JScrollPane();
         txtCGH8 = new javax.swing.JTextArea();
         
+        // Check file logs exists
+        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH8)) {
+            Utils.createDirectory(Constant.FILE_NAME_CGH8);
+        }
+        getTextCGH8 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH8);
+        
         txtCGH8.setColumns(10);
         txtCGH8.setRows(4);
+        txtCGH8.setText(getTextCGH8);
         scrollPaneCGH8.setViewportView(txtCGH8);
         
         javax.swing.GroupLayout CGH8Layout = new javax.swing.GroupLayout(panelCGH8);
@@ -4915,8 +4959,15 @@ public class EduControlerPattern extends OpticsPane {
         scrollPaneCGH10 = new javax.swing.JScrollPane();
         txtCGH10 = new javax.swing.JTextArea();
         
+        // Check file logs exists
+        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH10)) {
+            Utils.createDirectory(Constant.FILE_NAME_CGH10);
+        }
+        getTextCGH10 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH10);
+        
         txtCGH10.setColumns(10);
         txtCGH10.setRows(4);
+        txtCGH10.setText(getTextCGH10);
         scrollPaneCGH10.setViewportView(txtCGH10);
         
         javax.swing.GroupLayout cGH10Layout = new javax.swing.GroupLayout(panelCGH10);
@@ -7386,31 +7437,87 @@ public class EduControlerPattern extends OpticsPane {
     }
     
     public void setLogCGH1(String msg) {
-        txtCGH1.append(msg);
+        String filePath;
+        try {
+            txtCGH1.append(msg);
+            txtCGH1.setCaretPosition(txtCGH1.getText().length() - 1);
+            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH1;
+            
+            Utils.writeFile(filePath, msg, false);
+        } catch (Exception e) {
+        }
     }
     
     public void setLogCGH3(String msg) {
-        txtCGH3.append(msg);
+        String filePath;
+        try {
+            txtCGH3.append(msg);
+            txtCGH3.setCaretPosition(txtCGH3.getText().length() - 1);
+            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH3;
+            
+            Utils.writeFile(filePath, msg, false);
+        } catch (Exception e) {
+        }
     }
     
     public void setLogCGH4(String msg) {
-        txtCGH4.append(msg);
+        String filePath;
+        try {
+            txtCGH4.append(msg);
+            txtCGH4.setCaretPosition(txtCGH4.getText().length() - 1);
+            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH4;
+            
+            Utils.writeFile(filePath, msg, false);
+        } catch (Exception e) {
+        }
     }
     
     public void setLogCGH5(String msg) {
-        txtCGH5.append(msg);
+        String filePath;
+        try {
+            txtCGH5.append(msg);
+            txtCGH5.setCaretPosition(txtCGH5.getText().length() - 1);
+            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH5;
+            
+            Utils.writeFile(filePath, msg, false);
+        } catch (Exception e) {
+        }
     }
     
     public void setLogCGH6(String msg) {
-        txtCGH6.append(msg);
+        String filePath;
+        try {
+            txtCGH6.append(msg);
+            txtCGH6.setCaretPosition(txtCGH6.getText().length() - 1);
+            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH6;
+            
+            Utils.writeFile(filePath, msg, false);
+        } catch (Exception e) {
+        }
     }
     
     public void setLogCGH8(String msg) {
-        txtCGH8.append(msg);
+        String filePath;
+        try {
+            txtCGH8.append(msg);
+            txtCGH8.setCaretPosition(txtCGH8.getText().length() - 1);
+            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH8;
+            
+            Utils.writeFile(filePath, msg, false);
+        } catch (Exception e) {
+        }
     }
     
     public void setLogCGH10(String msg) {
-        txtCGH10.append(msg);
+        String filePath;
+        try {
+            txtCGH10.append(msg);
+            txtCGH10.setCaretPosition(txtCGH10.getText().length() - 1);
+            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH10;
+            
+            Utils.writeFile(filePath, msg, false);
+        } catch (Exception e) {
+        }
     }
 
     private String genLogLen() {
@@ -10382,6 +10489,17 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JTextArea txtCGH8;
     private javax.swing.JScrollPane scrollPaneCGH10;
     private javax.swing.JTextArea txtCGH10;
+    
+    private String getTextCGH1;
+    private String getTextCGH3;
+    private String getTextCGH4;
+    private String getTextCGH5;
+    private String getTextCGH6;
+    private String getTextCGH8;
+    private String getTextCGH10;
+    
+    private ResourceBundle bundleCGH;
+    
     //End 
     @Override
     public void updatePatternScreen() {
