@@ -189,7 +189,7 @@ public class PatternImage {
         this.d_heightX = height;
         title = "Fresnel " + width + " " + height;
     }
-    
+
     public void updateLensParameterDrawSlit(int slit, double width, double height, double postion, double rotation, double grayLevel, double spacing) {
         this.d_widthX = width;
         this.d_heightX = height;
@@ -212,7 +212,7 @@ public class PatternImage {
         this.d_spacing = processingSpac;
         title = "Draw Signal Processing " + d_widthX + " " + d_widthY + " " + this.d_heightX + " " + this.d_heightY + " " + this.d_postionX + " " + this.d_postionY + " " + this.d_rotation + " " + this.d_grayLevel + " " + this.d_spacing;
     }
-    
+
     public void updateParameterDrawTalbot(double widthX, double widthY, double heightX, double heightY, double postionX, double postionY, double rotation, double grayLevel, double processingSpac) {
         this.d_widthXTalbot = widthX;
         this.d_widthYTalbot = widthY;
@@ -244,7 +244,7 @@ public class PatternImage {
         this.focalCyllin = focal;
         title = "cylindrical " + xoff + " " + angle + " " + focal;
     }
-    
+
     public void updateCalibrationParameter(double xoff, double yoff) {
         this.xoffCalibration = xoff;
         this.yoffCalibration = yoff;
@@ -263,7 +263,7 @@ public class PatternImage {
         this.mirrorTheta = theta;
         title = "mirror " + phy + " " + theta;
     }
-    
+
     public void updateMirrorExp3Parameter(double phy, double theta) {
         this.mirrorPhyExp3 = phy;
         this.mirrorThetaExp3 = theta;
@@ -275,7 +275,7 @@ public class PatternImage {
         this.mirrorThetaSpectometer = theta;
         title = "mirror " + phy + " " + theta;
     }
-    
+
     public void updateParameterImportFile(double k, double r, double e, double kr
             , double width, double positions, double rotation, double grayLevel, String formula) {
         this.k = k;
@@ -305,6 +305,15 @@ public class PatternImage {
         return gray2phase[gray];
     }
 
+    private byte phase2grayImportFile(double phase) {
+        int scale = gray2phase.length;
+        phase = phase / 2.0d / Math.PI;
+        phase -= Math.floor(phase);
+        int gray = Math.min((int) Math.round(phase * scale), scale - 1);
+        //Math.getExponent(gray);
+        return gray2phaseFinetuning[gray];
+    }
+
     public void paintZoom(Rectangle rec) {
 
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
@@ -322,7 +331,7 @@ public class PatternImage {
         double y1;
         double fixpart = Math.PI / lambda / focal;
         // 2*pi/la*0.1*x*psize
-        //double fixpart2 = 2.0 * Math.PI / lambda * 0.1; 
+        //double fixpart2 = 2.0 * Math.PI / lambda * 0.1;
 
         // calculate phase of each pixel;
         for (int i = 0; i < height; i++) {
@@ -345,7 +354,7 @@ public class PatternImage {
                 Math.getExponent(y2);
                 phase = fixpart * (x2 + y2);
                 phase += fixpart2 * x2 * y2;
-               
+
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
             }
@@ -481,7 +490,7 @@ public class PatternImage {
         flag = 1;
         tuningFlag = true;
     }
-    
+
     // BeamSteere algorithms
     public void paintBeamSteere() {
         WritableRaster raster = canvas.getRaster();
@@ -537,13 +546,13 @@ public class PatternImage {
 
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
-                
+
             }
         }
         buferPattern = compute(canvas);
         flag = 1;
         tuningFlag = true;
-        
+
     }
 
     public void paintCalibration() {
@@ -551,9 +560,9 @@ public class PatternImage {
         WritableRaster raster = canvas.getRaster();
         double[] iArray = new double[1];
         double phase, x, y;
-        //phy and theta uses "radian" 
+        //phy and theta uses "radian"
         double phy = Math.toRadians(xoffCalibration);
-        double theta = Math.toRadians(yoffCalibration); 
+        double theta = Math.toRadians(yoffCalibration);
 
         double xm = Math.sin(phy) * Math.cos(theta);
         double ym = Math.sin(phy) * Math.sin(theta);
@@ -565,8 +574,8 @@ public class PatternImage {
                 File tmpFile = new File(canonicalPath);
                 BufferedImage originalImage = ImageIO.read(fileCGH1);
                 BufferedImage resizeImageJpg = resizeImage(originalImage, originalImage.getType(), width, height);
-                ImageIO.write(resizeImageJpg, "jpg", tmpFile); 
-                
+                ImageIO.write(resizeImageJpg, "jpg", tmpFile);
+
                 cHGPattern = compute(tmpFile);
                 tmpFile.delete();
                 for (int i = 0; i < width; i++) {
@@ -575,7 +584,7 @@ public class PatternImage {
                     for (int j = 0; j < height; j++) {
                         y = (double) (height / 2 - j + 1) * pxsize;
                         y = ym * y;
-                        
+
                         phase = fixpart * (x + y) + cHGPattern[i][j];
                         iArray[0] = phase2gray(phase);
                         raster.setPixel(i, j, iArray);
@@ -584,7 +593,7 @@ public class PatternImage {
             } catch (IOException ex) {
                 Logger.getLogger(PatternImage.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         } else if (tuningFlag && flag == 1) {
             for (int i = 0; i < width; i++) {
                 x = (double) (i - width / 2 + 1) * pxsize;
@@ -602,14 +611,14 @@ public class PatternImage {
             JOptionPane.showMessageDialog(null, "There is no pattern to Fine tune. Please select an experiment or import a CGH pattern", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     public double[][] compute(File file) {
         try {
             BufferedImage img = ImageIO.read(file);
-            
+
             Raster raster = img.getData();
             int w = raster.getWidth(), h = raster.getHeight();
-            
+
             double temp;
             double pixels[][] = new double[w][h];
             for (int x = 0; x < w; x++) {
@@ -624,7 +633,7 @@ public class PatternImage {
         }
         return null;
     }
-    
+
     public double[][] compute(BufferedImage img) {
         try {
             Raster raster = img.getData();
@@ -643,7 +652,7 @@ public class PatternImage {
         }
         return null;
     }
-    
+
     public java.awt.Image getImage(int pixels[][]) {
         int w = pixels.length;
         int h = pixels[0].length;
@@ -662,12 +671,10 @@ public class PatternImage {
         }
         return image;
     }
-    
+
     public void paintFineTuning(BufferedImage buffImg) {
 
         double scale = 1.0;
-        // scale = d_zoom / 100.0D;
-        //buffImg = buffImg.gets
         buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -685,7 +692,7 @@ public class PatternImage {
         //double k =(imread('testHologram.bmp'))/255*2*pi;
         g2.drawRenderedImage(buffImg, at);
     }
-    
+
     public void paintCGH1(BufferedImage buffImg, File file) {
         fileCGH1 = file;
         double scale = 1.0;
@@ -707,7 +714,7 @@ public class PatternImage {
         flag = 2;
         tuningFlag = true;
     }
-    
+
     private static int[] parseElement(String s) throws IOException {
         int[] ret = new int[gray2phase.length];
         int idx = 0;
@@ -786,7 +793,7 @@ public class PatternImage {
             }
             retValue = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            // System.out.println("parse or IO error");
         } finally {
             try {
                 if (br != null) {
@@ -802,6 +809,7 @@ public class PatternImage {
         if (slit == 0) {
             slit = 1;
         }
+
         int lineWidth = (int) d_widthX;
         int lineHeight = (int) d_heightX;
         int lineRotation = (int) d_rotation;
@@ -845,6 +853,7 @@ public class PatternImage {
     }
 
     public void signalProcessing0() {
+
         int lineWidthX = (int) d_widthX;
         int lineHeightX = (int) d_heightX;
         int lineWidthY = (int) d_widthY;
@@ -897,7 +906,7 @@ public class PatternImage {
         flag = 1;
         tuningFlag = true;
     }
-    
+
     public void signalProcessing() {
 
         int lineWidthX = (int) d_widthX;
@@ -909,9 +918,11 @@ public class PatternImage {
         int linePostionY = (int) d_postionY;
         int lineGray = (int) d_grayLevel;
         int spac = (int) d_spacing;
+
+
         //System.out.println(spac);
         int MaxHeight = (int) (Math .sqrt(Math .pow(canvas.getHeight(), 2) + Math.pow(canvas.getWidth(), 2)));
-        
+
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.clearRect(0, 0, canvas.getWidth(), MaxHeight);
         int GapCol = 5;
@@ -925,9 +936,9 @@ public class PatternImage {
         for (int i = 0; i < ColX.length; i++) {
             //ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
             ColX[i] = linePostionY  + (DelX / 2 + DelX * i);
-            
+
         }
-        
+
         //Sort the ColX array
         Arrays.sort(ColX);
         int MaxX = ColX[ColX.length - 1];
@@ -936,65 +947,65 @@ public class PatternImage {
                 ColX[i] = MaxX + DelX;
                 MaxX = ColX[i];
             }
-            
+
         }
         Arrays.sort(ColX);
         int MinX = ColX[0];
         for (int i = 0; i < ColX.length; i++) {
-            
+
             if(ColX[i] > ((canvas.getWidth() + MaxHeight)/2 )) {
                 ColX[i] = MinX - DelX;
                 MinX = ColX[i];
             }
-            
+
         }
-        Arrays.sort(ColX);        
-        
-        
+        Arrays.sort(ColX);
+
+
         int DelY = canvas.getHeight() / GapRow + spac / GapRow;
         if(DelY == 0) {
             DelY = 1;
         }
         //NumRow = (int) canvas.getHeight()/DelY + 1;
         NumRow = (int) MaxHeight/DelY + 1;
-        
-        
+
+
         RowY = new int[NumRow];
         for (int i = 0; i < RowY.length; i++) {
              //RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
             RowY[i] = linePostionX  + ((DelY / 2) + DelY * i) + canvas.getHeight()/2 - MaxHeight/2 ;
         }
-        
+
         //Sort the RowY array
         Arrays.sort(RowY);
         int MaxY = RowY[RowY.length - 1];
         for (int i = 0; i < RowY.length; i++) {
-            
+
             if(RowY[i]  <= ((canvas.getHeight() - MaxHeight)/2) ) {
                 RowY[i] = MaxY + DelY;
                 MaxY = RowY[i];
             }
-            
+
         }
         Arrays.sort(RowY);
         int MinY = RowY[0];
         for (int i = 0; i < RowY.length; i++) {
-            
+
             if(RowY[i] > ((canvas.getHeight() + MaxHeight)/2 )) {
                 RowY[i] = MinY - DelY;
                 MinY = RowY[i];
             }
-            
+
         }
-        Arrays.sort(RowY); 
-        
-        
+        Arrays.sort(RowY);
+
+
         Rectangle rect2;
         for (int i = 0; i < NumCol; i++) {
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
-            
-            
+
+
             rect2 = new Rectangle(ColX[i] - lineWidthY / 2, (canvas.getHeight() - lineHeightY) / 2, lineWidthY, lineHeightY);
             // g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
@@ -1002,23 +1013,23 @@ public class PatternImage {
             g.fill(rect2);
         }
         for (int i = 0; i < NumRow; i++) {
-            
+
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
-            
+
             rect2 = new Rectangle((canvas.getWidth() - lineWidthX) / 2, RowY[i] - lineHeightX / 2, lineWidthX, lineHeightX);
-            
+
             g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
-            
+
             g.draw(rect2);
             g.fill(rect2);
         }
-        
+
         buferPattern = compute(canvas);
         flag = 1;
         tuningFlag = true;
     }
-    
+
      public void paintTalbot() {
         int lineWidthX = (int) d_widthXTalbot;
         int lineHeightX = (int) d_heightXTalbot;
@@ -1031,7 +1042,7 @@ public class PatternImage {
         int spac = (int) d_spacingTalbot;
         //System.out.println(spac);
         int MaxHeight = (int) (Math .sqrt(Math .pow(canvas.getHeight(), 2) + Math.pow(canvas.getWidth(), 2)));
-        
+
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.clearRect(0, 0, canvas.getWidth(), MaxHeight);
         int GapCol = 5;
@@ -1045,9 +1056,9 @@ public class PatternImage {
         for (int i = 0; i < ColX.length; i++) {
             //ColX[i] = ((linePostionY + canvas.getWidth() / 2) - canvas.getWidth() / 2) + (DelX / 2 + DelX * i);
             ColX[i] = linePostionY  + (DelX / 2 + DelX * i);
-            
+
         }
-        
+
         //Sort the ColX array
         Arrays.sort(ColX);
         int MaxX = ColX[ColX.length - 1];
@@ -1056,65 +1067,65 @@ public class PatternImage {
                 ColX[i] = MaxX + DelX;
                 MaxX = ColX[i];
             }
-            
+
         }
         Arrays.sort(ColX);
         int MinX = ColX[0];
         for (int i = 0; i < ColX.length; i++) {
-            
+
             if(ColX[i] > ((canvas.getWidth() + MaxHeight)/2 )) {
                 ColX[i] = MinX - DelX;
                 MinX = ColX[i];
             }
-            
+
         }
-        Arrays.sort(ColX);        
-        
-        
+        Arrays.sort(ColX);
+
+
         int DelY = canvas.getHeight() / GapRow + spac / GapRow;
         if(DelY == 0) {
             DelY = 1;
         }
         //NumRow = (int) canvas.getHeight()/DelY + 1;
         NumRow = (int) MaxHeight/DelY + 1;
-        
-        
+
+
         RowY = new int[NumRow];
         for (int i = 0; i < RowY.length; i++) {
              //RowY[i] = ((linePostionX + canvas.getHeight() / 2) - canvas.getHeight() / 2) + ((DelY / 2) + DelY * i) ;
             RowY[i] = linePostionX  + ((DelY / 2) + DelY * i) + canvas.getHeight()/2 - MaxHeight/2 ;
         }
-        
+
         //Sort the RowY array
         Arrays.sort(RowY);
         int MaxY = RowY[RowY.length - 1];
         for (int i = 0; i < RowY.length; i++) {
-            
+
             if(RowY[i]  <= ((canvas.getHeight() - MaxHeight)/2) ) {
                 RowY[i] = MaxY + DelY;
                 MaxY = RowY[i];
             }
-            
+
         }
         Arrays.sort(RowY);
         int MinY = RowY[0];
         for (int i = 0; i < RowY.length; i++) {
-            
+
             if(RowY[i] > ((canvas.getHeight() + MaxHeight)/2 )) {
                 RowY[i] = MinY - DelY;
                 MinY = RowY[i];
             }
-            
+
         }
-        Arrays.sort(RowY); 
-        
-        
+        Arrays.sort(RowY);
+
+
         Rectangle rect2;
         for (int i = 0; i < NumCol; i++) {
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
-            
-            
+
+
             rect2 = new Rectangle(ColX[i] - lineWidthY / 2, (canvas.getHeight() - lineHeightY) / 2, lineWidthY, lineHeightY);
             // g.rotate(Math.toRadians(lineRotation), rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
@@ -1122,18 +1133,18 @@ public class PatternImage {
             g.fill(rect2);
         }
         for (int i = 0; i < NumRow; i++) {
-            
+
             g = (Graphics2D) canvas.getGraphics();
             g.setColor(new Color(lineGray, lineGray, lineGray));
-            
+
             rect2 = new Rectangle((canvas.getWidth() - lineWidthX) / 2, RowY[i] - lineHeightX / 2, lineWidthX, lineHeightX);
-            
+
             g.rotate(Math.toRadians(lineRotation), canvas.getWidth() / 2, canvas.getHeight() / 2);
-            
+
             g.draw(rect2);
             g.fill(rect2);
         }
-        
+
         buferPattern = compute(canvas);
         flag = 1;
         tuningFlag = true;
@@ -1142,6 +1153,8 @@ public class PatternImage {
     public void signalPhoto(BufferedImage buffImg) {
 
         double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
         buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -1212,10 +1225,12 @@ public class PatternImage {
         flag = 1;
         tuningFlag = true;
     }
-    
+
     public void paintTalbotPhoto(BufferedImage buffImg) {
 
         double scale = 1.0;
+        // scale = d_zoom / 100.0D;
+        //buffImg = buffImg.gets
         buffImg = PatternImage.resizeImage(buffImg, buffImg.getType(), 1920, 1080);
         Graphics2D g2 = (Graphics2D) canvas.getGraphics();
         g2.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -1235,23 +1250,23 @@ public class PatternImage {
         flag = 1;
         tuningFlag = true;
     }
-    
+
     public void paintImportFile() {
 
         // TO DO
         // U1 = Uexp[j(k.r+e)]
         //    phase = k.r + e
         //    exp[j(k.r + e)] = cos(phase) + isin(phase)
-        //    fixpart = U = 2.0 * Math.PI / lambda 
+        //    fixpart = U = 2.0 * Math.PI / lambda
         WritableRaster raster = canvas.getRaster();
         int[] iArray = new int[1];
         double x2, y2, phase;
         double y1;
         double fixpart = 2.0 * Math.PI / lambda;
-        
+
         double phy = Math.toRadians(width_importFile);
         //double xcomp = Math.sin(phy) * Math.cos(theta);
-           
+
         //System.out.println("fixpar: " + fixpart);
 
         for (int i = 0; i < height; i++) {
@@ -1281,7 +1296,7 @@ public class PatternImage {
         flag = 1;
         tuningFlag = true;
     }
-    
+
     public void paintImportFileMichelson(BufferedImage buffImg) {
 
         double scale = 1.0;
@@ -1337,7 +1352,7 @@ public class PatternImage {
 
         return resizedImage;
     }
-    
+
     public void paintDefault() {
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
