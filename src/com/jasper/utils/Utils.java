@@ -8,7 +8,7 @@
  * without permission from the copyright holder is strictly forbidden.
  */
 
-package com.jasper.core.utils;
+package com.jasper.utils;
 
 import java.io.BufferedReader;
 import java.io.File;

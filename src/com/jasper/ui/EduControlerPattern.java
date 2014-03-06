@@ -13,10 +13,9 @@ import static com.jasper.ui.EduPatternShowOn.patternFrame;
 import static com.jasper.ui.EduPatternShowOn.patternFrameDoubleClick;
 import com.jasper.core.OpticsPane;
 import com.jasper.core.PatternImage;
-import com.jasper.core.utils.Constant;
-import com.jasper.core.utils.Utils;
+import com.jasper.utils.Constant;
+import com.jasper.utils.Utils;
 import com.jasper.ui.widget.DoubleJSlider;
-import com.jasper.ui.widget.RangeSlider;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -30,9 +29,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -49,7 +46,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 import java.util.ResourceBundle;
-import javax.swing.JSlider;
 
 /**
  *
