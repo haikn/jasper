@@ -4139,11 +4139,13 @@ public class EduControlerPattern extends OpticsPane {
         
         scrollPaneCGH1 = new javax.swing.JScrollPane();
         txtCGH1 = new javax.swing.JTextArea();
+
         // Check file logs exists
-        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH1)) {
-            Utils.createDirectory(Constant.FILE_NAME_CGH1);
+        if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1)) {
+            getTextCGH1 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1) ;
+        } else {
+            getTextCGH1 = "";
         }
-        getTextCGH1 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH1) ;
         
         txtCGH1.setColumns(10);
         txtCGH1.setRows(4);
@@ -4275,12 +4277,13 @@ public class EduControlerPattern extends OpticsPane {
         
         scrollPaneCGH3 = new javax.swing.JScrollPane();
         txtCGH3 = new javax.swing.JTextArea();
-        
+
         // Check file logs exists
-        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH3)) {
-            Utils.createDirectory(Constant.FILE_NAME_CGH3);
+        if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3)) {
+            getTextCGH3 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3) ;
+        } else {
+            getTextCGH3 = "";
         }
-        getTextCGH3 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH3) ;
         
         txtCGH3.setColumns(10);
         txtCGH3.setRows(4);
@@ -4414,11 +4417,11 @@ public class EduControlerPattern extends OpticsPane {
         txtCGH4 = new javax.swing.JTextArea();
         
         // Check file logs exists
-        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH4)) {
-            Utils.createDirectory(Constant.FILE_NAME_CGH4);
+        if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4)) {
+            getTextCGH4 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4) ;
+        } else {
+            getTextCGH4 = "";
         }
-        getTextCGH4 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH4) ;
-        
         txtCGH4.setColumns(10);
         txtCGH4.setRows(4);
         txtCGH4.setText(getTextCGH4);
@@ -4550,10 +4553,11 @@ public class EduControlerPattern extends OpticsPane {
         txtCGH5 = new javax.swing.JTextArea();
         
         // Check file logs exists
-        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH5)) {
-            Utils.createDirectory(Constant.FILE_NAME_CGH5);
+        if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5)) {
+            getTextCGH5 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5) ;
+        } else {
+            getTextCGH5 = "";
         }
-        getTextCGH5 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH5) ;
         
         txtCGH5.setColumns(10);
         txtCGH5.setRows(4);
@@ -4685,11 +4689,11 @@ public class EduControlerPattern extends OpticsPane {
         txtCGH6 = new javax.swing.JTextArea();
         
         // Check file logs exists
-        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH6)) {
-            Utils.createDirectory(Constant.FILE_NAME_CGH6);
+        if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6)) {
+            getTextCGH6 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6) ;
+        } else {
+            getTextCGH6 = "";
         }
-        getTextCGH6 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH6);
-        
         txtCGH6.setColumns(10);
         txtCGH6.setRows(4);
         txtCGH6.setText(getTextCGH6);
@@ -4822,11 +4826,11 @@ public class EduControlerPattern extends OpticsPane {
         txtCGH8 = new javax.swing.JTextArea();
         
         // Check file logs exists
-        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH8)) {
-            Utils.createDirectory(Constant.FILE_NAME_CGH8);
+        if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8)) {
+            getTextCGH8 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8) ;
+        } else {
+            getTextCGH8 = "";
         }
-        getTextCGH8 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH8);
-        
         txtCGH8.setColumns(10);
         txtCGH8.setRows(4);
         txtCGH8.setText(getTextCGH8);
@@ -4960,11 +4964,11 @@ public class EduControlerPattern extends OpticsPane {
         txtCGH10 = new javax.swing.JTextArea();
         
         // Check file logs exists
-        if(!Utils.checkFileExists(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH10)) {
-            Utils.createDirectory(Constant.FILE_NAME_CGH10);
+        if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10)) {
+            getTextCGH10 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10) ;
+        } else {
+            getTextCGH10 = "";
         }
-        getTextCGH10 = Utils.readFile(Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH10);
-        
         txtCGH10.setColumns(10);
         txtCGH10.setRows(4);
         txtCGH10.setText(getTextCGH10);
@@ -7441,9 +7445,14 @@ public class EduControlerPattern extends OpticsPane {
         try {
             txtCGH1.append(msg);
             txtCGH1.setCaretPosition(txtCGH1.getText().length() - 1);
-            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH1;
-            
-            Utils.writeFile(filePath, msg, false);
+            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1;
+            // Check file logs exists
+            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1)) {
+                Utils.writeFile(filePath, msg, false);
+            } else {
+                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH1);
+                Utils.writeFile(filePath, msg, false);
+            }
         } catch (Exception e) {
         }
     }
@@ -7453,9 +7462,14 @@ public class EduControlerPattern extends OpticsPane {
         try {
             txtCGH3.append(msg);
             txtCGH3.setCaretPosition(txtCGH3.getText().length() - 1);
-            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH3;
-            
-            Utils.writeFile(filePath, msg, false);
+            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3;
+            // Check file logs exists
+            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3)) {
+                Utils.writeFile(filePath, msg, false);
+            } else {
+                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH3);
+                Utils.writeFile(filePath, msg, false);
+            }
         } catch (Exception e) {
         }
     }
@@ -7465,9 +7479,14 @@ public class EduControlerPattern extends OpticsPane {
         try {
             txtCGH4.append(msg);
             txtCGH4.setCaretPosition(txtCGH4.getText().length() - 1);
-            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH4;
-            
-            Utils.writeFile(filePath, msg, false);
+            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4;
+            // Check file logs exists
+            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4)) {
+                Utils.writeFile(filePath, msg, false);
+            } else {
+                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH4);
+                Utils.writeFile(filePath, msg, false);
+            }
         } catch (Exception e) {
         }
     }
@@ -7477,9 +7496,14 @@ public class EduControlerPattern extends OpticsPane {
         try {
             txtCGH5.append(msg);
             txtCGH5.setCaretPosition(txtCGH5.getText().length() - 1);
-            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH5;
-            
-            Utils.writeFile(filePath, msg, false);
+            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5;
+            // Check file logs exists
+            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5)) {
+                Utils.writeFile(filePath, msg, false);
+            } else {
+                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH5);
+                Utils.writeFile(filePath, msg, false);
+            }
         } catch (Exception e) {
         }
     }
@@ -7489,9 +7513,14 @@ public class EduControlerPattern extends OpticsPane {
         try {
             txtCGH6.append(msg);
             txtCGH6.setCaretPosition(txtCGH6.getText().length() - 1);
-            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH6;
-            
-            Utils.writeFile(filePath, msg, false);
+            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6;
+            // Check file logs exists
+            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6)) {
+                Utils.writeFile(filePath, msg, false);
+            } else {
+                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH6);
+                Utils.writeFile(filePath, msg, false);
+            }
         } catch (Exception e) {
         }
     }
@@ -7501,9 +7530,14 @@ public class EduControlerPattern extends OpticsPane {
         try {
             txtCGH8.append(msg);
             txtCGH8.setCaretPosition(txtCGH8.getText().length() - 1);
-            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH8;
-            
-            Utils.writeFile(filePath, msg, false);
+            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8;
+            // Check file logs exists
+            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8)) {
+                Utils.writeFile(filePath, msg, false);
+            } else {
+                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH8);
+                Utils.writeFile(filePath, msg, false);
+            }
         } catch (Exception e) {
         }
     }
@@ -7513,9 +7547,14 @@ public class EduControlerPattern extends OpticsPane {
         try {
             txtCGH10.append(msg);
             txtCGH10.setCaretPosition(txtCGH10.getText().length() - 1);
-            filePath = Constant.FILE_PATH + "\\" + Constant.FILE_NAME_CGH10;
-            
-            Utils.writeFile(filePath, msg, false);
+            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10;
+            // Check file logs exists
+            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10)) {
+                Utils.writeFile(filePath, msg, false);
+            } else {
+                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH10);
+                Utils.writeFile(filePath, msg, false);
+            }
         } catch (Exception e) {
         }
     }

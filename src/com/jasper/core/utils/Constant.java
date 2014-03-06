@@ -9,6 +9,8 @@
  */
 package com.jasper.core.utils;
 
+import java.io.File;
+
 /**
  * Constant class
  *
@@ -18,7 +20,7 @@ package com.jasper.core.utils;
  *
  */
 public class Constant {
-    public static final String FILE_PATH            = "D:\\JDCKit_Log";
+    public static final String FILE_PATH            = System.getProperty("user.home") + File.separator + "JDCKit_Log";
     public static final String FILE_NAME_CGH1       = "CGH1_Log.txt";
     public static final String FILE_NAME_CGH3       = "CGH3_Log.txt";
     public static final String FILE_NAME_CGH4       = "CGH4_Log.txt";

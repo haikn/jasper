@@ -95,11 +95,11 @@ public class Utils {
         File file;
         try {
             file = new File(Constant.FILE_PATH, fileName);
-            if (file.exists()) {
+            if (!file.exists()) {
                 rs = true;
             }
         } catch (Exception ex) {
-            
+            ex.printStackTrace();
         }
         return rs;
     }
