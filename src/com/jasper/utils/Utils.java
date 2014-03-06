@@ -90,6 +90,43 @@ public class Utils {
         }
     }
     
+    public static void createDirectoryLogFileCGH() {
+        File fileCGH1;
+        File fileCGH3;
+        File fileCGH4;
+        File fileCGH5;
+        File fileCGH6;
+        File fileCGH8;
+        File fileCGH10;
+        File fileDirectory;
+        try {
+            fileDirectory = new File(Constant.FILE_PATH);
+            fileDirectory.mkdir();
+            fileCGH1 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH1);
+            fileCGH1.createNewFile();
+            
+            fileCGH3 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH3);
+            fileCGH3.createNewFile();
+            
+            fileCGH4 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH4);
+            fileCGH4.createNewFile();
+            
+            fileCGH5 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH5);
+            fileCGH5.createNewFile();
+            
+            fileCGH6 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH6);
+            fileCGH6.createNewFile();
+            
+            fileCGH8 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH8);
+            fileCGH8.createNewFile();
+            
+            fileCGH10 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH10);
+            fileCGH10.createNewFile();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public static boolean checkFileExists(String fileName) {
         boolean rs = false;
         File file;

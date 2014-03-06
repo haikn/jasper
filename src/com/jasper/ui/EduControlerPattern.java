@@ -196,6 +196,9 @@ public class EduControlerPattern extends OpticsPane {
         buttonMirrorLensOnExp3 = new javax.swing.JButton();
         buttonMirrorDisplaySecondOnExp3 = new javax.swing.JButton();
         buttonMirrorGeneralExp3 = new javax.swing.JButton();
+        
+        // create CGH log file
+        Utils.createDirectoryLogFileCGH();
 
         tabbedControl.setAlignmentX(100);
         // Boot screen
