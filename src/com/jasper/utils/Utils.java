@@ -103,31 +103,31 @@ public class Utils {
             fileDirectory = new File(Constant.FILE_PATH);
             fileDirectory.mkdir();
             
-            if(!checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1)) {
+            if(checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1)) {
                 fileCGH1 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH1);
                 fileCGH1.createNewFile();
             } 
-            if(!checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3)) {
+            if(checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3)) {
                 fileCGH3 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH3);
                 fileCGH3.createNewFile();
             }
-            if(!checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4)) {
+            if(checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4)) {
                 fileCGH4 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH4);
                 fileCGH4.createNewFile();
             }
-            if(!checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5)) {
+            if(checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5)) {
                 fileCGH5 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH5);
                 fileCGH5.createNewFile();
             }
-            if(!checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6)) {
+            if(checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6)) {
                 fileCGH6 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH6);
                 fileCGH6.createNewFile();
             }
-            if(!checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8)) {
+            if(checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8)) {
                 fileCGH8 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH8);
                 fileCGH8.createNewFile();
             }
-            if(!checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10)) {
+            if(checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10)) {
                 fileCGH10 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH10);
                 fileCGH10.createNewFile();
             }
