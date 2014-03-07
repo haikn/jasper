@@ -1216,7 +1216,7 @@ public class PatternImage {
     public void phaseRetarder() {
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        g.setColor(new Color((int) d_zoom, (int) d_zoom, (int) d_zoom));
+        g.setColor(new Color((int) d_grayLevel, (int) d_grayLevel, (int) d_grayLevel));
         Rectangle rect = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
         g.draw(rect);
         g.fill(rect);
