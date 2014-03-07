@@ -52,6 +52,5 @@ public class KeyReaderTrial {
                 return false;
             }
         }
-        
     }
 }
