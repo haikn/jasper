@@ -38,8 +38,8 @@ public class EduPatternShowOn {
     static PatternImage pimage2;
     static EduPatternJPanel patternPanel;
     static EduPatternJPanel patternPanel2;
-    static JFrame patternFrame;
-    static JFrame patternFrameDoubleClick;
+    public static JFrame patternFrame;
+    public static JFrame patternFrameDoubleClick;
     static EduUIMainView controlFrame;
     // use 2nd display
     static boolean use2ndDisplay = true;

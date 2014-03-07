@@ -232,10 +232,9 @@ public class PatternImage {
         title = "Signal Photo " + widthX + " " + heightX;
     }
 
-    public void updatePhaseRetarderParameter(double zoom, double grayLevel) {
-        this.d_zoom = zoom;
+    public void updatePhaseRetarderParameter(double grayLevel) {
         this.d_grayLevel = grayLevel;
-        title = "PhaseRetarder " + zoom + " " + grayLevel;
+        title = "PhaseRetarder " + grayLevel;
     }
 
     public void updateCyllindricalParameter(double xoff, double angle, double focal) {
