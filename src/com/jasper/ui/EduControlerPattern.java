@@ -9,7 +9,6 @@
  */
 package com.jasper.ui;
 
-import static com.jasper.ui.EduPatternShowOn.patternFrame;
 import static com.jasper.ui.EduPatternShowOn.patternFrameDoubleClick;
 import com.jasper.core.OpticsPane;
 import com.jasper.core.PatternImage;
@@ -20,6 +19,13 @@ import com.jasper.ui.panel.michelson.CyllindricalMichelsonPanel;
 import com.jasper.ui.panel.wavefront.CyllindricalWavefrontPanel;
 import com.jasper.ui.panel.diffraction.DoubleSlitPanel;
 import com.jasper.ui.panel.ImportFormulaPanel;
+import com.jasper.ui.panel.cgh.CGH10Panel;
+import com.jasper.ui.panel.cgh.CGH1Panel;
+import com.jasper.ui.panel.cgh.CGH3Panel;
+import com.jasper.ui.panel.cgh.CGH4Panel;
+import com.jasper.ui.panel.cgh.CGH5Panel;
+import com.jasper.ui.panel.cgh.CGH6Panel;
+import com.jasper.ui.panel.cgh.CGH8Panel;
 import com.jasper.ui.panel.michelson.LensMichelsonPanel;
 import com.jasper.ui.panel.wavefront.LensWavefrontPanel;
 import com.jasper.ui.panel.michelson.MirrorMichelsonPanel;
@@ -32,25 +38,17 @@ import com.jasper.ui.panel.diffraction.SingleSlitPanel;
 import com.jasper.ui.panel.spectrometer.SpectremeterPanel;
 import com.jasper.ui.panel.talbot.TalbotPanel;
 import com.jasper.ui.panel.talbot.TalbotPhotoPanel;
-import com.jasper.utils.Constant;
 import com.jasper.utils.Utils;
 import com.jasper.ui.widget.DoubleJSlider;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -109,13 +107,6 @@ public class EduControlerPattern extends OpticsPane {
         jTabbedControler = new javax.swing.JTabbedPane();
         
         jPanelPattern = new javax.swing.JPanel();
-        panelCGH1 = new javax.swing.JPanel();
-        panelCGH3 = new javax.swing.JPanel();
-        panelCGH4 = new javax.swing.JPanel();
-        panelCGH5 = new javax.swing.JPanel();
-        panelCGH6 = new javax.swing.JPanel();
-        panelCGH8 = new javax.swing.JPanel();
-        panelCGH10 = new javax.swing.JPanel();
         
         // create CGH log file
         Utils.createDirectoryLogFileCGH();
@@ -205,6 +196,21 @@ public class EduControlerPattern extends OpticsPane {
         cyllindricalWavefrontPanel = new CyllindricalWavefrontPanel(labels, bindingGroup, panelPattern, jTabbedControler);
         mirrorWavefrontPanel = new MirrorWavefrontPanel(labels, bindingGroup, panelPattern, jTabbedControler);
       
+        // CGH 1
+        cgh1Panel = new CGH1Panel(labels, bindingGroup, panelPattern);
+        // CGH 3
+        cgh3Panel = new CGH3Panel(labels, bindingGroup, panelPattern);
+        // CGH 4
+        cgh4Panel = new CGH4Panel(labels, bindingGroup, panelPattern);
+        // CGH 5
+        cgh5Panel = new CGH5Panel(labels, bindingGroup, panelPattern);
+        // CGH 6
+        cgh6Panel = new CGH6Panel(labels, bindingGroup, panelPattern);
+        // CGH 8
+        cgh8Panel = new CGH8Panel(labels, bindingGroup, panelPattern);
+        // CGH 10
+        cgh10Panel = new CGH10Panel(labels, bindingGroup, panelPattern);
+        
         // Beam Shifting tab
         beamShiftingPanel = new BeamShiftingPanel(labels, bindingGroup, panelPattern, tabbedControl);
         // Import Formula tab
@@ -422,928 +428,6 @@ public class EduControlerPattern extends OpticsPane {
                 }
             }
         });
-        
-        // CGH1 Pattern Import
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileCGH1 = new javax.swing.JButton();
-        buttonCGH1General = new javax.swing.JButton();
-        buttonCGH1LensOn = new javax.swing.JButton();
-        buttonCGH1DisplaySecondOn = new javax.swing.JButton();
-        lblPleaseSelectCGH1 = new javax.swing.JLabel();
-        
-        buttonCGH1General.setText(labels.getString("btnGenerate"));
-        buttonCGH1General.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH1 != null) {
-                    buttonGenerateActionPerformedCGH1(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonCGH1LensOn.setEnabled(false);
-        buttonCGH1LensOn.setText(labels.getString("btnLensOn"));
-        buttonCGH1LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH1 != null) {
-                    button11LensOnActionPerformedCGH1(evt);
-                    countLenOnCGH1++;
-                    if (countLenOnCGH1 % 2 == 0) {
-                        buttonCGH1LensOn.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        buttonCGH1LensOn.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonCGH1DisplaySecondOn.setEnabled(false);
-        buttonCGH1DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCGH1DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH1 != null) {
-                    buttonSecondActionPerformedCGH1(evt);
-                    countSecondDisplayCGH1++;
-                    if (countSecondDisplayCGH1 % 2 == 0) {
-                        buttonCGH1DisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonCGH1DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        buttonOpenFileCGH1.setText("Browse...");
-        buttonOpenFileCGH1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openFileActionPerformedCGH1(evt);
-            }
-        });
-        lblPleaseSelectCGH1.setText("Select the file to import.");
-        
-        panelButtonCGH1 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonCGH1Layout = new javax.swing.GroupLayout(panelButtonCGH1);
-        panelButtonCGH1.setLayout(panelButtonCGH1Layout);
-        panelButtonCGH1Layout.setHorizontalGroup(
-                panelButtonCGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH1Layout.createSequentialGroup()
-                .addGroup(panelButtonCGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonCGH1General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH1LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH1DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonCGH1Layout.setVerticalGroup(
-                panelButtonCGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH1Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(panelButtonCGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonCGH1DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH1LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH1General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        scrollPaneCGH1 = new javax.swing.JScrollPane();
-        txtCGH1 = new javax.swing.JTextArea();
-        getTextCGH1 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1);
-        
-        txtCGH1.setColumns(10);
-        txtCGH1.setRows(4);
-        txtCGH1.setText(getTextCGH1);
-        scrollPaneCGH1.setViewportView(txtCGH1);
-        
-        javax.swing.GroupLayout CGH1Layout = new javax.swing.GroupLayout(panelCGH1);
-        panelCGH1.setLayout(CGH1Layout);
-        CGH1Layout.setHorizontalGroup(
-            CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblPleaseSelectCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        CGH1Layout.setVerticalGroup(
-            CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH1Layout.createSequentialGroup()
-                .addGroup(CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CGH1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(CGH1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonOpenFileCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPleaseSelectCGH1)))
-                    .addGroup(CGH1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(scrollPaneCGH1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(7, 7, 7))))
-        );
-        
-        // CGH3 Pattern Import
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileCGH3 = new javax.swing.JButton();
-        buttonCGH3General = new javax.swing.JButton();
-        buttonCGH3LensOn = new javax.swing.JButton();
-        buttonCGH3DisplaySecondOn = new javax.swing.JButton();
-        lblPleaseSelectCGH3 = new javax.swing.JLabel();
-        
-        buttonCGH3General.setText(labels.getString("btnGenerate"));
-        buttonCGH3General.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH3 != null) {
-                    buttonGenerateActionPerformedCGH3(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonCGH3LensOn.setEnabled(false);
-        buttonCGH3LensOn.setText(labels.getString("btnLensOn"));
-        buttonCGH3LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH3 != null) {
-                    button11LensOnActionPerformedCGH3(evt);
-                    countLenOnCGH3++;
-                    if (countLenOnCGH3 % 2 == 0) {
-                        buttonCGH3LensOn.setText(labels.getString("btnLensOff"));
-                    } else {
-                        buttonCGH3LensOn.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonCGH3DisplaySecondOn.setEnabled(false);
-        buttonCGH3DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCGH3DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH3 != null) {
-                    buttonSecondActionPerformedCGH3(evt);
-                    countSecondDisplayCGH3++;
-                    if (countSecondDisplayCGH3 % 2 == 0) {
-                        buttonCGH3DisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        buttonCGH3DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        buttonOpenFileCGH3.setText("Browse...");
-        buttonOpenFileCGH3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openFileActionPerformedCGH3(evt);
-            }
-        });
-        lblPleaseSelectCGH3.setText("Select the file to import.");
-        
-        panelButtonCGH3 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonCGH3Layout = new javax.swing.GroupLayout(panelButtonCGH3);
-        panelButtonCGH3.setLayout(panelButtonCGH3Layout);
-        panelButtonCGH3Layout.setHorizontalGroup(
-                panelButtonCGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH3Layout.createSequentialGroup()
-                .addGroup(panelButtonCGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonCGH3General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonCGH3Layout.setVerticalGroup(
-                panelButtonCGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH3Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(panelButtonCGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonCGH3DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH3LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH3General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        scrollPaneCGH3 = new javax.swing.JScrollPane();
-        txtCGH3 = new javax.swing.JTextArea();
-        getTextCGH3 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3) ;
-        
-        txtCGH3.setColumns(10);
-        txtCGH3.setRows(4);
-        txtCGH3.setText(getTextCGH3);
-        scrollPaneCGH3.setViewportView(txtCGH3);
-        
-        javax.swing.GroupLayout CGH3Layout = new javax.swing.GroupLayout(panelCGH3);
-        panelCGH3.setLayout(CGH3Layout);
-        CGH3Layout.setHorizontalGroup(
-            CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH3Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblPleaseSelectCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        CGH3Layout.setVerticalGroup(
-            CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH3Layout.createSequentialGroup()
-                .addGroup(CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CGH3Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(CGH3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonOpenFileCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPleaseSelectCGH3)))
-                    .addGroup(CGH3Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(scrollPaneCGH3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(5, 5, 5))))
-                    );
-  
-        // CGH4 Pattern Import
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileCGH4 = new javax.swing.JButton();
-        buttonCGH4General = new javax.swing.JButton();
-        buttonCGH4LensOn = new javax.swing.JButton();
-        buttonCGH4DisplaySecondOn = new javax.swing.JButton();
-        lblPleaseSelectCGH4 = new javax.swing.JLabel();
-        
-        buttonCGH4General.setText(labels.getString("btnGenerate"));
-        buttonCGH4General.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH4 != null) {
-                    buttonGenerateActionPerformedCGH4(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonCGH4LensOn.setEnabled(false);
-        buttonCGH4LensOn.setText(labels.getString("btnLensOn"));
-        buttonCGH4LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH4 != null) {
-                    button11LensOnActionPerformedCGH4(evt);
-                    countLenOnCGH4++;
-                    if (countLenOnCGH4 % 2 == 0) {
-                        buttonCGH4LensOn.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        buttonCGH4LensOn.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonCGH4DisplaySecondOn.setEnabled(false);
-        buttonCGH4DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCGH4DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH4 != null) {
-                    buttonSecondActionPerformedCGH4(evt);
-                    countSecondDisplayCGH4++;
-                    if (countSecondDisplayCGH4 % 2 == 0) {
-                        buttonCGH4DisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonCGH4DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        buttonOpenFileCGH4.setText("Browse...");
-        buttonOpenFileCGH4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openFileActionPerformedCGH4(evt);
-            }
-        });
-        lblPleaseSelectCGH4.setText("Select the file to import.");
-        
-        panelButtonCGH4 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonCGH4Layout = new javax.swing.GroupLayout(panelButtonCGH4);
-        panelButtonCGH4.setLayout(panelButtonCGH4Layout);
-        panelButtonCGH4Layout.setHorizontalGroup(
-                panelButtonCGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH4Layout.createSequentialGroup()
-                .addGroup(panelButtonCGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH4Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonCGH4General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH4LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH4DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonCGH4Layout.setVerticalGroup(
-                panelButtonCGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH4Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(panelButtonCGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonCGH4DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH4LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH4General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        scrollPaneCGH4 = new javax.swing.JScrollPane();
-        txtCGH4 = new javax.swing.JTextArea();
-        getTextCGH4 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4);
-        
-        txtCGH4.setColumns(10);
-        txtCGH4.setRows(4);
-        txtCGH4.setText(getTextCGH4);
-        scrollPaneCGH4.setViewportView(txtCGH4);
-        
-        javax.swing.GroupLayout CGH4Layout = new javax.swing.GroupLayout(panelCGH4);
-        panelCGH4.setLayout(CGH4Layout);
-        CGH4Layout.setHorizontalGroup(
-            CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH4Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblPleaseSelectCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        CGH4Layout.setVerticalGroup(
-            CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH4Layout.createSequentialGroup()
-                .addGroup(CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CGH4Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(CGH4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonOpenFileCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPleaseSelectCGH4)))
-                    .addGroup(CGH4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(scrollPaneCGH4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        
-        // CGH5 Pattern Import
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileCGH5 = new javax.swing.JButton();
-        buttonCGH5General = new javax.swing.JButton();
-        buttonCGH5LensOn = new javax.swing.JButton();
-        buttonCGH5DisplaySecondOn = new javax.swing.JButton();
-        lblPleaseSelectCGH5 = new javax.swing.JLabel();
-        
-        buttonCGH5General.setText(labels.getString("btnGenerate"));
-        buttonCGH5General.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH5 != null) {
-                    buttonGenerateActionPerformedCGH5(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonCGH5LensOn.setEnabled(false);
-        buttonCGH5LensOn.setText(labels.getString("btnLensOn"));
-        buttonCGH5LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH5 != null) {
-                    button11LensOnActionPerformedCGH5(evt);
-                    countLenOnCGH5++;
-                    if (countLenOnCGH5 % 2 == 0) {
-                        buttonCGH5LensOn.setText(labels.getString("btnLensOff"));
-                    } else {
-                        buttonCGH5LensOn.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonCGH5DisplaySecondOn.setEnabled(false);
-        buttonCGH5DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCGH5DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH5 != null) {
-                    buttonSecondActionPerformedCGH5(evt);
-                    countSecondDisplayCGH5++;
-                    if (countSecondDisplayCGH5 % 2 == 0) {
-                        buttonCGH5DisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        buttonCGH5DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        buttonOpenFileCGH5.setText("Browse...");
-        buttonOpenFileCGH5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openFileActionPerformedCGH5(evt);
-            }
-        });
-        lblPleaseSelectCGH5.setText("Select the file to import.");
-        
-        panelButtonCGH5 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonCGH5Layout = new javax.swing.GroupLayout(panelButtonCGH5);
-        panelButtonCGH5.setLayout(panelButtonCGH5Layout);
-        panelButtonCGH5Layout.setHorizontalGroup(
-                panelButtonCGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH5Layout.createSequentialGroup()
-                .addGroup(panelButtonCGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH5Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonCGH5General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonCGH5Layout.setVerticalGroup(
-                panelButtonCGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH5Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(panelButtonCGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonCGH5DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH5LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH5General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        scrollPaneCGH5 = new javax.swing.JScrollPane();
-        txtCGH5 = new javax.swing.JTextArea();
-        getTextCGH5 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5);
-        
-        txtCGH5.setColumns(10);
-        txtCGH5.setRows(4);
-        txtCGH5.setText(getTextCGH5);
-        scrollPaneCGH5.setViewportView(txtCGH5);
-        
-        javax.swing.GroupLayout CGH5Layout = new javax.swing.GroupLayout(panelCGH5);
-        panelCGH5.setLayout(CGH5Layout);
-        CGH5Layout.setHorizontalGroup(
-            CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH5Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblPleaseSelectCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        CGH5Layout.setVerticalGroup(
-            CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH5Layout.createSequentialGroup()
-                .addGroup(CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CGH5Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonOpenFileCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPleaseSelectCGH5)))
-                    .addGroup(CGH5Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(scrollPaneCGH5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        
-        // CGH6 Pattern Import
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileCGH6 = new javax.swing.JButton();
-        buttonCGH6General = new javax.swing.JButton();
-        buttonCGH6LensOn = new javax.swing.JButton();
-        buttonCGH6DisplaySecondOn = new javax.swing.JButton();
-        lblPleaseSelectCGH6 = new javax.swing.JLabel();
-        
-        buttonCGH6General.setText(labels.getString("btnGenerate"));
-        buttonCGH6General.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH6 != null) {
-                    buttonGenerateActionPerformedCGH6(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonCGH6LensOn.setEnabled(false);
-        buttonCGH6LensOn.setText(labels.getString("btnLensOn"));
-        buttonCGH6LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH6 != null) {
-                    button11LensOnActionPerformedCGH6(evt);
-                    countLenOnCGH6++;
-                    if (countLenOnCGH6 % 2 == 0) {
-                        buttonCGH6LensOn.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        buttonCGH6LensOn.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonCGH6DisplaySecondOn.setEnabled(false);
-        buttonCGH6DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCGH6DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH6 != null) {
-                    buttonSecondActionPerformedCGH6(evt);
-                    countSecondDisplayCGH6++;
-                    if (countSecondDisplayCGH6 % 2 == 0) {
-                        buttonCGH6DisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonCGH6DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        buttonOpenFileCGH6.setText("Browse...");
-        buttonOpenFileCGH6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openFileActionPerformedCGH6(evt);
-            }
-        });
-        lblPleaseSelectCGH6.setText("Select the file to import.");
-        
-        panelButtonCGH6 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonCGH6Layout = new javax.swing.GroupLayout(panelButtonCGH6);
-        panelButtonCGH6.setLayout(panelButtonCGH6Layout);
-        panelButtonCGH6Layout.setHorizontalGroup(
-                panelButtonCGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH6Layout.createSequentialGroup()
-                .addGroup(panelButtonCGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH6Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonCGH6General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH6LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH6DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonCGH6Layout.setVerticalGroup(
-                panelButtonCGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH6Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(panelButtonCGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonCGH6DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH6LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH6General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        scrollPaneCGH6 = new javax.swing.JScrollPane();
-        txtCGH6 = new javax.swing.JTextArea();
-        getTextCGH6 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6);
-        
-        txtCGH6.setColumns(10);
-        txtCGH6.setRows(4);
-        txtCGH6.setText(getTextCGH6);
-        scrollPaneCGH6.setViewportView(txtCGH6);
-        
-        javax.swing.GroupLayout CGH6Layout = new javax.swing.GroupLayout(panelCGH6);
-        panelCGH6.setLayout(CGH6Layout);
-        CGH6Layout.setHorizontalGroup(
-            CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH6Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblPleaseSelectCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        CGH6Layout.setVerticalGroup(
-            CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH6Layout.createSequentialGroup()
-                .addGroup(CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CGH6Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(CGH6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonOpenFileCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPleaseSelectCGH6)))
-                    .addGroup(CGH6Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(scrollPaneCGH6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(5, 5, 5))))
-        );
-        
-        // CGH8 Pattern Import
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileCGH8 = new javax.swing.JButton();
-        buttonCGH8General = new javax.swing.JButton();
-        buttonCGH8LensOn = new javax.swing.JButton();
-        buttonCGH8DisplaySecondOn = new javax.swing.JButton();
-        lblPleaseSelectCGH8 = new javax.swing.JLabel();
-        
-        buttonCGH8General.setText(labels.getString("btnGenerate"));
-        buttonCGH8General.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH8 != null) {
-                    buttonGenerateActionPerformedCGH8(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonCGH8LensOn.setEnabled(false);
-        buttonCGH8LensOn.setText(labels.getString("btnLensOn"));
-        buttonCGH8LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH8 != null) {
-                    button11LensOnActionPerformedCGH8(evt);
-                    countLenOnCGH8++;
-                    if (countLenOnCGH8 % 2 == 0) {
-                        buttonCGH8LensOn.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        buttonCGH8LensOn.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonCGH8DisplaySecondOn.setEnabled(false);
-        buttonCGH8DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCGH8DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH8 != null) {
-                    buttonSecondActionPerformedCGH8(evt);
-                    countSecondDisplayCGH8++;
-                    if (countSecondDisplayCGH8 % 2 == 0) {
-                        buttonCGH8DisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonCGH8DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        buttonOpenFileCGH8.setText("Browse...");
-        buttonOpenFileCGH8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openFileActionPerformedCGH8(evt);
-            }
-        });
-        lblPleaseSelectCGH8.setText("Select the file to import.");
-        
-        panelButtonCGH8 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonCGH8Layout = new javax.swing.GroupLayout(panelButtonCGH8);
-        panelButtonCGH8.setLayout(panelButtonCGH8Layout);
-        panelButtonCGH8Layout.setHorizontalGroup(
-                panelButtonCGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH8Layout.createSequentialGroup()
-                .addGroup(panelButtonCGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH8Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonCGH8General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH8LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH8DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonCGH8Layout.setVerticalGroup(
-                panelButtonCGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH8Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(panelButtonCGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonCGH8DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH8LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH8General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        scrollPaneCGH8 = new javax.swing.JScrollPane();
-        txtCGH8 = new javax.swing.JTextArea();
-        getTextCGH8 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8);
-        
-        txtCGH8.setColumns(10);
-        txtCGH8.setRows(4);
-        txtCGH8.setText(getTextCGH8);
-        scrollPaneCGH8.setViewportView(txtCGH8);
-        
-        javax.swing.GroupLayout CGH8Layout = new javax.swing.GroupLayout(panelCGH8);
-        panelCGH8.setLayout(CGH8Layout);
-        CGH8Layout.setHorizontalGroup(
-            CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH8Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblPleaseSelectCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        CGH8Layout.setVerticalGroup(
-            CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CGH8Layout.createSequentialGroup()
-                .addGroup(CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CGH8Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(CGH8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonOpenFileCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPleaseSelectCGH8)))
-                    .addGroup(CGH8Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(scrollPaneCGH8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(7, 7, 7))))
-        );
-        
-        // CGH10 Pattern Import
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileCGH10 = new javax.swing.JButton();
-        buttonCGH10General = new javax.swing.JButton();
-        buttonCGH10LensOn = new javax.swing.JButton();
-        buttonCGH10DisplaySecondOn = new javax.swing.JButton();
-        lblPleaseSelectCGH10 = new javax.swing.JLabel();
-        
-        buttonCGH10General.setText(labels.getString("btnGenerate"));
-        buttonCGH10General.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH10 != null) {
-                    buttonGenerateActionPerformedCGH10(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonCGH10LensOn.setEnabled(false);
-        buttonCGH10LensOn.setText(labels.getString("btnLensOn"));
-        buttonCGH10LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH10 != null) {
-                    button11LensOnActionPerformedCGH10(evt);
-                    countLenOnCGH10++;
-                    if (countLenOnCGH10 % 2 == 0) {
-                        buttonCGH10LensOn.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        buttonCGH10LensOn.setText(labels.getString("btnLensOn"));
-                         
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonCGH10DisplaySecondOn.setEnabled(false);
-        buttonCGH10DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCGH10DisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesCGH10 != null) {
-                    buttonSecondActionPerformedCGH10(evt);
-                    countSecondDisplayCGH10++;
-                    if (countSecondDisplayCGH10 % 2 == 0) {
-                        buttonCGH10DisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonCGH10DisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        buttonOpenFileCGH10.setText("Browse...");
-        buttonOpenFileCGH10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openFileActionPerformedCGH10(evt);
-            }
-        });
-        lblPleaseSelectCGH10.setText(labels.getString("lblSelectToImport"));
-        
-        panelButtonCGH10 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonCGH10Layout = new javax.swing.GroupLayout(panelButtonCGH10);
-        panelButtonCGH10.setLayout(panelButtonCGH10Layout);
-        panelButtonCGH10Layout.setHorizontalGroup(
-                panelButtonCGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH10Layout.createSequentialGroup()
-                .addGroup(panelButtonCGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH10Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonCGH10General, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH10LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCGH10DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonCGH10Layout.setVerticalGroup(
-                panelButtonCGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonCGH10Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(panelButtonCGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonCGH10DisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH10LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCGH10General, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        scrollPaneCGH10 = new javax.swing.JScrollPane();
-        txtCGH10 = new javax.swing.JTextArea();
-        getTextCGH10 = Utils.readFile(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10);
-        
-        txtCGH10.setColumns(10);
-        txtCGH10.setRows(4);
-        txtCGH10.setText(getTextCGH10);
-        scrollPaneCGH10.setViewportView(txtCGH10);
-        
-        javax.swing.GroupLayout cGH10Layout = new javax.swing.GroupLayout(panelCGH10);
-        panelCGH10.setLayout(cGH10Layout);
-        cGH10Layout.setHorizontalGroup(
-            cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH10Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buttonOpenFileCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblPleaseSelectCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        cGH10Layout.setVerticalGroup(
-            cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cGH10Layout.createSequentialGroup()
-                .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cGH10Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(cGH10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonOpenFileCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPleaseSelectCGH10)))
-                    .addGroup(cGH10Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(scrollPaneCGH10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(5, 5, 5))))
-        );
         
         tabbedControl.setBounds(580, 0, 665, 370);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -2073,6 +1157,7 @@ public class EduControlerPattern extends OpticsPane {
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
+    // BEGIN Action Performed
     public void menuItemNoSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNoSelectActionPerformed
         tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
@@ -2110,7 +1195,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonPanel.add(slmBasicPanel.getPanelPhaseButton());
 
         tabbedPaneOptics.addTab("Gray Level", slmBasicPanel.getPanelPhase());
-        tabbedPaneOptics.addTab("CGH Pattern Import", panelCGH1);
+        tabbedPaneOptics.addTab("CGH Pattern Import", cgh1Panel.getPanel());
         tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -2125,7 +1210,7 @@ public class EduControlerPattern extends OpticsPane {
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("CGH Pattern Import")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCGH1);
+                        buttonPanel.add(cgh1Panel.getPanelButton());
                     }
                 }
                 if (magFrameLenon != null) {
@@ -2185,7 +1270,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonPanel.add(beamSteerePanel.getJPanelButtonMirror());
 
         tabbedPaneOptics.addTab("Beam Steerer", beamSteerePanel.getJPanelMirror());
-        tabbedPaneOptics.addTab(" CGH Pattern Import  ", panelCGH3);
+        tabbedPaneOptics.addTab(" CGH Pattern Import  ", cgh3Panel.getPanel());
         tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -2200,7 +1285,7 @@ public class EduControlerPattern extends OpticsPane {
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals(" CGH Pattern Import  ")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCGH3);
+                        buttonPanel.add(cgh3Panel.getPanelButton());
                     }
                 }
                 
@@ -2231,7 +1316,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedPaneOptics.addTab("Lens", lensMichelsonPanel.getJPanel());
         tabbedPaneOptics.addTab("Cylindrical ", cyllindricalMichelsonPanel.getJPanelCyllindrical());
         tabbedPaneOptics.addTab("Mirror", mirrorMichelsonPanel.getJPanelMirror());
-        tabbedPaneOptics.addTab("CGH Pattern Import    ", panelCGH4);
+        tabbedPaneOptics.addTab("CGH Pattern Import    ", cgh4Panel.getPanel());
         tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -2258,7 +1343,7 @@ public class EduControlerPattern extends OpticsPane {
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("CGH Pattern Import    ")){
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCGH4);
+                        buttonPanel.add(cgh4Panel.getPanelButton());
                     } if (value.equals("Gray Level")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(slmBasicPanel.getPanelPhaseButton());
@@ -2267,7 +1352,7 @@ public class EduControlerPattern extends OpticsPane {
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("CGH Pattern Import")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCGH1);
+                        buttonPanel.add(cgh1Panel.getPanelButton());
                     } if (value.equals("Photo ")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(amplitudePanel.getPanelButton());
@@ -2305,7 +1390,7 @@ public class EduControlerPattern extends OpticsPane {
 
         tabbedPaneOptics.addTab("Single Slit", singleSlitPanel.getPanel());
         tabbedPaneOptics.addTab("Double Slit", doubleSlitPanel.getPanel());
-        tabbedPaneOptics.addTab("   CGH Pattern Import  ", panelCGH5);
+        tabbedPaneOptics.addTab("   CGH Pattern Import  ", cgh5Panel.getPanel());
         tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -2326,7 +1411,7 @@ public class EduControlerPattern extends OpticsPane {
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("   CGH Pattern Import  ")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCGH5);
+                        buttonPanel.add(cgh5Panel.getPanelButton());
                     }
                 }
                 
@@ -2357,7 +1442,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonPanel.add(spectremeterPanel.getPanelButton());
         
         tabbedPaneOptics.addTab("Diffraction Pattern", spectremeterPanel.getPanel());
-        tabbedPaneOptics.addTab("  CGH  Pattern  Import  ", panelCGH6);
+        tabbedPaneOptics.addTab("  CGH  Pattern  Import  ", cgh6Panel.getPanel());
         tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -2372,7 +1457,7 @@ public class EduControlerPattern extends OpticsPane {
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("  CGH  Pattern  Import  ")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCGH6);
+                        buttonPanel.add(cgh6Panel.getPanelButton());
                     }
                 }
                 
@@ -2451,7 +1536,7 @@ public class EduControlerPattern extends OpticsPane {
         buttonPanel.add(phaseRetarderPanel.getPanelPhaseButton());
 
         tabbedPaneOptics.addTab("Phase retarder", phaseRetarderPanel.getPanelPhase());
-        tabbedPaneOptics.addTab("  CGH   Pattern   Import  ", panelCGH8);
+        tabbedPaneOptics.addTab("  CGH   Pattern   Import  ", cgh8Panel.getPanel());
         tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -2466,7 +1551,7 @@ public class EduControlerPattern extends OpticsPane {
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("  CGH   Pattern   Import  ")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCGH8);
+                        buttonPanel.add(cgh8Panel.getPanelButton());
                     }
                 }
                 
@@ -2548,7 +1633,7 @@ public class EduControlerPattern extends OpticsPane {
         tabbedPaneOptics.addTab(" Lens", lensWavefrontPanel.getPanel());
         tabbedPaneOptics.addTab(" Cylindrical ", cyllindricalWavefrontPanel.getPanel());
         tabbedPaneOptics.addTab(" Mirror", mirrorWavefrontPanel.getPanel());
-        tabbedPaneOptics.addTab("CGH Pattern  Import", panelCGH10);
+        tabbedPaneOptics.addTab("CGH Pattern  Import", cgh10Panel.getPanel());
         tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -2575,7 +1660,7 @@ public class EduControlerPattern extends OpticsPane {
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("CGH Pattern  Import")){
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCGH10);
+                        buttonPanel.add(cgh10Panel.getPanelButton());
                     }
                 }
                 
@@ -2594,952 +1679,6 @@ public class EduControlerPattern extends OpticsPane {
         generateActionPerformedDefault(evt);
     }
     
-    private static BufferedImage buffImagesCGH1 = null;
-    private static BufferedImage buffImagesCGH3 = null;
-    private static BufferedImage buffImagesCGH4 = null;
-    private static BufferedImage buffImagesCGH5 = null;
-    private static BufferedImage buffImagesCGH6 = null;
-    private static BufferedImage buffImagesCGH8 = null;
-    private static BufferedImage buffImagesCGH10 = null;
-    
-    
-    private void openFileActionPerformedCGH1(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            fileCGH1 = openFile.getSelectedFile();
-            String ext = "";
-            String extension = fileCGH1.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesCGH1 = ImageIO.read(new File(fileCGH1.getAbsolutePath()));
-                    String file = fileCGH1.getAbsolutePath();
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH1, fileCGH1);
-                    EduPatternShowOn.updateLensPatternPattern(image, "");
-                    setLogCGH1(Utils.dateNow() + ": " + file + "\n");
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    private void openFileActionPerformedCGH3(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            fileCGH3 = openFile.getSelectedFile();
-            String ext = "";
-            String extension = fileCGH3.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesCGH3 = ImageIO.read(new File(fileCGH3.getAbsolutePath()));
-                    String file = fileCGH3.getAbsolutePath();
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH3, fileCGH3);
-                    EduPatternShowOn.updateLensPatternPattern(image, "");
-                    setLogCGH3(Utils.dateNow() + ": " + file + "\n");
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    
-    private void openFileActionPerformedCGH4(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            fileCGH4 = openFile.getSelectedFile();
-            String ext = "";
-            String extension = fileCGH4.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesCGH4 = ImageIO.read(new File(fileCGH4.getAbsolutePath()));
-                    String file = fileCGH4.getAbsolutePath();
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH4, fileCGH4);
-                    EduPatternShowOn.updateLensPatternPattern(image, "");
-                    setLogCGH4(Utils.dateNow() + ": " + file + "\n");
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    private void openFileActionPerformedCGH5(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            fileCGH5 = openFile.getSelectedFile();
-            String ext = "";
-            String extension = fileCGH5.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesCGH5 = ImageIO.read(new File(fileCGH5.getAbsolutePath()));
-                    String file = fileCGH5.getAbsolutePath();
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH5, fileCGH5);
-                    EduPatternShowOn.updateLensPatternPattern(image, "");
-                    setLogCGH5(Utils.dateNow() + ": " + file + "\n");
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    private void openFileActionPerformedCGH6(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            fileCGH6 = openFile.getSelectedFile();
-            String ext = "";
-            String extension = fileCGH6.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesCGH6 = ImageIO.read(new File(fileCGH6.getAbsolutePath()));
-                    String file = fileCGH6.getAbsolutePath();
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH6,  fileCGH6);
-                    EduPatternShowOn.updateLensPatternPattern(image, "");
-                    setLogCGH6(Utils.dateNow() + ": " + file + "\n");
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    private void openFileActionPerformedCGH8(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            fileCGH8 = openFile.getSelectedFile();
-            String ext = "";
-            String extension = fileCGH8.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesCGH8 = ImageIO.read(new File(fileCGH8.getAbsolutePath()));
-                    String file = fileCGH8.getAbsolutePath();
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH8, fileCGH8);
-                    EduPatternShowOn.updateLensPatternPattern(image, "");
-                    setLogCGH8(Utils.dateNow() + ": " + file + "\n");
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    private void openFileActionPerformedCGH10(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            fileCGH10 = openFile.getSelectedFile();
-            String ext = "";
-            String extension = fileCGH10.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesCGH10 = ImageIO.read(new File(fileCGH10.getAbsolutePath()));
-                    String file = fileCGH10.getAbsolutePath();
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.paintCGH1(buffImagesCGH10, fileCGH10);
-                    EduPatternShowOn.updateLensPatternPattern(image, "");
-                    setLogCGH10(Utils.dateNow() + ": " + file + "\n");
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    
-    public void setLog(String msg) {
-        jTextAreaLog.append(msg + System.getProperty("line.separator"));
-    }
-    public void setLog() {
-        jTextAreaLog.append(System.getProperty("line.separator"));
-        System.out.println("jTextAreaLog getText: " + jTextAreaLog.getText());
-    }
-    
-    public void setLogCGH1(String msg) {
-        String filePath;
-        try {
-            txtCGH1.append(msg);
-            txtCGH1.setCaretPosition(txtCGH1.getText().length() - 1);
-            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1;
-            // Check file logs exists
-            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH1)) {
-                Utils.writeFile(filePath, msg, false);
-            } else {
-                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH1);
-                Utils.writeFile(filePath, msg, false);
-            }
-        } catch (Exception e) {
-        }
-    }
-    
-    public void setLogCGH3(String msg) {
-        String filePath;
-        try {
-            txtCGH3.append(msg);
-            txtCGH3.setCaretPosition(txtCGH3.getText().length() - 1);
-            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3;
-            // Check file logs exists
-            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH3)) {
-                Utils.writeFile(filePath, msg, false);
-            } else {
-                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH3);
-                Utils.writeFile(filePath, msg, false);
-            }
-        } catch (Exception e) {
-        }
-    }
-    
-    public void setLogCGH4(String msg) {
-        String filePath;
-        try {
-            txtCGH4.append(msg);
-            txtCGH4.setCaretPosition(txtCGH4.getText().length() - 1);
-            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4;
-            // Check file logs exists
-            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH4)) {
-                Utils.writeFile(filePath, msg, false);
-            } else {
-                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH4);
-                Utils.writeFile(filePath, msg, false);
-            }
-        } catch (Exception e) {
-        }
-    }
-    
-    public void setLogCGH5(String msg) {
-        String filePath;
-        try {
-            txtCGH5.append(msg);
-            txtCGH5.setCaretPosition(txtCGH5.getText().length() - 1);
-            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5;
-            // Check file logs exists
-            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5)) {
-                Utils.writeFile(filePath, msg, false);
-            } else {
-                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH5);
-                Utils.writeFile(filePath, msg, false);
-            }
-        } catch (Exception e) {
-        }
-    }
-    
-    public void setLogCGH6(String msg) {
-        String filePath;
-        try {
-            txtCGH6.append(msg);
-            txtCGH6.setCaretPosition(txtCGH6.getText().length() - 1);
-            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6;
-            // Check file logs exists
-            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH6)) {
-                Utils.writeFile(filePath, msg, false);
-            } else {
-                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH6);
-                Utils.writeFile(filePath, msg, false);
-            }
-        } catch (Exception e) {
-        }
-    }
-    
-    public void setLogCGH8(String msg) {
-        String filePath;
-        try {
-            txtCGH8.append(msg);
-            txtCGH8.setCaretPosition(txtCGH8.getText().length() - 1);
-            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8;
-            // Check file logs exists
-            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH8)) {
-                Utils.writeFile(filePath, msg, false);
-            } else {
-                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH8);
-                Utils.writeFile(filePath, msg, false);
-            }
-        } catch (Exception e) {
-        }
-    }
-    
-    public void setLogCGH10(String msg) {
-        String filePath;
-        try {
-            txtCGH10.append(msg);
-            txtCGH10.setCaretPosition(txtCGH10.getText().length() - 1);
-            filePath = Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10;
-            // Check file logs exists
-            if(Utils.checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH10)) {
-                Utils.writeFile(filePath, msg, false);
-            } else {
-                Utils.createDirectory(File.separator + Constant.FILE_NAME_CGH10);
-                Utils.writeFile(filePath, msg, false);
-            }
-        } catch (Exception e) {
-        }
-    }
-    
-    // CGH1
-    private void buttonGenerateActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
-        buttonCGH1LensOn.setEnabled(true);
-        buttonCGH1DisplaySecondOn.setEnabled(true);
-
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH1, fileCGH1);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-    }
-
-    private void button11LensOnActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH1, fileCGH1);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-
-        if (countLenOnCGH1 % 2 == 0) {
-            magFrameLenon.dispose();
-            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrameDoubleClick.show();
-                }
-            });
-
-        } else {
-            magFrameLenon = new JFrame("1:1 Lens On");
-            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Image img = kit.createImage(url);
-            magFrameLenon.setIconImage(img);
-
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-            magFrameLenon.getContentPane().add(mag);
-            magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-            magFrameLenon.setVisible(true);
-            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                        countLenOnCGH1--;
-                        buttonCGH1LensOn.setText(labels.getString("btnLensOn"));
-                        magFrameLenon.dispose();
-                }
-            });
-        }
-
-    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
-
-    private void buttonSecondActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = env.getScreenDevices();
-        if (devices.length == 1) {
-            countSecondDisplayCGH1--;
-            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            EduPatternJPanel eduPatternJPanel = new EduPatternJPanel();
-            pimg = eduPatternJPanel.getPimage();
-            image.paintCGH1(buffImagesCGH1, fileCGH1);
-            EduPatternShowOn.updatePatternSecondDisplay(image, "");
-            imageGenerated = true;
-            if (countSecondDisplayCGH1% 2 == 0) {
-                patternFrameDoubleClick.dispose();
-                patternFrame.dispose();
-            }
-        }
-    }
-    
-    // CGH3
-    private void buttonGenerateActionPerformedCGH3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH3
-        buttonCGH3LensOn.setEnabled(true);
-        buttonCGH3DisplaySecondOn.setEnabled(true);
-
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH3, fileCGH3);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-    }
-
-    private void button11LensOnActionPerformedCGH3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH3
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH3, fileCGH3);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-
-        if (countLenOnCGH3 % 2 == 0) {
-            magFrameLenon.dispose();
-            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrameDoubleClick.show();
-                }
-            });
-
-        } else {
-            magFrameLenon = new JFrame("1:1 Lens On");
-            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Image img = kit.createImage(url);
-            magFrameLenon.setIconImage(img);
-            magFrameLenon.setResizable(false);
-
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-            magFrameLenon.getContentPane().add(mag);
-            magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(505, 420));
-            magFrameLenon.setResizable(false);
-            magFrameLenon.setVisible(true);
-            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                        countLenOnCGH3--;
-                        buttonCGH3LensOn.setText(labels.getString("btnLensOn"));
-                        magFrameLenon.dispose();
-                }
-            });
-        }
-
-    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
-
-    private void buttonSecondActionPerformedCGH3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH3
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = env.getScreenDevices();
-        if (devices.length == 1) {
-            countSecondDisplayCGH3--;
-            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH3, fileCGH3);
-            EduPatternShowOn.updatePatternSecondDisplay(image, "");
-            imageGenerated = true;
-            if (countSecondDisplayCGH3% 2 == 0) {
-                patternFrameDoubleClick.dispose();
-                patternFrame.dispose();
-            }
-        }
-    }
-    
-    // CGH4
-    private void buttonGenerateActionPerformedCGH4(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH4
-        buttonCGH4LensOn.setEnabled(true);
-        buttonCGH4DisplaySecondOn.setEnabled(true);
-
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH4, fileCGH4);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-    }
-
-    private void button11LensOnActionPerformedCGH4(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH4
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH4, fileCGH4);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-
-        if (countLenOnCGH4 % 2 == 0) {
-            magFrameLenon.dispose();
-            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrameDoubleClick.show();
-                }
-            });
-
-        } else {
-            magFrameLenon = new JFrame("1:1 Lens On");
-            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Image img = kit.createImage(url);
-            magFrameLenon.setIconImage(img);
-
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-            magFrameLenon.getContentPane().add(mag);
-            magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(505, 420));
-            magFrameLenon.setResizable(false);
-            magFrameLenon.setVisible(true);
-            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                        countLenOnCGH4--;
-                        buttonCGH4LensOn.setText(labels.getString("btnLensOn"));
-                        magFrameLenon.dispose();
-                }
-            });
-        }
-
-    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
-
-    private void buttonSecondActionPerformedCGH4(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH4
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = env.getScreenDevices();
-        if (devices.length == 1) {
-            countSecondDisplayCGH4--;
-            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH4, fileCGH4);
-            EduPatternShowOn.updatePatternSecondDisplay(image, "");
-            imageGenerated = true;
-            if (countSecondDisplayCGH4% 2 == 0) {
-                patternFrameDoubleClick.dispose();
-                patternFrame.dispose();
-            }
-        }
-    }
-    
-    // CGH5
-    private void buttonGenerateActionPerformedCGH5(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH5
-        buttonCGH5LensOn.setEnabled(true);
-        buttonCGH5DisplaySecondOn.setEnabled(true);
-
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH5, fileCGH5);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-    }
-
-    private void button11LensOnActionPerformedCGH5(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH5
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH5, fileCGH5);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-
-        if (countLenOnCGH5 % 2 == 0) {
-            magFrameLenon.dispose();
-            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrameDoubleClick.show();
-                }
-            });
-
-        } else {
-            magFrameLenon = new JFrame("1:1 Lens On");
-            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Image img = kit.createImage(url);
-            magFrameLenon.setIconImage(img);
-
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-            magFrameLenon.getContentPane().add(mag);
-            magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(505, 420));
-            magFrameLenon.setResizable(false);
-            magFrameLenon.setVisible(true);
-            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                        countLenOnCGH5--;
-                        buttonCGH5LensOn.setText(labels.getString("btnLensOn"));
-                        magFrameLenon.dispose();
-                }
-            });
-        }
-
-    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
-
-    private void buttonSecondActionPerformedCGH5(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH5
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = env.getScreenDevices();
-        if (devices.length == 1) {
-            countSecondDisplayCGH5--;
-            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH5, fileCGH5);
-            EduPatternShowOn.updatePatternSecondDisplay(image, "");
-            imageGenerated = true;
-            if (countSecondDisplayCGH5% 2 == 0) {
-                patternFrameDoubleClick.dispose();
-                patternFrame.dispose();
-            }
-        }
-    }
-    
-    // CGH6
-    private void buttonGenerateActionPerformedCGH6(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH6
-        buttonCGH6LensOn.setEnabled(true);
-        buttonCGH6DisplaySecondOn.setEnabled(true);
-
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH6, fileCGH6);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-    }
-
-    private void button11LensOnActionPerformedCGH6(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH6
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH6, fileCGH6);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-
-        if (countLenOnCGH6 % 2 == 0) {
-            magFrameLenon.dispose();
-            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrameDoubleClick.show();
-                }
-            });
-
-        } else {
-            magFrameLenon = new JFrame("1:1 Lens On");
-            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Image img = kit.createImage(url);
-            magFrameLenon.setIconImage(img);
-
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-            magFrameLenon.getContentPane().add(mag);
-            magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(505, 420));
-            magFrameLenon.setResizable(false);
-            magFrameLenon.setVisible(true);
-            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                        countLenOnCGH6--;
-                        buttonCGH6LensOn.setText(labels.getString("btnLensOn"));
-                        magFrameLenon.dispose();
-                }
-            });
-        }
-
-    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
-
-    private void buttonSecondActionPerformedCGH6(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH6
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = env.getScreenDevices();
-        if (devices.length == 1) {
-            countSecondDisplayCGH6--;
-            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH6, fileCGH6);
-            EduPatternShowOn.updatePatternSecondDisplay(image, "");
-            imageGenerated = true;
-            if (countSecondDisplayCGH6% 2 == 0) {
-                patternFrameDoubleClick.dispose();
-                patternFrame.dispose();
-            }
-        }
-    }
-    
-    // CGH8
-    private void buttonGenerateActionPerformedCGH8(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH8
-        buttonCGH8LensOn.setEnabled(true);
-        buttonCGH8DisplaySecondOn.setEnabled(true);
-
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH8, fileCGH8);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-    }
-
-    private void button11LensOnActionPerformedCGH8(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH8
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH8, fileCGH8);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-
-        if (countLenOnCGH8 % 2 == 0) {
-            magFrameLenon.dispose();
-            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrameDoubleClick.show();
-                }
-            });
-
-        } else {
-            magFrameLenon = new JFrame("1:1 Lens On");
-            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Image img = kit.createImage(url);
-            magFrameLenon.setIconImage(img);
-
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-            magFrameLenon.getContentPane().add(mag);
-            magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(505, 420));
-            magFrameLenon.setResizable(false);
-            magFrameLenon.setVisible(true);
-            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                        countLenOnCGH8--;
-                        buttonCGH8LensOn.setText(labels.getString("btnLensOn"));
-                        magFrameLenon.dispose();
-                }
-            });
-        }
-
-    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
-
-    private void buttonSecondActionPerformedCGH8(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH8
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = env.getScreenDevices();
-        if (devices.length == 1) {
-            countSecondDisplayCGH8--;
-            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH8, fileCGH8);
-            EduPatternShowOn.updatePatternSecondDisplay(image, "");
-            imageGenerated = true;
-            if (countSecondDisplayCGH8% 2 == 0) {
-                patternFrameDoubleClick.dispose();
-                patternFrame.dispose();
-            }
-        }
-    }
-    
-    // CGH10
-    private void buttonGenerateActionPerformedCGH10(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
-        buttonCGH10LensOn.setEnabled(true);
-        buttonCGH10DisplaySecondOn.setEnabled(true);
-
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH10, fileCGH10);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-    }
-
-    private void button11LensOnActionPerformedCGH10(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        image.paintCGH1(buffImagesCGH10, fileCGH10);
-        EduPatternShowOn.updateLensPatternPattern(image, "");
-        imageGenerated = true;
-
-        if (countLenOnCGH10 % 2 == 0) {
-            magFrameLenon.dispose();
-            panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    patternFrameDoubleClick.show();
-                }
-            });
-
-        } else {
-            magFrameLenon = new JFrame("1:1 Lens On");
-            URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Image img = kit.createImage(url);
-            magFrameLenon.setIconImage(img);
-
-            EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-            magFrameLenon.getContentPane().add(mag);
-            magFrameLenon.pack();
-            magFrameLenon.setLocation(new Point(505, 420));
-            magFrameLenon.setResizable(false);
-            magFrameLenon.setVisible(true);
-            magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                        countLenOnCGH10--;
-                        buttonCGH10LensOn.setText(labels.getString("btnLensOn"));
-                        magFrameLenon.dispose();
-                }
-            });
-        }
-
-    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
-
-    private void buttonSecondActionPerformedCGH10(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = env.getScreenDevices();
-        if (devices.length == 1) {
-            countSecondDisplayCGH10--;
-            JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintCGH1(buffImagesCGH10, fileCGH10);
-            EduPatternShowOn.updatePatternSecondDisplay(image, "");
-            imageGenerated = true;
-            if (countSecondDisplayCGH10% 2 == 0) {
-                patternFrameDoubleClick.dispose();
-                patternFrame.dispose();
-            }
-        }
-    }
-    
     // selected default
     private void generateActionPerformedDefault(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH10
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
@@ -3547,30 +1686,17 @@ public class EduControlerPattern extends OpticsPane {
         EduPatternShowOn.updateLensPatternPattern(image, "");
         imageGenerated = true;
     }
+    // End Action Performed
     
-    //End
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration
     public javax.swing.JPanel panelPattern;
     public javax.swing.JPanel panelPatternFullScreen;
-    // Lens
-    // Lens Michelson
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
-    // Microscope
-    // END Mirror
-    // Mirror
-    // END Mirror
     private javax.swing.JComboBox comboBoxExperiments;
     private javax.swing.JTabbedPane jTabbedControler;
     private javax.swing.JLayeredPane layoutControl;
     private javax.swing.JPanel panelGeneral;
     
-    private javax.swing.JPanel panelCGH1;
-    private javax.swing.JPanel panelCGH3;
-    private javax.swing.JPanel panelCGH4;
-    private javax.swing.JPanel panelCGH5;
-    private javax.swing.JPanel panelCGH6;
-    private javax.swing.JPanel panelCGH8;
-    private javax.swing.JPanel panelCGH10;
     private javax.swing.JTabbedPane tabbedControl;
     private javax.swing.JPanel jPanelPattern;
     private javax.swing.JLabel lblSelectExperiment;
@@ -3580,24 +1706,7 @@ public class EduControlerPattern extends OpticsPane {
     private byte layoutDiagramFullOpen = 0;
     private byte layoutDescriptionFullOpen = 0;
     
-    private int countLenOnCGH1 = 1;
-    private int countLenOnCGH3 = 1;
-    private int countLenOnCGH4 = 1;
-    private int countLenOnCGH5 = 1;
-    private int countLenOnCGH6 = 1;
-    private int countLenOnCGH8 = 1;
-    private int countLenOnCGH10 = 1;
-    
-    private int countSecondDisplayCGH1 = 1;
-    private int countSecondDisplayCGH3 = 1;
-    private int countSecondDisplayCGH4 = 1;
-    private int countSecondDisplayCGH5 = 1;
-    private int countSecondDisplayCGH6 = 1;
-    private int countSecondDisplayCGH8 = 1;
-    private int countSecondDisplayCGH10 = 1;
-    
     DoubleJSlider slider;
-    private javax.swing.JFileChooser openFile;
     //
     private javax.swing.JTabbedPane tabbedDesLog;
     private javax.swing.JPanel tabbedDiagram;
@@ -3627,91 +1736,10 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JLabel desWavelength = EduDescription.desWavelength;
     private javax.swing.JLabel desCalibration = EduDescription.desCalibration;
     private javax.swing.JLabel  desImportfile = EduDescription.desImportfile;
-    
-    // CGH1
-    private javax.swing.JButton buttonCGH1LensOn;
-    private javax.swing.JButton buttonCGH1DisplaySecondOn;
-    private javax.swing.JButton buttonCGH1General;
-    private javax.swing.JButton buttonOpenFileCGH1;
-    private javax.swing.JLabel lblPleaseSelectCGH1;
-    // CGH3
-    private javax.swing.JButton buttonCGH3LensOn;
-    private javax.swing.JButton buttonCGH3DisplaySecondOn;
-    private javax.swing.JButton buttonCGH3General;
-    private javax.swing.JButton buttonOpenFileCGH3;
-    private javax.swing.JLabel lblPleaseSelectCGH3;
-    // CGH4
-    private javax.swing.JButton buttonCGH4LensOn;
-    private javax.swing.JButton buttonCGH4DisplaySecondOn;
-    private javax.swing.JButton buttonCGH4General;
-    private javax.swing.JButton buttonOpenFileCGH4;
-    private javax.swing.JLabel lblPleaseSelectCGH4;
-    // CGH5
-    private javax.swing.JButton buttonCGH5LensOn;
-    private javax.swing.JButton buttonCGH5DisplaySecondOn;
-    private javax.swing.JButton buttonCGH5General;
-    private javax.swing.JButton buttonOpenFileCGH5;
-    private javax.swing.JLabel lblPleaseSelectCGH5;
-    // CGH6
-    private javax.swing.JButton buttonCGH6LensOn;
-    private javax.swing.JButton buttonCGH6DisplaySecondOn;
-    private javax.swing.JButton buttonCGH6General;
-    private javax.swing.JButton buttonOpenFileCGH6;
-    private javax.swing.JLabel lblPleaseSelectCGH6;
-    // CGH8
-    private javax.swing.JButton buttonCGH8LensOn;
-    private javax.swing.JButton buttonCGH8DisplaySecondOn;
-    private javax.swing.JButton buttonCGH8General;
-    private javax.swing.JButton buttonOpenFileCGH8;
-    private javax.swing.JLabel lblPleaseSelectCGH8;
-    // CGH10
-    private javax.swing.JButton buttonCGH10LensOn;
-    private javax.swing.JButton buttonCGH10DisplaySecondOn;
-    private javax.swing.JButton buttonCGH10General;
-    private javax.swing.JButton buttonOpenFileCGH10;
-    private javax.swing.JLabel lblPleaseSelectCGH10;
     // Temp
     private byte tmpSelected = 0;
-    private File fileCGH1;
-    private File fileCGH3;
-    private File fileCGH4;
-    private File fileCGH5;
-    private File fileCGH6;
-    private File fileCGH8;
-    private File fileCGH10;
     
     private javax.swing.JPanel buttonPanel;
-    private javax.swing.JPanel panelButtonCGH4;
-    private javax.swing.JPanel panelButtonCGH1;
-    private javax.swing.JPanel panelButtonCGH3;
-    private javax.swing.JPanel panelButtonCGH5;
-    private javax.swing.JPanel panelButtonCGH6;
-    private javax.swing.JPanel panelButtonCGH8;
-    private javax.swing.JPanel panelButtonCGH10;
-    
-    // Textbox CGH
-    private javax.swing.JScrollPane scrollPaneCGH1;
-    private javax.swing.JTextArea txtCGH1;
-    private javax.swing.JScrollPane scrollPaneCGH3;
-    private javax.swing.JTextArea txtCGH3;
-    private javax.swing.JScrollPane scrollPaneCGH4;
-    private javax.swing.JTextArea txtCGH4;
-    private javax.swing.JScrollPane scrollPaneCGH5;
-    private javax.swing.JTextArea txtCGH5;
-    private javax.swing.JScrollPane scrollPaneCGH6;
-    private javax.swing.JTextArea txtCGH6;
-    private javax.swing.JScrollPane scrollPaneCGH8;
-    private javax.swing.JTextArea txtCGH8;
-    private javax.swing.JScrollPane scrollPaneCGH10;
-    private javax.swing.JTextArea txtCGH10;
-    
-    private String getTextCGH1;
-    private String getTextCGH3;
-    private String getTextCGH4;
-    private String getTextCGH5;
-    private String getTextCGH6;
-    private String getTextCGH8;
-    private String getTextCGH10;
     
     // Experiment 1
     private SLMBasicPanel slmBasicPanel;
@@ -3740,6 +1768,21 @@ public class EduControlerPattern extends OpticsPane {
     private MirrorWavefrontPanel mirrorWavefrontPanel;
     private LensWavefrontPanel lensWavefrontPanel;
     private CyllindricalWavefrontPanel cyllindricalWavefrontPanel;
+    // CGH 1
+    private CGH1Panel cgh1Panel;
+    // CGH 3
+    private CGH3Panel cgh3Panel;
+    // CGH 4
+    private CGH4Panel cgh4Panel;
+    // CGH 5
+    private CGH5Panel cgh5Panel;
+    // CGH 6
+    private CGH6Panel cgh6Panel;
+    // CGH 8
+    private CGH8Panel cgh8Panel;
+    // CGH 10
+    private CGH10Panel cgh10Panel;
+    
     // Beam Shifting tab
     private BeamShiftingPanel beamShiftingPanel;
     // Import Formula tab
