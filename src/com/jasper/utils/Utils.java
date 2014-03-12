@@ -98,6 +98,8 @@ public class Utils {
         File fileCGH6;
         File fileCGH8;
         File fileCGH10;
+        
+        File filExp1;
         File fileDirectory;
         try {
             fileDirectory = new File(Constant.FILE_PATH);
@@ -131,6 +133,12 @@ public class Utils {
                 fileCGH10 = new File(Constant.FILE_PATH, Constant.FILE_NAME_CGH10);
                 fileCGH10.createNewFile();
             }
+            if(checkFileExists(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_EXP1)) {
+                filExp1 = new File(Constant.FILE_PATH, Constant.FILE_NAME_EXP1);
+                filExp1.createNewFile();
+            }
+            
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }

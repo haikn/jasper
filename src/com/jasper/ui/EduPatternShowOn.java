@@ -146,7 +146,6 @@ public class EduPatternShowOn {
 
         patternFrame.repaint();
         patternFrameDoubleClick.repaint();
-        //patternFrame.setVisible(true);
         controlFrame.repaint();
     }
     

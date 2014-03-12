@@ -29,4 +29,7 @@ public class Constant {
     public static final String FILE_NAME_CGH8       = "CGH8_Log.txt";
     public static final String FILE_NAME_CGH10      = "CGH10_Log.txt";
     
+    // Experiment log
+    public static final String FILE_NAME_EXP1       = "Exp1_Log.txt";
+    
 }

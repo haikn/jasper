@@ -1,8 +1,13 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * @(#)PhaseRetarderPanel.java
+ *
+ * Copyright (c) 2013 JASPER DISPLAY, Inc.
+ * An Unpublished Work.  All Rights Reserved.
+ *
+ * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
+ * without permission from the copyright holder is strictly forbidden.
  */
-package com.jasper.ui.panel;
+package com.jasper.ui.panel.phaseshifting;
 
 import com.jasper.core.OpticsPane;
 import java.awt.Color;
@@ -28,8 +33,9 @@ import org.jdesktop.beansbinding.BindingGroup;
 
 import static com.jasper.ui.EduPatternShowOn.patternFrameDoubleClick;
 import static com.jasper.ui.EduPatternShowOn.patternFrame;
-
-
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -40,26 +46,23 @@ public class PhaseRetarderPanel extends OpticsPane{
     ResourceBundle labels;
     private String actionTag = "Len";
     
-    private javax.swing.JSlider sliderFocal;
-    private javax.swing.JTextField textFocal;
     private JPanel panelPattern;
     private JFrame magFrameLenon;
     private double xoff = 0.0, yoff = 0.0, focal = 0.0;
     
-     private javax.swing.JButton button11LensOnPhase;
+    private javax.swing.JButton button11LensOnPhase;
     private javax.swing.JButton buttonGeneralPhase;
     private javax.swing.JButton buttonOpenFile;
     private javax.swing.JButton buttonSecondPhase;
     private javax.swing.JSlider grayLevel;
-    private javax.swing.JLabel lblPleaseSelect;
     private javax.swing.JLabel lblGrayLevel;
     
     private javax.swing.JTextField txtGrayLevel;
-    private javax.swing.JFileChooser openFile;
     private int countSecondDisplayPhase = 1;
     private int countLenOnPhase = 1;
-    private javax.swing.JPanel panelPhase;
+    private javax.swing.JPanel panelPhaseExp1;
     private javax.swing.JPanel panelButtonPhase;
+    private javax.swing.JTextArea textAreaLog;
     
     static String logmessagePhase = "Phase retarder: gray=%s";
     private double grayLevelValue = 255;
@@ -69,27 +72,24 @@ public class PhaseRetarderPanel extends OpticsPane{
         
         this.panelPattern = panelPattern;
         image1 = ((EduPatternJPanel) panelPattern).pimage;
+        this.textAreaLog = new javax.swing.JTextArea();
         initComponents(bindingGroup);
     }
     
     private void initComponents(BindingGroup bindingGroup) {
-        textFocal = new javax.swing.JTextField();
-        sliderFocal = new javax.swing.JSlider();
-        panelPhase = new javax.swing.JPanel();
+        panelPhaseExp1 = new javax.swing.JPanel();
         panelButtonPhase = new javax.swing.JPanel();
         
-        openFile = new javax.swing.JFileChooser();
         grayLevel = new javax.swing.JSlider();
         buttonOpenFile = new javax.swing.JButton();
-        lblPleaseSelect = new javax.swing.JLabel();
         lblGrayLevel = new javax.swing.JLabel();
         buttonSecondPhase = new javax.swing.JButton();
         button11LensOnPhase = new javax.swing.JButton();
         buttonGeneralPhase = new javax.swing.JButton();
         txtGrayLevel = new javax.swing.JTextField();
 
-        buttonOpenFile.hide();
         lblGrayLevel.setText(labels.getString("paramGrayLevel"));
+        buttonOpenFile.hide();
 
         buttonSecondPhase.setEnabled(false);
         buttonSecondPhase.setText(labels.getString("btnSecondDisplayOn"));
@@ -180,8 +180,8 @@ public class PhaseRetarderPanel extends OpticsPane{
                 .addComponent(buttonGeneralPhase, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 ));
         
-        javax.swing.GroupLayout layoutExp1 = new javax.swing.GroupLayout(panelPhase);
-        panelPhase.setLayout(layoutExp1);
+        javax.swing.GroupLayout layoutExp1 = new javax.swing.GroupLayout(panelPhaseExp1);
+        panelPhaseExp1.setLayout(layoutExp1);
         layoutExp1.setHorizontalGroup(
             layoutExp1.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layoutExp1.createSequentialGroup()
@@ -211,11 +211,19 @@ public class PhaseRetarderPanel extends OpticsPane{
     }
     
     public JPanel getPanelPhase() {
-        return panelPhase;
+        return panelPhaseExp1;
     }
     
     public JPanel getPanelPhaseButton() {
         return panelButtonPhase;
+    }
+    
+    public JTextArea getLogArea() {
+        return textAreaLog;
+    }
+    
+    public void setLog(String msg) {
+        textAreaLog.append(msg + System.getProperty("line.separator"));
     }
     
     private void buttonGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
@@ -291,7 +299,6 @@ public class PhaseRetarderPanel extends OpticsPane{
                 image.phaseRetarder();
                 EduPatternShowOn.updatePatternSecondDisplay(image, genLogPhase());
                 setLog(genLogPhase());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
                 imageGenerated = true;
                 if (countSecondDisplayPhase % 2 == 0) {
                     patternFrameDoubleClick.dispose();
@@ -329,10 +336,23 @@ public class PhaseRetarderPanel extends OpticsPane{
             imageGenerated = true;
         }
     }
+    /*
+     * Log String
+     */
+    public void logString(String msg) {
+        textAreaLog.append(msg + System.getProperty("line.separator"));
+        textAreaLog.setCaretPosition(textAreaLog.getText().length() - 1);
+            try {
+                BufferedWriter logFileOut = new BufferedWriter(new FileWriter("JDCedukit_ui.log"));
+                textAreaLog.write(logFileOut);
+                logFileOut.flush();
+            } catch (Exception e) {
+            }
+    }
+    
 
     private String genLogPhase() {
-        //return String.format(logmessagePhase, Double.toString(grayLevelValue));
-        return "genLogPhase";
+        return String.format(logmessagePhase, Double.toString(grayLevelValue));
     }
     
     private boolean parseArguments() {
@@ -340,15 +360,10 @@ public class PhaseRetarderPanel extends OpticsPane{
         try {   
             grayLevelValue = Double.valueOf(grayLevel.getValue());
             ret = true;
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
         return ret;
-    }
-    
-     public void setLog(String msg) {
-        //jTextAreaLog.append(msg + System.getProperty("line.separator"));
     }
     
      @Override

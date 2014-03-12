@@ -13,8 +13,25 @@ import static com.jasper.ui.EduPatternShowOn.patternFrame;
 import static com.jasper.ui.EduPatternShowOn.patternFrameDoubleClick;
 import com.jasper.core.OpticsPane;
 import com.jasper.core.PatternImage;
-import com.jasper.ui.panel.PhaseRetarderPanelExp1;
-import com.jasper.ui.panel.PhaseRetarderPanel;
+import com.jasper.ui.panel.amplitude.AmplitudePanel;
+import com.jasper.ui.panel.phasemodulation.BeamSteere;
+import com.jasper.ui.panel.BeamShiftingPanel;
+import com.jasper.ui.panel.michelson.CyllindricalMichelsonPanel;
+import com.jasper.ui.panel.wavefront.CyllindricalWavefrontPanel;
+import com.jasper.ui.panel.diffraction.DoubleSlitPanel;
+import com.jasper.ui.panel.ImportFormulaPanel;
+import com.jasper.ui.panel.michelson.LensMichelsonPanel;
+import com.jasper.ui.panel.wavefront.LensWavefrontPanel;
+import com.jasper.ui.panel.michelson.MirrorMichelsonPanel;
+import com.jasper.ui.panel.wavefront.MirrorWavefrontPanel;
+import com.jasper.ui.panel.slmbasic.SLMBasicPanel;
+import com.jasper.ui.panel.phaseshifting.PhaseRetarderPanel;
+import com.jasper.ui.panel.signalprocessing.SignalPanel;
+import com.jasper.ui.panel.signalprocessing.SignalPhotoPanel;
+import com.jasper.ui.panel.diffraction.SingleSlitPanel;
+import com.jasper.ui.panel.spectrometer.SpectremeterPanel;
+import com.jasper.ui.panel.talbot.TalbotPanel;
+import com.jasper.ui.panel.talbot.TalbotPhotoPanel;
 import com.jasper.utils.Constant;
 import com.jasper.utils.Utils;
 import com.jasper.ui.widget.DoubleJSlider;
@@ -26,27 +43,22 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.filechooser.FileFilter;
 import java.util.ResourceBundle;
 
 /**
@@ -84,66 +96,18 @@ public class EduControlerPattern extends OpticsPane {
         lblDiagramFull = new javax.swing.JLabel();
 
         panelPattern = new EduPatternJPanel();
-        jTabbedPaneOptics = new javax.swing.JTabbedPane();
-        textFocal = new javax.swing.JTextField();
-        textYpos = new javax.swing.JTextField();
+        tabbedPaneOptics = new javax.swing.JTabbedPane();
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
-        
-        jLabel1 = new javax.swing.JLabel();
-        textFocal = new javax.swing.JTextField();
-        sliderFocal = new javax.swing.JSlider();
-        jLabel2 = new javax.swing.JLabel();
-        textXpos = new javax.swing.JTextField();
-        sliderXpos = new javax.swing.JSlider();
-        textYpos = new javax.swing.JTextField();
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderFocal, org.jdesktop.beansbinding.ELProperty.create("${value}"), textFocal, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
 
         layoutControl = new javax.swing.JLayeredPane();
         layoutDiagram = new javax.swing.JPanel();
         layoutDiagramFull = new javax.swing.JPanel();
         tabbedControl = new javax.swing.JTabbedPane();
         panelGeneral = new javax.swing.JPanel();
-        jLabelSelectExperiment = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        lblSelectExperiment = new javax.swing.JLabel();
+        comboBoxExperiments = new javax.swing.JComboBox();
         jTabbedControler = new javax.swing.JTabbedPane();
-        jPanelLens = new javax.swing.JPanel();
-        jPanelCyllindrical1 = new javax.swing.JPanel();
-        jPanelMicroscope = new javax.swing.JPanel();
-        jPanelNoSelect = new javax.swing.JPanel();
-        // Lens
-        jLabel3 = new javax.swing.JLabel();
-        txtFocalLens = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtXPositionLens = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtYPositionLens = new javax.swing.JTextField();
-        jButtonLens = new javax.swing.JButton();
-        jButton11LensOn = new javax.swing.JButton();
-        jButtonDisplaySecondOn = new javax.swing.JButton();
-        // Lens Michelson
-        lblFocalLensMichelson = new javax.swing.JLabel();
-        jSliderFocalLensMichelson = new javax.swing.JSlider();
-        txtFocalLensMichelson = new javax.swing.JTextField();
-        lblXLensMichelson = new javax.swing.JLabel();
-        txtXPositionLensMichelson = new javax.swing.JTextField();
-        lblYLensMichelson = new javax.swing.JLabel();
-        txtYPositionLensMichelson = new javax.swing.JTextField();
-        jButtonLensMichelson = new javax.swing.JButton();
-        jButton11LensOnMichelson = new javax.swing.JButton();
-        jButtonDisplaySecondOnMichelson = new javax.swing.JButton();
-        // END Lens Michelson
-
-        jPanelCyllindrical = new javax.swing.JPanel();
-        jPanelLensMichelson = new javax.swing.JPanel();
-        jPanelMirror = new javax.swing.JPanel();
-        panelCalebration = new javax.swing.JPanel();
-        panelSlit = new javax.swing.JPanel();
-        panelDoubleSlit = new javax.swing.JPanel();
-        panelSignal = new javax.swing.JPanel();
-        panelSignalPhoto = new javax.swing.JPanel();
-        panelPhase = new javax.swing.JPanel();
+        
         jPanelPattern = new javax.swing.JPanel();
         panelCGH1 = new javax.swing.JPanel();
         panelCGH3 = new javax.swing.JPanel();
@@ -152,52 +116,6 @@ public class EduControlerPattern extends OpticsPane {
         panelCGH6 = new javax.swing.JPanel();
         panelCGH8 = new javax.swing.JPanel();
         panelCGH10 = new javax.swing.JPanel();
-
-        // Microscope
-        lblFocalMicroscope = new javax.swing.JLabel();
-        lblXPosMicroscope = new javax.swing.JLabel();
-        lblYPosMicroscope = new javax.swing.JLabel();
-        jSliderFocalMicroscope = new javax.swing.JSlider();
-        jSliderXPositionMicroscope = new javax.swing.JSlider();
-        jSliderYPositionMicroscope = new javax.swing.JSlider();
-        txtFocalMicroscope = new javax.swing.JTextField();
-        txtXPositionMicroscope = new javax.swing.JTextField();
-        txtYPositionMicroscope = new javax.swing.JTextField();
-        buttonMicroscopeLensOn = new javax.swing.JButton();
-        buttonMicroscopeDisplaySecondOn = new javax.swing.JButton();
-        buttonMicroscopeGeneral = new javax.swing.JButton();
-
-        // Cyllin
-        lblFocalCyllin = new javax.swing.JLabel();
-        lblXPosCyllin = new javax.swing.JLabel();
-        lblYPosCyllin = new javax.swing.JLabel();
-        jSliderFocalCyllin = new javax.swing.JSlider();
-        jSliderXPositionCyllin = new javax.swing.JSlider();
-        jSliderYPositionCyllin = new javax.swing.JSlider();
-        txtFocalCyllin = new javax.swing.JTextField();
-        txtXPositionCyllin = new javax.swing.JTextField();
-        txtYPositionCyllin = new javax.swing.JTextField();
-        buttonCyllinLensOn = new javax.swing.JButton();
-        buttonCyllinDisplaySecondOn = new javax.swing.JButton();
-        buttonCyllinGeneral = new javax.swing.JButton();
-
-        // Mirror
-        lblPhy = new javax.swing.JLabel();
-        lblThetaMirror = new javax.swing.JLabel();
-        txtPhyMirror = new javax.swing.JTextField();
-        txtThetaMirror = new javax.swing.JTextField();
-        buttonMirrorLensOn = new javax.swing.JButton();
-        buttonMirrorDisplaySecondOn = new javax.swing.JButton();
-        buttonMirrorGeneral = new javax.swing.JButton();
-        
-        // Mirror Exp3
-        lblPhyExp3 = new javax.swing.JLabel();
-        lblThetaMirrorExp3 = new javax.swing.JLabel();
-        txtPhyMirrorExp3 = new javax.swing.JTextField();
-        txtThetaMirrorExp3 = new javax.swing.JTextField();
-        buttonMirrorLensOnExp3 = new javax.swing.JButton();
-        buttonMirrorDisplaySecondOnExp3 = new javax.swing.JButton();
-        buttonMirrorGeneralExp3 = new javax.swing.JButton();
         
         // create CGH log file
         Utils.createDirectoryLogFileCGH();
@@ -207,888 +125,93 @@ public class EduControlerPattern extends OpticsPane {
         PatternImage imageBoot = ((EduPatternJPanel) panelPattern).pimage;
         imageBoot.paintDefault();
         
-        jLabelSelectExperiment.setText(labels.getString("lblSelectExperiment"));
-        jLabelSelectExperiment.setForeground(Color.red);
+        lblSelectExperiment.setText(labels.getString("lblSelectExperiment"));
+        lblSelectExperiment.setForeground(Color.red);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{labels.getString("itemSelectExperiment"), labels.getString("itemSLM"), labels.getString("itemAmplitude"),
+        comboBoxExperiments.setModel(new javax.swing.DefaultComboBoxModel(new String[]{labels.getString("itemSelectExperiment"), labels.getString("itemSLM"), labels.getString("itemAmplitude"),
         labels.getString("itemPhaseModulation"), labels.getString("itemMichelson"), labels.getString("itemDiffraction"),
         labels.getString("itemSpectrometer"), labels.getString("itemSignalProcessing"), labels.getString("itemPhaseShifting"), 
         labels.getString("itemTalbot"), labels.getString("itemWavefront")}));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboBoxExperiments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JComboBox comboBox = (JComboBox) evt.getSource();
 
                 Object selected = comboBox.getSelectedItem();
                 if (selected.equals(labels.getString("itemSelectExperiment"))) {
-                    jMenuItemNoSelectActionPerformed(evt);
+                    menuItemNoSelectActionPerformed(evt);
                     tmpSelected = 0;
                     generateActionPerformedDefault(evt);
                 } else if (selected.equals(labels.getString("itemSLM"))) {
-                    jMenuItemTelephotoActionPerformed(evt);
+                    menuItemSLMBasicActionPerformed(evt);
                     tmpSelected = 1;
                 } else if (selected.equals(labels.getString("itemAmplitude"))) {
-                    jMenuItemMicroscopeActionPerformed(evt);
+                    menuItemAmplitudeActionPerformed(evt);
                     tmpSelected = 2;
                 } else if (selected.equals(labels.getString("itemPhaseModulation"))) {
-                    jMenuItemAberrationActionPerformed(evt);
+                    menuItemPhaseModulationActionPerformed(evt);
                     tmpSelected = 3;
                 } else if (selected.equals(labels.getString("itemMichelson"))) {
-                    jMenuItemMichelsonActionPerformed(evt);
+                    menuItemMichelsonActionPerformed(evt);
                     tmpSelected = 4;
                 } else if (selected.equals(labels.getString("itemDiffraction"))) {
-                    jMenuItemDiffractionActionPerformed(evt);
+                    menuItemDiffractionActionPerformed(evt);
                     tmpSelected = 5;
                 } else if (selected.equals(labels.getString("itemSpectrometer"))) {
-                    jMenuItemSpectrometerActionPerformed(evt);
+                    menuItemSpectrometerActionPerformed(evt);
                     tmpSelected = 6;
                 } else if (selected.equals(labels.getString("itemSignalProcessing"))) {
-                    jMenuItemSignalProcessingActionPerformed(evt);
+                    menuItemSignalProcessingActionPerformed(evt);
                     tmpSelected = 7;
                 } else if (selected.equals(labels.getString("itemPhaseShifting"))) {
-                    jMenuItemPhaseShiftingActionPerformed(evt);
+                    menuItemPhaseShiftingActionPerformed(evt);
                     tmpSelected = 8;
                 } else if (selected.equals(labels.getString("itemTalbot"))) {
-                    jMenuItemTalbotImagesActionPerformed(evt);
+                    menuItemTalbotActionPerformed(evt);
                     tmpSelected = 9;
                 } else if (selected.equals(labels.getString("itemWavefront"))) {
-                    jMenuItemWavefrontActionPerformed(evt);
+                    menuItemWavefrontActionPerformed(evt);
                     tmpSelected = 10;
                 }
             }
         });
         
+        // General tab
+        // Experiment 1
+        slmBasicPanel = new SLMBasicPanel(labels, bindingGroup, panelPattern);
+        // Experiment 2
+        amplitudePanel = new AmplitudePanel(labels, bindingGroup, panelPattern);
+        // Experiment 3
+        beamSteerePanel = new BeamSteere(labels, bindingGroup, panelPattern, jTabbedControler);
+        // Experiment 4
+        //jTabbedControler.addTab(labels.getString("tabLens"), jPanelLens);
+        lensMichelsonPanel = new LensMichelsonPanel(labels, bindingGroup, panelPattern);
+        cyllindricalMichelsonPanel = new CyllindricalMichelsonPanel(labels, bindingGroup, panelPattern);
+        mirrorMichelsonPanel = new MirrorMichelsonPanel(labels, bindingGroup, panelPattern);
+        // Experiment 5
+        singleSlitPanel = new SingleSlitPanel(labels, bindingGroup, panelPattern);
+        doubleSlitPanel = new DoubleSlitPanel(labels, bindingGroup, panelPattern);
+        // Experiment 6
+        spectremeterPanel = new SpectremeterPanel(labels, bindingGroup, panelPattern);
+        // Experiment 7
+        signalPanel = new SignalPanel(labels, bindingGroup, panelPattern);
+        signalPhotoPanel = new SignalPhotoPanel(labels, bindingGroup, panelPattern);
+        // Experiment 8
         phaseRetarderPanel = new PhaseRetarderPanel(labels, bindingGroup, panelPattern);
-        phaseRetarderPanelExp1 = new PhaseRetarderPanelExp1(labels, bindingGroup, panelPattern);
-
-        jLabel3.setText(labels.getString("lblFocalLength"));
-        jLabel4.setText(labels.getString("lblXPosition"));
-        jLabel2.setText(labels.getString("lblYPosition"));
-
-        jButtonLens.setText(labels.getString("btnGenerate"));
-        jButtonLens.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformed(evt);
-            }
-        });
-        jButton11LensOn.setEnabled(false);
-        jButton11LensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnActionPerformed(evt);
-                countLenOnTelephoto++;
-                if (countLenOnTelephoto % 2 == 0) {
-                    jButton11LensOn.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    jButton11LensOn.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-        jButton11LensOn.setText(labels.getString("btnLensOn"));
-
-        jButtonDisplaySecondOn.setEnabled(false);
-        jButtonDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        jButtonDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformed(evt);
-                countSecondDisplayTelephoto++;
-                if (countSecondDisplayTelephoto % 2 == 0) {
-                    jButtonDisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    jButtonDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        jSliderXPositionLens = new DoubleJSlider(-60, 60, 1, 10);
-        jSliderXPositionLens.setValue(0);
-        txtXPositionLens.setText(String.valueOf(jSliderXPositionLens.getValue()));
-
-        jSliderXPositionLens.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtXPositionLens.setText(df.format(jSliderXPositionLens.getScaledValue()));
-                //sliderGenerateActionPerformed(evt);
-            }
-        });
+        // Experiment 9
+        talbotPanel = new TalbotPanel(labels, bindingGroup, panelPattern);
+        talbotPhotoPanel = new TalbotPhotoPanel(labels, bindingGroup, panelPattern);
+        // Experiment 10
+        lensWavefrontPanel = new LensWavefrontPanel(labels, bindingGroup, panelPattern);
+        cyllindricalWavefrontPanel = new CyllindricalWavefrontPanel(labels, bindingGroup, panelPattern, jTabbedControler);
+        mirrorWavefrontPanel = new MirrorWavefrontPanel(labels, bindingGroup, panelPattern, jTabbedControler);
+      
+        // Beam Shifting tab
+        beamShiftingPanel = new BeamShiftingPanel(labels, bindingGroup, panelPattern, tabbedControl);
+        // Import Formula tab
+        importFormulaPanel = new ImportFormulaPanel(labels, bindingGroup, panelPattern, tabbedControl);
         
-        txtXPositionLens.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtXPositionLens.getText() == null || txtXPositionLens.getText().equals("")){
-                    jLabel4.setForeground(Color.red);
-                } else {
-                    jLabel4.setForeground(Color.black);
-                }
-                keyEventGenerateActionPerformedWavelength(ke);
-            }
-        });
-        
-        txtYPositionLens.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtYPositionLens.getText() == null || txtYPositionLens.getText().equals("")){
-                    jLabel2.setForeground(Color.red);
-                } else {
-                    jLabel2.setForeground(Color.black);
-                }
-                keyEventGenerateActionPerformedWavelength(ke);
-            }
-        });
-        
-        txtFocalLens.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtFocalLens.getText() == null || txtFocalLens.getText().equals("")){
-                    jLabel3.setForeground(Color.red);
-                } else {
-                    jLabel3.setForeground(Color.black);
-                }
-                keyEventGenerateActionPerformedWavelength(ke);
-            }
-        });
-        
-        jSliderYPositionLens = new DoubleJSlider(-30, 30, 1, 10);
-        jSliderYPositionLens.setValue(0);
-        txtYPositionLens.setText(String.valueOf(jSliderYPositionLens.getValue()));
-
-        jSliderYPositionLens.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtYPositionLens.setText(df.format(jSliderYPositionLens.getScaledValue()));
-            }
-        });
-
-        jSliderFocalLens = new DoubleJSlider(-1000, 1000, 1000, 1);
-        jSliderFocalLens.setValue(0);
-        txtFocalLens.setText(String.valueOf(jSliderFocalLens.getValue()));
-
-        jSliderFocalLens.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtFocalLens.setText(df.format(jSliderFocalLens.getScaledValue()));
-                String tmp = txtFocalLens.getText();
-                int value = Integer.parseInt(tmp);
-                if (value >= -30 && value <= 30) {
-                    jLabel3.setForeground(Color.red);
-                } else {
-                    jLabel3.setForeground(Color.BLACK);
-                }
-            }
-        });
-   
-        javax.swing.GroupLayout jPanelCyllindrical1Layout = new javax.swing.GroupLayout(jPanelCyllindrical1);
-        jPanelCyllindrical1.setLayout(jPanelCyllindrical1Layout);
-        jPanelCyllindrical1Layout.setHorizontalGroup(
-                jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel2)
-                .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(txtYPositionLens)
-                .addComponent(txtFocalLens, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addComponent(txtXPositionLens))))
-                .addGap(5, 5, 5)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalLens, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addComponent(jSliderXPositionLens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSliderYPositionLens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jButtonLens, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                //.addContainerGap(23, Short.MAX_VALUE)
-                ));
-        jPanelCyllindrical1Layout.setVerticalGroup(
-                jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCyllindrical1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalLens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtFocalLens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel4)
-                .addComponent(txtXPositionLens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderXPositionLens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel2)
-                .addComponent(txtYPositionLens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderYPositionLens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(99, 99, 99)
-                .addGroup(jPanelCyllindrical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(jButtonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButton11LensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButtonLens, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-
-        jTabbedControler.addTab(labels.getString("tabLens"), jPanelLens);
-        // END Telephone lens
-
-        // Microscope
-        lblFocalMicroscope.setText(labels.getString("lblFocalLength"));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalMicroscope, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalMicroscope, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        lblXPosMicroscope.setText(labels.getString("lblXPosition"));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionMicroscope, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionMicroscope, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        lblYPosMicroscope.setText(labels.getString("lblYPosition"));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionMicroscope, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionMicroscope, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        buttonMicroscopeGeneral.setText(labels.getString("btnGenerate"));
-        buttonMicroscopeGeneral.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedMicroscope(evt);
-            }
-        });
-
-        buttonMicroscopeLensOn.setEnabled(false);
-        buttonMicroscopeLensOn.setText(labels.getString("btnLensOn"));
-        buttonMicroscopeLensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnMicroscopeActionPerformed(evt);
-                countLenOnMicroscope++;
-                if (countLenOnMicroscope % 2 == 0) {
-                    buttonMicroscopeLensOn.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    buttonMicroscopeLensOn.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-        buttonMicroscopeDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonMicroscopeDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedMicroscope(evt);
-                countSecondDisplayMicroscope++;
-                if (countSecondDisplayMicroscope % 2 == 0) {
-                    buttonMicroscopeDisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonMicroscopeDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        jSliderFocalMicroscope.setMaximum(100);
-        jSliderFocalMicroscope.setMinimum(-100);
-        jSliderFocalMicroscope.setValue(10);
-        jSliderFocalMicroscope.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMicroscope(evt);
-            }
-        });
-
-        jSliderXPositionMicroscope.setMaximum(100);
-        jSliderXPositionMicroscope.setMinimum(-100);
-        jSliderXPositionMicroscope.setValue(0);
-        jSliderXPositionMicroscope.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMicroscope(evt);
-            }
-        });
-
-        jSliderYPositionMicroscope.setMaximum(100);
-        jSliderYPositionMicroscope.setMinimum(-100);
-        jSliderYPositionMicroscope.setValue(0);
-        jSliderYPositionMicroscope.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMicroscope(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelMicroscopeLayout = new javax.swing.GroupLayout(jPanelMicroscope);
-        jPanelMicroscope.setLayout(jPanelMicroscopeLayout);
-        jPanelMicroscopeLayout.setHorizontalGroup(
-                jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMicroscopeLayout.createSequentialGroup()
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMicroscopeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblFocalMicroscope)
-                .addGroup(jPanelMicroscopeLayout.createSequentialGroup()
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(lblXPosMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblYPosMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(txtYPositionMicroscope)
-                .addComponent(txtFocalMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addComponent(txtXPositionMicroscope))))
-                .addGap(5, 5, 5)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addComponent(jSliderXPositionMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSliderYPositionMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanelMicroscopeLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(buttonMicroscopeGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE)));
-        jPanelMicroscopeLayout.setVerticalGroup(
-                jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMicroscopeLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblFocalMicroscope, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtFocalMicroscope, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblXPosMicroscope)
-                .addComponent(txtXPositionMicroscope, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderXPositionMicroscope, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblYPosMicroscope)
-                .addComponent(txtYPositionMicroscope, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderYPositionMicroscope, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanelMicroscopeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonMicroscopeGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMicroscopeLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMicroscopeDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE)));
-
-        jTabbedControler.addTab(labels.getString("tabLens"), jPanelMicroscope);
-        // END Microscope
-
-        // BEGIN Panel Cyllindrical
-
-        lblFocalCyllin.setText(labels.getString("lblFocalLength"));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        lblXPosCyllin.setText(labels.getString("paramPositions"));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderXPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtXPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        lblYPosCyllin.setText(labels.getString("paramRotation"));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderYPositionCyllin, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtYPositionCyllin, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        txtFocalCyllin.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtFocalCyllin.getText() == null || txtFocalCyllin.getText().equals("")){
-                    lblFocalCyllin.setForeground(Color.red);
-                } else {
-                    lblFocalCyllin.setForeground(Color.black);
-                }
-                keyeventGenerateActionPerformedCyllin(ke);
-            }
-        });
-        txtXPositionCyllin.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtXPositionCyllin.getText() == null || txtXPositionCyllin.getText().equals("")){
-                    lblXPosCyllin.setForeground(Color.red);
-                } else {
-                    lblXPosCyllin.setForeground(Color.black);
-                }
-                keyeventGenerateActionPerformedCyllin(ke);
-            }
-        });
-        txtYPositionCyllin.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtYPositionCyllin.getText() == null || txtYPositionCyllin.getText().equals("")){
-                    lblYPosCyllin.setForeground(Color.red);
-                } else {
-                    lblYPosCyllin.setForeground(Color.black);
-                }
-                keyeventGenerateActionPerformedCyllin(ke);
-            }
-        });
-        
-        buttonCyllinGeneral.setText(labels.getString("btnGenerate"));
-        buttonCyllinGeneral.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedCyllin(evt);
-            }
-        });
-
-        buttonCyllinLensOn.setEnabled(false);
-        buttonCyllinLensOn.setText(labels.getString("btnLensOn"));
-        buttonCyllinLensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnCyllinActionPerformed(evt);
-                countLenOnCyllin++;
-                if (countLenOnCyllin % 2 == 0) {
-                    buttonCyllinLensOn.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    buttonCyllinLensOn.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        buttonCyllinDisplaySecondOn.setEnabled(false);
-        buttonCyllinDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCyllinDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedCyllin(evt);
-                countSecondDisplayCyllin++;
-                if (countSecondDisplayCyllin % 2 == 0) {
-                    buttonCyllinDisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonCyllinDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        jSliderFocalCyllin.setMaximum(1000);
-        jSliderFocalCyllin.setMinimum(-1000);
-        jSliderFocalCyllin.setValue(0);
-        jSliderFocalCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedCyllin(evt);
-            }
-        });
-
-        jSliderXPositionCyllin.setMaximum(1000);
-        jSliderXPositionCyllin.setMinimum(-1000);
-        jSliderXPositionCyllin.setValue(0);
-        jSliderXPositionCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedCyllin(evt);
-            }
-        });
-
-        jSliderYPositionCyllin.setMaximum(180);
-        jSliderYPositionCyllin.setMinimum(-180);
-        jSliderYPositionCyllin.setValue(0);
-        jSliderYPositionCyllin.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedCyllin(evt);
-            }
-        });
-        panelButtonCyllin = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelCyllinLayout = new javax.swing.GroupLayout(panelButtonCyllin);
-        panelButtonCyllin.setLayout(panelCyllinLayout);
-        panelCyllinLayout.setHorizontalGroup(
-                panelCyllinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCyllinLayout.createSequentialGroup()
-                .addGroup(panelCyllinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCyllinLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonCyllinGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCyllinLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonCyllinDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )));
-        panelCyllinLayout.setVerticalGroup(
-                panelCyllinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCyllinLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(panelCyllinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonCyllinDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCyllinLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonCyllinGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-
-        javax.swing.GroupLayout jPanelCyllindricalLayout = new javax.swing.GroupLayout(jPanelCyllindrical);
-        jPanelCyllindrical.setLayout(jPanelCyllindricalLayout);
-        jPanelCyllindricalLayout.setHorizontalGroup(
-                jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblFocalCyllin)
-                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(lblXPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblYPosCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(txtYPositionCyllin)
-                .addComponent(txtFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addComponent(txtXPositionCyllin))))
-                .addGap(8, 8, 8)
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addComponent(jSliderXPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                )
-                .addContainerGap(5, Short.MAX_VALUE)));
-        jPanelCyllindricalLayout.setVerticalGroup(
-                jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCyllindricalLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblFocalCyllin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtFocalCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15)
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblXPosCyllin)
-                .addComponent(txtXPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderXPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelCyllindricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblYPosCyllin)
-                .addComponent(txtYPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderYPositionCyllin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                ));
-
-        jTabbedControler.addTab(labels.getString("tabCyllindrical"), jPanelCyllindrical);
-        // END Panel Cyllindrical
-        
-        // BEGIN Mirror Exp3
-        lblPhyExp3.setText("Diffraction angle (degree)");
-        lblThetaMirrorExp3.setText("Rotation (degree)");
-
-        buttonMirrorGeneralExp3.setText(labels.getString("btnGenerate"));
-        buttonMirrorGeneralExp3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedMirrorExp3(evt);
-            }
-        });
-
-        buttonMirrorLensOnExp3.setEnabled(false);
-        buttonMirrorLensOnExp3.setText(labels.getString("btnLensOn"));
-        buttonMirrorLensOnExp3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnMirrorExp3ActionPerformed(evt);
-                countLenOnMirrorExp3++;
-                if (countLenOnMirrorExp3 % 2 == 0) {
-                    buttonMirrorLensOnExp3.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    buttonMirrorLensOnExp3.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        buttonMirrorDisplaySecondOnExp3.setEnabled(false);
-        buttonMirrorDisplaySecondOnExp3.setText(labels.getString("btnSecondDisplayOn"));
-        buttonMirrorDisplaySecondOnExp3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedMirrorExp3(evt);
-                countSecondDisplayMirrorExp3++;
-                if (countSecondDisplayMirrorExp3 % 2 == 0) {
-                    buttonMirrorDisplaySecondOnExp3.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonMirrorDisplaySecondOnExp3.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        jSliderPhyMirrorExp3 = new DoubleJSlider(-28, 28, 10, 10);
-        jSliderPhyMirrorExp3.setValue(0);
-        txtPhyMirrorExp3.setText(String.valueOf(jSliderPhyMirrorExp3.getValue()));
-
-        jSliderPhyMirrorExp3.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMirrorExp3(evt);
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtPhyMirrorExp3.setText(df.format(jSliderPhyMirrorExp3.getScaledValue()));
-            }
-        });
-        
-        txtPhyMirrorExp3.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyEventGenerateActionPerformedMirrorExp3(ke);
-                if(txtPhyMirrorExp3.getText() == null || txtPhyMirrorExp3.getText().equals("")){
-                    lblPhyExp3.setForeground(Color.red);
-                } else {
-                    lblPhyExp3.setForeground(Color.black);
-                }
-            }
-        });
-        
-        txtThetaMirrorExp3.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyEventGenerateActionPerformedMirrorExp3(ke);
-                if(txtThetaMirrorExp3.getText() == null || txtThetaMirrorExp3.getText().equals("")){
-                    lblThetaMirrorExp3.setForeground(Color.red);
-                } else {
-                    lblThetaMirrorExp3.setForeground(Color.black);
-                }
-            }
-        });
-
-        jSliderThetaMirrorExp3 = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderThetaMirrorExp3.setValue(0);
-        txtThetaMirrorExp3.setText(String.valueOf(jSliderThetaMirrorExp3.getValue()));
-
-        jSliderThetaMirrorExp3.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMirrorExp3(evt);                
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtThetaMirrorExp3.setText(df.format(jSliderThetaMirrorExp3.getScaledValue()));
-            }
-        });
-        jPanelMirrorExp3 = new javax.swing.JPanel();
-        panelButtonMirrorExp3 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonMirrorExp3Layout = new javax.swing.GroupLayout(panelButtonMirrorExp3);
-        panelButtonMirrorExp3.setLayout(panelButtonMirrorExp3Layout);
-        panelButtonMirrorExp3Layout.setHorizontalGroup(
-                panelButtonMirrorExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonMirrorExp3Layout.createSequentialGroup()
-                .addGroup(panelButtonMirrorExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonMirrorExp3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonMirrorGeneralExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonMirrorLensOnExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonMirrorDisplaySecondOnExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )));
-        panelButtonMirrorExp3Layout.setVerticalGroup(
-                panelButtonMirrorExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonMirrorExp3Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(panelButtonMirrorExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonMirrorDisplaySecondOnExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMirrorLensOnExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMirrorGeneralExp3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        javax.swing.GroupLayout jPanelMirrorlExp3Layout = new javax.swing.GroupLayout(jPanelMirrorExp3);
-        jPanelMirrorExp3.setLayout(jPanelMirrorlExp3Layout);
-        jPanelMirrorlExp3Layout.setHorizontalGroup(
-            jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
-                        .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblThetaMirrorExp3, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                            .addComponent(lblPhyExp3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtThetaMirrorExp3)
-                            .addComponent(txtPhyMirrorExp3, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSliderThetaMirrorExp3, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                            .addComponent(jSliderPhyMirrorExp3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 0, 0))
-        );
-        jPanelMirrorlExp3Layout.setVerticalGroup(
-            jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSliderPhyMirrorExp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblPhyExp3)
-                        .addComponent(txtPhyMirrorExp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanelMirrorlExp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblThetaMirrorExp3)
-                            .addComponent(txtThetaMirrorExp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelMirrorlExp3Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jSliderThetaMirrorExp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10))
-        );
-
-        // BEGIN Mirror
-        lblPhy.setText("Diffraction angle (degree)");
-        lblThetaMirror.setText("Rotation (degree)");
-
-        buttonMirrorGeneral.setText(labels.getString("btnGenerate"));
-        buttonMirrorGeneral.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedMirror(evt);
-            }
-        });
-
-        buttonMirrorLensOn.setEnabled(false);
-        buttonMirrorLensOn.setText(labels.getString("btnLensOn"));
-        buttonMirrorLensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnMirrorActionPerformed(evt);
-                countLenOnMirror++;
-                if (countLenOnMirror % 2 == 0) {
-                    buttonMirrorLensOn.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    buttonMirrorLensOn.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        buttonMirrorDisplaySecondOn.setEnabled(false);
-        buttonMirrorDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonMirrorDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedMirror(evt);
-                countSecondDisplayMirror++;
-                if (countSecondDisplayMirror % 2 == 0) {
-                    buttonMirrorDisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonMirrorDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        jSliderPhyMirror = new DoubleJSlider(-28, 28, 10, 10);
-        jSliderPhyMirror.setValue(0);
-        txtPhyMirror.setText(String.valueOf(jSliderPhyMirror.getValue()));
-
-        jSliderPhyMirror.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMirror(evt);
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtPhyMirror.setText(df.format(jSliderPhyMirror.getScaledValue()));
-            }
-        });
-        
-        txtPhyMirror.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyEventGenerateActionPerformedMirror(ke);
-                if(txtPhyMirror.getText() == null || txtPhyMirror.getText().equals("")){
-                    lblPhy.setForeground(Color.red);
-                } else {
-                    lblPhy.setForeground(Color.black);
-                }
-            }
-        });
-        
-        txtThetaMirror.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtThetaMirror.getText() == null || txtThetaMirror.getText().equals("")){
-                    lblThetaMirror.setForeground(Color.red);
-                } else {
-                    lblThetaMirror.setForeground(Color.black);
-                }
-                keyEventGenerateActionPerformedMirror(ke);
-            }
-        });
-
-        jSliderThetaMirror = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderThetaMirror.setValue(0);
-        txtThetaMirror.setText(String.valueOf(jSliderThetaMirror.getValue()));
-
-        jSliderThetaMirror.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMirror(evt);                
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtThetaMirror.setText(df.format(jSliderThetaMirror.getScaledValue()));
-            }
-        });
-        panelMirror = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelMirrorLayout = new javax.swing.GroupLayout(panelMirror);
-        panelMirror.setLayout(panelMirrorLayout);
-        panelMirrorLayout.setHorizontalGroup(
-                panelMirrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMirrorLayout.createSequentialGroup()
-                .addGroup(panelMirrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMirrorLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )));
-        panelMirrorLayout.setVerticalGroup(
-                panelMirrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMirrorLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(panelMirrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMirrorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        javax.swing.GroupLayout jPanelMirrorlLayout = new javax.swing.GroupLayout(jPanelMirror);
-        jPanelMirror.setLayout(jPanelMirrorlLayout);
-        jPanelMirrorlLayout.setHorizontalGroup(
-            jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                        .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblThetaMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                            .addComponent(lblPhy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtThetaMirror)
-                            .addComponent(txtPhyMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                            .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 0, 0))
-        );
-        jPanelMirrorlLayout.setVerticalGroup(
-            jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblPhy)
-                        .addComponent(txtPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblThetaMirror)
-                            .addComponent(txtThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jSliderThetaMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, 0))
-        );
-
-        jTabbedControler.addTab(labels.getString("tabMirror"), jPanelMirror);
         buttonPanel = new javax.swing.JPanel();
-        jTabbedPaneOptics.hide();
+        tabbedPaneOptics.hide();
         javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
         panelGeneralLayout.setHorizontalGroup(
@@ -1098,11 +221,11 @@ public class EduControlerPattern extends OpticsPane {
                     .addGroup(panelGeneralLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelGeneralLayout.createSequentialGroup()
-                                .addComponent(jLabelSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblSelectExperiment, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(comboBoxExperiments, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelGeneralLayout.createSequentialGroup()
                         .addGap(0, 0, 0)
                         .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1113,185 +236,21 @@ public class EduControlerPattern extends OpticsPane {
             .addGroup(panelGeneralLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSelectExperiment)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSelectExperiment)
+                    .addComponent(comboBoxExperiments, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabbedPaneOptics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
+        // General tab
         tabbedControl.addTab(labels.getString("tabGeneral"), panelGeneral);
+        // BeamShifting tab
+        tabbedControl.addTab(labels.getString("tabBeamShifting"), beamShiftingPanel.getPanel());
+        // Import formula tab
+        tabbedControl.addTab(labels.getString("tabImportFormula"), importFormulaPanel.getPanel());
         
-        // Calibration
-        lblFocalCalibration = new javax.swing.JLabel();
-        lblXPosCalibration = new javax.swing.JLabel();
-        lblYPosCalibration = new javax.swing.JLabel();
-        txtXPositionCalibration = new javax.swing.JTextField();
-        txtYPositionCalibration = new javax.swing.JTextField();
-        buttonCalibrationLensOn = new javax.swing.JButton();
-        buttonCalibrationDisplaySecondOn = new javax.swing.JButton();
-        buttonCalibrationGeneral = new javax.swing.JButton();
-        
-        //lblFocalCalibration.setText("Focal length (cm)");
-        lblXPosCalibration.setText("Deviation angle (degree)");
-        lblYPosCalibration.setText("Rotation (degree)");
-        
-        buttonCalibrationReset = new javax.swing.JButton();
-        buttonCalibrationReset.setText("Default");
-        buttonCalibrationReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtXPositionCalibration.setText("0");
-                txtYPositionCalibration.setText("0");
-                jSliderXPositionCalibration.setValue(0);
-                jSliderYPositionCalibration.setValue(0);
-                buttonGenerateActionPerformedCalibration(evt);
-            }
-        });
-        
-        buttonCalibrationGeneral.setText(labels.getString("btnGenerate"));
-        buttonCalibrationGeneral.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedCalibration(evt);
-            }
-        });
-
-        buttonCalibrationLensOn.setEnabled(false);
-        buttonCalibrationLensOn.setText(labels.getString("btnLensOn"));
-        buttonCalibrationLensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnCalibrationActionPerformed(evt);
-                countLenOnCalibration++;
-                if (countLenOnCalibration % 2 == 0) {
-                    buttonCalibrationLensOn.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    buttonCalibrationLensOn.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        buttonCalibrationDisplaySecondOn.setEnabled(false);
-        buttonCalibrationDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCalibrationDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedCalibration(evt);
-                countSecondDisplayCalibration++;
-                if (countSecondDisplayCalibration % 2 == 0) {
-                    buttonCalibrationDisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonCalibrationDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-        
-        txtXPositionCalibration.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtXPositionCalibration.getText() == null || txtXPositionCalibration.getText().equals("")){
-                    lblXPosCalibration.setForeground(Color.red);
-                } else {
-                    lblXPosCalibration.setForeground(Color.black);
-                }
-                keyEventGenerateActionPerformedCalibration(ke);
-            }
-        });
-
-        jSliderXPositionCalibration = new DoubleJSlider(-28, 28, 1, 10);
-        jSliderXPositionCalibration.setValue(0);
-        txtXPositionCalibration.setText(String.valueOf(jSliderXPositionCalibration.getValue()));
-
-        jSliderXPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedCalibration(evt);
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtXPositionCalibration.setText(df.format(jSliderXPositionCalibration.getScaledValue()));
-            }
-        });
-        
-        txtYPositionCalibration.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(txtYPositionCalibration.getText() == null || txtYPositionCalibration.getText().equals("")){
-                    lblYPosCalibration.setForeground(Color.red);
-                } else {
-                    lblYPosCalibration.setForeground(Color.black);
-                }
-                keyEventGenerateActionPerformedCalibration(ke);
-            }
-        });
-
-        jSliderYPositionCalibration = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderYPositionCalibration.setValue(0);
-        txtYPositionCalibration.setText(String.valueOf(jSliderYPositionCalibration.getValue()));
-
-        jSliderYPositionCalibration.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedCalibration(evt);
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtYPositionCalibration.setText(df.format(jSliderYPositionCalibration.getScaledValue()));
-            }
-        });
-
-        javax.swing.GroupLayout jPanelCalibrationdricalLayout = new javax.swing.GroupLayout(panelCalebration);
-        panelCalebration.setLayout(jPanelCalibrationdricalLayout);
-        jPanelCalibrationdricalLayout.setHorizontalGroup(
-            jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                        //.addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        //.addGap(18, 18, 18)
-                        .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                        .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblYPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                            .addComponent(lblXPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtYPositionCalibration)
-                            .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
-                            .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 0, 0))
-        );
-        jPanelCalibrationdricalLayout.setVerticalGroup(
-            jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSliderXPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblXPosCalibration)
-                        .addComponent(txtXPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblYPosCalibration)
-                            .addComponent(txtYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(232, 232, 232)
-                .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
-        );
-        
-        tabbedControl.addTab(labels.getString("tabBeamShifting"), panelCalebration);
         tabbedControl.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
@@ -1301,21 +260,15 @@ public class EduControlerPattern extends OpticsPane {
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
-                    //jScrollDes.removeAll();
                     
                     jScrollDes.getViewport();
                     tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
                     
-                    //tabbedDesLog.addTab("Description", desCalibration);
-                    jTextAreaLog.setColumns(20);
-                    jTextAreaLog.setRows(5);
-                    jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                    jScrollPane2.setViewportView(jTextAreaLog);
+                    jScrollPane2.setViewportView(beamShiftingPanel.getLogArea());
                     tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
 
                     lblDiagram.setIcon(lblDiagram.getIcon());
                     lblDiagram.setText(lblDiagram.getText());
-                    //lblDiagram.setText("No Diagram available");
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
                     
@@ -1333,7 +286,7 @@ public class EduControlerPattern extends OpticsPane {
                         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
                         jScrollPane2.setViewportView(jTextAreaLog);
                         tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
-
+                        
                         lblDiagram.setIcon(null);
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
@@ -1341,11 +294,9 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 1) {
                         jScrollDes.setViewportView(desTelephotoLens);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(slmBasicPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
                         lblDiagram.setText(null);
@@ -1354,11 +305,9 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 2) {
                         jScrollDes.setViewportView(desMicroscope);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(amplitudePanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
                         lblDiagram.setText(null);
@@ -1367,27 +316,19 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 3) {
                         jScrollDes.setViewportView(desAberration);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(beamSteerePanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
                         lblDiagram.setText(null);
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
-                        
-//                        jSliderYPositionCalibration.setValue(0);
-//                        jSliderXPositionCalibration.setValue(0);
                     } else if (tmpSelected == 4) {
                         jScrollDes.setViewportView(desMichelson);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        jScrollPane2.setViewportView(lensMichelsonPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp4michelson.png")));
                         lblDiagram.setText(null);
@@ -1396,11 +337,9 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 5) {
                         jScrollDes.setViewportView(desDiffaction);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(singleSlitPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp5diffraction.png")));
                         lblDiagram.setText(null);
@@ -1409,11 +348,9 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 6) {
                         jScrollDes.setViewportView(desSpectrometer);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(spectremeterPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp6spectrometer.png")));
                         lblDiagram.setText(null);
@@ -1422,11 +359,9 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 7) {
                         jScrollDes.setViewportView(desSignalProcessing);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(signalPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp7signalprocessing.png")));
                         lblDiagram.setText(null);
@@ -1435,11 +370,9 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 8) {
                         jScrollDes.setViewportView(desPhaseRetarder);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(phaseRetarderPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp8phaseshifting.png")));
                         lblDiagram.setText(null);
@@ -1448,11 +381,9 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 9) {
                         jScrollDes.setViewportView(desTalbotImage);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(talbotPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp9talbot.png")));
                         lblDiagram.setText(null);
@@ -1461,11 +392,9 @@ public class EduControlerPattern extends OpticsPane {
                     } else if (tmpSelected == 10) {
                         jScrollDes.setViewportView(desWavefront);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                        jTextAreaLog.setColumns(20);
-                        jTextAreaLog.setRows(5);
-                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(jTextAreaLog);
-                        tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+                        
+                        jScrollPane2.setViewportView(lensWavefrontPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp10wavefrontmodulation.png")));
                         lblDiagram.setText(null);
@@ -1475,7 +404,7 @@ public class EduControlerPattern extends OpticsPane {
                     
                 }
                 if (index == 2) {
-                    generateActionPerformedDefault(null);
+                    //generateActionPerformedDefault(null);
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
@@ -1483,2439 +412,16 @@ public class EduControlerPattern extends OpticsPane {
                     jScrollDes.getViewport();
                     tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
                     
-                    jTextAreaLog.setColumns(20);
-                    jTextAreaLog.setRows(5);
-                    jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                    jScrollPane2.setViewportView(jTextAreaLog);
+                    jScrollPane2.setViewportView(importFormulaPanel.getLogArea());
                     tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
 
                     lblDiagram.setIcon(lblDiagram.getIcon());
                     lblDiagram.setText(lblDiagram.getText());
-                    //lblDiagram.setText("No Diagram available");
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
                 }
             }
         });
-        // BEGIN Import file
-        panelImportfile = new javax.swing.JPanel();
-        // Import file
-        
-        lblHeaderImportFile = new javax.swing.JLabel();
-        lblK = new javax.swing.JLabel();
-        txtKImportFile = new javax.swing.JTextField();
-        lblR = new javax.swing.JLabel();
-        txtRImportFile = new javax.swing.JTextField();
-        lblE1 = new javax.swing.JLabel();
-        txtE1ImportFile = new javax.swing.JTextField();
-        lblKR = new javax.swing.JLabel();
-        txtK1RImportFile = new javax.swing.JTextField();
-        lbltWidthImportFile = new javax.swing.JLabel();
-        txtWidthImportFile = new javax.swing.JTextField();
-        sliderWidthImportFile = new javax.swing.JSlider();
-        lblRotationImportFile = new javax.swing.JLabel();
-        txtRotationImportFile = new javax.swing.JTextField();
-        sliderRotationImportFile = new javax.swing.JSlider();
-        lblPositionImportFile = new javax.swing.JLabel();
-        txtPositionImportFile = new javax.swing.JTextField();
-        sliderPositionImportFile = new javax.swing.JSlider();
-        lblGrayLevelImportFile = new javax.swing.JLabel();
-        txtGrayLevelImportFile = new javax.swing.JTextField();
-        sliderGrayLevelImportFile = new javax.swing.JSlider();
-        btnGenerteImportFile = new javax.swing.JButton();
-        btnLensONImportFile = new javax.swing.JButton();
-        btnSecondImportFile = new javax.swing.JButton();
-        txtFormula = new javax.swing.JTextField();
-
-        lblHeaderImportFile.setText("U1 = ");
-        lblK.setText("K = ");
-
-        txtKImportFile.setText("0.5");
-
-        lblR.setText("R = ");
-
-        txtRImportFile.setText("24");
-
-        lblE1.setText("E1 = ");
-
-        txtE1ImportFile.setText("1.42");
-
-        lblKR.setText("K1.R = ");
-
-        txtK1RImportFile.setText("12");
-
-        lbltWidthImportFile.setText(labels.getString("paramWidth"));
-
-        txtWidthImportFile.setText("100");
-
-        lblRotationImportFile.setText(labels.getString("paramRotation"));
-
-        txtRotationImportFile.setText("0");
-
-        lblPositionImportFile.setText(labels.getString("paramPositions"));
-
-        txtPositionImportFile.setText("0");
-
-        lblGrayLevelImportFile.setText(labels.getString("paramGrayLevel"));
-
-        txtGrayLevelImportFile.setText("255");
-
-        btnGenerteImportFile.setText(labels.getString("btnGenerate"));
-
-        btnLensONImportFile.setText(labels.getString("btnLensOn"));
-
-        btnSecondImportFile.setText(labels.getString("btnSecondDisplayOn"));
-        
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderWidthImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtWidthImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderRotationImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtRotationImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderPositionImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtPositionImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderGrayLevelImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtGrayLevelImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-        
-        sliderWidthImportFile.setMaximum(180);
-        sliderWidthImportFile.setMinimum(-180);
-        sliderWidthImportFile.setValue(0);
-        sliderWidthImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedImportFile(evt);
-            }
-        });
-        sliderRotationImportFile.setMaximum(180);
-        sliderRotationImportFile.setMinimum(-180);
-        sliderRotationImportFile.setValue(0);
-        sliderRotationImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedImportFile(evt);
-            }
-        });
-        sliderPositionImportFile.setMaximum(image1.getBounds().height / 2);
-        sliderPositionImportFile.setMinimum(-(image1.getBounds().height / 2));
-        sliderPositionImportFile.setValue(0);
-        sliderPositionImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedImportFile(evt);
-            }
-        });
-        sliderGrayLevelImportFile.setMaximum(255);
-        sliderGrayLevelImportFile.setMinimum(0);
-        sliderGrayLevelImportFile.setValue(255);
-        sliderGrayLevelImportFile.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedImportFile(evt);
-            }
-        });
-        
-        btnGenerteImportFile.setText(labels.getString("btnGenerate"));
-        btnGenerteImportFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedImportFile(evt);
-            }
-        });
-
-        btnLensONImportFile.setEnabled(false);
-        btnLensONImportFile.setText(labels.getString("btnLensOn"));
-        btnLensONImportFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnImportFileActionPerformed(evt);
-                countLenOnImportFile++;
-                if (countLenOnImportFile % 2 == 0) {
-                    btnLensONImportFile.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    btnLensONImportFile.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        btnSecondImportFile.setEnabled(false);
-        btnSecondImportFile.setText(labels.getString("btnSecondDisplayOn"));
-        btnSecondImportFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedImportFile(evt);
-                countSecondDisplayImportFile++;
-                if (countSecondDisplayImportFile % 2 == 0) {
-                    btnSecondImportFile.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    btnSecondImportFile.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        javax.swing.GroupLayout layoutImportFile = new javax.swing.GroupLayout(panelImportfile);
-        panelImportfile.setLayout(layoutImportFile);
-        layoutImportFile.setHorizontalGroup(
-            layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layoutImportFile.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layoutImportFile.createSequentialGroup()
-                        .addComponent(btnGenerteImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnLensONImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnSecondImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 155, Short.MAX_VALUE))
-                    .addGroup(layoutImportFile.createSequentialGroup()
-                        .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblKR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblE1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblK, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtK1RImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtKImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtE1ImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtRImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25)
-                        .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbltWidthImportFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblRotationImportFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPositionImportFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblGrayLevelImportFile, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtPositionImportFile, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRotationImportFile, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtWidthImportFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                            .addComponent(txtGrayLevelImportFile))
-                        .addGap(18, 18, 18)
-                        .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sliderWidthImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sliderGrayLevelImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sliderPositionImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sliderRotationImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(36, 36, 36))
-            .addGroup(layoutImportFile.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(lblHeaderImportFile)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layoutImportFile.setVerticalGroup(
-            layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layoutImportFile.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHeaderImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtKImportFile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblK)
-                            .addComponent(lbltWidthImportFile)
-                            .addComponent(txtWidthImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(sliderWidthImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblR)
-                        .addComponent(txtRImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblRotationImportFile)
-                        .addComponent(txtRotationImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(sliderRotationImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblE1)
-                        .addComponent(txtE1ImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblPositionImportFile)
-                        .addComponent(txtPositionImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(sliderPositionImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sliderGrayLevelImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblKR)
-                        .addComponent(txtK1RImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblGrayLevelImportFile)
-                        .addComponent(txtGrayLevelImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(114, 114, 114)
-                .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGenerteImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLensONImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSecondImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
-        );
-        tabbedControl.addTab(labels.getString("tabImportFormula"), panelImportfile);
-        // END Import file
-        
-        /*
-         * Slit
-         */
-        comboBoxSlit = new javax.swing.JComboBox();
-        lblWidthSlit = new javax.swing.JLabel();
-        lblHeightSlit = new javax.swing.JLabel();
-        lblRotationSlit = new javax.swing.JLabel();
-        lblPosSlit = new javax.swing.JLabel();
-        lblGraySlit = new javax.swing.JLabel();
-        text_single_width = new javax.swing.JTextField();
-        text_single_height = new javax.swing.JTextField();
-        text_single_rotation = new javax.swing.JTextField();
-        text_single_position = new javax.swing.JTextField();
-        text_single_gray = new javax.swing.JTextField();
-        s_single_width = new javax.swing.JSlider();
-        s_single_height = new javax.swing.JSlider();
-        s_single_rotation = new javax.swing.JSlider();
-        s_single_position = new javax.swing.JSlider();
-        s_single_gray = new javax.swing.JSlider();
-        jLabelSpacingSlit = new javax.swing.JLabel();
-        text_single_spacing = new javax.swing.JTextField();
-        s_single_spacing = new javax.swing.JSlider();
-        buttonGennerateSlit = new javax.swing.JButton();
-        buttong11LensOnSlit = new javax.swing.JButton();
-        buttonSecondDisplaySlit = new javax.swing.JButton();
-
-        // double slit
-        lblWidthDoubleSlit = new javax.swing.JLabel();
-        lblHeightDoubleSlit = new javax.swing.JLabel();
-        lblRotationDoubleSlit = new javax.swing.JLabel();
-        lblPosDoubleSlit = new javax.swing.JLabel();
-        lblGrayDoubleSlit = new javax.swing.JLabel();
-        text_single_widthDoubleSlit = new javax.swing.JTextField();
-        text_single_heightDoubleSlit = new javax.swing.JTextField();
-        text_single_rotationDoubleSlit = new javax.swing.JTextField();
-        text_single_positionDoubleSlit = new javax.swing.JTextField();
-        text_single_grayDoubleSlit = new javax.swing.JTextField();
-        s_single_widthDoubleSlit = new javax.swing.JSlider();
-        s_single_heightDoubleSlit = new javax.swing.JSlider();
-        s_single_rotationDoubleSlit = new javax.swing.JSlider();
-        s_single_positionDoubleSlit = new javax.swing.JSlider();
-        s_single_grayDoubleSlit = new javax.swing.JSlider();
-        jLabelSpacingDoubleSlit = new javax.swing.JLabel();
-        text_single_spacingDoubleSlit = new javax.swing.JTextField();
-        s_single_spacingDoubleSlit = new javax.swing.JSlider();
-        buttonGennerateDoubleSlit = new javax.swing.JButton();
-        buttong11LensOnDoubleSlit = new javax.swing.JButton();
-        buttonSecondDisplayDoubleSlit = new javax.swing.JButton();
-
-        lblWidthSlit.setText(labels.getString("paramWidth"));
-
-        lblHeightSlit.setText(labels.getString("paramWidth"));
-
-        lblRotationSlit.setText(labels.getString("paramRotationNoDegree"));
-
-        lblPosSlit.setText(labels.getString("paramPositions"));
-
-        lblGraySlit.setText(labels.getString("paramGrayLevel"));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_width, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_width, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_height, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_height, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_rotation, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_position, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_position, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        jLabelSpacingSlit.setText(labels.getString("paramSpacing"));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        text_single_height.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(text_single_height.getText() == null || text_single_height.getText().equals("")){
-                    lblHeightSlit.setForeground(Color.red);
-                } else {
-                    lblHeightSlit.setForeground(Color.black);
-                }
-                keyeventGenerateActionPerformedSlit(ke);
-            }
-        });
-        text_single_rotation.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(text_single_rotation.getText() == null || text_single_rotation.getText().equals("")){
-                    lblRotationSlit.setForeground(Color.red);
-                } else {
-                    lblRotationSlit.setForeground(Color.black);
-                }
-                keyeventGenerateActionPerformedSlit(ke);
-            }
-        });
-        text_single_position.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(text_single_position.getText() == null || text_single_position.getText().equals("")){
-                    lblPosSlit.setForeground(Color.red);
-                } else {
-                    lblPosSlit.setForeground(Color.black);
-                }
-                keyeventGenerateActionPerformedSlit(ke);
-            }
-        });
-        text_single_gray.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(text_single_gray.getText() == null || text_single_gray.getText().equals("")){
-                    lblGraySlit.setForeground(Color.red);
-                } else {
-                    lblGraySlit.setForeground(Color.black);
-                }
-                keyeventGenerateActionPerformedSlit(ke);
-            }
-        });
-        text_single_gray.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                if(text_single_gray.getText() == null || text_single_gray.getText().equals("")){
-                    jLabelSpacingSlit.setForeground(Color.red);
-                } else {
-                    jLabelSpacingSlit.setForeground(Color.black);
-                }
-                keyeventGenerateActionPerformedSlit(ke);
-            }
-        });
-        // disable when slit = 1
-        jLabelSpacingSlit.hide();
-        text_single_spacing.hide();
-        s_single_spacing.hide();
-        s_single_width.setMaximum(3866);
-        s_single_width.setValue(3866);
-        s_single_width.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedSlit(evt);
-            }
-        });
-        s_single_height.setMaximum(image1.getBounds().height);
-        s_single_height.setValue(100);
-        s_single_height.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedSlit(evt);
-            }
-        });
-        s_single_rotation.setMaximum(180);
-        s_single_rotation.setMinimum(-180);
-        s_single_rotation.setValue(0);
-        s_single_rotation.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedSlit(evt);
-            }
-        });
-        s_single_position.setMaximum(image1.getBounds().height / 2);
-        s_single_position.setMinimum(-(image1.getBounds().height / 2));
-        s_single_position.setValue(0);
-        s_single_position.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedSlit(evt);
-            }
-        });
-        s_single_gray.setMajorTickSpacing(255);
-        s_single_gray.setPaintLabels(true);
-        s_single_gray.setMaximum(255); 
-        s_single_gray.setValue(255);
-        s_single_gray.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedSlit(evt);
-            }
-        });
-        s_single_spacing.setMaximum(image1.getBounds().height);
-        s_single_spacing.setValue(0);
-        s_single_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedSlit(evt);
-            }
-        });
-        s_single_spacing.setMaximum(image1.getBounds().height);
-        s_single_spacing.setValue(150);
-        s_single_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedSlit(evt);
-            }
-        });
-
-        buttonGennerateSlit.setText(labels.getString("btnGenerate"));
-        buttonGennerateSlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedSlit(evt);
-            }
-        });
-
-        buttong11LensOnSlit.setEnabled(false);
-        buttong11LensOnSlit.setText(labels.getString("btnLensOn"));
-        buttong11LensOnSlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnSlitActionPerformed(evt);
-                countLenOnSlit++;
-                if (countLenOnSlit % 2 == 0) {
-                    buttong11LensOnSlit.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    buttong11LensOnSlit.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        buttonSecondDisplaySlit.setEnabled(false);
-        buttonSecondDisplaySlit.setText(labels.getString("btnSecondDisplayOn"));
-        buttonSecondDisplaySlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedSlit(evt);
-                countSecondDisplaySlit++;
-                if (countSecondDisplaySlit % 2 == 0) {
-                    buttonSecondDisplaySlit.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonSecondDisplaySlit.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-        comboBoxSlit.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Single Slit", "Double Slit"}));
-        comboBoxSlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Object selected = comboBoxSlit.getSelectedItem();
-                if (selected.equals("Single Slit")) {
-                    slit = 1;
-                    jLabelSpacingSlit.hide();
-                    text_single_spacing.hide();
-                    s_single_spacing.hide();
-
-                }
-                if (selected.equals("Double Slit")) {
-                    slit = 2;
-                    jLabelSpacingSlit.show();
-                    text_single_spacing.show();
-                    s_single_spacing.show();
-                }
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
-                image.slit(slit);
-                EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
-                imageGenerated = true;
-            }
-        });
-        
-        panelButtonSlit = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonSlitLayout = new javax.swing.GroupLayout(panelButtonSlit);
-        panelButtonSlit.setLayout(panelButtonSlitLayout);
-        panelButtonSlitLayout.setHorizontalGroup(
-                panelButtonSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSlitLayout.createSequentialGroup()
-                .addGroup(panelButtonSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSlitLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonSlitLayout.setVerticalGroup(
-                panelButtonSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSlitLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(panelButtonSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonSecondDisplaySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttong11LensOnSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGennerateSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(panelSlit);
-        panelSlit.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblGraySlit, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                    .addComponent(lblPosSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblRotationSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblHeightSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(text_single_height)
-                    .addComponent(text_single_rotation)
-                    .addComponent(text_single_position)
-                    .addComponent(text_single_gray, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(s_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(s_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(s_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                         .addGap(12, 12, 12)
-                        .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        )))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(s_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblHeightSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_single_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(text_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblRotationSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(s_single_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPosSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(s_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_single_position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblGraySlit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(s_single_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                )
-        );
-
-        lblWidthDoubleSlit.setText(labels.getString("paramWidth"));
-
-        lblHeightDoubleSlit.setText(labels.getString("paramWidth"));
-
-        lblRotationDoubleSlit.setText(labels.getString("paramRotationNoDegree"));
-
-        lblPosDoubleSlit.setText(labels.getString("paramPositions"));
-
-        lblGrayDoubleSlit.setText(labels.getString("paramGrayLevel"));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_widthDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_widthDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_heightDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_heightDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_rotationDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_rotationDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_positionDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_positionDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_grayDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_grayDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        jLabelSpacingDoubleSlit.setText(labels.getString("paramSpacing"));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_single_spacingDoubleSlit, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_single_spacingDoubleSlit, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        s_single_widthDoubleSlit.setMaximum(3866);
-        s_single_widthDoubleSlit.setValue(3866);
-        s_single_widthDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedDoubleSlit(evt);
-            }
-        });
-        s_single_heightDoubleSlit.setMaximum(image1.getBounds().height);
-        s_single_heightDoubleSlit.setValue(100);
-        s_single_heightDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedDoubleSlit(evt);
-            }
-        });
-        s_single_rotationDoubleSlit.setMaximum(180);
-        s_single_rotationDoubleSlit.setMinimum(-180);
-        s_single_rotationDoubleSlit.setValue(0);
-        s_single_rotationDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedDoubleSlit(evt);
-            }
-        });
-        s_single_positionDoubleSlit.setMaximum(image1.getBounds().height / 2);
-        s_single_positionDoubleSlit.setMinimum(-(image1.getBounds().height / 2));
-        s_single_positionDoubleSlit.setValue(0);
-        s_single_positionDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedDoubleSlit(evt);
-            }
-        });
-        s_single_grayDoubleSlit.setMajorTickSpacing(255);
-        s_single_grayDoubleSlit.setPaintLabels(true);
-        s_single_grayDoubleSlit.setMaximum(255);
-        s_single_grayDoubleSlit.setValue(255);
-        s_single_grayDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedDoubleSlit(evt);
-            }
-        });
-        s_single_spacingDoubleSlit.setMaximum(image1.getBounds().height);
-        s_single_spacingDoubleSlit.setValue(150);
-        s_single_spacingDoubleSlit.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedDoubleSlit(evt);
-            }
-        });
-        
-        text_single_heightDoubleSlit.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedDoubleSlit(ke);
-                if(text_single_heightDoubleSlit.getText() == null || text_single_heightDoubleSlit.getText().equals("")){
-                    lblHeightDoubleSlit.setForeground(Color.red);
-                } else {
-                    lblHeightDoubleSlit.setForeground(Color.black);
-                }
-            }
-        });
-        
-        text_single_rotationDoubleSlit.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedDoubleSlit(ke);
-                if(text_single_rotationDoubleSlit.getText() == null || text_single_rotationDoubleSlit.getText().equals("")){
-                    lblRotationDoubleSlit.setForeground(Color.red);
-                } else {
-                    lblRotationDoubleSlit.setForeground(Color.black);
-                }
-            }
-        });
-        
-        text_single_positionDoubleSlit.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedDoubleSlit(ke);
-                if(text_single_positionDoubleSlit.getText() == null || text_single_positionDoubleSlit.getText().equals("")){
-                    lblPosDoubleSlit.setForeground(Color.red);
-                } else {
-                    lblPosDoubleSlit.setForeground(Color.black);
-                }
-            }
-        });
-        
-        text_single_grayDoubleSlit.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedDoubleSlit(ke);
-                if(text_single_grayDoubleSlit.getText() == null || text_single_grayDoubleSlit.getText().equals("")){
-                    lblGrayDoubleSlit.setForeground(Color.red);
-                } else {
-                    lblGrayDoubleSlit.setForeground(Color.black);
-                }
-            }
-        });
-        
-        text_single_spacingDoubleSlit.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedDoubleSlit(ke);
-                if(text_single_spacingDoubleSlit.getText() == null || text_single_spacingDoubleSlit.getText().equals("")){
-                    jLabelSpacingDoubleSlit.setForeground(Color.red);
-                } else {
-                    jLabelSpacingDoubleSlit.setForeground(Color.black);
-                }
-            }
-        });
-
-        buttonGennerateDoubleSlit.setText(labels.getString("btnGenerate"));
-        buttonGennerateDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedDoubleSlit(evt);
-            }
-        });
-        buttong11LensOnDoubleSlit.setEnabled(false);
-        buttong11LensOnDoubleSlit.setText(labels.getString("btnLensOn"));
-        buttong11LensOnDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnDoubleSlitActionPerformed(evt);
-                countLenOnDoubleSlit++;
-                if (countLenOnDoubleSlit % 2 == 0) {
-                    buttong11LensOnDoubleSlit.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    buttong11LensOnDoubleSlit.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-        buttonSecondDisplayDoubleSlit.setEnabled(false);
-        buttonSecondDisplayDoubleSlit.setText(labels.getString("btnSecondDisplayOn"));
-        buttonSecondDisplayDoubleSlit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedDoubleSlit(evt);
-                countSecondDisplayDoubleSlit++;
-                if (countSecondDisplayDoubleSlit % 2 == 0) {
-                    buttonSecondDisplayDoubleSlit.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonSecondDisplayDoubleSlit.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        // double slit
-        panelButtonDoubleSlit = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonDoubleSlitLayout = new javax.swing.GroupLayout(panelButtonDoubleSlit);
-        panelButtonDoubleSlit.setLayout(panelButtonDoubleSlitLayout);
-        panelButtonDoubleSlitLayout.setHorizontalGroup(
-                panelButtonDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonDoubleSlitLayout.createSequentialGroup()
-                .addGroup(panelButtonDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonDoubleSlitLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonDoubleSlitLayout.setVerticalGroup(
-                panelButtonDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonDoubleSlitLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(panelButtonDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonSecondDisplayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttong11LensOnDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGennerateDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        javax.swing.GroupLayout panelDoubleSlitLayout = new javax.swing.GroupLayout(panelDoubleSlit);
-        panelDoubleSlit.setLayout(panelDoubleSlitLayout);
-        panelDoubleSlitLayout.setHorizontalGroup(
-            panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDoubleSlitLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDoubleSlitLayout.createSequentialGroup()
-                        .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblRotationDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                            .addComponent(lblHeightDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPosDoubleSlit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(10, 10, 10)
-                        .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(text_single_heightDoubleSlit, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(text_single_rotationDoubleSlit)
-                            .addComponent(text_single_positionDoubleSlit))
-                        .addGap(15, 15, 15)
-                        .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(s_single_heightDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(s_single_rotationDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(s_single_positionDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDoubleSlitLayout.createSequentialGroup()
-                        .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblGrayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSpacingDoubleSlit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelDoubleSlitLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(text_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
-                                .addComponent(s_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelDoubleSlitLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(text_single_grayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(s_single_grayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                ))))
-                )
-        );
-        panelDoubleSlitLayout.setVerticalGroup(
-            panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDoubleSlitLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(s_single_heightDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblHeightDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_single_heightDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(text_single_rotationDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblRotationDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(s_single_rotationDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPosDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(s_single_positionDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_single_positionDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelSpacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(s_single_spacingDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDoubleSlitLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(s_single_grayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0))
-                    .addGroup(panelDoubleSlitLayout.createSequentialGroup()
-                        .addGroup(panelDoubleSlitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblGrayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text_single_grayDoubleSlit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        )))
-        );
-
-        /*
-         * Signal
-         */
-        lblWidthY = new javax.swing.JLabel();
-        lblHeightY = new javax.swing.JLabel();
-        lblRotationProcessing = new javax.swing.JLabel();
-        lblPosX = new javax.swing.JLabel();
-        lblPosY = new javax.swing.JLabel();
-        lblSpacingProcessing = new javax.swing.JLabel();
-        text_width_processing_y = new javax.swing.JTextField();
-        text_height_processing_y = new javax.swing.JTextField();
-        text_rotation_processing = new javax.swing.JTextField();
-        text_position_processing_x = new javax.swing.JTextField();
-        text_position_processing_y = new javax.swing.JTextField();
-        text_processing_spacing = new javax.swing.JTextField();
-        s_processing_width_y = new javax.swing.JSlider();
-        s_processing_height_y = new javax.swing.JSlider();
-        s_processing_rotation = new javax.swing.JSlider();
-        s_processing_positionx = new javax.swing.JSlider();
-        s_processing_pos_y = new javax.swing.JSlider();
-        s_processing_spacing = new javax.swing.JSlider();
-        jLabelGrayProcessing = new javax.swing.JLabel();
-        text_processing_gray = new javax.swing.JTextField();
-        s_processing_gray = new javax.swing.JSlider();
-        buttonGennerateProcessing = new javax.swing.JButton();
-        button11LensOnProcessing = new javax.swing.JButton();
-        buttonSecondDisplayProcessing = new javax.swing.JButton();
-        lblWidthX = new javax.swing.JLabel();
-        text_width_processing_x = new javax.swing.JTextField();
-        s_processing_width_x = new javax.swing.JSlider();
-        lblHeightX = new javax.swing.JLabel();
-        text_height_processing_x = new javax.swing.JTextField();
-        s_processing_height_x = new javax.swing.JSlider();
-        // lblWidthY.setText("Width Y");
-        lblHeightY.setText("Width Y");
-
-        lblRotationProcessing.setText(labels.getString("paramRotationNoDegree"));
-
-        lblPosX.setText("Position X");
-
-        lblPosY.setText("Position Y");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_width_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_width_y.setMaximum(image1.getBounds().width);
-        s_processing_width_y.setValue(100);
-        s_processing_width_y.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        text_width_processing_y.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedProcessing(ke);
-                if(text_width_processing_y.getText() == null || text_width_processing_y.getText().equals("")){
-                    lblHeightY.setForeground(Color.red);
-                } else {
-                    lblHeightY.setForeground(Color.black);
-                }
-                
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_height_y.setMaximum(9999);
-        s_processing_height_y.setValue(9999);
-        s_processing_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_rotation_processing, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_rotation.setMaximum(180);
-        s_processing_rotation.setMinimum(-180);
-        s_processing_rotation.setValue(0);
-        s_processing_rotation.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        text_rotation_processing.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedProcessing(ke);
-                if(text_rotation_processing.getText() == null || text_rotation_processing.getText().equals("")){
-                    lblRotationProcessing.setForeground(Color.red);
-                } else {
-                    lblRotationProcessing.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_positionx, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_positionx.setMaximum(image1.getBounds().height / 2);
-        s_processing_positionx.setMinimum(-(image1.getBounds().height / 2));
-        s_processing_positionx.setValue(100);
-        s_processing_positionx.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        text_position_processing_x.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedProcessing(ke);
-                if(text_position_processing_x.getText() == null || text_position_processing_x.getText().equals("")){
-                    lblPosX.setForeground(Color.red);
-                } else {
-                    lblPosX.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_pos_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_processing_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_pos_y.setMaximum(image1.getBounds().width / 2);
-        s_processing_pos_y.setMinimum(-(image1.getBounds().width / 2));
-        s_processing_pos_y.setValue(0);
-        s_processing_pos_y.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        text_position_processing_y.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedProcessing(ke);
-                if(text_position_processing_y.getText() == null || text_position_processing_y.getText().equals("")){
-                    lblPosY.setForeground(Color.red);
-                } else {
-                    lblPosY.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        jLabelGrayProcessing.setText(labels.getString("paramGrayLevel"));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_gray.setMajorTickSpacing(255);
-        s_processing_gray.setPaintLabels(true);
-        s_processing_gray.setMaximum(255);
-        s_processing_gray.setValue(255);
-        s_processing_gray.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        text_processing_gray.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedProcessing(ke);
-                if(text_processing_gray.getText() == null || text_processing_gray.getText().equals("")){
-                    jLabelGrayProcessing.setForeground(Color.red);
-                } else {
-                    jLabelGrayProcessing.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        lblSpacingProcessing.setText(labels.getString("paramSpacing"));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_processing_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_spacing.setMaximum(image1.getBounds().height);
-        s_processing_spacing.setMinimum(-(image1.getBounds().height));
-        s_processing_spacing.setValue(0);
-        s_processing_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        text_processing_spacing.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedProcessing(ke);
-                if(text_processing_spacing.getText() == null || text_processing_spacing.getText().equals("")){
-                    lblSpacingProcessing.setForeground(Color.red);
-                } else {
-                    lblSpacingProcessing.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        buttonGennerateProcessing.setText(labels.getString("btnGenerate"));
-        buttonGennerateProcessing.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedProcessing(evt);
-            }
-        });
-        button11LensOnProcessing.setEnabled(false);
-        button11LensOnProcessing.setText(labels.getString("btnLensOn"));
-        button11LensOnProcessing.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnProcessingActionPerformed(evt);
-                //   boolean_checkLen = false;
-                countLenOnProcessing++;
-                if (countLenOnProcessing % 2 == 0) {
-                    button11LensOnProcessing.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    button11LensOnProcessing.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-        buttonSecondDisplayProcessing.setEnabled(false);
-        buttonSecondDisplayProcessing.setText(labels.getString("btnSecondDisplayOn"));
-        buttonSecondDisplayProcessing.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedProcessing(evt);
-                countSecondDisplayProcessing++;
-                if (countSecondDisplayProcessing % 2 == 0) {
-                    buttonSecondDisplayProcessing.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonSecondDisplayProcessing.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_width_x.setMaximum(3866);
-        s_processing_width_x.setValue(3866);
-        s_processing_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        lblHeightX.setText("Width X");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_processing_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_processing_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_processing_height_x.setMaximum(image1.getBounds().height);
-        s_processing_height_x.setValue(100);
-        s_processing_height_x.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedProcessing(evt);
-            }
-        });
-        text_height_processing_x.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedProcessing(ke);
-                if(text_height_processing_x.getText() == null || text_height_processing_x.getText().equals("")){
-                    lblHeightX.setForeground(Color.red);
-                } else {
-                    lblHeightX.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-        
-        panelButtonSignal = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonSignalLayout = new javax.swing.GroupLayout(panelButtonSignal);
-        panelButtonSignal.setLayout(panelButtonSignalLayout);
-        panelButtonSignalLayout.setHorizontalGroup(
-                panelButtonSignalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSignalLayout.createSequentialGroup()
-                .addGroup(panelButtonSignalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSignalLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonGennerateProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(button11LensOnProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonSecondDisplayProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonSignalLayout.setVerticalGroup(
-                panelButtonSignalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSignalLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(panelButtonSignalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonSecondDisplayProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(button11LensOnProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGennerateProcessing, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-
-        javax.swing.GroupLayout jPanelProcessingLayout = new javax.swing.GroupLayout(panelSignal);
-        panelSignal.setLayout(jPanelProcessingLayout);
-        jPanelProcessingLayout.setHorizontalGroup(
-                jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGap(15, 15, 15)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProcessingLayout.createSequentialGroup()
-                .addComponent(lblPosX)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(text_position_processing_x, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblPosY)
-                .addComponent(lblSpacingProcessing))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(text_position_processing_y))))
-                .addGap(17, 17, 17)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(s_processing_pos_y, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_processing_positionx, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)))
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblHeightY)
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addComponent(lblHeightX)
-                .addGap(33, 33, 33)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_width_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(text_height_processing_x, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(s_processing_height_x, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                .addComponent(s_processing_width_y, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addComponent(lblRotationProcessing)
-                .addGap(27, 27, 27)
-                .addComponent(text_rotation_processing, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(s_processing_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addComponent(jLabelGrayProcessing)
-                .addGap(17, 17, 17)
-                .addComponent(text_processing_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(s_processing_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                )));
-        jPanelProcessingLayout.setVerticalGroup(
-                jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProcessingLayout.createSequentialGroup()
-                //.addComponent(jLayeredPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8))
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addComponent(s_processing_height_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
-                .addGroup(jPanelProcessingLayout.createSequentialGroup()
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_height_processing_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblHeightX))
-                .addGap(6, 6, 6)))
-                .addGap(2, 2, 2)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_width_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblHeightY))
-                .addComponent(s_processing_width_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_rotation_processing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblRotationProcessing))
-                .addComponent(s_processing_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(s_processing_positionx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_position_processing_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblPosX)))
-                .addGap(10, 10, 10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_position_processing_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblPosY)
-                .addComponent(s_processing_pos_y, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_processing_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblSpacingProcessing))
-                .addGap(8, 8, 8)
-                .addGroup(jPanelProcessingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_processing_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_processing_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabelGrayProcessing)).addGap(0, 0, 0)));
-
-        /*
-         * Signal Photo
-         */
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFile = new javax.swing.JButton();
-        lblPleaseSelectPhoto = new javax.swing.JLabel();
-        buttonSecondPhoto = new javax.swing.JButton();
-        button11LensOnPhoto = new javax.swing.JButton();
-        buttonGeneralPhoto = new javax.swing.JButton();
-        buttonOpenFile.setText("Browse...");
-        buttonOpenFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_openFileActionPerformed(evt);
-            }
-        });
-        lblPleaseSelectPhoto.setText("Select the file to import.");
-
-        buttonSecondPhoto.setEnabled(false);
-        buttonSecondPhoto.setText(labels.getString("btnSecondDisplayOn"));
-        buttonSecondPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImages != null) {
-                    buttonSecondGenerateActionPerformedProcessingPhoto(evt);
-                    countSecondDisplayPhoto++;
-                    if (countSecondDisplayPhoto % 2 == 0) {
-                        buttonSecondPhoto.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonSecondPhoto.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        button11LensOnPhoto.setEnabled(false);
-        button11LensOnPhoto.setText(labels.getString("btnLensOn"));
-        button11LensOnPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImages != null) {
-                    button11LensOnProcessingPhotoActionPerformed(evt);
-                    countLenOnPhoto++;
-                    if (countLenOnPhoto % 2 == 0) {
-                        button11LensOnPhoto.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        button11LensOnPhoto.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonGeneralPhoto.setText(labels.getString("btnGenerate"));
-        buttonGeneralPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImages != null) {
-                    buttonGenerateActionPerformedProcessingPhoto(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        panelButtonSignalPhoto = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonSignalPhotoLayout = new javax.swing.GroupLayout(panelButtonSignalPhoto);
-        panelButtonSignalPhoto.setLayout(panelButtonSignalPhotoLayout);
-        panelButtonSignalPhotoLayout.setHorizontalGroup(
-                panelButtonSignalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSignalPhotoLayout.createSequentialGroup()
-                .addGroup(panelButtonSignalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSignalPhotoLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonSignalPhotoLayout.setVerticalGroup(
-                panelButtonSignalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonSignalPhotoLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(panelButtonSignalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonSecondPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(button11LensOnPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGeneralPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        javax.swing.GroupLayout signalPhotoLayout = new javax.swing.GroupLayout(panelSignalPhoto);
-        panelSignalPhoto.setLayout(signalPhotoLayout);
-        signalPhotoLayout.setHorizontalGroup(
-            signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonOpenFile, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(signalPhotoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPleaseSelectPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ))
-        );
-        signalPhotoLayout.setVerticalGroup(
-            signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signalPhotoLayout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addGroup(signalPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectPhoto)).addGap(0, 0, 0))
-        );
-        
-        /*
-         * Lens Michelson
-         */
-        lblFocalLensMichelson.setText("Focal length (mm)");
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSliderFocalLensMichelson, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtFocalLensMichelson, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        lblXLensMichelson.setText("X Position (mm)");
-
-        lblYLensMichelson.setText("Y Position (mm)");
-
-        jButtonLensMichelson.setText(labels.getString("btnGenerate"));
-        jButtonLensMichelson.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedMichelSon(evt);
-            }
-        });
-
-        jButton11LensOnMichelson.setEnabled(false);
-        jButton11LensOnMichelson.setText(labels.getString("btnLensOn"));
-        jButton11LensOnMichelson.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnMichelsonActionPerformed(evt);
-                countLenOnMichelson++;
-                if (countLenOnMichelson % 2 == 0) {
-                    jButton11LensOnMichelson.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    jButton11LensOnMichelson.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        jButtonDisplaySecondOnMichelson.setEnabled(false);
-        jButtonDisplaySecondOnMichelson.setText(labels.getString("btnSecondDisplayOn"));
-        jButtonDisplaySecondOnMichelson.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedMichelSon(evt);
-                countSecondDisplayMichelson++;
-                if (countSecondDisplayMichelson % 2 == 0) {
-                    jButtonDisplaySecondOnMichelson.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    jButtonDisplaySecondOnMichelson.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-        
-        jSliderXPositionLensMichelson = new DoubleJSlider(-60, 60, 1, 10);
-        jSliderXPositionLensMichelson.setValue(0);
-        txtXPositionLensMichelson.setText(String.valueOf(jSliderXPositionLensMichelson.getValue()));
-
-        jSliderXPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedLensMichelSon(evt);
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtXPositionLensMichelson.setText(df.format(jSliderXPositionLensMichelson.getScaledValue()));
-            }
-        });
-        
-        jSliderYPositionLensMichelson = new DoubleJSlider(-30, 30, 1, 10);
-        jSliderYPositionLensMichelson.setValue(0);
-        txtYPositionLensMichelson.setText(String.valueOf(jSliderYPositionLensMichelson.getValue()));
-
-        jSliderYPositionLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedLensMichelSon(evt);
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtYPositionLensMichelson.setText(df.format(jSliderYPositionLensMichelson.getScaledValue()));
-            }
-        });
-
-        jSliderFocalLensMichelson.setMaximum(1000);
-        jSliderFocalLensMichelson.setMinimum(-1000);
-        jSliderFocalLensMichelson.setValue(0);
-        jSliderFocalLensMichelson.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedLensMichelSon(evt);
-                String tmp = txtFocalLensMichelson.getText();
-                int value = Integer.parseInt(tmp);
-                if (value >= -30 && value <= 30) {
-                    lblFocalLensMichelson.setForeground(Color.red);
-                } else {
-                    lblFocalLensMichelson.setForeground(Color.BLACK);
-                }
-            }
-        });
-        
-        txtFocalLensMichelson.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyenventGenerateActionPerformedLensMichelSon(ke);
-                if(txtFocalLensMichelson.getText() == null || txtFocalLensMichelson.getText().equals("")){
-                    lblFocalLensMichelson.setForeground(Color.red);
-                } else {
-                    lblFocalLensMichelson.setForeground(Color.black);
-                }
-            }
-        });
-        
-        txtXPositionLensMichelson.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyenventGenerateActionPerformedLensMichelSon(ke);
-                if(txtXPositionLensMichelson.getText() == null || txtXPositionLensMichelson.getText().equals("")){
-                    lblXLensMichelson.setForeground(Color.red);
-                } else {
-                    lblXLensMichelson.setForeground(Color.black);
-                }
-            }
-        });
-        
-        txtYPositionLensMichelson.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyenventGenerateActionPerformedLensMichelSon(ke);
-                if(txtYPositionLensMichelson.getText() == null || txtYPositionLensMichelson.getText().equals("")){
-                    lblYLensMichelson.setForeground(Color.red);
-                } else {
-                    lblYLensMichelson.setForeground(Color.black);
-                }
-            }
-        });
-        panelMichelson = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelMichelsonLayout = new javax.swing.GroupLayout(panelMichelson);
-        panelMichelson.setLayout(panelMichelsonLayout);
-        panelMichelsonLayout.setHorizontalGroup(
-                panelMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMichelsonLayout.createSequentialGroup()
-                .addGroup(panelMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMichelsonLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jButtonLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jButton11LensOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jButtonDisplaySecondOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )));
-        panelMichelsonLayout.setVerticalGroup(
-                panelMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelMichelsonLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(panelMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(jButtonDisplaySecondOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButton11LensOnMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButtonLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        javax.swing.GroupLayout jPanelLensMichelsonLayout = new javax.swing.GroupLayout(jPanelLensMichelson);
-        jPanelLensMichelson.setLayout(jPanelLensMichelsonLayout);
-        jPanelLensMichelsonLayout.setHorizontalGroup(
-                jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(15, 15, 15)
-                .addComponent(lblYLensMichelson)
-                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(lblXLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(txtYPositionLensMichelson)
-                .addComponent(txtFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addComponent(txtXPositionLensMichelson))))
-                .addGap(5, 5, 5)
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addComponent(jSliderXPositionLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSliderYPositionLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                )));
-        jPanelLensMichelsonLayout.setVerticalGroup(
-                jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelLensMichelsonLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblFocalLensMichelson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtFocalLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblXLensMichelson)
-                .addComponent(txtXPositionLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderXPositionLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelLensMichelsonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblYLensMichelson)
-                .addComponent(txtYPositionLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderYPositionLensMichelson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)));
-        // END Michelson
-
-        // BEGIN Spectremeter
-        jPanelMirrorSpectometer = new javax.swing.JPanel();
-        lblPhySpectometer = new javax.swing.JLabel();
-        lblThetaMirrorSpectometer = new javax.swing.JLabel();
-        txtPhyMirrorSpectometer = new javax.swing.JTextField();
-        txtThetaMirrorSpectometer = new javax.swing.JTextField();
-        buttonMirrorSpectometerLensOn = new javax.swing.JButton();
-        buttonMirrorSpectometerDisplaySecondOn = new javax.swing.JButton();
-        buttonMirrorSpectometerGeneral = new javax.swing.JButton();
-
-        lblPhySpectometer.setText("Diffraction angle (degree)");
-
-        lblThetaMirrorSpectometer.setText("Rotation (degree)");
-
-        buttonMirrorSpectometerGeneral.setText(labels.getString("btnGenerate"));
-        buttonMirrorSpectometerGeneral.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedMirrorSpectometer(evt);
-            }
-        });
-        
-
-        buttonMirrorSpectometerLensOn.setEnabled(false);
-        buttonMirrorSpectometerLensOn.setText(labels.getString("btnLensOn"));
-        buttonMirrorSpectometerLensOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnMirrorSpectometerActionPerformed(evt);
-                countLenOnSpectrometer++;
-                if (countLenOnSpectrometer % 2 == 0) {
-                    buttonMirrorSpectometerLensOn.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    buttonMirrorSpectometerLensOn.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-
-        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-        buttonMirrorSpectometerDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonMirrorSpectometerDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedMirrorSpectometer(evt);
-                countSecondDisplaySpectrometer++;
-                if (countSecondDisplaySpectrometer % 2 == 0) {
-                    buttonMirrorSpectometerDisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonMirrorSpectometerDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-
-        jSliderPhyMirrorSpectometer = new DoubleJSlider(-28, 28, 10, 10);
-        jSliderPhyMirrorSpectometer.setValue(0);
-        txtPhyMirrorSpectometer.setText(String.valueOf(jSliderPhyMirrorSpectometer.getValue()));
-
-        jSliderPhyMirrorSpectometer.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMirrorSpectometer(evt);
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtPhyMirrorSpectometer.setText(df.format(jSliderPhyMirrorSpectometer.getScaledValue()));
-            }
-        });
-        
-        txtPhyMirrorSpectometer.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyEventGenerateActionPerformedMirrorSpectometer(ke);
-                if(txtPhyMirrorSpectometer.getText() == null || txtPhyMirrorSpectometer.getText().equals("")){
-                    lblPhySpectometer.setForeground(Color.red);
-                } else {
-                    lblPhySpectometer.setForeground(Color.black);
-                }
-            }
-        });
-        
-        jSliderThetaMirrorSpectometer = new DoubleJSlider(-1800, 1800, 100, 10);
-        jSliderThetaMirrorSpectometer.setValue(0);
-        txtThetaMirrorSpectometer.setText(String.valueOf(jSliderThetaMirrorSpectometer.getValue()));
-
-        jSliderThetaMirrorSpectometer.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedMirrorSpectometer(evt);
-                DecimalFormat df = new DecimalFormat("0.####");
-                txtThetaMirrorSpectometer.setText(df.format(jSliderThetaMirrorSpectometer.getScaledValue()));
-            }
-        });
-        txtThetaMirrorSpectometer.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyEventGenerateActionPerformedMirrorSpectometer(ke);
-                if(txtThetaMirrorSpectometer.getText() == null || txtThetaMirrorSpectometer.getText().equals("")){
-                    lblThetaMirrorSpectometer.setForeground(Color.red);
-                } else {
-                    lblThetaMirrorSpectometer.setForeground(Color.black);
-                }
-                
-            }
-        });
-
-        panelButtonExp6 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonExp6Layout = new javax.swing.GroupLayout(panelButtonExp6);
-        panelButtonExp6.setLayout(panelButtonExp6Layout);
-        panelButtonExp6Layout.setHorizontalGroup(
-                panelButtonExp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonExp6Layout.createSequentialGroup()
-                .addGroup(panelButtonExp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonExp6Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonMirrorSpectometerGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonMirrorSpectometerLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonMirrorSpectometerDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonExp6Layout.setVerticalGroup(
-                panelButtonExp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonExp6Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(panelButtonExp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonMirrorSpectometerDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMirrorSpectometerLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonMirrorSpectometerGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        javax.swing.GroupLayout jPanelMirrorSpectometerlLayout = new javax.swing.GroupLayout(jPanelMirrorSpectometer);
-        jPanelMirrorSpectometer.setLayout(jPanelMirrorSpectometerlLayout);
-        jPanelMirrorSpectometerlLayout.setHorizontalGroup(
-                jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
-                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(5, 5, 5)
-                .addComponent(lblThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(lblPhySpectometer)
-                .addGap(15, 15, 15)
-                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(txtThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addComponent(txtPhyMirrorSpectometer))))
-                .addGap(5, 5, 5)
-                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSliderPhyMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                .addComponent(jSliderThetaMirrorSpectometer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                )));
-        jPanelMirrorSpectometerlLayout.setVerticalGroup(
-                jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblPhySpectometer)
-                .addComponent(txtPhyMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderPhyMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblThetaMirrorSpectometer)
-                .addComponent(txtThetaMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jSliderThetaMirrorSpectometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)));
-        // END Spectremeter
-
-        // BEGIN Fresnel
-        jPanelFresnel = new javax.swing.JPanel();
-        label_fresnel_width = new javax.swing.JLabel();
-        label_fresnel_height = new javax.swing.JLabel();
-        lblPleaseSelectFresnel = new javax.swing.JLabel();
-        text_fresnel_width = new javax.swing.JTextField();
-        text_fresnel_height = new javax.swing.JTextField();
-        s_fresnel_width = new javax.swing.JSlider();
-        s_fresnel_height = new javax.swing.JSlider();
-        buttonSecondFresnel = new javax.swing.JButton();
-        button11LensOnFresnel = new javax.swing.JButton();
-        buttonGeneralFresnel = new javax.swing.JButton();
-        buttonOpenFileFresnel = new JButton();
-        buttonOpenFileFresnel.setText("Browse...");
-        buttonOpenFileFresnel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_openFileActionPerformedFresnel(evt);
-            }
-        });
-        lblPleaseSelectFresnel.setText("Select the file to import.");
-
-        buttonGeneralPhoto.setText(labels.getString("btnGenerate"));
-        buttonGeneralPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImages != null) {
-                    buttonGenerateActionPerformedProcessingPhoto(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonSecondFresnel.setEnabled(false);
-        buttonSecondFresnel.setText(labels.getString("btnSecondDisplayOn"));
-        buttonSecondFresnel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesFresnel != null) {
-                    buttonSecondGenerateActionPerformedFresnel(evt);
-                    countSecondDisplayFresnel++;
-                    if (countSecondDisplayFresnel % 2 == 0) {
-                        buttonSecondFresnel.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonSecondFresnel.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        button11LensOnFresnel.setEnabled(false);
-        button11LensOnFresnel.setText(labels.getString("btnLensOn"));
-        button11LensOnFresnel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesFresnel != null) {
-                    button11LensOnActionPerformedFresnel(evt);
-                    countLenOnFresnel++;
-                    if (countLenOnFresnel % 2 == 0) {
-                        button11LensOnFresnel.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        button11LensOnFresnel.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        buttonGeneralFresnel.setText(labels.getString("btnGenerate"));
-        buttonGeneralFresnel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesFresnel != null) {
-                    buttonGenerateActionPerformedFresnel(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        label_fresnel_width.setText("X");
-        label_fresnel_width.setEnabled(false);
-        s_fresnel_width.setMaximum(1920);
-        s_fresnel_width.setEnabled(false);
-        text_fresnel_width.setPreferredSize(new java.awt.Dimension(45, 20));
-        text_fresnel_height.setPreferredSize(new java.awt.Dimension(45, 20));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_fresnel_width, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_fresnel_width, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        s_fresnel_width.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedFresnel(evt);
-            }
-        });
-        text_fresnel_width.setEnabled(false);
-        text_fresnel_height.setText("" + height_fresnel);
-        text_fresnel_height.setEnabled(false);
-        javax.swing.GroupLayout layoutFresnel = new javax.swing.GroupLayout(jPanelFresnel);
-        jPanelFresnel.setLayout(layoutFresnel);
-
-        layoutFresnel.setHorizontalGroup(
-                layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layoutFresnel.createSequentialGroup()
-                .addContainerGap()
-                .addGap(15, 15, 15)
-                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(layoutFresnel.createSequentialGroup()
-                .addComponent(buttonGeneralFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(button11LensOnFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonSecondFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layoutFresnel.createSequentialGroup()
-                .addComponent(buttonOpenFileFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(lblPleaseSelectFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layoutFresnel.createSequentialGroup()
-                .addComponent(text_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_fresnel_width)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(text_fresnel_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(s_fresnel_width, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(144, Short.MAX_VALUE)));
-        layoutFresnel.setVerticalGroup(
-                layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutFresnel.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layoutFresnel.createSequentialGroup()
-                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonOpenFileFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblPleaseSelectFresnel))
-                .addGap(18, 18, 18)
-                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(label_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(text_fresnel_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(text_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(s_fresnel_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(120, 120, 120)
-                .addGroup(layoutFresnel.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonGeneralFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(button11LensOnFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonSecondFresnel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                ))
-                )));
-        // END Fresnel
-
-        // BEGIN Talbot
-        jPanelTalbot = new javax.swing.JPanel();
-        jPanelTalbotPhoto  = new javax.swing.JPanel();
-        
-        /*
-         * Talbot
-         */
-        lblWidthYTalbot = new javax.swing.JLabel();
-        lblHeightYTalbot = new javax.swing.JLabel();
-        lblRotationtalbot = new javax.swing.JLabel();
-        lblPosXTalbot = new javax.swing.JLabel();
-        lblPosYTalbot = new javax.swing.JLabel();
-        lblSpacingtalbot = new javax.swing.JLabel();
-        text_width_talbot_y = new javax.swing.JTextField();
-        text_height_talbot_y = new javax.swing.JTextField();
-        text_rotation_talbot = new javax.swing.JTextField();
-        text_position_talbot_x = new javax.swing.JTextField();
-        text_position_talbot_y = new javax.swing.JTextField();
-        text_talbot_spacing = new javax.swing.JTextField();
-        s_talbot_width_y = new javax.swing.JSlider();
-        s_talbot_height_y = new javax.swing.JSlider();
-        s_talbot_rotation = new javax.swing.JSlider();
-        s_talbot_positionx = new javax.swing.JSlider();
-        s_talbot_pos_y = new javax.swing.JSlider();
-        s_talbot_spacing = new javax.swing.JSlider();
-        jLabelGraytalbot = new javax.swing.JLabel();
-        text_talbot_gray = new javax.swing.JTextField();
-        s_talbot_gray = new javax.swing.JSlider();
-        buttonGenneratetalbot = new javax.swing.JButton();
-        button11LensOntalbot = new javax.swing.JButton();
-        buttonSecondDisplaytalbot = new javax.swing.JButton();
-        lblWidthXTalbot = new javax.swing.JLabel();
-        text_width_talbot_x = new javax.swing.JTextField();
-        s_talbot_width_x = new javax.swing.JSlider();
-        lblHeightXTalbot = new javax.swing.JLabel();
-        text_height_talbot_x = new javax.swing.JTextField();
-        s_talbot_height_x = new javax.swing.JSlider();
-        lblHeightYTalbot.setText("Width Y");
-
-        lblRotationtalbot.setText(labels.getString("paramRotationNoDegree"));
-
-        lblPosXTalbot.setText("Position X");
-
-        lblPosYTalbot.setText("Position Y");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_width_y.setMaximum(image1.getBounds().width);
-        s_talbot_width_y.setValue(100);
-        s_talbot_width_y.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        text_width_talbot_y.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedTalbot(ke);
-                if(text_width_talbot_y.getText() == null || text_width_talbot_y.getText().equals("")){
-                    lblHeightYTalbot.setForeground(Color.red);
-                } else {
-                    lblHeightYTalbot.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_height_y.setMaximum(9999);
-        s_talbot_height_y.setValue(9999);
-        s_talbot_height_y.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        text_height_talbot_y.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedTalbot(ke);
-                if(text_height_talbot_y.getText() == null || text_height_talbot_y.getText().equals("")){
-                    lblHeightXTalbot.setForeground(Color.red);
-                } else {
-                    lblHeightXTalbot.setForeground(Color.black);
-                }
-                
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_rotation, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_rotation_talbot, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_rotation.setMaximum(180);
-        s_talbot_rotation.setMinimum(-180);
-        s_talbot_rotation.setValue(0);
-        s_talbot_rotation.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        text_rotation_talbot.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedTalbot(ke);
-                if(text_rotation_talbot.getText() == null || text_rotation_talbot.getText().equals("")){
-                    lblRotationtalbot.setForeground(Color.red);
-                } else {
-                    lblRotationtalbot.setForeground(Color.black);
-                }
-                
-            }
-        });
-        
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_positionx, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_positionx.setMaximum(image1.getBounds().height / 2);
-        s_talbot_positionx.setMinimum(-(image1.getBounds().height / 2));
-        s_talbot_positionx.setValue(0);
-        s_talbot_positionx.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        text_position_talbot_x.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedTalbot(ke);
-                if(text_position_talbot_x.getText() == null || text_position_talbot_x.getText().equals("")){
-                    lblPosXTalbot.setForeground(Color.red);
-                } else {
-                    lblPosXTalbot.setForeground(Color.black);
-                }
-                
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_pos_y, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_talbot_y, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_pos_y.setMaximum(image1.getBounds().width / 2);
-        s_talbot_pos_y.setMinimum(-(image1.getBounds().width / 2));
-        s_talbot_pos_y.setValue(0);
-        s_talbot_pos_y.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        text_position_talbot_y.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedTalbot(ke);
-                if(text_position_talbot_y.getText() == null || text_position_talbot_y.getText().equals("")){
-                    lblPosYTalbot.setForeground(Color.red);
-                } else {
-                    lblPosYTalbot.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        jLabelGraytalbot.setText(labels.getString("paramGrayLevel"));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_gray, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_gray, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_gray.setMajorTickSpacing(255);
-        s_talbot_gray.setPaintLabels(true);
-        s_talbot_gray.setMaximum(255);
-        s_talbot_gray.setValue(255);
-        s_talbot_gray.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        text_talbot_gray.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedTalbot(ke);
-                if(text_talbot_gray.getText() == null || text_talbot_gray.getText().equals("")){
-                    jLabelGraytalbot.setForeground(Color.red);
-                } else {
-                    jLabelGraytalbot.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-        lblSpacingtalbot.setText(labels.getString("paramSpacing"));
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_spacing.setMaximum(image1.getBounds().height);
-         s_talbot_spacing.setMinimum(-(image1.getBounds().height));
-        s_talbot_spacing.setValue(0);
-        s_talbot_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        text_talbot_spacing.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedTalbot(ke);
-                if(text_talbot_spacing.getText() == null || text_talbot_spacing.getText().equals("")){
-                    lblSpacingtalbot.setForeground(Color.red);
-                } else {
-                    lblSpacingtalbot.setForeground(Color.black);
-                }
-            }
-        });
-        bindingGroup.addBinding(binding);
-        
-        lblHeightXTalbot.setText("Width X");
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_width_x.setMaximum(3866);
-        s_talbot_width_x.setValue(3866);
-        s_talbot_width_x.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        s_talbot_height_x.setMaximum(image1.getBounds().height);
-        s_talbot_height_x.setValue(100);
-        s_talbot_height_x.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderGenerateActionPerformedTalbot(evt);
-            }
-        });
-        text_height_talbot_x.addKeyListener(new KeyAdapter(){
-            public void keyReleased(KeyEvent ke) {
-                keyeventGenerateActionPerformedTalbot(ke);
-                if(text_height_talbot_x.getText() == null || text_height_talbot_x.getText().equals("")){
-                    lblHeightXTalbot.setForeground(Color.red);
-                } else {
-                    lblHeightXTalbot.setForeground(Color.black);
-                }
-                
-            }
-        });
-        bindingGroup.addBinding(binding);
-
-
-        buttonGenneratetalbot.setText(labels.getString("btnGenerate"));
-        buttonGenneratetalbot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGenerateActionPerformedTalbot(evt);
-            }
-        });
-        button11LensOntalbot.setEnabled(false);
-        button11LensOntalbot.setText(labels.getString("btnLensOn"));
-        button11LensOntalbot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button11LensOnTalbotActionPerformed(evt);
-                //   boolean_checkLen = false;
-                countLenOnTalbot++;
-                if (countLenOnTalbot % 2 == 0) {
-                    button11LensOntalbot.setText(labels.getString("btnLensOff"));
-                    panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                } else {
-                    button11LensOntalbot.setText(labels.getString("btnLensOn"));
-                }
-            }
-        });
-        buttonSecondDisplaytalbot.setEnabled(false);
-        buttonSecondDisplaytalbot.setText(labels.getString("btnSecondDisplayOn"));
-        buttonSecondDisplaytalbot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSecondGenerateActionPerformedTalbot(evt);
-                countSecondDisplayTalbot++;
-                if (countSecondDisplayTalbot % 2 == 0) {
-                    buttonSecondDisplaytalbot.setText(labels.getString("btnSecondDisplayOff"));
-                } else {
-                    buttonSecondDisplaytalbot.setText(labels.getString("btnSecondDisplayOn"));
-                }
-            }
-        });
-        
-        panelButtonTalbot = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonTalbotLayout = new javax.swing.GroupLayout(panelButtonTalbot);
-        panelButtonTalbot.setLayout(panelButtonTalbotLayout);
-        panelButtonTalbotLayout.setHorizontalGroup(
-                panelButtonTalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonTalbotLayout.createSequentialGroup()
-                .addGroup(panelButtonTalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonTalbotLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonGenneratetalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(button11LensOntalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonSecondDisplaytalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonTalbotLayout.setVerticalGroup(
-                panelButtonTalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonTalbotLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(panelButtonTalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonSecondDisplaytalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(button11LensOntalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGenneratetalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        javax.swing.GroupLayout jPaneltalbotLayout = new javax.swing.GroupLayout(jPanelTalbot);
-        jPanelTalbot.setLayout(jPaneltalbotLayout);
-        jPaneltalbotLayout.setHorizontalGroup(
-                jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGap(15, 15, 15)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneltalbotLayout.createSequentialGroup()
-                .addComponent(lblPosXTalbot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(text_position_talbot_x, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblPosYTalbot)
-                .addComponent(lblSpacingtalbot))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(text_position_talbot_y))))
-                .addGap(17, 17, 17)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(s_talbot_pos_y, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_talbot_positionx, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)))
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblHeightYTalbot)
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addComponent(lblHeightXTalbot)
-                .addGap(33, 33, 33)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_width_talbot_y, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(text_height_talbot_x, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(s_talbot_height_x, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_talbot_width_y, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addComponent(lblRotationtalbot)
-                .addGap(27, 27, 27)
-                .addComponent(text_rotation_talbot, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(s_talbot_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addComponent(jLabelGraytalbot)
-                .addGap(17, 17, 17)
-                .addComponent(text_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(s_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                )));
-        jPaneltalbotLayout.setVerticalGroup(
-                jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneltalbotLayout.createSequentialGroup()
-                .addGap(8, 8, 8))
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addComponent(s_talbot_height_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
-                .addGroup(jPaneltalbotLayout.createSequentialGroup()
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_height_talbot_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblHeightXTalbot))
-                .addGap(6, 6, 6)))
-                .addGap(2, 2, 2)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_width_talbot_y, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblHeightYTalbot))
-                .addComponent(s_talbot_width_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_rotation_talbot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblRotationtalbot))
-                .addComponent(s_talbot_rotation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(s_talbot_positionx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(text_position_talbot_x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblPosXTalbot)))
-                .addGap(10, 10, 10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_position_talbot_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblPosYTalbot)
-                .addComponent(s_talbot_pos_y, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_talbot_spacing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblSpacingtalbot))
-                .addGap(8, 8, 8)
-                .addGroup(jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(text_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(s_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabelGraytalbot)).addGap(0, 0, 0)));
-        // END Talbot
-        
-        // Talbot Photo
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileTalbotPhoto = new javax.swing.JButton();
-        lblPleaseSelectTalbotPhoto = new javax.swing.JLabel();
-        buttonSecondTalbotPhoto = new javax.swing.JButton();
-        button11LensOnTalbotPhoto = new javax.swing.JButton();
-        buttonGeneralTalbotPhoto = new javax.swing.JButton();
-        buttonOpenFileTalbotPhoto.setText("Browse...");
-        buttonOpenFileTalbotPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_openFileActionPerformedTalbotPhoto(evt);
-            }
-        });
-        lblPleaseSelectTalbotPhoto.setText("Select the file to import.");
-
-        buttonSecondTalbotPhoto.setEnabled(false);
-        buttonSecondTalbotPhoto.setText(labels.getString("btnSecondDisplayOn"));
-        buttonSecondTalbotPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesTalbotPhoto != null) {
-                    buttonSecondGenerateActionPerformedTalbotPhoto(evt);
-                    countSecondDisplayTalbotPhoto++;
-                    if (countSecondDisplayTalbotPhoto % 2 == 0) {
-                        buttonSecondTalbotPhoto.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonSecondTalbotPhoto.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        button11LensOnTalbotPhoto.setEnabled(false);
-        button11LensOnTalbotPhoto.setText(labels.getString("btnLensOn"));
-        button11LensOnTalbotPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesTalbotPhoto != null) {
-                    button11LensOnTalbotPhotoActionPerformed(evt);
-                    countLenOnTalbotPhoto++;
-                    if (countLenOnTalbotPhoto % 2 == 0) {
-                        button11LensOnTalbotPhoto.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        button11LensOnTalbotPhoto.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", " Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonGeneralTalbotPhoto.setText(labels.getString("btnGenerate"));
-        buttonGeneralTalbotPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesTalbotPhoto != null) {
-                    buttonGenerateActionPerformedTalbotPhoto(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        panelButtonTalbotPhoto = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonTalbotPhotoLayout = new javax.swing.GroupLayout(panelButtonTalbotPhoto);
-        panelButtonTalbotPhoto.setLayout(panelButtonTalbotPhotoLayout);
-        panelButtonTalbotPhotoLayout.setHorizontalGroup(
-                panelButtonTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonTalbotPhotoLayout.createSequentialGroup()
-                .addGroup(panelButtonTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonTalbotPhotoLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonGeneralTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(button11LensOnTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonSecondTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonTalbotPhotoLayout.setVerticalGroup(
-                panelButtonTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonTalbotPhotoLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(panelButtonTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonSecondTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(button11LensOnTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGeneralTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        javax.swing.GroupLayout signalTalbotPhotoLayout = new javax.swing.GroupLayout(jPanelTalbotPhoto);
-        jPanelTalbotPhoto.setLayout(signalTalbotPhotoLayout);
-        signalTalbotPhotoLayout.setHorizontalGroup(
-                signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(signalTalbotPhotoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGap(10, 10, 10)
-                .addGroup(signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(signalTalbotPhotoLayout.createSequentialGroup()
-                .addComponent(buttonOpenFileTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(lblPleaseSelectTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(288, 288, 288)
-                ))));
-        signalTalbotPhotoLayout.setVerticalGroup(
-                signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signalTalbotPhotoLayout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addGroup(signalTalbotPhotoLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(signalTalbotPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buttonOpenFileTalbotPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblPleaseSelectTalbotPhoto))
-                .addGap(0, 0, 0)
-                )));
         
         // CGH1 Pattern Import
         openFile = new javax.swing.JFileChooser();
@@ -4839,126 +1345,6 @@ public class EduControlerPattern extends OpticsPane {
                     .addGap(5, 5, 5))))
         );
         
-        // Experiment 2
-        panelExp2 = new javax.swing.JPanel();
-        openFile = new javax.swing.JFileChooser();
-        buttonOpenFileExp2 = new javax.swing.JButton();
-        lblPleaseSelectExp2 = new javax.swing.JLabel();
-        buttonSecondExp2 = new javax.swing.JButton();
-        button11LensOnExp2 = new javax.swing.JButton();
-        buttonGeneralExp2 = new javax.swing.JButton();
-        buttonOpenFileExp2.setText("Browse...");
-        buttonOpenFileExp2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_openFileActionPerformedExp2(evt);
-            }
-        });
-        lblPleaseSelectExp2.setText(labels.getString("lblSelectToImport"));
-
-        buttonSecondExp2.setEnabled(false);
-        buttonSecondExp2.setText(labels.getString("btnSecondDisplayOn"));
-        buttonSecondExp2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesExp2 != null) {
-                    buttonSecondGenerateActionPerformedExp2(evt);
-                    countSecondDisplayExp2++;
-                    if (countSecondDisplayExp2 % 2 == 0) {
-                        buttonSecondExp2.setText(labels.getString("btnSecondDisplayOff"));
-                    } else {
-                        buttonSecondExp2.setText(labels.getString("btnSecondDisplayOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        button11LensOnExp2.setEnabled(false);
-        button11LensOnExp2.setText(labels.getString("btnLensOn"));
-        button11LensOnExp2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesExp2 != null) {
-                    button11LensOnExp2ActionPerformed(evt);
-                    countLenOnExp2++;
-                    if (countLenOnExp2 % 2 == 0) {
-                        button11LensOnExp2.setText(labels.getString("btnLensOff"));
-                        panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            patternFrameDoubleClick.show();
-                        }
-                        });
-                    } else {
-                        button11LensOnExp2.setText(labels.getString("btnLensOn"));
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        buttonGeneralExp2.setText(labels.getString("btnGenerate"));
-        buttonGeneralExp2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (buffImagesExp2 != null) {
-                    buttonGenerateActionPerformedExp2(evt);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import an images file!", "Failure", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        panelButtonExp2 = new javax.swing.JPanel();
-        javax.swing.GroupLayout panelButtonExp2Layout = new javax.swing.GroupLayout(panelButtonExp2);
-        panelButtonExp2.setLayout(panelButtonExp2Layout);
-        panelButtonExp2Layout.setHorizontalGroup(
-                panelButtonExp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonExp2Layout.createSequentialGroup()
-                .addGroup(panelButtonExp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonExp2Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
-        panelButtonExp2Layout.setVerticalGroup(
-                panelButtonExp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelButtonExp2Layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addGroup(panelButtonExp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                .addComponent(buttonSecondExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(button11LensOnExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGeneralExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
-        javax.swing.GroupLayout exp2PhotoLayout = new javax.swing.GroupLayout(panelExp2);
-        panelExp2.setLayout(exp2PhotoLayout);
-        exp2PhotoLayout.setHorizontalGroup(
-            exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(exp2PhotoLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    //.addComponent(buttonGeneralExp2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonOpenFileExp2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(exp2PhotoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPleaseSelectExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                )
-                .addContainerGap(150, Short.MAX_VALUE))
-        );
-        exp2PhotoLayout.setVerticalGroup(
-            exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(exp2PhotoLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(exp2PhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonOpenFileExp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPleaseSelectExp2))
-                .addGap(12, 12, 12))
-        );
-        
-
         tabbedControl.setBounds(580, 0, 665, 370);
         layoutControl.add(tabbedControl, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -5687,14 +2073,14 @@ public class EduControlerPattern extends OpticsPane {
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void jMenuItemNoSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNoSelectActionPerformed
-        jTabbedPaneOptics.removeAll();
+    public void menuItemNoSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNoSelectActionPerformed
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         lblDiagram.removeAll();
         buttonPanel.removeAll();
-        jTabbedPaneOptics.hide();
+        tabbedPaneOptics.hide();
         
         lblDiagram.setIcon(null);
         lblDiagram.setText(null);
@@ -5709,58 +2095,23 @@ public class EduControlerPattern extends OpticsPane {
         tabbedDesLog.addTab("Log", jScrollPane2);
         generateActionPerformedDefault(evt);
 
-    }//GEN-LAST:event_jMenuItemNoSelectActionPerformed
+    }//GEN-LAST:event_menuItemNoSelectActionPerformed
 
-    public void jMenuItemTelephotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelephotoActionPerformed
+    public void menuItemSLMBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSLMBasicActionPerformed
 //        changeLabTitle(labTitleTele);
-        buttonMicroscopeLensOn.setEnabled(false);
-        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-        jTabbedPaneOptics.show();
+        tabbedPaneOptics.show();
 
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        //buttonSecondPhase.setEnabled(false);
-//        //button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
-
-        jTabbedPaneOptics.removeAll();
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
         
         buttonPanel.removeAll();
-        buttonPanel.add(phaseRetarderPanelExp1.getPanelPhaseButton());
+        buttonPanel.add(slmBasicPanel.getPanelPhaseButton());
 
-        //jTabbedPaneOptics.addTab("Gray Level", panelLayoutExp1);
-        jTabbedPaneOptics.addTab("Gray Level", phaseRetarderPanelExp1.getPanelPhase());
-        jTabbedPaneOptics.addTab("CGH Pattern Import", panelCGH1);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        tabbedPaneOptics.addTab("Gray Level", slmBasicPanel.getPanelPhase());
+        tabbedPaneOptics.addTab("CGH Pattern Import", panelCGH1);
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
@@ -5768,7 +2119,10 @@ public class EduControlerPattern extends OpticsPane {
                     String value = sourceTabbedPane.getTitleAt(index);
                     if (value.equals("Gray Level")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(phaseRetarderPanelExp1.getPanelPhaseButton());
+                        buttonPanel.add(slmBasicPanel.getPanelPhaseButton());
+                        // log tab
+                        jScrollPane2.setViewportView(slmBasicPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("CGH Pattern Import")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH1);
@@ -5780,78 +2134,37 @@ public class EduControlerPattern extends OpticsPane {
             }
             
         });
-
-        //tabbedDesLog.addTab("Description", desTelephotoLens);
+        
         jScrollDes.setViewportView(desTelephotoLens);
         tabbedDesLog.addTab("Description", jScrollDes);
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        
+        jScrollPane2.setViewportView(slmBasicPanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
         lblDiagram.setText(null);
         diagramLens.add(lblDiagram);
         layoutDiagram.add(diagramLens);
-        //setTabPanelEnable(jTabbedPaneOptics, true);
         generateActionPerformedDefault(evt);
 
-    }//GEN-LAST:event_jMenuItemTelephotoActionPerformed
+    }//GEN-LAST:event_menuItemSLMBasicActionPerformed
 
-    public void jMenuItemMicroscopeActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemAmplitudeActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
-
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
+        tabbedPaneOptics.show();
 
         buttonPanel.removeAll();
-        jTabbedPaneOptics.addTab("Photo ", panelExp2);
-        buttonPanel.add(panelButtonExp2);
+        tabbedPaneOptics.addTab("Photo ", amplitudePanel.getPanel());
+        buttonPanel.add(amplitudePanel.getPanelButton());
 
         //tabbedDesLog.addTab("Description", desMicroscope);
         jScrollDes.setViewportView(desMicroscope);
         tabbedDesLog.addTab("Description", jScrollDes);
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        
+        jScrollPane2.setViewportView(amplitudePanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
@@ -5861,54 +2174,19 @@ public class EduControlerPattern extends OpticsPane {
         generateActionPerformedDefault(evt);
     }
 
-    public void jMenuItemAberrationActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemPhaseModulationActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
-
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
+        tabbedPaneOptics.show();
         
         buttonPanel.removeAll();
-        buttonPanel.add(panelButtonMirrorExp3);
+        buttonPanel.add(beamSteerePanel.getJPanelButtonMirror());
 
-        jTabbedPaneOptics.addTab("Beam Steerer", jPanelMirrorExp3);
-        jTabbedPaneOptics.addTab(" CGH Pattern Import  ", panelCGH3);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        tabbedPaneOptics.addTab("Beam Steerer", beamSteerePanel.getJPanelMirror());
+        tabbedPaneOptics.addTab(" CGH Pattern Import  ", panelCGH3);
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
@@ -5916,7 +2194,10 @@ public class EduControlerPattern extends OpticsPane {
                     String value = sourceTabbedPane.getTitleAt(index);
                     if (value.equals("Beam Steerer")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonMirrorExp3);
+                        buttonPanel.add(beamSteerePanel.getJPanelButtonMirror());
+                        // log tab
+                        jScrollPane2.setViewportView(beamSteerePanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals(" CGH Pattern Import  ")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH3);
@@ -5925,14 +2206,10 @@ public class EduControlerPattern extends OpticsPane {
                 
             }
         });
-
-        //tabbedDesLog.addTab("Description", desAberration);
+        
         jScrollDes.setViewportView(desAberration);
         tabbedDesLog.addTab("Description", jScrollDes);
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        jScrollPane2.setViewportView(beamSteerePanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
@@ -5941,56 +2218,21 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.add(diagramLens);
     }
 
-    public void jMenuItemMichelsonActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemMichelsonActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
+        tabbedPaneOptics.show();
 
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
-        
         buttonPanel.removeAll();
-        buttonPanel.add(panelMichelson);
+        buttonPanel.add(lensMichelsonPanel.getJPanelButton());
 
-        jTabbedPaneOptics.addTab("Lens", jPanelLensMichelson);
-        jTabbedPaneOptics.addTab("Cylindrical ", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        jTabbedPaneOptics.addTab("CGH Pattern Import    ", panelCGH4);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        tabbedPaneOptics.addTab("Lens", lensMichelsonPanel.getJPanel());
+        tabbedPaneOptics.addTab("Cylindrical ", cyllindricalMichelsonPanel.getJPanelCyllindrical());
+        tabbedPaneOptics.addTab("Mirror", mirrorMichelsonPanel.getJPanelMirror());
+        tabbedPaneOptics.addTab("CGH Pattern Import    ", panelCGH4);
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
@@ -5998,39 +2240,50 @@ public class EduControlerPattern extends OpticsPane {
                     String value = sourceTabbedPane.getTitleAt(index);
                     if (value.equals("Lens")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelMichelson);
+                        buttonPanel.add(lensMichelsonPanel.getJPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(lensMichelsonPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("Cylindrical ")){
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCyllin);
+                        buttonPanel.add(cyllindricalMichelsonPanel.getJPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(cyllindricalMichelsonPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("Mirror")){
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelMirror);
+                        buttonPanel.add(mirrorMichelsonPanel.getJPanelButtonMirror());
+                        // log tab
+                        jScrollPane2.setViewportView(mirrorMichelsonPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("CGH Pattern Import    ")){
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH4);
                     } if (value.equals("Gray Level")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(phaseRetarderPanelExp1.getPanelPhaseButton());
+                        buttonPanel.add(slmBasicPanel.getPanelPhaseButton());
+                        // log tab
+                        jScrollPane2.setViewportView(slmBasicPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("CGH Pattern Import")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH1);
                     } if (value.equals("Photo ")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonExp2);
+                        buttonPanel.add(amplitudePanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(amplitudePanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     }
                 }
                 
             }
         });
 
-        //tabbedDesLog.addTab("Description", desMichelson);
         jScrollDes.setViewportView(desMichelson);
         tabbedDesLog.addTab("Description", jScrollDes);
         
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        jScrollPane2.setViewportView(lensMichelsonPanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp4michelson.png")));
@@ -6040,55 +2293,20 @@ public class EduControlerPattern extends OpticsPane {
         generateActionPerformedDefault(evt);
     }
 
-    public void jMenuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemDiffractionActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
-
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
+        tabbedPaneOptics.show();
         
         buttonPanel.removeAll();
-        buttonPanel.add(panelButtonSlit);
+        buttonPanel.add(singleSlitPanel.getPanelButton());
 
-        jTabbedPaneOptics.addTab("Single Slit", panelSlit);
-        jTabbedPaneOptics.addTab("Double Slit", panelDoubleSlit);
-        jTabbedPaneOptics.addTab("   CGH Pattern Import  ", panelCGH5);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        tabbedPaneOptics.addTab("Single Slit", singleSlitPanel.getPanel());
+        tabbedPaneOptics.addTab("Double Slit", doubleSlitPanel.getPanel());
+        tabbedPaneOptics.addTab("   CGH Pattern Import  ", panelCGH5);
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
@@ -6096,10 +2314,16 @@ public class EduControlerPattern extends OpticsPane {
                     String value = sourceTabbedPane.getTitleAt(index);
                     if (value.equals("Single Slit")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonSlit);
+                        buttonPanel.add(singleSlitPanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(singleSlitPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("Double Slit")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonDoubleSlit);
+                        buttonPanel.add(doubleSlitPanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(doubleSlitPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("   CGH Pattern Import  ")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH5);
@@ -6111,10 +2335,8 @@ public class EduControlerPattern extends OpticsPane {
 
         jScrollDes.setViewportView(desDiffaction);
         tabbedDesLog.addTab("Description", jScrollDes);
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        
+        jScrollPane2.setViewportView(singleSlitPanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp5diffraction.png")));
@@ -6124,54 +2346,19 @@ public class EduControlerPattern extends OpticsPane {
         generateActionPerformedDefault(evt);
     }
 
-    public void jMenuItemSpectrometerActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemSpectrometerActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
-
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
+        tabbedPaneOptics.show();
         
         buttonPanel.removeAll();
-        buttonPanel.add(panelButtonExp6);
-
-        jTabbedPaneOptics.addTab("Diffraction Pattern", jPanelMirrorSpectometer);
-        jTabbedPaneOptics.addTab("  CGH  Pattern  Import  ", panelCGH6);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        buttonPanel.add(spectremeterPanel.getPanelButton());
+        
+        tabbedPaneOptics.addTab("Diffraction Pattern", spectremeterPanel.getPanel());
+        tabbedPaneOptics.addTab("  CGH  Pattern  Import  ", panelCGH6);
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
@@ -6179,7 +2366,10 @@ public class EduControlerPattern extends OpticsPane {
                     String value = sourceTabbedPane.getTitleAt(index);
                     if (value.equals("Diffraction Pattern")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonExp6);
+                        buttonPanel.add(spectremeterPanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(spectremeterPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("  CGH  Pattern  Import  ")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH6);
@@ -6192,10 +2382,7 @@ public class EduControlerPattern extends OpticsPane {
         jScrollDes.setViewportView(desSpectrometer);
         tabbedDesLog.addTab("Description", jScrollDes);
         
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        jScrollPane2.setViewportView(spectremeterPanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp6spectrometer.png")));
@@ -6205,54 +2392,19 @@ public class EduControlerPattern extends OpticsPane {
         generateActionPerformedDefault(evt);
     }
 
-    public void jMenuItemSignalProcessingActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemSignalProcessingActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
-
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
+        tabbedPaneOptics.show();
         
         buttonPanel.removeAll();
-        buttonPanel.add(panelButtonSignal);
+        buttonPanel.add(signalPanel.getPanelButton());
         
-        jTabbedPaneOptics.addTab("Signal processing", panelSignal);
-        jTabbedPaneOptics.addTab(" Photo", panelSignalPhoto);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        tabbedPaneOptics.addTab("Signal processing", signalPanel.getPanel());
+        tabbedPaneOptics.addTab(" Photo", signalPhotoPanel.getPanel());
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
@@ -6260,10 +2412,16 @@ public class EduControlerPattern extends OpticsPane {
                     String value = sourceTabbedPane.getTitleAt(index);
                     if (value.equals("Signal processing")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonSignal);
+                        buttonPanel.add(signalPanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(signalPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals(" Photo")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonSignalPhoto);
+                        buttonPanel.add(signalPhotoPanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(signalPhotoPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     }
                 }
                 
@@ -6271,10 +2429,8 @@ public class EduControlerPattern extends OpticsPane {
         });
         jScrollDes.setViewportView(desSignalProcessing);
         tabbedDesLog.addTab("Description", jScrollDes);
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        
+        jScrollPane2.setViewportView(signalPanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp7signalprocessing.png")));
@@ -6284,55 +2440,19 @@ public class EduControlerPattern extends OpticsPane {
         generateActionPerformedDefault(evt);
     }
 
-    public void jMenuItemPhaseShiftingActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemPhaseShiftingActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
-
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
+        tabbedPaneOptics.show();
         
         buttonPanel.removeAll();
         buttonPanel.add(phaseRetarderPanel.getPanelPhaseButton());
 
-        //jTabbedPaneOptics.addTab("Phase retarder", panelLayoutExp1);
-        jTabbedPaneOptics.addTab("Phase retarder", phaseRetarderPanel.getPanelPhase());
-        jTabbedPaneOptics.addTab("  CGH   Pattern   Import  ", panelCGH8);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        tabbedPaneOptics.addTab("Phase retarder", phaseRetarderPanel.getPanelPhase());
+        tabbedPaneOptics.addTab("  CGH   Pattern   Import  ", panelCGH8);
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
@@ -6341,6 +2461,9 @@ public class EduControlerPattern extends OpticsPane {
                     if (value.equals("Phase retarder")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(phaseRetarderPanel.getPanelPhaseButton());
+                        // log tab
+                        jScrollPane2.setViewportView(phaseRetarderPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("  CGH   Pattern   Import  ")) {
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH8);
@@ -6352,10 +2475,7 @@ public class EduControlerPattern extends OpticsPane {
 
         jScrollDes.setViewportView(desPhaseRetarder);
         tabbedDesLog.addTab("Description", jScrollDes);
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        jScrollPane2.setViewportView(phaseRetarderPanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp8phaseshifting.png")));
@@ -6365,54 +2485,19 @@ public class EduControlerPattern extends OpticsPane {
         generateActionPerformedDefault(evt);
     }
 
-    public void jMenuItemTalbotImagesActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemTalbotActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
+        tabbedPaneOptics.show();
 
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
-        
         buttonPanel.removeAll();
-        buttonPanel.add(panelButtonTalbot);
-
-        jTabbedPaneOptics.addTab("Talbot", jPanelTalbot);
-        jTabbedPaneOptics.addTab("Talbot photo", jPanelTalbotPhoto);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        buttonPanel.add(talbotPanel.getPanelButton());
+         // im here1
+        tabbedPaneOptics.addTab("Talbot", talbotPanel.getPanel());
+        tabbedPaneOptics.addTab("Talbot photo", talbotPhotoPanel.getPanel());
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
@@ -6420,23 +2505,27 @@ public class EduControlerPattern extends OpticsPane {
                     String value = sourceTabbedPane.getTitleAt(index);
                     if (value.equals("Talbot")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonTalbot);
+                        buttonPanel.add(talbotPanel.getPanelButton());
+                        // log tab
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(talbotPanel.getLogArea());
                     } if (value.equals("Talbot photo")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonTalbotPhoto);
+                        buttonPanel.add(talbotPhotoPanel.getPanelButton());
+                        // log tab
+                        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
+                        jScrollPane2.setViewportView(talbotPhotoPanel.getLogArea());
                     }
                 }
                 
             }
         });
 
-        //tabbedDesLog.addTab("Description", desTalbotImage);
         jScrollDes.setViewportView(desTalbotImage);
         tabbedDesLog.addTab("Description", jScrollDes);
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
+        
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        jScrollPane2.setViewportView(talbotPanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp9talbot.png")));
@@ -6446,70 +2535,44 @@ public class EduControlerPattern extends OpticsPane {
         generateActionPerformedDefault(evt);
     }
 
-    public void jMenuItemWavefrontActionPerformed(java.awt.event.ActionEvent evt) {
-        jTabbedPaneOptics.removeAll();
+    public void menuItemWavefrontActionPerformed(java.awt.event.ActionEvent evt) {
+        tabbedPaneOptics.removeAll();
         layoutDiagram.removeAll();
         diagramLens.removeAll();
         tabbedDesLog.removeAll();
-        jTabbedPaneOptics.show();
-
-//        buttonMicroscopeLensOn.setEnabled(false);
-//        buttonMicroscopeDisplaySecondOn.setEnabled(false);
-//
-//        buttonCyllinLensOn.setEnabled(false);
-//        buttonCyllinDisplaySecondOn.setEnabled(false);
-//
-//        buttonMirrorLensOn.setEnabled(false);
-//        buttonMirrorDisplaySecondOn.setEnabled(false);
-//
-//        buttong11LensOnSlit.setEnabled(false);
-//        buttonSecondDisplaySlit.setEnabled(false);
-//
-//        buttong11LensOnDoubleSlit.setEnabled(false);
-//        buttonSecondDisplayDoubleSlit.setEnabled(false);
-//
-//        button11LensOnProcessing.setEnabled(false);
-//        buttonSecondDisplayProcessing.setEnabled(false);
-//
-//        buttonSecondPhase.setEnabled(false);
-//        button11LensOnPhase.setEnabled(false);
-//
-//        buttonSecondPhoto.setEnabled(false);
-//        button11LensOnPhoto.setEnabled(false);
-//
-//        jButton11LensOnMichelson.setEnabled(false);
-//        jButtonDisplaySecondOnMichelson.setEnabled(false);
-//
-//        buttonMirrorSpectometerLensOn.setEnabled(false);
-//        buttonMirrorSpectometerDisplaySecondOn.setEnabled(false);
-//
-//        buttonSecondFresnel.setEnabled(false);
-//        button11LensOnFresnel.setEnabled(false);
-//        jButton11LensOn.setEnabled(false);
-//        jButtonDisplaySecondOn.setEnabled(false);
+        tabbedPaneOptics.show();
         
         buttonPanel.removeAll();
-        buttonPanel.add(panelMichelson);
+        buttonPanel.add(lensWavefrontPanel.getPanelButton());
 
-        jTabbedPaneOptics.addTab("Lens", jPanelLensMichelson);
-        jTabbedPaneOptics.addTab("Cylindrical ", jPanelCyllindrical);
-        jTabbedPaneOptics.addTab("Mirror", jPanelMirror);
-        jTabbedPaneOptics.addTab("CGH Pattern  Import", panelCGH10);
-        jTabbedPaneOptics.addChangeListener(new ChangeListener() {
+        tabbedPaneOptics.addTab(" Lens", lensWavefrontPanel.getPanel());
+        tabbedPaneOptics.addTab(" Cylindrical ", cyllindricalWavefrontPanel.getPanel());
+        tabbedPaneOptics.addTab(" Mirror", mirrorWavefrontPanel.getPanel());
+        tabbedPaneOptics.addTab("CGH Pattern  Import", panelCGH10);
+        tabbedPaneOptics.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane sourceTabbedPane = (JTabbedPane) e.getSource();
                 int index = sourceTabbedPane.getSelectedIndex();
                 if (index >= 0) {
                     String value = sourceTabbedPane.getTitleAt(index);
-                    if (value.equals("Lens")) {
+                    if (value.equals(" Lens")) {
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelMichelson);
-                    } if (value.equals("Cylindrical ")){
+                        buttonPanel.add(lensWavefrontPanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(lensWavefrontPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+                    } if (value.equals(" Cylindrical ")){
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelButtonCyllin);
-                    } if (value.equals("Mirror")){
+                        buttonPanel.add(cyllindricalWavefrontPanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(cyllindricalWavefrontPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
+                    } if (value.equals(" Mirror")){
                         buttonPanel.removeAll();
-                        buttonPanel.add(panelMirror);
+                        buttonPanel.add(mirrorWavefrontPanel.getPanelButton());
+                        // log tab
+                        jScrollPane2.setViewportView(mirrorWavefrontPanel.getLogArea());
+                        tabbedDesLog.addTab("Log", jScrollPane2);
                     } if (value.equals("CGH Pattern  Import")){
                         buttonPanel.removeAll();
                         buttonPanel.add(panelButtonCGH10);
@@ -6518,14 +2581,10 @@ public class EduControlerPattern extends OpticsPane {
                 
             }
         });
-
-        //tabbedDesLog.addTab("Description", desWavefront);
+        
         jScrollDes.setViewportView(desWavefront);
         tabbedDesLog.addTab("Description", jScrollDes);
-        jTextAreaLog.setColumns(20);
-        jTextAreaLog.setRows(5);
-        jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-        jScrollPane2.setViewportView(jTextAreaLog);
+        jScrollPane2.setViewportView(lensWavefrontPanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp10wavefrontmodulation.png")));
@@ -6534,185 +2593,7 @@ public class EduControlerPattern extends OpticsPane {
         layoutDiagram.add(diagramLens);
         generateActionPerformedDefault(evt);
     }
-    // Optical arguments, which will be parsed before reassigning the values
-    private double xoffMicroscope = 0.0, yoffMicroscope = 0.0, focalMicroscope = 1.0;
-    private double xoff = 0.0, yoff = 0.0, focal = 0.0;
-    private double xoffMichelson = 0.0, yoffMichelson = 0.0, focalMichelson = 0.0;
-    private double xoffCyllin = 0, yoffCyllin = 0, focalCyllin = 0.0;
-    // Mirror
-    private double phy = 1, theta = 1;
-    // Mirror - Beam steere
-    private double phyExp3 = 0.0, thetaExp3 = 0.0;
-    // Spectrometer
-    private double phySpectrometer = 522, thetaSpectrometer = 522;
-    private double d_widthX = Double.valueOf(image1.getBounds().width), d_heightX = 100, d_rotation = 0, d_postionX = 0, d_grayLevel = 255, d_spacing = 400;
-    // double slit
-    private double d_widthX_double = Double.valueOf(image1.getBounds().width), d_heightX_double = 100, d_rotation_double = 0, d_postionX_double = 0, d_grayLevel_double = 255, d_spacing_double = 400;
-    //Processing
-    private double processing_widthX = Double.valueOf(image1.getBounds().width), processing_widthY = 100, processing_heightX = 100, processing_heightY = Double.valueOf(image1.getBounds().height), processing_rotation = 0, processing_positionX = 0, processing_positionY = 0, processing_grayLevel = 255, processing_spacing = 400;
-    private double zoom = 100.0, grayLevel = 255;
-    //Fresnel
-    private double width_fresnel = 1920, height_fresnel = 1080;
-    // Calibration
-    private double xoffCalibration = 0, yoffCalibration = 50, focalCalibration = 522;
-    //Talbot
-    private double talbot_widthX = Double.valueOf(image1.getBounds().width), talbot_widthY = 100, talbot_heightX = 100, talbot_heightY = Double.valueOf(image1.getBounds().height), talbot_rotation = 0, talbot_positionX = 0, talbot_positionY = 0, talbot_grayLevel = 255, talbot_spacing = 400;
-     // Import file
-    private double k = 0, r = 0, e = 0, kr = 0, width_importFile = 0, rotation_importFile = 0, position_importFile = 0, grayLevel_importFile = 0;
-    private String formula = "";
-    private boolean parseArguments() {
-        boolean ret = false;
-        try {
-
-            //lens
-            double xoff = Double.valueOf(txtXPositionLens.getText());
-            double yoff = Double.valueOf(txtYPositionLens.getText());
-            double focal = Double.valueOf(txtFocalLens.getText());
-            // Michelson
-            double xoffMi = Double.valueOf(txtXPositionLensMichelson.getText());
-            double yoffMi = Double.valueOf(txtYPositionLensMichelson.getText());
-            double focalMi = Double.valueOf(txtFocalLensMichelson.getText());
-            //Cyllin
-            double xoffCyllin = Double.valueOf(txtXPositionCyllin.getText());
-            double yoffCyllin = Double.valueOf(txtYPositionCyllin.getText());
-            double focalCyllin = Double.valueOf(txtFocalCyllin.getText());
-            //mirro
-            double phyoff = Double.valueOf(txtPhyMirror.getText());
-            double thetaoff = Double.valueOf(txtThetaMirror.getText());
-            //microsope
-            double xoffMicroscope = Double.valueOf(txtXPositionMicroscope.getText());
-            double yoffMicroscope = Double.valueOf(txtYPositionMicroscope.getText());
-            double focalMicroscope = Double.valueOf(txtFocalMicroscope.getText());
-            //slit
-            double widthSlit = Double.valueOf(s_single_width.getValue());
-            double heightSlit = Double.valueOf(s_single_height.getValue());
-            double postionSlit = Double.valueOf(s_single_position.getValue());
-            double rotationSlit = Double.valueOf(s_single_rotation.getValue());
-            double grayLevelSlit = Double.valueOf(s_single_gray.getValue());
-            double spacingSlit = Double.valueOf(s_single_spacing.getValue());
-            // double
-            double widthDoubleSlit = Double.valueOf(s_single_widthDoubleSlit.getValue());
-            double heightDoubleSlit = Double.valueOf(s_single_heightDoubleSlit.getValue());
-            double postionDoubleSlit = Double.valueOf(s_single_positionDoubleSlit.getValue());
-            double rotationDoubleSlit = Double.valueOf(s_single_rotationDoubleSlit.getValue());
-            double grayLevelDoubleSlit = Double.valueOf(s_single_grayDoubleSlit.getValue());
-            double spacingDoubleSlit = Double.valueOf(s_single_spacingDoubleSlit.getValue());
-            // Spectrometer
-            double phySpec = Double.valueOf(txtPhyMirrorSpectometer.getText());
-            double thetaSpec = Double.valueOf(txtThetaMirrorSpectometer.getText());
-            // Calibration
-            double xoffCali = Double.valueOf(txtXPositionCalibration.getText());
-            double yoffCali = Double.valueOf(txtYPositionCalibration.getText());
-            //double focalCali= Double.valueOf(txtFocalCalibration.getText());
-            
-            //mirro - beam steere
-            double phyoffExp3 = Double.valueOf(txtPhyMirrorExp3.getText());
-            double thetaoffExp3 = Double.valueOf(txtThetaMirrorExp3.getText());
-
-            //Processing
-            processing_widthX = Double.valueOf(s_processing_width_x.getValue());
-            processing_widthY = Double.valueOf(s_processing_width_y.getValue());
-            processing_heightX = Double.valueOf(s_processing_height_x.getValue());
-            processing_heightY = Double.valueOf(s_processing_height_y.getValue());
-            processing_rotation = Double.valueOf(s_processing_rotation.getValue());
-            processing_positionX = Double.valueOf(s_processing_positionx.getValue());
-            processing_positionY = Double.valueOf(s_processing_pos_y.getValue());
-            processing_grayLevel = Double.valueOf(s_processing_gray.getValue());
-            processing_spacing = Double.valueOf(s_processing_spacing.getValue());
-            
-            //Talbot
-            talbot_widthX = Double.valueOf(s_talbot_width_x.getValue());
-            talbot_widthY = Double.valueOf(s_talbot_width_y.getValue());
-            talbot_heightX = Double.valueOf(s_talbot_height_x.getValue());
-            talbot_heightY = Double.valueOf(s_talbot_height_y.getValue());
-            talbot_rotation = Double.valueOf(s_talbot_rotation.getValue());
-            talbot_positionX = Double.valueOf(s_talbot_positionx.getValue());
-            talbot_positionY = Double.valueOf(s_talbot_pos_y.getValue());
-            talbot_grayLevel = Double.valueOf(s_talbot_gray.getValue());
-            talbot_spacing = Double.valueOf(s_talbot_spacing.getValue());
-
-            width_fresnel = Double.valueOf(text_fresnel_width.getText());
-            height_fresnel = Double.valueOf(text_fresnel_height.getText());
-            
-            // Import file
-            String uImportFile = txtFormula.getText();
-            double kImportFile = Double.valueOf(txtKImportFile.getText());
-            double rImportFile= Double.valueOf(txtRImportFile.getText());
-            double eImportFile = Double.valueOf(txtE1ImportFile.getText());
-            double krImportFile= Double.valueOf(txtK1RImportFile.getText());
-            double widthImportFile = Double.valueOf(txtWidthImportFile.getText());
-            double positionImportFile = Double.valueOf(txtPositionImportFile.getText());
-            double rotationImportFile= Double.valueOf(txtRotationImportFile.getText());
-            double grayImportFile = Double.valueOf(txtGrayLevelImportFile.getText());
-
-            //phase
-            zoom = Double.valueOf(s_phase_zoom.getValue());
-            ret = true;
-            this.xoff = xoff / 1000;
-            this.yoff = yoff / 1000;
-            this.focal = focal / 1000;
-
-            this.xoffMichelson = xoffMi / 1000;
-            this.yoffMichelson = yoffMi / 1000;
-            this.focalMichelson = focalMi / 1000;
-
-            this.xoffMicroscope = xoffMicroscope;
-            this.yoffMicroscope = yoffMicroscope;
-            this.focalMicroscope = focalMicroscope;
-
-            this.xoffCyllin = xoffCyllin * 10;
-            this.yoffCyllin = yoffCyllin * 10;
-            this.focalCyllin = focalCyllin/1000;
-
-            this.d_widthX = widthSlit;
-            this.d_heightX = heightSlit;
-            this.d_postionX = postionSlit;
-            this.d_rotation = rotationSlit;
-            this.d_grayLevel = grayLevelSlit;
-            this.d_spacing = spacingSlit;
-
-            this.d_widthX_double = widthDoubleSlit;
-            this.d_heightX_double = heightDoubleSlit;
-            this.d_postionX_double = postionDoubleSlit;
-            this.d_rotation_double = rotationDoubleSlit;
-            this.d_grayLevel_double = grayLevelDoubleSlit;
-            this.d_spacing_double = spacingDoubleSlit;
-
-            this.phy = phyoff;
-            this.theta = thetaoff;
-            
-            this.phyExp3 = phyoffExp3;
-            this.thetaExp3 = thetaoffExp3;
-
-            this.thetaSpectrometer = thetaSpec;
-            this.phySpectrometer = phySpec;
-            
-            this.xoffCalibration = xoffCali;
-            this.yoffCalibration = yoffCali;
-            //this.focalCalibration = focalCali;
-            
-            // Import file
-            this.formula = uImportFile;
-            this.k = kImportFile;
-            this.r = rImportFile;
-            this.e = eImportFile;
-            this.kr = krImportFile;
-            this.width_importFile = widthImportFile;
-            this.position_importFile = positionImportFile;
-            this.rotation_importFile = rotationImportFile;
-            this.position_importFile = grayImportFile;
-            
-        } catch (Exception e) {
-            //JOptionPane.showMessageDialog(null, warnings);
-            textXpos.setText(String.valueOf(this.yoff));
-            textYpos.setText(String.valueOf(this.yoff));
-            textFocal.setText(String.valueOf(this.focal));
-        }
-        return ret;
-    }
-    private static BufferedImage buffImages = null;
-    private static BufferedImage buffImagesFresnel = null;
-    private static BufferedImage buffImagesTalbotPhoto = null;
+    
     private static BufferedImage buffImagesCGH1 = null;
     private static BufferedImage buffImagesCGH3 = null;
     private static BufferedImage buffImagesCGH4 = null;
@@ -6720,227 +2601,7 @@ public class EduControlerPattern extends OpticsPane {
     private static BufferedImage buffImagesCGH6 = null;
     private static BufferedImage buffImagesCGH8 = null;
     private static BufferedImage buffImagesCGH10 = null;
-    private static BufferedImage buffImagesExp2 = null;
     
-
-    private File browseForFile(String current) {
-    	// file filter
-    	class TXTFilter extends FileFilter {
-    	    public boolean accept(File filename) {
-    	        return filename.isDirectory() || filename.getName().toLowerCase().endsWith(".jpg");
-    	    }
-
-    	    public String getDescription() {
-    	        return "TXT";
-    	    }
-    	}
-
-            JFileChooser fileopen = new JFileChooser(new File(current));
-            fileopen.setFileFilter(new TXTFilter());
-            int ret = fileopen.showDialog(null, "Select");
-            File file = null;
-            if(ret == 0) {
-                    file = fileopen.getSelectedFile();
-            }
-            return file;
-    }
-    private void b_openFileActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            File file = openFile.getSelectedFile();
-            String ext = "";
-            String extension = file.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImages = ImageIO.read(new File(file.getAbsolutePath()));
-                    //String ext = File.probeContentType(file.getAbsolutePath());
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.signalPhoto(buffImages);
-                    EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
-                    setLog(genLogSignalPhoto());
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    
-    private void b_openFileActionPerformedExp2(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            File file = openFile.getSelectedFile();
-            String ext = "";
-            String extension = file.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesExp2 = ImageIO.read(new File(file.getAbsolutePath()));
-                    //String ext = File.probeContentType(file.getAbsolutePath());
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.signalPhoto(buffImagesExp2);
-                    EduPatternShowOn.updateLensPatternPattern(image, genLogExp2());
-                    setLog(genLogExp2());
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-
-    private void b_openFileActionPerformedFresnel(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            File file = openFile.getSelectedFile();
-            String ext = "";
-            String extension = file.getName();
-            extension = extension.toLowerCase();
-            //System.out.println("Extenten : " + extension);
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesFresnel = ImageIO.read(new File(file.getAbsolutePath()));
-                    //String ext = File.probeContentType(file.getAbsolutePath());
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.updateFresnelParameter(buffImagesFresnel.getWidth(), buffImagesFresnel.getHeight());
-                    image.fresnel(buffImagesFresnel);
-                    EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
-                    text_fresnel_width.setText("" + buffImagesFresnel.getWidth());
-                    text_fresnel_width.setEnabled(true);
-                    text_fresnel_height.setText("" + buffImagesFresnel.getHeight());
-                    text_fresnel_height.setEnabled(true);
-                    label_fresnel_width.setEnabled(true);
-                    s_fresnel_width.setEnabled(true);
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-
-    }
-    
-    private void b_openFileActionPerformedTalbotPhoto(java.awt.event.ActionEvent evt) {
-        int returnVal = openFile.showOpenDialog(this);
-        if (returnVal == openFile.APPROVE_OPTION) {
-            File file = openFile.getSelectedFile();
-            String ext = "";
-            String extension = file.getName();
-            extension = extension.toLowerCase();
-            if (extension.contains("jpg")) {
-                ext = ".jpg";
-            }
-            if (extension.contains("png")) {
-                ext = ".png";
-            }
-            if (extension.contains("gif")) {
-                ext = ".gif";
-            }
-            if (extension.contains("wbmp")) {
-                ext = ".wbmp";
-            }
-            if (extension.contains("jpeg")) {
-                ext = ".jpeg";
-            }
-            if (extension.contains("bmp")) {
-                ext = ".bmp";
-            }
-            if (ext.equals("")) {
-                JOptionPane.showMessageDialog(null, "Formats incorrect!", "Failure", JOptionPane.ERROR_MESSAGE);
-            } else {
-                try {
-                    buffImagesTalbotPhoto = ImageIO.read(new File(file.getAbsolutePath()));
-                    //String ext = File.probeContentType(file.getAbsolutePath());
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    //  image.updatePhaseRetarderParameter(zoom, grayLevel);
-                    image.paintTalbotPhoto(buffImagesTalbotPhoto);
-                    EduPatternShowOn.updateLensPatternPattern(image, genLogTalbotPhoto());
-                    setLog(genLogTalbotPhoto());
-                    imageGenerated = true;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    //System.out.println("problem accessing file" + file.getAbsolutePath());
-                }
-            }
-        } else {
-            //System.out.println("File access cancelled by user.");
-        }
-    }
     
     private void openFileActionPerformedCGH1(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -7276,6 +2937,10 @@ public class EduControlerPattern extends OpticsPane {
     public void setLog(String msg) {
         jTextAreaLog.append(msg + System.getProperty("line.separator"));
     }
+    public void setLog() {
+        jTextAreaLog.append(System.getProperty("line.separator"));
+        System.out.println("jTextAreaLog getText: " + jTextAreaLog.getText());
+    }
     
     public void setLogCGH1(String msg) {
         String filePath;
@@ -7395,1944 +3060,6 @@ public class EduControlerPattern extends OpticsPane {
         } catch (Exception e) {
         }
     }
-
-    private String genLogLen() {
-        return String.format(logmessageLen, Double.toString(focal), Double.toString(xoff), Double.toString(yoff));
-    }
-
-    private String genLogLensMichelson() {
-        return String.format(logmessageLensMichelson, Double.toString(focalMichelson), Double.toString(xoffMichelson), Double.toString(yoffMichelson));
-    }
-
-    private String genLogMicroscope() {
-        return String.format(logmessageMicroscope, Double.toString(focalMicroscope), Double.toString(xoffMicroscope), Double.toString(yoffMicroscope));
-    }
-
-    private String genLogCyllin() {
-        return String.format(logmessageCyllin, Double.toString(focalCyllin), Double.toString(xoffCyllin), Double.toString(yoffCyllin));
-    }
-
-    private String genLogMirror() {
-        return String.format(logmessageMirror, Double.toString(phy), Double.toString(theta));
-    }
-    
-    private String genLogMirrorExp3() {
-        return String.format(logmessageMirrorExp3, Double.toString(phyExp3), Double.toString(thetaExp3));
-    }
-
-    private String genLogSlit() {
-        return String.format(logmessageSlit, Double.toString(d_heightX), Double.toString(d_rotation), Double.toString(d_postionX), Double.toString(d_grayLevel));
-    }
-
-    private String genLogDoubleSlit() {
-        return String.format(logmessageDoubleSlit, Double.toString(d_heightX_double), Double.toString(d_rotation_double), Double.toString(d_postionX_double), Double.toString(d_grayLevel_double), Double.toString(d_spacing_double));
-    }
-
-    private String genLogProcessing() {
-        return String.format(logmessageProcessing, Double.toString(processing_heightX), Double.toString(processing_widthY), Double.toString(processing_rotation), Double.toString(processing_positionX), Double.toString(processing_positionY), Double.toString(processing_grayLevel), Double.toString(processing_spacing));
-    }
-    
-    private String genLogTalbot() {
-        return String.format(logmessageTalbot, Double.toString(talbot_heightX), Double.toString(talbot_widthY), Double.toString(talbot_rotation), Double.toString(talbot_positionX), Double.toString(talbot_positionY), Double.toString(talbot_grayLevel), Double.toString(talbot_spacing));
-    }
-
-    private String genLogPhase() {
-        return String.format(logmessagePhase, Double.toString(zoom));
-    }
-
-    private String genLogMirrorSpectrometer() {
-        return String.format(logmessageMirrorSpectrometer, Double.toString(phySpectrometer), Double.toString(thetaSpectrometer));
-    }
-    private String genLogCalibration() {
-        return String.format(logmessageCalibration, Double.toString(xoffCalibration), Double.toString(yoffCalibration));
-    }
-    
-    private String genLogSignalPhoto() {
-        return String.format(logmessageSignalPhoto, Double.toString(buffImages.getWidth()), Double.toString(buffImages.getHeight()));
-    }
-    
-    private String genLogTalbotPhoto() {
-        return String.format(logmessageTalbotPhoto, Double.toString(buffImagesTalbotPhoto.getWidth()), Double.toString(buffImagesTalbotPhoto.getHeight()));
-    }
-    
-    private String genLogExp2() {
-        return String.format(logmessageExp2, Double.toString(buffImagesExp2.getWidth()), Double.toString(buffImagesExp2.getHeight()));
-    }
-
-    // Lens
-    private void buttonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
-        if (parseArguments()) {
-            jButton11LensOn.setEnabled(true);
-            jButtonDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoff, yoff, focal);
-            image.paintLens();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformed
-
-    private void button11LensOnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoff, yoff, focal);
-            image.paintLens();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
-            imageGenerated = true;
-
-            if (countLenOnTelephoto % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnTelephoto--;
-                            jButton11LensOn.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-        }
-
-    }//GEN-LAST:event_button11LensOnActionPerformed
-
-    private void buttonSecondGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayTelephoto++;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateLensParameter(xoff, yoff, focal);
-                image.paintLens();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogLen());
-                setLog(genLogLen());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayTelephoto % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformed
-
-    private void sliderGenerateActionPerformed(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
-        if (parseArguments()) {
-            jButton11LensOn.setEnabled(true);
-            jButtonDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoff, yoff, focal);
-            image.paintLens();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformed
-    
-    private void keyEventGenerateActionPerformedWavelength(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyEventGenerateActionPerformedCalibration
-        if (parseArguments()) {
-            jButton11LensOn.setEnabled(true);
-            jButtonDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameter(xoff, yoff, focal);
-            image.paintLens();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_keyEventGenerateActionPerformedCalibration
-    // END Lens
-  /*
-     * Fresnel
-     */
-
-    private void buttonGenerateActionPerformedFresnel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformed
-        if (parseArguments()) {
-            button11LensOnFresnel.setEnabled(true);
-            buttonSecondFresnel.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateFresnelParameter(width_fresnel, height_fresnel);
-            image.fresnel(buffImagesFresnel);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformed
-
-    private void button11LensOnActionPerformedFresnel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateFresnelParameter(width_fresnel, height_fresnel);
-            image.fresnel(buffImagesFresnel);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
-            imageGenerated = true;
-
-            if (countLenOnFresnel % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnFresnel--;
-                            button11LensOnFresnel.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-        }
-
-    }//GEN-LAST:event_button11LensOnActionPerformed
-
-    private void buttonSecondGenerateActionPerformedFresnel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformed
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayFresnel--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateFresnelParameter(width_fresnel, height_fresnel);
-                image.fresnel(buffImagesFresnel);
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogLen());
-                setLog(genLogLen());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayFresnel % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformed
-
-    private void sliderGenerateActionPerformedFresnel(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformed
-        if (parseArguments()) {
-            button11LensOnFresnel.setEnabled(true);
-            buttonSecondFresnel.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            float IMG_HEIGHT = 0;
-            try {
-                IMG_HEIGHT = (float) buffImagesFresnel.getHeight() / ((float) buffImagesFresnel.getWidth() / (float) width_fresnel);
-                text_fresnel_height.setText("" + (int) IMG_HEIGHT);
-            } catch (Exception e) {
-            }
-            image.updateFresnelParameter(width_fresnel, IMG_HEIGHT);
-            image.fresnel(buffImagesFresnel);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLen());
-            setLog(genLogLen());
-            imageGenerated = true;
-        }
-    }
-    // Lens Michelson
-
-    private void buttonGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMichelSon
-        if (parseArguments()) {
-            jButton11LensOnMichelson.setEnabled(true);
-            jButtonDisplaySecondOnMichelson.setEnabled(true);
-            buttonCyllinLensOn.setEnabled(true);
-            buttonCyllinDisplaySecondOn.setEnabled(true);
-            buttonMirrorLensOn.setEnabled(true);
-            buttonMirrorDisplaySecondOn.setEnabled(true);
-            buttonCGH4LensOn.setEnabled(true);
-            buttonCGH4DisplaySecondOn.setEnabled(true);
-            buttonCGH10LensOn.setEnabled(true);
-            buttonCGH10DisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
-            image.paintLensMichelson();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLensMichelson());
-            setLog(genLogLensMichelson());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedMichelSon
-
-    private void button11LensOnMichelsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMichelsonActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
-            image.paintLensMichelson();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLensMichelson());
-            setLog(genLogLensMichelson());
-            imageGenerated = true;
-
-            if (countLenOnMichelson % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnMichelson--;
-                            jButton11LensOnMichelson.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnMichelsonActionPerformed
-
-    private void buttonSecondGenerateActionPerformedMichelSon(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMichelSon
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayMichelson--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
-                image.paintLensMichelson();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogLensMichelson());
-                setLog(genLogLensMichelson());
-                imageGenerated = true;
-                if (countSecondDisplayMichelson % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedMichelSon
-
-    private void sliderGenerateActionPerformedLensMichelSon(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedLensMichelSon
-        if (parseArguments()) {
-            jButton11LensOnMichelson.setEnabled(true);
-            jButtonDisplaySecondOnMichelson.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
-            image.paintLensMichelson();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLensMichelson());
-            setLog(genLogLensMichelson());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedLensMichelSon
-    
-    private void keyenventGenerateActionPerformedLensMichelSon(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyenventGenerateActionPerformedLensMichelSon
-        if (parseArguments()) {
-            jButton11LensOnMichelson.setEnabled(true);
-            jButtonDisplaySecondOnMichelson.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensMichelsonParameter(xoffMichelson, yoffMichelson, focalMichelson);
-            image.paintLensMichelson();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogLensMichelson());
-            setLog(genLogLensMichelson());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_keyenventGenerateActionPerformedLensMichelSon
-
-    // Microscope
-    private void buttonGenerateActionPerformedMicroscope(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMicroscope
-        if (parseArguments()) {
-            buttonMicroscopeLensOn.setEnabled(true);
-            buttonMicroscopeDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
-            image.paintMicroscope();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMicroscope());
-            setLog(genLogMicroscope());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedMicroscope
-
-    private void button11LensOnMicroscopeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMicroscopeActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
-            image.paintMicroscope();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMicroscope());
-            setLog(genLogMicroscope());
-            imageGenerated = true;
-
-            if (countLenOnMicroscope % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnMicroscope--;
-                            buttonMicroscopeLensOn.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnMicroscopeActionPerformed
-
-    private void buttonSecondGenerateActionPerformedMicroscope(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMicroscope
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayMicroscope--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
-                image.paintMicroscope();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogMicroscope());
-                setLog(genLogMicroscope());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayMicroscope % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedMicroscope
-
-    private void sliderGenerateActionPerformedMicroscope(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedMicroscope
-        if (parseArguments()) {
-            buttonMicroscopeLensOn.setEnabled(true);
-            buttonMicroscopeDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMicoscopeParameter(xoffMicroscope, yoffMicroscope, focalMicroscope);
-            image.paintMicroscope();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMicroscope());
-            setLog(genLogMicroscope());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedMicroscope
-
-    // Cyllin
-    private void buttonGenerateActionPerformedCyllin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonCyllinLensOn.setEnabled(true);
-            buttonCyllinDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-            image.paintCylindircal();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
-            setLog(genLogCyllin());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-
-    private void button11LensOnCyllinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCyllinActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-            image.paintCylindircal();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
-            setLog(genLogCyllin());
-            imageGenerated = true;
-
-            if (countLenOnCyllin % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnCyllin--;
-                            buttonCyllinLensOn.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnCyllinActionPerformed
-
-    private void buttonSecondGenerateActionPerformedCyllin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayCyllin--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-                image.paintCylindircal();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogCyllin());
-                setLog(genLogCyllin());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayCyllin % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
-
-    private void sliderGenerateActionPerformedCyllin(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonCyllinLensOn.setEnabled(true);
-            buttonCyllinDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-            image.paintCylindircal();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
-            setLog(genLogCyllin());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-    
-    private void keyeventGenerateActionPerformedCyllin(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonCyllinLensOn.setEnabled(true);
-            buttonCyllinDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-            image.paintCylindircal();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
-            setLog(genLogCyllin());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-
-    // Mirror
-    private void buttonGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirror
-        if (parseArguments()) {
-            buttonMirrorLensOn.setEnabled(true);
-            buttonMirrorDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorParameter(phy, theta);
-            image.paintMirror();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
-            setLog(genLogMirror());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedMirror
-
-    private void button11LensOnMirrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorParameter(phy, theta);
-            image.paintMirror();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
-            setLog(genLogMirror());
-            imageGenerated = true;
-
-            if (countLenOnMirror % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(500, 420));
-                magFrameLenon.setVisible(true);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnMirror--;
-                            buttonMirrorLensOn.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnMirrorActionPerformed
-
-    private void buttonSecondGenerateActionPerformedMirror(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayMirror--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateMirrorParameter(phy, theta);
-                image.paintMirror();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogMirror());
-                setLog(genLogMirror());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayMirror % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
-
-    private void sliderGenerateActionPerformedMirror(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonMirrorLensOn.setEnabled(true);
-            buttonMirrorDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorParameter(phy, theta);
-            image.paintMirror();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
-            setLog(genLogMirror());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-    private void keyEventGenerateActionPerformedMirror(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonMirrorLensOn.setEnabled(true);
-            buttonMirrorDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorParameter(phy, theta);
-            image.paintMirror();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirror());
-            setLog(genLogMirror());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-    
-    // Mirror Beam steere
-    private void buttonGenerateActionPerformedMirrorExp3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirror
-        if (parseArguments()) {
-            buttonMirrorLensOnExp3.setEnabled(true);
-            buttonMirrorDisplaySecondOnExp3.setEnabled(true);
-            buttonCGH3LensOn.setEnabled(true);
-            buttonCGH3DisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
-            image.paintBeamSteere();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorExp3());
-            setLog(genLogMirrorExp3());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedMirror
-
-    private void button11LensOnMirrorExp3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
-            image.paintBeamSteere();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorExp3());
-            setLog(genLogMirrorExp3());
-            imageGenerated = true;
-
-            if (countLenOnMirrorExp3 % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnMirrorExp3--;
-                            buttonMirrorLensOnExp3.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnMirrorActionPerformed
-
-    private void buttonSecondGenerateActionPerformedMirrorExp3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayMirrorExp3--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
-                image.paintBeamSteere();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogMirror());
-                setLog(genLogMirror());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayMirrorExp3 % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
-
-    private void sliderGenerateActionPerformedMirrorExp3(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonMirrorLensOnExp3.setEnabled(true);
-            buttonMirrorDisplaySecondOnExp3.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
-            image.paintBeamSteere();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorExp3());
-            setLog(genLogMirrorExp3());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-    private void keyEventGenerateActionPerformedMirrorExp3(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonMirrorLensOnExp3.setEnabled(true);
-            buttonMirrorDisplaySecondOnExp3.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorExp3Parameter(phyExp3, thetaExp3);
-            image.paintBeamSteere();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorExp3());
-            setLog(genLogMirrorExp3());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-
-    // Slit
-    private void buttonGenerateActionPerformedSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttong11LensOnSlit.setEnabled(true);
-            buttonSecondDisplaySlit.setEnabled(true);
-            buttong11LensOnDoubleSlit.setEnabled(true);
-            buttonSecondDisplayDoubleSlit.setEnabled(true);
-            buttonCGH5LensOn.setEnabled(true);
-            buttonCGH5DisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
-            image.slit(slit);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
-            setLog(genLogSlit());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-
-    private void button11LensOnSlitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnSlitActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(1, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
-            image.slit(slit);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
-            setLog(genLogSlit());
-            imageGenerated = true;
-
-            if (countLenOnSlit % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnSlit--;
-                            buttong11LensOnSlit.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnSlitActionPerformed
-
-    private void buttonSecondGenerateActionPerformedSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplaySlit--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
-                image.slit(slit);
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogSlit());
-                setLog(genLogSlit());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplaySlit % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
-
-    private void sliderGenerateActionPerformedSlit(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttong11LensOnSlit.setEnabled(true);
-            buttonSecondDisplaySlit.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
-            image.slit(slit);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
-            setLog(genLogSlit());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-    
-    private void keyeventGenerateActionPerformedSlit(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttong11LensOnSlit.setEnabled(true);
-            buttonSecondDisplaySlit.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(slit, d_widthX, d_heightX, d_postionX, d_rotation, d_grayLevel, d_spacing);
-            image.slit(slit);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogSlit());
-            setLog(genLogSlit());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_keyeventGenerateActionPerformedSlit
-
-    // doubel slit 
-    private void buttonGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedDoubleSlit
-        if (parseArguments()) {
-            buttong11LensOnDoubleSlit.setEnabled(true);
-            buttonSecondDisplayDoubleSlit.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
-            image.slit(2);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogDoubleSlit());
-            setLog(genLogDoubleSlit());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedDoubleSlit
-
-    private void button11LensOnDoubleSlitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnDoubleSlitActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
-            image.slit(2);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogDoubleSlit());
-            setLog(genLogDoubleSlit());
-            imageGenerated = true;
-
-            if (countLenOnDoubleSlit % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                magFrameLenon.setResizable(false);
-                
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnDoubleSlit--;
-                            buttong11LensOnDoubleSlit.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnDoubleSlitActionPerformed
-
-    private void buttonSecondGenerateActionPerformedDoubleSlit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedDoubleSlit
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayDoubleSlit--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
-                image.slit(2);
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogDoubleSlit());
-                setLog(genLogDoubleSlit());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayDoubleSlit % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedDoubleSlit
-
-    private void sliderGenerateActionPerformedDoubleSlit(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedDoubleSlit
-        if (parseArguments()) {
-            buttong11LensOnDoubleSlit.setEnabled(true);
-            buttonSecondDisplayDoubleSlit.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
-            image.slit(2);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogDoubleSlit());
-            setLog(genLogDoubleSlit());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedDoubleSlit
-    private void keyeventGenerateActionPerformedDoubleSlit(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyeventGenerateActionPerformedDoubleSlit
-        if (parseArguments()) {
-            buttong11LensOnDoubleSlit.setEnabled(true);
-            buttonSecondDisplayDoubleSlit.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateLensParameterDrawSlit(2, d_widthX_double, d_heightX_double, d_postionX_double, d_rotation_double, d_grayLevel_double, d_spacing_double);
-            image.slit(2);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogDoubleSlit());
-            setLog(genLogDoubleSlit());
-            imageGenerated = true;
-        }
-    }
-
-//Processing
-    private void buttonGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            button11LensOnProcessing.setEnabled(true);
-            buttonSecondDisplayProcessing.setEnabled(true);
-            buttonSecondPhoto.setEnabled(true);
-            button11LensOnPhoto.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
-            image.signalProcessing();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
-            setLog(genLogProcessing());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-
-    private void button11LensOnProcessingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnProcessingActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
-            image.signalProcessing();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
-            setLog(genLogProcessing());
-            imageGenerated = true;
-            if (countLenOnProcessing % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnProcessing--;
-                            button11LensOnProcessing.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-        }
-    }//GEN-LAST:event_button11LensOnProcessingActionPerformed
-
-    private void buttonSecondGenerateActionPerformedProcessing(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayProcessing--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
-                image.signalProcessing();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogProcessing());
-                setLog(genLogProcessing());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayProcessing % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
-
-    private void sliderGenerateActionPerformedProcessing(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            button11LensOnProcessing.setEnabled(true);
-            buttonSecondDisplayProcessing.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
-            image.signalProcessing();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
-            setLog(genLogProcessing());
-            imageGenerated = true;
-        }
-    }
-    private void keyeventGenerateActionPerformedProcessing(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyeventGenerateActionPerformedProcessing
-        if (parseArguments()) {
-            button11LensOnProcessing.setEnabled(true);
-            buttonSecondDisplayProcessing.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel, processing_spacing);
-            image.signalProcessing();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogProcessing());
-            setLog(genLogProcessing());
-            imageGenerated = true;
-        }
-    }
-    
-    //Talbot
-    private void buttonGenerateActionPerformedTalbot(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedTalbot
-        if (parseArguments()) {
-            button11LensOntalbot.setEnabled(true);
-            buttonSecondDisplaytalbot.setEnabled(true);
-            button11LensOnTalbotPhoto.setEnabled(true);
-            buttonSecondTalbotPhoto.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
-            image.paintTalbot();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
-            setLog(genLogTalbot());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedTalbot
-
-    private void button11LensOnTalbotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnTalbotActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
-            image.paintTalbot();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
-            setLog(genLogTalbot());
-            imageGenerated = true;
-            if (countLenOnTalbot % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnTalbot--;
-                            button11LensOntalbot.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-        }
-    }//GEN-LAST:event_button11LensOnTalbotActionPerformed
-
-    private void buttonSecondGenerateActionPerformedTalbot(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedTalbot
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayTalbot--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
-                image.paintTalbot();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogTalbot());
-                setLog(genLogTalbot());
-                imageGenerated = true;
-                if (countSecondDisplayTalbot % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedTalbot
-
-    private void sliderGenerateActionPerformedTalbot(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedTalbot
-        if (parseArguments()) {
-            button11LensOntalbot.setEnabled(true);
-            buttonSecondDisplaytalbot.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
-            image.paintTalbot();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
-            setLog(genLogTalbot());
-            imageGenerated = true;
-        }
-    }
-    private void keyeventGenerateActionPerformedTalbot(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyeventGenerateActionPerformedTalbot
-        if (parseArguments()) {
-            button11LensOntalbot.setEnabled(true);
-            buttonSecondDisplaytalbot.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterDrawTalbot(talbot_widthX, talbot_widthY, talbot_heightX, talbot_heightY, talbot_positionX, talbot_positionY, talbot_rotation, talbot_grayLevel, talbot_spacing);
-            image.paintTalbot();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbot());
-            setLog(genLogTalbot());
-            imageGenerated = true;
-        }
-    }
-    /*
-     * Signal Photo
-     */
-
-    private void buttonGenerateActionPerformedProcessingPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonSecondPhoto.setEnabled(true);
-            button11LensOnPhoto.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            //   image.updateParameterDrawSignalPhoto(buffImages.get);
-            image.signalPhoto(buffImages);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
-            setLog(genLogSignalPhoto());
-            imageGenerated = true;
-        }
-
-    }
-
-    private void button11LensOnProcessingPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnProcessingPhotoActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.signalPhoto(buffImages);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
-            setLog(genLogSignalPhoto());
-            imageGenerated = true;
-
-            if (countLenOnPhoto % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnPhoto--;
-                            button11LensOnPhoto.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnProcessingPhotoActionPerformed
-
-    private void buttonSecondGenerateActionPerformedProcessingPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayPhoto--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
-                image.signalPhoto(buffImages);
-                EduPatternShowOn.updateLensPatternPattern(image, genLogSignalPhoto());
-                setLog(genLogSignalPhoto());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayPhoto % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }
-    // Experiment 2 function
-    private void buttonGenerateActionPerformedExp2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonSecondExp2.setEnabled(true);
-            button11LensOnExp2.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.signalPhoto(buffImagesExp2);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogExp2());
-            setLog(genLogExp2());
-            imageGenerated = true;
-        }
-
-    }
-
-    private void button11LensOnExp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnProcessingPhotoActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.signalPhoto(buffImagesExp2);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogExp2());
-            setLog(genLogExp2());
-            imageGenerated = true;
-
-            if (countLenOnExp2 % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnExp2--;
-                            button11LensOnExp2.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnProcessingPhotoActionPerformed
-
-    private void buttonSecondGenerateActionPerformedExp2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayExp2--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
-                image.signalPhoto(buffImagesExp2);
-                EduPatternShowOn.updateLensPatternPattern(image, genLogExp2());
-                setLog(genLogExp2());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayExp2 % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }
-
-    /*
-     * Phase
-     */
-
-    private void buttonGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonSecondPhase.setEnabled(true);
-            button11LensOnPhase.setEnabled(true);
-            buttonCGH1LensOn.setEnabled(true);
-            buttonCGH1DisplaySecondOn.setEnabled(true);
-            buttonCGH8LensOn.setEnabled(true);
-            buttonCGH8DisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updatePhaseRetarderParameter(grayLevel);
-            image.phaseRetarder();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
-            setLog(genLogPhase());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_buttonGenerateActionPerformedCyllin
-
-    private void button11LensOnPhaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnPhaseActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updatePhaseRetarderParameter(grayLevel);
-            image.phaseRetarder();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
-            setLog(genLogPhase());
-            imageGenerated = true;
-
-            if (countLenOnPhase % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnPhase--;
-                            button11LensOnPhase.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-        }
-
-    }//GEN-LAST:event_button11LensOnPhaseActionPerformed
-
-    private void buttonSecondGenerateActionPerformedPhase(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayPhase--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updatePhaseRetarderParameter(grayLevel);
-                image.phaseRetarder();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogPhase());
-                setLog(genLogPhase());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayPhase % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
-
-    private void sliderGenerateActionPerformedPhase(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonSecondPhase.setEnabled(true);
-            button11LensOnPhase.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updatePhaseRetarderParameter(grayLevel);
-            image.phaseRetarder();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
-            setLog(genLogPhase());
-            imageGenerated = true;
-        }
-    }
-    private void keyeventGenerateActionPerformedPhase(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonSecondPhase.setEnabled(true);
-            button11LensOnPhase.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updatePhaseRetarderParameter(grayLevel);
-            image.phaseRetarder();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogPhase());
-            setLog(genLogPhase());
-            imageGenerated = true;
-        }
-    }
-
-    // Mirror Spectometer
-    private void buttonGenerateActionPerformedMirrorSpectometer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedMirrorSpectometer
-        if (parseArguments()) {
-            buttonMirrorSpectometerLensOn.setEnabled(true);
-            buttonMirrorSpectometerDisplaySecondOn.setEnabled(true);
-            buttonCGH6LensOn.setEnabled(true);
-            buttonCGH6DisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
-            image.paintMirrorSpectrometer();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorSpectrometer());
-            setLog(genLogMirrorSpectrometer());
-            imageGenerated = true;
-        }
-
-    }//GEN-LAST:event_buttonGenerateActionPerformedMirrorSpectometer
-
-    private void button11LensOnMirrorSpectometerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnMirrorSpectometerActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
-            image.paintMirrorSpectrometer();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorSpectrometer());
-            setLog(genLogMirrorSpectrometer());
-            imageGenerated = true;
-
-            if (countLenOnSpectrometer % 2 == 0) {
-                magFrameLenon.dispose();
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnSpectrometer--;
-                            buttonMirrorSpectometerLensOn.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnMirrorSpectometerActionPerformed
-
-    private void buttonSecondGenerateActionPerformedMirrorSpectometer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedMirrorSpectometer
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplaySpectrometer--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
-                image.paintMirrorSpectrometer();
-                EduPatternShowOn.updatePatternSecondDisplay(image, genLogMirrorSpectrometer());
-                setLog(genLogMirrorSpectrometer());
-                imageGenerated = true;
-                if (countSecondDisplaySpectrometer % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedMirrorSpectometer
-    
-    private void keyEventGenerateActionPerformedMirrorSpectometer(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyEventGenerateActionPerformedMirrorSpectometer
-        if (parseArguments()) {
-            buttonMirrorSpectometerLensOn.setEnabled(true);
-            buttonMirrorSpectometerDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
-            image.paintMirrorSpectrometer();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorSpectrometer());
-            setLog(genLogMirrorSpectrometer());
-            imageGenerated = true;
-        }
-    }
-
-    private void sliderGenerateActionPerformedMirrorSpectometer(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedMirrorSpectometer
-        if (parseArguments()) {
-            buttonMirrorSpectometerLensOn.setEnabled(true);
-            buttonMirrorSpectometerDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateMirrorSpectometerParameter(phySpectrometer, thetaSpectrometer);
-            image.paintMirrorSpectrometer();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogMirrorSpectrometer());
-            setLog(genLogMirrorSpectrometer());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedMirrorSpectometer
-    
-    
-    // Calibration
-    private void buttonGenerateActionPerformedCalibration(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCalibration
-        if (parseArguments()) {
-            buttonCalibrationLensOn.setEnabled(true);
-            buttonCalibrationDisplaySecondOn.setEnabled(true);
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-            image.paintCalibration();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_buttonGenerateActionPerformedCalibration
-
-    private void button11LensOnCalibrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCalibrationActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-            image.paintCalibration();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
-            imageGenerated = true;
-
-            if (countLenOnCalibration % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnCalibration--;
-                            buttonCalibrationLensOn.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-        }
-
-    }//GEN-LAST:event_button11LensOnCalibrationActionPerformed
-	
-	private void buttonSecondGenerateActionPerformedCalibration(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
-            if (parseArguments()) {
-                GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-                GraphicsDevice[] devices = env.getScreenDevices();
-                if (devices.length == 1) {
-                    countSecondDisplayCalibration--;
-                    JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-                    image.paintCalibration();
-                    EduPatternShowOn.updatePatternSecondDisplay(image, genLogCalibration());
-                    //EduPatternTest.updateLensPatternPattern(image, genLog());
-                    imageGenerated = true;
-                    if (countSecondDisplayCalibration % 2 == 0) {
-                        patternFrameDoubleClick.dispose();
-                        patternFrame.dispose();
-                    }
-                }
-            }
-    }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
-
-    private void sliderGenerateActionPerformedCalibration(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        if (parseArguments()) {
-            buttonCalibrationLensOn.setEnabled(true);
-            buttonCalibrationDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-            image.paintCalibration();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
-            setLog(genLogCalibration());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
-    
-    private void keyEventGenerateActionPerformedCalibration(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyEventGenerateActionPerformedCalibration
-        if (parseArguments()) {
-            buttonMirrorLensOn.setEnabled(true);
-            buttonMirrorDisplaySecondOn.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-            image.paintCalibration();
-            EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
-            setLog(genLogCalibration());
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_keyEventGenerateActionPerformedCalibration
-    
-    /*
-     * Talbot Photo
-     */
-
-    private void buttonGenerateActionPerformedTalbotPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedTalbotPhoto
-        if (parseArguments()) {
-            button11LensOnTalbotPhoto.setEnabled(true);
-            buttonSecondTalbotPhoto.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintTalbotPhoto(buffImagesTalbotPhoto);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbotPhoto());
-            setLog(genLogTalbotPhoto());
-            imageGenerated = true;
-        }
-
-    }
-
-    private void button11LensOnTalbotPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnTalbotPhotoActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.paintTalbotPhoto(buffImagesTalbotPhoto);
-            EduPatternShowOn.updateLensPatternPattern(image, genLogTalbotPhoto());
-            setLog(genLogTalbotPhoto());
-            imageGenerated = true;
-
-            if (countLenOnTalbotPhoto % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnTalbotPhoto--;
-                            button11LensOnTalbotPhoto.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnTalbotPhotoActionPerformed
-
-    private void buttonSecondGenerateActionPerformedTalbotPhoto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedTalbotPhoto
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayTalbotPhoto--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                // image.updateParameterDrawSignalProcessing(processing_widthX, processing_widthY, processing_heightX, processing_heightY, processing_positionX, processing_positionY, processing_rotation, processing_grayLevel);
-                image.paintTalbotPhoto(buffImagesTalbotPhoto);
-                EduPatternShowOn.updateLensPatternPattern(image, genLogTalbotPhoto());
-                setLog(genLogTalbotPhoto());
-                //EduPatternTest.updateLensPatternPattern(image, genLog());
-                imageGenerated = true;
-                if (countSecondDisplayTalbotPhoto% 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }
-    
-    /*
-     * Import File
-     */
-
-    private void buttonGenerateActionPerformedImportFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedImportFile
-        if (parseArguments()) {
-            btnLensONImportFile.setEnabled(true);
-            btnSecondImportFile.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
-            image.paintImportFile();
-            EduPatternShowOn.updateLensPatternPattern(image, "");
-            setLog("");
-            imageGenerated = true;
-        }
-
-    }
-
-    private void button11LensOnImportFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnImportFileActionPerformed
-        if (parseArguments()) {
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
-            image.paintImportFile();
-            EduPatternShowOn.updateLensPatternPattern(image, "");
-            setLog("");
-            imageGenerated = true;
-
-            if (countLenOnImportFile % 2 == 0) {
-                magFrameLenon.dispose();
-                panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        patternFrameDoubleClick.show();
-                    }
-                });
-
-            } else {
-                magFrameLenon = new JFrame("1:1 Lens On");
-                URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                Toolkit kit = Toolkit.getDefaultToolkit();
-                Image img = kit.createImage(url);
-                magFrameLenon.setIconImage(img);
-                
-                //EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120), 2.0);
-                EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
-                magFrameLenon.getContentPane().add(mag);
-                magFrameLenon.pack();
-                magFrameLenon.setLocation(new Point(505, 420));
-                magFrameLenon.setResizable(false);
-                magFrameLenon.setVisible(true);
-                magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnImportFile--;
-                            btnLensONImportFile.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
-                    }
-                });
-            }
-
-        }
-
-    }//GEN-LAST:event_button11LensOnImportFileActionPerformed
-
-    private void buttonSecondGenerateActionPerformedImportFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedImportFile
-        if (parseArguments()) {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice[] devices = env.getScreenDevices();
-            if (devices.length == 1) {
-                countSecondDisplayImportFile--;
-                JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
-                image.paintImportFile();
-                EduPatternShowOn.updatePatternSecondDisplay(image, "");
-                setLog("");
-                imageGenerated = true;
-                if (countSecondDisplayImportFile % 2 == 0) {
-                    patternFrameDoubleClick.dispose();
-                    patternFrame.dispose();
-                }
-            }
-        }
-    }
-    
-    private void sliderGenerateActionPerformedImportFile(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedImportFile
-        if (parseArguments()) {
-            btnLensONImportFile.setEnabled(true);
-            btnSecondImportFile.setEnabled(true);
-
-            PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
-            image.paintImportFile();
-            EduPatternShowOn.updateLensPatternPattern(image, "");
-            setLog("");
-            imageGenerated = true;
-        }
-    }//GEN-LAST:event_sliderGenerateActionPerformedImportFile
     
     // CGH1
     private void buttonGenerateActionPerformedCGH1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondActionPerformedCGH1
@@ -9826,107 +3553,17 @@ public class EduControlerPattern extends OpticsPane {
     public javax.swing.JPanel panelPattern;
     public javax.swing.JPanel panelPatternFullScreen;
     // Lens
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel2;
-    private DoubleJSlider jSliderFocalLens;
-    private DoubleJSlider jSliderXPositionLens;
-    private DoubleJSlider jSliderYPositionLens;
-    private javax.swing.JTextField txtFocalLens;
-    private javax.swing.JTextField txtXPositionLens;
-    private javax.swing.JTextField txtYPositionLens;
-    private javax.swing.JButton jButton11LensOn;
-    private javax.swing.JButton jButtonDisplaySecondOn;
-    private javax.swing.JButton jButtonLens;
     // Lens Michelson
-    private javax.swing.JLabel lblFocalLensMichelson;
-    private javax.swing.JLabel lblXLensMichelson;
-    private javax.swing.JLabel lblYLensMichelson;
-    private javax.swing.JSlider jSliderFocalLensMichelson;
-    private DoubleJSlider jSliderXPositionLensMichelson;
-    private DoubleJSlider jSliderYPositionLensMichelson;
-    private javax.swing.JTextField txtFocalLensMichelson;
-    private javax.swing.JTextField txtXPositionLensMichelson;
-    private javax.swing.JTextField txtYPositionLensMichelson;
-    private javax.swing.JButton jButton11LensOnMichelson;
-    private javax.swing.JButton jButtonDisplaySecondOnMichelson;
-    private javax.swing.JButton jButtonLensMichelson;
-    public javax.swing.JSlider sliderXpos;
-    private javax.swing.JSlider sliderFocal;
-    public javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField textXpos;
-    private javax.swing.JTextField textYpos;
-    private javax.swing.JTextField textFocal;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // Microscope
-    public javax.swing.JLabel lblFocalMicroscope;
-    private javax.swing.JLabel lblXPosMicroscope;
-    private javax.swing.JLabel lblYPosMicroscope;
-    private javax.swing.JSlider jSliderFocalMicroscope;
-    private javax.swing.JSlider jSliderXPositionMicroscope;
-    private javax.swing.JSlider jSliderYPositionMicroscope;
-    private javax.swing.JTextField txtFocalMicroscope;
-    private javax.swing.JTextField txtXPositionMicroscope;
-    private javax.swing.JTextField txtYPositionMicroscope;
-    private javax.swing.JButton buttonMicroscopeLensOn;
-    private javax.swing.JButton buttonMicroscopeDisplaySecondOn;
-    private javax.swing.JButton buttonMicroscopeGeneral;
-    // Cyllin
-    public javax.swing.JLabel lblFocalCyllin;
-    private javax.swing.JLabel lblXPosCyllin;
-    private javax.swing.JLabel lblYPosCyllin;
-    private javax.swing.JSlider jSliderFocalCyllin;
-    private javax.swing.JSlider jSliderXPositionCyllin;
-    private javax.swing.JSlider jSliderYPositionCyllin;
-    private javax.swing.JTextField txtFocalCyllin;
-    private javax.swing.JTextField txtXPositionCyllin;
-    private javax.swing.JTextField txtYPositionCyllin;
-    private javax.swing.JButton buttonCyllinLensOn;
-    private javax.swing.JButton buttonCyllinDisplaySecondOn;
-    private javax.swing.JButton buttonCyllinGeneral;
-    // Mirror
-    private javax.swing.JLabel lblPhy;
-    private javax.swing.JLabel lblThetaMirror;
-    private DoubleJSlider jSliderPhyMirror;
-    private DoubleJSlider jSliderThetaMirror;
-    private javax.swing.JTextField txtPhyMirror;
-    private javax.swing.JTextField txtThetaMirror;
-    private javax.swing.JButton buttonMirrorLensOn;
-    private javax.swing.JButton buttonMirrorDisplaySecondOn;
-    private javax.swing.JButton buttonMirrorGeneral;
-    private javax.swing.JPanel jPanelMirror;
     // END Mirror
     // Mirror
-    private javax.swing.JLabel lblPhyExp3;
-    private javax.swing.JLabel lblThetaMirrorExp3;
-    private DoubleJSlider jSliderPhyMirrorExp3;
-    private DoubleJSlider jSliderThetaMirrorExp3;
-    private javax.swing.JTextField txtPhyMirrorExp3;
-    private javax.swing.JTextField txtThetaMirrorExp3;
-    private javax.swing.JButton buttonMirrorLensOnExp3;
-    private javax.swing.JButton buttonMirrorDisplaySecondOnExp3;
-    private javax.swing.JButton buttonMirrorGeneralExp3;
-    private javax.swing.JPanel jPanelMirrorExp3;
-    private javax.swing.JPanel panelButtonMirrorExp3;
     // END Mirror
-    private javax.swing.JPanel jPanelNoSelect;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JPanel jPanelCyllindrical;
-    private javax.swing.JPanel jPanelCyllindrical1;
-    private javax.swing.JPanel jPanelMicroscope;
-    private javax.swing.JPanel jPanelLensMichelson;
-    private javax.swing.JPanel jPanelLens;
+    private javax.swing.JComboBox comboBoxExperiments;
     private javax.swing.JTabbedPane jTabbedControler;
     private javax.swing.JLayeredPane layoutControl;
-    private javax.swing.JPanel panelCalebration;
     private javax.swing.JPanel panelGeneral;
-    private javax.swing.JPanel panelPhase;
-    private javax.swing.JPanel panelLayoutExp1;
-    private javax.swing.JPanel panelSignal;
-    private javax.swing.JPanel panelSignalPhoto;
-    private javax.swing.JPanel panelExp2;
-    private javax.swing.JPanel panelSlit;
-    private javax.swing.JPanel panelDoubleSlit;
+    
     private javax.swing.JPanel panelCGH1;
     private javax.swing.JPanel panelCGH3;
     private javax.swing.JPanel panelCGH4;
@@ -9936,241 +3573,13 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelCGH10;
     private javax.swing.JTabbedPane tabbedControl;
     private javax.swing.JPanel jPanelPattern;
-    private javax.swing.JLabel jLabelSelectExperiment;
-    private javax.swing.JTabbedPane jTabbedPaneOptics;
+    private javax.swing.JLabel lblSelectExperiment;
+    private javax.swing.JTabbedPane tabbedPaneOptics;
     private javax.swing.JPanel layoutDiagram;
     private javax.swing.JPanel layoutDiagramFull;
     private byte layoutDiagramFullOpen = 0;
     private byte layoutDescriptionFullOpen = 0;
-    private byte frameLensOnOpen = 0;
-    // Spectometer
-    private javax.swing.JLabel lblPhySpectometer;
-    private javax.swing.JLabel lblThetaMirrorSpectometer;
-    private DoubleJSlider jSliderPhyMirrorSpectometer;
-    private DoubleJSlider jSliderThetaMirrorSpectometer;
-    private javax.swing.JTextField txtPhyMirrorSpectometer;
-    private javax.swing.JTextField txtThetaMirrorSpectometer;
-    private javax.swing.JButton buttonMirrorSpectometerLensOn;
-    private javax.swing.JButton buttonMirrorSpectometerDisplaySecondOn;
-    private javax.swing.JButton buttonMirrorSpectometerGeneral;
-    private javax.swing.JPanel jPanelMirrorSpectometer;
-    // Fresnel
-    private javax.swing.JButton buttonOpenFileFresnel;
-    private javax.swing.JPanel jPanelFresnel;
-    private javax.swing.JButton button11LensOnFresnel;
-    private javax.swing.JButton buttonSecondFresnel;
-    private javax.swing.JButton buttonGeneralFresnel;
-    private javax.swing.JLabel label_fresnel_height;
-    private javax.swing.JLabel label_fresnel_width;
-    private javax.swing.JSlider s_fresnel_height;
-    private javax.swing.JSlider s_fresnel_width;
-    private javax.swing.JTextField text_fresnel_height;
-    private javax.swing.JTextField text_fresnel_width;
-    private javax.swing.JLabel lblPleaseSelectFresnel;
-    // Talbot
-    private javax.swing.JPanel jPanelTalbot;
-     private javax.swing.JPanel jPanelTalbotPhoto;
-    /*
-     *@Param Slit
-     */
-    private javax.swing.JButton buttonGennerateSlit;
-    private javax.swing.JButton buttonSecondDisplaySlit;
-    private javax.swing.JButton buttong11LensOnSlit;
-    private javax.swing.JComboBox comboBoxSlit;
-    private javax.swing.JLabel jLabelSpacingSlit;
-    private javax.swing.JLabel lblGraySlit;
-    private javax.swing.JLabel lblHeightSlit;
-    private javax.swing.JLabel lblPosSlit;
-    private javax.swing.JLabel lblRotationSlit;
-    private javax.swing.JLabel lblWidthSlit;
-    private javax.swing.JSlider s_single_gray;
-    private javax.swing.JSlider s_single_height;
-    private javax.swing.JSlider s_single_position;
-    private javax.swing.JSlider s_single_rotation;
-    private javax.swing.JSlider s_single_spacing;
-    private javax.swing.JSlider s_single_width;
-    private javax.swing.JTextField text_single_gray;
-    private javax.swing.JTextField text_single_height;
-    private javax.swing.JTextField text_single_position;
-    private javax.swing.JTextField text_single_rotation;
-    private javax.swing.JTextField text_single_spacing;
-    private javax.swing.JTextField text_single_width;
-    private int slit = 1;
-    // double slit
-    private javax.swing.JButton buttonGennerateDoubleSlit;
-    private javax.swing.JButton buttonSecondDisplayDoubleSlit;
-    private javax.swing.JButton buttong11LensOnDoubleSlit;
-    private javax.swing.JLabel jLabelSpacingDoubleSlit;
-    private javax.swing.JLabel lblGrayDoubleSlit;
-    private javax.swing.JLabel lblHeightDoubleSlit;
-    private javax.swing.JLabel lblPosDoubleSlit;
-    private javax.swing.JLabel lblRotationDoubleSlit;
-    private javax.swing.JLabel lblWidthDoubleSlit;
-    private javax.swing.JSlider s_single_grayDoubleSlit;
-    private javax.swing.JSlider s_single_heightDoubleSlit;
-    private javax.swing.JSlider s_single_positionDoubleSlit;
-    private javax.swing.JSlider s_single_rotationDoubleSlit;
-    private javax.swing.JSlider s_single_spacingDoubleSlit;
-    private javax.swing.JSlider s_single_widthDoubleSlit;
-    private javax.swing.JTextField text_single_grayDoubleSlit;
-    private javax.swing.JTextField text_single_heightDoubleSlit;
-    private javax.swing.JTextField text_single_positionDoubleSlit;
-    private javax.swing.JTextField text_single_rotationDoubleSlit;
-    private javax.swing.JTextField text_single_spacingDoubleSlit;
-    private javax.swing.JTextField text_single_widthDoubleSlit;
-    /*
-     *@Param SignalProcessing 
-     */
-    private javax.swing.JButton button11LensOnProcessing;
-    private javax.swing.JButton buttonGennerateProcessing;
-    private javax.swing.JButton buttonSecondDisplayProcessing;
-    private javax.swing.JLabel jLabelGrayProcessing;
-    private javax.swing.JLabel lblHeightY;
-    private javax.swing.JLabel lblHeightX;
-    private javax.swing.JLabel lblPosX;
-    private javax.swing.JLabel lblPosY;
-    private javax.swing.JLabel lblRotationProcessing;
-    private javax.swing.JLabel lblSpacingProcessing;
-    private javax.swing.JLabel lblWidthY;
-    private javax.swing.JLabel lblWidthX;
-    private javax.swing.JSlider s_processing_gray;
-    private javax.swing.JSlider s_processing_height_x;
-    private javax.swing.JSlider s_processing_height_y;
-    private javax.swing.JSlider s_processing_pos_y;
-    private javax.swing.JSlider s_processing_positionx;
-    private javax.swing.JSlider s_processing_rotation;
-    private javax.swing.JSlider s_processing_width_x;
-    private javax.swing.JSlider s_processing_width_y;
-    private javax.swing.JSlider s_processing_spacing;
-    private javax.swing.JTextField text_height_processing_x;
-    private javax.swing.JTextField text_height_processing_y;
-    private javax.swing.JTextField text_position_processing_x;
-    private javax.swing.JTextField text_position_processing_y;
-    private javax.swing.JTextField text_processing_gray;
-    private javax.swing.JTextField text_rotation_processing;
-    private javax.swing.JTextField text_width_processing_x;
-    private javax.swing.JTextField text_width_processing_y;
-    private javax.swing.JTextField text_processing_spacing;
-    /*
-     *@Param Talbot
-     */
-    private javax.swing.JButton button11LensOntalbot;
-    private javax.swing.JButton buttonGenneratetalbot;
-    private javax.swing.JButton buttonSecondDisplaytalbot;
-    private javax.swing.JLabel jLabelGraytalbot;
-    private javax.swing.JLabel lblHeightYTalbot;
-    private javax.swing.JLabel lblHeightXTalbot;
-    private javax.swing.JLabel lblPosXTalbot;
-    private javax.swing.JLabel lblPosYTalbot;
-    private javax.swing.JLabel lblRotationtalbot;
-    private javax.swing.JLabel lblSpacingtalbot;
-    private javax.swing.JLabel lblWidthYTalbot;
-    private javax.swing.JLabel lblWidthXTalbot;
-    private javax.swing.JSlider s_talbot_gray;
-    private javax.swing.JSlider s_talbot_height_x;
-    private javax.swing.JSlider s_talbot_height_y;
-    private javax.swing.JSlider s_talbot_pos_y;
-    private javax.swing.JSlider s_talbot_positionx;
-    private javax.swing.JSlider s_talbot_rotation;
-    private javax.swing.JSlider s_talbot_width_x;
-    private javax.swing.JSlider s_talbot_width_y;
-    private javax.swing.JSlider s_talbot_spacing;
-    private javax.swing.JTextField text_height_talbot_x;
-    private javax.swing.JTextField text_height_talbot_y;
-    private javax.swing.JTextField text_position_talbot_x;
-    private javax.swing.JTextField text_position_talbot_y;
-    private javax.swing.JTextField text_talbot_gray;
-    private javax.swing.JTextField text_rotation_talbot;
-    private javax.swing.JTextField text_width_talbot_x;
-    private javax.swing.JTextField text_width_talbot_y;
-    private javax.swing.JTextField text_talbot_spacing;
-    private javax.swing.JButton buttonOpenFileTalbotPhoto;
-    private javax.swing.JLabel lblPleaseSelectTalbotPhoto;
-    private javax.swing.JButton buttonSecondTalbotPhoto;
-    private javax.swing.JButton button11LensOnTalbotPhoto;
-    private javax.swing.JButton buttonGeneralTalbotPhoto;
-    // Import file
-    private javax.swing.JPanel panelImportfile;
-    private javax.swing.JButton buttonOpenFileImportFile;
-    private javax.swing.JLabel lblPleaseSelectImportFile;
-    private javax.swing.JButton buttonSecondImportFile;
-    private javax.swing.JButton button11LensOnImportFile;
-    private javax.swing.JButton buttonGeneralImportFile;
-    private javax.swing.JComboBox jComboBoxImportFile;
-    private javax.swing.JLabel lblSelectExper_Importfile;
-    private javax.swing.JLabel lblSelectFile_Importfile;
-    private javax.swing.JCheckBox checkboxUseImage;
     
-    private javax.swing.JButton buttonGennerateImportFile;
-    private javax.swing.JButton buttonSecondDisplayImportFile;
-    private javax.swing.JButton buttong11LensOnImportFile;
-    private javax.swing.JLabel jLabelSpacingImportFile;
-    private javax.swing.JLabel lblGrayImportFile;
-    private javax.swing.JLabel lblHeightImportFile;
-    private javax.swing.JLabel lblPosImportFile;
-    //private javax.swing.JLabel lblRotationImportFile;
-    private javax.swing.JLabel lblWidthImportFile;
-    private javax.swing.JSlider s_single_grayImportFile;
-    private javax.swing.JSlider s_single_heightImportFile;
-    private javax.swing.JSlider s_single_positionImportFile;
-    private javax.swing.JSlider s_single_rotationImportFile;
-    private javax.swing.JSlider s_single_spacingImportFile;
-    private javax.swing.JSlider s_single_widthImportFile;
-    private javax.swing.JTextField text_single_grayImportFile;
-    private javax.swing.JTextField text_single_heightImportFile;
-    private javax.swing.JTextField text_single_positionImportFile;
-    private javax.swing.JTextField text_single_rotationImportFile;
-    private javax.swing.JTextField text_single_spacingImportFile;
-    private javax.swing.JTextField text_single_widthImportFile;
-    
-    private javax.swing.JButton btnGenerteImportFile;
-    private javax.swing.JButton btnLensONImportFile;
-    private javax.swing.JButton btnSecondImportFile;
-    private javax.swing.JLabel lblE1;
-    private javax.swing.JLabel lblGrayLevelImportFile;
-    private javax.swing.JLabel lblHeaderImportFile;
-    private javax.swing.JLabel lblK;
-    private javax.swing.JLabel lblKR;
-    private javax.swing.JLabel lblPositionImportFile;
-    private javax.swing.JLabel lblR;
-    private javax.swing.JLabel lblRotationImportFile;
-    private javax.swing.JLabel lbltWidthImportFile;
-//    private DoubleJSlider sliderGrayLevelImportFile;
-//    private DoubleJSlider sliderPositionImportFile;
-    private javax.swing.JSlider sliderGrayLevelImportFile;
-    private javax.swing.JSlider sliderPositionImportFile;
-    private javax.swing.JSlider sliderRotationImportFile;
-    private javax.swing.JSlider sliderWidthImportFile;
-    private javax.swing.JTextField txtE1ImportFile;
-    private javax.swing.JTextField txtGrayLevelImportFile;
-    private javax.swing.JTextField txtK1RImportFile;
-    private javax.swing.JTextField txtKImportFile;
-    private javax.swing.JTextField txtPositionImportFile;
-    private javax.swing.JTextField txtRImportFile;
-    private javax.swing.JTextField txtRotationImportFile;
-    private javax.swing.JTextField txtWidthImportFile;
-    private javax.swing.JTextField txtFormula;
-    // Lens On 11 function
-    private int countLenOnProcessing = 1;
-    private int countLenOnTelephoto = 1;
-    private int countLenOnMirror = 1;
-    private int countLenOnMirrorExp3 = 1;
-    private int countLenOnCyllin = 1;
-    private int countLenOnMicroscope = 1;
-    private int countLenOnMichelson = 1;
-    private int countLenOnDiffaction = 1;
-    private int countLenOnSpectrometer = 1;
-    private int countLenOnTalbot = 1;
-    private int countLenOnTalbotPhoto = 1;
-    private int countLenOnPhase = 1;
-    private int countLenOnWavefront = 1;
-    private int countLenOnWavelength = 1;
-    private int countLenOnPhoto = 1;
-    private int countLenOnSlit = 1;
-    private int countLenOnDoubleSlit = 1;
-    private int countLenOnFresnel = 1;
-    private int countLenOnCalibration = 1;
-    private int countLenOnImportFile = 1;
     private int countLenOnCGH1 = 1;
     private int countLenOnCGH3 = 1;
     private int countLenOnCGH4 = 1;
@@ -10178,28 +3587,7 @@ public class EduControlerPattern extends OpticsPane {
     private int countLenOnCGH6 = 1;
     private int countLenOnCGH8 = 1;
     private int countLenOnCGH10 = 1;
-    private int countLenOnExp2 = 1;
-    // Second display
-    private int countSecondDisplayTelephoto = 1;
-    private int countSecondDisplayProcessing = 1;
-    private int countSecondDisplayMirror = 1;
-    private int countSecondDisplayMirrorExp3 = 1;
-    private int countSecondDisplayCyllin = 1;
-    private int countSecondDisplayMicroscope = 1;
-    private int countSecondDisplayMichelson = 1;
-    private int countSecondDisplayDiffaction = 1;
-    private int countSecondDisplaySpectrometer = 1;
-    private int countSecondDisplayTalbot = 1;
-    private int countSecondDisplayTalbotPhoto = 1;
-    private int countSecondDisplayPhase = 1;
-    private int countSecondDisplayWavefront = 1;
-    private int countSecondDisplayWavelength = 1;
-    private int countSecondDisplayPhoto = 1;
-    private int countSecondDisplaySlit = 1;
-    private int countSecondDisplayDoubleSlit = 1;
-    private int countSecondDisplayFresnel = 1;
-    private int countSecondDisplayCalibration = 1;
-    private int countSecondDisplayImportFile = 1;
+    
     private int countSecondDisplayCGH1 = 1;
     private int countSecondDisplayCGH3 = 1;
     private int countSecondDisplayCGH4 = 1;
@@ -10207,26 +3595,8 @@ public class EduControlerPattern extends OpticsPane {
     private int countSecondDisplayCGH6 = 1;
     private int countSecondDisplayCGH8 = 1;
     private int countSecondDisplayCGH10 = 1;
-    private int countSecondDisplayExp2 = 1;
     
     DoubleJSlider slider;
-    /*
-     * Photo
-     */
-    private javax.swing.JButton button11LensOnPhoto;
-    private javax.swing.JButton buttonGeneralPhoto;
-    private javax.swing.JButton buttonSecondPhoto;
-    private javax.swing.JLabel lblPleaseSelectPhoto;
-    /*
-     *@Param Phase retarder
-     */
-    private javax.swing.JButton button11LensOnPhase;
-    private javax.swing.JButton buttonGeneralPhase;
-    private javax.swing.JButton buttonOpenFile;
-    private javax.swing.JButton buttonSecondPhase;
-    private javax.swing.JLabel lblZoom;
-    private javax.swing.JSlider s_phase_zoom;
-    private javax.swing.JTextField txtZoom;
     private javax.swing.JFileChooser openFile;
     //
     private javax.swing.JTabbedPane tabbedDesLog;
@@ -10241,19 +3611,6 @@ public class EduControlerPattern extends OpticsPane {
     private JFrame magFrameLenon;
     private JFrame diagramFullScreen;
     private JFrame descriptionFullScreen;
-    
-    // Calibration
-    public javax.swing.JLabel lblFocalCalibration;
-    private javax.swing.JLabel lblXPosCalibration;
-    private javax.swing.JLabel lblYPosCalibration;
-    private DoubleJSlider jSliderXPositionCalibration;
-    private DoubleJSlider jSliderYPositionCalibration;
-    private javax.swing.JTextField txtXPositionCalibration;
-    private javax.swing.JTextField txtYPositionCalibration;
-    private javax.swing.JButton buttonCalibrationLensOn;
-    private javax.swing.JButton buttonCalibrationDisplaySecondOn;
-    private javax.swing.JButton buttonCalibrationGeneral;
-    private javax.swing.JButton buttonCalibrationReset;
     // Description
     private javax.swing.JLabel desFullScreen;
     private javax.swing.JLabel desNoSelect = new JLabel("");
@@ -10322,15 +3679,8 @@ public class EduControlerPattern extends OpticsPane {
     private File fileCGH6;
     private File fileCGH8;
     private File fileCGH10;
-    // Experiment 2
-    private javax.swing.JButton buttonOpenFileExp2;
-    private javax.swing.JButton button11LensOnExp2;
-    private javax.swing.JButton buttonGeneralExp2;
-    private javax.swing.JButton buttonSecondExp2;
-    private javax.swing.JLabel lblPleaseSelectExp2;
     
     private javax.swing.JPanel buttonPanel;
-    private javax.swing.JPanel panelMirror;
     private javax.swing.JPanel panelButtonCGH4;
     private javax.swing.JPanel panelButtonCGH1;
     private javax.swing.JPanel panelButtonCGH3;
@@ -10338,17 +3688,6 @@ public class EduControlerPattern extends OpticsPane {
     private javax.swing.JPanel panelButtonCGH6;
     private javax.swing.JPanel panelButtonCGH8;
     private javax.swing.JPanel panelButtonCGH10;
-    private javax.swing.JPanel panelMichelson;
-    private javax.swing.JPanel panelButtonCyllin;
-    //private javax.swing.JPanel panelButtonPhase;
-    private javax.swing.JPanel panelButtonExp2;
-    private javax.swing.JPanel panelButtonSlit;
-    private javax.swing.JPanel panelButtonDoubleSlit;
-    private javax.swing.JPanel panelButtonExp6;
-    private javax.swing.JPanel panelButtonSignalPhoto;
-    private javax.swing.JPanel panelButtonSignal;
-    private javax.swing.JPanel panelButtonTalbot;
-    private javax.swing.JPanel panelButtonTalbotPhoto;
     
     // Textbox CGH
     private javax.swing.JScrollPane scrollPaneCGH1;
@@ -10374,21 +3713,52 @@ public class EduControlerPattern extends OpticsPane {
     private String getTextCGH8;
     private String getTextCGH10;
     
-    // Refactor
-    private PhaseRetarderPanelExp1 phaseRetarderPanelExp1;
-    private PhaseRetarderPanelExp1 panelButtonPhaseExp1;
-    
+    // Experiment 1
+    private SLMBasicPanel slmBasicPanel;
+    // Experiment 1
+    private AmplitudePanel amplitudePanel;
+    // Experiment 3
+    private BeamSteere beamSteerePanel;
+    // Experiment 4
+    private MirrorMichelsonPanel mirrorMichelsonPanel;
+    private LensMichelsonPanel lensMichelsonPanel;
+    private CyllindricalMichelsonPanel cyllindricalMichelsonPanel;
+    // Experiment 5
+    private SingleSlitPanel singleSlitPanel;
+    private DoubleSlitPanel doubleSlitPanel;
+    // Experiment 6
+    private SpectremeterPanel spectremeterPanel;
+    // Experiment 7
+    private SignalPhotoPanel signalPhotoPanel;
+    private SignalPanel signalPanel;
+    // Experiment 8
     private PhaseRetarderPanel phaseRetarderPanel;
-    private PhaseRetarderPanel panelButtonPhase;
+    // Experiment 9
+    private TalbotPanel talbotPanel;
+    private TalbotPhotoPanel talbotPhotoPanel;
+    // Experiment 10
+    private MirrorWavefrontPanel mirrorWavefrontPanel;
+    private LensWavefrontPanel lensWavefrontPanel;
+    private CyllindricalWavefrontPanel cyllindricalWavefrontPanel;
+    // Beam Shifting tab
+    private BeamShiftingPanel beamShiftingPanel;
+    // Import Formula tab
+    private ImportFormulaPanel importFormulaPanel;
+    private ArrayList<OpticsPane> panelist;
     
-    private ResourceBundle bundleCGH;
+    @Override
+    public void updateRegenerate() {
+        for (OpticsPane op : panelist) {
+            op.updateRegenerate();
+            op.repaint();
+        }
+    }
     
-    //End 
     @Override
     public void updatePatternScreen() {
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
         if (!imageGenerated) {
-            image.updateLensParameter(xoff, yoff, focal);
+            image.updateLensParameter(0.0, 0.0, 0.0);
             image.paintLens();
             imageGenerated = true;
         }
@@ -10401,31 +3771,6 @@ public class EduControlerPattern extends OpticsPane {
         image.paintDefault();
         EduPatternShowOn.updateLensPatternPattern(image, "");
     }
-
-    @Override
-    public void updateRegenerate() {
-        PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-        if (imageGenerated) {
-            image.updateLensParameter(xoff, yoff, focal);
-            image.paintLens();
-        }
-    }
+    
     public PatternImage pimg;
-    static String logmessageLen = "Telephoto lens: Focal length=%s X Position=%s Y Position=%s";
-    static String logmessageLensMichelson = "Michelson lens: Focal length=%s X Position=%s Y Position=%s";
-    static String logmessageMicroscope = "Microscope : Focal length=%s X Position=%s Y Position=%s";
-    static String logmessageCyllin = "Cyllin : Focal length=%s X Position=%s Y Position=%s";
-    static String logmessageMirror = "Mirror : Phy=%s Theta=%s";
-    static String logmessageMirrorExp3 = "Beam steere : Phy=%s Theta=%s";
-    static String logmessageSlit = "Slit: w=%s r=%s p=%s g=%s";
-    static String logmessageDoubleSlit = "Double Slit: w=%s r=%s p=%s g=%s s=%s";
-    static String logmessageProcessing = "Signal processing: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
-    static String logmessageTalbot = "Talbot images: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
-    static String logmessagePhase = "Gray level: gray=%s";
-    static String logmessageMirrorSpectrometer = "Mirror Spectrometer : Phy=%s Theta=%s";
-    static String logmessageCalibration = "Fine tuning: Phy=%s Theta=%s";
-    static String logmessageSignalPhoto = "Signal photo: widht=%s height=%s";
-    static String logmessageTalbotPhoto = "Talbot photo: widht=%s height=%s";
-    static String logmessageExp2 = "Amplitude Modulation: widht=%s height=%s";
-    static String logmessageDefault = "Boot screen";
 }
