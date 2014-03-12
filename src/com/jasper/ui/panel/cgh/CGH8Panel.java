@@ -1,5 +1,5 @@
 /*
- * @(#)AmplitudePanel.java
+ * @(#)CGH8Panel.java
  *
  * Copyright (c) 2013 JASPER DISPLAY, Inc.
  * An Unpublished Work.  All Rights Reserved.
