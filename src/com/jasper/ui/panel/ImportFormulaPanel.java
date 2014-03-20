@@ -84,9 +84,9 @@ public class ImportFormulaPanel extends OpticsPane{
     private javax.swing.JTextField text_single_spacingImportFile;
     private javax.swing.JTextField text_single_widthImportFile;
     
-    private javax.swing.JButton btnGenerteImportFile;
-    private javax.swing.JButton btnLensONImportFile;
-    private javax.swing.JButton btnSecondImportFile;
+    private javax.swing.JButton buttonGenerate;
+    private javax.swing.JButton buttonLensON;
+    private javax.swing.JButton buttonSecond;
     private javax.swing.JLabel lblE1;
     private javax.swing.JLabel lblGrayLevelImportFile;
     private javax.swing.JLabel lblHeaderImportFile;
@@ -150,9 +150,9 @@ public class ImportFormulaPanel extends OpticsPane{
         lblGrayLevelImportFile = new javax.swing.JLabel();
         txtGrayLevelImportFile = new javax.swing.JTextField();
         sliderGrayLevelImportFile = new javax.swing.JSlider();
-        btnGenerteImportFile = new javax.swing.JButton();
-        btnLensONImportFile = new javax.swing.JButton();
-        btnSecondImportFile = new javax.swing.JButton();
+        buttonGenerate = new javax.swing.JButton();
+        buttonLensON = new javax.swing.JButton();
+        buttonSecond = new javax.swing.JButton();
         txtFormula = new javax.swing.JTextField();
 
         lblHeaderImportFile.setText("U1 = ");
@@ -188,11 +188,11 @@ public class ImportFormulaPanel extends OpticsPane{
 
         txtGrayLevelImportFile.setText("255");
 
-        btnGenerteImportFile.setText(labels.getString("btnGenerate"));
+        buttonGenerate.setText(labels.getString("btnGenerate"));
 
-        btnLensONImportFile.setText(labels.getString("btnLensOn"));
+        buttonLensON.setText(labels.getString("btnLensOn"));
 
-        btnSecondImportFile.setText(labels.getString("btnSecondDisplayOn"));
+        buttonSecond.setText(labels.getString("btnSecondDisplayOn"));
         
         Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sliderWidthImportFile, org.jdesktop.beansbinding.ELProperty.create("${value}"), txtWidthImportFile, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -236,42 +236,42 @@ public class ImportFormulaPanel extends OpticsPane{
             }
         });
         
-        btnGenerteImportFile.setText(labels.getString("btnGenerate"));
-        btnGenerteImportFile.addActionListener(new java.awt.event.ActionListener() {
+        buttonGenerate.setText(labels.getString("btnGenerate"));
+        buttonGenerate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedImportFile(evt);
             }
         });
 
-        btnLensONImportFile.setEnabled(false);
-        btnLensONImportFile.setText(labels.getString("btnLensOn"));
-        btnLensONImportFile.addActionListener(new java.awt.event.ActionListener() {
+        buttonLensON.setEnabled(false);
+        buttonLensON.setText(labels.getString("btnLensOn"));
+        buttonLensON.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button11LensOnImportFileActionPerformed(evt);
                 countLenOnImportFile++;
                 if (countLenOnImportFile % 2 == 0) {
-                    btnLensONImportFile.setText(labels.getString("btnLensOff"));
+                    buttonLensON.setText(labels.getString("btnLensOff"));
                     panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                             patternFrameDoubleClick.show();
                         }
                         });
                 } else {
-                    btnLensONImportFile.setText(labels.getString("btnLensOn"));
+                    buttonLensON.setText(labels.getString("btnLensOn"));
                 }
             }
         });
 
-        btnSecondImportFile.setEnabled(false);
-        btnSecondImportFile.setText(labels.getString("btnSecondDisplayOn"));
-        btnSecondImportFile.addActionListener(new java.awt.event.ActionListener() {
+        buttonSecond.setEnabled(false);
+        buttonSecond.setText(labels.getString("btnSecondDisplayOn"));
+        buttonSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedImportFile(evt);
                 countSecondDisplayImportFile++;
                 if (countSecondDisplayImportFile % 2 == 0) {
-                    btnSecondImportFile.setText(labels.getString("btnSecondDisplayOff"));
+                    buttonSecond.setText(labels.getString("btnSecondDisplayOff"));
                 } else {
-                    btnSecondImportFile.setText(labels.getString("btnSecondDisplayOn"));
+                    buttonSecond.setText(labels.getString("btnSecondDisplayOn"));
                 }
             }
         });
@@ -284,11 +284,11 @@ public class ImportFormulaPanel extends OpticsPane{
                 .addGap(5, 5, 5)
                 .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layoutImportFile.createSequentialGroup()
-                        .addComponent(btnGenerteImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnLensONImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonLensON, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnSecondImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 155, Short.MAX_VALUE))
                     .addGroup(layoutImportFile.createSequentialGroup()
                         .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -371,9 +371,9 @@ public class ImportFormulaPanel extends OpticsPane{
                         .addComponent(txtGrayLevelImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(114, 114, 114)
                 .addGroup(layoutImportFile.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGenerteImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLensONImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSecondImportFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonLensON, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSecond, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 )
         );
     }
@@ -389,8 +389,8 @@ public class ImportFormulaPanel extends OpticsPane{
     private void sliderGenerateActionPerformedImportFile(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedImportFile
         actionTag = "ImportFile";
         if (parseArguments()) {
-            btnLensONImportFile.setEnabled(true);
-            btnSecondImportFile.setEnabled(true);
+            buttonLensON.setEnabled(true);
+            buttonSecond.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
@@ -401,15 +401,11 @@ public class ImportFormulaPanel extends OpticsPane{
         }
     }//GEN-LAST:event_sliderGenerateActionPerformedImportFile
     
-      /*
-     * Import File
-     */
-
     private void buttonGenerateActionPerformedImportFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedImportFile
         actionTag = "ImportFile";
         if (parseArguments()) {
-            btnLensONImportFile.setEnabled(true);
-            btnSecondImportFile.setEnabled(true);
+            buttonLensON.setEnabled(true);
+            buttonSecond.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateParameterImportFile(k, r, e, kr, width_importFile, position_importFile, rotation_importFile, grayLevel_importFile, formula);
@@ -457,7 +453,7 @@ public class ImportFormulaPanel extends OpticsPane{
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                             countLenOnImportFile--;
-                            btnLensONImportFile.setText(labels.getString("btnLensOn"));
+                            buttonLensON.setText(labels.getString("btnLensOn"));
                             magFrameLenon.dispose();
                     }
                 });

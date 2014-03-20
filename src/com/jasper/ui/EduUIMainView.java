@@ -20,9 +20,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 public class EduUIMainView extends javax.swing.JFrame {
 
@@ -59,7 +56,7 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuItemLanguageChineseSimplified = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
         jMenuItemAbout = new javax.swing.JMenuItem();
-        panelOptic =  new EduControlerPattern(locale);
+        panelOptic =  new EduControllerPattern(locale);
 
         // add optics panes to panelist
         panelist = new ArrayList<OpticsPane>();

@@ -1,5 +1,5 @@
 /*
- * @(#)EduControlerPattern.java
+ * @(#)EduControllerPattern.java
  *
  * Copyright (c) 2013 JASPER DISPLAY, Inc.
  * An Unpublished Work.  All Rights Reserved.
@@ -63,12 +63,12 @@ import java.util.ResourceBundle;
  *
  * @author sonnv
  */
-public class EduControlerPattern extends OpticsPane {
+public class EduControllerPattern extends OpticsPane {
 
     PatternImage image1 = new PatternImage();
     ResourceBundle labels;
 
-    public EduControlerPattern(int locale) {
+    public EduControllerPattern(int locale) {
         labels = ResourceBundle.getBundle("resources/Text", EduUIMainView.supportedLocales[locale]);
         initComponents();
         image1 = ((EduPatternJPanel) panelPattern).pimage;

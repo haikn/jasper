@@ -43,10 +43,8 @@ import javax.swing.JTextArea;
 public class BeamShiftingPanel extends OpticsPane{
      PatternImage image1 = new PatternImage();
     ResourceBundle labels;
-    private String actionTag = "Len";
+    private String actionTag = "BeamShifting";
     
-    private javax.swing.JSlider sliderFocal;
-    private javax.swing.JTextField textFocal;
     private JPanel panelPattern;
     private JFrame magFrameLenon;
     private double xoff = 0.0, yoff = 0.0, focal = 0.0;
@@ -55,19 +53,16 @@ public class BeamShiftingPanel extends OpticsPane{
     public javax.swing.JLabel lblFocalCalibration;
     private javax.swing.JLabel lblXPosCalibration;
     private javax.swing.JLabel lblYPosCalibration;
-    private DoubleJSlider jSliderFocalCalibration;
     private DoubleJSlider jSliderXPositionCalibration;
     private DoubleJSlider jSliderYPositionCalibration;
-    private javax.swing.JTextField txtFocalCalibration;
     private javax.swing.JTextField txtXPositionCalibration;
     private javax.swing.JTextField txtYPositionCalibration;
-    private javax.swing.JButton buttonCalibrationLensOn;
-    private javax.swing.JButton buttonCalibrationDisplaySecondOn;
-    private javax.swing.JButton buttonCalibrationGeneral;
-    private javax.swing.JButton buttonCalibrationReset;
+    private javax.swing.JButton buttonLensOn;
+    private javax.swing.JButton buttonDisplaySecondOn;
+    private javax.swing.JButton buttonGeneral;
     
-    static String logmessageCalibration = "Fine tuning: Phy=%s Theta=%s";
-    private double xoffCalibration = 0, yoffCalibration = 50, focalCalibration = 522;
+    static String logmessageCalibration = "Beam Shifting: Phy=%s Theta=%s";
+    private double xoffCalibration = 0, yoffCalibration = 0;
     private int countSecondDisplayCalibration = 1;
     private int countLenOnCalibration = 1;
     private javax.swing.JPanel panelCalebration;
@@ -90,61 +85,49 @@ public class BeamShiftingPanel extends OpticsPane{
         lblYPosCalibration = new javax.swing.JLabel();
         txtXPositionCalibration = new javax.swing.JTextField();
         txtYPositionCalibration = new javax.swing.JTextField();
-        buttonCalibrationLensOn = new javax.swing.JButton();
-        buttonCalibrationDisplaySecondOn = new javax.swing.JButton();
-        buttonCalibrationGeneral = new javax.swing.JButton();
+        buttonLensOn = new javax.swing.JButton();
+        buttonDisplaySecondOn = new javax.swing.JButton();
+        buttonGeneral = new javax.swing.JButton();
         
         lblXPosCalibration.setText("Deviation angle (degree)");
         lblYPosCalibration.setText("Rotation (degree)");
         
-        buttonCalibrationReset = new javax.swing.JButton();
-        buttonCalibrationReset.setText("Default");
-        buttonCalibrationReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtXPositionCalibration.setText("0");
-                txtYPositionCalibration.setText("0");
-                jSliderXPositionCalibration.setValue(0);
-                jSliderYPositionCalibration.setValue(0);
-                buttonGenerateActionPerformedCalibration(evt);
-            }
-        });
-        
-        buttonCalibrationGeneral.setText(labels.getString("btnGenerate"));
-        buttonCalibrationGeneral.addActionListener(new java.awt.event.ActionListener() {
+        buttonGeneral.setText(labels.getString("btnGenerate"));
+        buttonGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGenerateActionPerformedCalibration(evt);
             }
         });
 
-        buttonCalibrationLensOn.setEnabled(false);
-        buttonCalibrationLensOn.setText(labels.getString("btnLensOn"));
-        buttonCalibrationLensOn.addActionListener(new java.awt.event.ActionListener() {
+        buttonLensOn.setEnabled(false);
+        buttonLensOn.setText(labels.getString("btnLensOn"));
+        buttonLensOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button11LensOnCalibrationActionPerformed(evt);
                 countLenOnCalibration++;
                 if (countLenOnCalibration % 2 == 0) {
-                    buttonCalibrationLensOn.setText(labels.getString("btnLensOff"));
+                    buttonLensOn.setText(labels.getString("btnLensOff"));
                     panelPattern.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                             patternFrameDoubleClick.show();
                         }
                         });
                 } else {
-                    buttonCalibrationLensOn.setText(labels.getString("btnLensOn"));
+                    buttonLensOn.setText(labels.getString("btnLensOn"));
                 }
             }
         });
 
-        buttonCalibrationDisplaySecondOn.setEnabled(false);
-        buttonCalibrationDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
-        buttonCalibrationDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
+        buttonDisplaySecondOn.setEnabled(false);
+        buttonDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
+        buttonDisplaySecondOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSecondGenerateActionPerformedCalibration(evt);
                 countSecondDisplayCalibration++;
                 if (countSecondDisplayCalibration % 2 == 0) {
-                    buttonCalibrationDisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
+                    buttonDisplaySecondOn.setText(labels.getString("btnSecondDisplayOff"));
                 } else {
-                    buttonCalibrationDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
+                    buttonDisplaySecondOn.setText(labels.getString("btnSecondDisplayOn"));
                 }
             }
         });
@@ -205,11 +188,11 @@ public class BeamShiftingPanel extends OpticsPane{
                     .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
                         //.addComponent(buttonCalibrationReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         //.addGap(18, 18, 18)
-                        .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCalibrationdricalLayout.createSequentialGroup()
                         .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lblYPosCalibration, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
@@ -244,9 +227,9 @@ public class BeamShiftingPanel extends OpticsPane{
                         .addComponent(jSliderYPositionCalibration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(232, 232, 232)
                 .addGroup(jPanelCalibrationdricalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCalibrationGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCalibrationLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCalibrationDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
     }
@@ -261,9 +244,9 @@ public class BeamShiftingPanel extends OpticsPane{
     
     private void buttonGenerateActionPerformedCalibration(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedCalibration
         if (parseArguments()) {
-            actionTag = "Calibration";
-            buttonCalibrationLensOn.setEnabled(true);
-            buttonCalibrationDisplaySecondOn.setEnabled(true);
+            actionTag = "BeamShifting";
+            buttonLensOn.setEnabled(true);
+            buttonDisplaySecondOn.setEnabled(true);
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
             image.paintCalibration();
@@ -274,7 +257,7 @@ public class BeamShiftingPanel extends OpticsPane{
 
     private void button11LensOnCalibrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11LensOnCalibrationActionPerformed
         if (parseArguments()) {
-            actionTag = "Calibration";
+            actionTag = "BeamShifting";
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
             image.paintCalibration();
@@ -306,7 +289,7 @@ public class BeamShiftingPanel extends OpticsPane{
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                             countLenOnCalibration--;
-                            buttonCalibrationLensOn.setText(labels.getString("btnLensOn"));
+                            buttonLensOn.setText(labels.getString("btnLensOn"));
                             magFrameLenon.dispose();
                     }
                 });
@@ -317,7 +300,7 @@ public class BeamShiftingPanel extends OpticsPane{
 	
 	private void buttonSecondGenerateActionPerformedCalibration(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSecondGenerateActionPerformedCyllin
             if (parseArguments()) {
-                actionTag = "Calibration";
+                actionTag = "BeamShifting";
                 GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 GraphicsDevice[] devices = env.getScreenDevices();
                 if (devices.length == 1) {
@@ -339,10 +322,10 @@ public class BeamShiftingPanel extends OpticsPane{
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedCyllin
 
     private void sliderGenerateActionPerformedCalibration(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedCyllin
-        actionTag = "Calibration";
+        actionTag = "BeamShifting";
         if (parseArguments()) {
-            buttonCalibrationLensOn.setEnabled(true);
-            buttonCalibrationDisplaySecondOn.setEnabled(true);
+            buttonLensOn.setEnabled(true);
+            buttonDisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
@@ -354,11 +337,8 @@ public class BeamShiftingPanel extends OpticsPane{
     }//GEN-LAST:event_sliderGenerateActionPerformedCyllin
     
     private void keyEventGenerateActionPerformedCalibration(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyEventGenerateActionPerformedCalibration
-        actionTag = "Calibration";
+        actionTag = "BeamShifting";
         if (parseArguments()) {
-            //buttonMirrorLensOn.setEnabled(true); => TCL comment
-           // buttonMirrorDisplaySecondOn.setEnabled(true); => TCL comment
-
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
             image.paintCalibration();
