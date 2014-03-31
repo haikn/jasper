@@ -248,8 +248,8 @@ public class BeamShiftingPanel extends OpticsPane{
             buttonLensOn.setEnabled(true);
             buttonDisplaySecondOn.setEnabled(true);
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-            image.paintCalibration();
+            image.updateBeamShiftingParameter(xoffCalibration, yoffCalibration);
+            image.paintBeamShifting();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
             imageGenerated = true;
         }
@@ -259,8 +259,8 @@ public class BeamShiftingPanel extends OpticsPane{
         if (parseArguments()) {
             actionTag = "BeamShifting";
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-            image.paintCalibration();
+            image.updateBeamShiftingParameter(xoffCalibration, yoffCalibration);
+            image.paintBeamShifting();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
             imageGenerated = true;
 
@@ -308,8 +308,8 @@ public class BeamShiftingPanel extends OpticsPane{
                     JOptionPane.showMessageDialog(null, "No second display is found", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-                    image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-                    image.paintCalibration();
+                    image.updateBeamShiftingParameter(xoffCalibration, yoffCalibration);
+                    image.paintBeamShifting();
                     EduPatternShowOn.updatePatternSecondDisplay(image, genLogCalibration());
                     //EduPatternTest.updateLensPatternPattern(image, genLog());
                     imageGenerated = true;
@@ -328,8 +328,8 @@ public class BeamShiftingPanel extends OpticsPane{
             buttonDisplaySecondOn.setEnabled(true);
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-            image.paintCalibration();
+            image.updateBeamShiftingParameter(xoffCalibration, yoffCalibration);
+            image.paintBeamShifting();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
             setLog(genLogCalibration());
             imageGenerated = true;
@@ -340,8 +340,8 @@ public class BeamShiftingPanel extends OpticsPane{
         actionTag = "BeamShifting";
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
-            image.updateCalibrationParameter(xoffCalibration, yoffCalibration);
-            image.paintCalibration();
+            image.updateBeamShiftingParameter(xoffCalibration, yoffCalibration);
+            image.paintBeamShifting();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCalibration());
             setLog(genLogCalibration());
             imageGenerated = true;

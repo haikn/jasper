@@ -99,9 +99,9 @@ public class PatternImage {
     public Dimension rectSize = new Dimension();
     public int zoom_layout = 80;
     public int action = 0;
-    // Calibrationn
-    private double xoffCalibration;
-    private double yoffCalibration;
+    // Beam  Shifting
+    private double xoffBeamShifting;
+    private double yoffBeamShifting;
     // Import file
     private double k;
     private double r;
@@ -244,9 +244,9 @@ public class PatternImage {
         title = "cylindrical " + xoff + " " + angle + " " + focal;
     }
 
-    public void updateCalibrationParameter(double xoff, double yoff) {
-        this.xoffCalibration = xoff;
-        this.yoffCalibration = yoff;
+    public void updateBeamShiftingParameter(double xoff, double yoff) {
+        this.xoffBeamShifting = xoff;
+        this.yoffBeamShifting = yoff;
         title = "calibration " + xoff + " " + yoff;
     }
 
@@ -554,14 +554,14 @@ public class PatternImage {
 
     }
 
-    public void paintCalibration() {
+    public void paintBeamShifting() {
         double[][] cHGPattern;
         WritableRaster raster = canvas.getRaster();
         double[] iArray = new double[1];
         double phase, x, y;
         //phy and theta uses "radian"
-        double phy = Math.toRadians(xoffCalibration);
-        double theta = Math.toRadians(yoffCalibration);
+        double phy = Math.toRadians(xoffBeamShifting);
+        double theta = Math.toRadians(yoffBeamShifting);
 
         double xm = Math.sin(phy) * Math.cos(theta);
         double ym = Math.sin(phy) * Math.sin(theta);
