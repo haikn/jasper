@@ -56,6 +56,7 @@ public class EduLensOn11 extends JComponent implements MouseMotionListener {
             return;
         }
         PatternImage image = ((EduPatternJPanel) comp).pimage;
+        // get width and height of pattent panel
         int patternAreaWidth = comp.getBounds().width;
         int patternAreaHeight = comp.getBounds().height;
         

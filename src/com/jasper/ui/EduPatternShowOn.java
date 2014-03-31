@@ -138,7 +138,6 @@ public class EduPatternShowOn {
     public static void updateLensPatternPattern(PatternImage pimage, String log) {
         controlFrame.logString(log);
         controlFrame.updatePattern(pimage);
-        //controlFrame.setImage(pimage);
         patternPanel.setImage(pimage);
         patternPanel.revalidate();
         patternPanel2.setImage(pimage);
@@ -152,7 +151,6 @@ public class EduPatternShowOn {
     public static void updatePatternSecondDisplay(PatternImage pimage, String log) {
         controlFrame.logString(log);
         controlFrame.updatePattern(pimage);
-        //controlFrame.setImage(pimage);
         patternPanel.setImage(pimage);
         patternPanel.revalidate();
 
@@ -164,14 +162,12 @@ public class EduPatternShowOn {
     public static void updateUiPatternPattern(PatternImage pimage, String log, String desc, String diagram) {
         controlFrame.logString(log);
         controlFrame.updatePattern(pimage);
-        //controlFrame.setImage(pimage);
         patternPanel.setImage(pimage);
         patternPanel.revalidate();
         patternPanel2.setImage(pimage);
         patternPanel2.revalidate();
 
         patternFrame.repaint();
-        //patternFrame.setVisible(true);
         controlFrame.repaint();
     }
 
@@ -208,7 +204,6 @@ public class EduPatternShowOn {
         controlFrame = new EduUIMainView();
         controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         controlFrame.setLocation(0, 0);
-        //controlFrame.setBounds(0,0,1300,760);
         controlFrame.setPreferredSize(new Dimension(1288, 748));
 
         controlFrame.pack();

@@ -137,7 +137,6 @@ public class EduUIMainView extends javax.swing.JFrame {
         setJMenuBar(jMenuBarMain);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        //jScrollPaneApp.setViewportView(panelOptic);
         jScrollPaneApp.getViewport().setView(panelOptic);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
