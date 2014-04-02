@@ -73,20 +73,22 @@ public class EduUIMainView extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextAreaLog);
 
         jMenuFile.setText(labels.getString("mnuFile"));
-        jMenuItemImportExperiment.setText(labels.getString("mnuImportExperiment"));
-        jMenuItemImportExperiment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jMenuItemExitActionPerformed(evt);
-            }
-        });
-        jMenuFile.add(jMenuItemImportExperiment);
-        jMenuItemImport.setText(labels.getString("mnuFileImport"));
-        jMenuItemImport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jMenuItemExitActionPerformed(evt);
-            }
-        });
-        jMenuFile.add(jMenuItemImport);
+        
+//        jMenuItemImportExperiment.setText(labels.getString("mnuImportExperiment"));
+//        jMenuItemImportExperiment.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                //jMenuItemExitActionPerformed(evt);
+//            }
+//        });
+//        jMenuFile.add(jMenuItemImportExperiment);
+//        
+//        jMenuItemImport.setText(labels.getString("mnuFileImport"));
+//        jMenuItemImport.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                //jMenuItemExitActionPerformed(evt);
+//            }
+//        });
+//        jMenuFile.add(jMenuItemImport);
 
         jMenuItemExit.setText(labels.getString("mnuExit"));
         jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
@@ -97,32 +99,32 @@ public class EduUIMainView extends javax.swing.JFrame {
         jMenuFile.add(jMenuItemExit);
 
         jMenuBarMain.add(jMenuFile);
+//
+//        jMenuLanguage.setText(labels.getString("mnuLanguage"));
+//        jMenuItemLanguageEnglish.setText(labels.getString("mnuItemLanguageEnglish"));
+//        jMenuItemLanguageEnglish.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                locale = 0;
+//            }
+//        });
+//        jMenuItemLanguageChineseTraditional.setText(labels.getString("mnuItemLanguageChineseTraditional"));
+//        jMenuItemLanguageChineseTraditional.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                locale = 1;
+//            }
+//        });
+//        
+//        jMenuItemLanguageChineseSimplified.setText(labels.getString("mnuItemLanguageChineseSimplified"));
+//        jMenuItemLanguageChineseSimplified.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                locale = 2;
+//            }
+//        });
 
-        jMenuLanguage.setText(labels.getString("mnuLanguage"));
-        jMenuItemLanguageEnglish.setText(labels.getString("mnuItemLanguageEnglish"));
-        jMenuItemLanguageEnglish.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locale = 0;
-            }
-        });
-        jMenuItemLanguageChineseTraditional.setText(labels.getString("mnuItemLanguageChineseTraditional"));
-        jMenuItemLanguageChineseTraditional.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locale = 1;
-            }
-        });
-        
-        jMenuItemLanguageChineseSimplified.setText(labels.getString("mnuItemLanguageChineseSimplified"));
-        jMenuItemLanguageChineseSimplified.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locale = 2;
-            }
-        });
-
-        jMenuLanguage.add(jMenuItemLanguageEnglish);
-        jMenuLanguage.add(jMenuItemLanguageChineseTraditional);
-        jMenuLanguage.add(jMenuItemLanguageChineseSimplified);
-        jMenuBarMain.add(jMenuLanguage);
+//        jMenuLanguage.add(jMenuItemLanguageEnglish);
+//        jMenuLanguage.add(jMenuItemLanguageChineseTraditional);
+//        jMenuLanguage.add(jMenuItemLanguageChineseSimplified);
+//        jMenuBarMain.add(jMenuLanguage);
 
         jMenuHelp.setText(labels.getString("mnuHelp"));
         jMenuItemAbout.setText(labels.getString("mnuAbout"));

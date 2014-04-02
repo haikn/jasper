@@ -198,7 +198,7 @@ public class SpectremeterPanel extends OpticsPane{
         panelButtonExp6Layout.setVerticalGroup(
                 panelButtonExp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelButtonExp6Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
+                .addGap(121, 121, 121)
                 .addGroup(panelButtonExp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonMirrorSpectometerDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonMirrorSpectometerLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +231,7 @@ public class SpectremeterPanel extends OpticsPane{
         jPanelMirrorSpectometerlLayout.setVerticalGroup(
                 jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelMirrorSpectometerlLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(25, 25, 25)
                 .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelMirrorSpectometerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lblPhySpectometer)

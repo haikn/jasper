@@ -31,6 +31,8 @@ import static com.jasper.ui.EduPatternShowOn.patternFrame;
 import static com.jasper.ui.EduPatternShowOn.patternFrameDoubleClick;
 import com.jasper.utils.Constant;
 import com.jasper.utils.Utils;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -51,6 +53,7 @@ public class CGH5Panel extends OpticsPane{
     private javax.swing.JButton buttonGeneral;
     private javax.swing.JButton buttonOpenFile;
     private javax.swing.JLabel lblPleaseSelect;
+    private javax.swing.JLabel lblFilePath;
     private File fileCGH;
     // Textbox CGH
     private javax.swing.JScrollPane scrollPane;
@@ -86,6 +89,7 @@ public class CGH5Panel extends OpticsPane{
         buttonLensOn = new javax.swing.JButton();
         buttonDisplaySecondOn = new javax.swing.JButton();
         lblPleaseSelect = new javax.swing.JLabel();
+        lblFilePath = new javax.swing.JLabel();
         
         buttonGeneral.setText(labels.getString("btnGenerate"));
         buttonGeneral.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +150,10 @@ public class CGH5Panel extends OpticsPane{
         });
         lblPleaseSelect.setText("Select the file to import.");
         
+        lblFilePath.setText(Constant.FILE_PATH + File.separator + Constant.FILE_NAME_CGH5);
+        lblFilePath.setForeground(Color.blue);
+        lblFilePath.setFont(new Font("Arial", Font.PLAIN , 10));
+        
         panelButton = new javax.swing.JPanel();
         javax.swing.GroupLayout panelButtonCGH5Layout = new javax.swing.GroupLayout(panelButton);
         panelButton.setLayout(panelButtonCGH5Layout);
@@ -193,6 +201,7 @@ public class CGH5Panel extends OpticsPane{
                 .addComponent(lblPleaseSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CGH5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -207,7 +216,8 @@ public class CGH5Panel extends OpticsPane{
                             .addComponent(lblPleaseSelect)))
                     .addGroup(CGH5Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(lblFilePath)
+                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
     }
     
@@ -250,10 +260,13 @@ public class CGH5Panel extends OpticsPane{
                 try {
                     buffImages = ImageIO.read(new File(fileCGH.getAbsolutePath()));
                     String file = fileCGH.getAbsolutePath();
+                    String fileName = fileCGH.getName();
                     PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                     image.paintCGH1(buffImages, fileCGH);
                     EduPatternShowOn.updateLensPatternPattern(image, "");
-                    setLog(Utils.dateNow() + ": " + file + "\n");
+                    setLog(Constant.TEXT_FORMAT_CGH + Constant.LOG_NAME + fileName + "\n"
+                            + Constant.LOG_DATE + Utils.dateNow() + "\n"
+                            + Constant.TEXT_FORMAT_CGH );
                     imageGenerated = true;
                 } catch (IOException ex) {
                     ex.printStackTrace();

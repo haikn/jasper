@@ -216,11 +216,11 @@ public class EduControllerPattern extends OpticsPane {
         // Beam Shifting tab
         beamShiftingPanel = new BeamShiftingPanel(labels, bindingGroup, panelPattern, tabbedControl);
         // Import Formula tab
-        importFormulaPanel = new ImportFormulaPanel(labels, bindingGroup, panelPattern, tabbedControl);
+        //importFormulaPanel = new ImportFormulaPanel(labels, bindingGroup, panelPattern, tabbedControl);
         // Dynamic tab
-        dynamicPanel = new DynamicPanel(labels, bindingGroup, panelPattern);
+        //dynamicPanel = new DynamicPanel(labels, bindingGroup, panelPattern);
         // Static tab
-        staticPanel = new StaticPanel(labels, bindingGroup, panelPattern);
+        //staticPanel = new StaticPanel(labels, bindingGroup, panelPattern);
         
         buttonPanel = new javax.swing.JPanel();
         tabbedPaneOptics.hide();
@@ -261,11 +261,11 @@ public class EduControllerPattern extends OpticsPane {
         // BeamShifting tab
         tabbedControl.addTab(labels.getString("tabBeamShifting"), beamShiftingPanel.getPanel());
         // Dynamic tab
-        tabbedControl.addTab(labels.getString("tabDynamic"), dynamicPanel.getPanel());
+        //tabbedControl.addTab(labels.getString("tabDynamic"), dynamicPanel.getPanel());
         // Dynamic tab
-        tabbedControl.addTab(labels.getString("tabStatic"), staticPanel.getPanel());
+        //tabbedControl.addTab(labels.getString("tabStatic"), staticPanel.getPanel());
         // Import formula tab
-        tabbedControl.addTab(labels.getString("tabImportFormula"), importFormulaPanel.getPanel());
+        //tabbedControl.addTab(labels.getString("tabImportFormula"), importFormulaPanel.getPanel());
         
         tabbedControl.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -321,7 +321,7 @@ public class EduControllerPattern extends OpticsPane {
                         jScrollDes.setViewportView(desMicroscope);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
                         
-                        jScrollPane2.setViewportView(amplitudePanel.getLogArea());
+                        //jScrollPane2.setViewportView(amplitudePanel.getLogArea());
                         tabbedDesLog.addTab("Log", jScrollPane2);
 
                         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
@@ -417,7 +417,7 @@ public class EduControllerPattern extends OpticsPane {
                         layoutDiagram.add(diagramLens);
                     }
                     
-                } else if (index == 2) {
+                } else if (index == 4) {
                     //generateActionPerformedDefault(null);
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
@@ -449,7 +449,7 @@ public class EduControllerPattern extends OpticsPane {
                     lblDiagram.setText(lblDiagram.getText());
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
-                } else if (index == 4) {
+                } else if (index == 2) {
                     //generateActionPerformedDefault(null);
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
@@ -1289,7 +1289,7 @@ public class EduControllerPattern extends OpticsPane {
         jScrollDes.setViewportView(desMicroscope);
         tabbedDesLog.addTab("Description", jScrollDes);
         
-        jScrollPane2.setViewportView(amplitudePanel.getLogArea());
+        //jScrollPane2.setViewportView(amplitudePanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
 
         lblDiagram.setIcon(new ImageIcon(getClass().getResource("/resources/diagram/exp_1_2_3.png")));
@@ -1397,7 +1397,7 @@ public class EduControllerPattern extends OpticsPane {
                         buttonPanel.removeAll();
                         buttonPanel.add(amplitudePanel.getPanelButton());
                         // log tab
-                        jScrollPane2.setViewportView(amplitudePanel.getLogArea());
+                        //jScrollPane2.setViewportView(amplitudePanel.getLogArea());
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     }
                 }
@@ -1545,7 +1545,7 @@ public class EduControllerPattern extends OpticsPane {
                         buttonPanel.removeAll();
                         buttonPanel.add(signalPhotoPanel.getPanelButton());
                         // log tab
-                        jScrollPane2.setViewportView(signalPhotoPanel.getLogArea());
+                        //jScrollPane2.setViewportView(signalPhotoPanel.getLogArea());
                         tabbedDesLog.addTab("Log", jScrollPane2);
                     }
                 }
@@ -1639,7 +1639,7 @@ public class EduControllerPattern extends OpticsPane {
                         buttonPanel.add(talbotPhotoPanel.getPanelButton());
                         // log tab
                         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
-                        jScrollPane2.setViewportView(talbotPhotoPanel.getLogArea());
+                        //jScrollPane2.setViewportView(talbotPhotoPanel.getLogArea());
                     }
                 }
                 

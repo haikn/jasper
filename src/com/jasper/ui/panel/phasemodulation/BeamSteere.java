@@ -199,7 +199,7 @@ public class BeamSteere extends OpticsPane{
         panelButtonMirrorLayout.setVerticalGroup(
                 panelButtonMirrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelButtonMirrorLayout.createSequentialGroup()
-                .addGap(134, 134, 134)
+                .addGap(121, 121, 121)
                 .addGroup(panelButtonMirrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonMirrorDisplaySecondOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(buttonMirrorLensOn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +229,7 @@ public class BeamSteere extends OpticsPane{
         jPanelMirrorlLayout.setVerticalGroup(
             jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMirrorlLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSliderPhyMirror, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelMirrorlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
