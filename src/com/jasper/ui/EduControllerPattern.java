@@ -294,7 +294,7 @@ public class EduControllerPattern extends OpticsPane {
                     tabbedDesLog.removeAll();
                     // check selected
                     if (tmpSelected == 0) {
-                        //jScrollDes.setViewportView(desTelephotoLens);
+                        //jScrollDes.setViewportView(desSLM);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), desNoSelect);
                         jTextAreaLog.setColumns(20);
                         jTextAreaLog.setRows(5);
@@ -307,7 +307,7 @@ public class EduControllerPattern extends OpticsPane {
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
                     } else if (tmpSelected == 1) {
-                        jScrollDes.setViewportView(desTelephotoLens);
+                        jScrollDes.setViewportView(desSLM);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
                         
                         jScrollPane2.setViewportView(slmBasicPanel.getLogArea());
@@ -318,7 +318,7 @@ public class EduControllerPattern extends OpticsPane {
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
                     } else if (tmpSelected == 2) {
-                        jScrollDes.setViewportView(desMicroscope);
+                        jScrollDes.setViewportView(desAmplitude);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
                         
                         //jScrollPane2.setViewportView(amplitudePanel.getLogArea());
@@ -329,7 +329,7 @@ public class EduControllerPattern extends OpticsPane {
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
                     } else if (tmpSelected == 3) {
-                        jScrollDes.setViewportView(desAberration);
+                        jScrollDes.setViewportView(desPhaseModulation);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
                         
                         jScrollPane2.setViewportView(beamSteerePanel.getLogArea());
@@ -394,7 +394,7 @@ public class EduControllerPattern extends OpticsPane {
                         diagramLens.add(lblDiagram);
                         layoutDiagram.add(diagramLens);
                     } else if (tmpSelected == 9) {
-                        jScrollDes.setViewportView(desTalbotImage);
+                        jScrollDes.setViewportView(desTalbot);
                         tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
                         
                         jScrollPane2.setViewportView(talbotPanel.getLogArea());
@@ -504,15 +504,15 @@ public class EduControllerPattern extends OpticsPane {
         jScrollPane2.setViewportView(jTextAreaLog);
         tabbedDesLog.addTab("Log", jScrollPane2);
         
-        // BEGIN show full screen for desTelephotoLens
-        desTelephotoLens.addMouseListener(new MouseAdapter() {
+        // BEGIN show full screen for desSLM
+        desSLM.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
               if (evt.getClickCount() == 2) {
                 desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
-                    desFullScreen.setText(desTelephotoLens.getText());
+                    desFullScreen.setText(desSLM.getText());
                 
                     descriptionFullScreen.setBackground(Color.WHITE);
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -550,17 +550,17 @@ public class EduControllerPattern extends OpticsPane {
               }
             }
         });
-        //  END show full screen for desTelephotoLens
+        //  END show full screen for desSLM
         
-        // BEGIN show full screen for desMicroscope
-        desMicroscope.addMouseListener(new MouseAdapter() {
+        // BEGIN show full screen for desAmplitude
+        desAmplitude.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
               if (evt.getClickCount() == 2) {
                   desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
-                    desFullScreen.setText(desMicroscope.getText());
+                    desFullScreen.setText(desAmplitude.getText());
                 
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                     URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
@@ -598,17 +598,17 @@ public class EduControllerPattern extends OpticsPane {
               }
             }
         });
-        //  END show full screen for desMicroscope
+        //  END show full screen for desAmplitude
         
-        // BEGIN show full screen for desAberration
-        desAberration.addMouseListener(new MouseAdapter() {
+        // BEGIN show full screen for desPhaseModulation
+        desPhaseModulation.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
               if (evt.getClickCount() == 2) {
                   desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
-                    desFullScreen.setText(desAberration.getText());
+                    desFullScreen.setText(desPhaseModulation.getText());
                 
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                     URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
@@ -645,7 +645,7 @@ public class EduControllerPattern extends OpticsPane {
               }
             }
         });
-        //  END show full screen for desAberration
+        //  END show full screen for desPhaseModulation
         
         // BEGIN show full screen for desMichelson
         desMichelson.addMouseListener(new MouseAdapter() {
@@ -880,15 +880,15 @@ public class EduControllerPattern extends OpticsPane {
             }
         });
         //  END show full screen for desPhaseRetarder
-        // BEGIN show full screen for desTalbotImage
-        desTalbotImage.addMouseListener(new MouseAdapter() {
+        // BEGIN show full screen for desTalbot
+        desTalbot.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
               if (evt.getClickCount() == 2) {
                   desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
-                    desFullScreen.setText(desTalbotImage.getText());
+                    desFullScreen.setText(desTalbot.getText());
                 
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                     URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
@@ -925,7 +925,7 @@ public class EduControllerPattern extends OpticsPane {
               }
             }
         });
-        //  END show full screen for desTalbotImage
+        //  END show full screen for desTalbot
         // BEGIN show full screen for desWavefront
         desWavefront.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -972,61 +972,16 @@ public class EduControllerPattern extends OpticsPane {
             }
         });
         //  END show full screen for desWavefront
-        // BEGIN show full screen for desWavelength
-        desWavelength.addMouseListener(new MouseAdapter() {
+        
+        // BEGIN show full screen for desBeamShifting
+        desBeamShifting.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
               if (evt.getClickCount() == 2) {
                   desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
-                    desFullScreen.setText(desWavelength.getText());
-                
-                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                    URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
-                    Toolkit kit = Toolkit.getDefaultToolkit();
-                    Image img = kit.createImage(url);
-                    descriptionFullScreen.setIconImage(img);
-                    descriptionFullScreen.getContentPane().add(desFullScreen);
-                    descriptionFullScreen.pack();
-                    layoutDescriptionFullOpen++;
-
-                    descriptionFullScreen.setBounds(0,0,screenSize.width, screenSize.height);
-                    descriptionFullScreen.setVisible(true);
-                   
-                    descriptionFullScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    descriptionFullScreen.setAlwaysOnTop(true);
-                    descriptionFullScreen.setResizable(true);
-                    descriptionFullScreen.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                            layoutDescriptionFullOpen = 0;
-                            descriptionFullScreen.dispose();
-                    }
-                    });
-                    descriptionFullScreen.addMouseListener(new MouseAdapter() {
-                        public void mouseClicked(MouseEvent evt) {
-                          if (evt.getClickCount() == 2) {
-                             layoutDescriptionFullOpen = 0;
-                            descriptionFullScreen.dispose();
-                          }
-                        }
-                    });
-                } else {
-                    JOptionPane.showMessageDialog(null, "This window is already open");
-                }
-              }
-            }
-        });
-        //  END show full screen for desWavelength
-        // BEGIN show full screen for desCalibration
-        desCalibration.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-              if (evt.getClickCount() == 2) {
-                  desFullScreen = new javax.swing.JLabel();
-                descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
-                
-                if(layoutDescriptionFullOpen ==  0){
-                    desFullScreen.setText(desCalibration.getText());
+                    desFullScreen.setText(desBeamShifting.getText());
                 
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                     URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
@@ -1063,16 +1018,16 @@ public class EduControllerPattern extends OpticsPane {
               }
             }
         });
-        //  END show full screen for desCalibration
-        // BEGIN show full screen for desImportfile
-        desImportfile.addMouseListener(new MouseAdapter() {
+        //  END show full screen for desBeamShifting
+        // BEGIN show full screen for desImportFormula
+        desImportFormula.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
               if (evt.getClickCount() == 2) {
                 desFullScreen = new javax.swing.JLabel();
                 descriptionFullScreen = new JFrame("JDC Education Kit - Description full screen");
                 
                 if(layoutDescriptionFullOpen ==  0){
-                    desFullScreen.setText(desImportfile.getText());
+                    desFullScreen.setText(desImportFormula.getText());
                 
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                     URL url = ClassLoader.getSystemResource("resources/jdclogo_48x48.png");
@@ -1109,7 +1064,7 @@ public class EduControllerPattern extends OpticsPane {
               }
             }
         });
-        //  END show full screen for desImportfile
+        //  END show full screen for desImportFormula
 
         //tabbedDiagram.addTab("Diagram", null);
         layoutDiagram.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -1260,7 +1215,7 @@ public class EduControllerPattern extends OpticsPane {
             
         });
         
-        jScrollDes.setViewportView(desTelephotoLens);
+        jScrollDes.setViewportView(desSLM);
         tabbedDesLog.addTab("Description", jScrollDes);
         
         jScrollPane2.setViewportView(slmBasicPanel.getLogArea());
@@ -1285,8 +1240,8 @@ public class EduControllerPattern extends OpticsPane {
         tabbedPaneOptics.addTab("Photo ", amplitudePanel.getPanel());
         buttonPanel.add(amplitudePanel.getPanelButton());
 
-        //tabbedDesLog.addTab("Description", desMicroscope);
-        jScrollDes.setViewportView(desMicroscope);
+        //tabbedDesLog.addTab("Description", desAmplitude);
+        jScrollDes.setViewportView(desAmplitude);
         tabbedDesLog.addTab("Description", jScrollDes);
         
         //jScrollPane2.setViewportView(amplitudePanel.getLogArea());
@@ -1332,7 +1287,7 @@ public class EduControllerPattern extends OpticsPane {
             }
         });
         
-        jScrollDes.setViewportView(desAberration);
+        jScrollDes.setViewportView(desPhaseModulation);
         tabbedDesLog.addTab("Description", jScrollDes);
         jScrollPane2.setViewportView(beamSteerePanel.getLogArea());
         tabbedDesLog.addTab("Log", jScrollPane2);
@@ -1646,7 +1601,7 @@ public class EduControllerPattern extends OpticsPane {
             }
         });
 
-        jScrollDes.setViewportView(desTalbotImage);
+        jScrollDes.setViewportView(desTalbot);
         tabbedDesLog.addTab("Description", jScrollDes);
         
         jTextAreaLog.setFont(new Font("Courier New", Font.PLAIN, 12));
@@ -1763,19 +1718,18 @@ public class EduControllerPattern extends OpticsPane {
     // Description
     private javax.swing.JLabel desFullScreen;
     private javax.swing.JLabel desNoSelect = new JLabel("");
-    private javax.swing.JLabel desTelephotoLens = EduDescription.desTelephotoLens;
-    private javax.swing.JLabel desMicroscope = EduDescription.desMicroscope;
-    private javax.swing.JLabel desAberration = EduDescription.desAberration;
+    private javax.swing.JLabel desSLM = EduDescription.desSLM;
+    private javax.swing.JLabel desAmplitude = EduDescription.desAmplitude;
+    private javax.swing.JLabel desPhaseModulation = EduDescription.desPhaseModulation;
     private javax.swing.JLabel desMichelson = EduDescription.desMichelson;
     private javax.swing.JLabel desDiffaction = EduDescription.desDiffaction;
     private javax.swing.JLabel desSpectrometer = EduDescription.desSpectrometer;
     private javax.swing.JLabel desSignalProcessing = EduDescription.desSignalProcessing;
     private javax.swing.JLabel desPhaseRetarder = EduDescription.desPhaseRetarder;
-    private javax.swing.JLabel desTalbotImage = EduDescription.desTalbotImage;
+    private javax.swing.JLabel desTalbot = EduDescription.desTalbot;
     private javax.swing.JLabel desWavefront = EduDescription.desWavefront;
-    private javax.swing.JLabel desWavelength = EduDescription.desWavelength;
-    private javax.swing.JLabel desCalibration = EduDescription.desCalibration;
-    private javax.swing.JLabel  desImportfile = EduDescription.desImportfile;
+    private javax.swing.JLabel desBeamShifting = EduDescription.desBeamShifting;
+    private javax.swing.JLabel  desImportFormula = EduDescription.desImportFormula;
     // Temp
     private byte tmpSelected = 0;
     
