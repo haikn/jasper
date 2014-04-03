@@ -448,7 +448,8 @@ public class PatternImage {
                 x2 = x1 * costheta - y1 * sintheta;
                 x2 = Math.pow(x2, 2.0);
                 //phase = fixpart * x2 + fixpart2 * y1;
-                phase = fixpart * x2 + fixpart2 * Math.pow(x2, 2.0);
+                //phase = fixpart * x2 + fixpart2 * Math.pow(x2, 2.0);
+                phase = fixpart * x2;
 
                 iArray[0] = phase2gray(phase);
                 raster.setPixel(j, i, iArray);
