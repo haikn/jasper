@@ -427,8 +427,8 @@ public class PatternImage {
         flag = 1;
         tuningFlag = true;
     }
-    // Cylindircal algorithms
-    public void paintCylindircal() {
+    // Cylindrical algorithms
+    public void paintCylindrical() {
         WritableRaster raster = canvas.getRaster();
         // wave=exp(1i*pi/wl*xt.^2);
         int[] iArray = new int[1];

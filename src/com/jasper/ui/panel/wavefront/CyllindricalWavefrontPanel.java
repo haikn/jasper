@@ -313,7 +313,7 @@ public class CyllindricalWavefrontPanel extends OpticsPane{
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-            image.paintCylindircal();
+            image.paintCylindrical();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
@@ -328,7 +328,7 @@ public class CyllindricalWavefrontPanel extends OpticsPane{
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-            image.paintCylindircal();
+            image.paintCylindrical();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
@@ -341,7 +341,7 @@ public class CyllindricalWavefrontPanel extends OpticsPane{
         if (parseArguments()) {
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-            image.paintCylindircal();
+            image.paintCylindrical();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
@@ -391,7 +391,7 @@ public class CyllindricalWavefrontPanel extends OpticsPane{
             } else {
                 PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
                 image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-                image.paintCylindircal();
+                image.paintCylindrical();
                 EduPatternShowOn.updatePatternSecondDisplay(image, genLogCyllin());
                 setLog(genLogCyllin());
                 //EduPatternTest.updateLensPatternPattern(image, genLog());
@@ -412,7 +412,7 @@ public class CyllindricalWavefrontPanel extends OpticsPane{
 
             PatternImage image = ((EduPatternJPanel) panelPattern).pimage;
             image.updateCyllindricalParameter(xoffCyllin, yoffCyllin, focalCyllin);
-            image.paintCylindircal();
+            image.paintCylindrical();
             EduPatternShowOn.updateLensPatternPattern(image, genLogCyllin());
             setLog(genLogCyllin());
             imageGenerated = true;
