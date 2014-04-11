@@ -1,11 +1,22 @@
 /*
  * @(#)TalbotPanel.java
  *
- * Copyright (c) 2013 JASPER DISPLAY, Inc.
- * An Unpublished Work.  All Rights Reserved.
- *
- * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
- * without permission from the copyright holder is strictly forbidden.
+ * This program is version 2.0 of JDC Education Kit for Optical Experiments.
+ * Copyright (C) Jasper Display Corporation 2013.
+ * This program is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU General Public
+ * License version 2.0 as published by the Free Software Foundation. 
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. 
+ * You may contact Jasper Display Corporation by email at info@jasperdisplay.com
+ * or by telephone at +1-408-855-6640.
+ * More information is provided at http://www.jasperdisplay.com/.
  */
 package com.jasper.ui.panel.talbot;
 
@@ -34,22 +45,22 @@ import org.jdesktop.beansbinding.BindingGroup;
 import static com.jasper.ui.EduPatternShowOn.patternFrameDoubleClick;
 import static com.jasper.ui.EduPatternShowOn.patternFrame;
 import javax.swing.JTextArea;
+
 /**
  *
  * @author sonnv
  */
-public class TalbotPanel extends OpticsPane{
+public class TalbotPanel extends OpticsPane {
+
     PatternImage image1 = new PatternImage();
     ResourceBundle labels;
     private String actionTag = "Len";
-    
     private javax.swing.JSlider sliderFocal;
     private javax.swing.JTextField textFocal;
     private JPanel panelPattern;
     private JFrame magFrameLenon;
     private double xoff = 0.0, yoff = 0.0, focal = 0.0;
-    
-     private javax.swing.JButton button11LensOntalbot;
+    private javax.swing.JButton button11LensOntalbot;
     private javax.swing.JButton buttonGenneratetalbot;
     private javax.swing.JButton buttonSecondDisplaytalbot;
     private javax.swing.JLabel jLabelGraytalbot;
@@ -79,8 +90,6 @@ public class TalbotPanel extends OpticsPane{
     private javax.swing.JTextField text_width_talbot_x;
     private javax.swing.JTextField text_width_talbot_y;
     private javax.swing.JTextField text_talbot_spacing;
-    
-    
     static String logmessageTalbot = "Talbot images: w_x=%s w_y=%s r=%s p_x=%s p_y=%s g=%s spac=%s";
     private int countSecondDisplayTalbot = 1;
     private int countLenOnTalbot = 1;
@@ -88,20 +97,20 @@ public class TalbotPanel extends OpticsPane{
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelButton;
     private javax.swing.JTextArea txtLogArea;
-    
-    public TalbotPanel(ResourceBundle labels, BindingGroup bindingGroup,JPanel panelPattern) {
+
+    public TalbotPanel(ResourceBundle labels, BindingGroup bindingGroup, JPanel panelPattern) {
         this.labels = labels;
         this.txtLogArea = new javax.swing.JTextArea();
         this.panelPattern = panelPattern;
         image1 = ((EduPatternJPanel) panelPattern).pimage;
-        
+
         initComponents(bindingGroup);
     }
-    
+
     private void initComponents(BindingGroup bindingGroup) {
         panel = new javax.swing.JPanel();
         panelButton = new javax.swing.JPanel();
-        
+
         lblWidthYTalbot = new javax.swing.JLabel();
         lblHeightYTalbot = new javax.swing.JLabel();
         lblRotationtalbot = new javax.swing.JLabel();
@@ -148,10 +157,10 @@ public class TalbotPanel extends OpticsPane{
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        text_width_talbot_y.addKeyListener(new KeyAdapter(){
+        text_width_talbot_y.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent ke) {
                 keyeventGenerateActionPerformedTalbot(ke);
-                if(text_width_talbot_y.getText() == null || text_width_talbot_y.getText().equals("")){
+                if (text_width_talbot_y.getText() == null || text_width_talbot_y.getText().equals("")) {
                     lblHeightYTalbot.setForeground(Color.red);
                 } else {
                     lblHeightYTalbot.setForeground(Color.black);
@@ -168,15 +177,15 @@ public class TalbotPanel extends OpticsPane{
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        text_height_talbot_y.addKeyListener(new KeyAdapter(){
+        text_height_talbot_y.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent ke) {
                 keyeventGenerateActionPerformedTalbot(ke);
-                if(text_height_talbot_y.getText() == null || text_height_talbot_y.getText().equals("")){
+                if (text_height_talbot_y.getText() == null || text_height_talbot_y.getText().equals("")) {
                     lblHeightXTalbot.setForeground(Color.red);
                 } else {
                     lblHeightXTalbot.setForeground(Color.black);
                 }
-                
+
             }
         });
         bindingGroup.addBinding(binding);
@@ -190,18 +199,18 @@ public class TalbotPanel extends OpticsPane{
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        text_rotation_talbot.addKeyListener(new KeyAdapter(){
+        text_rotation_talbot.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent ke) {
                 keyeventGenerateActionPerformedTalbot(ke);
-                if(text_rotation_talbot.getText() == null || text_rotation_talbot.getText().equals("")){
+                if (text_rotation_talbot.getText() == null || text_rotation_talbot.getText().equals("")) {
                     lblRotationtalbot.setForeground(Color.red);
                 } else {
                     lblRotationtalbot.setForeground(Color.black);
                 }
-                
+
             }
         });
-        
+
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_positionx, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_position_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -213,15 +222,15 @@ public class TalbotPanel extends OpticsPane{
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        text_position_talbot_x.addKeyListener(new KeyAdapter(){
+        text_position_talbot_x.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent ke) {
                 keyeventGenerateActionPerformedTalbot(ke);
-                if(text_position_talbot_x.getText() == null || text_position_talbot_x.getText().equals("")){
+                if (text_position_talbot_x.getText() == null || text_position_talbot_x.getText().equals("")) {
                     lblPosXTalbot.setForeground(Color.red);
                 } else {
                     lblPosXTalbot.setForeground(Color.black);
                 }
-                
+
             }
         });
         bindingGroup.addBinding(binding);
@@ -235,10 +244,10 @@ public class TalbotPanel extends OpticsPane{
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        text_position_talbot_y.addKeyListener(new KeyAdapter(){
+        text_position_talbot_y.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent ke) {
                 keyeventGenerateActionPerformedTalbot(ke);
-                if(text_position_talbot_y.getText() == null || text_position_talbot_y.getText().equals("")){
+                if (text_position_talbot_y.getText() == null || text_position_talbot_y.getText().equals("")) {
                     lblPosYTalbot.setForeground(Color.red);
                 } else {
                     lblPosYTalbot.setForeground(Color.black);
@@ -258,10 +267,10 @@ public class TalbotPanel extends OpticsPane{
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        text_talbot_gray.addKeyListener(new KeyAdapter(){
+        text_talbot_gray.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent ke) {
                 keyeventGenerateActionPerformedTalbot(ke);
-                if(text_talbot_gray.getText() == null || text_talbot_gray.getText().equals("")){
+                if (text_talbot_gray.getText() == null || text_talbot_gray.getText().equals("")) {
                     jLabelGraytalbot.setForeground(Color.red);
                 } else {
                     jLabelGraytalbot.setForeground(Color.black);
@@ -273,17 +282,17 @@ public class TalbotPanel extends OpticsPane{
         lblSpacingtalbot.setText(labels.getString("paramSpacing"));
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_spacing, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_talbot_spacing, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_spacing.setMaximum(image1.getBounds().height);
-         s_talbot_spacing.setMinimum(-(image1.getBounds().height));
+        s_talbot_spacing.setMinimum(-(image1.getBounds().height));
         s_talbot_spacing.setValue(0);
         s_talbot_spacing.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        text_talbot_spacing.addKeyListener(new KeyAdapter(){
+        text_talbot_spacing.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent ke) {
                 keyeventGenerateActionPerformedTalbot(ke);
-                if(text_talbot_spacing.getText() == null || text_talbot_spacing.getText().equals("")){
+                if (text_talbot_spacing.getText() == null || text_talbot_spacing.getText().equals("")) {
                     lblSpacingtalbot.setForeground(Color.red);
                 } else {
                     lblSpacingtalbot.setForeground(Color.black);
@@ -291,7 +300,7 @@ public class TalbotPanel extends OpticsPane{
             }
         });
         bindingGroup.addBinding(binding);
-        
+
         lblHeightXTalbot.setText("Width X");
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_width_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_width_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
         s_talbot_width_x.setMaximum(3866);
@@ -301,7 +310,7 @@ public class TalbotPanel extends OpticsPane{
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        
+
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, s_talbot_height_x, org.jdesktop.beansbinding.ELProperty.create("${value}"), text_height_talbot_x, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -312,15 +321,15 @@ public class TalbotPanel extends OpticsPane{
                 sliderGenerateActionPerformedTalbot(evt);
             }
         });
-        text_height_talbot_x.addKeyListener(new KeyAdapter(){
+        text_height_talbot_x.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent ke) {
                 keyeventGenerateActionPerformedTalbot(ke);
-                if(text_height_talbot_x.getText() == null || text_height_talbot_x.getText().equals("")){
+                if (text_height_talbot_x.getText() == null || text_height_talbot_x.getText().equals("")) {
                     lblHeightXTalbot.setForeground(Color.red);
                 } else {
                     lblHeightXTalbot.setForeground(Color.black);
                 }
-                
+
             }
         });
         bindingGroup.addBinding(binding);
@@ -345,7 +354,7 @@ public class TalbotPanel extends OpticsPane{
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                             patternFrameDoubleClick.show();
                         }
-                        });
+                    });
                 } else {
                     button11LensOntalbot.setText(labels.getString("btnLensOn"));
                 }
@@ -364,7 +373,7 @@ public class TalbotPanel extends OpticsPane{
                 }
             }
         });
-        
+
         javax.swing.GroupLayout panelButtonTalbotLayout = new javax.swing.GroupLayout(panelButton);
         panelButton.setLayout(panelButtonTalbotLayout);
         panelButtonTalbotLayout.setHorizontalGroup(
@@ -378,9 +387,7 @@ public class TalbotPanel extends OpticsPane{
                 .addComponent(button11LensOntalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(buttonSecondDisplaytalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE)
-                )
-                )));
+                .addContainerGap(190, Short.MAX_VALUE)))));
         panelButtonTalbotLayout.setVerticalGroup(
                 panelButtonTalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelButtonTalbotLayout.createSequentialGroup()
@@ -388,9 +395,8 @@ public class TalbotPanel extends OpticsPane{
                 .addGroup(panelButtonTalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                 .addComponent(buttonSecondDisplaytalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(button11LensOntalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(buttonGenneratetalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                ));
-        
+                .addComponent(buttonGenneratetalbot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))));
+
         javax.swing.GroupLayout jPaneltalbotLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(jPaneltalbotLayout);
         jPaneltalbotLayout.setHorizontalGroup(
@@ -446,8 +452,7 @@ public class TalbotPanel extends OpticsPane{
                 .addGap(17, 17, 17)
                 .addComponent(text_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addComponent(s_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                )));
+                .addComponent(s_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))))));
         jPaneltalbotLayout.setVerticalGroup(
                 jPaneltalbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneltalbotLayout.createSequentialGroup()
@@ -498,19 +503,19 @@ public class TalbotPanel extends OpticsPane{
                 .addComponent(s_talbot_gray, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabelGraytalbot)).addGap(0, 0, 0)));
     }
-    
+
     public JPanel getPanel() {
         return panel;
     }
-    
+
     public JPanel getPanelButton() {
         return panelButton;
     }
-    
+
     public JTextArea getLogArea() {
         return txtLogArea;
     }
-    
+
     private void sliderGenerateActionPerformedTalbot(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderGenerateActionPerformedTalbot
         actionTag = "Talbot";
         if (parseArguments()) {
@@ -525,6 +530,7 @@ public class TalbotPanel extends OpticsPane{
             imageGenerated = true;
         }
     }
+
     private void keyeventGenerateActionPerformedTalbot(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyeventGenerateActionPerformedTalbot
         actionTag = "Talbot";
         if (parseArguments()) {
@@ -539,7 +545,7 @@ public class TalbotPanel extends OpticsPane{
             imageGenerated = true;
         }
     }
-    
+
     private void buttonGenerateActionPerformedTalbot(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateActionPerformedTalbot
         actionTag = "Talbot";
         if (parseArguments()) {
@@ -578,7 +584,7 @@ public class TalbotPanel extends OpticsPane{
                 Toolkit kit = Toolkit.getDefaultToolkit();
                 Image img = kit.createImage(url);
                 magFrameLenon.setIconImage(img);
-                
+
                 EduLensOn11 mag = new EduLensOn11(panelPattern, new Dimension(120, 120));
                 magFrameLenon.getContentPane().add(mag);
                 magFrameLenon.pack();
@@ -589,9 +595,9 @@ public class TalbotPanel extends OpticsPane{
                 magFrameLenon.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magFrameLenon.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
-                            countLenOnTalbot--;
-                            button11LensOntalbot.setText(labels.getString("btnLensOn"));
-                            magFrameLenon.dispose();
+                        countLenOnTalbot--;
+                        button11LensOntalbot.setText(labels.getString("btnLensOn"));
+                        magFrameLenon.dispose();
                     }
                 });
             }
@@ -621,11 +627,10 @@ public class TalbotPanel extends OpticsPane{
         }
     }//GEN-LAST:event_buttonSecondGenerateActionPerformedTalbot
 
-    
     private boolean parseArguments() {
         boolean ret = false;
-        try {          
-           
+        try {
+
             talbot_widthX = Double.valueOf(s_talbot_width_x.getValue());
             talbot_widthY = Double.valueOf(s_talbot_width_y.getValue());
             talbot_heightX = Double.valueOf(s_talbot_height_x.getValue());
@@ -636,20 +641,20 @@ public class TalbotPanel extends OpticsPane{
             talbot_grayLevel = Double.valueOf(s_talbot_gray.getValue());
             talbot_spacing = Double.valueOf(s_talbot_spacing.getValue());
             ret = true;
-            
+
         } catch (Exception e) {
         }
         return ret;
     }
-    
+
     public void setLog(String msg) {
         txtLogArea.append(msg + System.getProperty("line.separator"));
     }
-    
-     private String genLogTalbot() {
+
+    private String genLogTalbot() {
         return String.format(logmessageTalbot, Double.toString(talbot_heightX), Double.toString(talbot_widthY), Double.toString(talbot_rotation), Double.toString(talbot_positionX), Double.toString(talbot_positionY), Double.toString(talbot_grayLevel), Double.toString(talbot_spacing));
     }
-    
+
     @Override
     public void updatePatternScreen() {
         PatternImage image = ((EduPatternJPanel) panelPattern).pimage;

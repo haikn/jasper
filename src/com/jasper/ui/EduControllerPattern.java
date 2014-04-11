@@ -1,11 +1,22 @@
 /*
  * @(#)EduControllerPattern.java
  *
- * Copyright (c) 2013 JASPER DISPLAY, Inc.
- * An Unpublished Work.  All Rights Reserved.
- *
- * JASPER DISPLAY PROPRIETARY:  Distribution of this source code
- * without permission from the copyright holder is strictly forbidden.
+ * This program is version 2.0 of JDC Education Kit for Optical Experiments.
+ * Copyright (C) Jasper Display Corporation 2013.
+ * This program is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU General Public
+ * License version 2.0 as published by the Free Software Foundation. 
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. 
+ * You may contact Jasper Display Corporation by email at info@jasperdisplay.com
+ * or by telephone at +1-408-855-6640.
+ * More information is provided at http://www.jasperdisplay.com/.
  */
 package com.jasper.ui;
 
@@ -216,11 +227,11 @@ public class EduControllerPattern extends OpticsPane {
         // Beam Shifting tab
         beamShiftingPanel = new BeamShiftingPanel(labels, bindingGroup, panelPattern, tabbedControl);
         // Import Formula tab
-        //importFormulaPanel = new ImportFormulaPanel(labels, bindingGroup, panelPattern, tabbedControl);
+        importFormulaPanel = new ImportFormulaPanel(labels, bindingGroup, panelPattern, tabbedControl);
         // Dynamic tab
-        //dynamicPanel = new DynamicPanel(labels, bindingGroup, panelPattern);
+        dynamicPanel = new DynamicPanel(labels, bindingGroup, panelPattern);
         // Static tab
-        //staticPanel = new StaticPanel(labels, bindingGroup, panelPattern);
+        staticPanel = new StaticPanel(labels, bindingGroup, panelPattern);
         
         buttonPanel = new javax.swing.JPanel();
         tabbedPaneOptics.hide();
@@ -260,12 +271,12 @@ public class EduControllerPattern extends OpticsPane {
         tabbedControl.addTab(labels.getString("tabGeneral"), panelGeneral);
         // BeamShifting tab
         tabbedControl.addTab(labels.getString("tabBeamShifting"), beamShiftingPanel.getPanel());
+        // Static tab
+        tabbedControl.addTab(labels.getString("tabStatic"), staticPanel.getPanel());
         // Dynamic tab
-        //tabbedControl.addTab(labels.getString("tabDynamic"), dynamicPanel.getPanel());
-        // Dynamic tab
-        //tabbedControl.addTab(labels.getString("tabStatic"), staticPanel.getPanel());
+        tabbedControl.addTab(labels.getString("tabDynamic"), dynamicPanel.getPanel());
         // Import formula tab
-        //tabbedControl.addTab(labels.getString("tabImportFormula"), importFormulaPanel.getPanel());
+        tabbedControl.addTab(labels.getString("tabImportFormula"), importFormulaPanel.getPanel());
         
         tabbedControl.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -417,8 +428,22 @@ public class EduControllerPattern extends OpticsPane {
                         layoutDiagram.add(diagramLens);
                     }
                     
-                } else if (index == 4) {
-                    //generateActionPerformedDefault(null);
+                } else if (index == 2) {
+                    layoutDiagram.removeAll();
+                    diagramLens.removeAll();
+                    tabbedDesLog.removeAll();
+                    
+                    jScrollDes.getViewport();
+                    tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
+                    
+                    //jScrollPane2.setViewportView(staticPanel.getLogArea());
+                    tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
+
+                    lblDiagram.setIcon(lblDiagram.getIcon());
+                    lblDiagram.setText(lblDiagram.getText());
+                    diagramLens.add(lblDiagram);
+                    layoutDiagram.add(diagramLens);
+                } else if (index == 3) {
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
@@ -433,24 +458,7 @@ public class EduControllerPattern extends OpticsPane {
                     lblDiagram.setText(lblDiagram.getText());
                     diagramLens.add(lblDiagram);
                     layoutDiagram.add(diagramLens);
-                } else if (index == 3) {
-                    //generateActionPerformedDefault(null);
-                    layoutDiagram.removeAll();
-                    diagramLens.removeAll();
-                    tabbedDesLog.removeAll();
-                    
-                    jScrollDes.getViewport();
-                    tabbedDesLog.addTab(labels.getString("tabDescription"), jScrollDes);
-                    
-                    jScrollPane2.setViewportView(staticPanel.getLogArea());
-                    tabbedDesLog.addTab(labels.getString("tabLog"), jScrollPane2);
-
-                    lblDiagram.setIcon(lblDiagram.getIcon());
-                    lblDiagram.setText(lblDiagram.getText());
-                    diagramLens.add(lblDiagram);
-                    layoutDiagram.add(diagramLens);
-                } else if (index == 2) {
-                    //generateActionPerformedDefault(null);
+                } else if (index == 4) {
                     layoutDiagram.removeAll();
                     diagramLens.removeAll();
                     tabbedDesLog.removeAll();
